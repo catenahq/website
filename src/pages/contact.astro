@@ -1,0 +1,71 @@
+---
+import Base from "../layouts/Base.astro";
+import PageTitle from "../components/PageTitle.astro";
+import ContactForm from "../components/ContactForm.astro";
+import { t } from "@catena/i18n";
+
+const locale = "en";
+
+const cards = [
+  { titleKey: "discovery_title", bodyKey: "discovery_body" },
+  { titleKey: "email_title", bodyKey: "email_label", isEmail: true },
+  { titleKey: "response_title", bodyKey: "response_body" },
+];
+---
+<Base
+  locale={locale}
+  title={t(locale, "common.contact.title")}
+  description="Reach catena. Email us at hello@catena.run or book a 30-minute discovery call. We do not pitch on first contact -- we ask questions."
+>
+  <PageTitle
+    title={t(locale, "common.contact.title")}
+    intro={t(locale, "common.contact.intro")}
+  />
+  <section class="contact-info">
+    <div class="container">
+      <ul class="cards">
+        {cards.map((card) => (
+          <li>
+            <h3>{t(locale, `common.contact.${card.titleKey}`)}</h3>
+            {card.isEmail
+              ? <p><a href="mailto:hello@catena.run">{t(locale, "common.contact.email_label")}</a></p>
+              : <p class="muted">{t(locale, `common.contact.${card.bodyKey}`)}</p>}
+          </li>
+        ))}
+      </ul>
+    </div>
+  </section>
+  <ContactForm locale={locale} />
+</Base>
+
+<style>
+  .contact-info {
+    padding-bottom: var(--catena-space-12);
+  }
+  .cards {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: var(--catena-space-6);
+  }
+  .cards li {
+    padding: var(--catena-space-6);
+    border: 1px solid var(--catena-surface-border);
+    border-radius: var(--catena-radius-lg);
+    background: var(--catena-surface-bg);
+  }
+  .cards h3 {
+    font-size: var(--catena-fs-base);
+    margin: 0 0 var(--catena-space-2) 0;
+  }
+  .cards p {
+    margin: 0;
+    line-height: var(--catena-lh-relaxed);
+    font-size: var(--catena-fs-sm);
+  }
+  @media (max-width: 767px) {
+    .cards { grid-template-columns: 1fr; }
+  }
+</style>
