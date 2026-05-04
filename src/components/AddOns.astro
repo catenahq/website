@@ -1,0 +1,55 @@
+---
+import { t } from "@catena/i18n";
+
+interface Props {
+  locale: "en" | "fr";
+}
+
+const { locale } = Astro.props;
+---
+<section id="add-ons" class="addons">
+  <div class="container">
+    <h2>{t(locale, "common.pricing.addons.title")}</h2>
+    <p class="muted lead">{t(locale, "common.pricing.addons.intro")}</p>
+    <article class="addon-card">
+      <h3>{t(locale, "common.pricing.addons.website.name")}</h3>
+      <p>{t(locale, "common.pricing.addons.website.description")}</p>
+      <ul>
+        <li>{t(locale, "common.pricing.addons.website.bundle_5")}</li>
+        <li>{t(locale, "common.pricing.addons.website.bundle_10")}</li>
+        <li>{t(locale, "common.pricing.addons.website.extra")}</li>
+      </ul>
+      <p class="note muted">{t(locale, "common.pricing.addons.website.note")}</p>
+    </article>
+  </div>
+</section>
+
+<style>
+  .addons {
+    padding: var(--catena-space-16) 0;
+    background: var(--catena-surface-bg-muted);
+  }
+  .lead { margin-bottom: var(--catena-space-8); }
+  .addon-card {
+    padding: var(--catena-space-8);
+    border: 1px solid var(--catena-surface-border);
+    border-radius: var(--catena-radius-lg);
+    background: var(--catena-surface-bg);
+  }
+  .addon-card h3 {
+    font-size: var(--catena-fs-xl);
+    margin: 0 0 var(--catena-space-3) 0;
+  }
+  .addon-card p { margin: 0 0 var(--catena-space-4) 0; line-height: var(--catena-lh-relaxed); }
+  .addon-card ul {
+    margin: 0 0 var(--catena-space-4) 0;
+    padding-left: var(--catena-space-6);
+  }
+  .addon-card li {
+    margin-bottom: var(--catena-space-2);
+    line-height: var(--catena-lh-relaxed);
+  }
+  .note {
+    font-size: var(--catena-fs-sm);
+  }
+</style>
