@@ -1,0 +1,64 @@
+---
+interface Props {
+  title: string;
+  role: string;
+  body: string;
+  href?: string;
+  linkText?: string;
+  variant?: "default" | "muted";
+}
+
+const { title, role, body, href, linkText, variant = "default" } = Astro.props;
+---
+<article class={variant === "muted" ? "card muted-card" : "card"}>
+  <header>
+    <h3>{title}</h3>
+    <p class="role">{role}</p>
+  </header>
+  <p class="body">{body}</p>
+  {href && linkText && (
+    <p class="link">
+      <a href={href}>{linkText}</a>
+    </p>
+  )}
+</article>
+
+<style>
+  .card {
+    padding: var(--catena-space-6);
+    border: 1px solid var(--catena-surface-border);
+    border-radius: var(--catena-radius-lg);
+    background: var(--catena-surface-bg);
+    display: flex;
+    flex-direction: column;
+    gap: var(--catena-space-3);
+    transition: transform 200ms ease, box-shadow 200ms ease;
+  }
+  .card:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--catena-shadow-md);
+  }
+  .muted-card {
+    background: var(--catena-surface-bg-muted);
+  }
+  header { margin: 0; }
+  h3 {
+    font-size: var(--catena-fs-lg);
+    margin: 0 0 var(--catena-space-1) 0;
+  }
+  .role {
+    font-size: var(--catena-fs-xs);
+    text-transform: uppercase;
+    letter-spacing: var(--catena-tracking-wide);
+    color: var(--catena-surface-fg-muted);
+    margin: 0;
+  }
+  .body {
+    margin: 0;
+    line-height: var(--catena-lh-relaxed);
+  }
+  .link {
+    margin: var(--catena-space-2) 0 0 0;
+    font-size: var(--catena-fs-sm);
+  }
+</style>

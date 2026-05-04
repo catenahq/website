@@ -1,0 +1,80 @@
+---
+import Base from "../layouts/Base.astro";
+import PageTitle from "../components/PageTitle.astro";
+import AppCard from "../components/AppCard.astro";
+import CTA from "../components/CTA.astro";
+import { t } from "@catena/i18n";
+
+const locale = "en";
+const apps = ["nextcloud", "rocketchat", "espocrm", "scheduler", "n8n", "postiz", "onlyoffice", "outline"];
+---
+<Base
+  locale={locale}
+  title={t(locale, "common.for_your_team.title")}
+  description="Apps your SMB team uses every day on the catena stack -- Nextcloud, Rocket.Chat, EspoCRM, scheduling, n8n, Postiz, OnlyOffice, Outline. Single sign-on across all of them."
+>
+  <PageTitle
+    title={t(locale, "common.for_your_team.title")}
+    intro={t(locale, "common.for_your_team.intro")}
+  />
+  <section class="apps-grid-section">
+    <div class="container">
+      <div class="apps-grid">
+        {apps.map((slug) => (
+          <AppCard
+            title={t(locale, `common.for_your_team.apps.${slug}.title`)}
+            role={t(locale, `common.for_your_team.apps.${slug}.role`)}
+            body={t(locale, `common.for_your_team.apps.${slug}.body`)}
+            href={`https://docs.catena.run/en/${slug === 'rocketchat' ? 'rocketchat-oidc' : slug === 'nextcloud' ? 'nextcloud-s3-oidc' : slug}`}
+            linkText={t(locale, "common.cta.learn_more")}
+          />
+        ))}
+      </div>
+    </div>
+  </section>
+  <section class="email-section">
+    <div class="container">
+      <div class="email-grid">
+        <AppCard
+          title={t(locale, "common.for_your_team.email.title")}
+          role={t(locale, "common.for_your_team.email.role")}
+          body={t(locale, "common.for_your_team.email.body")}
+          variant="muted"
+        />
+        <AppCard
+          title={t(locale, "common.for_your_team.website_addon.title")}
+          role={t(locale, "common.for_your_team.website_addon.role")}
+          body={t(locale, "common.for_your_team.website_addon.body")}
+          href="/pricing#add-ons"
+          linkText={t(locale, "common.for_your_team.website_addon.link_text")}
+          variant="muted"
+        />
+      </div>
+    </div>
+  </section>
+  <CTA locale={locale} />
+</Base>
+
+<style>
+  .apps-grid-section {
+    padding-bottom: var(--catena-space-16);
+  }
+  .apps-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: var(--catena-space-6);
+  }
+  .email-section {
+    padding-bottom: var(--catena-space-16);
+  }
+  .email-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: var(--catena-space-6);
+  }
+  @media (max-width: 767px) {
+    .apps-grid, .email-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

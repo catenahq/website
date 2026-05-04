@@ -1,0 +1,36 @@
+---
+interface Props {
+  title: string;
+  intro?: string;
+}
+
+const { title, intro } = Astro.props;
+---
+<section class="page-title">
+  <div class="container">
+    <h1>{title}</h1>
+    {intro && <p class="intro muted">{intro}</p>}
+  </div>
+</section>
+
+<style>
+  .page-title {
+    padding: var(--catena-space-20) 0 var(--catena-space-12);
+    text-align: center;
+  }
+  h1 {
+    font-size: var(--catena-fs-4xl);
+    margin: 0 0 var(--catena-space-4) 0;
+  }
+  .intro {
+    max-width: var(--catena-content-narrow);
+    margin: 0 auto;
+    font-size: var(--catena-fs-lg);
+    line-height: var(--catena-lh-relaxed);
+  }
+  @media (max-width: 767px) {
+    .page-title { padding: var(--catena-space-12) 0 var(--catena-space-8); }
+    h1 { font-size: var(--catena-fs-2xl); }
+    .intro { font-size: var(--catena-fs-base); }
+  }
+</style>
