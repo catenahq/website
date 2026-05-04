@@ -1,0 +1,58 @@
+---
+import Base from "../layouts/Base.astro";
+import PageTitle from "../components/PageTitle.astro";
+import AppCard from "../components/AppCard.astro";
+import { t } from "@catena/i18n";
+
+const locale = "en";
+const stack = ["ansible", "tailscale", "cloudflare_tunnel", "keycloak", "sops", "restic", "dokploy", "goss"];
+---
+<Base
+  locale={locale}
+  title={t(locale, "common.for_your_it.title")}
+  description="Technical stack overview for IT evaluators. Ansible, Tailscale, Cloudflare Tunnel, Keycloak, SOPS, Restic, Dokploy, Goss / Gatus / Healthchecks. Four first-class capabilities: provisioning, backup, migration, validation."
+>
+  <PageTitle
+    title={t(locale, "common.for_your_it.title")}
+    intro={t(locale, "common.for_your_it.intro")}
+  />
+  <section class="stack-grid-section">
+    <div class="container">
+      <div class="stack-grid">
+        {stack.map((slug) => (
+          <AppCard
+            title={t(locale, `common.for_your_it.stack.${slug}.title`)}
+            role={t(locale, `common.for_your_it.stack.${slug}.role`)}
+            body={t(locale, `common.for_your_it.stack.${slug}.body`)}
+          />
+        ))}
+      </div>
+      <p class="architecture-link">
+        <a href="https://docs.catena.run/en/how-this-stack-works">
+          {t(locale, "common.for_your_it.architecture_link")} &rarr;
+        </a>
+      </p>
+    </div>
+  </section>
+</Base>
+
+<style>
+  .stack-grid-section {
+    padding-bottom: var(--catena-space-24);
+  }
+  .stack-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: var(--catena-space-6);
+  }
+  .architecture-link {
+    margin-top: var(--catena-space-12);
+    text-align: center;
+    font-size: var(--catena-fs-base);
+  }
+  @media (max-width: 767px) {
+    .stack-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
