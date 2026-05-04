@@ -1,0 +1,162 @@
+---
+import Base from "../../layouts/Base.astro";
+import PageTitle from "../../components/PageTitle.astro";
+import CTA from "../../components/CTA.astro";
+import { t } from "@catena/i18n";
+
+const locale = "fr";
+
+const bringPoints = ["judgment", "failure", "ownership"];
+const workPoints = ["response", "cadence", "continuity"];
+---
+<Base
+  locale={locale}
+  title={t(locale, "common.about.title")}
+  description="Un seul opérateur derrière catena -- 13 ans de leadership technique, 5 ans en solo. Jugement de sélection d'outils, expertise des modes de défaillance, propriété de bout en bout. Cadence de travail, temps de réponse, plan de continuité."
+>
+  <PageTitle
+    title={t(locale, "common.about.title")}
+    intro={t(locale, "common.about.intro")}
+  />
+  <section class="story">
+    <div class="container">
+      <div class="story-grid">
+        <div class="story-text">
+          <h2>{t(locale, "common.about.story_title")}</h2>
+          <p>{t(locale, "common.about.story_body")}</p>
+          <p class="portfolio-link">
+            <a href={t(locale, "common.about.portfolio_link_url")}>
+              {t(locale, "common.about.portfolio_link_label")} &rarr;
+            </a>
+          </p>
+        </div>
+        <div class="headshot" aria-hidden="true">
+          <div class="headshot-placeholder"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="bring">
+    <div class="container">
+      <h2>{t(locale, "common.about.bring_title")}</h2>
+      <ul class="cards">
+        {bringPoints.map((key) => (
+          <li>
+            <h3>{t(locale, `common.about.bring_${key}_title`)}</h3>
+            <p class="muted">{t(locale, `common.about.bring_${key}_body`)}</p>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </section>
+  <section class="work">
+    <div class="container">
+      <h2>{t(locale, "common.about.work_title")}</h2>
+      <ul class="cards">
+        {workPoints.map((key) => (
+          <li>
+            <h3>{t(locale, `common.about.work_${key}_title`)}</h3>
+            <p class="muted">{t(locale, `common.about.work_${key}_body`)}</p>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </section>
+  <section class="accountability">
+    <div class="container">
+      <h2>{t(locale, "common.about.accountability_title")}</h2>
+      <p class="quote">{t(locale, "common.about.accountability_body")}</p>
+    </div>
+  </section>
+  <CTA locale={locale} />
+</Base>
+
+<style>
+  .story {
+    padding-bottom: var(--catena-space-16);
+  }
+  .story-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: var(--catena-space-12);
+    align-items: start;
+  }
+  .story-text h2 {
+    margin-top: 0;
+  }
+  .story-text p {
+    line-height: var(--catena-lh-relaxed);
+    margin-bottom: var(--catena-space-4);
+  }
+  .portfolio-link {
+    font-size: var(--catena-fs-sm);
+  }
+  .headshot {
+    display: flex;
+    justify-content: center;
+  }
+  .headshot-placeholder {
+    width: 240px;
+    height: 240px;
+    border-radius: 50%;
+    background: linear-gradient(135deg,
+      color-mix(in srgb, var(--catena-accent) 25%, var(--catena-surface-bg-muted)) 0%,
+      var(--catena-surface-bg-muted) 100%);
+    border: 1px solid var(--catena-surface-border);
+  }
+  .bring, .work {
+    padding: var(--catena-space-12) 0;
+    background: var(--catena-surface-bg-muted);
+  }
+  .work {
+    background: var(--catena-surface-bg);
+  }
+  .cards {
+    list-style: none;
+    padding: 0;
+    margin: var(--catena-space-8) 0 0 0;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: var(--catena-space-6);
+  }
+  .cards li {
+    padding: var(--catena-space-6);
+    border: 1px solid var(--catena-surface-border);
+    border-radius: var(--catena-radius-lg);
+    background: var(--catena-surface-bg);
+  }
+  .cards h3 {
+    font-size: var(--catena-fs-lg);
+    margin: 0 0 var(--catena-space-3) 0;
+  }
+  .cards p {
+    margin: 0;
+    line-height: var(--catena-lh-relaxed);
+  }
+  .accountability {
+    padding: var(--catena-space-16) 0;
+    text-align: center;
+  }
+  .quote {
+    font-size: var(--catena-fs-2xl);
+    font-style: italic;
+    margin: var(--catena-space-6) 0 0 0;
+    color: var(--catena-surface-fg);
+  }
+  @media (max-width: 1023px) {
+    .cards {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+  @media (max-width: 767px) {
+    .story-grid {
+      grid-template-columns: 1fr;
+    }
+    .cards {
+      grid-template-columns: 1fr;
+    }
+    .quote {
+      font-size: var(--catena-fs-lg);
+    }
+  }
+</style>
