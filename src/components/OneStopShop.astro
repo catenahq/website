@@ -1,0 +1,68 @@
+---
+import { t } from "@catena/i18n";
+
+interface Props {
+  locale: "en" | "fr";
+}
+
+const { locale } = Astro.props;
+const prefix = locale === "en" ? "" : "/fr";
+
+const lines = ["files", "chat", "crm", "booking", "automation", "website"];
+---
+<section id="onestop" class="onestop">
+  <div class="container">
+    <h2>{t(locale, "common.home.onestop.title")}</h2>
+    <p class="lead muted">{t(locale, "common.home.onestop.intro")}</p>
+    <ul class="services">
+      {lines.map((slug) => (
+        <li>{t(locale, `common.home.onestop.line_${slug}`)}</li>
+      ))}
+    </ul>
+    <p class="email-note muted">{t(locale, "common.home.onestop.email_note")}</p>
+    <p class="stack-link">
+      <a href={`${prefix}/for-your-it`}>{t(locale, "common.home.onestop.stack_link")}</a>
+    </p>
+  </div>
+</section>
+
+<style>
+  .onestop {
+    padding: var(--catena-space-24) 0;
+    background: var(--catena-surface-bg-muted);
+  }
+  .lead { margin-bottom: var(--catena-space-10); }
+  .services {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 var(--catena-space-10) 0;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: var(--catena-space-3);
+  }
+  .services li {
+    padding: var(--catena-space-3) var(--catena-space-4);
+    border-left: 2px solid var(--catena-accent);
+    background: var(--catena-surface-bg);
+    border-radius: var(--catena-radius-sm);
+    line-height: var(--catena-lh-relaxed);
+  }
+  .email-note {
+    font-size: var(--catena-fs-sm);
+    line-height: var(--catena-lh-relaxed);
+    margin: 0 0 var(--catena-space-6) 0;
+  }
+  .stack-link {
+    margin: 0;
+    font-size: var(--catena-fs-sm);
+  }
+  .stack-link a {
+    color: var(--catena-surface-fg-muted);
+  }
+  .stack-link a:hover {
+    color: var(--catena-surface-fg);
+  }
+  @media (max-width: 639px) {
+    .services { grid-template-columns: 1fr; }
+  }
+</style>
