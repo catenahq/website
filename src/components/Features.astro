@@ -1,0 +1,77 @@
+---
+interface Props {
+  locale: "en" | "fr";
+}
+const { locale } = Astro.props;
+
+const data = locale === "fr"
+  ? {
+      title: "Ce qui est inclus",
+      items: [
+        { title: "Déploiement Ansible", body: "Une pile complète provisionnée depuis votre laptop. Aucun script ne survit sur le serveur." },
+        { title: "SSO Keycloak", body: "Authentification unique pour Nextcloud, Cal.com, Rocket.Chat, et toute application déployée via Dokploy." },
+        { title: "Sauvegardes restic", body: "Sauvegardes nocturnes vers votre propre S3. Tests de restauration automatisés." },
+        { title: "Tunnel Cloudflare", body: "Aucun port ouvert sur le serveur. TLS terminé en bordure. Tailscale pour l'admin." },
+        { title: "Migration de premier ordre", body: "Migrer entre fournisseurs en une commande. Aucun verrou. Aucune surprise." },
+        { title: "Mises à jour automatiques", body: "Snapshot pré-mise-à-jour, validation de santé, restauration automatique en cas de régression." },
+      ],
+    }
+  : {
+      title: "What's included",
+      items: [
+        { title: "Ansible-driven deploy", body: "Full stack provisioned from your laptop. Nothing persists on the target beyond the services." },
+        { title: "Keycloak SSO", body: "Single sign-on for Nextcloud, Cal.com, Rocket.Chat, and any app deployed through Dokploy." },
+        { title: "Restic backups", body: "Nightly backups to your own S3. Automated restore drills." },
+        { title: "Cloudflare Tunnel", body: "No open ports on the VPS. TLS terminated at the edge. Tailscale for admin." },
+        { title: "First-class migration", body: "Move between providers with one command. No lock-in. No surprises." },
+        { title: "Two-phase auto-update", body: "Pre-update snapshot, health validation, automatic rollback on regression." },
+      ],
+    };
+---
+<section id="features" class="features">
+  <div class="container">
+    <h2>{data.title}</h2>
+    <div class="grid">
+      {data.items.map((item) => (
+        <article>
+          <h3>{item.title}</h3>
+          <p class="muted">{item.body}</p>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .features {
+    padding: var(--catena-space-24) 0;
+  }
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: var(--catena-space-8);
+    margin-top: var(--catena-space-12);
+  }
+  article {
+    padding: var(--catena-space-6);
+    border: 1px solid var(--catena-surface-border);
+    border-radius: var(--catena-radius-lg);
+    background: var(--catena-surface-bg);
+    transition: transform 200ms ease, box-shadow 200ms ease;
+  }
+  article:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--catena-shadow-md);
+  }
+  article h3 {
+    font-size: var(--catena-fs-lg);
+    margin-bottom: var(--catena-space-3);
+  }
+  article p { margin: 0; line-height: var(--catena-lh-relaxed); }
+  @media (max-width: 1023px) {
+    .grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  }
+  @media (max-width: 639px) {
+    .grid { grid-template-columns: 1fr; }
+  }
+</style>

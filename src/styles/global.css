@@ -1,0 +1,103 @@
+@import "@catena/brand/tokens/all.css";
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  font-family: var(--catena-font-sans);
+  font-size: 16px;
+  color: var(--catena-surface-fg);
+  background: var(--catena-surface-bg);
+  line-height: var(--catena-lh-normal);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+}
+
+a {
+  color: var(--catena-link);
+  text-decoration: none;
+  transition: color 120ms ease;
+}
+a:hover {
+  color: var(--catena-link-hover);
+  text-decoration: underline;
+  text-underline-offset: 0.2em;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-weight: var(--catena-fw-semibold);
+  line-height: var(--catena-lh-tight);
+  letter-spacing: var(--catena-tracking-tight);
+  margin: 0 0 var(--catena-space-4);
+}
+
+h1 { font-size: var(--catena-fs-4xl); }
+h2 { font-size: var(--catena-fs-3xl); }
+h3 { font-size: var(--catena-fs-2xl); }
+h4 { font-size: var(--catena-fs-xl); }
+
+p {
+  margin: 0 0 var(--catena-space-4);
+}
+
+code, pre {
+  font-family: var(--catena-font-mono);
+  font-size: 0.95em;
+}
+
+.container {
+  width: 100%;
+  max-width: var(--catena-content-default);
+  margin: 0 auto;
+  padding: 0 var(--catena-space-6);
+}
+
+.container-wide {
+  width: 100%;
+  max-width: var(--catena-content-wide);
+  margin: 0 auto;
+  padding: 0 var(--catena-space-6);
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--catena-space-2);
+  padding: var(--catena-space-3) var(--catena-space-6);
+  border-radius: var(--catena-radius-md);
+  font-weight: var(--catena-fw-semibold);
+  font-size: var(--catena-fs-base);
+  text-decoration: none;
+  transition: background 120ms ease, color 120ms ease, transform 120ms ease;
+  border: 1px solid transparent;
+}
+.btn:hover { text-decoration: none; transform: translateY(-1px); }
+
+.btn-primary {
+  background: var(--catena-accent);
+  color: var(--catena-neutral-0);
+}
+.btn-primary:hover {
+  background: var(--catena-primary-700);
+  color: var(--catena-neutral-0);
+}
+
+.btn-secondary {
+  background: transparent;
+  color: var(--catena-surface-fg);
+  border-color: var(--catena-surface-border);
+}
+.btn-secondary:hover {
+  background: var(--catena-surface-bg-muted);
+  color: var(--catena-surface-fg);
+}
+
+.muted { color: var(--catena-surface-fg-muted); }

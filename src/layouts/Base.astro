@@ -1,0 +1,79 @@
+---
+import "../styles/global.css";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+import { getRelativeLocaleUrl } from "astro:i18n";
+import { t } from "@catena/i18n";
+
+interface Props {
+  title?: string;
+  description?: string;
+  locale?: "en" | "fr";
+  ogImage?: string;
+}
+
+const { title, description, locale = "en", ogImage = "/og-default.png" } = Astro.props;
+
+const brandName = t(locale, "common.brand.name");
+const brandTagline = t(locale, "common.brand.tagline");
+const pageTitle = title ? `${title} -- ${brandName}` : `${brandName} -- ${brandTagline}`;
+const pageDesc = description ?? brandTagline;
+
+// Locale-agnostic subpath. Strips a leading "/fr/" so we can re-emit
+// the same logical path in every locale via getRelativeLocaleUrl.
+// "/" -> "", "/about" -> "about", "/fr/" -> "", "/fr/about" -> "about".
+const pathname = Astro.url.pathname;
+const subpath = pathname.replace(/^\/fr(\/|$)/, "/").replace(/^\//, "");
+
+const site = Astro.site!;
+const canonical = new URL(getRelativeLocaleUrl(locale, subpath), site).toString();
+const xDefault = new URL(getRelativeLocaleUrl("en", subpath), site).toString();
+const ogImageUrl = new URL(ogImage, site).toString();
+const ogLocale = locale === "fr" ? "fr_CA" : "en_CA";
+
+const orgJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  name: brandName,
+  url: new URL("/", site).toString(),
+  logo: new URL("/favicon.svg", site).toString(),
+};
+---
+<!doctype html>
+<html lang={locale}>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{pageTitle}</title>
+    <meta name="description" content={pageDesc} />
+
+    <link rel="canonical" href={canonical} />
+    <link rel="alternate" hreflang="en" href={new URL(getRelativeLocaleUrl("en", subpath), site).toString()} />
+    <link rel="alternate" hreflang="fr" href={new URL(getRelativeLocaleUrl("fr", subpath), site).toString()} />
+    <link rel="alternate" hreflang="x-default" href={xDefault} />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content={ogLocale} />
+    <meta property="og:site_name" content={brandName} />
+    <meta property="og:title" content={pageTitle} />
+    <meta property="og:description" content={pageDesc} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={ogImageUrl} />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={pageTitle} />
+    <meta name="twitter:description" content={pageDesc} />
+    <meta name="twitter:image" content={ogImageUrl} />
+
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+
+    <script type="application/ld+json" set:html={JSON.stringify(orgJsonLd)} />
+  </head>
+  <body>
+    <Header locale={locale} />
+    <main>
+      <slot />
+    </main>
+    <Footer locale={locale} />
+  </body>
+</html>

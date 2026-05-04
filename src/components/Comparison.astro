@@ -1,0 +1,94 @@
+---
+interface Props {
+  locale: "en" | "fr";
+}
+const { locale } = Astro.props;
+
+const data = locale === "fr"
+  ? {
+      title: "Pourquoi catena",
+      sub: "Comparé aux SaaS et aux solutions auto-hébergées artisanales.",
+      cols: ["Catena", "SaaS multi-fournisseur", "Auto-hébergé artisanal"],
+      rows: [
+        ["Vous possédez les données", "Non", "Oui"],
+        ["Migration sans verrou", "Non", "À construire"],
+        ["Sauvegardes vérifiées", "Variable", "À construire"],
+        ["SSO unifié", "Variable", "À construire"],
+        ["Surface d'attaque réduite", "Variable", "À construire"],
+        ["Coût mensuel prévisible", "Variable", "Variable"],
+      ],
+    }
+  : {
+      title: "Why catena",
+      sub: "Compared to multi-vendor SaaS and DIY self-hosting.",
+      cols: ["Catena", "Multi-vendor SaaS", "DIY self-hosted"],
+      rows: [
+        ["You own the data", "No", "Yes"],
+        ["Migration without lock-in", "No", "Build it yourself"],
+        ["Verified backups", "Varies", "Build it yourself"],
+        ["Unified SSO", "Varies", "Build it yourself"],
+        ["Reduced attack surface", "Varies", "Build it yourself"],
+        ["Predictable monthly cost", "Varies", "Varies"],
+      ],
+    };
+---
+<section id="comparison" class="comparison">
+  <div class="container">
+    <h2>{data.title}</h2>
+    <p class="muted lead">{data.sub}</p>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th></th>
+            {data.cols.map((c, i) => (
+              <th class={i === 0 ? "ours" : ""}>{c}</th>
+            ))}
+          </tr>
+        </thead>
+        <tbody>
+          {data.rows.map((row) => (
+            <tr>
+              <th scope="row">{row[0]}</th>
+              <td class="ours"><span class="check">&#x2713;</span> {locale === "fr" ? "Oui" : "Yes"}</td>
+              <td class="muted">{row[1]}</td>
+              <td class="muted">{row[2]}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<style>
+  .comparison {
+    padding: var(--catena-space-24) 0;
+    background: var(--catena-surface-bg-muted);
+  }
+  .lead { margin-bottom: var(--catena-space-8); }
+  .table-wrap { overflow-x: auto; }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: var(--catena-fs-sm);
+  }
+  th, td {
+    padding: var(--catena-space-4) var(--catena-space-4);
+    text-align: left;
+    border-bottom: 1px solid var(--catena-surface-border);
+  }
+  thead th {
+    font-weight: var(--catena-fw-semibold);
+    color: var(--catena-surface-fg-muted);
+    font-size: var(--catena-fs-xs);
+    text-transform: uppercase;
+    letter-spacing: var(--catena-tracking-wide);
+  }
+  th.ours, td.ours {
+    background: color-mix(in srgb, var(--catena-accent) 10%, transparent);
+    color: var(--catena-surface-fg);
+    font-weight: var(--catena-fw-medium);
+  }
+  .check { color: var(--catena-success); font-weight: var(--catena-fw-bold); }
+</style>

@@ -1,0 +1,83 @@
+---
+import { t } from "@catena/i18n";
+
+interface Props {
+  locale: "en" | "fr";
+}
+
+const { locale } = Astro.props;
+const prefix = locale === "en" ? "" : "/fr";
+const altLocale = locale === "en" ? "fr" : "en";
+const altPath = altLocale === "en" ? "/" : "/fr/";
+---
+<header class="site-header">
+  <div class="container header-row">
+    <a href={prefix || "/"} class="brand">
+      {t(locale, "common.brand.name")}
+    </a>
+    <nav>
+      <a href={`${prefix}/#features`}>{t(locale, "common.nav.features")}</a>
+      <a href={`${prefix}/#pricing`}>{t(locale, "common.nav.pricing")}</a>
+      <a href={`${prefix}/#comparison`}>{t(locale, "common.nav.comparison")}</a>
+      <a href="https://docs.catena.run">{t(locale, "common.nav.docs")}</a>
+      <a href="https://app.catena.run">{t(locale, "common.nav.portal")}</a>
+    </nav>
+    <a href={altPath} class="lang-toggle" aria-label={t(locale, "common.footer.language")}>
+      {t(locale, `common.lang.${altLocale}`)}
+    </a>
+  </div>
+</header>
+
+<style>
+  .site-header {
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    background: color-mix(in srgb, var(--catena-surface-bg) 92%, transparent);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--catena-surface-border);
+  }
+  .header-row {
+    display: flex;
+    align-items: center;
+    gap: var(--catena-space-6);
+    padding-top: var(--catena-space-4);
+    padding-bottom: var(--catena-space-4);
+  }
+  .brand {
+    font-weight: var(--catena-fw-bold);
+    font-size: var(--catena-fs-lg);
+    letter-spacing: var(--catena-tracking-tight);
+    color: var(--catena-surface-fg);
+  }
+  .brand:hover { text-decoration: none; }
+  nav {
+    display: flex;
+    gap: var(--catena-space-6);
+    margin-left: auto;
+  }
+  nav a {
+    color: var(--catena-surface-fg-muted);
+    font-size: var(--catena-fs-sm);
+    font-weight: var(--catena-fw-medium);
+  }
+  nav a:hover {
+    color: var(--catena-surface-fg);
+    text-decoration: none;
+  }
+  .lang-toggle {
+    color: var(--catena-surface-fg-muted);
+    font-size: var(--catena-fs-sm);
+    padding: var(--catena-space-2) var(--catena-space-3);
+    border: 1px solid var(--catena-surface-border);
+    border-radius: var(--catena-radius-sm);
+  }
+  .lang-toggle:hover {
+    text-decoration: none;
+    color: var(--catena-surface-fg);
+    background: var(--catena-surface-bg-muted);
+  }
+  @media (max-width: 767px) {
+    nav { display: none; }
+  }
+</style>

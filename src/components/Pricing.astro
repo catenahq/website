@@ -1,0 +1,180 @@
+---
+interface Props {
+  locale: "en" | "fr";
+}
+const { locale } = Astro.props;
+
+// Pricing reflects the per-commodity tier matrix shipped in the
+// portal /order wizard. Each commodity is independent: clients can
+// be DIY for VPS + Managed for SMTP + DIY for Nextcloud, etc.
+// The $200 base installer fee is unavoidable; everything else is
+// optional add-ons.
+
+const data = locale === "fr"
+  ? {
+      title: "Tarification transparente",
+      sub: "Frais d'installation unique de 200 $. Choisissez votre niveau pour chaque service : faites-le vous-même (DIY), avec accompagnement, ou laissez-nous le gérer.",
+      base: {
+        title: "Installation initiale",
+        price: "200 $",
+        unit: "unique",
+        desc: "Provisionnement automatisé du stack + premier semaine de support inclus.",
+      },
+      assisted: {
+        title: "Accompagnement (par service)",
+        price: "+ 300 $",
+        unit: "unique / service",
+        desc: "Appel d'onboarding de 60 min où nous vous guidons à travers la création des comptes fournisseurs.",
+      },
+      managed: {
+        title: "Géré (par service)",
+        intro: "Nous opérons le service pour vous, refacturé sur votre facture mensuelle.",
+        rows: [
+          { name: "VPS + sauvegardes + opérations", price: "100 $/mois", note: "+ coût VPS du fournisseur" },
+          { name: "SMTP partagé catena.run", price: "5 $/mois", note: "" },
+          { name: "Stockage Nextcloud", price: "10 $/To/mois", note: "facturé selon usage" },
+        ],
+      },
+      cta: "Commencer",
+      note: "Domaine et Tailscale sans frais : vous fournissez votre propre clé API CF (le palier géré n'est pas applicable). Tailscale par défaut sur notre tailnet (partagé avec vous) ; passez à votre tailnet en DIY si vous le préférez.",
+    }
+  : {
+      title: "Transparent pricing",
+      sub: "$200 one-time installer fee. Pick a tier per commodity: do it yourself (DIY), with help (Assisted), or let us run it (Managed).",
+      base: {
+        title: "Base installer",
+        price: "$200",
+        unit: "one-time",
+        desc: "Automated stack provisioning + first week of support included.",
+      },
+      assisted: {
+        title: "Assisted (per commodity)",
+        price: "+ $300",
+        unit: "one-time / commodity",
+        desc: "60-min onboarding call where we walk you through provider account creation.",
+      },
+      managed: {
+        title: "Managed (per commodity)",
+        intro: "We operate that piece for you, billed monthly.",
+        rows: [
+          { name: "VPS + backups + ops", price: "$100/mo", note: "+ provider VPS cost" },
+          { name: "Shared catena.run SMTP", price: "$5/mo", note: "" },
+          { name: "Nextcloud storage", price: "$10/TB/mo", note: "metered" },
+        ],
+      },
+      cta: "Get started",
+      note: "Domain + Tailscale at no extra cost: you bring your own CF API token (Managed tier doesn't apply). Tailscale defaults to our tailnet (shared with you); switch to yours via DIY if you prefer.",
+    };
+---
+<section id="pricing" class="pricing">
+  <div class="container">
+    <h2>{data.title}</h2>
+    <p class="muted lead">{data.sub}</p>
+
+    <div class="tier-cards">
+      <article class="base">
+        <h3>{data.base.title}</h3>
+        <p class="price">{data.base.price} <span class="unit muted">{data.base.unit}</span></p>
+        <p>{data.base.desc}</p>
+      </article>
+
+      <article class="assisted">
+        <h3>{data.assisted.title}</h3>
+        <p class="price">{data.assisted.price} <span class="unit muted">{data.assisted.unit}</span></p>
+        <p>{data.assisted.desc}</p>
+      </article>
+
+      <article class="managed featured">
+        <h3>{data.managed.title}</h3>
+        <p class="muted">{data.managed.intro}</p>
+        <ul class="managed-rows">
+          {data.managed.rows.map((row) => (
+            <li>
+              <span class="row-name">{row.name}</span>
+              <span class="row-price">{row.price}</span>
+              {row.note && <span class="row-note muted">{row.note}</span>}
+            </li>
+          ))}
+        </ul>
+      </article>
+    </div>
+
+    <p class="muted detail">{data.note}</p>
+    <a class="btn btn-primary cta" href="mailto:hello@catena.run">{data.cta}</a>
+  </div>
+</section>
+
+<style>
+  .pricing { padding: var(--catena-space-24) 0; }
+  .lead { margin-bottom: var(--catena-space-12); }
+  .tier-cards {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: var(--catena-space-6);
+  }
+  article {
+    padding: var(--catena-space-8);
+    border: 1px solid var(--catena-surface-border);
+    border-radius: var(--catena-radius-lg);
+    background: var(--catena-surface-bg);
+    display: flex;
+    flex-direction: column;
+    gap: var(--catena-space-4);
+  }
+  article.featured {
+    border-color: var(--catena-accent);
+    box-shadow: var(--catena-shadow-md);
+  }
+  article h3 { font-size: var(--catena-fs-xl); margin: 0; }
+  .price {
+    font-size: var(--catena-fs-2xl);
+    font-weight: var(--catena-fw-semibold);
+    margin: 0;
+  }
+  .unit {
+    font-size: var(--catena-fs-sm);
+    text-transform: uppercase;
+    letter-spacing: var(--catena-tracking-wide);
+    font-weight: var(--catena-fw-normal);
+  }
+  article p { margin: 0; line-height: var(--catena-lh-relaxed); }
+  .managed-rows {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: var(--catena-space-3);
+  }
+  .managed-rows li {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: var(--catena-space-2);
+    padding: var(--catena-space-3) 0;
+    border-top: 1px solid var(--catena-surface-border);
+  }
+  .managed-rows li:first-child { border-top: none; }
+  .row-name { font-size: var(--catena-fs-sm); }
+  .row-price {
+    font-size: var(--catena-fs-sm);
+    font-weight: var(--catena-fw-semibold);
+    text-align: right;
+  }
+  .row-note {
+    grid-column: 1 / -1;
+    font-size: var(--catena-fs-xs);
+  }
+  .detail {
+    margin-top: var(--catena-space-8);
+    font-size: var(--catena-fs-sm);
+    text-align: center;
+  }
+  .cta {
+    display: block;
+    margin: var(--catena-space-6) auto 0;
+    width: fit-content;
+  }
+  @media (max-width: 1023px) {
+    .tier-cards { grid-template-columns: 1fr; }
+  }
+</style>

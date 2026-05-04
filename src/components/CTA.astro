@@ -1,0 +1,41 @@
+---
+import { t } from "@catena/i18n";
+interface Props {
+  locale: "en" | "fr";
+}
+const { locale } = Astro.props;
+
+const headline = locale === "fr"
+  ? "Prêt à reprendre possession de vos données ?"
+  : "Ready to own your data again?";
+const sub = locale === "fr"
+  ? "Une démo de 30 minutes suffit pour confirmer si catena correspond à votre cas d'usage."
+  : "A 30-minute call is enough to confirm whether catena fits your use case.";
+---
+<section class="cta">
+  <div class="container">
+    <div class="card">
+      <h2>{headline}</h2>
+      <p class="muted">{sub}</p>
+      <a class="btn btn-primary" href="mailto:hello@catena.run">
+        {t(locale, "common.cta.secondary")}
+      </a>
+    </div>
+  </div>
+</section>
+
+<style>
+  .cta { padding: var(--catena-space-12) 0 var(--catena-space-24); }
+  .card {
+    text-align: center;
+    padding: var(--catena-space-16) var(--catena-space-8);
+    border-radius: var(--catena-radius-lg);
+    background: linear-gradient(135deg,
+      color-mix(in srgb, var(--catena-accent) 12%, var(--catena-surface-bg)) 0%,
+      var(--catena-surface-bg) 100%);
+    border: 1px solid var(--catena-surface-border);
+  }
+  .card h2 { margin-bottom: var(--catena-space-4); }
+  .card p { margin-bottom: var(--catena-space-8); }
+  .card .btn { display: inline-flex; }
+</style>

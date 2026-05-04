@@ -1,0 +1,88 @@
+---
+import { t } from "@catena/i18n";
+
+interface Props {
+  locale: "en" | "fr";
+}
+
+const { locale } = Astro.props;
+const prefix = locale === "en" ? "" : "/fr";
+
+const headline =
+  locale === "fr"
+    ? "L'infrastructure auto-hébergée que vous possédez vraiment."
+    : "Self-hosted infrastructure you actually own.";
+
+const sub =
+  locale === "fr"
+    ? "Catena déploie une pile complète sur votre VPS Québécois en une commande. Vos données restent chez vous. Vos sauvegardes vous appartiennent. Aucun verrou."
+    : "Catena deploys a full stack on your Quebec VPS in one command. Your data stays yours. Your backups stay yours. No lock-in.";
+---
+<section class="hero">
+  <div class="container hero-inner">
+    <h1>{headline}</h1>
+    <p class="lead muted">{sub}</p>
+    <div class="cta-row">
+      <a class="btn btn-primary" href={`${prefix}/#pricing`}>
+        {t(locale, "common.cta.primary")}
+      </a>
+      <a class="btn btn-secondary" href="mailto:hello@catena.run">
+        {t(locale, "common.cta.secondary")}
+      </a>
+    </div>
+  </div>
+  <div class="hero-bg" aria-hidden="true"></div>
+</section>
+
+<style>
+  .hero {
+    position: relative;
+    padding: var(--catena-space-32) 0 var(--catena-space-24);
+    overflow: hidden;
+  }
+  .hero-inner {
+    position: relative;
+    z-index: 1;
+    text-align: center;
+    max-width: var(--catena-content-narrow);
+  }
+  .hero h1 {
+    font-size: var(--catena-fs-5xl);
+    margin-bottom: var(--catena-space-6);
+    background: linear-gradient(180deg, var(--catena-neutral-900) 0%, var(--catena-primary-700) 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+  .lead {
+    font-size: var(--catena-fs-lg);
+    line-height: var(--catena-lh-relaxed);
+    margin-bottom: var(--catena-space-8);
+  }
+  .cta-row {
+    display: flex;
+    gap: var(--catena-space-4);
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  .hero-bg {
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(circle at 20% 0%, color-mix(in srgb, var(--catena-accent) 18%, transparent) 0%, transparent 45%),
+      radial-gradient(circle at 80% 30%, color-mix(in srgb, var(--catena-primary-300) 15%, transparent) 0%, transparent 50%);
+    z-index: 0;
+  }
+  @media (prefers-color-scheme: dark) {
+    .hero h1 {
+      background: linear-gradient(180deg, var(--catena-neutral-50) 0%, var(--catena-primary-300) 100%);
+      -webkit-background-clip: text;
+      background-clip: text;
+    }
+  }
+  @media (max-width: 767px) {
+    .hero { padding: var(--catena-space-16) 0 var(--catena-space-12); }
+    .hero h1 { font-size: var(--catena-fs-3xl); }
+    .lead { font-size: var(--catena-fs-base); }
+  }
+</style>

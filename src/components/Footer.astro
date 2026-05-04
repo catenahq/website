@@ -1,0 +1,32 @@
+---
+import { t } from "@catena/i18n";
+
+interface Props {
+  locale: "en" | "fr";
+}
+
+const { locale } = Astro.props;
+const year = new Date().getFullYear();
+---
+<footer class="site-footer">
+  <div class="container">
+    <p class="muted">
+      &copy; {year} {t(locale, "common.brand.name")}.
+      {t(locale, "common.footer.rights")}
+      {t(locale, "common.footer.made_in")}
+    </p>
+  </div>
+</footer>
+
+<style>
+  .site-footer {
+    margin-top: var(--catena-space-24);
+    padding: var(--catena-space-12) 0;
+    border-top: 1px solid var(--catena-surface-border);
+    background: var(--catena-surface-bg-muted);
+  }
+  .site-footer p {
+    margin: 0;
+    font-size: var(--catena-fs-sm);
+  }
+</style>
