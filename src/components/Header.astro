@@ -9,6 +9,9 @@ const { locale } = Astro.props;
 const prefix = locale === "en" ? "" : "/fr";
 const altLocale = locale === "en" ? "fr" : "en";
 const altPath = altLocale === "en" ? "/" : "/fr/";
+// Docs is a sub-build of this site (apps/docs at base="/docs"). EN
+// at /docs/, FR at /docs/fr/. See apps/website/scripts/build-with-docs.mjs.
+const docsHref = locale === "en" ? "/docs/" : "/docs/fr/";
 ---
 <header class="site-header">
   <div class="container header-row">
@@ -21,7 +24,7 @@ const altPath = altLocale === "en" ? "/" : "/fr/";
       <a href={`${prefix}/pricing`}>{t(locale, "common.nav.pricing")}</a>
       <a href={`${prefix}/comparison`}>{t(locale, "common.nav.comparison")}</a>
       <a href={`${prefix}/about`}>{t(locale, "common.nav.about")}</a>
-      <a href="https://docs.catena.run">{t(locale, "common.nav.docs")}</a>
+      <a href={docsHref}>{t(locale, "common.nav.docs")}</a>
       <a href="https://app.catena.run">{t(locale, "common.nav.portal")}</a>
     </nav>
     <a href={altPath} class="lang-toggle" aria-label={t(locale, "common.footer.language")}>
