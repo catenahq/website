@@ -1,0 +1,41 @@
+---
+import Base from "../../layouts/Base.astro";
+import PageTitle from "../../components/PageTitle.astro";
+import { t } from "@catena/i18n";
+
+const locale = "fr";
+const sections = ["collect", "dont", "where", "subprocessors", "rights", "cookies", "contact"];
+---
+<Base
+  locale={locale}
+  title={t(locale, "common.privacy.title")}
+  description="Ce que catena collecte, ce que nous n'en faisons pas, où vivent les données, vos droits d'accès / correction / suppression sous la Loi 25 et la LPRPDE."
+>
+  <PageTitle
+    title={t(locale, "common.privacy.title")}
+    intro={t(locale, "common.privacy.intro")}
+  />
+  <section class="prose">
+    <div class="container">
+      {sections.map((s) => (
+        <article>
+          <h2>{t(locale, `common.privacy.${s}_title`)}</h2>
+          <p>{t(locale, `common.privacy.${s}_body`)}</p>
+        </article>
+      ))}
+    </div>
+  </section>
+</Base>
+
+<style>
+  .prose { padding: var(--catena-space-8) 0 var(--catena-space-24); }
+  .prose article { max-width: 64rem; margin-bottom: var(--catena-space-8); }
+  .prose h2 {
+    font-size: var(--catena-fs-xl);
+    margin: 0 0 var(--catena-space-3) 0;
+  }
+  .prose p {
+    margin: 0;
+    line-height: var(--catena-lh-relaxed);
+  }
+</style>

@@ -7,10 +7,57 @@ interface Props {
 
 const { locale } = Astro.props;
 const year = new Date().getFullYear();
+const prefix = locale === "en" ? "" : "/fr";
+const docsHref = locale === "en" ? "/docs/" : "/docs/fr/";
+
+const productLinks = [
+  { href: `${prefix}/features`,    label: t(locale, "common.nav.features") },
+  { href: `${prefix}/pricing`,     label: t(locale, "common.nav.pricing") },
+  { href: `${prefix}/comparison`,  label: t(locale, "common.nav.comparison") },
+  { href: `${prefix}/faq`,         label: t(locale, "common.faq.title") },
+  { href: docsHref,                label: t(locale, "common.nav.docs") },
+];
+
+const companyLinks = [
+  { href: `${prefix}/about`,       label: t(locale, "common.nav.about") },
+  { href: `${prefix}/contact`,     label: t(locale, "common.nav.contact") },
+  { href: "https://app.catena.run", label: t(locale, "common.nav.portal") },
+];
+
+const legalLinks = [
+  { href: `${prefix}/privacy`,     label: t(locale, "common.privacy.title") },
+  { href: `${prefix}/terms`,       label: t(locale, "common.terms.title") },
+];
 ---
 <footer class="site-footer">
   <div class="container">
-    <p class="muted">
+    <nav class="footer-cols" aria-label="Footer">
+      <div class="col">
+        <h3>{t(locale, "common.footer.col_product")}</h3>
+        <ul>
+          {productLinks.map((l) => (
+            <li><a href={l.href}>{l.label}</a></li>
+          ))}
+        </ul>
+      </div>
+      <div class="col">
+        <h3>{t(locale, "common.footer.col_company")}</h3>
+        <ul>
+          {companyLinks.map((l) => (
+            <li><a href={l.href}>{l.label}</a></li>
+          ))}
+        </ul>
+      </div>
+      <div class="col">
+        <h3>{t(locale, "common.footer.col_legal")}</h3>
+        <ul>
+          {legalLinks.map((l) => (
+            <li><a href={l.href}>{l.label}</a></li>
+          ))}
+        </ul>
+      </div>
+    </nav>
+    <p class="muted copyright">
       &copy; {year} {t(locale, "common.brand.name")}.
       {t(locale, "common.footer.rights")}
       {t(locale, "common.footer.made_in")}
@@ -21,12 +68,48 @@ const year = new Date().getFullYear();
 <style>
   .site-footer {
     margin-top: var(--catena-space-24);
-    padding: var(--catena-space-12) 0;
+    padding: var(--catena-space-12) 0 var(--catena-space-8);
     border-top: 1px solid var(--catena-surface-border);
     background: var(--catena-surface-bg-muted);
   }
-  .site-footer p {
+  .footer-cols {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: var(--catena-space-8);
+    margin-bottom: var(--catena-space-8);
+  }
+  .col h3 {
+    font-size: var(--catena-fs-xs);
+    text-transform: uppercase;
+    letter-spacing: var(--catena-tracking-wide);
+    margin: 0 0 var(--catena-space-3) 0;
+    color: var(--catena-surface-fg-muted);
+  }
+  .col ul {
+    list-style: none;
+    padding: 0;
     margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: var(--catena-space-2);
+  }
+  .col a {
     font-size: var(--catena-fs-sm);
+    color: var(--catena-surface-fg);
+  }
+  .col a:hover {
+    text-decoration: underline;
+  }
+  .copyright {
+    margin: 0;
+    padding-top: var(--catena-space-6);
+    border-top: 1px solid var(--catena-surface-border);
+    font-size: var(--catena-fs-sm);
+  }
+  @media (max-width: 767px) {
+    .footer-cols {
+      grid-template-columns: 1fr;
+      gap: var(--catena-space-6);
+    }
   }
 </style>
