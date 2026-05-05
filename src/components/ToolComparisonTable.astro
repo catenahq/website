@@ -1,0 +1,108 @@
+---
+// Per-category tool comparison: catena's pick vs Microsoft 365 /
+// Google Workspace / generic SaaS. Lives at the bottom of the
+// Features page.
+//
+// Column logos are deferred until @iconify-json/simple-icons is added
+// to the website workspace; today the columns render as plain text
+// labels (still readable, still useful). When logos are wanted, swap
+// the <span class="col-label"> for <Icon name="simple-icons:..." />.
+
+import { t } from "@catena/i18n";
+
+interface Props {
+  locale: "en" | "fr";
+}
+const { locale } = Astro.props;
+
+const cols = ["catena", "microsoft", "google", "saas"] as const;
+const categories = [
+  "files",
+  "office",
+  "chat",
+  "crm",
+  "booking",
+  "project",
+  "automation",
+  "esign",
+  "invoicing",
+  "wiki",
+  "social",
+] as const;
+---
+<section class="tool-comparison">
+  <div class="container">
+    <h2>{t(locale, "common.features.tool_comparison.title")}</h2>
+    <p class="muted intro">{t(locale, "common.features.tool_comparison.intro")}</p>
+
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th class="row-head">{t(locale, "common.features.tool_comparison.category_label")}</th>
+            {cols.map((c) => (
+              <th class={c === "catena" ? "highlight" : ""}>
+                <span class="col-label">{t(locale, `common.features.tool_comparison.cols.${c}`)}</span>
+              </th>
+            ))}
+          </tr>
+        </thead>
+        <tbody>
+          {categories.map((cat) => (
+            <tr>
+              <th class="row-head">{t(locale, `common.features.tool_comparison.rows.${cat}.label`)}</th>
+              {cols.map((c) => (
+                <td class={c === "catena" ? "highlight" : ""}>
+                  {t(locale, `common.features.tool_comparison.rows.${cat}.${c}`)}
+                </td>
+              ))}
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<style>
+  .tool-comparison {
+    padding: var(--catena-space-16) 0;
+  }
+  .tool-comparison h2 {
+    font-size: var(--catena-fs-2xl);
+    margin: 0 0 var(--catena-space-3) 0;
+  }
+  .intro {
+    margin: 0 0 var(--catena-space-8) 0;
+    max-width: 56rem;
+  }
+  .table-wrap {
+    overflow-x: auto;
+  }
+  table {
+    border-collapse: collapse;
+    width: 100%;
+    font-size: var(--catena-fs-sm);
+  }
+  th, td {
+    text-align: left;
+    padding: var(--catena-space-3) var(--catena-space-4);
+    border-bottom: 1px solid var(--catena-surface-border);
+    vertical-align: top;
+  }
+  thead th {
+    font-weight: var(--catena-fw-semibold);
+    background: var(--catena-surface-bg-muted);
+  }
+  .row-head {
+    font-weight: var(--catena-fw-semibold);
+    white-space: nowrap;
+  }
+  .highlight {
+    background: color-mix(in srgb, var(--catena-accent) 8%, transparent);
+    font-weight: var(--catena-fw-medium);
+  }
+  thead .highlight {
+    background: color-mix(in srgb, var(--catena-accent) 16%, transparent);
+  }
+</style>

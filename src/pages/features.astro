@@ -2,25 +2,19 @@
 import Base from "../layouts/Base.astro";
 import PageTitle from "../components/PageTitle.astro";
 import AppCard from "../components/AppCard.astro";
+import ServiceSection from "../components/ServiceSection.astro";
+import ToolComparisonTable from "../components/ToolComparisonTable.astro";
 import CTA from "../components/CTA.astro";
+import { SERVICES, appDocsHref } from "../data/services";
 import { t } from "@catena/i18n";
 
 const locale = "en";
-const apps = ["nextcloud", "rocketchat", "espocrm", "scheduler", "n8n", "postiz", "onlyoffice", "outline"];
 const stack = ["ansible", "tailscale", "cloudflare_tunnel", "keycloak", "sops", "restic", "dokploy", "goss"];
-
-function appDocsHref(slug: string): string {
-  const docSlug =
-    slug === "rocketchat" ? "rocketchat-oidc"
-    : slug === "nextcloud" ? "nextcloud-s3-oidc"
-    : slug;
-  return `/docs/apps/${docSlug}/`;
-}
 ---
 <Base
   locale={locale}
   title={t(locale, "common.features.title")}
-  description="Apps your team uses every day plus the technical surface that runs them. Nextcloud, Rocket.Chat, EspoCRM, scheduling, n8n, Postiz, OnlyOffice, Outline; Ansible, Tailscale, Cloudflare Tunnel, Keycloak, SOPS, Restic, Dokploy, monitoring."
+  description="Apps your team uses every day plus the technical surface that runs them. Vetted picks: Nextcloud, OnlyOffice, Rocket.Chat, EspoCRM, scheduling, n8n, Postiz, Outline, Plane, DocuSeal, Invoice Ninja. Compare against Microsoft 365 and Google Workspace."
 >
   <PageTitle
     title={t(locale, "common.features.title")}
@@ -31,18 +25,27 @@ function appDocsHref(slug: string): string {
     <div class="container">
       <h2 class="section-title">{t(locale, "common.features.section_for_your_team")}</h2>
       <p class="section-intro muted">{t(locale, "common.for_your_team.intro")}</p>
-      <div class="apps-grid">
-        {apps.map((slug) => (
-          <AppCard
-            title={t(locale, `common.for_your_team.apps.${slug}.title`)}
-            role={t(locale, `common.for_your_team.apps.${slug}.role`)}
-            body={t(locale, `common.for_your_team.apps.${slug}.body`)}
-            href={appDocsHref(slug)}
-            linkText={t(locale, "common.cta.learn_more")}
+
+      <aside class="recommendation">
+        <p class="recommendation-title">{t(locale, "common.for_your_team.recommendation_title")}</p>
+        <p class="recommendation-body">{t(locale, "common.for_your_team.recommendation_body")}</p>
+      </aside>
+
+      <div class="services">
+        {SERVICES.map((service) => (
+          <ServiceSection
+            slug={service.slug}
+            title={t(locale, `common.for_your_team.apps.${service.slug}.title`)}
+            role={t(locale, `common.for_your_team.apps.${service.slug}.role`)}
+            body={t(locale, `common.for_your_team.apps.${service.slug}.body`)}
+            upstreamUrl={service.upstream_url}
+            upstreamLabel={t(locale, "common.for_your_team.upstream_link")}
+            alternativesNote={t(locale, "common.for_your_team.alternatives_note")}
           />
         ))}
       </div>
-      <div class="email-grid">
+
+      <div class="aux-grid">
         <AppCard
           title={t(locale, "common.for_your_team.email.title")}
           role={t(locale, "common.for_your_team.email.role")}
@@ -82,6 +85,8 @@ function appDocsHref(slug: string): string {
     </div>
   </section>
 
+  <ToolComparisonTable locale={locale} />
+
   <CTA locale={locale} />
 </Base>
 
@@ -95,19 +100,38 @@ function appDocsHref(slug: string): string {
     margin-bottom: var(--catena-space-3);
   }
   .section-intro {
-    margin-bottom: var(--catena-space-8);
+    margin-bottom: var(--catena-space-6);
     max-width: 56rem;
   }
-  .apps-grid, .stack-grid {
-    display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: var(--catena-space-6);
+  .recommendation {
+    margin: 0 0 var(--catena-space-8) 0;
+    padding: var(--catena-space-5) var(--catena-space-6);
+    border-left: 3px solid var(--catena-accent);
+    background: var(--catena-surface-bg-muted);
+    border-radius: var(--catena-radius-sm);
   }
-  .email-grid {
+  .recommendation-title {
+    margin: 0 0 var(--catena-space-2) 0;
+    font-weight: var(--catena-fw-semibold);
+  }
+  .recommendation-body {
+    margin: 0;
+    line-height: var(--catena-lh-relaxed);
+    color: var(--catena-surface-fg-muted);
+  }
+  .services {
+    margin-top: var(--catena-space-6);
+  }
+  .aux-grid {
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: var(--catena-space-6);
-    margin-top: var(--catena-space-6);
+    margin-top: var(--catena-space-12);
+  }
+  .stack-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: var(--catena-space-6);
   }
   .architecture-link {
     margin-top: var(--catena-space-12);
@@ -115,7 +139,7 @@ function appDocsHref(slug: string): string {
     font-size: var(--catena-fs-base);
   }
   @media (max-width: 767px) {
-    .apps-grid, .stack-grid, .email-grid {
+    .aux-grid, .stack-grid {
       grid-template-columns: 1fr;
     }
   }

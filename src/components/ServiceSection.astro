@@ -1,0 +1,71 @@
+---
+// Full-width per-service section. Replaces the AppCard tile look on
+// the Features page. Each section: title + role pill, body copy,
+// upstream-project link, "alternatives available" note.
+
+interface Props {
+  slug: string;
+  title: string;
+  role: string;
+  body: string;
+  upstreamUrl: string;
+  upstreamLabel: string;
+  alternativesNote: string;
+}
+
+const { slug, title, role, body, upstreamUrl, upstreamLabel, alternativesNote } = Astro.props;
+---
+<section class="service" id={`service-${slug}`}>
+  <div class="service-header">
+    <h3>{title}</h3>
+    <span class="role-pill">{role}</span>
+  </div>
+  <p class="body">{body}</p>
+  <p class="meta">
+    <a href={upstreamUrl} target="_blank" rel="noopener noreferrer">{upstreamLabel} &rarr;</a>
+    <span class="separator">&middot;</span>
+    <span class="alternatives">{alternativesNote}</span>
+  </p>
+</section>
+
+<style>
+  .service {
+    padding: var(--catena-space-8) 0;
+    border-top: 1px solid var(--catena-surface-border);
+  }
+  .service:first-of-type { border-top: none; }
+  .service-header {
+    display: flex;
+    align-items: baseline;
+    gap: var(--catena-space-4);
+    flex-wrap: wrap;
+  }
+  .service-header h3 {
+    font-size: var(--catena-fs-xl);
+    margin: 0;
+  }
+  .role-pill {
+    font-size: var(--catena-fs-xs);
+    text-transform: uppercase;
+    letter-spacing: var(--catena-tracking-wide);
+    padding: 2px 8px;
+    border-radius: var(--catena-radius-sm);
+    background: var(--catena-surface-bg-muted);
+    color: var(--catena-surface-fg-muted);
+  }
+  .body {
+    margin: var(--catena-space-3) 0 0 0;
+    line-height: var(--catena-lh-relaxed);
+    max-width: 64rem;
+  }
+  .meta {
+    margin: var(--catena-space-3) 0 0 0;
+    font-size: var(--catena-fs-sm);
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--catena-space-2);
+    align-items: center;
+  }
+  .separator { color: var(--catena-surface-fg-muted); }
+  .alternatives { color: var(--catena-surface-fg-muted); }
+</style>
