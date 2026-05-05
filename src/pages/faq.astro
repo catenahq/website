@@ -1,0 +1,21 @@
+---
+import Base from "../layouts/Base.astro";
+import PageTitle from "../components/PageTitle.astro";
+import Faq from "../components/Faq.astro";
+import CTA from "../components/CTA.astro";
+import { t } from "@catena/i18n";
+
+const locale = "en";
+---
+<Base
+  locale={locale}
+  title={t(locale, "common.faq.title")}
+  description="Frequently asked questions about catena. What you can run, where your data lives, what happens if the operator disappears, how leaving works, and other common pre-sale questions."
+>
+  <PageTitle
+    title={t(locale, "common.faq.title")}
+    intro={t(locale, "common.faq.intro")}
+  />
+  <Faq locale={locale} />
+  <CTA locale={locale} />
+</Base>

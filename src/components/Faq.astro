@@ -1,0 +1,103 @@
+---
+// FAQ accordion + schema.org FAQPage JSON-LD. Each Q/A is rendered
+// as a <details> for native accessible expand/collapse, and emitted
+// inside the JSON-LD block stripped of HTML so search engines see
+// clean answer text.
+
+import { t } from "@catena/i18n";
+
+interface Props {
+  locale: "en" | "fr";
+}
+const { locale } = Astro.props;
+
+const QUESTIONS = ["q1","q2","q3","q4","q5","q6","q7","q8","q9","q10"] as const;
+
+function plain(html: string): string {
+  // Strip tags + collapse whitespace for the JSON-LD answer field.
+  return html.replace(/<[^>]+>/g, " ").replace(/\s+/g, " ").trim();
+}
+
+const items = QUESTIONS.map((id) => ({
+  id,
+  question: t(locale, `common.faq.${id}.question`),
+  answerHtml: t(locale, `common.faq.${id}.answer`),
+}));
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: items.map((item) => ({
+    "@type": "Question",
+    name: item.question,
+    acceptedAnswer: {
+      "@type": "Answer",
+      text: plain(item.answerHtml),
+    },
+  })),
+};
+---
+<script type="application/ld+json" set:html={JSON.stringify(jsonLd)}></script>
+
+<section class="faq">
+  <div class="container">
+    <p class="muted intro">{t(locale, "common.faq.intro")}</p>
+    <div class="qa-list">
+      {items.map((item, idx) => (
+        <details class="qa" open={idx === 0}>
+          <summary>
+            <h2>{item.question}</h2>
+          </summary>
+          <div class="answer" set:html={item.answerHtml}></div>
+        </details>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .faq { padding: var(--catena-space-8) 0 var(--catena-space-24); }
+  .intro { max-width: 56rem; margin: 0 0 var(--catena-space-8) 0; }
+  .qa-list {
+    display: flex;
+    flex-direction: column;
+    gap: var(--catena-space-3);
+  }
+  .qa {
+    padding: var(--catena-space-5) var(--catena-space-6);
+    border: 1px solid var(--catena-surface-border);
+    border-radius: var(--catena-radius-md);
+    background: var(--catena-surface-bg);
+  }
+  .qa[open] {
+    background: var(--catena-surface-bg-muted);
+  }
+  .qa summary {
+    cursor: pointer;
+    list-style: none;
+    display: flex;
+    align-items: baseline;
+    gap: var(--catena-space-3);
+  }
+  .qa summary::-webkit-details-marker { display: none; }
+  .qa summary::before {
+    content: "+";
+    font-weight: var(--catena-fw-bold);
+    color: var(--catena-accent);
+    width: 1ch;
+  }
+  .qa[open] summary::before { content: "−"; }
+  .qa h2 {
+    margin: 0;
+    font-size: var(--catena-fs-lg);
+    display: inline;
+  }
+  .answer {
+    margin-top: var(--catena-space-3);
+    line-height: var(--catena-lh-relaxed);
+    max-width: 64rem;
+  }
+  .answer a {
+    text-decoration: underline;
+  }
+</style>
