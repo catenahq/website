@@ -6,7 +6,8 @@
   "scripts": {
     "dev": "astro dev",
     "start": "astro dev",
-    "build": "astro build",
+    "build": "node scripts/build-with-docs.mjs",
+    "build:marketing-only": "astro build",
     "preview": "astro preview",
     "check": "astro check"
   },
