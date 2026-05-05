@@ -13,14 +13,18 @@ WORKDIR /repo
 # Copy workspace manifests first so Docker caches the install layer.
 COPY package.json package-lock.json* ./
 COPY apps/website/package.json apps/website/
+COPY apps/docs/package.json apps/docs/
 COPY packages/brand/package.json packages/brand/
 COPY packages/i18n/package.json packages/i18n/
 
 RUN npm install --workspaces --include-workspace-root --no-audit --no-fund
 
 # Copy the actual source. Workspace symlinks already exist from the
-# install above.
+# install above. apps/docs is included because the website build
+# script chains a Starlight build at base=/docs and merges the dist
+# tree -- single deploy serves both surfaces.
 COPY apps/website apps/website
+COPY apps/docs apps/docs
 COPY packages/brand packages/brand
 COPY packages/i18n packages/i18n
 
