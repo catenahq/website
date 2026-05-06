@@ -1,9 +1,10 @@
 ---
 // Full-width per-service section. Replaces the AppCard tile look on
 // the Features page. Each section: title + role pill, body copy,
-// upstream-project link, "alternatives available" note, and an
-// image slot (designer fills these in over time -- empty slot
-// renders as a placeholder block to keep the layout stable).
+// upstream-project link, openalternative.co deep-link to the curated
+// alternatives list, and an image slot (designer fills these in over
+// time -- empty slot renders as a placeholder block to keep the
+// layout stable).
 
 interface Props {
   slug: string;
@@ -12,7 +13,8 @@ interface Props {
   body: string;
   upstreamUrl: string;
   upstreamLabel: string;
-  alternativesNote: string;
+  alternativesUrl: string;
+  alternativesLabel: string;
   imageSrc?: string;
   imageAlt?: string;
 }
@@ -24,7 +26,8 @@ const {
   body,
   upstreamUrl,
   upstreamLabel,
-  alternativesNote,
+  alternativesUrl,
+  alternativesLabel,
   imageSrc,
   imageAlt,
 } = Astro.props;
@@ -40,7 +43,7 @@ const {
       <p class="meta">
         <a href={upstreamUrl} target="_blank" rel="noopener noreferrer">{upstreamLabel} &rarr;</a>
         <span class="separator">&middot;</span>
-        <span class="alternatives">{alternativesNote}</span>
+        <a href={alternativesUrl} target="_blank" rel="noopener noreferrer">{alternativesLabel} &rarr;</a>
       </p>
     </div>
     <div class="media">
@@ -95,7 +98,6 @@ const {
     align-items: center;
   }
   .separator { color: var(--catena-surface-fg-muted); }
-  .alternatives { color: var(--catena-surface-fg-muted); }
   .media img,
   .media .image-placeholder {
     display: block;
