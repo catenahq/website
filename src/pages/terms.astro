@@ -31,7 +31,7 @@ const sections = [
       {sections.map((s) => (
         <article>
           <h2>{t(locale, `common.terms.${s}_title`)}</h2>
-          <p>{t(locale, `common.terms.${s}_body`)}</p>
+          <p set:html={t(locale, `common.terms.${s}_body`)}></p>
         </article>
       ))}
     </div>
