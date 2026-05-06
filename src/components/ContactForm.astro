@@ -39,9 +39,9 @@ const intents = [
       </label>
       <fieldset>
         <legend>{t(locale, "common.contact.form.intent_label")}</legend>
-        {intents.map((intent, idx) => (
-          <label class="radio">
-            <input type="radio" name="intent" value={intent.value} required={idx === 0} />
+        {intents.map((intent) => (
+          <label class="check">
+            <input type="checkbox" name="intent" value={intent.value} />
             <span>{t(locale, `common.contact.form.${intent.labelKey}`)}</span>
           </label>
         ))}
@@ -109,9 +109,10 @@ const intents = [
     font-weight: var(--catena-fw-medium);
     padding: 0 var(--catena-space-2);
   }
-  label.radio {
+  label.check {
     flex-direction: row;
     align-items: center;
+    gap: var(--catena-space-2);
     font-weight: var(--catena-fw-normal);
   }
   textarea { resize: vertical; }

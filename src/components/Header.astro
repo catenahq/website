@@ -8,7 +8,20 @@ interface Props {
 const { locale } = Astro.props;
 const prefix = locale === "en" ? "" : "/fr";
 const altLocale = locale === "en" ? "fr" : "en";
-const altPath = altLocale === "en" ? "/" : "/fr/";
+
+// Language switcher: preserve the current page when toggling locales.
+// EN -> FR: prepend /fr to the current path. FR -> EN: strip the /fr
+// prefix. The hash (anchor section) is preserved client-side via the
+// browser's default link behavior on same-document navigation; for a
+// full route swap, we forward window.location.hash on click.
+const currentPath = Astro.url.pathname;
+let altPath: string;
+if (altLocale === "fr") {
+  altPath = currentPath === "/" ? "/fr/" : `/fr${currentPath}`;
+} else {
+  const stripped = currentPath.replace(/^\/fr(\/|$)/, "/");
+  altPath = stripped || "/";
+}
 // Docs is a sub-build of this site (apps/docs at base="/docs"). EN
 // at /docs/, FR at /docs/fr/. See apps/website/scripts/build-with-docs.mjs.
 const docsHref = locale === "en" ? "/docs/" : "/docs/fr/";
@@ -27,7 +40,12 @@ const docsHref = locale === "en" ? "/docs/" : "/docs/fr/";
       <a href={docsHref}>{t(locale, "common.nav.docs")}</a>
       <a href="https://app.catena.run">{t(locale, "common.nav.portal")}</a>
     </nav>
-    <a href={altPath} class="lang-toggle" aria-label={t(locale, "common.footer.language")}>
+    <a
+      href={altPath}
+      class="lang-toggle"
+      data-lang-toggle
+      aria-label={t(locale, "common.footer.language")}
+    >
       {t(locale, `common.lang.${altLocale}`)}
     </a>
   </div>
@@ -86,3 +104,23 @@ const docsHref = locale === "en" ? "/docs/" : "/docs/fr/";
     nav { display: none; }
   }
 </style>
+
+<script>
+  // Forward the current document hash (the visible page section) when
+  // the user clicks the language toggle, so they land on the same
+  // section in the other locale. The href already encodes the path;
+  // we only append the hash here.
+  document.querySelectorAll<HTMLAnchorElement>("[data-lang-toggle]").forEach((a) => {
+    a.addEventListener("click", () => {
+      if (window.location.hash) {
+        try {
+          const u = new URL(a.href);
+          u.hash = window.location.hash;
+          a.href = u.toString();
+        } catch {
+          // Defensive: malformed href -- fall back to default behavior.
+        }
+      }
+    });
+  });
+</script>

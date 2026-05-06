@@ -1,7 +1,9 @@
 ---
 // Full-width per-service section. Replaces the AppCard tile look on
 // the Features page. Each section: title + role pill, body copy,
-// upstream-project link, "alternatives available" note.
+// upstream-project link, "alternatives available" note, and an
+// image slot (designer fills these in over time -- empty slot
+// renders as a placeholder block to keep the layout stable).
 
 interface Props {
   slug: string;
@@ -11,21 +13,42 @@ interface Props {
   upstreamUrl: string;
   upstreamLabel: string;
   alternativesNote: string;
+  imageSrc?: string;
+  imageAlt?: string;
 }
 
-const { slug, title, role, body, upstreamUrl, upstreamLabel, alternativesNote } = Astro.props;
+const {
+  slug,
+  title,
+  role,
+  body,
+  upstreamUrl,
+  upstreamLabel,
+  alternativesNote,
+  imageSrc,
+  imageAlt,
+} = Astro.props;
 ---
 <section class="service" id={`service-${slug}`}>
-  <div class="service-header">
-    <h3>{title}</h3>
-    <span class="role-pill">{role}</span>
+  <div class="grid">
+    <div class="copy">
+      <div class="service-header">
+        <h3>{title}</h3>
+        <span class="role-pill">{role}</span>
+      </div>
+      <p class="body">{body}</p>
+      <p class="meta">
+        <a href={upstreamUrl} target="_blank" rel="noopener noreferrer">{upstreamLabel} &rarr;</a>
+        <span class="separator">&middot;</span>
+        <span class="alternatives">{alternativesNote}</span>
+      </p>
+    </div>
+    <div class="media">
+      {imageSrc
+        ? <img src={imageSrc} alt={imageAlt ?? title} loading="lazy" />
+        : <div class="image-placeholder" aria-hidden="true"></div>}
+    </div>
   </div>
-  <p class="body">{body}</p>
-  <p class="meta">
-    <a href={upstreamUrl} target="_blank" rel="noopener noreferrer">{upstreamLabel} &rarr;</a>
-    <span class="separator">&middot;</span>
-    <span class="alternatives">{alternativesNote}</span>
-  </p>
 </section>
 
 <style>
@@ -34,6 +57,12 @@ const { slug, title, role, body, upstreamUrl, upstreamLabel, alternativesNote } 
     border-top: 1px solid var(--catena-surface-border);
   }
   .service:first-of-type { border-top: none; }
+  .grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
+    gap: var(--catena-space-8);
+    align-items: center;
+  }
   .service-header {
     display: flex;
     align-items: baseline;
@@ -56,7 +85,6 @@ const { slug, title, role, body, upstreamUrl, upstreamLabel, alternativesNote } 
   .body {
     margin: var(--catena-space-3) 0 0 0;
     line-height: var(--catena-lh-relaxed);
-    max-width: 64rem;
   }
   .meta {
     margin: var(--catena-space-3) 0 0 0;
@@ -68,4 +96,20 @@ const { slug, title, role, body, upstreamUrl, upstreamLabel, alternativesNote } 
   }
   .separator { color: var(--catena-surface-fg-muted); }
   .alternatives { color: var(--catena-surface-fg-muted); }
+  .media img,
+  .media .image-placeholder {
+    display: block;
+    width: 100%;
+    aspect-ratio: 16 / 10;
+    border-radius: var(--catena-radius-md);
+    border: 1px solid var(--catena-surface-border);
+    background: var(--catena-surface-bg-muted);
+    object-fit: cover;
+  }
+  @media (max-width: 767px) {
+    .grid {
+      grid-template-columns: 1fr;
+      gap: var(--catena-space-4);
+    }
+  }
 </style>
