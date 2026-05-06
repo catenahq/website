@@ -30,6 +30,7 @@ const alacarteNote = t(locale, "common.pricing.alacarte_support_note");
   <div class="container">
     <h2>{t(locale, "common.pricing.title")}</h2>
     <p class="muted lead">{t(locale, "common.pricing.intro")}</p>
+    <p class="muted bundle-note">{t(locale, "common.pricing.bundle_note")}</p>
 
     <div class="tier-cards">
       {tiers.map((tier) => {
@@ -61,14 +62,20 @@ const alacarteNote = t(locale, "common.pricing.alacarte_support_note");
 
 <style>
   .pricing { padding: var(--catena-space-24) 0; }
-  .lead { margin-bottom: var(--catena-space-12); max-width: 56rem; }
-  /* Pricing-page container override: 5 tier cards need more horizontal
-     room than the site-wide container max-width to keep "Medium business"
-     etc. on a single line without wrapping. */
-  .pricing :global(.container) { max-width: 96rem; }
+  .lead { margin-bottom: var(--catena-space-4); max-width: 56rem; }
+  .bundle-note {
+    margin-bottom: var(--catena-space-12);
+    max-width: 56rem;
+  }
+  /* Pricing-page container override: 5 tier cards need just enough
+     horizontal room to keep "Moyenne entreprise" on a single line
+     without wrapping. 78rem leaves ~14rem per card after gaps, which
+     accommodates the longest tier name with the existing
+     white-space: nowrap on the .tier h3. */
+  .pricing :global(.container) { max-width: 78rem; }
   .tier-cards {
     display: grid;
-    grid-template-columns: repeat(5, minmax(13rem, 1fr));
+    grid-template-columns: repeat(5, minmax(12rem, 1fr));
     gap: var(--catena-space-4);
   }
   .tier {
