@@ -17,19 +17,13 @@ const locale = "en";
   />
   <section class="contact-info">
     <div class="container">
-      <ul class="cards">
-        <li class="discovery">
-          <h3>{t(locale, "common.contact.discovery_title")}</h3>
-          <p class="muted">{t(locale, "common.contact.discovery_body")}</p>
-          <a class="btn btn-primary" href={t(locale, "common.contact.discovery_link_url")}>
-            {t(locale, "common.contact.discovery_link_label")} &rarr;
-          </a>
-        </li>
-        <li>
-          <h3>{t(locale, "common.contact.response_title")}</h3>
-          <p class="muted">{t(locale, "common.contact.response_body")}</p>
-        </li>
-      </ul>
+      <article class="discovery-card">
+        <h3>{t(locale, "common.contact.discovery_title")}</h3>
+        <p class="muted">{t(locale, "common.contact.discovery_body")}</p>
+        <a class="btn btn-primary" href={t(locale, "common.contact.discovery_link_url")}>
+          {t(locale, "common.contact.discovery_link_label")} &rarr;
+        </a>
+      </article>
     </div>
   </section>
   <ContactForm locale={locale} />
@@ -39,37 +33,29 @@ const locale = "en";
   .contact-info {
     padding-bottom: var(--catena-space-12);
   }
-  .cards {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: var(--catena-space-6);
-  }
-  .cards li {
-    padding: var(--catena-space-6);
+  .discovery-card {
+    margin: 0 auto;
+    max-width: 36rem;
+    padding: var(--catena-space-8);
     border: 1px solid var(--catena-surface-border);
     border-radius: var(--catena-radius-lg);
     background: var(--catena-surface-bg);
     display: flex;
     flex-direction: column;
+    align-items: center;
+    text-align: center;
     gap: var(--catena-space-3);
   }
-  .cards h3 {
-    font-size: var(--catena-fs-base);
+  .discovery-card h3 {
+    font-size: var(--catena-fs-lg);
     margin: 0;
   }
-  .cards p {
+  .discovery-card p {
     margin: 0;
     line-height: var(--catena-lh-relaxed);
     font-size: var(--catena-fs-sm);
   }
-  .cards .btn {
-    align-self: flex-start;
+  .discovery-card .btn {
     margin-top: var(--catena-space-2);
-  }
-  @media (max-width: 767px) {
-    .cards { grid-template-columns: 1fr; }
   }
 </style>

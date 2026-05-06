@@ -62,13 +62,17 @@ const alacarteNote = t(locale, "common.pricing.alacarte_support_note");
 <style>
   .pricing { padding: var(--catena-space-24) 0; }
   .lead { margin-bottom: var(--catena-space-12); max-width: 56rem; }
+  /* Pricing-page container override: 5 tier cards need more horizontal
+     room than the site-wide container max-width to keep "Medium business"
+     etc. on a single line without wrapping. */
+  .pricing :global(.container) { max-width: 96rem; }
   .tier-cards {
     display: grid;
-    grid-template-columns: repeat(5, minmax(0, 1fr));
+    grid-template-columns: repeat(5, minmax(13rem, 1fr));
     gap: var(--catena-space-4);
   }
   .tier {
-    padding: var(--catena-space-6);
+    padding: var(--catena-space-8) var(--catena-space-6);
     border: 1px solid var(--catena-surface-border);
     border-radius: var(--catena-radius-lg);
     background: var(--catena-surface-bg);
@@ -83,6 +87,7 @@ const alacarteNote = t(locale, "common.pricing.alacarte_support_note");
   .tier h3 {
     font-size: var(--catena-fs-lg);
     margin: 0;
+    white-space: nowrap;
   }
   .price {
     margin: 0;
