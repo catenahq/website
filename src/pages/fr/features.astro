@@ -37,7 +37,7 @@ const imageAltSuffix = t(locale, "common.for_your_team.image_alt_suffix");
 
       <aside class="recommendation">
         <p class="recommendation-title">{t(locale, "common.for_your_team.recommendation_title")}</p>
-        <p class="recommendation-body">{t(locale, "common.for_your_team.recommendation_body")}</p>
+        <p class="recommendation-body" set:html={t(locale, "common.for_your_team.recommendation_body")}></p>
       </aside>
 
       <div class="services">
