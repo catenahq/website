@@ -1,0 +1,150 @@
+---
+import Base from "../../../layouts/Base.astro";
+import PageTitle from "../../../components/PageTitle.astro";
+import CTA from "../../../components/CTA.astro";
+
+const locale = "en";
+const title = "Create your provider accounts";
+const intro = "A typical catena deployment leans on five external accounts that stay in your name. Create them in this order, and you will hit the install with everything ready.";
+---
+<Base
+  locale={locale}
+  title={title}
+  description="Step-by-step: create the five external provider accounts (Cloudflare, Tailscale, OVH, eazybackup, SMTP) that a typical catena deployment needs."
+>
+  <PageTitle title={title} intro={intro} />
+
+  <article class="guide">
+    <div class="container">
+      <ol>
+        <li>
+          <h2>Cloudflare</h2>
+          <p>
+            <a href="https://dash.cloudflare.com/sign-up" target="_blank" rel="noopener noreferrer">Sign up</a>
+            with the email address you want on the invoice. Once
+            verified, transfer your business domain to Cloudflare DNS
+            (no contract, free tier is enough). The account becomes
+            the home for your DNS records and for the Cloudflare
+            Tunnel that fronts every service we deploy.
+          </p>
+          <p class="muted">Time: 10-15 minutes (DNS propagation).</p>
+        </li>
+
+        <li>
+          <h2>Tailscale</h2>
+          <p>
+            <a href="https://login.tailscale.com/start" target="_blank" rel="noopener noreferrer">Start a tailnet</a>
+            using SSO from your existing email provider (Google,
+            Microsoft, GitHub). The free Personal plan covers up to
+            three users; for staff access, the $5/user/month Starter
+            plan is fine. Tailscale is the private admin path between
+            your laptops and the VPS.
+          </p>
+          <p class="muted">Time: 5 minutes.</p>
+        </li>
+
+        <li>
+          <h2>OVH (or your VPS provider of choice)</h2>
+          <p>
+            <a href="https://www.ovhcloud.com/en-ca/vps/" target="_blank" rel="noopener noreferrer">Create an OVH account</a>
+            and order a VPS. The default catena spec is the OVH VPS-2
+            (4 vCPU / 8 GB / 80 GB SSD) in Beauharnois, Quebec
+            (datacenter code <code>BHS</code>). Pay with a card under
+            your business name; the resource is yours from minute one.
+          </p>
+          <p class="muted">Time: 30 minutes (account verification can stretch on first sign-up).</p>
+        </li>
+
+        <li>
+          <h2>eazybackup (cold S3)</h2>
+          <p>
+            <a href="https://eazybackup.ca/" target="_blank" rel="noopener noreferrer">Open an eazybackup account</a>
+            for the cold (offsite) backup tier. eazybackup is
+            Canadian-owned, runs in Ottawa, supports Object Lock
+            and versioning, and meets CGP-grade compliance. Generate
+            an S3-compatible access key + secret; we will ingest
+            them at install.
+          </p>
+          <p class="muted">Time: 15 minutes.</p>
+        </li>
+
+        <li>
+          <h2>SMTP relay (Postmark, Brevo, Mailjet, etc.)</h2>
+          <p>
+            Pick one: <a href="https://postmarkapp.com/" target="_blank" rel="noopener noreferrer">Postmark</a>
+            (best deliverability, paid only),
+            <a href="https://www.brevo.com/" target="_blank" rel="noopener noreferrer">Brevo</a>
+            (generous free tier),
+            or your existing transactional-email provider. Verify
+            your domain (DKIM + SPF + Return-Path), generate an SMTP
+            credential, and keep it handy for install. Catena does
+            not run a mail server; we relay through whichever provider
+            you choose.
+          </p>
+          <p class="muted">Time: 20-40 minutes (DNS verification round-trip).</p>
+        </li>
+      </ol>
+
+      <h2>What to bring to the install call</h2>
+      <ul>
+        <li>Cloudflare API token (Zone DNS edit + Tunnel scope)</li>
+        <li>Tailscale OAuth client ID + secret (devices:write scope)</li>
+        <li>OVH IP + root password from the order email</li>
+        <li>eazybackup S3 endpoint + access key + secret</li>
+        <li>SMTP host, port, username, password</li>
+      </ul>
+      <p>
+        We mint everything else (Keycloak admin, Restic repo password,
+        SOPS recipient key) during install and hand you the recovery
+        bag at the end.
+      </p>
+      <p class="back">
+        <a href="/en/guides/">&larr; All guides</a>
+      </p>
+    </div>
+  </article>
+
+  <CTA locale={locale} />
+</Base>
+
+<style>
+  .guide { padding-bottom: var(--catena-space-16); }
+  .guide :global(.container) { max-width: var(--catena-content-narrow); }
+  ol {
+    list-style: none;
+    counter-reset: step;
+    padding: 0;
+    margin: 0 0 var(--catena-space-12) 0;
+  }
+  ol > li {
+    counter-increment: step;
+    padding: var(--catena-space-6) 0;
+    border-bottom: 1px solid var(--catena-surface-border);
+  }
+  ol > li:last-of-type { border-bottom: none; }
+  ol > li::before {
+    content: counter(step);
+    display: inline-block;
+    width: 1.75rem;
+    height: 1.75rem;
+    line-height: 1.75rem;
+    text-align: center;
+    margin-right: var(--catena-space-3);
+    border-radius: 50%;
+    background: var(--catena-accent);
+    color: white;
+    font-weight: var(--catena-fw-semibold);
+    font-size: var(--catena-fs-sm);
+    vertical-align: middle;
+  }
+  ol > li h2 {
+    display: inline;
+    font-size: var(--catena-fs-xl);
+  }
+  ol > li p {
+    margin: var(--catena-space-3) 0 0 0;
+    line-height: var(--catena-lh-relaxed);
+  }
+  ul { line-height: var(--catena-lh-relaxed); }
+  .back { margin-top: var(--catena-space-8); font-size: var(--catena-fs-sm); }
+</style>

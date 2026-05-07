@@ -1,0 +1,154 @@
+---
+import Base from "../../layouts/Base.astro";
+import PageTitle from "../../components/PageTitle.astro";
+import CTA from "../../components/CTA.astro";
+
+const locale = "fr";
+const title = "Créer vos comptes fournisseurs";
+const intro = "Un déploiement catena typique repose sur cinq comptes externes qui restent à votre nom. Créez-les dans cet ordre et vous arriverez à l'installation avec tout prêt.";
+---
+<Base
+  locale={locale}
+  title={title}
+  description="Pas-à-pas : créer les cinq comptes fournisseurs externes (Cloudflare, Tailscale, OVH, eazybackup, SMTP) qu'un déploiement catena typique requiert."
+>
+  <PageTitle title={title} intro={intro} />
+
+  <article class="guide">
+    <div class="container">
+      <ol>
+        <li>
+          <h2>Cloudflare</h2>
+          <p>
+            <a href="https://dash.cloudflare.com/sign-up" target="_blank" rel="noopener noreferrer">Inscrivez-vous</a>
+            avec l'adresse courriel que vous voulez voir sur la
+            facture. Une fois vérifiée, transférez votre nom de
+            domaine d'entreprise vers le DNS de Cloudflare (sans
+            contrat, le palier gratuit suffit). Le compte devient
+            la maison de vos enregistrements DNS et du Cloudflare
+            Tunnel qui sert d'entrée publique pour chaque service.
+          </p>
+          <p class="muted">Durée : 10-15 minutes (propagation DNS).</p>
+        </li>
+
+        <li>
+          <h2>Tailscale</h2>
+          <p>
+            <a href="https://login.tailscale.com/start" target="_blank" rel="noopener noreferrer">Démarrez un tailnet</a>
+            via le SSO de votre fournisseur courriel actuel (Google,
+            Microsoft, GitHub). Le palier Personal gratuit couvre
+            jusqu'à trois utilisateurs ; pour l'accès du personnel,
+            le palier Starter à 5 $US/utilisateur/mois fait l'affaire.
+            Tailscale est le canal d'administration privé entre vos
+            postes et le VPS.
+          </p>
+          <p class="muted">Durée : 5 minutes.</p>
+        </li>
+
+        <li>
+          <h2>OVH (ou votre fournisseur de VPS)</h2>
+          <p>
+            <a href="https://www.ovhcloud.com/fr-ca/vps/" target="_blank" rel="noopener noreferrer">Créez un compte OVH</a>
+            et commandez un VPS. Le gabarit catena par défaut est le
+            VPS-2 (4 vCPU / 8 Go / 80 Go SSD) à Beauharnois, Québec
+            (code datacentre <code>BHS</code>). Payez par carte au
+            nom de votre entreprise ; la ressource est à vous dès
+            la première minute.
+          </p>
+          <p class="muted">Durée : 30 minutes (la vérification de compte peut s'étirer à la première inscription).</p>
+        </li>
+
+        <li>
+          <h2>eazybackup (S3 froid)</h2>
+          <p>
+            <a href="https://eazybackup.ca/" target="_blank" rel="noopener noreferrer">Ouvrez un compte eazybackup</a>
+            pour la couche de sauvegarde froide (hors-site).
+            eazybackup est canadien, opère depuis Ottawa, supporte
+            Object Lock et le versioning, et atteint la conformité
+            CGP. Générez une clé d'accès et un secret S3-compatibles ;
+            nous les ingérerons à l'installation.
+          </p>
+          <p class="muted">Durée : 15 minutes.</p>
+        </li>
+
+        <li>
+          <h2>Relais SMTP (Postmark, Brevo, Mailjet, etc.)</h2>
+          <p>
+            Choisissez-en un : <a href="https://postmarkapp.com/" target="_blank" rel="noopener noreferrer">Postmark</a>
+            (meilleure délivrabilité, payant uniquement),
+            <a href="https://www.brevo.com/" target="_blank" rel="noopener noreferrer">Brevo</a>
+            (palier gratuit généreux),
+            ou votre fournisseur courriel transactionnel actuel.
+            Vérifiez votre domaine (DKIM + SPF + Return-Path),
+            générez un identifiant SMTP, et gardez-le pour
+            l'installation. Catena n'opère pas de serveur de
+            messagerie ; nous relayons via le fournisseur que vous
+            choisissez.
+          </p>
+          <p class="muted">Durée : 20-40 minutes (aller-retour DNS).</p>
+        </li>
+      </ol>
+
+      <h2>À apporter à l'appel d'installation</h2>
+      <ul>
+        <li>Jeton API Cloudflare (édition Zone DNS + portée Tunnel)</li>
+        <li>OAuth Tailscale : client ID + secret (portée devices:write)</li>
+        <li>IP OVH + mot de passe root du courriel de commande</li>
+        <li>Endpoint S3 eazybackup + clé d'accès + secret</li>
+        <li>Hôte SMTP, port, identifiant, mot de passe</li>
+      </ul>
+      <p>
+        Nous générons tout le reste (admin Keycloak, mot de passe du
+        dépôt Restic, clé recipient SOPS) à l'installation et vous
+        remettons la trousse de récupération à la fin.
+      </p>
+      <p class="back">
+        <a href="/guides/">&larr; Tous les guides</a>
+      </p>
+    </div>
+  </article>
+
+  <CTA locale={locale} />
+</Base>
+
+<style>
+  .guide { padding-bottom: var(--catena-space-16); }
+  .guide :global(.container) { max-width: var(--catena-content-narrow); }
+  ol {
+    list-style: none;
+    counter-reset: step;
+    padding: 0;
+    margin: 0 0 var(--catena-space-12) 0;
+  }
+  ol > li {
+    counter-increment: step;
+    padding: var(--catena-space-6) 0;
+    border-bottom: 1px solid var(--catena-surface-border);
+  }
+  ol > li:last-of-type { border-bottom: none; }
+  ol > li::before {
+    content: counter(step);
+    display: inline-block;
+    width: 1.75rem;
+    height: 1.75rem;
+    line-height: 1.75rem;
+    text-align: center;
+    margin-right: var(--catena-space-3);
+    border-radius: 50%;
+    background: var(--catena-accent);
+    color: white;
+    font-weight: var(--catena-fw-semibold);
+    font-size: var(--catena-fs-sm);
+    vertical-align: middle;
+  }
+  ol > li h2 {
+    display: inline;
+    font-size: var(--catena-fs-xl);
+  }
+  ol > li p {
+    margin: var(--catena-space-3) 0 0 0;
+    line-height: var(--catena-lh-relaxed);
+  }
+  ul { line-height: var(--catena-lh-relaxed); }
+  .back { margin-top: var(--catena-space-8); font-size: var(--catena-fs-sm); }
+</style>
