@@ -1,0 +1,144 @@
+---
+import { t } from "@catena/i18n";
+
+interface Props {
+  locale: "en" | "fr";
+}
+
+const { locale } = Astro.props;
+
+// Branch IDs match packages/i18n/src/<locale>/common.json#scheduler.branches.
+// Source-of-truth for the tree shape:
+// internal_docs/operator/scheduler-picker.md.
+const branches = [
+  "a_team",
+  "a_solo",
+  "e_classes",
+  "f_internal",
+  "b_resource",
+  "c_poll",
+  "d_events",
+  "unsure",
+] as const;
+
+type Branch = (typeof branches)[number];
+
+function key(branch: Branch, leaf: string): string {
+  return `common.scheduler.branches.${branch}.${leaf}`;
+}
+
+function tryT(branch: Branch, leaf: string): string | null {
+  const path = key(branch, leaf);
+  const v = t(locale, path);
+  return v && v !== path ? v : null;
+}
+---
+<section class="scheduler-picker" aria-labelledby="scheduler-tree-title">
+  <h2 id="scheduler-tree-title">{t(locale, "common.scheduler.tree_title")}</h2>
+  <ol class="branch-list">
+    {branches.map((branch) => {
+      const label = t(locale, key(branch, "label"));
+      const app = t(locale, key(branch, "verdict_app"));
+      const status = t(locale, key(branch, "verdict_status"));
+      const body = t(locale, key(branch, "verdict_body"));
+      const linkLabel = tryT(branch, "verdict_link_label");
+      const linkHref = tryT(branch, "verdict_link_href");
+      return (
+        <li class="branch" id={`branch-${branch.replace(/_/g, "-")}`}>
+          <p class="branch-label">{label}</p>
+          <div class="verdict">
+            <p class="verdict-headline">
+              <span class="verdict-app">{app}</span>
+              <span class="verdict-status" aria-label={t(locale, "common.scheduler.cta_label")}>
+                {status}
+              </span>
+            </p>
+            <p class="verdict-body">{body}</p>
+            {linkLabel && linkHref && (
+              <a class="verdict-link" href={linkHref}>{linkLabel}</a>
+            )}
+          </div>
+        </li>
+      );
+    })}
+  </ol>
+  <p class="talk">
+    <a class="talk-link" href={t(locale, "common.scheduler.talk_href")}>
+      {t(locale, "common.scheduler.talk_label")}
+    </a>
+  </p>
+</section>
+
+<style>
+  .scheduler-picker {
+    max-width: var(--catena-prose-width, 72rem);
+    margin: 0 auto;
+    padding: var(--catena-space-6) var(--catena-space-4);
+  }
+  .scheduler-picker h2 {
+    font-size: var(--catena-fs-xl);
+    margin-bottom: var(--catena-space-5);
+  }
+  .branch-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: grid;
+    gap: var(--catena-space-4);
+  }
+  .branch {
+    border: 1px solid var(--catena-surface-border);
+    border-radius: var(--catena-radius-md, 8px);
+    padding: var(--catena-space-5);
+    background: var(--catena-surface-bg, transparent);
+  }
+  .branch-label {
+    font-weight: var(--catena-fw-semibold);
+    margin: 0 0 var(--catena-space-3);
+    color: var(--catena-surface-fg);
+  }
+  .verdict {
+    border-top: 1px solid var(--catena-surface-border);
+    padding-top: var(--catena-space-3);
+  }
+  .verdict-headline {
+    margin: 0 0 var(--catena-space-2);
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--catena-space-2);
+    align-items: baseline;
+  }
+  .verdict-app {
+    font-weight: var(--catena-fw-bold);
+    font-size: var(--catena-fs-md);
+  }
+  .verdict-status {
+    font-size: var(--catena-fs-xs);
+    color: var(--catena-surface-fg-muted);
+    text-transform: uppercase;
+    letter-spacing: var(--catena-tracking-wide);
+  }
+  .verdict-body {
+    margin: 0 0 var(--catena-space-3);
+    color: var(--catena-surface-fg-muted);
+    line-height: 1.5;
+  }
+  .verdict-link {
+    font-weight: var(--catena-fw-medium);
+  }
+  .talk {
+    margin-top: var(--catena-space-6);
+    text-align: center;
+  }
+  .talk-link {
+    display: inline-block;
+    padding: var(--catena-space-3) var(--catena-space-5);
+    border: 1px solid var(--catena-accent-border, currentColor);
+    border-radius: var(--catena-radius-sm, 4px);
+    font-weight: var(--catena-fw-medium);
+  }
+  .talk-link:hover {
+    text-decoration: none;
+    background: var(--catena-surface-bg-muted);
+  }
+</style>

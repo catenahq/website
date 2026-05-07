@@ -1,0 +1,21 @@
+---
+import Base from "../layouts/Base.astro";
+import PageTitle from "../components/PageTitle.astro";
+import SchedulerPicker from "../components/SchedulerPicker.astro";
+import CTA from "../components/CTA.astro";
+import { t } from "@catena/i18n";
+
+const locale = "en";
+---
+<Base
+  locale={locale}
+  title={t(locale, "common.scheduler.title")}
+  description="Pick the right open-source scheduling app for your business: customer bookings, resource booking, group polls, public events, class signups, or internal staff calendar."
+>
+  <PageTitle
+    title={t(locale, "common.scheduler.title")}
+    intro={t(locale, "common.scheduler.intro")}
+  />
+  <SchedulerPicker locale={locale} />
+  <CTA locale={locale} />
+</Base>
