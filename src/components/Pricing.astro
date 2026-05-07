@@ -1,7 +1,7 @@
 ---
-// Five-tier public pricing. All prices read "TBA" until the user
-// finalizes them. Real numbers live in apps/portal/src/lib/pricing.ts
-// and only surface in the portal Order form.
+// Five-tier public pricing. Numbers come from i18n (per-tier `price`
+// key) and must mirror apps/portal/src/lib/pricing.ts -- the order
+// form reads from pricing.ts directly.
 //
 // Tier ladder reads as a commitment progression:
 //   Base / Assisted -> one-time, no recurring, no included support.
@@ -23,7 +23,7 @@ function feats(tier: TierKey): string[] {
   return tArray(locale, `common.pricing.tiers.${tier}.features`);
 }
 
-const tba = t(locale, "common.pricing.tba");
+const extrasNote = t(locale, "common.pricing.extras_note");
 const alacarteNote = t(locale, "common.pricing.alacarte_support_note");
 ---
 <section id="pricing" class="pricing">
@@ -40,7 +40,7 @@ const alacarteNote = t(locale, "common.pricing.alacarte_support_note");
           <article class={`tier ${featured ? "featured" : ""} ${isManaged ? "managed" : "one-time"}`}>
             <h3>{t(locale, `common.pricing.tiers.${tier}.name`)}</h3>
             <p class="price">
-              <span class="amount">{tba}</span>
+              <span class="amount">{t(locale, `common.pricing.tiers.${tier}.price`)}</span>
               <span class="unit muted">{t(locale, `common.pricing.tiers.${tier}.price_unit`)}</span>
             </p>
             <p class="tagline muted">{t(locale, `common.pricing.tiers.${tier}.tagline`)}</p>
@@ -52,6 +52,7 @@ const alacarteNote = t(locale, "common.pricing.alacarte_support_note");
       })}
     </div>
 
+    <p class="muted detail">{extrasNote}</p>
     <p class="muted detail">{alacarteNote}</p>
 
     <a class="btn btn-primary cta" href={locale === "fr" ? "/contact" : "/en/contact"}>
