@@ -405,6 +405,10 @@
       }
     }
   },
+  "scheduler_picker": {
+    "title": "Find your scheduler",
+    "intro": "Scheduling needs vary too much for a single default. Answer a few quick questions and we'll point you at the right app from the catalog."
+  },
   "comparison": {
     "title": "Comparison",
     "intro": "Honest read on where catena fits versus the alternatives most SMBs evaluate. The dominant axis is sovereignty: who owns the data, the infrastructure, the keys.",

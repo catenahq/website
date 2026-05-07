@@ -405,6 +405,10 @@
       }
     }
   },
+  "scheduler_picker": {
+    "title": "Trouvez votre planificateur",
+    "intro": "Les besoins de planification varient trop pour qu'une seule application par défaut suffise. Répondez à quelques questions et nous vous orienterons vers la bonne application du catalogue."
+  },
   "comparison": {
     "title": "Comparaison",
     "intro": "Lecture honnête de la place de catena par rapport aux alternatives que les PME évaluent. L'axe dominant est la souveraineté : qui possède les données, l'infrastructure, les clés.",
