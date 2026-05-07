@@ -20,9 +20,10 @@ const capabilities = tArray(locale, "common.home.onestop.capabilities");
         <li>{cap}</li>
       ))}
     </ul>
+    <p class="saas-replacement">{t(locale, "common.home.onestop.saas_replacement")}</p>
     <p class="email-note muted">{t(locale, "common.home.onestop.email_note")}</p>
     <p class="stack-link">
-      <a href={`${prefix}/features#under-the-hood`}>{t(locale, "common.home.onestop.stack_link")}</a>
+      <a href={`${prefix}/features/technical/`}>{t(locale, "common.home.onestop.stack_link")}</a>
     </p>
   </div>
 </section>
@@ -55,6 +56,16 @@ const capabilities = tArray(locale, "common.home.onestop.capabilities");
     background: var(--catena-surface-bg);
     border-radius: var(--catena-radius-sm);
     line-height: var(--catena-lh-relaxed);
+  }
+  .saas-replacement {
+    font-size: var(--catena-fs-base);
+    font-weight: var(--catena-fw-medium);
+    line-height: var(--catena-lh-relaxed);
+    margin: 0 0 var(--catena-space-4) 0;
+    padding: var(--catena-space-4) var(--catena-space-5);
+    border-left: 3px solid var(--catena-accent);
+    background: var(--catena-surface-bg);
+    border-radius: var(--catena-radius-sm);
   }
   .email-note {
     font-size: var(--catena-fs-sm);
