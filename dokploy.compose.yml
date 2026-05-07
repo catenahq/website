@@ -1,0 +1,39 @@
+# apps/website -- catena.run
+#
+# Dokploy reads this compose when the "Source" tab points at the
+# catena monorepo and `composePath: apps/website/dokploy.compose.yml`.
+# build.context is `../..` so the Dockerfile sees the full repo
+# (apps/website + apps/docs + tools/brand/).
+#
+# Operator-side knobs (Environment tab in Dokploy):
+#   VPS_AUTH_MODE   default `public`
+#
+# See internal_docs/operator/deploy-webapp-from-github.md for the
+# step-by-step click path.
+
+services:
+  app:
+    build:
+      context: ../..
+      dockerfile: apps/website/Dockerfile
+    restart: unless-stopped
+    expose:
+      - "80"
+    # Public static site -- no auth gating in front. validate.yml's
+    # Vantage 3 reads vps.auth.mode to skip the /oauth2/start redirect
+    # probe; without `public` it would be probed for a 302 to Keycloak
+    # which a plain nginx static serve cannot satisfy.
+    labels:
+      - "vps.auth.mode=${VPS_AUTH_MODE:-public}"
+      - "vps.auto-update=major"
+    networks:
+      - dokploy-network
+    healthcheck:
+      test: ["CMD", "wget", "--quiet", "--tries=1", "--spider", "http://127.0.0.1/"]
+      interval: 30s
+      timeout: 5s
+      retries: 5
+
+networks:
+  dokploy-network:
+    external: true
