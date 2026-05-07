@@ -6,7 +6,7 @@ interface Props {
 }
 
 const { locale } = Astro.props;
-const prefix = locale === "en" ? "" : "/fr";
+const prefix = locale === "fr" ? "" : "/en";
 
 const capabilities = tArray(locale, "common.home.onestop.capabilities");
 ---

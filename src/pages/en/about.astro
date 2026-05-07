@@ -4,7 +4,7 @@ import PageTitle from "../../components/PageTitle.astro";
 import CTA from "../../components/CTA.astro";
 import { t } from "@catena/i18n";
 
-const locale = "fr";
+const locale = "en";
 
 const bringPoints = ["judgment", "failure", "ownership"];
 const workPoints = ["response", "cadence", "continuity"];
@@ -12,7 +12,7 @@ const workPoints = ["response", "cadence", "continuity"];
 <Base
   locale={locale}
   title={t(locale, "common.about.title")}
-  description="Un seul opérateur derrière catena -- 13 ans de leadership technique, 5 ans en solo. Jugement de sélection d'outils, expertise des modes de défaillance, propriété de bout en bout. Cadence de travail, temps de réponse, plan de continuité."
+  description="One operator behind catena -- 13 years of technical leadership, 5 years solo. Tech-selection judgment, failure-mode expertise, end-to-end ownership. How we work, response times, continuity plan."
 >
   <PageTitle
     title={t(locale, "common.about.title")}
@@ -31,6 +31,11 @@ const workPoints = ["response", "cadence", "continuity"];
           </p>
         </div>
         <div class="headshot" aria-hidden="true">
+          <!--
+            TODO before launch: replace placeholder with a real
+            headshot at apps/website/public/headshot.jpg (or .webp,
+            target ~480x480, ~50 KB).
+          -->
           <div class="headshot-placeholder"></div>
         </div>
       </div>

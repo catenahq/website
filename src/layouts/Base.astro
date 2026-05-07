@@ -13,22 +13,22 @@ interface Props {
   ogImage?: string;
 }
 
-const { title, description, locale = "en", ogImage = "/og-default.png" } = Astro.props;
+const { title, description, locale = "fr", ogImage = "/og-default.png" } = Astro.props;
 
 const brandName = t(locale, "common.brand.name");
 const brandTagline = t(locale, "common.brand.tagline");
 const pageTitle = title ? `${title} -- ${brandName}` : `${brandName} -- ${brandTagline}`;
 const pageDesc = description ?? brandTagline;
 
-// Locale-agnostic subpath. Strips a leading "/fr/" so we can re-emit
+// Locale-agnostic subpath. Strips a leading "/en/" so we can re-emit
 // the same logical path in every locale via getRelativeLocaleUrl.
-// "/" -> "", "/about" -> "about", "/fr/" -> "", "/fr/about" -> "about".
+// "/" -> "", "/about" -> "about", "/en/" -> "", "/en/about" -> "about".
 const pathname = Astro.url.pathname;
-const subpath = pathname.replace(/^\/fr(\/|$)/, "/").replace(/^\//, "");
+const subpath = pathname.replace(/^\/en(\/|$)/, "/").replace(/^\//, "");
 
 const site = Astro.site!;
 const canonical = new URL(getRelativeLocaleUrl(locale, subpath), site).toString();
-const xDefault = new URL(getRelativeLocaleUrl("en", subpath), site).toString();
+const xDefault = new URL(getRelativeLocaleUrl("fr", subpath), site).toString();
 const ogImageUrl = new URL(ogImage, site).toString();
 const ogLocale = locale === "fr" ? "fr_CA" : "en_CA";
 

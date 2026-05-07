@@ -6,24 +6,25 @@ interface Props {
 }
 
 const { locale } = Astro.props;
-const prefix = locale === "en" ? "" : "/fr";
-const altLocale = locale === "en" ? "fr" : "en";
+const prefix = locale === "fr" ? "" : "/en";
+const altLocale = locale === "fr" ? "en" : "fr";
 
 // Language switcher: preserve the current page when toggling locales.
-// EN -> FR: prepend /fr to the current path. FR -> EN: strip the /fr
+// FR -> EN: prepend /en to the current path. EN -> FR: strip the /en
 // prefix. The hash (anchor section) is preserved client-side via the
 // browser's default link behavior on same-document navigation; for a
 // full route swap, we forward window.location.hash on click.
 const currentPath = Astro.url.pathname;
 let altPath: string;
-if (altLocale === "fr") {
-  altPath = currentPath === "/" ? "/fr/" : `/fr${currentPath}`;
+if (altLocale === "en") {
+  altPath = currentPath === "/" ? "/en/" : `/en${currentPath}`;
 } else {
-  const stripped = currentPath.replace(/^\/fr(\/|$)/, "/");
+  const stripped = currentPath.replace(/^\/en(\/|$)/, "/");
   altPath = stripped || "/";
 }
-// Docs is a sub-build of this site (apps/docs at base="/docs"). EN
-// at /docs/, FR at /docs/fr/. See apps/website/scripts/build-with-docs.mjs.
+// Docs is a sub-build of this site (apps/docs at base="/docs"). The
+// docs project keeps its own defaultLocale=en (EN at /docs/, FR at
+// /docs/fr/) -- only the marketing site flipped to FR-default.
 const docsHref = locale === "en" ? "/docs/" : "/docs/fr/";
 ---
 <header class="site-header">
