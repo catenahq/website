@@ -2,12 +2,8 @@
 /* SchedulerPicker.astro
  *
  * Implements the F11 scheduler-picker decision tree on the public
- * site. The data structure here mirrors
- * internal_docs/operator/scheduler-picker.yml -- if you change one
- * the other must change in the same PR. The installer flow
- * (automation/menu/flows.py:fresh_install) consumes the YAML
- * version directly; the website inlines the data here so apps/website
- * does not depend on a YAML parser at build time.
+ * site. The data structure here mirrors the operator-side picker
+ * contract; if you change one the other must change in the same PR.
  *
  * v1 status: cal-diy + easy-appointments are the only shipped
  * templates. Branches B (resource booking), C (group meeting
