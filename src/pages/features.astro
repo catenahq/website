@@ -9,7 +9,6 @@ import { SERVICES, openAlternativeHref } from "../data/services";
 import { t } from "@catena/i18n";
 
 const locale = "fr";
-const stack = ["ansible", "tailscale", "cloudflare_tunnel", "keycloak", "sops", "restic", "dokploy", "monitoring"];
 
 const extraAppLinks = [
   { key: "openalternative",    href: "https://openalternative.co/" },
@@ -52,6 +51,8 @@ const imageAltSuffix = t(locale, "common.for_your_team.image_alt_suffix");
             upstreamLabel={t(locale, "common.for_your_team.upstream_link")}
             alternativesUrl={openAlternativeHref(service)}
             alternativesLabel={t(locale, "common.for_your_team.alternatives_link")}
+            compareUrl={service.slug === "nextcloud" ? "/docs/fr/nextcloud-apps-vs-suite/" : undefined}
+            compareLabel={service.slug === "nextcloud" ? t(locale, "common.for_your_team.compare_link") : undefined}
             imageSrc={service.image_path}
             imageAlt={`${t(locale, `common.for_your_team.apps.${service.slug}.title`)} ${imageAltSuffix}`}
           />
@@ -94,24 +95,15 @@ const imageAltSuffix = t(locale, "common.for_your_team.image_alt_suffix");
 
   <ToolComparisonTable locale={locale} />
 
-  <section id="under-the-hood" class="stack-section">
+  <section id="for-your-it" class="technical-link">
     <div class="container">
-      <h2 class="section-title">{t(locale, "common.features.section_under_the_hood")}</h2>
-      <p class="section-intro muted">{t(locale, "common.for_your_it.intro")}</p>
-      <div class="stack-grid">
-        {stack.map((slug) => (
-          <AppCard
-            title={t(locale, `common.for_your_it.stack.${slug}.title`)}
-            role={t(locale, `common.for_your_it.stack.${slug}.role`)}
-            body={t(locale, `common.for_your_it.stack.${slug}.body`)}
-          />
-        ))}
-      </div>
-      <p class="architecture-link">
-        <a href="/docs/fr/how-this-stack-works/">
-          {t(locale, "common.for_your_it.architecture_link")} &rarr;
+      <aside class="technical-card">
+        <h3>{t(locale, "common.features.technical_link_title")}</h3>
+        <p class="muted">{t(locale, "common.features.technical_link_body")}</p>
+        <a href="/features/technical/">
+          {t(locale, "common.features.technical_link_label")} &rarr;
         </a>
-      </p>
+      </aside>
     </div>
   </section>
 
@@ -119,8 +111,30 @@ const imageAltSuffix = t(locale, "common.for_your_team.image_alt_suffix");
 </Base>
 
 <style>
-  .apps-section, .stack-section {
+  .apps-section {
     padding-bottom: var(--catena-space-16);
+  }
+  .technical-link {
+    padding: var(--catena-space-8) 0 var(--catena-space-16);
+  }
+  .technical-card {
+    max-width: 56rem;
+    margin: 0 auto;
+    padding: var(--catena-space-6) var(--catena-space-8);
+    border: 1px solid var(--catena-surface-border);
+    border-radius: var(--catena-radius-lg);
+    background: var(--catena-surface-bg-muted);
+  }
+  .technical-card h3 {
+    margin: 0 0 var(--catena-space-2) 0;
+    font-size: var(--catena-fs-lg);
+  }
+  .technical-card p {
+    margin: 0 0 var(--catena-space-3) 0;
+    line-height: var(--catena-lh-relaxed);
+  }
+  .technical-card a {
+    font-size: var(--catena-fs-sm);
   }
   .section-title {
     font-size: var(--catena-fs-2xl);
@@ -181,18 +195,8 @@ const imageAltSuffix = t(locale, "common.for_your_team.image_alt_suffix");
     margin: var(--catena-space-3) 0 0 0;
     font-size: var(--catena-fs-sm);
   }
-  .stack-grid {
-    display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: var(--catena-space-6);
-  }
-  .architecture-link {
-    margin-top: var(--catena-space-12);
-    text-align: center;
-    font-size: var(--catena-fs-base);
-  }
   @media (max-width: 767px) {
-    .aux-grid, .stack-grid {
+    .aux-grid {
       grid-template-columns: 1fr;
     }
   }

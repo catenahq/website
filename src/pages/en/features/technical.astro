@@ -1,0 +1,70 @@
+---
+import Base from "../../../layouts/Base.astro";
+import PageTitle from "../../../components/PageTitle.astro";
+import AppCard from "../../../components/AppCard.astro";
+import CTA from "../../../components/CTA.astro";
+import { t } from "@catena/i18n";
+
+const locale = "en";
+const stack = ["ansible", "tailscale", "cloudflare_tunnel", "keycloak", "sops", "restic", "dokploy", "monitoring"];
+---
+<Base
+  locale={locale}
+  title={t(locale, "common.features.technical_page_title")}
+  description="The technical surface of the catena suite: Ansible provisioning, Tailscale admin tunnel, Cloudflare Tunnel public ingress, Keycloak SSO, SOPS-encrypted secrets, Restic backups, Dokploy app platform, Gatus + Healthchecks monitoring."
+>
+  <PageTitle
+    title={t(locale, "common.features.technical_page_title")}
+    intro={t(locale, "common.for_your_it.intro")}
+  />
+
+  <section id="under-the-hood" class="stack-section">
+    <div class="container">
+      <div class="stack-grid">
+        {stack.map((slug) => (
+          <AppCard
+            title={t(locale, `common.for_your_it.stack.${slug}.title`)}
+            role={t(locale, `common.for_your_it.stack.${slug}.role`)}
+            body={t(locale, `common.for_your_it.stack.${slug}.body`)}
+          />
+        ))}
+      </div>
+      <p class="architecture-link">
+        <a href="/docs/how-this-stack-works/">
+          {t(locale, "common.for_your_it.architecture_link")} &rarr;
+        </a>
+      </p>
+      <p class="back-link">
+        <a href="/en/features/">&larr; {t(locale, "common.features.technical_back_label")}</a>
+      </p>
+    </div>
+  </section>
+
+  <CTA locale={locale} />
+</Base>
+
+<style>
+  .stack-section {
+    padding-bottom: var(--catena-space-16);
+  }
+  .stack-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: var(--catena-space-6);
+  }
+  .architecture-link {
+    margin-top: var(--catena-space-12);
+    text-align: center;
+    font-size: var(--catena-fs-base);
+  }
+  .back-link {
+    margin-top: var(--catena-space-6);
+    text-align: center;
+    font-size: var(--catena-fs-sm);
+  }
+  @media (max-width: 767px) {
+    .stack-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
