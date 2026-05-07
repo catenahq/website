@@ -25,11 +25,15 @@ function run(cmd, args, cwd) {
   }
 }
 
-// 1. Build the marketing site at base="/" -> apps/website/dist/
+// 1. Build the marketing site at base="/" -> apps/website/dist/.
+//    Use npx (not `npm run build`) to avoid recursing into this script.
+//    The website's prebuild already fired (this script IS the build),
+//    so the brand assets are already synced into src/styles/brand/.
 run("npx", ["astro", "build"], websiteDir);
 
-// 2. Build the docs at base="/docs/" -> apps/docs/dist/
-run("npx", ["astro", "build"], docsDir);
+// 2. Build the docs at base="/docs/" -> apps/docs/dist/.
+//    Use `npm run build` so docs's own prebuild (brand sync) fires.
+run("npm", ["run", "build"], docsDir);
 
 // 3. Merge: copy apps/docs/dist/* into apps/website/dist/docs/
 const websiteDist = join(websiteDir, "dist");

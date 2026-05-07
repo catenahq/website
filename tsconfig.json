@@ -3,7 +3,8 @@
   "compilerOptions": {
     "baseUrl": ".",
     "paths": {
-      "~/*": ["./src/*"]
+      "~/*": ["./src/*"],
+      "@catena/i18n": ["./src/i18n/index.js"]
     }
   },
   "include": [".astro/types.d.ts", "**/*"],

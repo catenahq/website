@@ -1,0 +1,21 @@
+{
+  "generic": {
+    "unexpected": "Something went wrong. Please try again.",
+    "network": "Network error. Check your connection and retry.",
+    "unauthorized": "You need to sign in to continue.",
+    "forbidden": "You don't have permission to do that.",
+    "not_found": "We couldn't find what you were looking for.",
+    "rate_limited": "Too many requests. Please wait a moment and retry."
+  },
+  "form": {
+    "required": "This field is required.",
+    "email_invalid": "Enter a valid email address.",
+    "url_invalid": "Enter a valid URL.",
+    "too_short": "This is too short.",
+    "too_long": "This is too long."
+  },
+  "auth": {
+    "session_expired": "Your session expired. Please sign in again.",
+    "sso_failed": "Couldn't complete sign-in. Please try again or contact us."
+  }
+}

@@ -1,0 +1,644 @@
+{
+  "brand": {
+    "name": "catena",
+    "tagline": "Faites tourner votre entreprise sur une infrastructure qui vous appartient."
+  },
+  "nav": {
+    "features": "Fonctionnalités",
+    "pricing": "Tarifs",
+    "comparison": "Comparaison",
+    "guides": "Guides",
+    "about": "À propos",
+    "docs": "Documentation",
+    "portal": "Portail client",
+    "contact": "Contact"
+  },
+  "cta": {
+    "primary": "Commencer",
+    "secondary": "Nous contacter",
+    "see_pricing": "Voir les tarifs",
+    "book_discovery": "Réserver un appel découverte",
+    "see_features": "Voir ce qui est inclus",
+    "discovery_url": "https://app.catena.run/discovery"
+  },
+  "footer": {
+    "rights": "Tous droits réservés.",
+    "made_in": "Conçu au Québec.",
+    "language": "Langue",
+    "col_product": "Produit",
+    "col_company": "Entreprise",
+    "col_legal": "Mentions légales"
+  },
+  "lang": {
+    "en": "English",
+    "fr": "Français"
+  },
+  "banner": {
+    "message": "Nous accueillons nos premiers clients. Accompagnement personnel, ligne directe avec l'opérateur.",
+    "cta_label": "Réserver un appel découverte",
+    "cta_href": "/contact"
+  },
+  "home": {
+    "hero": {
+      "headline": "Faites tourner votre entreprise sur une infrastructure qui vous appartient.",
+      "subheadline": "Sur votre VPS loué ou votre propre matériel. Fichiers, CRM, agenda, messagerie d'équipe, site web -- tout géré, tout à vous.",
+      "proof": "Vous possédez le serveur, le domaine, les sauvegardes, les données. Conçu pour la Loi 25 et la LPRPDE. Architecturé pour la résidence et la portabilité de type RGPD."
+    },
+    "dogfood": {
+      "title": "Nous sommes notre propre premier client.",
+      "body": "Tout ce que vous voyez -- ce site, la documentation, le portail client, la facturation, nos tableaux de bord d'incidents -- tourne sur la même suite que nous vendons. Si ça casse, nous sommes les premiers à le savoir."
+    },
+    "sovereignty": {
+      "title": "La souveraineté, simplifiée",
+      "intro": "Vous possédez les actifs. Nous les opérons. Ce que ça veut dire en pratique.",
+      "vps_title": "Votre serveur",
+      "vps_body": "Votre fournisseur, votre compte, votre facture. Nous opérons; vous possédez.",
+      "dns_title": "Votre domaine",
+      "dns_body": "Enregistrements DNS à votre nom. Nous les configurons; nous ne les détenons jamais.",
+      "backups_title": "Vos sauvegardes",
+      "backups_body": "Sauvegardes chiffrées immuables chaque nuit vers votre propre stockage S3. Les clés restent chez vous.",
+      "exit_title": "Sortie propre",
+      "exit_body": "Aucun verrou. Quittez avec vos données à tout moment en un seul clic."
+    },
+    "onestop": {
+      "title": "Une suite logicielle. Un opérateur. Une facture.",
+      "intro": "Toutes les capacités dont votre équipe a besoin pour faire tourner l'entreprise, intégrées et opérées de bout en bout.",
+      "capabilities_title": "Capacités disponibles",
+      "capabilities": [
+        "Fichiers et espace partagé",
+        "Messagerie d'équipe et réunions",
+        "CRM et suivi client",
+        "Réservation et agenda",
+        "Automatisation des processus",
+        "Édition collaborative",
+        "Publication sociale omnicanal",
+        "Documentation d'équipe",
+        "Planification et suivi de projets",
+        "Signature électronique avec piste d'audit",
+        "Estimés et factures",
+        "Hébergement de site web d'entreprise",
+        "Et plus encore"
+      ],
+      "saas_replacement": "Remplace environ 40 $ à 120 $ par employé par mois en abonnements SaaS empilés (Microsoft 365, Slack, HubSpot, Calendly, DocuSign, Asana, et le reste). Voir la page comparaison pour le détail ligne par ligne.",
+      "email_note": "Le courriel est intégré, pas auto-hébergé -- choisissez parmi 5 fournisseurs complets et axés sur la confidentialité selon vos besoins. Nous configurons le DNS, la délivrabilité et le SSO.",
+      "stack_link": "Vous intégrez cette suite logicielle dans votre service TI? Voir la surface technique."
+    }
+  },
+  "features": {
+    "title": "Fonctionnalités",
+    "intro": "Ce que votre équipe utilise chaque jour, et ce qui tourne en dessous. Deux sections : les applications avec lesquelles votre équipe interagit, et la surface technique pour la personne TI qui évalue la suite.",
+    "section_for_your_team": "Pour votre équipe",
+    "section_under_the_hood": "Sous le capot",
+    "extra_apps_title": "Vous cherchez quelque chose que nous ne livrons pas?",
+    "extra_apps_body": "Explorez l'écosystème auto-hébergé:",
+    "extra_apps_links": {
+      "openalternative": "openalternative.co",
+      "awesome_selfhosted": "awesome-selfhosted",
+      "awwesome": "awwesome",
+      "dokploy_templates": "Modèles Dokploy",
+      "awesome_sysadmin": "awesome-sysadmin"
+    },
+    "extra_apps_footnote": "Toute application hors de notre liste éprouvée est une demande de modèle personnalisé -- parlez-nous-en.",
+    "technical_link_title": "Vous évaluez la suite pour votre service TI ?",
+    "technical_link_body": "La surface technique (Ansible, Tailscale, Cloudflare Tunnel, Keycloak, SOPS, Restic, Dokploy, supervision) vit sur sa propre page pour garder la vue applications-au-quotidien lisible.",
+    "technical_link_label": "Voir la pile technique",
+    "technical_page_title": "Pile technique",
+    "technical_back_label": "Retour aux fonctionnalités",
+    "tool_comparison": {
+      "title": "Comment se positionnent les choix de catena",
+      "intro": "Côte à côte avec les forfaits SaaS que les PME évaluent le plus souvent. Les choix de catena sont libres, mono-tenant et tournent sur une infrastructure qui vous appartient.",
+      "category_label": "Catégorie",
+      "cols": {
+        "catena": "Catena",
+        "microsoft": "Microsoft 365",
+        "google": "Google Workspace",
+        "saas": "Autre SaaS mensuel"
+      },
+      "rows": {
+        "files": {
+          "label": "Fichiers et synchronisation",
+          "catena": "Nextcloud",
+          "microsoft": "OneDrive / SharePoint",
+          "google": "Google Drive",
+          "saas": "Dropbox, Box"
+        },
+        "office": {
+          "label": "Bureautique",
+          "catena": "OnlyOffice",
+          "microsoft": "Word / Excel / PowerPoint",
+          "google": "Docs / Sheets / Slides",
+          "saas": "Zoho, Quip"
+        },
+        "chat": {
+          "label": "Messagerie et réunions",
+          "catena": "Rocket.Chat",
+          "microsoft": "Teams",
+          "google": "Meet / Chat",
+          "saas": "Slack, Zoom"
+        },
+        "crm": {
+          "label": "CRM",
+          "catena": "EspoCRM",
+          "microsoft": "Dynamics 365",
+          "google": "(tiers)",
+          "saas": "HubSpot, Salesforce, Pipedrive"
+        },
+        "booking": {
+          "label": "Réservations et agenda",
+          "catena": "Easy!Appointments",
+          "microsoft": "Bookings",
+          "google": "Plages de rendez-vous",
+          "saas": "Calendly, Acuity"
+        },
+        "project": {
+          "label": "Gestion de projet",
+          "catena": "Plane",
+          "microsoft": "Project / Planner",
+          "google": "(tiers)",
+          "saas": "Jira, Linear, Asana"
+        },
+        "automation": {
+          "label": "Automatisation",
+          "catena": "n8n",
+          "microsoft": "Power Automate",
+          "google": "AppScript",
+          "saas": "Zapier, Make"
+        },
+        "esign": {
+          "label": "Signature électronique",
+          "catena": "DocuSeal",
+          "microsoft": "(tiers)",
+          "google": "(tiers)",
+          "saas": "DocuSign, HelloSign"
+        },
+        "invoicing": {
+          "label": "Facturation",
+          "catena": "Invoice Ninja",
+          "microsoft": "Dynamics 365 Finance",
+          "google": "(tiers)",
+          "saas": "FreshBooks, Wave, QuickBooks"
+        },
+        "wiki": {
+          "label": "Base de connaissances",
+          "catena": "Outline",
+          "microsoft": "SharePoint Wiki",
+          "google": "Sites",
+          "saas": "Notion, Confluence"
+        },
+        "social": {
+          "label": "Médias sociaux",
+          "catena": "Postiz",
+          "microsoft": "(tiers)",
+          "google": "(tiers)",
+          "saas": "Buffer, Hootsuite"
+        }
+      }
+    }
+  },
+  "for_your_team": {
+    "intro": "Ce que votre équipe utilise chaque jour. Authentification unique sur toute la suite -- un seul mot de passe à retenir, plus de connexion séparée par outil.",
+    "recommendation_title": "Ce sont des choix éprouvés",
+    "recommendation_body": "Chaque application de cette liste a gagné sa place selon la couverture fonctionnelle, la stabilité, l'historique du projet et la popularité. Trouvez une application qui répond à vos besoins ou qui remplace ce que vous payez actuellement parmi des centaines d'autres sur <a href='https://openalternative.co' target='_blank' rel='noopener noreferrer'>openalternative.co</a>.",
+    "alternatives_link": "Alternatives libres",
+    "upstream_link": "Page du projet",
+    "compare_link": "Comparer",
+    "image_alt_suffix": "capture d'écran",
+    "apps": {
+      "nextcloud": {
+        "title": "Nextcloud",
+        "role": "Fichiers et espace partagé",
+        "body": "Le disque partagé de votre équipe. Synchronisation bureau et mobile, historique de versions, dossiers partagés, partage par lien avec expiration. Vos fichiers restent sur votre serveur, pas chez un tiers. Nextcloud propose aussi des outils intégrés de base qui couvrent les besoins courants mais offrent moins de fonctionnalités que les applications dédiées de la suite."
+      },
+      "onlyoffice": {
+        "title": "OnlyOffice ou Collabora",
+        "role": "Documents bureautiques",
+        "body": "Édition collaborative de documents dans le navigateur, branchée sur Nextcloud pour éditer vos fichiers sur place. Choisissez OnlyOffice si votre équipe travaille principalement avec les formats Microsoft (.docx / .xlsx / .pptx) -- c'est le plus fidèle pour ces formats. Choisissez Collabora si votre équipe utilise ou est prête à passer aux formats ouverts (.odt / .ods / .odp) -- basé sur LibreOffice, c'est l'endroit naturel pour le format ODF. Les deux peuvent être installés ; la plupart des clients n'en utilisent qu'un seul."
+      },
+      "rocketchat": {
+        "title": "Rocket.Chat",
+        "role": "Messagerie d'équipe et réunions",
+        "body": "Salons, messages directs, appels vidéo auto-hébergés, partage d'écran, partage de fichiers. Remplace Slack et Teams sans le verrou par utilisateur."
+      },
+      "espocrm": {
+        "title": "EspoCRM",
+        "role": "Relations clients",
+        "body": "Contacts, opportunités, suivis, calendriers par membre, coordination d'équipe. Léger pour un usage quotidien, assez profond pour évoluer avec vous."
+      },
+      "scheduler": {
+        "title": "Easy!Appointments",
+        "role": "Réservations et agenda",
+        "body": "Page de réservation client pour un ou plusieurs prestataires. Calendriers du personnel synchronisés avec Nextcloud. Paiements Stripe pour cliniques, salons, cours."
+      },
+      "n8n": {
+        "title": "n8n",
+        "role": "Automatisation des processus",
+        "body": "Connectez les outils. Quand un formulaire arrive, créez un contact EspoCRM, envoyez un courriel de confirmation, planifiez un suivi -- sans copier-coller."
+      },
+      "postiz": {
+        "title": "Postiz",
+        "role": "Planification de médias sociaux",
+        "body": "Planifiez des publications LinkedIn, X, Facebook, Instagram depuis un seul calendrier. Alternative libre à Buffer ou Hootsuite."
+      },
+      "outline": {
+        "title": "Outline",
+        "role": "Base de connaissances interne",
+        "body": "Un wiki pour la documentation, les processus, les politiques de votre équipe. Mieux que des dossiers partagés éparpillés et des Google Docs introuvables."
+      },
+      "plane": {
+        "title": "Plane",
+        "role": "Gestion de projet",
+        "body": "Tickets, cycles, modules, projets et feuilles de route. Alternative libre à Jira et Linear, avec une interface moderne et un modèle de données sain."
+      },
+      "docuseal": {
+        "title": "DocuSeal",
+        "role": "Signature de documents",
+        "body": "Envoi de documents pour signature électronique avec piste d'audit, certificat d'achèvement et modèles réutilisables. Alternative auto-hébergée à DocuSign."
+      },
+      "invoiceninja": {
+        "title": "Invoice Ninja",
+        "role": "Facturation et devis",
+        "body": "Devis, factures, facturation récurrente, suivi des dépenses, paiements en ligne via Stripe / PayPal et portail client. Alternative auto-hébergée à FreshBooks ou Wave."
+      }
+    },
+    "email": {
+      "title": "Courriel",
+      "role": "Intégration gérée",
+      "body": "Nous n'opérons pas de serveur de messagerie -- la délivrabilité, la conformité antispam et la gestion des rebonds sont un travail à temps plein. Nous intégrons 5 fournisseurs complets et axés sur la confidentialité, et configurons MX, SPF, DKIM, DMARC, et l'authentification unique. Votre équipe utilise le courriel comme n'importe quelle autre application."
+    },
+    "website_addon": {
+      "title": "Site web d'entreprise",
+      "role": "Module complémentaire",
+      "body": "Un site web multi-pages pour votre entreprise, déployé sur la même suite que le reste. Forfaits détaillés sur la page tarifs.",
+      "link_text": "Voir les forfaits"
+    }
+  },
+  "for_your_it": {
+    "intro": "La surface technique, pour la personne TI qui évalue si cette suite est quelque chose qu'elle veut faire opérer, ou qu'elle pourrait opérer à l'interne. Quatre capacités de premier ordre -- provisionnement, sauvegarde/restauration, migration, validation -- chacune une opération atomique.",
+    "stack": {
+      "ansible": {
+        "title": "Ansible",
+        "role": "Provisionnement + opérations",
+        "body": "Déploiement et opérations standardisés et conformes aux pratiques de l'industrie, pour une installation réussie et sécurisée à chaque fois."
+      },
+      "tailscale": {
+        "title": "Tailscale",
+        "role": "Canal d'administration",
+        "body": "VPN maillé privé pour le chemin admin/debug. Le SSH public ferme après le bootstrap."
+      },
+      "cloudflare_tunnel": {
+        "title": "Cloudflare Tunnel",
+        "role": "Ingress public",
+        "body": "Tunnel TLS sortant uniquement, du serveur vers la bordure Cloudflare. Aucun port ouvert sur l'hôte (80/443 restent fermés). Le TLS termine à la bordure, pas dans le conteneur. Aucune configuration de routeur requise."
+      },
+      "keycloak": {
+        "title": "Keycloak + oauth2-proxy",
+        "role": "Identité",
+        "body": "SSO conforme aux standards de l'industrie, auto-hébergé pour chaque application de la suite. Keycloak gère utilisateurs, groupes, politique de mot de passe, MFA. oauth2-proxy précède les applications non-OIDC via Traefik forward-auth. Un login, toutes les applications."
+      },
+      "sops": {
+        "title": "SOPS + age",
+        "role": "Secrets",
+        "body": "Le coffre est chiffré dans git, déchiffré par Ansible au déploiement. Le mot de passe du coffre n'existe nulle part sur disque -- uniquement comme clé privée dans un gestionnaire de mots de passe protégé par une clé matérielle. Ajoutez un destinataire; rotation propre."
+      },
+      "restic": {
+        "title": "Restic",
+        "role": "Sauvegardes",
+        "body": "Sauvegardes chiffrées nocturnes vers un stockage S3 immuable appartenant au client pour la protection contre les rançongiciels. Restauration et vérification de premier ordre. Exercices trimestriels planifiés."
+      },
+      "dokploy": {
+        "title": "Dokploy",
+        "role": "Plateforme d'applications",
+        "body": "Déploiements style compose gérés via l'interface Dokploy sur le tailnet. Les conteneurs se mettent à jour avec retour en arrière basé sur la santé en cas de régression."
+      },
+      "monitoring": {
+        "title": "Gatus + Healthchecks",
+        "role": "Surveillance",
+        "body": "Gatus sonde les points HTTP de l'intérieur et de l'extérieur du réseau. Healthchecks auto-hébergé fait la surveillance dead-man sur chaque tâche planifiée. Plusieurs points d'observation, défaillances indépendantes."
+      }
+    },
+    "architecture_link": "Comment la suite s'assemble"
+  },
+  "pricing": {
+    "title": "Tarifs",
+    "intro": "Tarification transparente, axée sur la souveraineté. Vous payez par serveur, pas par utilisateur. Aucun palier d'usage, aucuns frais surprise, aucuns frais de sortie.",
+    "bundle_note": "Tous les paliers incluent Nextcloud et OnlyOffice (ou Collabora). Essayez les outils intégrés de base de Nextcloud -- clavardage, wiki, calendrier, contacts, notes, tâches -- avant d'ajouter des extras ; certains clients les trouvent suffisants.",
+    "extras_note": "Ajoutez n'importe quelle application du catalogue éprouvé pour 50 $ / mois par application. Modèle personnalisé (hors catalogue) : 150 $ frais unique. Les modèles éprouvés s'installent sans frais d'installation.",
+    "alacarte_support_note": "Support à-la-carte disponible à 150 $ / heure, facturé par tranches de 30 minutes.",
+    "tiers": {
+      "base": {
+        "name": "Installation initiale",
+        "price": "200 $",
+        "price_unit": "frais unique",
+        "tagline": "Apportez vos propres clés ; installation libre-service via le portail client.",
+        "features": [
+          "Nextcloud + OnlyOffice (ou Collabora) prêts à l'emploi",
+          "Provisionnement de la suite logicielle via le portail client",
+          "Vous fournissez les identifiants Cloudflare, Tailscale, serveur, S3, SMTP",
+          "Aucun support inclus ; à-la-carte à 150 $ / heure"
+        ]
+      },
+      "assisted": {
+        "name": "Accompagnement",
+        "price": "300 $",
+        "price_unit": "frais unique",
+        "tagline": "Base + un appel d'onboarding d'une heure pour vous guider à travers la création des comptes fournisseurs.",
+        "features": [
+          "Tout ce qui est inclus dans Base",
+          "Appel de 60 minutes pour configurer Cloudflare, Tailscale, OVH, eazybackup, SMTP",
+          "Aucun support inclus ; à-la-carte à 150 $ / heure"
+        ]
+      },
+      "small": {
+        "name": "Petite entreprise",
+        "price": "500 $",
+        "price_unit": "/ mois",
+        "tagline": "Jusqu'à 10 employés.",
+        "features": [
+          "Nextcloud + OnlyOffice (ou Collabora) prêts à l'emploi",
+          "Installation incluse ; mises à jour gérées et application des correctifs CVE",
+          "2 heures de support non reportables par mois",
+          "Onboarding courriel inclus",
+          "Engagement minimum de 6 mois"
+        ]
+      },
+      "medium": {
+        "name": "Moyenne entreprise",
+        "price": "950 $",
+        "price_unit": "/ mois",
+        "tagline": "Jusqu'à 25 employés.",
+        "features": [
+          "Tout ce qui est inclus dans Petite entreprise",
+          "5 heures de support non reportables par mois"
+        ]
+      },
+      "large": {
+        "name": "Grande entreprise",
+        "price": "1 600 $",
+        "price_unit": "/ mois",
+        "tagline": "Jusqu'à 50 employés.",
+        "features": [
+          "Tout ce qui est inclus dans Moyenne entreprise",
+          "10 heures de support non reportables par mois"
+        ]
+      }
+    },
+    "sovereignty": {
+      "no_per_seat_title": "Aucun frais par utilisateur",
+      "no_per_seat_body": "Un seul tarif mensuel par serveur. Ajoutez autant de membres d'équipe que vous voulez, sans frais additionnels.",
+      "ownership_title": "Les actifs vous appartiennent",
+      "ownership_body": "Le serveur, le domaine, le seau de sauvegarde, les données -- tout à votre nom, dans vos comptes.",
+      "exit_title": "Remise propre",
+      "exit_body": "Pas de bêtises ; trousse de secours incluse.",
+      "privacy_title": "Lois sur la vie privée intégrées",
+      "privacy_body": "Conçu pour la Loi 25 et la LPRPDE. Architecturé pour la résidence et la portabilité de type RGPD."
+    },
+    "addons": {
+      "title": "Modules complémentaires",
+      "intro": "Services optionnels facturés avec votre forfait mensuel.",
+      "website": {
+        "name": "Site web d'entreprise",
+        "description": "Site web multi-pages performant pour votre entreprise, déployé comme application sur le même serveur que le reste de votre suite. Options groupées:",
+        "bundle_5": "Forfait 5 pages (accueil / services / équipe / contact / mentions légales): installation unique, puis un petit ajout mensuel à votre forfait.",
+        "bundle_10": "Forfait 10 pages: même structure, plus de profondeur. Les frais s'ajustent modestement.",
+        "extra": "Par page supplémentaire : contenu et design devisés à l'admission. Une retouche stylistique d'une page existante n'est pas une page supplémentaire.",
+        "note": "Sites e-commerce non inclus. Détails des tarifs sur demande -- la portée du forfait et la profondeur du contenu déterminent le devis. Contactez-nous."
+      }
+    }
+  },
+  "comparison": {
+    "title": "Comparaison",
+    "intro": "Lecture honnête de la place de catena par rapport aux alternatives que les PME évaluent. L'axe dominant est la souveraineté : qui possède les données, l'infrastructure, les clés.",
+    "cols": {
+      "catena": "Catena",
+      "saas": "SaaS (M365 / Google)",
+      "diy": "Auto-hébergé artisanal",
+      "msp": "MSP local typique"
+    },
+    "rows": {
+      "fit": {
+        "label": "Cas d'usage idéal",
+        "catena": { "verdict": "remplacement SaaS",     "tone": "good"    },
+        "saas":   { "verdict": "tout-clé-en-main",      "tone": "neutral" },
+        "diy":    { "verdict": "TI à l'interne",        "tone": "neutral" },
+        "msp":    { "verdict": "TI bureau + endpoint",  "tone": "neutral" }
+      },
+      "pricing": {
+        "label": "Modèle tarifaire",
+        "catena": { "verdict": "fixe",            "tone": "good"    },
+        "saas":   { "verdict": "par siège",       "tone": "neutral" },
+        "diy":    { "verdict": "gratuit",         "tone": "good"    },
+        "msp":    { "verdict": "par incident",    "tone": "neutral" }
+      },
+      "ownership": {
+        "label": "Propriété des données",
+        "catena": { "verdict": "à vous",       "tone": "good" },
+        "saas":   { "verdict": "fournisseur",  "tone": "bad"  },
+        "diy":    { "verdict": "à vous",       "tone": "good" },
+        "msp":    { "verdict": "mixte",        "tone": "neutral" }
+      },
+      "migration": {
+        "label": "Migration entrante / sortante",
+        "catena": { "verdict": "premier ordre", "tone": "good"    },
+        "saas":   { "verdict": "export seul",   "tone": "bad"     },
+        "diy":    { "verdict": "à faire",       "tone": "neutral" },
+        "msp":    { "verdict": "variable",      "tone": "neutral" }
+      },
+      "backups": {
+        "label": "Sauvegardes",
+        "catena": { "verdict": "exercées",     "tone": "good" },
+        "saas":   { "verdict": "opaques",      "tone": "good" },
+        "diy":    { "verdict": "à faire",      "tone": "neutral" },
+        "msp":    { "verdict": "variable",     "tone": "neutral" }
+      },
+      "sso": {
+        "label": "Authentification unique",
+        "catena": { "verdict": "oui",          "tone": "good"    },
+        "saas":   { "verdict": "oui",          "tone": "good"    },
+        "diy":    { "verdict": "à faire",      "tone": "neutral" },
+        "msp":    { "verdict": "externe",      "tone": "bad"     }
+      },
+      "tenancy": {
+        "label": "Tenance",
+        "catena": { "verdict": "mono-tenant",  "tone": "good"    },
+        "saas":   { "verdict": "multi-tenant", "tone": "neutral" },
+        "diy":    { "verdict": "mono-tenant",  "tone": "good"    },
+        "msp":    { "verdict": "mixte",        "tone": "neutral" }
+      },
+      "loi25": {
+        "label": "Adaptation à la Loi 25",
+        "catena": { "verdict": "intégrée",     "tone": "good" },
+        "saas":   { "verdict": "EFVP requise", "tone": "bad"  },
+        "diy":    { "verdict": "à faire",      "tone": "neutral" },
+        "msp":    { "verdict": "variable",     "tone": "neutral" }
+      },
+      "residency": {
+        "label": "Résidence",
+        "catena": { "verdict": "canadienne",     "tone": "good" },
+        "saas":   { "verdict": "multi-juridiction","tone": "neutral" },
+        "diy":    { "verdict": "à faire",        "tone": "neutral" },
+        "msp":    { "verdict": "variable",       "tone": "neutral" }
+      }
+    }
+  },
+  "contact": {
+    "title": "Contact",
+    "intro": "Le moyen le plus rapide est un appel découverte de 30 minutes. Nous ne vendons rien lors d'un premier contact -- nous posons des questions et déterminons ensemble si catena correspond à votre situation.",
+    "discovery_title": "Appel découverte",
+    "discovery_body": "Trente minutes, sans engagement. Nous écoutons, vous décidez si quelque chose correspond à votre situation. Apportez des questions, pas un cahier des charges.",
+    "discovery_link_label": "Réserver un appel découverte",
+    "discovery_link_url": "https://app.catena.run/discovery",
+    "response_body": "Nous visons répondre dans un jour ouvrable.",
+    "form": {
+      "title": "Envoyer un message",
+      "intro": "Ou remplissez le formulaire ci-dessous. Les réponses partent de la même boîte.",
+      "name_label": "Votre nom",
+      "email_label": "Votre courriel",
+      "company_label": "Entreprise (facultatif)",
+      "intent_label": "Que cherchez-vous? (cochez tout ce qui s'applique)",
+      "intent_managed": "Une suite logicielle gérée pour mon entreprise",
+      "intent_website": "Un site web sur la suite",
+      "intent_partnership": "Partenariat / référencement",
+      "intent_other": "Autre chose",
+      "message_label": "Message",
+      "submit_label": "Envoyer",
+      "mailto_fallback": "Ou écrivez-nous directement:"
+    }
+  },
+  "faq": {
+    "title": "Foire aux questions",
+    "intro": "Les questions que les prospects posent le plus souvent avant de prendre un appel découverte. Réponses courtes ; les versions longues vivent sur À propos / Tarifs / Comparaison.",
+    "q1": {
+      "question": "Catena tourne-t-il sur catena ?",
+      "answer": "Même suite. Même opérateur. En production depuis le lancement. catena.run, la documentation à /docs, le portail client, les vérifications externes des services client, le traitement des paiements et la facturation tournent tous sur la suite que nous vendons. Toute la surface de revenu est sur le produit. Manger sa propre nourriture est notre garantie."
+    },
+    "q2": {
+      "question": "Que puis-je faire tourner d'autre sur la suite ?",
+      "answer": "Tout ce qui s'inscrit dans un modèle compose Dokploy. Vous obtenez d'emblée le duo principal (Nextcloud + OnlyOffice / Collabora) plus notre liste optionnelle éprouvée (Rocket.Chat, Plane, DocuSeal, Invoice Ninja, Outline, EspoCRM, n8n, Postiz, Twenty, WordPress, ERPNext, ActualBudget, Easy!Appointments). Toute autre application est une demande de modèle personnalisé -- parlez-nous-en. Pour explorer l'écosystème auto-hébergé plus large : <a href='https://github.com/awesome-selfhosted/awesome-selfhosted' target='_blank' rel='noopener noreferrer'>awesome-selfhosted</a>, <a href='https://awweso.me/' target='_blank' rel='noopener noreferrer'>awweso.me</a>, <a href='https://templates.dokploy.com/' target='_blank' rel='noopener noreferrer'>modèles Dokploy</a>, <a href='https://github.com/awesome-foss/awesome-sysadmin' target='_blank' rel='noopener noreferrer'>awesome-sysadmin</a>."
+    },
+    "q3": {
+      "question": "Que se passe-t-il si vous êtes frappé par un autobus ?",
+      "answer": "Toute la suite est libre et opérateur-portable. Un autre opérateur compétent peut la reprendre avec la même automatisation."
+    },
+    "q4": {
+      "question": "Puis-je partir avec mes données ?",
+      "answer": "Oui, à tout moment, avec tout intact. Votre seau S3 de sauvegarde contient un export complet chiffré ; le retrait est piloté par l'opérateur et complet. Aucuns frais de sortie, aucun collage propriétaire à défaire."
+    },
+    "q5": {
+      "question": "Dois-je être technique pour utiliser ceci ?",
+      "answer": "Non. L'usage quotidien est dans le navigateur (Nextcloud / Rocket.Chat / etc.). La surface technique est ce que nous opérons pour vous -- votre équipe ne voit que des applications."
+    },
+    "q6": {
+      "question": "Où mes données sont-elles physiquement situées ?",
+      "answer": "Sur le serveur qui vous appartient, chez le fournisseur que vous avez choisi. Déploiement par défaut : OVH BHS (Beauharnois, Québec) pour le serveur principal + miroir S3 chaud ; eazybackup (entreprise canadienne, centre de données à Ottawa, Canada -- certifié niveau gouvernemental canadien, avec Object Lock + versionnement) pour le miroir froid. Les deux en juridiction canadienne, conformes à la Loi 25."
+    },
+    "q7": {
+      "question": "Comment gagnez-vous votre vie ?",
+      "answer": "Un forfait mensuel fixe par serveur, sans frais par utilisateur. Voir la <a href='/pricing'>page Tarifs</a>."
+    },
+    "q8": {
+      "question": "Hébergez-vous le courriel ?",
+      "answer": "Non -- la livraison de courriel est une spécialité à temps plein (délivrabilité, conformité antispam, gestion des rebonds). Nous intégrons cinq fournisseurs axés sur la confidentialité et configurons DNS + SSO pour que votre équipe utilise le courriel comme n'importe quelle autre application. Clients suggérés : l'interface courriel intégrée à Nextcloud (navigateur), Thunderbird (bureau, libre, multiplateforme) ou Betterbird (variante de Thunderbird avec finitions supplémentaires)."
+    },
+    "q9": {
+      "question": "Puis-je héberger mes propres applications à côté de la suite ?",
+      "answer": "Oui. Dokploy permet de déployer toute application au format compose sous SSO + Cloudflare Tunnel. Nous pouvons conseiller ; nous n'avons pas à l'opérer."
+    },
+    "q10": {
+      "question": "Et si je dépasse 50 employés ou 10 services ?",
+      "answer": "Parlez-nous-en. La suite elle-même se met à l'échelle (Nextcloud tourne confortablement pour une organisation de 200 employés) ; les paliers de forfait au-dessus de Grande entreprise sont sur mesure."
+    }
+  },
+  "about": {
+    "title": "À propos",
+    "intro": "Un seul opérateur derrière catena. Voici ce que ça veut dire concrètement.",
+    "story_title": "Bref parcours",
+    "story_body": "Treize ans de leadership technique en logiciel et en infrastructure. Cinq ans en solo, à bâtir et opérer les suites de mes propres entreprises. Catena est ce que je fais de mieux et que j'aime le plus: choisir les bons outils, connaître leurs modes de défaillance, et les opérer de bout en bout. Basé au Québec; livraison bilingue.",
+    "bring_title": "Ce que j'apporte",
+    "bring_judgment_title": "Jugement dans le choix d'outils",
+    "bring_judgment_body": "Choisir les outils n'est pas la partie banalisée de ce travail. Savoir quels projets libres sont en santé, lesquels seront maintenus, et lesquels casseront silencieusement dans deux ans -- c'est le facteur différenciant.",
+    "bring_failure_title": "Expertise des modes de défaillance",
+    "bring_failure_body": "Je conçois à rebours depuis les scénarios de récupération. Reprise après sinistre, retours en arrière, migration, déclassement. Le jour où ça casse n'est pas le jour pour apprendre à le réparer.",
+    "bring_ownership_title": "Propriété de bout en bout",
+    "bring_ownership_body": "Du provisionnement aux sauvegardes à la migration à la remise, un seul ensemble d'outils unifiés. Aucune excuse, aucun report, seulement la responsabilité.",
+    "work_title": "Comment je travaille",
+    "work_response_title": "Temps de réponse",
+    "work_response_body": "Niveau standard: un jour ouvrable. Urgence (production hors service): le jour même. Un ensemble de boutons d'urgence sur votre serveur pour vous permettre de reprendre la main si je ne suis pas disponible.",
+    "work_cadence_title": "Cadence",
+    "work_cadence_body": "Appel de revue trimestrielle. Courriel mensuel résumant ce qui a été mis à jour, restauré, et validé sur votre suite. Les exercices gérés de sauvegarde-restauration et leur rapport arrivent dans votre boîte.",
+    "work_continuity_title": "Si je suis frappé par un autobus",
+    "work_continuity_body": "Rien dans votre suite n'est fermé ou propriétaire à moi. Toute la pile est libre et portable d'un opérateur à l'autre ; un autre opérateur compétent peut reprendre votre suite avec la même automatisation.",
+    "accountability_title": "Responsabilité",
+    "accountability_body": "Votre facture porte un nom, pas une raison sociale.",
+    "portfolio_link_label": "Parcours et portfolio",
+    "portfolio_link_url": "https://ma-lalonde.dev"
+  },
+  "privacy": {
+    "title": "Politique de confidentialité",
+    "intro": "Catena ne partage, ne vend, ne loue pas vos données et n'entraîne aucune IA dessus. Toute la raison d'être de la suite est qu'elle vous appartient.",
+    "collect_title": "Ce que nous collectons",
+    "collect_body": "Informations de facturation (via Stripe -- les numéros de carte ne touchent jamais nos serveurs). Informations de compte du portail (courriel, nom, entreprise). Les identifiants que vous saisissez pour déployer votre suite sont transmis en vol au runner de l'opérateur et ne sont pas conservés dans notre base de données. Journaux côté serveur des actions de l'opérateur pour le support et l'audit.",
+    "dont_title": "Ce que nous ne faisons pas",
+    "dont_body": "Nous ne vendons pas, ne louons pas, ne partageons pas vos données. Nous n'entraînons pas de modèles d'IA dessus. Nous ne les analysons pas à des fins publicitaires. Nous n'utilisons pas de traceurs tiers sur le site marketing ni sur le portail.",
+    "where_title": "Où vivent les données",
+    "where_body": "Les données de votre suite vivent sur le serveur qui vous appartient, dans le seau S3 qui vous appartient et dans les comptes tiers que vous avez vous-mêmes choisis (Cloudflare, Tailscale, votre fournisseur de serveur, votre fournisseur SMTP, etc.). Le portail lui-même tourne sur une infrastructure en juridiction canadienne et est hébergé sur catena -- le même produit que nous vendons.",
+    "subprocessors_title": "Sous-traitants",
+    "subprocessors_body": "Stripe (traitement des paiements). Cloudflare (Tunnel + bordure pour catena.run et le portail). Keycloak (identité, sur notre infrastructure). Les fournisseurs que vous avez vous-mêmes choisis pour votre suite (nommés dans votre lettre de mandat).",
+    "rights_title": "Vos droits",
+    "rights_body": "La Loi 25 et la LPRPDE vous accordent le droit d'accéder à, de corriger et de supprimer les renseignements personnels que nous détenons. Contactez privacy@catena.run (ou hello@catena.run en attendant) et nous répondrons sous 30 jours.",
+    "cookies_title": "Témoins et analytiques",
+    "cookies_body": "Témoins de session minimaux sur le portail pour l'authentification. Aucun traceur tiers, aucun témoin publicitaire, aucune analyse comportementale sur le site marketing.",
+    "contact_title": "Questions",
+    "contact_body": "Écrivez à hello@catena.run. Nous répondons aux questions de confidentialité dans un jour ouvrable."
+  },
+  "terms": {
+    "title": "Conditions d'utilisation",
+    "intro": "Ces conditions encadrent la relation entre catena (l'opérateur) et vous (le client). Elles sont volontairement concises -- la lettre de mandat signée à l'inscription est le contrat de référence ; cette page en résume les engagements principaux.",
+    "review_notice": "Cette page est un brouillon en attente de révision juridique. Parlez-nous directement pour les conditions contractuelles dans votre lettre de mandat.",
+    "scope_title": "Portée du service",
+    "scope_body": "Le palier tarifaire que vous avez acheté définit ce qui est inclus. Voir la <a href='/pricing'>page Tarifs</a> pour l'échelle publique. Les changements de portée (ajout ou retrait de services, changement de palier d'employés) sont convenus par écrit.",
+    "billing_title": "Tarification et facturation",
+    "billing_body": "Base et Accompagnement sont des frais uniques. Petite / Moyenne / Grande entreprise comportent un engagement minimum de 6 mois, facturés mensuellement. Le support À-la-carte est facturé au tarif publié par tranches de 30 minutes. Traitement des cartes via Stripe.",
+    "ownership_title": "Propriété des données",
+    "ownership_body": "Toutes les données client, l'infrastructure et les identifiants appartiennent au client. Notre rôle est uniquement opérateur. Vous pouvez exporter et migrer à tout moment ; la lettre de mandat documente le processus de remise.",
+    "liability_title": "Limitation de responsabilité",
+    "liability_body": "La responsabilité est plafonnée à un montant proportionnel au plus récent forfait mensuel ; les limites contraignantes figurent dans votre lettre de mandat.",
+    "sla_title": "Niveaux de service",
+    "sla_body": "Disponibilité visée, temps de réponse et objectifs de récupération pour les exercices de restauration figurent dans votre lettre de mandat et sont revus au point trimestriel.",
+    "aup_title": "Usage acceptable",
+    "aup_body": "Aucun contenu illégal, aucun pourriel (envois en masse non sollicités), aucune distribution de logiciel malveillant, aucune revente de la suite en mode service à des tiers sans accord préalable. Posture standard pour les services Internet.",
+    "termination_title": "Résiliation",
+    "termination_body": "L'une ou l'autre partie peut mettre fin selon la lettre de mandat. À la résiliation, l'opérateur effectue la remise de la suite et de l'export S3 du client ; les données conservées sur les systèmes de l'opérateur sont purgées dans les 30 jours.",
+    "perservice_title": "Conditions par service",
+    "perservice_body": "Chaque application en amont dans la suite porte sa propre licence et politique d'usage acceptable (Nextcloud GPL, Rocket.Chat MIT, OnlyOffice AGPL, etc.). Le lien Page du projet sur /features pointe vers les conditions officielles de chaque amont.",
+    "law_title": "Loi applicable",
+    "law_body": "Québec, Canada. Les litiges relèvent des tribunaux du district judiciaire de Montréal."
+  },
+  "portal": {
+    "signin_title": "Portail catena",
+    "signin_body": "Connectez-vous avec le compte Keycloak que votre opérateur a créé pour vous. Nouveau ? Demandez une invitation à votre opérateur.",
+    "signin_button": "Se connecter avec Keycloak",
+    "shell_brand": "catena",
+    "nav_dashboard": "Tableau de bord",
+    "nav_installation": "Installation",
+    "nav_order": "Commande",
+    "nav_request": "Demande de travail",
+    "nav_billing": "Facturation",
+    "shell_signout": "Se déconnecter",
+    "shell_lang_label": "Changer de langue"
+  },
+  "guides": {
+    "title": "Guides",
+    "intro": "Marches à suivre pratiques pour la mise en place : création de comptes fournisseurs, génération de clés, durcissement de la sécurité, opérations courantes.",
+    "read_label": "Lire le guide",
+    "list": {
+      "provider_accounts": {
+        "title": "Créer vos comptes fournisseurs",
+        "summary": "Cloudflare, Tailscale, OVH, eazybackup, SMTP -- une marche à suivre en une passe pour les cinq comptes externes qu'un déploiement catena typique requiert."
+      },
+      "dns_hardening": {
+        "title": "Durcir votre DNS avec blocage et filtrage",
+        "summary": "Cloudflare Gateway et filtrage DNS par catégorie pour une PME : bloquer maliciels, hameçonnage et contenu adulte sur tous les appareils du réseau."
+      }
+    }
+  }
+}

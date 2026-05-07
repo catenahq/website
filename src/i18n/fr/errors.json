@@ -1,0 +1,21 @@
+{
+  "generic": {
+    "unexpected": "Une erreur est survenue. Veuillez réessayer.",
+    "network": "Erreur réseau. Vérifiez votre connexion et réessayez.",
+    "unauthorized": "Vous devez vous connecter pour continuer.",
+    "forbidden": "Vous n'avez pas la permission de faire cela.",
+    "not_found": "Introuvable.",
+    "rate_limited": "Trop de requêtes. Patientez un instant puis réessayez."
+  },
+  "form": {
+    "required": "Ce champ est requis.",
+    "email_invalid": "Entrez une adresse courriel valide.",
+    "url_invalid": "Entrez une URL valide.",
+    "too_short": "Trop court.",
+    "too_long": "Trop long."
+  },
+  "auth": {
+    "session_expired": "Votre session a expiré. Veuillez vous reconnecter.",
+    "sso_failed": "Impossible de finaliser la connexion. Réessayez ou contactez-nous."
+  }
+}

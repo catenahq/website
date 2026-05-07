@@ -4,17 +4,18 @@
   "private": true,
   "type": "module",
   "scripts": {
+    "predev": "node ../../tools/sync-brand.mjs ./src/styles/brand",
     "dev": "astro dev",
     "start": "astro dev",
+    "prebuild": "node ../../tools/sync-brand.mjs ./src/styles/brand",
     "build": "node scripts/build-with-docs.mjs",
     "build:marketing-only": "astro build",
     "preview": "astro preview",
-    "check": "astro check"
+    "check": "astro check",
+    "test:i18n": "node scripts/i18n-parity.mjs"
   },
   "dependencies": {
     "@astrojs/sitemap": "^3.7.2",
-    "@catena/brand": "*",
-    "@catena/i18n": "*",
     "astro": "^6.2.1",
     "astro-icon": "^1.1.5"
   },

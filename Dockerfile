@@ -1,32 +1,30 @@
 # apps/website -- catena.run
 #
-# Multi-stage build: Astro static build -> nginx:alpine serving dist/.
-# Workspace deps (@catena/brand, @catena/i18n) need the full repo
-# context, so build is invoked from the monorepo root via the
-# Dokploy "build context" set to the repo root and "Dockerfile path"
-# set to apps/website/Dockerfile.
+# Multi-stage build: Astro static build (with chained Starlight docs
+# at /docs) -> nginx:alpine serving dist/.
+#
+# Build context is the repo root (not apps/website) because the
+# chain script also builds apps/docs and the prebuild scripts read
+# tools/brand/ via ../../tools/sync-brand.mjs. Dokploy compose sets
+# `build: { context: ., dockerfile: apps/website/Dockerfile }`.
 
 # ---- Stage 1: build ----
 FROM node:22-alpine AS build
 WORKDIR /repo
 
-# Copy workspace manifests first so Docker caches the install layer.
-COPY package.json package-lock.json* ./
-COPY apps/website/package.json apps/website/
-COPY apps/docs/package.json apps/docs/
-COPY packages/brand/package.json packages/brand/
-COPY packages/i18n/package.json packages/i18n/
+# Install per-app deps first so source changes don't invalidate the
+# install cache. Each app has its own package-lock.json (no workspaces).
+COPY apps/website/package.json apps/website/package-lock.json* apps/website/
+COPY apps/docs/package.json apps/docs/package-lock.json* apps/docs/
 
-RUN npm install --workspaces --include-workspace-root --no-audit --no-fund
+RUN cd apps/website && npm ci --no-audit --no-fund
+RUN cd apps/docs    && npm ci --no-audit --no-fund
 
-# Copy the actual source. Workspace symlinks already exist from the
-# install above. apps/docs is included because the website build
-# script chains a Starlight build at base=/docs and merges the dist
-# tree -- single deploy serves both surfaces.
+# Copy source. Brand sync target dirs are gitignored; the prebuild
+# step inside `npm run build` populates them from tools/brand/.
 COPY apps/website apps/website
 COPY apps/docs apps/docs
-COPY packages/brand packages/brand
-COPY packages/i18n packages/i18n
+COPY tools tools
 
 WORKDIR /repo/apps/website
 RUN npm run build

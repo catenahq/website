@@ -1,4 +1,5 @@
 import { defineConfig } from "astro/config";
+import { fileURLToPath } from "node:url";
 import icon from "astro-icon";
 import sitemap from "@astrojs/sitemap";
 
@@ -36,4 +37,11 @@ export default defineConfig({
       },
     }),
   ],
+  vite: {
+    resolve: {
+      alias: {
+        "@catena/i18n": fileURLToPath(new URL("./src/i18n/index.js", import.meta.url)),
+      },
+    },
+  },
 });
