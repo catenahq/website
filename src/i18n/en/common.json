@@ -320,7 +320,7 @@
   },
   "pricing": {
     "title": "Pricing",
-    "intro": "Transparent, sovereignty-first pricing. Pay per server, not per seat. No usage tiers, no surprise charges, no exit fees.",
+    "intro": "Transparent, sovereignty-first pricing. Pay per server, not per seat. No usage tiers, no surprise charges, no exit fees. All prices in Canadian dollars (CAD).",
     "bundle_note": "All tiers include Nextcloud and OnlyOffice (or Collabora). Try Nextcloud's built-in basics -- chat, wiki, calendar, contacts, notes, tasks -- before adding extras; some clients find them sufficient.",
     "extras_note": "Add any vetted-catalog app for $50 / month per app. Custom (non-vetted) template setup: $150 one-time. Vetted catalog templates install at no setup cost.",
     "alacarte_support_note": "À-la-carte support available at $150 / hour, billed in 30-minute increments.",
@@ -550,6 +550,14 @@
     "q10": {
       "question": "What if I outgrow 50 employees or 10 services?",
       "answer": "Talk to us. The suite itself scales (Nextcloud comfortably runs on a 200-employee org); the retainer tiers above Large business are bespoke."
+    },
+    "q11": {
+      "question": "Can I run this on my own hardware?",
+      "answer": "Yes. Self-hosted installs on hardware you own (with or without a public IP) are available as a custom install. <a href='/en/contact'>Talk to us</a> to discuss the constraints and quote."
+    },
+    "q12": {
+      "question": "What currency are your prices in?",
+      "answer": "Canadian dollars (CAD). Cross-border prospects pay via Stripe in CAD; Stripe handles the conversion at their interbank rate at billing time."
     }
   },
   "about": {

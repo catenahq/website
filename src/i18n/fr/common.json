@@ -320,7 +320,7 @@
   },
   "pricing": {
     "title": "Tarifs",
-    "intro": "Tarification transparente, axée sur la souveraineté. Vous payez par serveur, pas par utilisateur. Aucun palier d'usage, aucuns frais surprise, aucuns frais de sortie.",
+    "intro": "Tarification transparente, axée sur la souveraineté. Vous payez par serveur, pas par utilisateur. Aucun palier d'usage, aucuns frais surprise, aucuns frais de sortie. Tous les prix en dollars canadiens (CAD).",
     "bundle_note": "Tous les paliers incluent Nextcloud et OnlyOffice (ou Collabora). Essayez les outils intégrés de base de Nextcloud -- clavardage, wiki, calendrier, contacts, notes, tâches -- avant d'ajouter des extras ; certains clients les trouvent suffisants.",
     "extras_note": "Ajoutez n'importe quelle application du catalogue éprouvé pour 50 $ / mois par application. Modèle personnalisé (hors catalogue) : 150 $ frais unique. Les modèles éprouvés s'installent sans frais d'installation.",
     "alacarte_support_note": "Support à-la-carte disponible à 150 $ / heure, facturé par tranches de 30 minutes.",
@@ -550,6 +550,14 @@
     "q10": {
       "question": "Et si je dépasse 50 employés ou 10 services ?",
       "answer": "Parlez-nous-en. La suite elle-même se met à l'échelle (Nextcloud tourne confortablement pour une organisation de 200 employés) ; les paliers de forfait au-dessus de Grande entreprise sont sur mesure."
+    },
+    "q11": {
+      "question": "Puis-je l'héberger sur mon propre matériel ?",
+      "answer": "Oui. Les installations auto-hébergées sur du matériel qui vous appartient (avec ou sans IP publique) sont disponibles en installation sur mesure. <a href='/contact'>Contactez-nous</a> pour discuter des contraintes et obtenir un devis."
+    },
+    "q12": {
+      "question": "Dans quelle devise sont vos tarifs ?",
+      "answer": "Dollars canadiens (CAD). Les prospects hors Canada paient via Stripe en CAD ; Stripe gère la conversion au taux interbancaire au moment de la facturation."
     }
   },
   "about": {
