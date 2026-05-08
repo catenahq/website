@@ -2,7 +2,7 @@
 
 Astro static site. Marketing landing pages + Starlight docs at
 `/docs/*`. EN at `/`, FR at `/fr/`. Self-contained: consumes shared
-brand tokens (synced from `tools/brand/` at prebuild time into
+brand tokens (synced from `packages/tools/brand/` at prebuild time into
 `src/styles/brand/`) and ships its own translations under
 `src/i18n/`. Page-level prose stays in the components themselves
 until enough copy accumulates to justify a content collection.
@@ -36,8 +36,8 @@ npm run test:i18n
 
 Dockerfile is multi-stage: Astro build inside `node:22-alpine`,
 served from `nginx:alpine`. The build context must be the **repo
-root** so the prebuild script reaches `tools/brand/` via
-`../../tools/sync-brand.mjs`.
+root** so the prebuild script reaches `packages/tools/brand/` via
+`../../packages/tools/sync-brand.mjs`.
 
 In Dokploy: Create Compose -> GitHub source pointing at this repo,
 `composePath: apps/website/dokploy.compose.yml`. See

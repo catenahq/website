@@ -5,7 +5,8 @@
 #
 # Build context is the repo root (not apps/website) because the
 # chain script also builds apps/docs and the prebuild scripts read
-# tools/brand/ via ../../tools/sync-brand.mjs. Dokploy compose sets
+# packages/tools/brand/ via ../../packages/tools/sync-brand.mjs.
+# Dokploy compose sets
 # `build: { context: ., dockerfile: apps/website/Dockerfile }`.
 
 # ---- Stage 1: build ----
@@ -21,10 +22,10 @@ RUN cd apps/website && npm ci --no-audit --no-fund
 RUN cd apps/docs    && npm ci --no-audit --no-fund
 
 # Copy source. Brand sync target dirs are gitignored; the prebuild
-# step inside `npm run build` populates them from tools/brand/.
+# step inside `npm run build` populates them from packages/tools/brand/.
 COPY apps/website apps/website
 COPY apps/docs apps/docs
-COPY tools tools
+COPY packages/tools packages/tools
 
 WORKDIR /repo/apps/website
 RUN npm run build

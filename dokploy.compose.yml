@@ -3,7 +3,7 @@
 # Dokploy reads this compose when the "Source" tab points at the
 # catena monorepo and `composePath: apps/website/dokploy.compose.yml`.
 # build.context is `../..` so the Dockerfile sees the full repo
-# (apps/website + apps/docs + tools/brand/).
+# (apps/website + apps/docs + packages/tools/brand/).
 #
 # Operator-side knobs (Environment tab in Dokploy):
 #   VPS_AUTH_MODE   default `public`
