@@ -3,6 +3,7 @@ import Base from "../../layouts/Base.astro";
 import PageTitle from "../../components/PageTitle.astro";
 import PricingSovereignty from "../../components/PricingSovereignty.astro";
 import Pricing from "../../components/Pricing.astro";
+import PricingScope from "../../components/PricingScope.astro";
 import AddOns from "../../components/AddOns.astro";
 import CTA from "../../components/CTA.astro";
 import { t } from "@catena/i18n";
@@ -12,7 +13,7 @@ const locale = "en";
 <Base
   locale={locale}
   title={t(locale, "common.pricing.title")}
-  description="Catena pricing: $200 base installer + per-commodity tiers (DIY / Assisted / Managed). No per-seat charges. Per-VPS retainer. Add-ons including brochure website bundles."
+  description="Catena pricing: per-server monthly retainer (Small / Medium / Large), time-of-day hourly rates for out-of-retainer work, case-by-case data migration, Law 25 compliance in build. Itemized website add-on."
 >
   <PageTitle
     title={t(locale, "common.pricing.title")}
@@ -20,6 +21,7 @@ const locale = "en";
   />
   <PricingSovereignty locale={locale} />
   <Pricing locale={locale} />
+  <PricingScope locale={locale} />
   <AddOns locale={locale} />
   <CTA locale={locale} />
 </Base>

@@ -1,7 +1,7 @@
 {
   "brand": {
-    "name": "catena",
-    "tagline": "Faites tourner votre entreprise sur une infrastructure qui vous appartient."
+    "name": "Catena",
+    "tagline": "Services TI gérés pour PME québécoises."
   },
   "nav": {
     "features": "Fonctionnalités",
@@ -40,13 +40,13 @@
   },
   "home": {
     "hero": {
-      "headline": "Faites tourner votre entreprise sur une infrastructure qui vous appartient.",
-      "subheadline": "Sur votre VPS loué ou votre propre matériel. Fichiers, CRM, agenda, messagerie d'équipe, site web -- tout géré, tout à vous.",
-      "proof": "Vous possédez le serveur, le domaine, les sauvegardes, les données. Conçu pour la Loi 25 et la LPRPDE. Architecturé pour la résidence et la portabilité de type RGPD."
+      "headline": "Catena. Services TI gérés pour PME québécoises.",
+      "subheadline": "MSP indépendant. Nous gérons votre infrastructure IT -- courriel, fichiers, CRM, sauvegardes -- sur la Suite Catena. Conforme Loi 25. Sans dépendance aux géants américains.",
+      "proof": "Logiciels libres souverains. Sauvegardes immuables au Canada. Documentation Loi 25 incluse. Migration garantie sans verrou. Vous possédez le serveur, le domaine, les sauvegardes, les données."
     },
     "dogfood": {
       "title": "Nous sommes notre propre premier client.",
-      "body": "Tout ce que vous voyez -- ce site, la documentation, le portail client, la facturation, nos tableaux de bord d'incidents -- tourne sur la même suite que nous vendons. Si ça casse, nous sommes les premiers à le savoir."
+      "body": "Tout ce que vous voyez -- ce site, la documentation, le portail client, la facturation, nos tableaux de bord d'incidents -- tourne sur la même Suite Catena que nous vendons. Si ça casse, nous sommes les premiers à le savoir."
     },
     "sovereignty": {
       "title": "La souveraineté, simplifiée",
@@ -61,7 +61,7 @@
       "exit_body": "Aucun verrou. Quittez avec vos données à tout moment en un seul clic."
     },
     "onestop": {
-      "title": "Une suite logicielle. Un opérateur. Une facture.",
+      "title": "La Suite Catena. Un opérateur. Une facture.",
       "intro": "Toutes les capacités dont votre équipe a besoin pour faire tourner l'entreprise, intégrées et opérées de bout en bout.",
       "capabilities_title": "Capacités disponibles",
       "capabilities": [
@@ -81,7 +81,7 @@
       ],
       "saas_replacement": "Remplace environ 40 $ à 120 $ par employé par mois en abonnements SaaS empilés (Microsoft 365, Slack, HubSpot, Calendly, DocuSign, Asana, et le reste). Voir la page comparaison pour le détail ligne par ligne.",
       "email_note": "Le courriel est intégré, pas auto-hébergé -- choisissez parmi 5 fournisseurs complets et axés sur la confidentialité selon vos besoins. Nous configurons le DNS, la délivrabilité et le SSO.",
-      "stack_link": "Vous intégrez cette suite logicielle dans votre service TI? Voir la surface technique."
+      "stack_link": "Vous intégrez la Suite Catena dans votre service TI? Voir la surface technique."
     }
   },
   "features": {
@@ -105,8 +105,8 @@
     "technical_page_title": "Pile technique",
     "technical_back_label": "Retour aux fonctionnalités",
     "tool_comparison": {
-      "title": "Comment se positionnent les choix de catena",
-      "intro": "Côte à côte avec les forfaits SaaS que les PME évaluent le plus souvent. Les choix de catena sont libres, mono-tenant et tournent sur une infrastructure qui vous appartient.",
+      "title": "Comment se positionnent les choix de la Suite Catena",
+      "intro": "Côte à côte avec les forfaits SaaS que les PME évaluent le plus souvent. Les choix de la Suite Catena sont libres, mono-tenant et tournent sur une infrastructure qui vous appartient.",
       "category_label": "Catégorie",
       "cols": {
         "catena": "Catena",
@@ -323,7 +323,7 @@
     "intro": "Tarification transparente, axée sur la souveraineté. Vous payez par serveur, pas par utilisateur. Aucun palier d'usage, aucuns frais surprise, aucuns frais de sortie. Tous les prix en dollars canadiens (CAD).",
     "bundle_note": "Tous les paliers incluent Nextcloud et OnlyOffice (ou Collabora). Essayez les outils intégrés de base de Nextcloud -- clavardage, wiki, calendrier, contacts, notes, tâches -- avant d'ajouter des extras ; certains clients les trouvent suffisants.",
     "extras_note": "Ajoutez n'importe quelle application du catalogue éprouvé pour 50 $ / mois par application. Modèle personnalisé (hors catalogue) : 150 $ frais unique. Les modèles éprouvés s'installent sans frais d'installation.",
-    "alacarte_support_note": "Support à-la-carte disponible à 150 $ / heure, facturé par tranches de 30 minutes.",
+    "alacarte_support_note": "Support à-la-carte disponible -- voir la grille tarifaire selon l'heure d'intervention ci-dessous.",
     "tiers": {
       "base": {
         "name": "Installation initiale",
@@ -392,16 +392,78 @@
       "privacy_title": "Lois sur la vie privée intégrées",
       "privacy_body": "Conçu pour la Loi 25 et la LPRPDE. Architecturé pour la résidence et la portabilité de type RGPD."
     },
+    "scope": {
+      "title": "Ce qui est inclus et ce qui ne l'est pas",
+      "intro": "Le forfait mensuel couvre la Suite Catena que nous opérons pour vous. Pour le matériel sur place ou les outils que nous n'hébergeons pas, vous avez besoin d'un technicien local -- nous pouvons vous référer.",
+      "included_title": "Inclus dans le forfait",
+      "included": [
+        "Toutes les apps de votre Suite Catena (Nextcloud, EspoCRM, Cal.com, etc.)",
+        "Mises à jour de sécurité et de versions",
+        "Sauvegardes et restauration",
+        "Surveillance et alertes",
+        "Ajout / retrait d'utilisateurs",
+        "Petites modifications au site web (< 1h / mois)",
+        "Réponse aux incidents selon le SLA du palier"
+      ],
+      "not_included_title": "Non inclus",
+      "not_included": [
+        "Postes de travail, portables, imprimantes",
+        "Microsoft 365, Google Workspace (que nous n'hébergeons pas)",
+        "Téléphonie, équipement réseau du bureau",
+        "Migration de données (devis séparé -- voir ci-dessous)",
+        "Nouvelles fonctionnalités ou nouvelles apps (devis projet)",
+        "Refonte du site web (devis projet)",
+        "Support aux logiciels-clients (Word, Excel, etc.)",
+        "Formation d'équipe (devis séparé)"
+      ]
+    },
+    "alacarte": {
+      "title": "Heures hors forfait",
+      "intro": "Pour le travail qui sort de votre forfait mensuel mais qui touche à votre Suite Catena. Facturé au quart d'heure, minimum 15 minutes.",
+      "rate_day_label": "Jour (7h-17h, lun-ven)",
+      "rate_day_price": "150 $ / h",
+      "rate_evening_label": "Soir (17h-22h lun-ven + weekend jour)",
+      "rate_evening_price": "225 $ / h (1.5×)",
+      "rate_night_label": "Nuit (22h-7h) + jours fériés",
+      "rate_night_price": "300 $ / h (2×)",
+      "projects_note": "Les nouvelles fonctionnalités, nouvelles apps et refontes sont quotées séparément à prix fixe avant le démarrage."
+    },
+    "migration": {
+      "title": "Migration de données",
+      "intro": "Vous quittez Microsoft 365, Google Workspace, Dropbox, HubSpot ou un autre outil? Nous bâtissons la passerelle.",
+      "body": "Évaluée individuellement selon volume et complexité. Devis fixe après une discovery de 1-2h (incluse, sans engagement). Range historique : 500 $ à 5 000 $+. Couvre la bascule DNS / MX, les imports IMAP via imapsync, rclone pour les fichiers, les exports CSV / API pour le CRM, le mapping de schéma et la vérification post-migration."
+    },
+    "compliance": {
+      "title": "Conformité Loi 25",
+      "intro": "La Suite Catena est conforme Loi 25 au niveau infrastructure : résidence canadienne, sous-traitants documentés, sauvegardes immuables, MFA, chiffrement, journalisation.",
+      "body": "Pour le volet documentaire (EFVP, registres, politiques, runbook d'incident, audit), nous offrons un accompagnement séparé. Nous ne vous remplaçons pas comme responsable de la protection des renseignements personnels -- Loi 25 exige que ce soit une personne à l'interne de votre organisation. Nous fournissons l'infrastructure technique et la documentation que votre responsable peut adopter et signer.",
+      "build_notice": "Forfaits d'audit et de documentation Loi 25 en construction (revue juridique en cours). Parlez-nous pour réserver une place ou discuter de votre situation."
+    },
     "addons": {
       "title": "Modules complémentaires",
       "intro": "Services optionnels facturés avec votre forfait mensuel.",
       "website": {
         "name": "Site web d'entreprise",
-        "description": "Site web multi-pages performant pour votre entreprise, déployé comme application sur le même serveur que le reste de votre suite. Options groupées:",
-        "bundle_5": "Forfait 5 pages (accueil / services / équipe / contact / mentions légales): installation unique, puis un petit ajout mensuel à votre forfait.",
-        "bundle_10": "Forfait 10 pages: même structure, plus de profondeur. Les frais s'ajustent modestement.",
-        "extra": "Par page supplémentaire : contenu et design devisés à l'admission. Une retouche stylistique d'une page existante n'est pas une page supplémentaire.",
-        "note": "Sites e-commerce non inclus. Détails des tarifs sur demande -- la portée du forfait et la profondeur du contenu déterminent le devis. Contactez-nous."
+        "description": "Site web multi-pages performant, déployé comme application sur le même serveur que le reste de votre Suite Catena. Tarification claire et itemisée :",
+        "base_label": "Site de base (5 pages, EN ou FR)",
+        "base_price": "2 000 $",
+        "bilingual_label": "Bilinguisme (EN + FR)",
+        "bilingual_price": "+100 $ / page",
+        "extra_page_label": "Page additionnelle (au-delà des 5)",
+        "extra_page_price": "+500 $ / page",
+        "embeds_label": "Embeds standards (Cal.com, formulaire EspoCRM, etc.)",
+        "embeds_price": "inclus -- copier-coller",
+        "examples_title": "Exemples",
+        "examples": [
+          "5 pages, EN seulement : 2 000 $",
+          "5 pages bilingues : 2 500 $",
+          "8 pages bilingues : 4 300 $",
+          "10 pages bilingues : 5 500 $"
+        ],
+        "financing": "Paiement comptant OU étalé sur 6 versements mensuels combinés à votre forfait mensuel (l'étalement n'est offert qu'aux clients sous forfait actif, minimum 6 mois).",
+        "scope_note": "Les intégrations custom (UI sur mesure, workflows bespoke) sont des projets distincts -- voir Heures hors forfait pour le tarif horaire, ou demandez un devis projet.",
+        "note": "Sites e-commerce non inclus. Pour un site cabinet plus profond (10+ pages bilingues + design sur mesure), parlez-nous-en.",
+        "link_label": "Voir la page Site web"
       }
     }
   },
@@ -411,7 +473,7 @@
   },
   "comparison": {
     "title": "Comparaison",
-    "intro": "Lecture honnête de la place de catena par rapport aux alternatives que les PME évaluent. L'axe dominant est la souveraineté : qui possède les données, l'infrastructure, les clés.",
+    "intro": "Lecture honnête de la place de Catena par rapport aux alternatives que les PME évaluent. L'axe dominant est la souveraineté : qui possède les données, l'infrastructure, les clés.",
     "cols": {
       "catena": "Catena",
       "saas": "SaaS (M365 / Google)",
@@ -486,7 +548,7 @@
   },
   "contact": {
     "title": "Contact",
-    "intro": "Le moyen le plus rapide est un appel découverte de 30 minutes. Nous ne vendons rien lors d'un premier contact -- nous posons des questions et déterminons ensemble si catena correspond à votre situation.",
+    "intro": "Le moyen le plus rapide est un appel découverte de 30 minutes. Nous ne vendons rien lors d'un premier contact -- nous posons des questions et déterminons ensemble si Catena correspond à votre situation.",
     "discovery_title": "Appel découverte",
     "discovery_body": "Trente minutes, sans engagement. Nous écoutons, vous décidez si quelque chose correspond à votre situation. Apportez des questions, pas un cahier des charges.",
     "discovery_link_label": "Réserver un appel découverte",
@@ -512,8 +574,8 @@
     "title": "Foire aux questions",
     "intro": "Les questions que les prospects posent le plus souvent avant de prendre un appel découverte. Réponses courtes ; les versions longues vivent sur À propos / Tarifs / Comparaison.",
     "q1": {
-      "question": "Catena tourne-t-il sur catena ?",
-      "answer": "Même suite. Même opérateur. En production depuis le lancement. catena.run, la documentation à /docs, le portail client, les vérifications externes des services client, le traitement des paiements et la facturation tournent tous sur la suite que nous vendons. Toute la surface de revenu est sur le produit. Manger sa propre nourriture est notre garantie."
+      "question": "Catena tourne-t-elle sur la Suite Catena ?",
+      "answer": "Même suite. Même opérateur. En production depuis le lancement. catena.run, la documentation à /docs, le portail client, les vérifications externes des services client, le traitement des paiements et la facturation tournent tous sur la Suite Catena que nous vendons. Toute la surface de revenu est sur le produit. Manger sa propre nourriture est notre garantie."
     },
     "q2": {
       "question": "Que puis-je faire tourner d'autre sur la suite ?",
@@ -562,9 +624,9 @@
   },
   "about": {
     "title": "À propos",
-    "intro": "Un seul opérateur derrière catena. Voici ce que ça veut dire concrètement.",
+    "intro": "Catena est dirigée par un seul opérateur, Marc-Antoine Lalonde. Voici ce que ça veut dire concrètement.",
     "story_title": "Bref parcours",
-    "story_body": "Treize ans de leadership technique en logiciel et en infrastructure. Cinq ans en solo, à bâtir et opérer les suites de mes propres entreprises. Catena est ce que je fais de mieux et que j'aime le plus: choisir les bons outils, connaître leurs modes de défaillance, et les opérer de bout en bout. Basé au Québec; livraison bilingue.",
+    "story_body": "Treize ans de leadership technique en logiciel et en infrastructure. Cinq ans en solo, à bâtir et opérer les suites de mes propres entreprises. Catena est ce que je fais de mieux et que j'aime le plus: choisir les bons outils, connaître leurs modes de défaillance, et les opérer de bout en bout sur la Suite Catena. Basé au Québec; livraison bilingue.",
     "bring_title": "Ce que j'apporte",
     "bring_judgment_title": "Jugement dans le choix d'outils",
     "bring_judgment_body": "Choisir les outils n'est pas la partie banalisée de ce travail. Savoir quels projets libres sont en santé, lesquels seront maintenus, et lesquels casseront silencieusement dans deux ans -- c'est le facteur différenciant.",
@@ -580,7 +642,7 @@
     "work_continuity_title": "Si je suis frappé par un autobus",
     "work_continuity_body": "Rien dans votre suite n'est fermé ou propriétaire à moi. Toute la pile est libre et portable d'un opérateur à l'autre ; un autre opérateur compétent peut reprendre votre suite avec la même automatisation.",
     "accountability_title": "Responsabilité",
-    "accountability_body": "Votre facture porte un nom, pas une raison sociale.",
+    "accountability_body": "Le fondateur est nommé sur cette page. Vous savez exactement à qui parler quand quelque chose doit être réglé. La facture est émise par Catena (l'entreprise), mais la personne derrière n'est jamais à plusieurs degrés de séparation de votre dossier.",
     "portfolio_link_label": "Parcours et portfolio",
     "portfolio_link_url": "https://ma-lalonde.dev"
   },
@@ -592,7 +654,7 @@
     "dont_title": "Ce que nous ne faisons pas",
     "dont_body": "Nous ne vendons pas, ne louons pas, ne partageons pas vos données. Nous n'entraînons pas de modèles d'IA dessus. Nous ne les analysons pas à des fins publicitaires. Nous n'utilisons pas de traceurs tiers sur le site marketing ni sur le portail.",
     "where_title": "Où vivent les données",
-    "where_body": "Les données de votre suite vivent sur le serveur qui vous appartient, dans le seau S3 qui vous appartient et dans les comptes tiers que vous avez vous-mêmes choisis (Cloudflare, Tailscale, votre fournisseur de serveur, votre fournisseur SMTP, etc.). Le portail lui-même tourne sur une infrastructure en juridiction canadienne et est hébergé sur catena -- le même produit que nous vendons.",
+    "where_body": "Les données de votre suite vivent sur le serveur qui vous appartient, dans le seau S3 qui vous appartient et dans les comptes tiers que vous avez vous-mêmes choisis (Cloudflare, Tailscale, votre fournisseur de serveur, votre fournisseur SMTP, etc.). Le portail lui-même tourne sur une infrastructure en juridiction canadienne et est hébergé sur la Suite Catena -- le même produit que nous vendons.",
     "subprocessors_title": "Sous-traitants",
     "subprocessors_body": "Stripe (traitement des paiements). Cloudflare (Tunnel + bordure pour catena.run et le portail). Keycloak (identité, sur notre infrastructure). Les fournisseurs que vous avez vous-mêmes choisis pour votre suite (nommés dans votre lettre de mandat).",
     "rights_title": "Vos droits",
@@ -604,7 +666,7 @@
   },
   "terms": {
     "title": "Conditions d'utilisation",
-    "intro": "Ces conditions encadrent la relation entre catena (l'opérateur) et vous (le client). Elles sont volontairement concises -- la lettre de mandat signée à l'inscription est le contrat de référence ; cette page en résume les engagements principaux.",
+    "intro": "Ces conditions encadrent la relation entre Catena (l'opérateur) et vous (le client). Elles sont volontairement concises -- la lettre de mandat signée à l'inscription est le contrat de référence ; cette page en résume les engagements principaux.",
     "review_notice": "Cette page est un brouillon en attente de révision juridique. Parlez-nous directement pour les conditions contractuelles dans votre lettre de mandat.",
     "scope_title": "Portée du service",
     "scope_body": "Le palier tarifaire que vous avez acheté définit ce qui est inclus. Voir la <a href='/pricing'>page Tarifs</a> pour l'échelle publique. Les changements de portée (ajout ou retrait de services, changement de palier d'employés) sont convenus par écrit.",
@@ -626,10 +688,10 @@
     "law_body": "Québec, Canada. Les litiges relèvent des tribunaux du district judiciaire de Montréal."
   },
   "portal": {
-    "signin_title": "Portail catena",
+    "signin_title": "Portail Catena",
     "signin_body": "Connectez-vous avec le compte Keycloak que votre opérateur a créé pour vous. Nouveau ? Demandez une invitation à votre opérateur.",
     "signin_button": "Se connecter avec Keycloak",
-    "shell_brand": "catena",
+    "shell_brand": "Catena",
     "nav_dashboard": "Tableau de bord",
     "nav_installation": "Installation",
     "nav_order": "Commande",
@@ -645,7 +707,7 @@
     "list": {
       "provider_accounts": {
         "title": "Créer vos comptes fournisseurs",
-        "summary": "Cloudflare, Tailscale, OVH, eazybackup, SMTP -- une marche à suivre en une passe pour les cinq comptes externes qu'un déploiement catena typique requiert."
+        "summary": "Cloudflare, Tailscale, OVH, eazybackup, SMTP -- une marche à suivre en une passe pour les cinq comptes externes qu'un déploiement Suite Catena typique requiert."
       },
       "dns_hardening": {
         "title": "Durcir votre DNS avec blocage et filtrage",

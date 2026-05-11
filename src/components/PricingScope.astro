@@ -1,0 +1,165 @@
+---
+import { t, tArray } from "@catena/i18n";
+
+interface Props {
+  locale: "en" | "fr";
+}
+const { locale } = Astro.props;
+
+const included = tArray(locale, "common.pricing.scope.included");
+const notIncluded = tArray(locale, "common.pricing.scope.not_included");
+---
+<section id="scope" class="scope">
+  <div class="container">
+    <h2>{t(locale, "common.pricing.scope.title")}</h2>
+    <p class="muted lead">{t(locale, "common.pricing.scope.intro")}</p>
+    <div class="grid">
+      <article class="card good">
+        <h3>{t(locale, "common.pricing.scope.included_title")}</h3>
+        <ul>
+          {included.map((line) => <li>{line}</li>)}
+        </ul>
+      </article>
+      <article class="card bad">
+        <h3>{t(locale, "common.pricing.scope.not_included_title")}</h3>
+        <ul>
+          {notIncluded.map((line) => <li>{line}</li>)}
+        </ul>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section id="alacarte" class="alacarte">
+  <div class="container">
+    <h2>{t(locale, "common.pricing.alacarte.title")}</h2>
+    <p class="muted lead">{t(locale, "common.pricing.alacarte.intro")}</p>
+    <div class="rates">
+      <article class="rate">
+        <h3>{t(locale, "common.pricing.alacarte.rate_day_label")}</h3>
+        <p class="price"><span class="amount">{t(locale, "common.pricing.alacarte.rate_day_price")}</span></p>
+      </article>
+      <article class="rate">
+        <h3>{t(locale, "common.pricing.alacarte.rate_evening_label")}</h3>
+        <p class="price"><span class="amount">{t(locale, "common.pricing.alacarte.rate_evening_price")}</span></p>
+      </article>
+      <article class="rate">
+        <h3>{t(locale, "common.pricing.alacarte.rate_night_label")}</h3>
+        <p class="price"><span class="amount">{t(locale, "common.pricing.alacarte.rate_night_price")}</span></p>
+      </article>
+    </div>
+    <p class="muted note">{t(locale, "common.pricing.alacarte.projects_note")}</p>
+  </div>
+</section>
+
+<section id="migration" class="single-panel">
+  <div class="container">
+    <h2>{t(locale, "common.pricing.migration.title")}</h2>
+    <p class="muted lead">{t(locale, "common.pricing.migration.intro")}</p>
+    <article class="card">
+      <p>{t(locale, "common.pricing.migration.body")}</p>
+    </article>
+  </div>
+</section>
+
+<section id="compliance" class="single-panel compliance">
+  <div class="container">
+    <h2>{t(locale, "common.pricing.compliance.title")}</h2>
+    <p class="muted lead">{t(locale, "common.pricing.compliance.intro")}</p>
+    <article class="card">
+      <p>{t(locale, "common.pricing.compliance.body")}</p>
+      <p class="notice"><strong>{t(locale, "common.pricing.compliance.build_notice")}</strong></p>
+    </article>
+  </div>
+</section>
+
+<style>
+  .scope, .alacarte, .single-panel {
+    padding: var(--catena-space-16) 0;
+  }
+  .scope {
+    background: var(--catena-surface-bg);
+  }
+  .alacarte {
+    background: var(--catena-surface-bg-muted);
+  }
+  .single-panel {
+    background: var(--catena-surface-bg);
+  }
+  .single-panel + .single-panel {
+    background: var(--catena-surface-bg-muted);
+  }
+  .lead {
+    margin-bottom: var(--catena-space-8);
+    max-width: 56rem;
+  }
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: var(--catena-space-6);
+  }
+  .card {
+    padding: var(--catena-space-8);
+    border: 1px solid var(--catena-surface-border);
+    border-radius: var(--catena-radius-lg);
+    background: var(--catena-surface-bg);
+  }
+  .card.good { border-left: 4px solid var(--catena-accent); }
+  .card.bad  { border-left: 4px solid var(--catena-surface-fg-muted); }
+  .card h3 {
+    margin: 0 0 var(--catena-space-4) 0;
+    font-size: var(--catena-fs-lg);
+  }
+  .card ul {
+    margin: 0;
+    padding-left: var(--catena-space-6);
+  }
+  .card li {
+    margin-bottom: var(--catena-space-2);
+    line-height: var(--catena-lh-relaxed);
+  }
+  .card p {
+    margin: 0 0 var(--catena-space-3) 0;
+    line-height: var(--catena-lh-relaxed);
+  }
+  .card p:last-child { margin-bottom: 0; }
+  .rates {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: var(--catena-space-4);
+    margin-bottom: var(--catena-space-6);
+  }
+  .rate {
+    padding: var(--catena-space-6);
+    border: 1px solid var(--catena-surface-border);
+    border-radius: var(--catena-radius-lg);
+    background: var(--catena-surface-bg);
+    text-align: center;
+  }
+  .rate h3 {
+    font-size: var(--catena-fs-sm);
+    margin: 0 0 var(--catena-space-3) 0;
+    color: var(--catena-surface-fg-muted);
+    font-weight: var(--catena-fw-normal);
+  }
+  .price { margin: 0; }
+  .amount {
+    font-size: var(--catena-fs-2xl);
+    font-weight: var(--catena-fw-semibold);
+  }
+  .note {
+    font-size: var(--catena-fs-sm);
+    text-align: center;
+  }
+  .compliance .notice {
+    margin-top: var(--catena-space-4);
+    padding: var(--catena-space-4);
+    border-radius: var(--catena-radius-md);
+    background: color-mix(in srgb, var(--catena-accent) 8%, transparent);
+    color: var(--catena-surface-fg);
+  }
+  @media (max-width: 767px) {
+    .grid { grid-template-columns: 1fr; }
+    .rates { grid-template-columns: 1fr; }
+  }
+</style>
