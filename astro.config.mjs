@@ -25,6 +25,20 @@ export default defineConfig({
       prefixDefaultLocale: false,
     },
   },
+  // Guides moved from /guides/ (marketing) to /docs/guides/ (knowledge
+  // base) in May 2026. Preserve external links and SEO juice with
+  // static redirects emitted at build time as <meta http-equiv="refresh">
+  // HTML stubs.
+  redirects: {
+    "/guides":                            "/docs/guides/email-providers/",
+    "/guides/fournisseurs-courriel":      "/docs/guides/email-providers/",
+    "/guides/comptes-fournisseurs":       "/docs/guides/provider-accounts/",
+    "/guides/dns-durci":                  "/docs/guides/dns-hardening/",
+    "/en/guides":                         "/docs/en/guides/email-providers/",
+    "/en/guides/email-providers":         "/docs/en/guides/email-providers/",
+    "/en/guides/provider-accounts":       "/docs/en/guides/provider-accounts/",
+    "/en/guides/dns-hardening":           "/docs/en/guides/dns-hardening/",
+  },
   integrations: [
     icon(),
     sitemap({

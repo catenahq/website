@@ -7,7 +7,6 @@
     "features": "Features",
     "pricing": "Pricing",
     "comparison": "Comparison",
-    "guides": "Guides",
     "about": "About",
     "docs": "Docs",
     "portal": "Client portal",
@@ -848,24 +847,5 @@
     "cta_body": "The fastest way is a 30-minute discovery call. No pitch, no commitment.",
     "cta_primary": "Book a discovery call",
     "cta_secondary": "See all pricing"
-  },
-  "guides": {
-    "title": "Guides",
-    "intro": "Practical walkthroughs for getting set up: provider account creation, key minting, security hardening, day-to-day operations.",
-    "read_label": "Read the guide",
-    "list": {
-      "provider_accounts": {
-        "title": "Create your provider accounts",
-        "summary": "Cloudflare, Tailscale, OVH, eazybackup, SMTP -- a one-pass walk-through of the five external accounts a typical Catena Suite deployment needs."
-      },
-      "dns_hardening": {
-        "title": "Harden your DNS with blocking and filtering",
-        "summary": "Cloudflare Gateway plus DNS-level category filtering for a small business: block malware, phishing, and adult content for every device on your network."
-      },
-      "email_providers": {
-        "title": "Choose your email provider",
-        "summary": "Compare the six recommended email providers (Migadu, Mailbox.org, Hostpoint, Infomaniak, OVH Pro Mail, Mailfence) and pick the one that fits your jurisdiction, language, and team size."
-      }
-    }
   }
 }

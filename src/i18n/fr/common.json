@@ -7,7 +7,6 @@
     "features": "Fonctionnalités",
     "pricing": "Tarifs",
     "comparison": "Comparaison",
-    "guides": "Guides",
     "about": "À propos",
     "docs": "Documentation",
     "portal": "Portail client",
@@ -848,24 +847,5 @@
     "cta_body": "Le plus rapide est un appel découverte de 30 minutes. Pas de pitch, pas d'engagement.",
     "cta_primary": "Réserver un appel découverte",
     "cta_secondary": "Voir tous les tarifs"
-  },
-  "guides": {
-    "title": "Guides",
-    "intro": "Marches à suivre pratiques pour la mise en place : création de comptes fournisseurs, génération de clés, durcissement de la sécurité, opérations courantes.",
-    "read_label": "Lire le guide",
-    "list": {
-      "provider_accounts": {
-        "title": "Créer vos comptes fournisseurs",
-        "summary": "Cloudflare, Tailscale, OVH, eazybackup, SMTP -- une marche à suivre en une passe pour les cinq comptes externes qu'un déploiement Suite Catena typique requiert."
-      },
-      "dns_hardening": {
-        "title": "Durcir votre DNS avec blocage et filtrage",
-        "summary": "Cloudflare Gateway et filtrage DNS par catégorie pour une PME : bloquer maliciels, hameçonnage et contenu adulte sur tous les appareils du réseau."
-      },
-      "email_providers": {
-        "title": "Choisir votre fournisseur de courriel",
-        "summary": "Comparez les six fournisseurs de courriel recommandés (Migadu, Mailbox.org, Hostpoint, Infomaniak, OVH Pro Mail, Mailfence) et choisissez celui qui correspond à votre juridiction, votre langue et la taille de votre équipe."
-      }
-    }
   }
 }
