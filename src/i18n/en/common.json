@@ -746,8 +746,6 @@
     "work_cadence_body": "Quarterly review call. Monthly summary email of what was bumped, restored, and validated on your suite. Managed backup-restore drills and the report lands in your inbox.",
     "work_continuity_title": "In case of unforeseen event",
     "work_continuity_body": "Nothing in your suite is closed-source or proprietary to me. The whole stack is open-source and operator-portable; another competent operator can pick up your suite using the same automation.",
-    "accountability_title": "Accountability",
-    "accountability_body": "The founder is named on this page. You know exactly who to talk to when something needs to be fixed. The invoice is from Catena (the company), but the person behind it is never several layers away from your account.",
     "portfolio_link_label": "Longer history / portfolio",
     "portfolio_link_url": "https://ma-lalonde.dev"
   },

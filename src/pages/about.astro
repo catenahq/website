@@ -62,12 +62,6 @@ const workPoints = ["response", "cadence", "continuity"];
       </ul>
     </div>
   </section>
-  <section class="accountability">
-    <div class="container">
-      <h2>{t(locale, "common.about.accountability_title")}</h2>
-      <p class="quote">{t(locale, "common.about.accountability_body")}</p>
-    </div>
-  </section>
   <CTA locale={locale} />
 </Base>
 
@@ -133,16 +127,6 @@ const workPoints = ["response", "cadence", "continuity"];
     margin: 0;
     line-height: var(--catena-lh-relaxed);
   }
-  .accountability {
-    padding: var(--catena-space-16) 0;
-    text-align: center;
-  }
-  .quote {
-    font-size: var(--catena-fs-2xl);
-    font-style: italic;
-    margin: var(--catena-space-6) 0 0 0;
-    color: var(--catena-surface-fg);
-  }
   @media (max-width: 1023px) {
     .cards {
       grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -154,9 +138,6 @@ const workPoints = ["response", "cadence", "continuity"];
     }
     .cards {
       grid-template-columns: 1fr;
-    }
-    .quote {
-      font-size: var(--catena-fs-lg);
     }
   }
 </style>
