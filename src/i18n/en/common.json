@@ -334,7 +334,7 @@
           "Nextcloud + OnlyOffice (or Collabora) ready to go",
           "Software suite provisioning via the client portal",
           "You provide Cloudflare, Tailscale, server, S3, SMTP credentials",
-          "No included support; à-la-carte at $150 / hour"
+          "No included support."
         ]
       },
       "assisted": {
@@ -345,7 +345,7 @@
         "features": [
           "Everything in Base",
           "60-minute call to set up Cloudflare, Tailscale, OVH, eazybackup, SMTP",
-          "No included support; à-la-carte at $150 / hour"
+          "No included support."
         ]
       },
       "small": {
@@ -355,6 +355,7 @@
         "tagline": "Up to 10 employees.",
         "features": [
           "Nextcloud + OnlyOffice (or Collabora) ready to go",
+          "2 applications of your choice",
           "Install included; managed updates and CVE patching",
           "2 hours of non-deferrable support per month",
           "Email onboarding included",
@@ -368,7 +369,9 @@
         "tagline": "Up to 25 employees.",
         "features": [
           "Everything in Small business",
-          "5 hours of non-deferrable support per month"
+          "+2 (total 4) applications of your choice",
+          "+3 (total 5) hours of non-deferrable support per month",
+          "6-month minimum commitment"
         ]
       },
       "large": {
@@ -378,7 +381,9 @@
         "tagline": "Up to 50 employees.",
         "features": [
           "Everything in Medium business",
-          "10 hours of non-deferrable support per month"
+          "+4 (total 10) applications of your choice",
+          "+5 (total 10) hours of non-deferrable support per month",
+          "6-month minimum commitment"
         ]
       }
     },
@@ -648,10 +653,10 @@
     "bring_ownership_body": "From provisioning to backups to migration to handover, one set of unified tools. No excuses, no deferral, only accountability.",
     "work_title": "How I work",
     "work_response_title": "Response time",
-    "work_response_body": "Standard tier: one business day. Urgent (production down): same-day. Basic set of \"panic buttons\" in your server so you can take over if I am unavailable.",
+    "work_response_body": "Standard tier: 4 business hours. Emergency service available. Basic set of \"panic buttons\" in your server so you can take over in the meantime.",
     "work_cadence_title": "Cadence",
     "work_cadence_body": "Quarterly review call. Monthly summary email of what was bumped, restored, and validated on your suite. Managed backup-restore drills and the report lands in your inbox.",
-    "work_continuity_title": "If I get hit by a bus",
+    "work_continuity_title": "In case of unforeseen event",
     "work_continuity_body": "Nothing in your suite is closed-source or proprietary to me. The whole stack is open-source and operator-portable; another competent operator can pick up your suite using the same automation.",
     "accountability_title": "Accountability",
     "accountability_body": "The founder is named on this page. You know exactly who to talk to when something needs to be fixed. The invoice is from Catena (the company), but the person behind it is never several layers away from your account.",

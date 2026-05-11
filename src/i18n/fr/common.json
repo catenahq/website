@@ -334,7 +334,7 @@
           "Nextcloud + OnlyOffice (ou Collabora) prêts à l'emploi",
           "Provisionnement de la suite logicielle via le portail client",
           "Vous fournissez les identifiants Cloudflare, Tailscale, serveur, S3, SMTP",
-          "Aucun support inclus ; à-la-carte à 150 $ / heure"
+          "Aucun support inclus."
         ]
       },
       "assisted": {
@@ -345,7 +345,7 @@
         "features": [
           "Tout ce qui est inclus dans Base",
           "Appel de 60 minutes pour configurer Cloudflare, Tailscale, OVH, eazybackup, SMTP",
-          "Aucun support inclus ; à-la-carte à 150 $ / heure"
+          "Aucun support inclus."
         ]
       },
       "small": {
@@ -355,6 +355,7 @@
         "tagline": "Jusqu'à 10 employés.",
         "features": [
           "Nextcloud + OnlyOffice (ou Collabora) prêts à l'emploi",
+          "2 applications supplémentaires au choix",
           "Installation incluse ; mises à jour gérées et application des correctifs CVE",
           "2 heures de support non reportables par mois",
           "Onboarding courriel inclus",
@@ -368,7 +369,9 @@
         "tagline": "Jusqu'à 25 employés.",
         "features": [
           "Tout ce qui est inclus dans Petite entreprise",
-          "5 heures de support non reportables par mois"
+          "+2 applications (total 4) au choix",
+          "+3 heures (total 5) de support non reportables par mois",
+          "Engagement minimum de 6 mois"
         ]
       },
       "large": {
@@ -378,7 +381,9 @@
         "tagline": "Jusqu'à 50 employés.",
         "features": [
           "Tout ce qui est inclus dans Moyenne entreprise",
-          "10 heures de support non reportables par mois"
+          "+4 (total 10) applications au choix",
+          "+5 (total 10) heures de support non reportables par mois",
+          "Engagement minimum de 6 mois"
         ]
       }
     },
@@ -643,15 +648,15 @@
     "bring_judgment_title": "Jugement dans le choix d'outils",
     "bring_judgment_body": "Choisir les outils n'est pas la partie banalisée de ce travail. Savoir quels projets libres sont en santé, lesquels seront maintenus, et lesquels casseront silencieusement dans deux ans -- c'est le facteur différenciant.",
     "bring_failure_title": "Expertise des modes de défaillance",
-    "bring_failure_body": "Je conçois à rebours depuis les scénarios de récupération. Reprise après sinistre, retours en arrière, migration, déclassement. Le jour où ça casse n'est pas le jour pour apprendre à le réparer.",
+    "bring_failure_body": "Je conçois à partir des scénarios de récupération. Reprise après sinistre, retours en arrière, migration, démantèlement. Le jour où ça casse n'est pas le jour pour apprendre à le réparer.",
     "bring_ownership_title": "Propriété de bout en bout",
     "bring_ownership_body": "Du provisionnement aux sauvegardes à la migration à la remise, un seul ensemble d'outils unifiés. Aucune excuse, aucun report, seulement la responsabilité.",
     "work_title": "Comment je travaille",
     "work_response_title": "Temps de réponse",
-    "work_response_body": "Niveau standard: un jour ouvrable. Urgence (production hors service): le jour même. Un ensemble de boutons d'urgence sur votre serveur pour vous permettre de reprendre la main si je ne suis pas disponible.",
+    "work_response_body": "Niveau standard: 4 heures ouvrables. Disponible pour urgences. Un ensemble de boutons de dépannage est fourni avec votre serveur pour vous permettre de reprendre la main entretemps.",
     "work_cadence_title": "Cadence",
     "work_cadence_body": "Appel de revue trimestrielle. Courriel mensuel résumant ce qui a été mis à jour, restauré, et validé sur votre suite. Les exercices gérés de sauvegarde-restauration et leur rapport arrivent dans votre boîte.",
-    "work_continuity_title": "Si je suis frappé par un autobus",
+    "work_continuity_title": "En cas d'imprévu",
     "work_continuity_body": "Rien dans votre suite n'est fermé ou propriétaire à moi. Toute la pile est libre et portable d'un opérateur à l'autre ; un autre opérateur compétent peut reprendre votre suite avec la même automatisation.",
     "accountability_title": "Responsabilité",
     "accountability_body": "Le fondateur est nommé sur cette page. Vous savez exactement à qui parler quand quelque chose doit être réglé. La facture est émise par Catena (l'entreprise), mais la personne derrière n'est jamais à plusieurs degrés de séparation de votre dossier.",
