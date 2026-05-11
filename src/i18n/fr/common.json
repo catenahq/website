@@ -437,7 +437,7 @@
       "title": "Conformité Loi 25",
       "intro": "La Suite Catena est conforme Loi 25 au niveau infrastructure : résidence canadienne, sous-traitants documentés, sauvegardes immuables, MFA, chiffrement, journalisation.",
       "body": "Pour le volet documentaire (EFVP, registres, politiques, runbook d'incident, audit), nous offrons un accompagnement séparé. Nous ne vous remplaçons pas comme responsable de la protection des renseignements personnels -- Loi 25 exige que ce soit une personne à l'interne de votre organisation. Nous fournissons l'infrastructure technique et la documentation que votre responsable peut adopter et signer.",
-      "build_notice": "Forfaits d'audit et de documentation Loi 25 en construction (revue juridique en cours). Parlez-nous pour réserver une place ou discuter de votre situation."
+      "build_notice": "Forfaits d'audit et de documentation Loi 25 en construction (revue juridique en cours). Voir notre propre application du cadre à /conformite. Parlez-nous pour réserver une place ou discuter de votre situation."
     },
     "addons": {
       "title": "Modules complémentaires",

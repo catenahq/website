@@ -437,7 +437,7 @@
       "title": "Law 25 compliance",
       "intro": "The Catena Suite is Law 25 compliant at the infrastructure level: Canadian residency, documented subprocessors, immutable backups, MFA, encryption, logging.",
       "body": "For the documentation layer (PIA / EFVP, registers, policies, incident runbook, audit), we offer separate compliance enablement. We do not replace your internal privacy officer -- Law 25 requires this to be a person inside your organization. We deliver the technical infrastructure and documentation your privacy officer can adopt and sign.",
-      "build_notice": "Law 25 audit and documentation packages in build (under legal review). Talk to us to reserve a slot or discuss your situation."
+      "build_notice": "Law 25 audit and documentation packages in build (under legal review). See our own application of the framework at /en/conformite. Talk to us to reserve a slot or discuss your situation."
     },
     "addons": {
       "title": "Add-ons",

@@ -1,0 +1,168 @@
+---
+import Base from "../layouts/Base.astro";
+import PageTitle from "../components/PageTitle.astro";
+import { t } from "@catena/i18n";
+
+const locale = "fr";
+
+const subprocessors = [
+  { name: "OVH Hosting Inc.", role: "Calcul (VPS) + stockage chaud S3", residency: "Beauharnois, QC, Canada", risk: "Faible", regime: "Loi 25 + LPRPDE (entité québécoise)" },
+  { name: "eazybackup", role: "Sauvegardes froides immuables (Object Lock)", residency: "Ottawa, ON, Canada", risk: "Faible", regime: "LPRPDE + reciprocité Loi 25 (entité canadienne, certification CGP)" },
+  { name: "Cloudflare, Inc.", role: "CDN + Tunnel ingress + WAF", residency: "Multi (siège US; points YUL/YYZ pour clientèle québécoise)", risk: "Moyen", regime: "DPA + SCCs; ISO 27001/27018, SOC 2; option Data Localization Suite" },
+  { name: "Tailscale Inc.", role: "Plan de contrôle VPN admin", residency: "Toronto, ON, Canada (entité); plan de données pair-à-pair (jamais transité par Tailscale)", risk: "Moyen", regime: "DPA Premium; SOC 2 Type II; clients open-source" },
+  { name: "Stripe Payments Canada Ltd.", role: "Traitement des paiements", residency: "Canada (entité); multi-régions (infrastructure)", risk: "Moyen", regime: "PCI-DSS Niveau 1; DPA + SCCs; SOC 2 Type II; ISO 27001" },
+  { name: "Resend, Inc.", role: "Relais SMTP transactionnel", residency: "États-Unis", risk: "Moyen", regime: "DPA + SCCs; SOC 2 Type II" },
+  { name: "Keycloak", role: "Identité (auto-hébergé sur notre VPS)", residency: "Beauharnois, QC, Canada (avec notre VPS)", risk: "n/a (sous notre opération directe)", regime: "Apache 2.0 software; pas un sous-traitant tiers au sens classique" },
+];
+
+const controls = [
+  { title: "Chiffrement au repos", body: "Volumes LUKS sur le VPS; sauvegardes restic AES-256 avec clé client-side." },
+  { title: "Chiffrement en transit", body: "TLS 1.2+ partout; terminaison à Cloudflare puis re-chiffrement dans le Tunnel." },
+  { title: "Authentification multifacteur", body: "MFA obligatoire pour tous les comptes; Yubikey pour les rôles admin." },
+  { title: "Sauvegardes immuables", body: "Restic vers eazybackup ca-central-1 avec Object Lock + versioning; rétention 5 ans froid, 90 jours chaud." },
+  { title: "Test de restauration trimestriel", body: "Scénario bench `recovery_button_round_trip` exécute la procédure de restauration complète sur un nouveau VPS à chaque trimestre. Rapport interne." },
+  { title: "Aucun port public", body: "Cloudflare Tunnel sortant uniquement; ports 80/443 fermés sur le VPS; accès admin via Tailscale seulement." },
+  { title: "Surveillance 24/7", body: "Gatus probes externes multi-vantage; Healthchecks dead-man sur toutes les tâches planifiées." },
+  { title: "Gestion des secrets", body: "SOPS + age; clé privée hors disque, dans un gestionnaire de mots de passe protégé par clé matérielle." },
+  { title: "Paramètres par défaut confidentialité", body: "Partage par lien désactivé par défaut (Nextcloud); federation désactivée (Rocket.Chat); enregistrements non-publics (EspoCRM); MFA obligatoire (Keycloak)." },
+];
+---
+<Base
+  locale={locale}
+  title="Conformité Loi 25"
+  description="Conformité Loi 25 chez Catena: comment l'opérateur applique le même cadre à lui-même. Sous-traitants documentés, contrôles techniques, registre des incidents, EFVP disponible sur demande. Voici la nôtre."
+>
+  <PageTitle
+    title="Conformité Loi 25"
+    intro="Catena est elle-même une PME québécoise qui détient des renseignements personnels sur ses clients. Elle applique à elle-même le cadre de conformité Loi 25 qu'elle livre aux clients. Voici la nôtre."
+  />
+
+  <section class="intro">
+    <div class="container">
+      <h2>Pourquoi cette page existe</h2>
+      <p>La Loi 25 ne se vend pas comme une promesse. Elle se vend comme un livrable. Cette page documente publiquement notre propre application du cadre que nous offrons aux clients sous forfait Conformité Loi 25 -- pour que vous puissiez juger sur pièces avant d'acheter.</p>
+      <p>La documentation détaillée (l'EFVP complète, les politiques internes, les registres, le runbook d'incident) est tenue à jour à l'interne et disponible sur demande pour les prospects sérieux. <a href="mailto:hello@catena.run">Écrivez-nous</a> pour la recevoir.</p>
+    </div>
+  </section>
+
+  <section class="controls">
+    <div class="container">
+      <h2>Contrôles techniques</h2>
+      <p class="muted">Les mêmes contrôles que nous livrons à chaque client de la Suite Catena s'appliquent à Catena (l'entreprise) elle-même.</p>
+      <ul class="control-list">
+        {controls.map((c) => (
+          <li>
+            <h3>{c.title}</h3>
+            <p>{c.body}</p>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </section>
+
+  <section class="subprocessors">
+    <div class="container">
+      <h2>Sous-traitants</h2>
+      <p class="muted">Liste à jour des sous-traitants impliqués dans le traitement des renseignements personnels que Catena détient. Chacun a fait l'objet d'une évaluation art. 17 LPRPSP (communication hors Québec) le cas échéant.</p>
+      <table>
+        <thead>
+          <tr><th>Sous-traitant</th><th>Rôle</th><th>Résidence</th><th>Risque</th><th>Régime</th></tr>
+        </thead>
+        <tbody>
+          {subprocessors.map((s) => (
+            <tr>
+              <td><strong>{s.name}</strong></td>
+              <td>{s.role}</td>
+              <td>{s.residency}</td>
+              <td>{s.risk}</td>
+              <td>{s.regime}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+      <p class="muted note">Aucun sous-traitant n'est utilisé pour des fins publicitaires, d'entraînement IA, ou de revente de données.</p>
+    </div>
+  </section>
+
+  <section class="registers">
+    <div class="container">
+      <h2>Registres</h2>
+      <p><strong>Registre des incidents de confidentialité</strong>: <em>vide au 2026-05-11</em>. Aucun incident depuis la création de Catena. La copie est tenue à l'interne et disponible sur demande à la CAI.</p>
+      <p><strong>Registre des communications de RP</strong>: <em>uniquement les sous-traitants opérationnels documentés ci-dessus</em>. Aucune communication ponctuelle à des tiers à signaler.</p>
+      <h2>Cycle de revue</h2>
+      <p><strong>Revue annuelle de l'EFVP</strong>: dernière revue 2026-05-11 (initiale). Prochaine revue: 2027-05-11.</p>
+      <p><strong>Revue juridique des templates</strong>: en cours auprès d'un juriste spécialisé en protection de la vie privée au Québec.</p>
+      <p><strong>Test de restauration trimestriel</strong>: bench scenario `recovery_button_round_trip` exécuté à chaque trimestre. Dernier test: voir <a href="/status">la page d'état des services</a>.</p>
+    </div>
+  </section>
+
+  <section class="rpp">
+    <div class="container">
+      <h2>Responsable de la protection des renseignements personnels</h2>
+      <p>Marc-Antoine Lalonde, fondateur de Catena.</p>
+      <p>Courriel : <a href="mailto:privacy@catena.run">privacy@catena.run</a> (ou <a href="mailto:hello@catena.run">hello@catena.run</a> en attendant que la boîte dédiée soit en ligne).</p>
+      <p>Délai de réponse : 30 jours pour toute demande d'accès, rectification, portabilité ou plainte.</p>
+    </div>
+  </section>
+
+  <section class="cta">
+    <div class="container">
+      <h2>Vous évaluez Catena pour votre conformité Loi 25?</h2>
+      <p class="muted">Réservez un appel découverte. Nous discutons de votre situation, des écarts à combler, et de la voie la plus rapide pour vous mettre en conformité -- sans pitch.</p>
+      <a class="btn btn-primary" href="https://app.catena.run/discovery">Réserver un appel découverte</a>
+    </div>
+  </section>
+</Base>
+
+<style>
+  section { padding: var(--catena-space-12) 0; }
+  section:nth-child(even) { background: var(--catena-surface-bg-muted); }
+  h2 { margin-top: 0; margin-bottom: var(--catena-space-4); }
+  .control-list {
+    list-style: none;
+    padding: 0;
+    margin: var(--catena-space-6) 0 0 0;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: var(--catena-space-4);
+  }
+  .control-list li {
+    padding: var(--catena-space-5);
+    border: 1px solid var(--catena-surface-border);
+    border-radius: var(--catena-radius-lg);
+    background: var(--catena-surface-bg);
+  }
+  .control-list h3 {
+    margin: 0 0 var(--catena-space-2) 0;
+    font-size: var(--catena-fs-base);
+  }
+  .control-list p {
+    margin: 0;
+    font-size: var(--catena-fs-sm);
+    line-height: var(--catena-lh-relaxed);
+  }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: var(--catena-space-6);
+    font-size: var(--catena-fs-sm);
+  }
+  th, td {
+    text-align: left;
+    padding: var(--catena-space-3);
+    border-bottom: 1px solid var(--catena-surface-border);
+    line-height: var(--catena-lh-relaxed);
+    vertical-align: top;
+  }
+  th { font-weight: var(--catena-fw-semibold); }
+  .note { margin-top: var(--catena-space-4); }
+  .cta { text-align: center; }
+  .cta a { display: inline-block; margin-top: var(--catena-space-4); }
+  @media (max-width: 1023px) {
+    .control-list { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  }
+  @media (max-width: 639px) {
+    .control-list { grid-template-columns: 1fr; }
+    table { font-size: var(--catena-fs-xs); }
+  }
+</style>
