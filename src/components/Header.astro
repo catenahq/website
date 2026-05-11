@@ -1,5 +1,6 @@
 ---
 import { t } from "@catena/i18n";
+import { translateSubpath } from "../lib/slug-map";
 
 interface Props {
   locale: "en" | "fr";
@@ -7,25 +8,21 @@ interface Props {
 
 const { locale } = Astro.props;
 const prefix = locale === "fr" ? "" : "/en";
-const altLocale = locale === "fr" ? "en" : "fr";
+const altLocale: "en" | "fr" = locale === "fr" ? "en" : "fr";
 
-// Language switcher: preserve the current page when toggling locales.
-// FR -> EN: prepend /en to the current path. EN -> FR: strip the /en
-// prefix. The hash (anchor section) is preserved client-side via the
-// browser's default link behavior on same-document navigation; for a
-// full route swap, we forward window.location.hash on click.
+// Language switcher: preserve the current page when toggling locales,
+// translating asymmetric slugs (e.g. /en/guides/email-providers <->
+// /guides/fournisseurs-courriel) via the slug-map table.
 const currentPath = Astro.url.pathname;
-let altPath: string;
-if (altLocale === "en") {
-  altPath = currentPath === "/" ? "/en/" : `/en${currentPath}`;
-} else {
-  const stripped = currentPath.replace(/^\/en(\/|$)/, "/");
-  altPath = stripped || "/";
-}
-// Docs is a sub-build of this site (apps/docs at base="/docs"). The
-// docs project keeps its own defaultLocale=en (EN at /docs/, FR at
-// /docs/fr/) -- only the marketing site flipped to FR-default.
-const docsHref = locale === "en" ? "/docs/" : "/docs/fr/";
+const subpath = currentPath.replace(/^\/en(\/|$)/, "/").replace(/^\/+/, "");
+const translated = translateSubpath(subpath, locale, altLocale);
+const altPath = altLocale === "en"
+  ? (translated === "" ? "/en/" : `/en/${translated}`)
+  : (translated === "" ? "/" : `/${translated}`);
+// Docs is a sub-build of this site (apps/docs at base="/docs"). Both
+// marketing + docs run defaultLocale=fr, so FR lives at /docs/ and
+// EN lives at /docs/en/.
+const docsHref = locale === "en" ? "/docs/en/" : "/docs/";
 ---
 <header class="site-header">
   <div class="container header-row">
