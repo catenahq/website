@@ -1,0 +1,63 @@
+---
+import Base from "../../layouts/Base.astro";
+import PageTitle from "../../components/PageTitle.astro";
+import { t } from "@catena/i18n";
+
+const locale = "en";
+const statusUrl = "https://status.catena.run";
+---
+<Base
+  locale={locale}
+  title="Service status"
+  description="Real-time status of Catena services (catena.run, the client portal, the docs, the billing API). Uptime probed 24/7 by Gatus, on a host separate from the application server. If the main site goes down, this page stays up."
+>
+  <PageTitle
+    title="Service status"
+    intro="Public uptime of Catena services. Refreshed minute-by-minute by Gatus."
+  />
+
+  <section class="status-info">
+    <div class="container">
+      <h2>What you see here</h2>
+      <p>This page shows real-time status of the services Catena operates for ourselves -- the marketing site (<a href="https://catena.run">catena.run</a>), the docs (<a href="https://docs.catena.run">docs.catena.run</a>), the client portal (<a href="https://app.catena.run">app.catena.run</a>), and the billing API.</p>
+      <p>Gatus probes run on a host separate from the one serving the apps, so this page stays consultable even if a primary service goes down. Any outage hitting Catena infrastructure is publicly visible; we can't hide it.</p>
+      <p>For clients on a retainer, uptime tracking for your own Catena Suite is in your client portal at <a href="https://app.catena.run">app.catena.run</a> (Monitoring section). SLA thresholds depend on your tier (Small: best-effort; Medium / Large: 99.5%).</p>
+      <h2>Gatus dashboard</h2>
+      <p class="muted">Embed coming once Gatus is publicly exposed at <code>{statusUrl}</code>. In the meantime, email <a href="mailto:hello@catena.run">hello@catena.run</a> or <a href="/en/contact">book a call</a> if you suspect an outage.</p>
+      <div class="placeholder">
+        <p class="muted"><strong>Status: in build.</strong> The public Gatus dashboard will be embedded here in the next iteration. The internal Gatus instance is already running and powering operator alerts.</p>
+      </div>
+    </div>
+  </section>
+</Base>
+
+<style>
+  .status-info {
+    padding: var(--catena-space-16) 0;
+  }
+  .status-info h2 {
+    margin-top: var(--catena-space-8);
+    margin-bottom: var(--catena-space-3);
+  }
+  .status-info h2:first-child { margin-top: 0; }
+  .status-info p {
+    line-height: var(--catena-lh-relaxed);
+    margin-bottom: var(--catena-space-4);
+    max-width: 56rem;
+  }
+  .placeholder {
+    margin-top: var(--catena-space-6);
+    padding: var(--catena-space-6);
+    border: 1px dashed var(--catena-surface-border);
+    border-radius: var(--catena-radius-lg);
+    background: var(--catena-surface-bg-muted);
+  }
+  .placeholder p { margin: 0; }
+  code {
+    font-family: var(--catena-ff-mono);
+    font-size: var(--catena-fs-sm);
+    padding: 0 var(--catena-space-1);
+    background: var(--catena-surface-bg-muted);
+    border-radius: var(--catena-radius-sm);
+  }
+</style>
