@@ -41,12 +41,12 @@
   "home": {
     "hero": {
       "headline": "Catena. Managed IT services for Quebec SMBs.",
-      "subheadline": "Independent MSP. We run your IT infrastructure -- email, files, CRM, backups -- on the Catena Suite. Law 25 compliant. No dependency on the American giants.",
-      "proof": "Sovereign open-source software. Immutable backups, Canada-resident. Law 25 documentation included. Migration guaranteed, no lock-in. You own the server, the domain, the backups, the data."
+      "subheadline": "Independent MSP; we run your IT infrastructure -- emails, files, CRM, backups -- on our Catena Suite. Law 25 and PIPEDA compliant, without dependency on the American giants.",
+      "proof": "Sovereign open-source software. Immutable backups, Canada-resident. Migration guaranteed, no lock-in. You own the server, the domain, the backups, the data."
     },
     "dogfood": {
-      "title": "We're our own first client.",
-      "body": "Everything you see -- this site, the docs, the client portal, billing, our incident dashboards -- runs on the same Catena Suite we sell. If it breaks, we are the first to know."
+      "title": "We're our first client.",
+      "body": "Everything you see -- this site, the docs, the client portal, billing, our incident dashboards -- runs on the same Catena Suite we sell. Every update you install has run on our own deployment first."
     },
     "sovereignty": {
       "title": "Sovereignty, in plain language",

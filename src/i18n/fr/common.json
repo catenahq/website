@@ -41,12 +41,12 @@
   "home": {
     "hero": {
       "headline": "Catena. Services TI gérés pour PME québécoises.",
-      "subheadline": "MSP indépendant. Nous gérons votre infrastructure IT -- courriel, fichiers, CRM, sauvegardes -- sur la Suite Catena. Conforme Loi 25. Sans dépendance aux géants américains.",
-      "proof": "Logiciels libres souverains. Sauvegardes immuables au Canada. Documentation Loi 25 incluse. Migration garantie sans verrou. Vous possédez le serveur, le domaine, les sauvegardes, les données."
+      "subheadline": "MSP indépendant; nous gérons votre infrastructure TI -- courriels, fichiers, CRM, sauvegardes -- sur notre Suite Catena. Conforme à la Loi 25 et à la LPRPDE, sans dépendance aux géants américains.",
+      "proof": "Logiciels libres souverains. Sauvegardes immuables au Canada. Migration garantie sans verrou. Vous possédez le serveur, le domaine, les sauvegardes, les données."
     },
     "dogfood": {
-      "title": "Nous sommes notre propre premier client.",
-      "body": "Tout ce que vous voyez -- ce site, la documentation, le portail client, la facturation, nos tableaux de bord d'incidents -- tourne sur la même Suite Catena que nous vendons. Si ça casse, nous sommes les premiers à le savoir."
+      "title": "Nous sommes notre premier client.",
+      "body": "Tout ce que vous voyez -- ce site, la documentation, le portail client, la facturation, nos tableaux de bord d'incidents -- tourne sur la même Suite Catena que nous vendons. Chaque mise à jour que vous installez passe d'abord par notre propre déploiement."
     },
     "sovereignty": {
       "title": "La souveraineté, simplifiée",
@@ -101,8 +101,8 @@
     "extra_apps_footnote": "Toute application hors de notre liste éprouvée est une demande de modèle personnalisé -- parlez-nous-en.",
     "technical_link_title": "Vous évaluez la suite pour votre service TI ?",
     "technical_link_body": "La surface technique (Ansible, Tailscale, Cloudflare Tunnel, Keycloak, SOPS, Restic, Dokploy, supervision) vit sur sa propre page pour garder la vue applications-au-quotidien lisible.",
-    "technical_link_label": "Voir la pile technique",
-    "technical_page_title": "Pile technique",
+    "technical_link_label": "Voir la surface technique",
+    "technical_page_title": "Surface technique",
     "technical_back_label": "Retour aux fonctionnalités",
     "tool_comparison": {
       "title": "Comment se positionnent les choix de la Suite Catena",
@@ -298,7 +298,7 @@
       "sops": {
         "title": "SOPS + age",
         "role": "Secrets",
-        "body": "Le coffre est chiffré dans git, déchiffré par Ansible au déploiement. Le mot de passe du coffre n'existe nulle part sur disque -- uniquement comme clé privée dans un gestionnaire de mots de passe protégé par une clé matérielle. Ajoutez un destinataire; rotation propre."
+        "body": "La voûte est chiffrée dans git, déchiffrée par Ansible au déploiement. Le mot de passe n'existe nulle part sur disque -- uniquement comme clé privée dans un gestionnaire de mots de passe protégé par une clé matérielle. Ajoutez un destinataire; rotation propre."
       },
       "restic": {
         "title": "Restic",
