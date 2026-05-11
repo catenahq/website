@@ -486,68 +486,157 @@
       "msp": "Typical local MSP"
     },
     "rows": {
-      "fit": {
-        "label": "Best fit",
-        "catena": { "verdict": "SaaS replacement", "tone": "good"    },
-        "saas":   { "verdict": "set + forget",     "tone": "neutral" },
-        "diy":    { "verdict": "in-house IT",      "tone": "neutral" },
-        "msp":    { "verdict": "desktop + endpoint IT", "tone": "neutral" }
-      },
       "pricing": {
         "label": "Pricing model",
-        "catena": { "verdict": "fixed",          "tone": "good"    },
-        "saas":   { "verdict": "per-seat",       "tone": "neutral" },
-        "diy":    { "verdict": "free",           "tone": "good"    },
-        "msp":    { "verdict": "incident-based", "tone": "neutral" }
+        "catena": {
+          "verdict": "fixed",
+          "tone": "good"
+        },
+        "saas": {
+          "verdict": "per-seat",
+          "tone": "bad"
+        },
+        "diy": {
+          "verdict": "free",
+          "tone": "good"
+        },
+        "msp": {
+          "verdict": "incident-based",
+          "tone": "neutral"
+        }
       },
       "ownership": {
         "label": "Data ownership",
-        "catena": { "verdict": "yours",    "tone": "good" },
-        "saas":   { "verdict": "vendor's", "tone": "bad"  },
-        "diy":    { "verdict": "yours",    "tone": "good" },
-        "msp":    { "verdict": "mixed",    "tone": "neutral" }
+        "catena": {
+          "verdict": "yours",
+          "tone": "good"
+        },
+        "saas": {
+          "verdict": "vendor's",
+          "tone": "bad"
+        },
+        "diy": {
+          "verdict": "yours",
+          "tone": "good"
+        },
+        "msp": {
+          "verdict": "mixed",
+          "tone": "neutral"
+        }
       },
       "migration": {
         "label": "Migration in / out",
-        "catena": { "verdict": "first-class",  "tone": "good"    },
-        "saas":   { "verdict": "export-only",  "tone": "bad"     },
-        "diy":    { "verdict": "DIY",          "tone": "neutral" },
-        "msp":    { "verdict": "varies",       "tone": "neutral" }
+        "catena": {
+          "verdict": "first-class",
+          "tone": "good"
+        },
+        "saas": {
+          "verdict": "export-only",
+          "tone": "bad"
+        },
+        "diy": {
+          "verdict": "DIY",
+          "tone": "neutral"
+        },
+        "msp": {
+          "verdict": "varies",
+          "tone": "neutral"
+        }
       },
       "backups": {
         "label": "Backups",
-        "catena": { "verdict": "drilled", "tone": "good" },
-        "saas":   { "verdict": "opaque",  "tone": "good" },
-        "diy":    { "verdict": "DIY",     "tone": "neutral" },
-        "msp":    { "verdict": "varies",  "tone": "neutral" }
+        "catena": {
+          "verdict": "drilled",
+          "tone": "good"
+        },
+        "saas": {
+          "verdict": "opaque",
+          "tone": "good"
+        },
+        "diy": {
+          "verdict": "DIY",
+          "tone": "neutral"
+        },
+        "msp": {
+          "verdict": "varies",
+          "tone": "neutral"
+        }
       },
       "sso": {
         "label": "Unified SSO",
-        "catena": { "verdict": "yes",      "tone": "good"    },
-        "saas":   { "verdict": "yes",      "tone": "good"    },
-        "diy":    { "verdict": "DIY",      "tone": "neutral" },
-        "msp":    { "verdict": "external", "tone": "bad"     }
+        "catena": {
+          "verdict": "yes",
+          "tone": "good"
+        },
+        "saas": {
+          "verdict": "yes",
+          "tone": "good"
+        },
+        "diy": {
+          "verdict": "DIY",
+          "tone": "neutral"
+        },
+        "msp": {
+          "verdict": "external",
+          "tone": "bad"
+        }
       },
       "tenancy": {
         "label": "Tenancy",
-        "catena": { "verdict": "single-tenant",  "tone": "good"    },
-        "saas":   { "verdict": "multi-tenant",   "tone": "neutral" },
-        "diy":    { "verdict": "single-tenant",  "tone": "good"    },
-        "msp":    { "verdict": "mixed",          "tone": "neutral" }
+        "catena": {
+          "verdict": "single-tenant",
+          "tone": "good"
+        },
+        "saas": {
+          "verdict": "multi-tenant",
+          "tone": "neutral"
+        },
+        "diy": {
+          "verdict": "single-tenant",
+          "tone": "good"
+        },
+        "msp": {
+          "verdict": "mixed",
+          "tone": "neutral"
+        }
       },
       "loi25": {
         "label": "Law 25 fit",
-        "catena": { "verdict": "built-in",      "tone": "good" },
-        "saas":   { "verdict": "EFVP required", "tone": "bad"  },
-        "diy":    { "verdict": "DIY",           "tone": "neutral" },
-        "msp":    { "verdict": "varies",        "tone": "neutral" }
+        "catena": {
+          "verdict": "built-in",
+          "tone": "good"
+        },
+        "saas": {
+          "verdict": "EFVP required",
+          "tone": "bad"
+        },
+        "diy": {
+          "verdict": "DIY",
+          "tone": "neutral"
+        },
+        "msp": {
+          "verdict": "varies",
+          "tone": "neutral"
+        }
       },
       "residency": {
         "label": "Residency",
-        "catena": { "verdict": "Canadian",          "tone": "good"    },
-        "saas":   { "verdict": "multi-jurisdiction","tone": "neutral" },
-        "diy":    { "verdict": "DIY",               "tone": "neutral" },
-        "msp":    { "verdict": "varies",            "tone": "neutral" }
+        "catena": {
+          "verdict": "Canadian",
+          "tone": "good"
+        },
+        "saas": {
+          "verdict": "multi-jurisdiction",
+          "tone": "bad"
+        },
+        "diy": {
+          "verdict": "DIY",
+          "tone": "neutral"
+        },
+        "msp": {
+          "verdict": "varies",
+          "tone": "neutral"
+        }
       }
     }
   },
@@ -772,6 +861,10 @@
       "dns_hardening": {
         "title": "Harden your DNS with blocking and filtering",
         "summary": "Cloudflare Gateway plus DNS-level category filtering for a small business: block malware, phishing, and adult content for every device on your network."
+      },
+      "email_providers": {
+        "title": "Choose your email provider",
+        "summary": "Compare the six recommended email providers (Migadu, Mailbox.org, Hostpoint, Infomaniak, OVH Pro Mail, Mailfence) and pick the one that fits your jurisdiction, language, and team size."
       }
     }
   }

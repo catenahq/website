@@ -1,0 +1,199 @@
+---
+import Base from "../../../layouts/Base.astro";
+import PageTitle from "../../../components/PageTitle.astro";
+import CTA from "../../../components/CTA.astro";
+
+const locale = "en";
+const title = "Choose your email provider";
+const intro = "Catena does not host email; it integrates with a provider you choose and keeps the mailboxes in your name. Six privacy-focused, full-featured providers cover every situation we typically see; here is how to compare them.";
+---
+<Base
+  locale={locale}
+  title={title}
+  description="Compare the six recommended email providers (Migadu, Mailbox.org, Hostpoint, Infomaniak, OVH Pro Mail, Mailfence): jurisdiction, pricing, language support, and how they fit the Catena Suite."
+>
+  <PageTitle title={title} intro={intro} />
+
+  <article class="guide">
+    <div class="container">
+      <h2>What all six share</h2>
+      <ul>
+        <li><strong>App-passwords.</strong> One credential per app, revocable individually, so a lost phone does not require rotating the main password.</li>
+        <li><strong>Data portability.</strong> Standard IMAP / SMTP / CalDAV / CardDAV — connect any client you want (Gmail, Outlook / Microsoft 365, Apple Mail, Thunderbird, mobile) and move out to any other provider that speaks the same protocols, with standard tools.</li>
+        <li><strong>Personal-mailbox archive into Nextcloud.</strong> Each user's mail (and calendars and contacts) can be archived inside their Nextcloud Files, where it joins the suite's restic + WORM backup pipeline.</li>
+        <li><strong>No single sign-on from Keycloak.</strong> None of the six exposes a production-ready external IdP for end-user mailbox login. Your team keeps one extra password alongside their Keycloak password. We enforce MFA on the provider account and use app-passwords for clients, which closes the practical risk.</li>
+      </ul>
+
+      <p>
+        The table below covers what actually differs between them:
+        where they are, what they cost, what UI languages they speak,
+        how they handle shared mailboxes, and whether they have a
+        provisioning API.
+      </p>
+
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th></th>
+              <th>Migadu</th>
+              <th>Mailbox.org</th>
+              <th>Hostpoint</th>
+              <th>Infomaniak</th>
+              <th>OVH Pro Mail</th>
+              <th>Mailfence</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">Jurisdiction (HQ + DC)</th>
+              <td>Switzerland</td>
+              <td>Germany</td>
+              <td>Switzerland</td>
+              <td>Switzerland</td>
+              <td>France + Canada region</td>
+              <td>Belgium</td>
+            </tr>
+            <tr>
+              <th scope="row">Pricing (CAD, approx.) <sup>*</sup></th>
+              <td>$12-40 / month per domain (unlimited mailboxes within a soft sending cap)</td>
+              <td>$40 base + $1.60 / user / month</td>
+              <td>$5.25 / user / month</td>
+              <td>$2.50 / user / month (free tier exists)</td>
+              <td>$7 / user / month</td>
+              <td>$5.60 / user / month</td>
+            </tr>
+            <tr>
+              <th scope="row">French UI</th>
+              <td>limited (admin English; webmail partial)</td>
+              <td>none (German + English)</td>
+              <td>strong</td>
+              <td>strong</td>
+              <td>strong</td>
+              <td>strong</td>
+            </tr>
+            <tr>
+              <th scope="row">English UI</th>
+              <td>strong</td>
+              <td>strong</td>
+              <td>strong</td>
+              <td>strong</td>
+              <td>partial</td>
+              <td>strong</td>
+            </tr>
+            <tr>
+              <th scope="row">Shared mailbox model</th>
+              <td>dedicated + alias</td>
+              <td>team mailbox + Unified Mail</td>
+              <td>dedicated + alias</td>
+              <td>dedicated + per-user web invite</td>
+              <td>dedicated + alias (true shared via Hosted Exchange)</td>
+              <td>dedicated + alias + Group feature</td>
+            </tr>
+            <tr>
+              <th scope="row">Provisioning API</th>
+              <td>yes</td>
+              <td>partial</td>
+              <td>partial</td>
+              <td>yes</td>
+              <td>yes (OVH API)</td>
+              <td>partial</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <p class="muted">
+        <sup>*</sup> Prices in CAD, approximate at 2026-05-11. Provider
+        pricing changes frequently; we pull live numbers the day we
+        quote.
+      </p>
+
+      <p>
+        The "provisioning API" column matters when your team turns
+        over often: a real API lets the install / portal create and
+        retire mailboxes without you logging into the provider's
+        admin panel. Providers marked "partial" require some manual
+        steps; providers marked "no" require you to use the web
+        admin every time.
+      </p>
+
+      <h2>What "shared mailboxes" means in practice</h2>
+      <p>
+        For role addresses (<code>info@</code>, <code>billing@</code>,
+        <code>support@</code>), our recommendation is to route them
+        into the omnichannel / helpdesk app already in your suite
+        (Rocket.Chat Omnichannel, Zammad, or an n8n flow). Conversation
+        history then lives in that app's database — already covered
+        by the suite's restic + Postgres dumps + WORM backup stack.
+        If you prefer the email-archive path instead, the role
+        mailbox becomes a second account inside one designated user's
+        Nextcloud Mail and flows through the same archive path as
+        personal mailboxes.
+      </p>
+
+      <h2>What we wire up regardless of which one you pick</h2>
+      <ul>
+        <li>DNS records: <code>MX</code>, <code>SPF</code>, <code>DKIM</code>, <code>DMARC</code>, optional MTA-STS.</li>
+        <li>The provider's SMTP credentials wired into the Suite's transactional sender (so password resets and calendar invites send via your provider, not a third party).</li>
+        <li>Per-user Nextcloud Mail account, so the team reads / writes mail from the same dashboard as their files, calendar, and tasks.</li>
+        <li>Optional personal-mailbox archive into each user's Nextcloud Files (joins the existing restic + Nextcloud versioning + WORM backup).</li>
+      </ul>
+
+      <p class="closing">
+        Tell us which one you are leaning toward and why; we will
+        verify pricing, run a deliverability test, and confirm it
+        fits your jurisdictional and language requirements before
+        you commit.
+      </p>
+
+      <p class="back">
+        <a href="/en/guides/">&larr; All guides</a>
+      </p>
+    </div>
+  </article>
+
+  <CTA locale={locale} />
+</Base>
+
+<style>
+  .guide { padding-bottom: var(--catena-space-16); }
+  .guide :global(.container) { max-width: var(--catena-content-wide); }
+  .guide h2 { margin-top: var(--catena-space-10); font-size: var(--catena-fs-xl); }
+  .guide h3 { margin-top: var(--catena-space-6); font-size: var(--catena-fs-lg); }
+  .guide p, .guide li { line-height: var(--catena-lh-relaxed); }
+  .guide ul { padding-left: var(--catena-space-6); }
+  .guide ul ul { margin-top: var(--catena-space-2); }
+
+  .table-wrap { overflow-x: auto; margin-top: var(--catena-space-4); }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: var(--catena-fs-sm);
+    min-width: 880px;
+  }
+  th, td {
+    padding: var(--catena-space-3) var(--catena-space-4);
+    text-align: left;
+    border-bottom: 1px solid var(--catena-surface-border);
+    vertical-align: top;
+  }
+  thead th {
+    font-weight: var(--catena-fw-semibold);
+    color: var(--catena-surface-fg-muted);
+    font-size: var(--catena-fs-xs);
+    text-transform: uppercase;
+    letter-spacing: var(--catena-tracking-wide);
+  }
+  tbody th[scope="row"] {
+    font-weight: var(--catena-fw-medium);
+    color: var(--catena-surface-fg);
+    width: 18%;
+  }
+  .closing {
+    margin-top: var(--catena-space-8);
+    line-height: var(--catena-lh-relaxed);
+    color: var(--catena-surface-fg-muted);
+  }
+  .back { margin-top: var(--catena-space-8); font-size: var(--catena-fs-sm); }
+</style>

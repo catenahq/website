@@ -5,12 +5,12 @@ import CTA from "../../components/CTA.astro";
 
 const locale = "fr";
 const title = "Créer vos comptes fournisseurs";
-const intro = "Un déploiement catena typique repose sur cinq comptes externes qui restent à votre nom. Créez-les dans cet ordre et vous arriverez à l'installation avec tout prêt.";
+const intro = "Un déploiement catena typique repose sur quelques comptes externes qui restent à votre nom. Passez à travers ce que vous pouvez ; on couvrira le reste ensemble à la rencontre d'installation.";
 ---
 <Base
   locale={locale}
   title={title}
-  description="Pas-à-pas : créer les cinq comptes fournisseurs externes (Cloudflare, Tailscale, OVH, eazybackup, SMTP) qu'un déploiement catena typique requiert."
+  description="Pas-à-pas : créer les comptes fournisseurs externes (Cloudflare, Tailscale, OVH, eazybackup, SMTP) qu'un déploiement catena typique requiert."
 >
   <PageTitle title={title} intro={intro} />
 
@@ -18,89 +18,148 @@ const intro = "Un déploiement catena typique repose sur cinq comptes externes q
     <div class="container">
       <ol>
         <li>
-          <h2>Cloudflare</h2>
+          <h2>Fournisseur de courriel : en choisir un</h2>
+          <p>
+            Catena n'opère pas de serveur de messagerie ; il
+            s'intègre au fournisseur que vous choisissez. Ouvrez le
+            <a href="/guides/fournisseurs-courriel/">comparatif des fournisseurs de courriel</a>
+            et choisissez l'un des six que nous recommandons
+            (Migadu, Mailbox.org, Hostpoint, Infomaniak, OVH Pro
+            Mail, Mailfence), puis créez le compte au nom de votre
+            entreprise.
+            Choisissez le plan qui correspond à la taille de votre
+            équipe ; on s'occupe des enregistrements DNS et de
+            l'expéditeur transactionnel à l'installation.
+          </p>
+          <p class="muted">Durée : 15-30 minutes (création de compte + vérification initiale du domaine).</p>
+          <p class="resources">
+            <a class="screenshot" href="/img/guides/provider-accounts/email.fr.png" target="_blank" rel="noopener noreferrer">
+              <img src="/img/guides/provider-accounts/email.fr.png" alt="Capture d'écran du parcours de choix d'un fournisseur de courriel" loading="lazy" />
+            </a>
+            <a class="docs-link" href="/guides/fournisseurs-courriel/">
+              Comparer les six fournisseurs &rarr;
+            </a>
+          </p>
+        </li>
+
+        <li>
+          <h2>Cloudflare : créer une clé API</h2>
           <p>
             <a href="https://dash.cloudflare.com/sign-up" target="_blank" rel="noopener noreferrer">Inscrivez-vous</a>
             avec l'adresse courriel que vous voulez voir sur la
-            facture. Une fois vérifiée, transférez votre nom de
-            domaine d'entreprise vers le DNS de Cloudflare (sans
-            contrat, le palier gratuit suffit). Le compte devient
-            la maison de vos enregistrements DNS et du Cloudflare
-            Tunnel qui sert d'entrée publique pour chaque service.
+            facture et ajoutez votre nom de domaine au DNS de
+            Cloudflare (le palier gratuit suffit). Créez ensuite un
+            jeton API limité à votre zone afin que l'installation
+            puisse publier les enregistrements DNS et le tunnel
+            public en votre nom.
           </p>
           <p class="muted">Durée : 10-15 minutes (propagation DNS).</p>
+          <p class="resources">
+            <a class="screenshot" href="/img/guides/provider-accounts/cloudflare.fr.png" target="_blank" rel="noopener noreferrer">
+              <img src="/img/guides/provider-accounts/cloudflare.fr.png" alt="Capture d'écran du parcours de création d'un jeton API Cloudflare" loading="lazy" />
+            </a>
+            <a class="docs-link" href="https://developers.cloudflare.com/fundamentals/api/get-started/create-token/" target="_blank" rel="noopener noreferrer">
+              Documentation Cloudflare complète &rarr;
+            </a>
+          </p>
         </li>
 
         <li>
-          <h2>Tailscale</h2>
+          <h2>Tailscale : créer un client OAuth</h2>
           <p>
             <a href="https://login.tailscale.com/start" target="_blank" rel="noopener noreferrer">Démarrez un tailnet</a>
             via le SSO de votre fournisseur courriel actuel (Google,
-            Microsoft, GitHub). Le palier Personal gratuit couvre
-            jusqu'à trois utilisateurs ; pour l'accès du personnel,
-            le palier Starter à 5 $US/utilisateur/mois fait l'affaire.
-            Tailscale est le canal d'administration privé entre vos
-            postes et le VPS.
+            Microsoft, GitHub). Créez ensuite un client OAuth afin
+            que l'installation puisse ajouter le nouveau serveur à
+            votre réseau privé sans que vous ayez à partager un
+            identifiant personnel.
           </p>
-          <p class="muted">Durée : 5 minutes.</p>
+          <p class="muted">Durée : 5-10 minutes.</p>
+          <p class="resources">
+            <a class="screenshot" href="/img/guides/provider-accounts/tailscale.fr.png" target="_blank" rel="noopener noreferrer">
+              <img src="/img/guides/provider-accounts/tailscale.fr.png" alt="Capture d'écran du parcours de création d'un client OAuth Tailscale" loading="lazy" />
+            </a>
+            <a class="docs-link" href="https://tailscale.com/kb/1215/oauth-clients" target="_blank" rel="noopener noreferrer">
+              Documentation Tailscale complète &rarr;
+            </a>
+          </p>
         </li>
 
         <li>
-          <h2>OVH (ou votre fournisseur de VPS)</h2>
+          <h2>OVH (ou un autre fournisseur de VPS) : louer un VPS</h2>
           <p>
             <a href="https://www.ovhcloud.com/fr-ca/vps/" target="_blank" rel="noopener noreferrer">Créez un compte OVH</a>
-            et commandez un VPS. Le gabarit catena par défaut est le
-            VPS-2 (4 vCPU / 8 Go / 80 Go SSD) à Beauharnois, Québec
-            (code datacentre <code>BHS</code>). Payez par carte au
-            nom de votre entreprise ; la ressource est à vous dès
-            la première minute.
+            et commandez un VPS à votre nom. Pas certain de la taille
+            qu'il vous faut ? Consultez le
+            <a href="/docs/fr/sizing/">guide de dimensionnement</a>
+            pour une recommandation rapide selon le nombre d'employés
+            et la charge. Beauharnois (Québec) est la région par
+            défaut pour garder vos données au Canada.
           </p>
           <p class="muted">Durée : 30 minutes (la vérification de compte peut s'étirer à la première inscription).</p>
+          <p class="resources">
+            <a class="screenshot" href="/img/guides/provider-accounts/ovh.fr.png" target="_blank" rel="noopener noreferrer">
+              <img src="/img/guides/provider-accounts/ovh.fr.png" alt="Capture d'écran du parcours de commande VPS OVH" loading="lazy" />
+            </a>
+            <a class="docs-link" href="https://help.ovhcloud.com/csm/fr-ca-vps-getting-started?id=kb_article_view&sysparm_article=KB0047708" target="_blank" rel="noopener noreferrer">
+              Documentation OVH complète &rarr;
+            </a>
+          </p>
         </li>
 
         <li>
-          <h2>eazybackup (S3 froid)</h2>
+          <h2>eazybackup : créer un stockage S3 de sauvegarde immuable</h2>
           <p>
             <a href="https://eazybackup.ca/" target="_blank" rel="noopener noreferrer">Ouvrez un compte eazybackup</a>
-            pour la couche de sauvegarde froide (hors-site).
-            eazybackup est canadien, opère depuis Ottawa, supporte
-            Object Lock et le versioning, et atteint la conformité
-            CGP. Générez une clé d'accès et un secret S3-compatibles ;
-            nous les ingérerons à l'installation.
+            et créez un bucket S3-compatible avec Object Lock et le
+            versioning activés. eazybackup est canadien et opère
+            depuis Ottawa, donc vos sauvegardes hors-site restent au
+            Canada et ne peuvent pas être écrasées ou supprimées
+            silencieusement.
           </p>
           <p class="muted">Durée : 15 minutes.</p>
+          <p class="resources">
+            <a class="screenshot" href="/img/guides/provider-accounts/eazybackup.fr.png" target="_blank" rel="noopener noreferrer">
+              <img src="/img/guides/provider-accounts/eazybackup.fr.png" alt="Capture d'écran du parcours d'inscription eazybackup" loading="lazy" />
+            </a>
+            <a class="docs-link" href="https://eazybackup.ca/" target="_blank" rel="noopener noreferrer">
+              Documentation eazybackup complète &rarr;
+            </a>
+          </p>
         </li>
 
         <li>
-          <h2>Relais SMTP (Postmark, Brevo, Mailjet, etc.)</h2>
+          <h2>Relais SMTP : configurer un expéditeur pour les courriels automatiques</h2>
           <p>
-            Choisissez-en un : <a href="https://postmarkapp.com/" target="_blank" rel="noopener noreferrer">Postmark</a>
-            (meilleure délivrabilité, payant uniquement),
+            Catena n'opère pas de serveur de messagerie ; il relaie
+            les courriels automatiques (réinitialisations de mot de
+            passe, invitations calendrier, notifications de tickets)
+            via un expéditeur de votre choix. Par défaut :
+            <a href="https://resend.com/" target="_blank" rel="noopener noreferrer">Resend</a>
+            (configuration en un clic — ajoutez votre domaine, copiez
+            les enregistrements DNS dans Cloudflare, générez une clé
+            API). Alternatives :
             <a href="https://www.brevo.com/" target="_blank" rel="noopener noreferrer">Brevo</a>
-            (palier gratuit généreux),
-            ou votre fournisseur courriel transactionnel actuel.
-            Vérifiez votre domaine (DKIM + SPF + Return-Path),
-            générez un identifiant SMTP, et gardez-le pour
-            l'installation. Catena n'opère pas de serveur de
-            messagerie ; nous relayons via le fournisseur que vous
-            choisissez.
+            (palier gratuit généreux), ou votre fournisseur courriel
+            transactionnel actuel.
           </p>
-          <p class="muted">Durée : 20-40 minutes (aller-retour DNS).</p>
+          <p class="muted">Durée : 10-20 minutes avec Resend (aller-retour DNS).</p>
+          <p class="resources">
+            <a class="screenshot" href="/img/guides/provider-accounts/resend.fr.png" target="_blank" rel="noopener noreferrer">
+              <img src="/img/guides/provider-accounts/resend.fr.png" alt="Capture d'écran de la configuration domaine + clé API Resend" loading="lazy" />
+            </a>
+            <a class="docs-link" href="https://resend.com/docs/dashboard/domains/introduction" target="_blank" rel="noopener noreferrer">
+              Documentation Resend complète &rarr;
+            </a>
+          </p>
         </li>
       </ol>
 
-      <h2>À apporter à l'appel d'installation</h2>
-      <ul>
-        <li>Jeton API Cloudflare (édition Zone DNS + portée Tunnel)</li>
-        <li>OAuth Tailscale : client ID + secret (portée devices:write)</li>
-        <li>IP OVH + mot de passe root du courriel de commande</li>
-        <li>Endpoint S3 eazybackup + clé d'accès + secret</li>
-        <li>Hôte SMTP, port, identifiant, mot de passe</li>
-      </ul>
-      <p>
-        Nous générons tout le reste (admin Keycloak, mot de passe du
-        dépôt Restic, clé recipient SOPS) à l'installation et vous
-        remettons la trousse de récupération à la fin.
+      <p class="closing">
+        Plus vous avancez dans cette liste, plus la rencontre
+        d'installation sera rapide. Si vous n'avez le temps que de
+        créer les comptes avant la rencontre, pas de souci : on
+        passera chaque étape ensemble lors de l'appel.
       </p>
       <p class="back">
         <a href="/guides/">&larr; Tous les guides</a>
@@ -149,6 +208,36 @@ const intro = "Un déploiement catena typique repose sur cinq comptes externes q
     margin: var(--catena-space-3) 0 0 0;
     line-height: var(--catena-lh-relaxed);
   }
-  ul { line-height: var(--catena-lh-relaxed); }
+  .closing {
+    margin-top: var(--catena-space-8);
+    line-height: var(--catena-lh-relaxed);
+    color: var(--catena-surface-fg-muted);
+  }
   .back { margin-top: var(--catena-space-8); font-size: var(--catena-fs-sm); }
+  .resources {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--catena-space-4);
+    margin-top: var(--catena-space-4);
+  }
+  .resources .screenshot {
+    display: inline-block;
+    flex: 0 0 auto;
+    max-width: 240px;
+    border: 1px solid var(--catena-surface-border);
+    border-radius: var(--catena-radius-md);
+    overflow: hidden;
+    line-height: 0;
+  }
+  .resources .screenshot img {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+  .resources .docs-link {
+    font-size: var(--catena-fs-sm);
+    font-weight: var(--catena-fw-medium);
+    white-space: nowrap;
+  }
 </style>

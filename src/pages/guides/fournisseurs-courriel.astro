@@ -1,0 +1,203 @@
+---
+import Base from "../../layouts/Base.astro";
+import PageTitle from "../../components/PageTitle.astro";
+import CTA from "../../components/CTA.astro";
+
+const locale = "fr";
+const title = "Choisir votre fournisseur de courriel";
+const intro = "Catena n'opère pas de serveur de messagerie ; il s'intègre au fournisseur que vous choisissez et garde les boîtes courriel à votre nom. Six fournisseurs matures, axés sur la confidentialité, couvrent les situations qu'on voit typiquement ; voici comment les comparer.";
+---
+<Base
+  locale={locale}
+  title={title}
+  description="Comparez les six fournisseurs de courriel recommandés (Migadu, Mailbox.org, Hostpoint, Infomaniak, OVH Pro Mail, Mailfence) : juridiction, tarification, support linguistique et intégration à la Suite Catena."
+>
+  <PageTitle title={title} intro={intro} />
+
+  <article class="guide">
+    <div class="container">
+      <h2>Ce que les six ont en commun</h2>
+      <ul>
+        <li><strong>Mots de passe d'application.</strong> Un identifiant par application, révocable individuellement ; un téléphone perdu ne force pas la rotation du mot de passe principal.</li>
+        <li><strong>Portabilité des données.</strong> Standards IMAP / SMTP / CalDAV / CardDAV — connectez le client de votre choix (Gmail, Outlook / Microsoft 365, Apple Mail, Thunderbird, mobile) et migrez vers tout autre fournisseur qui parle les mêmes protocoles, avec des outils standards.</li>
+        <li><strong>Archivage de la boîte personnelle dans Nextcloud.</strong> Le courriel (et les agendas et contacts) de chaque utilisateur peut être archivé dans son Nextcloud Files, où il rejoint la pile restic + WORM de la suite.</li>
+        <li><strong>Pas d'authentification unique depuis Keycloak.</strong> Aucun des six n'expose un IdP externe prêt pour la production pour la connexion utilisateur à la boîte. Votre équipe garde un mot de passe supplémentaire à côté de son mot de passe Keycloak. Nous activons l'A2F sur le compte fournisseur et utilisons des mots de passe d'application pour les clients, ce qui referme le risque pratique.</li>
+      </ul>
+
+      <p>
+        Le tableau ci-dessous couvre ce qui diffère réellement entre
+        eux : où ils sont, ce qu'ils coûtent, quelles langues
+        d'interface ils parlent, comment ils gèrent les boîtes
+        partagées, et s'ils offrent une API d'approvisionnement.
+      </p>
+
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th></th>
+              <th>Migadu</th>
+              <th>Mailbox.org</th>
+              <th>Hostpoint</th>
+              <th>Infomaniak</th>
+              <th>OVH Pro Mail</th>
+              <th>Mailfence</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">Juridiction (siège + centre de données)</th>
+              <td>Suisse</td>
+              <td>Allemagne</td>
+              <td>Suisse</td>
+              <td>Suisse</td>
+              <td>France + région Canada</td>
+              <td>Belgique</td>
+            </tr>
+            <tr>
+              <th scope="row">Tarification (CAD, approx.) <sup>*</sup></th>
+              <td>12-40 $ / mois par domaine (boîtes illimitées dans une limite d'envoi souple)</td>
+              <td>40 $ de base + 1,60 $ / utilisateur / mois</td>
+              <td>5,25 $ / utilisateur / mois</td>
+              <td>2,50 $ / utilisateur / mois (palier gratuit existe)</td>
+              <td>7 $ / utilisateur / mois</td>
+              <td>5,60 $ / utilisateur / mois</td>
+            </tr>
+            <tr>
+              <th scope="row">Interface française</th>
+              <td>limitée (admin en anglais ; webmail partiel)</td>
+              <td>aucune (allemand + anglais)</td>
+              <td>forte</td>
+              <td>forte</td>
+              <td>forte</td>
+              <td>forte</td>
+            </tr>
+            <tr>
+              <th scope="row">Interface anglaise</th>
+              <td>forte</td>
+              <td>forte</td>
+              <td>forte</td>
+              <td>forte</td>
+              <td>partielle</td>
+              <td>forte</td>
+            </tr>
+            <tr>
+              <th scope="row">Modèle de boîte partagée</th>
+              <td>dédiée + alias</td>
+              <td>boîte d'équipe + Unified Mail</td>
+              <td>dédiée + alias</td>
+              <td>dédiée + invitation web par utilisateur</td>
+              <td>dédiée + alias (vrai partagé via Hosted Exchange)</td>
+              <td>dédiée + alias + fonction Groupe</td>
+            </tr>
+            <tr>
+              <th scope="row">API d'approvisionnement</th>
+              <td>oui</td>
+              <td>partielle</td>
+              <td>partielle</td>
+              <td>oui</td>
+              <td>oui (API OVH)</td>
+              <td>partielle</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <p class="muted">
+        <sup>*</sup> Prix en CAD, approximatifs au 2026-05-11. La
+        tarification change fréquemment ; on tire les prix réels
+        le jour du devis.
+      </p>
+
+      <p>
+        La colonne « API d'approvisionnement » compte quand votre
+        équipe a beaucoup de roulement : une vraie API permet à
+        l'installation ou au portail de créer et retirer les boîtes
+        sans passer par l'admin web du fournisseur. Les fournisseurs
+        marqués « partielle » demandent quelques étapes manuelles ;
+        ceux marqués « non » imposent de passer par l'admin web à
+        chaque opération.
+      </p>
+
+      <h2>Ce que « boîte partagée » veut dire en pratique</h2>
+      <p>
+        Pour les adresses de rôle (<code>info@</code>,
+        <code>facturation@</code>, <code>soutien@</code>), notre
+        recommandation est de les router vers l'application omnicanale
+        / centre d'aide déjà dans votre suite (Rocket.Chat
+        Omnichannel, Zammad, ou un flux n8n). L'historique des
+        conversations vit alors dans la base de données de cette
+        application — déjà couverte par la pile restic + dumps Postgres
+        + sauvegarde WORM de la suite. Si vous préférez plutôt
+        l'archivage courriel, la boîte de rôle devient un second
+        compte dans le Nextcloud Mail d'un utilisateur désigné et
+        passe par le même chemin d'archivage que les boîtes
+        personnelles.
+      </p>
+
+      <h2>Ce qu'on branche peu importe votre choix</h2>
+      <ul>
+        <li>Enregistrements DNS : <code>MX</code>, <code>SPF</code>, <code>DKIM</code>, <code>DMARC</code>, MTA-STS optionnel.</li>
+        <li>Les identifiants SMTP du fournisseur sont câblés à l'expéditeur transactionnel de la Suite (pour que les réinitialisations de mot de passe et les invitations calendrier partent via votre fournisseur, pas via un tiers).</li>
+        <li>Compte Nextcloud Mail par utilisateur, pour que l'équipe lise et écrive ses courriels depuis le même tableau de bord que ses fichiers, son agenda et ses tâches.</li>
+        <li>Archivage optionnel de la boîte personnelle dans le Nextcloud Files de chaque utilisateur (rejoint le versioning Nextcloud + restic + sauvegarde WORM existants).</li>
+      </ul>
+
+      <p class="closing">
+        Dites-nous vers lequel vous penchez et pourquoi ; on
+        vérifiera la tarification, on fera un envoi test de
+        délivrabilité et on confirmera que le choix tient vos
+        contraintes juridictionnelles et linguistiques avant que
+        vous vous engagiez.
+      </p>
+
+      <p class="back">
+        <a href="/guides/">&larr; Tous les guides</a>
+      </p>
+    </div>
+  </article>
+
+  <CTA locale={locale} />
+</Base>
+
+<style>
+  .guide { padding-bottom: var(--catena-space-16); }
+  .guide :global(.container) { max-width: var(--catena-content-wide); }
+  .guide h2 { margin-top: var(--catena-space-10); font-size: var(--catena-fs-xl); }
+  .guide h3 { margin-top: var(--catena-space-6); font-size: var(--catena-fs-lg); }
+  .guide p, .guide li { line-height: var(--catena-lh-relaxed); }
+  .guide ul { padding-left: var(--catena-space-6); }
+  .guide ul ul { margin-top: var(--catena-space-2); }
+
+  .table-wrap { overflow-x: auto; margin-top: var(--catena-space-4); }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: var(--catena-fs-sm);
+    min-width: 880px;
+  }
+  th, td {
+    padding: var(--catena-space-3) var(--catena-space-4);
+    text-align: left;
+    border-bottom: 1px solid var(--catena-surface-border);
+    vertical-align: top;
+  }
+  thead th {
+    font-weight: var(--catena-fw-semibold);
+    color: var(--catena-surface-fg-muted);
+    font-size: var(--catena-fs-xs);
+    text-transform: uppercase;
+    letter-spacing: var(--catena-tracking-wide);
+  }
+  tbody th[scope="row"] {
+    font-weight: var(--catena-fw-medium);
+    color: var(--catena-surface-fg);
+    width: 18%;
+  }
+  .closing {
+    margin-top: var(--catena-space-8);
+    line-height: var(--catena-lh-relaxed);
+    color: var(--catena-surface-fg-muted);
+  }
+  .back { margin-top: var(--catena-space-8); font-size: var(--catena-fs-sm); }
+</style>
