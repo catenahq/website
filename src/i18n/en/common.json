@@ -620,6 +620,18 @@
     "q12": {
       "question": "What currency are your prices in?",
       "answer": "Canadian dollars (CAD). Cross-border prospects pay via Stripe in CAD; Stripe handles the conversion at their interbank rate at billing time."
+    },
+    "q13": {
+      "question": "What's the difference between Catena and the Catena Suite?",
+      "answer": "Catena is the company (the MSP). The Catena Suite is the software Catena operates for you: Nextcloud, EspoCRM, Cal.com, Rocket.Chat, Keycloak, and the Ansible / backups / monitoring tooling that runs the whole thing. Your invoice comes from Catena; your email and files live on the Catena Suite."
+    },
+    "q14": {
+      "question": "Are you really an MSP? How are you different from my current MSP?",
+      "answer": "Yes, Catena is an MSP -- we run IT infrastructure on your behalf for a monthly retainer. The difference from a traditional MSP: our scope is bounded to the Catena Suite. We do not manage your workstations, printers, Microsoft 365, or office network (see <a href='/en/pricing#scope'>the Included / Not included grid</a>). For that work, you need a local technician we can refer you to. In exchange: you pay per server (not per seat), your code and data belong to you, and you can leave at any time with everything in hand."
+    },
+    "q15": {
+      "question": "What can you produce as Law 25 documentation?",
+      "answer": "The Catena Suite is Law 25 compliant at the infrastructure level (Canadian residency, documented subprocessors, immutable backups, MFA, encryption, logging). For the documentation layer (PIA / EFVP, registers, policies, incident runbook), we offer separate compliance enablement: audit ($400) and initial pack (in build, under legal review). Important: we do not replace your internal privacy officer -- Law 25 requires this to be a person inside your organization -- we deliver the infrastructure and documents that person can adopt and sign. See <a href='/en/pricing#compliance'>the Law 25 section</a>."
     }
   },
   "about": {

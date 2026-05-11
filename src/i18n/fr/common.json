@@ -620,6 +620,18 @@
     "q12": {
       "question": "Dans quelle devise sont vos tarifs ?",
       "answer": "Dollars canadiens (CAD). Les prospects hors Canada paient via Stripe en CAD ; Stripe gère la conversion au taux interbancaire au moment de la facturation."
+    },
+    "q13": {
+      "question": "Quelle est la différence entre Catena et la Suite Catena ?",
+      "answer": "Catena est l'entreprise (le MSP). La Suite Catena est le logiciel que Catena opère pour vous : Nextcloud, EspoCRM, Cal.com, Rocket.Chat, Keycloak, et les outils Ansible / sauvegardes / supervision qui font tourner tout ça. Votre facture vient de Catena ; votre courriel et vos fichiers vivent sur la Suite Catena."
+    },
+    "q14": {
+      "question": "Vous êtes vraiment un MSP ? En quoi êtes-vous différent de mon MSP actuel ?",
+      "answer": "Oui, Catena est un MSP -- nous opérons l'infrastructure IT à votre place selon un forfait mensuel. La différence avec un MSP traditionnel : notre portée se limite à la Suite Catena. Nous ne gérons pas vos postes de travail, vos imprimantes, votre Microsoft 365, ni votre réseau de bureau (voir <a href='/pricing#scope'>la grille Inclus / Non inclus</a>). Pour ce travail-là, vous avez besoin d'un technicien local que je peux vous référer. En échange : vous payez par serveur (pas par siège), votre code et vos données vous appartiennent, et vous pouvez quitter à tout moment avec tout en main."
+    },
+    "q15": {
+      "question": "Que pouvez-vous produire comme documentation Loi 25 ?",
+      "answer": "La Suite Catena est conforme Loi 25 au niveau infrastructure (résidence canadienne, sous-traitants documentés, sauvegardes immuables, MFA, chiffrement, journalisation). Pour le volet documentaire (EFVP, registres, politiques, runbook d'incident), nous offrons un accompagnement séparé : audit ($400) et pack initial (en construction, revue juridique en cours). Important : nous ne vous remplaçons pas comme responsable de la protection des renseignements personnels -- Loi 25 exige que ce soit une personne à l'interne de votre organisation -- nous fournissons l'infrastructure et les documents que cette personne peut adopter et signer. Voir <a href='/pricing#compliance'>la section Conformité Loi 25</a>."
     }
   },
   "about": {
