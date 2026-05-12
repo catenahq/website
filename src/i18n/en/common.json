@@ -397,7 +397,7 @@
     },
     "scope": {
       "title": "What's included and what isn't",
-      "intro": "The monthly retainer covers the Catena Suite we run for you. For on-site hardware or tools we don't host, you'll need a local technician -- we can refer.",
+      "intro": "The monthly retainer covers the Catena Suite we run for you. For on-site hardware or tools we don't host, you'll need a local technician.",
       "included_title": "Included in the retainer",
       "included": [
         "Support for all apps in your Catena Suite (Nextcloud, EspoCRM, Cal.com, etc.)",
