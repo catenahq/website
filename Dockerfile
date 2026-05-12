@@ -8,9 +8,9 @@ FROM node:22-alpine AS build
 WORKDIR /app
 
 # Install deps first so source changes don't invalidate the cache.
-# @catenahq/contracts is a git dependency; npm needs git available.
-RUN apk add --no-cache git
+# @catenahq/contracts is vendored as a tarball under vendor/.
 COPY package.json package-lock.json* ./
+COPY vendor ./vendor
 RUN npm ci --no-audit --no-fund
 
 # Copy source + build.
