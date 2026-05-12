@@ -62,7 +62,7 @@ const legalLinks = [
       </div>
     </nav>
     <p class="muted copyright">
-      &copy; {year} {t(locale, "common.brand.name")}.
+      &copy; {year} <span class="brand-mark">{t(locale, "common.brand.name")}</span>.
       {t(locale, "common.footer.rights")}
       {t(locale, "common.footer.made_in")}
     </p>
@@ -109,6 +109,11 @@ const legalLinks = [
     padding-top: var(--catena-space-6);
     border-top: 1px solid var(--catena-surface-border);
     font-size: var(--catena-fs-sm);
+  }
+  .brand-mark {
+    font-family: "Conthrax", var(--catena-font-sans);
+    font-weight: 600;
+    text-transform: lowercase;
   }
   @media (max-width: 767px) {
     .footer-cols {
