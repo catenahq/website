@@ -1,0 +1,57 @@
+---
+import Base from "../../layouts/Base.astro";
+import PageTitle from "../../components/PageTitle.astro";
+import { t } from "@catena/i18n";
+
+const locale = "en";
+const title = t(locale, "common.notfound.title");
+const headline = t(locale, "common.notfound.headline");
+const body = t(locale, "common.notfound.body");
+---
+<Base locale={locale} title={title} description={headline}>
+  <PageTitle title={title} intro={headline} />
+
+  <section class="notfound">
+    <div class="container">
+      <p>{body}</p>
+      <ul class="entry-points">
+        <li><a href="/en/">{t(locale, "common.notfound.links.home")}</a></li>
+        <li><a href="/en/features">{t(locale, "common.notfound.links.features")}</a></li>
+        <li><a href="/en/pricing">{t(locale, "common.notfound.links.pricing")}</a></li>
+        <li><a href="/docs/en/">{t(locale, "common.notfound.links.docs")}</a></li>
+        <li><a href="/en/contact">{t(locale, "common.notfound.links.contact")}</a></li>
+      </ul>
+    </div>
+  </section>
+</Base>
+
+<style>
+  .notfound { padding: var(--catena-space-8) 0 var(--catena-space-20); }
+  .notfound p {
+    max-width: 56rem;
+    margin: 0 auto var(--catena-space-6);
+    text-align: center;
+    line-height: var(--catena-lh-relaxed);
+  }
+  .entry-points {
+    list-style: none;
+    padding: 0;
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: var(--catena-space-3) var(--catena-space-5);
+    max-width: 40rem;
+  }
+  .entry-points a {
+    display: inline-block;
+    padding: var(--catena-space-2) var(--catena-space-4);
+    border: 1px solid var(--catena-surface-border);
+    border-radius: var(--catena-radius-md);
+    font-weight: var(--catena-fw-medium);
+  }
+  .entry-points a:hover {
+    text-decoration: none;
+    background: var(--catena-surface-bg-muted);
+  }
+</style>

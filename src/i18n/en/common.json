@@ -41,6 +41,18 @@
     "cta_label": "Book a discovery call",
     "cta_href": "/en/contact"
   },
+  "notfound": {
+    "title": "Page not found",
+    "headline": "That page doesn't exist.",
+    "body": "The link may be stale or the page has moved. Here are a few useful starting points:",
+    "links": {
+      "home": "Home",
+      "features": "Features",
+      "pricing": "Pricing",
+      "docs": "Docs",
+      "contact": "Contact us"
+    }
+  },
   "home": {
     "hero": {
       "headline": "Catena. Managed IT services for Quebec SMBs.",

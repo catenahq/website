@@ -41,6 +41,18 @@
     "cta_label": "Réserver un appel découverte",
     "cta_href": "/contact"
   },
+  "notfound": {
+    "title": "Page introuvable",
+    "headline": "Cette page n'existe pas.",
+    "body": "Le lien est peut-être obsolète, ou la page a été déplacée. Voici quelques points d'entrée utiles :",
+    "links": {
+      "home": "Accueil",
+      "features": "Fonctionnalités",
+      "pricing": "Tarifs",
+      "docs": "Documentation",
+      "contact": "Nous contacter"
+    }
+  },
   "home": {
     "hero": {
       "headline": "Catena. Services TI gérés pour PME québécoises.",
