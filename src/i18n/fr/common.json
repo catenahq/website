@@ -458,7 +458,7 @@
         "bilingual_price": "+100 $ / page",
         "extra_page_label": "Page additionnelle (au-delà des 5)",
         "extra_page_price": "+500 $ / page",
-        "embeds_label": "Embeds standards (Cal.com, formulaire EspoCRM, etc.)",
+        "embeds_label": "Intégrations standards (Cal.com, formulaire EspoCRM, etc.)",
         "embeds_price": "inclus",
         "examples_title": "Exemples",
         "examples": [
@@ -485,7 +485,7 @@
       "catena": "Catena",
       "saas": "SaaS (M365 / Google)",
       "diy": "Auto-hébergé artisanal",
-      "msp": "MSP local typique"
+      "msp": "MSP traditionnel"
     },
     "rows": {
       "pricing": {
@@ -795,7 +795,7 @@
   },
   "portal": {
     "signin_title": "Portail Catena",
-    "signin_body": "Connectez-vous avec le compte Keycloak que votre opérateur a créé pour vous. Nouveau ? Demandez une invitation à votre opérateur.",
+    "signin_body": "Connectez-vous avec le compte Keycloak (SSO) que votre opérateur a créé pour vous. Nouveau ? Demandez une invitation à votre opérateur.",
     "signin_button": "Se connecter avec Keycloak",
     "shell_brand": "Catena",
     "nav_dashboard": "Tableau de bord",
@@ -810,17 +810,17 @@
     "title": "Site web d'entreprise",
     "intro": "Un site web multi-pages, déployé comme application sur le même serveur que votre Suite Catena. Vous possédez le code source (dépôt Git à votre nom), le contenu et le domaine. Aucun verrou propriétaire, aucun fournisseur tiers à payer pour l'hébergement.",
     "why_title": "Pourquoi concevoir votre site web avec Catena",
-    "why_intro": "N'importe qui peut lancer un site web cette année -- les constructeurs IA en livrent un en un après-midi. La vraie question est ce qui se passe à la troisième année, quand la plateforme augmente ses prix, se fait racheter, ou décide que votre secteur viole ses conditions. Quatre raisons pour lesquelles un site construit avec Catena tient le coup.",
+    "why_intro": "N'importe qui peut lancer un site web cette année -- les constructeurs IA en livrent un en un après-midi. La vraie question est ce qui se passe plus tard, quand la plateforme augmente ses prix, ferme, décide que votre secteur viole ses conditions d'utilisation, ou que votre entreprise grandit. Quatre raisons pour lesquelles un site construit avec Catena tient le coup.",
     "why_card1_title": "Vous possédez les fichiers",
     "why_card1_body": "Code source dans un dépôt Git à votre nom. Contenu en markdown que n'importe qui peut lire. Changement d'hébergeur en cinq minutes par simple changement d'adaptateur Astro. Le site est un dossier de fichiers qui vous appartient, pas une ligne dans la base de données de quelqu'un d'autre.",
     "why_card2_title": "Branché sur votre infrastructure",
-    "why_card2_body": "Embeds de réservation qui reconnaissent l'utilisateur connecté. Formulaires de contact qui tombent directement dans votre CRM. Espaces membres protégés par votre Keycloak. Les constructeurs IA ne peuvent pas faire ça -- ils n'opèrent pas les systèmes à l'autre bout. Votre Suite Catena, oui.",
+    "why_card2_body": "Intégrations de réservation qui reconnaissent l'utilisateur connecté. Formulaires de contact qui tombent directement dans votre CRM. Espaces membres protégés par votre SSO. Les constructeurs IA ne peuvent pas faire ça -- ils n'opèrent pas les systèmes à l'autre bout. Votre Suite Catena, oui.",
     "why_card3_title": "Conçu pour la troisième année",
     "why_card3_body": "Quand la plateforme double ses prix, se fait racheter, décide que votre fournisseur de paiement n'est plus permis, ou tombe pendant dix-huit heures, la réponse ne devrait pas être un ticket de support. Avec un site Catena, la réponse est un redéploiement : mêmes fichiers, autre hébergeur, cinq minutes.",
     "why_card4_title": "Aucune base de données propre",
     "why_card4_body": "Les prospects vont dans votre CRM. Les réservations vont dans votre système de réservation. Les connexions vont dans votre serveur d'identité. Le site lui-même ne possède rien -- il n'y a donc rien à sauvegarder, migrer ou perdre. L'état vit là où il doit vivre.",
     "why_tradeoff_title": "Quand ce n'est pas la bonne approche",
-    "why_tradeoff_body": "Si vous avez besoin d'une seule page-brochure que vous ne toucherez plus jamais, un constructeur no-code est honnêtement le bon outil pour ce travail. Parlez-nous quand le site fait partie de la mécanique de votre entreprise -- la porte d'entrée vers vos réservations, votre CRM, votre portail et votre équipe.",
+    "why_tradeoff_body": "Si vous avez besoin d'une seule page-brochure que vous ne toucherez plus jamais, un constructeur no-code est honnêtement un bon outil pour ce travail. Parlez-nous quand le site fait partie de la mécanique de votre entreprise -- la porte d'entrée vers vos réservations, votre CRM, votre portail et votre équipe.",
     "process_title": "Comment ça se déroule",
     "process_step1_title": "1. Appel découverte (30 min, gratuit)",
     "process_step1_body": "Vous m'expliquez votre activité, votre public, vos objectifs. Je vous explique mon offre et ce qui est ou n'est pas réaliste dans votre budget. Pas de pitch, pas d'engagement.",
@@ -845,14 +845,14 @@
       "Sitemap.xml et robots.txt configurés",
       "Politique de confidentialité bilingue conforme Loi 25 (si bilinguisme acheté)",
       "Métadonnées Open Graph pour les partages sociaux",
-      "Embeds Cal.com / EspoCRM (booking, formulaires de contact)",
+      "Intégrations Cal.com / EspoCRM (booking, formulaires de contact)",
       "Hébergement sur votre Suite Catena (aucun fournisseur tiers à payer)"
     ],
     "not_included_title": "Ce qui n'est pas inclus",
     "not_included": [
       "Création de contenu (textes, photographies) -- vous le fournissez ou je vous réfère à un rédacteur / photographe",
       "Sites e-commerce avec panier et passerelle de paiement (devis projet séparé)",
-      "Intégrations custom au-delà des embeds standards (devis projet séparé)",
+      "Intégrations custom au-delà des intégrations standards (devis projet séparé)",
       "SEO actif au-delà du setup initial (audit + recherche de mots-clés + contenu mensuel : devis projet séparé)",
       "Refonte d'un site existant après livraison (devis projet séparé)"
     ],
