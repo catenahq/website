@@ -812,7 +812,7 @@
     "process_step2_body": "You fill out a multi-step form in the client portal: business name, logo, colors, desired pages, target audience, reference sites you love and hate, existing content. Auto-saves; come back any time.",
     "process_step3_title": "3. Fixed quote",
     "process_step3_body": "Itemized quote in CAD per the price grid below. No hidden costs. You approve before work starts.",
-    "process_step4_title": "4. Design and build (4-6 weeks)",
+    "process_step4_title": "4. Design and build",
     "process_step4_body": "Mockup → content → Astro static build → review → revisions. Two rounds of revisions included. You see the site on a preview URL throughout the build.",
     "process_step5_title": "5. Launch",
     "process_step5_body": "Going live on your Catena Suite, DNS cutover, HTTPS / accessibility / performance verification. Source code handed over in a Git repo under your name.",

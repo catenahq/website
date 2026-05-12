@@ -458,13 +458,13 @@
         "embeds_price": "inclus",
         "examples_title": "Exemples",
         "examples": [
-          "5 pages, EN seulement : 2 000 $",
+          "5 pages, FR seulement : 2 000 $",
           "5 pages bilingues : 2 500 $",
           "8 pages bilingues : 4 300 $",
           "10 pages bilingues : 5 500 $"
         ],
         "financing": "Paiement comptant OU étalé sur 6 versements mensuels combinés à votre forfait mensuel (l'étalement n'est offert qu'aux clients sous forfait actif, minimum 6 mois).",
-        "scope_note": "Les intégrations custom (UI sur mesure, workflows bespoke) sont des projets distincts -- voir Heures hors forfait pour le tarif horaire, ou demandez un devis projet.",
+        "scope_note": "Les intégrations personnalisées (UI et workflows sur mesure) sont des projets distincts -- voir Heures hors forfait pour le tarif horaire, ou demandez un devis projet.",
         "note": "Sites e-commerce non inclus. Pour un site cabinet plus profond (10+ pages bilingues + design sur mesure), parlez-nous-en.",
         "link_label": "Voir la page Site web"
       }
@@ -808,11 +808,11 @@
     "process_title": "Comment ça se déroule",
     "process_step1_title": "1. Appel découverte (30 min, gratuit)",
     "process_step1_body": "Vous m'expliquez votre activité, votre public, vos objectifs. Je vous explique mon offre et ce qui est ou n'est pas réaliste dans votre budget. Pas de pitch, pas d'engagement.",
-    "process_step2_title": "2. Formulaire d'intake design",
+    "process_step2_title": "2. Formulaire d'entrée design",
     "process_step2_body": "Vous remplissez un formulaire en plusieurs étapes dans le portail : nom de l'entreprise, logo, couleurs, pages désirées, audience cible, sites de référence aimés et détestés, contenu existant. Sauvegarde automatique; revenez quand vous voulez.",
     "process_step3_title": "3. Devis fixe",
     "process_step3_body": "Devis itemisé en CAD selon la grille tarifaire ci-dessous. Aucun coût caché. Vous approuvez avant le démarrage.",
-    "process_step4_title": "4. Conception et construction (4-6 semaines)",
+    "process_step4_title": "4. Conception et construction",
     "process_step4_body": "Maquette → contenu → développement Astro statique → revue → corrections. Deux tours de révision inclus. Vous voyez le site sur une URL de prévisualisation tout au long de la construction.",
     "process_step5_title": "5. Lancement",
     "process_step5_body": "Mise en ligne sur votre Suite Catena, bascule DNS, vérifications HTTPS, accessibilité et performance. Code source remis dans un dépôt Git à votre nom.",
