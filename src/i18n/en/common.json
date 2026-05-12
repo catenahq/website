@@ -455,7 +455,7 @@
         "extra_page_label": "Extra page (beyond 5)",
         "extra_page_price": "+$500 / page",
         "embeds_label": "Standard embeds (Cal.com, EspoCRM lead form, etc.)",
-        "embeds_price": "included -- copy-paste",
+        "embeds_price": "included",
         "examples_title": "Examples",
         "examples": [
           "5 pages, EN only: $2,000",
@@ -829,7 +829,7 @@
       "Sitemap.xml and robots.txt configured",
       "Bilingual Law-25-compliant privacy policy (if you purchase bilingual)",
       "Open Graph metadata for social sharing",
-      "Cal.com / EspoCRM embeds (booking, contact forms) -- standard copy-paste included",
+      "Cal.com / EspoCRM embeds (booking, contact forms)",
       "Hosted on your Catena Suite (no third-party host to pay for)"
     ],
     "not_included_title": "What's not included",

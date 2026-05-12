@@ -455,7 +455,7 @@
         "extra_page_label": "Page additionnelle (au-delà des 5)",
         "extra_page_price": "+500 $ / page",
         "embeds_label": "Embeds standards (Cal.com, formulaire EspoCRM, etc.)",
-        "embeds_price": "inclus -- copier-coller",
+        "embeds_price": "inclus",
         "examples_title": "Exemples",
         "examples": [
           "5 pages, EN seulement : 2 000 $",
@@ -829,7 +829,7 @@
       "Sitemap.xml et robots.txt configurés",
       "Politique de confidentialité bilingue conforme Loi 25 (si bilinguisme acheté)",
       "Métadonnées Open Graph pour les partages sociaux",
-      "Embeds Cal.com / EspoCRM (booking, formulaires de contact) -- copier-coller standard inclus",
+      "Embeds Cal.com / EspoCRM (booking, formulaires de contact)",
       "Hébergement sur votre Suite Catena (aucun fournisseur tiers à payer)"
     ],
     "not_included_title": "Ce qui n'est pas inclus",
