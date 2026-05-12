@@ -6,6 +6,7 @@ import Pricing from "../components/Pricing.astro";
 import PricingScope from "../components/PricingScope.astro";
 import AddOns from "../components/AddOns.astro";
 import CTA from "../components/CTA.astro";
+import ServiceJsonLd from "../components/ServiceJsonLd.astro";
 import { t } from "@catena/i18n";
 
 const locale = "fr";
@@ -15,6 +16,20 @@ const locale = "fr";
   title={t(locale, "common.pricing.title")}
   description="Tarification Catena : forfait mensuel par serveur (PME, Moyenne, Grande), heures hors forfait selon l'heure, migration de données case par case, conformité Loi 25 en construction. Site web add-on itemisé."
 >
+  <ServiceJsonLd
+    slot="head"
+    name="Suite Catena -- services TI gérés"
+    description={t(locale, "common.pricing.intro")}
+    serviceType="Managed IT services"
+    url="https://catena.run/pricing/"
+    offers={[
+      { name: "Petite entreprise", price: "500", unit: "Recurring", url: "https://catena.run/pricing/" },
+      { name: "Moyenne entreprise", price: "950", unit: "Recurring", url: "https://catena.run/pricing/" },
+      { name: "Grande entreprise", price: "1600", unit: "Recurring", url: "https://catena.run/pricing/" },
+      { name: "Installateur de base", price: "200", unit: "OneTime", url: "https://catena.run/pricing/" },
+      { name: "Installation assistée", price: "300", unit: "OneTime", url: "https://catena.run/pricing/" },
+    ]}
+  />
   <PageTitle
     title={t(locale, "common.pricing.title")}
     intro={t(locale, "common.pricing.intro")}

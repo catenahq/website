@@ -1,6 +1,7 @@
 ---
 import Base from "../layouts/Base.astro";
 import PageTitle from "../components/PageTitle.astro";
+import ServiceJsonLd from "../components/ServiceJsonLd.astro";
 import { t, tArray } from "@catena/i18n";
 
 const locale = "fr";
@@ -17,6 +18,16 @@ const discoveryUrl = t(locale, "common.cta.discovery_url");
   title={t(locale, "common.site_web.title")}
   description="Site web d'entreprise sur la Suite Catena : 2 000 $ pour 5 pages, +100 $ par page bilingue, +500 $ par page additionnelle. Code source dans un dépôt Git à votre nom, hébergé sur votre Suite Catena. Six étapes claires, devis fixe avant démarrage."
 >
+  <ServiceJsonLd
+    slot="head"
+    name={t(locale, "common.site_web.title")}
+    description={t(locale, "common.site_web.intro")}
+    serviceType="Web design and hosting"
+    url="https://catena.run/site-web/"
+    offers={[
+      { name: "Forfait 5 pages", price: "2000", unit: "OneTime", url: "https://catena.run/site-web/" },
+    ]}
+  />
   <PageTitle
     title={t(locale, "common.site_web.title")}
     intro={t(locale, "common.site_web.intro")}

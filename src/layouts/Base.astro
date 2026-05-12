@@ -126,6 +126,7 @@ const breadcrumbJsonLd = segments.length === 0 ? null : {
     {breadcrumbJsonLd && (
       <script type="application/ld+json" set:html={JSON.stringify(breadcrumbJsonLd)} />
     )}
+    <slot name="head" />
   </head>
   <body>
     <Banner locale={locale} />
