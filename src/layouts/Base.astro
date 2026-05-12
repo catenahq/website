@@ -43,6 +43,53 @@ const orgJsonLd = {
   url: new URL("/", site).toString(),
   logo: new URL("/favicon.svg", site).toString(),
 };
+
+// BreadcrumbList JSON-LD. Skipped on the homepage (no chain to
+// describe). For intermediate segments we look up the nav label so
+// FR pages get FR breadcrumbs; for unknown slugs (e.g. "technical",
+// "faq") we humanize the slug. The final crumb prefers the page's
+// own title prop when present, falling back to the same humanizer.
+const segments = subpath ? subpath.split("/").filter(Boolean) : [];
+const slugToNavKey: Record<string, string> = {
+  features: "common.nav.features",
+  pricing: "common.nav.pricing",
+  comparison: "common.nav.comparison",
+  about: "common.nav.about",
+  contact: "common.nav.contact",
+  docs: "common.nav.docs",
+  "site-web": "common.nav.site_web",
+  scheduler: "common.nav.scheduler",
+  status: "common.nav.status",
+  conformite: "common.nav.conformite",
+};
+const humanize = (slug: string) =>
+  slug.replace(/-/g, " ").replace(/\b\w/g, (c) => c.toUpperCase());
+const crumbItems = segments.map((seg, i) => {
+  const path = "/" + segments.slice(0, i + 1).join("/") + "/";
+  const url = new URL(getRelativeLocaleUrl(locale, path.slice(1)), site).toString();
+  const isLast = i === segments.length - 1;
+  const navKey = slugToNavKey[seg];
+  const name = navKey ? t(locale, navKey) : isLast && title ? title : humanize(seg);
+  return { name, url };
+});
+const breadcrumbJsonLd = segments.length === 0 ? null : {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    {
+      "@type": "ListItem",
+      position: 1,
+      name: brandName,
+      item: new URL(getRelativeLocaleUrl(locale, ""), site).toString(),
+    },
+    ...crumbItems.map((c, i) => ({
+      "@type": "ListItem",
+      position: i + 2,
+      name: c.name,
+      item: c.url,
+    })),
+  ],
+};
 ---
 <!doctype html>
 <html lang={locale}>
@@ -76,6 +123,9 @@ const orgJsonLd = {
     <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
 
     <script type="application/ld+json" set:html={JSON.stringify(orgJsonLd)} />
+    {breadcrumbJsonLd && (
+      <script type="application/ld+json" set:html={JSON.stringify(breadcrumbJsonLd)} />
+    )}
   </head>
   <body>
     <Banner locale={locale} />
