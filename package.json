@@ -4,12 +4,11 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "predev": "node ../../packages/tools/sync-brand.mjs ./src/styles/brand",
+    "predev": "node ./tools/sync-brand.mjs ./src/styles/brand",
     "dev": "astro dev",
     "start": "astro dev",
-    "prebuild": "node ../../packages/tools/sync-brand.mjs ./src/styles/brand",
-    "build": "node scripts/build-with-docs.mjs",
-    "build:marketing-only": "astro build",
+    "prebuild": "node ./tools/sync-brand.mjs ./src/styles/brand",
+    "build": "astro build",
     "preview": "astro preview",
     "check": "astro check",
     "test:i18n": "node scripts/i18n-parity.mjs"
