@@ -1,0 +1,39 @@
+# apps/website -- standalone CI workflow.
+#
+# Inactive in the monorepo (GitHub Actions only reads from the repo
+# root .github/workflows/). Carried inside this folder so that
+# `git subtree split --prefix=apps/website` lifts a complete CI
+# pipeline into the new repo.
+#
+# Differences from the monorepo's per-app job in the root ci.yml:
+# - Marketing-only build. The chained docs build
+#   (scripts/build-with-docs.mjs) stays in the monorepo; after split
+#   the docs site ships as its own deployment from the lifted
+#   apps/docs repo.
+# - No reference to apps/docs.
+
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  website:
+    name: website (i18n parity + typecheck + marketing-only build)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+          cache: "npm"
+      - name: Install
+        run: npm ci
+      - name: i18n parity
+        run: npm run test:i18n
+      - name: Typecheck
+        run: npm run check
+      - name: Build (marketing only)
+        run: npm run build:marketing-only
