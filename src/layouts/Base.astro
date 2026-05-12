@@ -5,6 +5,7 @@ import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
 import { getRelativeLocaleUrl } from "astro:i18n";
 import { t } from "@catena/i18n";
+import { ogImagePathFor } from "../lib/og-pages";
 
 interface Props {
   title?: string;
@@ -19,10 +20,13 @@ const brandName = t(locale, "common.brand.name");
 const brandTagline = t(locale, "common.brand.tagline");
 const pageTitle = title ? `${title} -- ${brandName}` : `${brandName} -- ${brandTagline}`;
 const pageDesc = description ?? brandTagline;
-// Locale-aware default OG card. Per-page OG endpoint will supersede
-// this once it lands (see backlog).
-const defaultOgImage = locale === "en" ? "/og-default-en.png" : "/og-default-fr.png";
-const finalOgImage = ogImage ?? defaultOgImage;
+// OG image resolution: explicit prop > per-page generated card >
+// locale default. The per-page endpoint at src/pages/og/[...].png.ts
+// emits one PNG for every entry in lib/og-pages.ts.
+const localeDefault = locale === "en" ? "/og-default-en.png" : "/og-default-fr.png";
+const subpathTrimmed = Astro.url.pathname.replace(/^\/en\//, "/").replace(/^\//, "").replace(/\/$/, "");
+const perPageOg = ogImagePathFor(locale, subpathTrimmed);
+const finalOgImage = ogImage ?? perPageOg ?? localeDefault;
 
 // Locale-agnostic subpath. Strips a leading "/en/" so we can re-emit
 // the same logical path in every locale via getRelativeLocaleUrl.
