@@ -12,7 +12,6 @@ const prefix = locale === "fr" ? "" : "/en";
   <div class="container hero-inner">
     <h1>{t(locale, "common.home.hero.headline")}</h1>
     <p class="lead muted">{t(locale, "common.home.hero.subheadline")}</p>
-    <p class="proof">{t(locale, "common.home.hero.proof")}</p>
     <div class="cta-row">
       <a class="btn btn-primary" href={t(locale, "common.cta.discovery_url")}>
         {t(locale, "common.cta.book_discovery")}
@@ -48,13 +47,7 @@ const prefix = locale === "fr" ? "" : "/en";
   .lead {
     font-size: var(--catena-fs-lg);
     line-height: var(--catena-lh-relaxed);
-    margin-bottom: var(--catena-space-6);
-  }
-  .proof {
-    font-size: var(--catena-fs-base);
-    line-height: var(--catena-lh-relaxed);
     margin-bottom: var(--catena-space-8);
-    color: var(--catena-surface-fg);
   }
   .cta-row {
     display: flex;

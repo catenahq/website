@@ -40,8 +40,7 @@
   "home": {
     "hero": {
       "headline": "Catena. Services TI gérés pour PME québécoises.",
-      "subheadline": "MSP indépendant; nous gérons votre infrastructure TI -- courriels, fichiers, CRM, sauvegardes -- sur notre Suite Catena. Conforme à la Loi 25 et à la LPRPDE, sans dépendance aux géants américains.",
-      "proof": "Logiciels libres souverains. Sauvegardes immuables au Canada. Migration garantie sans verrou. Vous possédez le serveur, le domaine, les sauvegardes, les données."
+      "subheadline": "MSP indépendant. Nous gérons vos courriels, fichiers, CRM et sauvegardes sur des logiciels libres que vous possédez -- conforme Loi 25 et LPRPDE par conception."
     },
     "dogfood": {
       "title": "Nous sommes notre premier client.",
