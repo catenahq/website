@@ -1,22 +1,17 @@
-# apps/website -- catena marketing site
+# catenahq/website -- catena marketing site
 
-Astro 6 marketing site. The full `npm run build` script chains a
-Starlight docs build into `dist/docs/` (see
-`scripts/build-with-docs.mjs`). Use `npm run build:marketing-only`
-for marketing-only builds (and as the default `build` script in a
-lifted standalone repo).
+Astro 6 marketing site. Builds standalone (`npm run build` ->
+`astro build` -> `dist/`). The docs site lives in its own repo at
+github.com/catenahq/docs and ships as its own deployment.
 
 ## Build flow
 
-- `npm run dev` -- Astro dev server (`apps/website`).
-- `npm run build` -- chained marketing + docs build into a single
-  dist. Used by CI and by the production Dokploy deployment.
-- `npm run build:marketing-only` -- marketing only; used post-split.
-- `prebuild` runs `packages/tools/sync-brand.mjs` to seed
-  `src/styles/brand/` from the monorepo's brand source. After split,
-  the script is vendored into the lifted repo (see
-  `internal_docs/operator/repo-split-runbook.md` in the canonical
-  monorepo).
+- `npm run dev` -- Astro dev server.
+- `npm run build` -- marketing-only Astro build into `dist/`.
+- `npm run check` -- typecheck (Astro check).
+- `npm run test:i18n` -- bilingual parity gate (EN + FR key parity).
+- `prebuild` runs `./tools/sync-brand.mjs` to seed `src/styles/brand/`
+  from the vendored brand source under `tools/brand/`.
 
 ## Content rules
 
@@ -30,23 +25,22 @@ lifted standalone repo).
   exists before linking. No naked prose pointers.
 - No emojis or em-dashes in copy or code. Plain hyphens + straight
   quotes only.
-- Never mention the operator documentation, automation/, internal_docs/,
-  Ansible roles, or any filesystem path that lives outside this app.
+- Never mention the operator infrastructure, automation, or any
+  filesystem path that lives outside this repo.
 
 ## Working on Astro
 
 Use the Astro MCP (`mcp__Astro_docs__search_astro_docs`) for any
 Astro / Starlight feature question rather than guessing from memory.
 
-## Repo split
+## Brand assets
 
-This folder is structured to be lifted into its own repo via
-`git subtree split --prefix=apps/website`. The split runbook is
-`internal_docs/operator/repo-split-runbook.md` in the canonical
-monorepo. Two couplings the runbook resolves:
+Brand tokens + source live under `tools/brand/`. `tools/sync-brand.mjs`
+copies them into `src/styles/brand/` on `predev` and `prebuild`. The
+synced output is gitignored. Update tokens in `tools/brand/` and the
+sync picks them up on the next build.
 
-- `predev` / `prebuild` reference `../../packages/tools/sync-brand.mjs`
-  -- vendor `tools/` locally on split.
-- `npm run build` chains a docs build from `apps/docs/` -- in the
-  lifted repo, switch the `build` script to `astro build` (already
-  present as `build:marketing-only`).
+The same brand assets exist in `catenahq/docs` and `catenahq/portal`
+under their respective `tools/brand/`. Brand changes are coordinated
+manually across the three repos until the operator wires a shared
+distribution mechanism.

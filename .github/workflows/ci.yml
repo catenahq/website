@@ -1,16 +1,7 @@
-# apps/website -- standalone CI workflow.
+# catenahq/website -- CI.
 #
-# Inactive in the monorepo (GitHub Actions only reads from the repo
-# root .github/workflows/). Carried inside this folder so that
-# `git subtree split --prefix=apps/website` lifts a complete CI
-# pipeline into the new repo.
-#
-# Differences from the monorepo's per-app job in the root ci.yml:
-# - Marketing-only build. The chained docs build
-#   (scripts/build-with-docs.mjs) stays in the monorepo; after split
-#   the docs site ships as its own deployment from the lifted
-#   apps/docs repo.
-# - No reference to apps/docs.
+# Marketing-only Astro build. The docs site lives in its own repo
+# at github.com/catenahq/docs and ships as its own deployment.
 
 name: CI
 
@@ -21,7 +12,7 @@ on:
 
 jobs:
   website:
-    name: website (i18n parity + typecheck + marketing-only build)
+    name: website (i18n parity + typecheck + build)
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -35,5 +26,5 @@ jobs:
         run: npm run test:i18n
       - name: Typecheck
         run: npm run check
-      - name: Build (marketing only)
-        run: npm run build:marketing-only
+      - name: Build
+        run: npm run build
