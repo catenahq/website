@@ -13,9 +13,23 @@ github.com/catenahq/docs and ships as its own deployment.
 
 ## Brand assets
 
-Brand tokens come from `@catenahq/contracts/brand`. Update the
-contracts repo and bump the dep here to pull in changes; do not
-vendor a local copy.
+Brand tokens come from `@catenahq/contracts/brand`, vendored locally
+under `vendor/catenahq-contracts-X.Y.Z.tgz`. Do not edit the
+vendored copy by hand.
+
+To bump the vendored version: run the "Bump @catenahq/contracts to
+latest" workflow (Actions tab -> Run workflow), or wait for the
+daily cron. The companion `contracts-freshness` job in `ci.yml`
+fails the build whenever the vendored version drifts from the
+latest tag on `catenahq/contracts`, so a stale vendored copy blocks
+every merge until a bump PR lands.
+
+Required repository secret:
+
+  CONTRACTS_READ_TOKEN  fine-grained GitHub PAT with
+                        `Contents: read` on catenahq/contracts only.
+                        Used by both contracts-update.yml and the
+                        contracts-freshness gate.
 
 ## Content rules
 
