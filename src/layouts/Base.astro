@@ -13,12 +13,16 @@ interface Props {
   ogImage?: string;
 }
 
-const { title, description, locale = "fr", ogImage = "/og-default.png" } = Astro.props;
+const { title, description, locale = "fr", ogImage } = Astro.props;
 
 const brandName = t(locale, "common.brand.name");
 const brandTagline = t(locale, "common.brand.tagline");
 const pageTitle = title ? `${title} -- ${brandName}` : `${brandName} -- ${brandTagline}`;
 const pageDesc = description ?? brandTagline;
+// Locale-aware default OG card. Per-page OG endpoint will supersede
+// this once it lands (see backlog).
+const defaultOgImage = locale === "en" ? "/og-default-en.png" : "/og-default-fr.png";
+const finalOgImage = ogImage ?? defaultOgImage;
 
 // Locale-agnostic subpath. Strips a leading "/en/" so we can re-emit
 // the same logical path in every locale via getRelativeLocaleUrl.
@@ -29,7 +33,7 @@ const subpath = pathname.replace(/^\/en(\/|$)/, "/").replace(/^\//, "");
 const site = Astro.site!;
 const canonical = new URL(getRelativeLocaleUrl(locale, subpath), site).toString();
 const xDefault = new URL(getRelativeLocaleUrl("fr", subpath), site).toString();
-const ogImageUrl = new URL(ogImage, site).toString();
+const ogImageUrl = new URL(finalOgImage, site).toString();
 const ogLocale = locale === "fr" ? "fr_CA" : "en_CA";
 
 const orgJsonLd = {
@@ -67,6 +71,9 @@ const orgJsonLd = {
     <meta name="twitter:image" content={ogImageUrl} />
 
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16.png" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
 
     <script type="application/ld+json" set:html={JSON.stringify(orgJsonLd)} />
   </head>
