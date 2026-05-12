@@ -18,6 +18,11 @@ import sitemap from "@astrojs/sitemap";
 export default defineConfig({
   site: "https://catena.run",
   trailingSlash: "ignore",
+  // Opt-in prefetch. Links with data-astro-prefetch prefetch on hover.
+  // We keep prefetchAll off so unmarked links pay zero JS cost.
+  prefetch: {
+    defaultStrategy: "hover",
+  },
   i18n: {
     locales: ["en", "fr"],
     defaultLocale: "fr",
