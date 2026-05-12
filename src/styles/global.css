@@ -1,4 +1,4 @@
-@import "./brand/tokens/all.css";
+@import "@catenahq/contracts/brand/tokens/all.css";
 
 /* Display face used only on the .brand wordmark. font-display: swap
    keeps first paint immediate; Inter shows through until the OTF

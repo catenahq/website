@@ -4,10 +4,8 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "predev": "node ./tools/sync-brand.mjs ./src/styles/brand",
     "dev": "astro dev",
     "start": "astro dev",
-    "prebuild": "node ./tools/sync-brand.mjs ./src/styles/brand",
     "build": "astro build",
     "preview": "astro preview",
     "check": "astro check",
@@ -15,6 +13,7 @@
   },
   "dependencies": {
     "@astrojs/sitemap": "^3.7.2",
+    "@catenahq/contracts": "github:catenahq/contracts#v0.1.0",
     "@resvg/resvg-js": "^2.6.2",
     "astro": "^6.2.1",
     "astro-icon": "^1.1.5",

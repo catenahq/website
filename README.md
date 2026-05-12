@@ -1,16 +1,16 @@
-# apps/website -- catena.run
+# catenahq/website -- catena.run
 
-Astro static site. Marketing landing pages + Starlight docs at
-`/docs/*`. EN at `/`, FR at `/fr/`. Self-contained: consumes shared
-brand tokens (synced from `packages/tools/brand/` at prebuild time into
-`src/styles/brand/`) and ships its own translations under
-`src/i18n/`. Page-level prose stays in the components themselves
-until enough copy accumulates to justify a content collection.
+Astro static marketing site. EN at `/`, FR at `/fr/`. Self-contained.
+Brand tokens come from `@catenahq/contracts/brand`. Page-level prose
+stays in the components themselves until enough copy accumulates to
+justify a content collection.
+
+The docs site (catena.run/docs) lives in its own repo at
+github.com/catenahq/docs.
 
 ## Develop
 
 ```bash
-cd apps/website
 npm install
 npm run dev
 # -> http://localhost:4321
@@ -19,29 +19,23 @@ npm run dev
 ## Build
 
 ```bash
-cd apps/website
 npm run build
-# fires `prebuild` (brand sync) -> astro build -> chains apps/docs
-# emits apps/website/dist/
+# astro build -> dist/
 ```
 
 ## Test (i18n key parity)
 
 ```bash
-cd apps/website
 npm run test:i18n
 ```
 
 ## Deploy
 
 Dockerfile is multi-stage: Astro build inside `node:22-alpine`,
-served from `nginx:alpine`. The build context must be the **repo
-root** so the prebuild script reaches `packages/tools/brand/` via
-`../../packages/tools/sync-brand.mjs`.
+served from `nginx:alpine`. Build context is this repo's root.
 
 In Dokploy: Create Compose -> GitHub source pointing at this repo,
-`composePath: apps/website/dokploy.compose.yml`. See
-`internal_docs/operator/deploy-webapp-from-github.md`.
+`composePath: dokploy.compose.yml`.
 
 ## Add a page
 

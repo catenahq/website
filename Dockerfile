@@ -1,39 +1,26 @@
-# apps/website -- catena.run
+# catenahq/website -- catena.run
 #
-# Multi-stage build: Astro static build (with chained Starlight docs
-# at /docs) -> nginx:alpine serving dist/.
-#
-# Build context is the repo root (not apps/website) because the
-# chain script also builds apps/docs and the prebuild scripts read
-# packages/tools/brand/ via ../../packages/tools/sync-brand.mjs.
-# Dokploy compose sets
-# `build: { context: ., dockerfile: apps/website/Dockerfile }`.
+# Multi-stage Astro static build -> nginx:alpine serving dist/.
+# Standalone repo: build context is the repo root.
 
 # ---- Stage 1: build ----
 FROM node:22-alpine AS build
-WORKDIR /repo
+WORKDIR /app
 
-# Install per-app deps first so source changes don't invalidate the
-# install cache. Each app has its own package-lock.json (no workspaces).
-COPY apps/website/package.json apps/website/package-lock.json* apps/website/
-COPY apps/docs/package.json apps/docs/package-lock.json* apps/docs/
+# Install deps first so source changes don't invalidate the cache.
+# @catenahq/contracts is a git dependency; npm needs git available.
+RUN apk add --no-cache git
+COPY package.json package-lock.json* ./
+RUN npm ci --no-audit --no-fund
 
-RUN cd apps/website && npm ci --no-audit --no-fund
-RUN cd apps/docs    && npm ci --no-audit --no-fund
-
-# Copy source. Brand sync target dirs are gitignored; the prebuild
-# step inside `npm run build` populates them from packages/tools/brand/.
-COPY apps/website apps/website
-COPY apps/docs apps/docs
-COPY packages/tools packages/tools
-
-WORKDIR /repo/apps/website
+# Copy source + build.
+COPY . .
 RUN npm run build
 
 # ---- Stage 2: serve ----
 FROM nginx:alpine AS serve
-COPY apps/website/nginx.conf /etc/nginx/conf.d/default.conf
-COPY --from=build /repo/apps/website/dist /usr/share/nginx/html
+COPY nginx.conf /etc/nginx/conf.d/default.conf
+COPY --from=build /app/dist /usr/share/nginx/html
 
 HEALTHCHECK --interval=30s --timeout=3s --retries=3 \
   CMD wget --quiet --spider http://127.0.0.1/ || exit 1
