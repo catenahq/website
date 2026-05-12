@@ -10,7 +10,11 @@
     "about": "About",
     "docs": "Docs",
     "portal": "Client portal",
-    "contact": "Contact"
+    "contact": "Contact",
+    "site_web": "Marketing website",
+    "scheduler": "Scheduler picker",
+    "status": "Service status",
+    "conformite": "Law 25 compliance"
   },
   "cta": {
     "primary": "Get started",
@@ -805,6 +809,18 @@
   "site_web": {
     "title": "Marketing website",
     "intro": "A multi-page website, deployed as an app on the same server as your Catena Suite. You own the source code (a Git repo under your name), the content, and the domain. No vendor lock-in, no third-party host to pay for.",
+    "why_title": "Why design your website with Catena",
+    "why_intro": "Anyone can launch a website this year -- AI builders will hand you one in an afternoon. The real question is what happens in year three, when the platform raises its prices, gets acquired, or decides your industry violates its terms. Four reasons a Catena-built site holds up.",
+    "why_card1_title": "You own the files",
+    "why_card1_body": "Source code in a Git repository under your name. Content in plain markdown anyone can read. Swap hosts in five minutes by changing a single Astro adapter. The site is a folder of files you own, not a row in someone else's database.",
+    "why_card2_title": "Connected to your stack",
+    "why_card2_body": "Booking embeds that know who is logged in. Contact forms that drop straight into your CRM. Member areas gated by your Keycloak. AI builders cannot stitch this together -- they do not run the systems on the other end. Your Catena Suite does.",
+    "why_card3_title": "Built for year three",
+    "why_card3_body": "When the platform doubles its prices, gets acquired, decides your payment processor is no longer allowed, or goes down for eighteen hours, the answer should not be a support ticket. With a Catena site, the answer is a redeploy: same files, different host, five minutes.",
+    "why_card4_title": "No database of its own",
+    "why_card4_body": "Leads go to your CRM. Bookings go to your booking system. Logins go to your identity server. The site itself owns nothing, so there is nothing on it to back up, migrate, or lose. State lives where it already belongs.",
+    "why_tradeoff_title": "When it is the wrong fit",
+    "why_tradeoff_body": "If you need a single brochure page and will never touch it again, a no-code builder is genuinely the right tool for the job. Talk to us when the site is part of how your business actually runs -- the front door to your bookings, your CRM, your portal, and your team.",
     "process_title": "How it goes",
     "process_step1_title": "1. Discovery call (30 min, free)",
     "process_step1_body": "You explain your business, your audience, your goals. I explain what I offer and what is or isn't realistic in your budget. No pitch, no commitment.",

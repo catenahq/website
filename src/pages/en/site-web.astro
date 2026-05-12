@@ -6,6 +6,7 @@ import { t, tArray } from "@catena/i18n";
 const locale = "en";
 
 const processSteps = [1, 2, 3, 4, 5, 6];
+const whyCards = [1, 2, 3, 4];
 const deliverables = tArray(locale, "common.site_web.deliverables");
 const notIncluded = tArray(locale, "common.site_web.not_included");
 const examples = tArray(locale, "common.pricing.addons.website.examples");
@@ -20,6 +21,25 @@ const discoveryUrl = t(locale, "common.cta.discovery_url");
     title={t(locale, "common.site_web.title")}
     intro={t(locale, "common.site_web.intro")}
   />
+
+  <section class="why-catena">
+    <div class="container">
+      <h2>{t(locale, "common.site_web.why_title")}</h2>
+      <p class="muted lead">{t(locale, "common.site_web.why_intro")}</p>
+      <ul class="why-grid">
+        {whyCards.map((n) => (
+          <li class="why-card">
+            <h3>{t(locale, `common.site_web.why_card${n}_title`)}</h3>
+            <p>{t(locale, `common.site_web.why_card${n}_body`)}</p>
+          </li>
+        ))}
+      </ul>
+      <aside class="tradeoff">
+        <h3>{t(locale, "common.site_web.why_tradeoff_title")}</h3>
+        <p>{t(locale, "common.site_web.why_tradeoff_body")}</p>
+      </aside>
+    </div>
+  </section>
 
   <section class="process">
     <div class="container">
@@ -104,15 +124,56 @@ const discoveryUrl = t(locale, "common.cta.discovery_url");
 </Base>
 
 <style>
-  .process, .grid-pricing, .deliverables, .closing-cta {
+  .why-catena, .process, .grid-pricing, .deliverables, .closing-cta {
     padding: var(--catena-space-16) 0;
   }
+  .why-catena { background: var(--catena-surface-bg-muted); }
   .process { background: var(--catena-surface-bg); }
   .grid-pricing { background: var(--catena-surface-bg-muted); }
   .deliverables { background: var(--catena-surface-bg); }
   .closing-cta {
     background: var(--catena-surface-bg-muted);
     text-align: center;
+  }
+  .why-grid {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: var(--catena-space-6);
+  }
+  .why-card {
+    padding: var(--catena-space-6);
+    border: 1px solid var(--catena-surface-border);
+    border-left: 4px solid var(--catena-accent);
+    border-radius: var(--catena-radius-lg);
+    background: var(--catena-surface-bg);
+  }
+  .why-card h3 {
+    margin: 0 0 var(--catena-space-3) 0;
+    font-size: var(--catena-fs-lg);
+  }
+  .why-card p {
+    margin: 0;
+    line-height: var(--catena-lh-relaxed);
+  }
+  .tradeoff {
+    margin-top: var(--catena-space-8);
+    padding: var(--catena-space-6);
+    border: 1px dashed var(--catena-surface-border);
+    border-radius: var(--catena-radius-lg);
+    background: var(--catena-surface-bg);
+  }
+  .tradeoff h3 {
+    margin: 0 0 var(--catena-space-2) 0;
+    font-size: var(--catena-fs-md);
+    color: var(--catena-surface-fg-muted);
+  }
+  .tradeoff p {
+    margin: 0;
+    line-height: var(--catena-lh-relaxed);
+    color: var(--catena-surface-fg-muted);
   }
   h2 { margin-top: 0; }
   .lead { margin-bottom: var(--catena-space-8); max-width: 56rem; }
@@ -199,7 +260,7 @@ const discoveryUrl = t(locale, "common.cta.discovery_url");
     margin-top: var(--catena-space-6);
   }
   @media (max-width: 1023px) {
-    .steps, .two-col { grid-template-columns: 1fr; }
+    .steps, .two-col, .why-grid { grid-template-columns: 1fr; }
   }
   @media (max-width: 639px) {
     .price-table td { white-space: normal; text-align: left; }

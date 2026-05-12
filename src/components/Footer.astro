@@ -12,6 +12,8 @@ const docsHref = locale === "en" ? "/docs/" : "/docs/fr/";
 
 const productLinks = [
   { href: `${prefix}/features`,    label: t(locale, "common.nav.features") },
+  { href: `${prefix}/site-web`,    label: t(locale, "common.nav.site_web") },
+  { href: `${prefix}/scheduler`,   label: t(locale, "common.nav.scheduler") },
   { href: `${prefix}/pricing`,     label: t(locale, "common.nav.pricing") },
   { href: `${prefix}/comparison`,  label: t(locale, "common.nav.comparison") },
   { href: `${prefix}/faq`,         label: t(locale, "common.faq.title") },
@@ -19,14 +21,16 @@ const productLinks = [
 ];
 
 const companyLinks = [
-  { href: `${prefix}/about`,       label: t(locale, "common.nav.about") },
-  { href: `${prefix}/contact`,     label: t(locale, "common.nav.contact") },
+  { href: `${prefix}/about`,        label: t(locale, "common.nav.about") },
+  { href: `${prefix}/contact`,      label: t(locale, "common.nav.contact") },
+  { href: `${prefix}/status`,       label: t(locale, "common.nav.status") },
   { href: "https://app.catena.run", label: t(locale, "common.nav.portal") },
 ];
 
 const legalLinks = [
   { href: `${prefix}/privacy`,     label: t(locale, "common.privacy.title") },
   { href: `${prefix}/terms`,       label: t(locale, "common.terms.title") },
+  { href: `${prefix}/conformite`,  label: t(locale, "common.nav.conformite") },
 ];
 ---
 <footer class="site-footer">
