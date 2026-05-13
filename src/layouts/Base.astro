@@ -17,6 +17,19 @@ interface Props {
 
 const { title, description, locale = "fr", ogImage } = Astro.props;
 
+// Self-hosted Plausible analytics. Wired at build time via env vars
+// so the snippet only ships when the operator has actually deployed
+// a Plausible instance. Cookieless config -- no banner required.
+//
+//   PUBLIC_PLAUSIBLE_HOST   https origin of the self-hosted Plausible
+//                           (e.g. https://plausible.catena.run). When
+//                           unset, no analytics snippet is emitted.
+//   PUBLIC_PLAUSIBLE_DOMAIN data-domain the Plausible site is keyed
+//                           on. Defaults to the marketing site host
+//                           (catena.run) -- override for staging.
+const plausibleHost = import.meta.env.PUBLIC_PLAUSIBLE_HOST as string | undefined;
+const plausibleDomain = (import.meta.env.PUBLIC_PLAUSIBLE_DOMAIN as string | undefined) ?? "catena.run";
+
 const brandName = t(locale, "common.brand.name");
 const brandTagline = t(locale, "common.brand.tagline");
 const pageTitle = title ? `${title} -- ${brandName}` : `${brandName} -- ${brandTagline}`;
@@ -132,6 +145,14 @@ const breadcrumbJsonLd = segments.length === 0 ? null : {
       <script type="application/ld+json" set:html={JSON.stringify(breadcrumbJsonLd)} />
     )}
     <ClientRouter />
+    {plausibleHost && (
+      <script
+        is:inline
+        defer
+        data-domain={plausibleDomain}
+        src={`${plausibleHost.replace(/\/$/, "")}/js/script.js`}
+      />
+    )}
     <slot name="head" />
   </head>
   <body>
