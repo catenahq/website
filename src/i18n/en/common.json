@@ -778,7 +778,7 @@
     "rights_title": "Your rights",
     "rights_body": "Law 25 and PIPEDA grant you the right to access, correct, and delete personal information we hold. Contact privacy@catena.run (or hello@catena.run interim) and we will respond within 30 days.",
     "cookies_title": "Cookies and analytics",
-    "cookies_body": "Minimal session cookies on the portal for authentication. No third-party trackers, no advertising cookies, no behavior analytics on the marketing site.",
+    "cookies_body": "Minimal session cookies on the portal for authentication. No third-party trackers, no advertising cookies, no cookies on the marketing site. Aggregate visit analytics on the marketing site via a self-hosted Plausible instance -- no cookies, no fingerprinting, no personal data; Law 25 / GDPR compliant with no consent banner required.",
     "contact_title": "Questions",
     "contact_body": "Email hello@catena.run. We answer privacy questions within one business day."
   },
@@ -841,7 +841,7 @@
     "process_step3_title": "3. Fixed quote",
     "process_step3_body": "Itemized quote in CAD per the price grid below. No hidden costs. You approve before work starts.",
     "process_step4_title": "4. Design and build",
-    "process_step4_body": "Mockup → content → Astro static build → review → revisions. Two rounds of revisions included. You see the site on a preview URL throughout the build.",
+    "process_step4_body": "Mockup -> content -> Astro static build -> review -> revisions. Two rounds of revisions included. You see the site on a preview URL throughout the build.",
     "process_step5_title": "5. Launch",
     "process_step5_body": "Going live on your Catena Suite, DNS cutover, HTTPS / accessibility / performance verification. Source code handed over in a Git repo under your name.",
     "process_step6_title": "6. Maintenance (covered by your monthly retainer)",

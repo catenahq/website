@@ -45,6 +45,8 @@ jobs:
           cache: "npm"
       - name: Install
         run: npm ci
+      - name: Unicode hygiene (no em dashes / smart quotes / decorative symbols)
+        run: npm run check:unicode
       - name: i18n parity
         run: npm run test:i18n
       - name: Typecheck

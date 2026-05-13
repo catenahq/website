@@ -9,7 +9,8 @@
     "build": "astro build",
     "preview": "astro preview",
     "check": "astro check",
-    "test:i18n": "node scripts/i18n-parity.mjs"
+    "test:i18n": "node scripts/i18n-parity.mjs",
+    "check:unicode": "node scripts/check-unicode.mjs"
   },
   "dependencies": {
     "@astrojs/sitemap": "^3.7.2",

@@ -778,7 +778,7 @@
     "rights_title": "Vos droits",
     "rights_body": "La Loi 25 et la LPRPDE vous accordent le droit d'accéder à, de corriger et de supprimer les renseignements personnels que nous détenons. Contactez privacy@catena.run (ou hello@catena.run en attendant) et nous répondrons sous 30 jours.",
     "cookies_title": "Témoins et analytiques",
-    "cookies_body": "Témoins de session minimaux sur le portail pour l'authentification. Aucun traceur tiers, aucun témoin publicitaire, aucune analyse comportementale sur le site marketing.",
+    "cookies_body": "Témoins de session minimaux sur le portail pour l'authentification. Aucun traceur tiers, aucun témoin publicitaire, aucun témoin sur le site marketing. Analyse de fréquentation agrégée sur le site marketing via une instance Plausible auto-hébergée -- sans témoin, sans empreinte numérique, sans données personnelles, conforme à la Loi 25 et au RGPD sans bannière de consentement requise.",
     "contact_title": "Questions",
     "contact_body": "Écrivez à hello@catena.run. Nous répondons aux questions de confidentialité dans un jour ouvrable."
   },
@@ -841,7 +841,7 @@
     "process_step3_title": "3. Devis fixe",
     "process_step3_body": "Devis itemisé en CAD selon la grille tarifaire ci-dessous. Aucun coût caché. Vous approuvez avant le démarrage.",
     "process_step4_title": "4. Conception et construction",
-    "process_step4_body": "Maquette → contenu → développement Astro statique → revue → corrections. Deux tours de révision inclus. Vous voyez le site sur une URL de prévisualisation tout au long de la construction.",
+    "process_step4_body": "Maquette -> contenu -> développement Astro statique -> revue -> corrections. Deux tours de révision inclus. Vous voyez le site sur une URL de prévisualisation tout au long de la construction.",
     "process_step5_title": "5. Lancement",
     "process_step5_body": "Mise en ligne sur votre Suite Catena, bascule DNS, vérifications HTTPS, accessibilité et performance. Code source remis dans un dépôt Git à votre nom.",
     "process_step6_title": "6. Maintenance (incluse dans le forfait mensuel)",
