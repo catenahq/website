@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-/* apps/website/scripts/i18n-parity.mjs
+/* scripts/i18n-parity.mjs
  *
  * Walk src/i18n/{en,fr}/*.json and assert that every locale has the
  * exact same key set, recursively. Exits 0 on parity, 1 on any
