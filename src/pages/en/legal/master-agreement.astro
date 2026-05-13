@@ -1,0 +1,67 @@
+---
+import Base from "../../../layouts/Base.astro";
+import PageTitle from "../../../components/PageTitle.astro";
+import { marked } from "marked";
+import msa from "@catenahq/contracts/legal/msa.json";
+import { readFileSync } from "node:fs";
+import { createRequire } from "node:module";
+
+const locale = "en";
+
+const req = createRequire(import.meta.url);
+const mdPath = req.resolve("@catenahq/contracts/legal/master-agreement.md");
+const rawMd = readFileSync(mdPath, "utf8");
+const html = marked.parse(rawMd) as string;
+
+const pageTitle = "Master Services Agreement";
+const pageIntro = "Full text of the Master Services Agreement (MSA) you accept at order time in the portal.";
+---
+<Base
+  locale={locale}
+  title={pageTitle}
+  description="Catena Master Services Agreement. Canonical text, version-pinned by commit SHA. Governing law: Quebec, Canada."
+>
+  <PageTitle title={pageTitle} intro={pageIntro} />
+  <section class="prose">
+    <div class="container">
+      <p class="version-pin">
+        Version: <code>{msa.version.slice(0, 12)}</code>
+        &middot; Effective {msa.effectiveDate}
+        &middot; <a href="/legal/master-agreement" class="alt-locale">Français</a>
+      </p>
+      <article set:html={html}></article>
+    </div>
+  </section>
+</Base>
+
+<style>
+  .prose { padding: var(--catena-space-8) 0 var(--catena-space-24); }
+  .prose article { max-width: 64rem; }
+  .prose article h1 { font-size: var(--catena-fs-2xl); margin: 0 0 var(--catena-space-6); }
+  .prose article h2 { font-size: var(--catena-fs-xl); margin: var(--catena-space-8) 0 var(--catena-space-3); }
+  .prose article h3 { font-size: var(--catena-fs-lg); margin: var(--catena-space-6) 0 var(--catena-space-2); }
+  .prose article p, .prose article li {
+    line-height: var(--catena-lh-relaxed);
+    margin: 0 0 var(--catena-space-3);
+  }
+  .prose article ul { padding-left: var(--catena-space-6); margin: 0 0 var(--catena-space-4); }
+  .prose article blockquote {
+    padding: var(--catena-space-4) var(--catena-space-5);
+    border-left: 3px solid var(--catena-accent);
+    background: var(--catena-surface-bg-muted);
+    border-radius: var(--catena-radius-sm);
+    margin: var(--catena-space-4) 0;
+  }
+  .prose article code { font-family: var(--catena-font-mono); font-size: 0.9em; }
+  .version-pin {
+    padding: var(--catena-space-4) var(--catena-space-5);
+    border: 1px solid var(--catena-border);
+    background: var(--catena-surface-bg-muted);
+    border-radius: var(--catena-radius-sm);
+    max-width: 64rem;
+    margin-bottom: var(--catena-space-6);
+    font-size: var(--catena-fs-sm);
+  }
+  .version-pin code { font-family: var(--catena-font-mono); }
+  .alt-locale { text-decoration: underline; }
+</style>
