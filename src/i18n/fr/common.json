@@ -231,78 +231,66 @@
   "for_your_team": {
     "intro": "Ce que votre équipe utilise chaque jour. Authentification unique sur toute la suite -- un seul mot de passe à retenir, plus de connexion séparée par outil.",
     "recommendation_title": "Ce sont des choix éprouvés",
-    "recommendation_body": "Chaque application de cette liste a gagné sa place selon la couverture fonctionnelle, la stabilité, l'historique du projet et la popularité. Trouvez une application qui répond à vos besoins ou qui remplace ce que vous payez actuellement parmi des centaines d'autres sur <a href='https://openalternative.co' target='_blank' rel='noopener noreferrer'>openalternative.co</a>.",
-    "alternatives_link": "Alternatives libres",
-    "upstream_link": "Page du projet",
-    "compare_link": "Comparer",
-    "image_alt_suffix": "capture d'écran",
-    "apps": {
-      "nextcloud": {
-        "title": "Nextcloud",
-        "role": "Fichiers et espace partagé",
-        "body": "Le disque partagé de votre équipe. Synchronisation bureau et mobile, historique de versions, dossiers partagés, partage par lien avec expiration. Vos fichiers restent sur votre serveur, pas chez un tiers. Nextcloud propose aussi des outils intégrés de base qui couvrent les besoins courants mais offrent moins de fonctionnalités que les applications dédiées de la suite."
+    "recommendation_body": "Chaque capacité de cette liste est livrée par un outil libre éprouvé qui a gagné sa place selon la couverture fonctionnelle, la stabilité, l'historique du projet et la popularité. Trouvez une application qui répond à vos besoins ou qui remplace ce que vous payez actuellement parmi des centaines d'autres sur <a href='https://openalternative.co' target='_blank' rel='noopener noreferrer'>openalternative.co</a>.",
+    "built_on_label": "Construit avec",
+    "capabilities": {
+      "communications": {
+        "title": "Communications intégrées",
+        "intro": "Messagerie interne d'équipe, visioconférence, boîte de support client et appels téléphoniques classiques. Aucun outil unique ne couvre tout ; le guide en lien parcourt quelle combinaison convient à quelle situation.",
+        "cta_label": "Choisir parmi les options"
       },
-      "onlyoffice": {
-        "title": "OnlyOffice ou Collabora",
-        "role": "Documents bureautiques",
-        "body": "Édition collaborative de documents dans le navigateur, branchée sur Nextcloud pour éditer vos fichiers sur place. Choisissez OnlyOffice si votre équipe travaille principalement avec les formats Microsoft (.docx / .xlsx / .pptx) -- c'est le plus fidèle pour ces formats. Choisissez Collabora si votre équipe utilise ou est prête à passer aux formats ouverts (.odt / .ods / .odp) -- basé sur LibreOffice, c'est l'endroit naturel pour le format ODF. Les deux peuvent être installés ; la plupart des clients n'en utilisent qu'un seul."
+      "files_and_workspace": {
+        "title": "Fichiers et espace partagé",
+        "intro": "Le disque partagé de votre équipe. Synchronisation bureau et mobile, historique de versions, dossiers partagés, partage par lien avec expiration. Les fichiers restent sur votre serveur, pas chez un tiers. Nextcloud regroupe aussi des outils intégrés de base pour la discussion, le wiki, l'agenda, les contacts, les notes et les tâches -- assez pour les petites équipes avant d'ajouter les applications dédiées de la suite.",
+        "cta_label": "Comparer les applications Nextcloud à la suite"
       },
-      "rocketchat": {
-        "title": "Rocket.Chat",
-        "role": "Messagerie d'équipe et réunions",
-        "body": "Salons, messages directs, appels vidéo auto-hébergés, partage d'écran, partage de fichiers. Remplace Slack et Teams sans le verrou par utilisateur."
+      "collaborative_editing": {
+        "title": "Édition collaborative de documents",
+        "intro": "Édition collaborative de documents, feuilles de calcul et présentations dans le navigateur, branchée sur Nextcloud pour éditer vos fichiers sur place. Choisissez OnlyOffice si votre équipe travaille principalement avec les formats Microsoft (.docx / .xlsx / .pptx) -- c'est le plus fidèle pour ces formats. Choisissez Collabora si votre équipe utilise ou est prête à passer aux formats ouverts (.odt / .ods / .odp) -- basé sur LibreOffice, c'est l'endroit naturel pour le format ODF."
       },
-      "espocrm": {
-        "title": "EspoCRM",
-        "role": "Relations clients",
-        "body": "Contacts, opportunités, suivis, calendriers par membre, coordination d'équipe. Léger pour un usage quotidien, assez profond pour évoluer avec vous."
+      "team_documentation": {
+        "title": "Documentation d'équipe",
+        "intro": "Un wiki pour les procédures, politiques et fiches pratiques de votre équipe. Mieux que des dossiers partagés éparpillés et des Google Docs introuvables."
       },
-      "scheduler": {
-        "title": "Easy!Appointments",
-        "role": "Réservations et agenda",
-        "body": "Page de réservation client pour un ou plusieurs prestataires. Calendriers du personnel synchronisés avec Nextcloud. Paiements Stripe pour cliniques, salons, cours."
+      "document_signing": {
+        "title": "Signature électronique avec piste d'audit",
+        "intro": "Envoi de documents pour signature électronique avec piste d'audit, certificat d'achèvement et modèles réutilisables. Alternative auto-hébergée à DocuSign."
       },
-      "n8n": {
-        "title": "n8n",
-        "role": "Automatisation des processus",
-        "body": "Connectez les outils. Quand un formulaire arrive, créez un contact EspoCRM, envoyez un courriel de confirmation, planifiez un suivi -- sans copier-coller."
+      "crm": {
+        "title": "CRM et suivi client",
+        "intro": "Contacts, opportunités, suivis, calendriers par membre, coordination d'équipe. Léger pour un usage quotidien, assez profond pour évoluer avec vous. Authentification unique avec le reste de la suite."
       },
-      "postiz": {
-        "title": "Postiz",
-        "role": "Planification de médias sociaux",
-        "body": "Planifiez des publications LinkedIn, X, Facebook, Instagram depuis un seul calendrier. Alternative libre à Buffer ou Hootsuite."
+      "booking": {
+        "title": "Réservation et agenda",
+        "intro": "Page de réservation client pour un ou plusieurs prestataires. Calendriers du personnel synchronisés avec Nextcloud. Paiements Stripe pour cliniques, salons, cours. Différentes équipes ont différents besoins en réservation -- l'outil de sélection en lien vous oriente vers le bon.",
+        "cta_label": "Trouver le bon agenda"
       },
-      "outline": {
-        "title": "Outline",
-        "role": "Base de connaissances interne",
-        "body": "Un wiki pour la documentation, les processus, les politiques de votre équipe. Mieux que des dossiers partagés éparpillés et des Google Docs introuvables."
+      "invoicing": {
+        "title": "Estimés et factures",
+        "intro": "Devis, factures, facturation récurrente, suivi des dépenses, paiements en ligne via Stripe / PayPal et portail client. Alternative auto-hébergée à FreshBooks ou Wave."
       },
-      "plane": {
-        "title": "Plane",
-        "role": "Gestion de projet",
-        "body": "Tickets, cycles, modules, projets et feuilles de route. Alternative libre à Jira et Linear, avec une interface moderne et un modèle de données sain."
+      "workflow_automation": {
+        "title": "Automatisation des processus",
+        "intro": "Reliez les outils. Quand un formulaire arrive, créez un contact EspoCRM, envoyez un courriel de confirmation, planifiez un suivi -- sans copier-coller."
       },
-      "docuseal": {
-        "title": "DocuSeal",
-        "role": "Signature de documents",
-        "body": "Envoi de documents pour signature électronique avec piste d'audit, certificat d'achèvement et modèles réutilisables. Alternative auto-hébergée à DocuSign."
+      "project_management": {
+        "title": "Planification et suivi de projets",
+        "intro": "Tickets, cycles, modules, projets et feuilles de route. Alternative libre à Jira et Linear, avec une interface moderne et un modèle de données sain."
       },
-      "invoiceninja": {
-        "title": "Invoice Ninja",
-        "role": "Facturation et devis",
-        "body": "Devis, factures, facturation récurrente, suivi des dépenses, paiements en ligne via Stripe / PayPal et portail client. Alternative auto-hébergée à FreshBooks ou Wave."
+      "social_posting": {
+        "title": "Publication sociale omnicanal",
+        "intro": "Planifiez des publications LinkedIn, X, Facebook, Instagram depuis un seul calendrier. Alternative libre à Buffer ou Hootsuite."
+      },
+      "website_hosting": {
+        "title": "Hébergement de site web d'entreprise",
+        "intro": "Un site web multi-pages pour votre entreprise, déployé sur la même suite que le reste. Le code source vit dans un dépôt Git à votre nom ; forfaits détaillés sur la page tarifs.",
+        "cta_label": "Voir les forfaits site web"
+      },
+      "email_integration": {
+        "title": "Intégration courriel",
+        "intro": "Nous n'opérons pas de serveur de messagerie -- la délivrabilité, la conformité antispam et la gestion des rebonds sont un travail à temps plein. Nous intégrons cinq fournisseurs axés sur la confidentialité et configurons MX, SPF, DKIM, DMARC, et l'authentification unique. Votre équipe utilise le courriel comme n'importe quelle autre application.",
+        "cta_label": "Voir les fournisseurs recommandés"
       }
-    },
-    "email": {
-      "title": "Courriel",
-      "role": "Intégration gérée",
-      "body": "Nous n'opérons pas de serveur de messagerie -- la délivrabilité, la conformité antispam et la gestion des rebonds sont un travail à temps plein. Nous intégrons 5 fournisseurs complets et axés sur la confidentialité, et configurons MX, SPF, DKIM, DMARC, et l'authentification unique. Votre équipe utilise le courriel comme n'importe quelle autre application."
-    },
-    "website_addon": {
-      "title": "Site web d'entreprise",
-      "role": "Module complémentaire",
-      "body": "Un site web multi-pages pour votre entreprise, déployé sur la même suite que le reste. Forfaits détaillés sur la page tarifs.",
-      "link_text": "Voir les forfaits"
     }
   },
   "for_your_it": {

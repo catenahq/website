@@ -231,78 +231,66 @@
   "for_your_team": {
     "intro": "What your team uses every day. Single sign-on across the whole suite -- one password to remember, no more separate logins per tool.",
     "recommendation_title": "These are vetted picks",
-    "recommendation_body": "Each app on this list earned its slot on feature coverage, stability, project history, and popularity. Find an app that fits your needs or replaces what you currently pay for among hundreds of others at <a href='https://openalternative.co' target='_blank' rel='noopener noreferrer'>openalternative.co</a>.",
-    "alternatives_link": "Open-source alternatives",
-    "upstream_link": "Project page",
-    "compare_link": "Compare",
-    "image_alt_suffix": "screenshot",
-    "apps": {
-      "nextcloud": {
-        "title": "Nextcloud",
-        "role": "Files and shared workspace",
-        "body": "Your team's shared drive. Desktop and mobile sync, version history, shared folders, link sharing with expiry. Files stay on your server, not on a third party. Nextcloud also offers basic in-app tools that cover common needs but offer fewer features than the dedicated apps in the suite."
+    "recommendation_body": "Each capability on this list is delivered by a vetted open-source tool that earned its slot on feature coverage, stability, project history, and popularity. Find an app that fits your needs or replaces what you currently pay for among hundreds of others at <a href='https://openalternative.co' target='_blank' rel='noopener noreferrer'>openalternative.co</a>.",
+    "built_on_label": "Built on",
+    "capabilities": {
+      "communications": {
+        "title": "Integrated communications",
+        "intro": "Internal team chat, video meetings, customer-support inbox, and regular phone calls. No single tool covers everything; the linked guide walks through which combination fits which situation.",
+        "cta_label": "Choose among the options"
       },
-      "onlyoffice": {
-        "title": "OnlyOffice or Collabora",
-        "role": "Office documents",
-        "body": "Collaborative document editing in the browser, plugged into Nextcloud so your team edits files in place. Pick OnlyOffice if your team works mainly in Microsoft formats (.docx / .xlsx / .pptx) -- it has the highest fidelity for those. Pick Collabora if your team uses or is ready to move to open formats (.odt / .ods / .odp) -- it is LibreOffice-based and the natural home for ODF. Both can be installed; most clients run only one."
+      "files_and_workspace": {
+        "title": "Files and shared workspace",
+        "intro": "Your team's shared drive. Desktop and mobile sync, version history, shared folders, link sharing with expiry. Files stay on your server, not on a third party. Nextcloud also bundles basic in-app tools for chat, wiki, calendar, contacts, notes, and tasks -- enough for small teams before adding the dedicated apps in the suite.",
+        "cta_label": "Compare Nextcloud apps vs the suite"
       },
-      "rocketchat": {
-        "title": "Rocket.Chat",
-        "role": "Team chat and meetings",
-        "body": "Channels, direct messages, self-hosted video calls, screen sharing, file sharing. Replaces Slack and Teams without the per-seat lock-in."
+      "collaborative_editing": {
+        "title": "Collaborative document editing",
+        "intro": "Edit documents, spreadsheets, and presentations together in the browser, plugged into Nextcloud so your team edits files in place. Pick OnlyOffice if your team works mainly in Microsoft formats (.docx / .xlsx / .pptx) -- it has the highest fidelity for those. Pick Collabora if your team uses or is ready to move to open formats (.odt / .ods / .odp) -- LibreOffice-based and the natural home for ODF."
       },
-      "espocrm": {
-        "title": "EspoCRM",
-        "role": "Customer relationships",
-        "body": "Contacts, opportunities, follow-ups, per-member calendars, team coordination. Light enough to use day-to-day, deep enough to grow into."
+      "team_documentation": {
+        "title": "Team documentation",
+        "intro": "A wiki for your team's processes, policies, and how-to notes. Better than scattered shared folders and Google Docs nobody can find."
       },
-      "scheduler": {
-        "title": "Easy!Appointments",
-        "role": "Bookings and scheduling",
-        "body": "Customer-facing booking page for one or many providers. Staff calendars sync with Nextcloud. Stripe-paid bookings for clinics, salons, lessons."
+      "document_signing": {
+        "title": "Document signing and audit trail",
+        "intro": "Send documents for electronic signature with audit trail, certificate of completion, and reusable templates. Self-hosted alternative to DocuSign."
       },
-      "n8n": {
-        "title": "n8n",
-        "role": "Workflow automation",
-        "body": "Connect the dots. When a form comes in, create an EspoCRM contact, send a confirmation email, schedule a follow-up -- without copy-paste."
+      "crm": {
+        "title": "CRM and customer follow-up",
+        "intro": "Contacts, opportunities, follow-ups, per-member calendars, team coordination. Light enough to use day-to-day, deep enough to grow into. Single sign-on with the rest of the suite."
       },
-      "postiz": {
-        "title": "Postiz",
-        "role": "Social media scheduling",
-        "body": "Schedule posts to LinkedIn, X, Facebook, Instagram from one calendar. Open-source alternative to Buffer or Hootsuite."
+      "booking": {
+        "title": "Client booking and scheduling",
+        "intro": "Customer-facing booking page for one or many providers. Staff calendars sync with Nextcloud. Stripe-paid bookings for clinics, salons, lessons. Different teams have different scheduler needs -- the linked picker points you at the right one.",
+        "cta_label": "Pick the right scheduler"
       },
-      "outline": {
-        "title": "Outline",
-        "role": "Internal knowledge base",
-        "body": "A wiki for your team's documentation, processes, and policies. Better than scattered shared folders and Google Docs nobody can find."
+      "invoicing": {
+        "title": "Quotes and invoices",
+        "intro": "Quotes, invoices, recurring billing, expense tracking, online payments via Stripe / PayPal, and a client portal. Self-hosted alternative to FreshBooks or Wave."
       },
-      "plane": {
-        "title": "Plane",
-        "role": "Project management",
-        "body": "Issues, cycles, modules, projects, and roadmaps. Open-source alternative to Jira and Linear, with a clean modern UI and a sane data model."
+      "workflow_automation": {
+        "title": "Workflow automation",
+        "intro": "Connect the dots. When a form comes in, create an EspoCRM contact, send a confirmation email, schedule a follow-up -- without copy-paste."
       },
-      "docuseal": {
-        "title": "DocuSeal",
-        "role": "Document signing",
-        "body": "Send documents for electronic signature with audit trail, certificate-of-completion, and reusable templates. Self-hosted alternative to DocuSign."
+      "project_management": {
+        "title": "Project planning and tracking",
+        "intro": "Issues, cycles, modules, projects, and roadmaps. Open-source alternative to Jira and Linear, with a clean modern UI and a sane data model."
       },
-      "invoiceninja": {
-        "title": "Invoice Ninja",
-        "role": "Invoicing and quotes",
-        "body": "Quotes, invoices, recurring billing, expense tracking, online payments via Stripe / PayPal, and client portal. Self-hosted alternative to FreshBooks or Wave."
+      "social_posting": {
+        "title": "Omnichannel social posting",
+        "intro": "Schedule posts to LinkedIn, X, Facebook, and Instagram from one calendar. Open-source alternative to Buffer or Hootsuite."
+      },
+      "website_hosting": {
+        "title": "Marketing website hosting",
+        "intro": "A multi-page company website for your business, deployed on the same suite as everything else. Source code in a Git repo under your name; bundled options on the pricing page.",
+        "cta_label": "See website bundles"
+      },
+      "email_integration": {
+        "title": "Email integration",
+        "intro": "We don't run a mail server -- delivery, spam compliance, and bounce handling are a full-time job. We integrate with five privacy-focused providers and wire up MX, SPF, DKIM, DMARC, and single sign-on. Your team uses email like any other app.",
+        "cta_label": "See recommended providers"
       }
-    },
-    "email": {
-      "title": "Email",
-      "role": "Managed integration",
-      "body": "We don't run a mail server -- delivery, spam compliance, and bounce handling are a full-time job. We integrate with 5 full-featured, privacy-focused providers and wire up MX, SPF, DKIM, DMARC, and single sign-on. Your team uses email like any other app."
-    },
-    "website_addon": {
-      "title": "Marketing website",
-      "role": "Add-on",
-      "body": "A multi-page company website for your business, deployed on the same suite as everything else. Bundled options on the pricing page.",
-      "link_text": "See website bundles"
     }
   },
   "for_your_it": {
