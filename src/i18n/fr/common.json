@@ -294,47 +294,28 @@
     }
   },
   "for_your_it": {
-    "intro": "La surface technique, pour la personne TI qui évalue si cette suite est quelque chose qu'elle veut faire opérer, ou qu'elle pourrait opérer à l'interne. Quatre capacités de premier ordre -- provisionnement, sauvegarde/restauration, migration, validation -- chacune une opération atomique.",
-    "stack": {
-      "ansible": {
-        "title": "Ansible",
-        "role": "Provisionnement + opérations",
-        "body": "Déploiement et opérations standardisés et conformes aux pratiques de l'industrie, pour une installation réussie et sécurisée à chaque fois."
+    "intro": "La surface technique, pour la personne TI qui évalue si cette suite est quelque chose qu'elle veut faire opérer, ou qu'elle pourrait opérer à l'interne. Cinq capacités de premier ordre -- déploiement sécurisé, accès sécurisé, sauvegarde et restauration, orchestration applicative, supervision -- chacune livrée par un petit ensemble d'outils libres bien connus.",
+    "built_on_label": "Construit avec",
+    "buckets": {
+      "secure_deployment": {
+        "title": "Déploiement sécurisé",
+        "intro": "Chaque serveur reçoit la même base durcie. Ansible exécute l'automatisation de déploiement ; SOPS chiffre les secrets dans Git avec age, déchiffrés uniquement au déploiement. Aucun secret n'atterrit en clair sur disque hors du gestionnaire de mots de passe matériellement protégé de l'opérateur. Ajoutez un destinataire ; rotation propre."
       },
-      "tailscale": {
-        "title": "Tailscale",
-        "role": "Canal d'administration",
-        "body": "VPN maillé privé pour le chemin admin/debug. Le SSH public ferme après le bootstrap."
+      "secure_access": {
+        "title": "Accès sécurisé",
+        "intro": "Trois couches de contrôle d'accès. Cloudflare Tunnel termine TLS à la périphérie : l'hôte n'expose aucun port (80/443 restent fermés, aucune configuration de routeur requise). Tailscale porte le chemin admin de l'opérateur sur un maillage privé, et le SSH public ferme après le bootstrap. Keycloak gère l'identité par application (utilisateurs, groupes, politique de mot de passe, MFA) : une seule connexion pour toutes les applications de la suite ; oauth2-proxy précède les applications non-OIDC via Traefik forward-auth."
       },
-      "cloudflare_tunnel": {
-        "title": "Cloudflare Tunnel",
-        "role": "Ingress public",
-        "body": "Tunnel TLS sortant uniquement, du serveur vers la bordure Cloudflare. Aucun port ouvert sur l'hôte (80/443 restent fermés). Le TLS termine à la bordure, pas dans le conteneur. Aucune configuration de routeur requise."
+      "backup_recovery": {
+        "title": "Sauvegarde et restauration",
+        "intro": "Sauvegardes chiffrées chaque nuit vers votre propre stockage S3 immuable, pour la protection contre les rançongiciels. Restauration et vérification sont des opérations de premier ordre, et des exercices trimestriels sont planifiés -- un aller-retour sur un VPS frais valide la promesse d'absence de verrou."
       },
-      "keycloak": {
-        "title": "Keycloak + oauth2-proxy",
-        "role": "Identité",
-        "body": "SSO conforme aux standards de l'industrie, auto-hébergé pour chaque application de la suite. Keycloak gère utilisateurs, groupes, politique de mot de passe, MFA. oauth2-proxy précède les applications non-OIDC via Traefik forward-auth. Un login, toutes les applications."
+      "orchestration": {
+        "title": "Orchestration des applications",
+        "intro": "Déploiements applicatifs façon Compose gérés via l'interface Dokploy sur le tailnet. Les conteneurs se mettent à jour avec retour en arrière basé sur la santé en cas de régression."
       },
-      "sops": {
-        "title": "SOPS + age",
-        "role": "Secrets",
-        "body": "La voûte est chiffrée dans git, déchiffrée par Ansible au déploiement. Le mot de passe n'existe nulle part sur disque -- uniquement comme clé privée dans un gestionnaire de mots de passe protégé par une clé matérielle. Ajoutez un destinataire; rotation propre."
-      },
-      "restic": {
-        "title": "Restic",
-        "role": "Sauvegardes",
-        "body": "Sauvegardes chiffrées nocturnes vers un stockage S3 immuable appartenant au client pour la protection contre les rançongiciels. Restauration et vérification de premier ordre. Exercices trimestriels planifiés."
-      },
-      "dokploy": {
-        "title": "Dokploy",
-        "role": "Plateforme d'applications",
-        "body": "Déploiements style compose gérés via l'interface Dokploy sur le tailnet. Les conteneurs se mettent à jour avec retour en arrière basé sur la santé en cas de régression."
-      },
-      "monitoring": {
-        "title": "Gatus + Healthchecks",
-        "role": "Surveillance",
-        "body": "Gatus sonde les points HTTP de l'intérieur et de l'extérieur du réseau. Healthchecks auto-hébergé fait la surveillance dead-man sur chaque tâche planifiée. Plusieurs points d'observation, défaillances indépendantes."
+      "observability": {
+        "title": "Supervision",
+        "intro": "Deux points de supervision séparés. Gatus sonde les points HTTP depuis l'intérieur et l'extérieur du réseau. Un Healthchecks auto-hébergé effectue la supervision « homme mort » sur chaque tâche planifiée. Chacun peut tomber sans entraîner l'autre dans l'ombre."
       }
     },
     "architecture_link": "Comment la suite s'assemble"

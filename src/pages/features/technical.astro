@@ -1,17 +1,18 @@
 ---
 import Base from "../../layouts/Base.astro";
 import PageTitle from "../../components/PageTitle.astro";
-import AppCard from "../../components/AppCard.astro";
+import ServiceSection from "../../components/ServiceSection.astro";
 import CTA from "../../components/CTA.astro";
+import { TECHNICAL_BUCKETS, resolveComponents } from "../../data/technical_stack";
 import { t } from "@catena/i18n";
 
 const locale = "fr";
-const stack = ["ansible", "tailscale", "cloudflare_tunnel", "keycloak", "sops", "restic", "dokploy", "monitoring"];
+const builtOnLabel = t(locale, "common.for_your_it.built_on_label");
 ---
 <Base
   locale={locale}
   title={t(locale, "common.features.technical_page_title")}
-  description="La surface technique de la suite catena : Ansible (provisionnement), Tailscale (canal admin), Cloudflare Tunnel (entrée publique), Keycloak SSO, secrets chiffrés SOPS, sauvegardes Restic, plateforme Dokploy, supervision Gatus + Healthchecks."
+  description="La surface technique de la suite Catena, regroupée en cinq capacités : déploiement sécurisé (Ansible, SOPS+age), accès sécurisé (Cloudflare Tunnel, Tailscale, Keycloak), sauvegarde et restauration (Restic), orchestration applicative (Dokploy), supervision (Gatus, Healthchecks)."
 >
   <PageTitle
     title={t(locale, "common.features.technical_page_title")}
@@ -20,14 +21,24 @@ const stack = ["ansible", "tailscale", "cloudflare_tunnel", "keycloak", "sops", 
 
   <section id="under-the-hood" class="stack-section">
     <div class="container">
-      <div class="stack-grid">
-        {stack.map((slug) => (
-          <AppCard
-            title={t(locale, `common.for_your_it.stack.${slug}.title`)}
-            role={t(locale, `common.for_your_it.stack.${slug}.role`)}
-            body={t(locale, `common.for_your_it.stack.${slug}.body`)}
-          />
-        ))}
+      <div class="services">
+        {TECHNICAL_BUCKETS.map((bucket) => {
+          const components = resolveComponents(bucket).map((c) => ({
+            slug: c.slug,
+            name: c.name,
+            upstreamUrl: c.upstream_url,
+            logoPath: c.logo_path,
+          }));
+          return (
+            <ServiceSection
+              slug={bucket.key}
+              title={t(locale, `common.for_your_it.buckets.${bucket.key}.title`)}
+              intro={t(locale, `common.for_your_it.buckets.${bucket.key}.intro`)}
+              builtOn={components}
+              builtOnLabel={builtOnLabel}
+            />
+          );
+        })}
       </div>
       <p class="architecture-link">
         <a href="/docs/fr/how-this-stack-works/">
@@ -47,10 +58,8 @@ const stack = ["ansible", "tailscale", "cloudflare_tunnel", "keycloak", "sops", 
   .stack-section {
     padding-bottom: var(--catena-space-16);
   }
-  .stack-grid {
-    display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: var(--catena-space-6);
+  .services {
+    margin-top: var(--catena-space-6);
   }
   .architecture-link {
     margin-top: var(--catena-space-12);
@@ -61,10 +70,5 @@ const stack = ["ansible", "tailscale", "cloudflare_tunnel", "keycloak", "sops", 
     margin-top: var(--catena-space-6);
     text-align: center;
     font-size: var(--catena-fs-sm);
-  }
-  @media (max-width: 767px) {
-    .stack-grid {
-      grid-template-columns: 1fr;
-    }
   }
 </style>

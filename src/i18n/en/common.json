@@ -294,47 +294,28 @@
     }
   },
   "for_your_it": {
-    "intro": "The technical surface, for the IT person evaluating whether this suite is something they want us to run, or something they could run in-house. Four first-class capabilities -- provisioning, backup/restore, migration, validation -- each one an atomic operation.",
-    "stack": {
-      "ansible": {
-        "title": "Ansible",
-        "role": "Provisioning + day-2 ops",
-        "body": "Industry-standard deployment and maintenance automation, for successful and secure installation every time."
+    "intro": "The technical surface, for the IT person evaluating whether this suite is something they want us to run, or something they could run in-house. Five first-class capabilities -- secure deployment, secure access, backup and recovery, application orchestration, observability -- each one delivered by a small set of well-known open-source tools.",
+    "built_on_label": "Built on",
+    "buckets": {
+      "secure_deployment": {
+        "title": "Secure deployment",
+        "intro": "Every server gets the same hardened baseline. Ansible runs the deployment automation; SOPS encrypts secrets in Git with age, decrypted only at deploy time. No secret ever lands on disk in plaintext outside the operator's hardware-keyed password manager. Add a recipient; rotate cleanly."
       },
-      "tailscale": {
-        "title": "Tailscale",
-        "role": "Admin channel",
-        "body": "Private mesh VPN for the admin/debug path. Public SSH closes after bootstrap."
+      "secure_access": {
+        "title": "Secure access",
+        "intro": "Three layers of access control. Cloudflare Tunnel terminates public TLS at the edge so the host has zero open ports (80/443 stay closed, no router configuration needed). Tailscale carries the operator's admin path on a private mesh, and public SSH closes after bootstrap. Keycloak handles per-application identity (users, groups, password policy, MFA) so every app in the suite shares one login; oauth2-proxy fronts non-OIDC apps via Traefik forward-auth."
       },
-      "cloudflare_tunnel": {
-        "title": "Cloudflare Tunnel",
-        "role": "Public ingress",
-        "body": "Outbound-only TLS tunnel from the server to Cloudflare's edge. Zero open ports on the host (80/443 stay closed). TLS terminates at the edge, not in the container. No router configuration needed."
+      "backup_recovery": {
+        "title": "Backup and recovery",
+        "intro": "Encrypted nightly backups to your own immutable S3 storage for ransomware protection. Restore and verify flows are first-class, and quarterly drills run on a schedule -- a real fresh-VPS round-trip proves the no-lock-in claim."
       },
-      "keycloak": {
-        "title": "Keycloak + oauth2-proxy",
-        "role": "Identity",
-        "body": "Industry-standard, self-hosted SSO for every app in the suite. Keycloak handles users, groups, password policy, MFA. oauth2-proxy fronts non-OIDC apps via Traefik forward-auth. One login, every app."
+      "orchestration": {
+        "title": "Application orchestration",
+        "intro": "Compose-style application deployments managed via Dokploy's UI on the tailnet. Containers update with health-baseline rollback on regression."
       },
-      "sops": {
-        "title": "SOPS + age",
-        "role": "Secrets",
-        "body": "Vault is encrypted in git, decrypted by Ansible at deploy time. The vault password lives nowhere on disk -- only as a private key in a password manager protected by a hardware key. Add a recipient; rotate cleanly."
-      },
-      "restic": {
-        "title": "Restic",
-        "role": "Backups",
-        "body": "Encrypted nightly backups to client-owned S3 immutable storage for ransomware protection. Restore + verify flows are first-class. Quarterly drills run on a schedule."
-      },
-      "dokploy": {
-        "title": "Dokploy",
-        "role": "App platform",
-        "body": "Compose-style deployments managed via Dokploy's UI on the tailnet. Containers update with health-baseline rollback on regression."
-      },
-      "monitoring": {
-        "title": "Gatus + Healthchecks",
-        "role": "Monitoring",
-        "body": "Gatus probes HTTP endpoints from inside and outside the network. Self-hosted Healthchecks does dead-man monitoring on every scheduled job. Multiple vantage points, separately failable."
+      "observability": {
+        "title": "Observability",
+        "intro": "Two separate monitoring vantage points. Gatus probes HTTP endpoints from inside and outside the network. Self-hosted Healthchecks does dead-man monitoring on every scheduled job. Each can fail without the other going dark."
       }
     },
     "architecture_link": "How the whole suite fits together"
