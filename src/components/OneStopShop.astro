@@ -1,5 +1,5 @@
 ---
-import { t, tArray } from "@catena/i18n";
+import { t } from "@catena/i18n";
 
 interface Props {
   locale: "en" | "fr";
@@ -8,18 +8,30 @@ interface Props {
 const { locale } = Astro.props;
 const prefix = locale === "fr" ? "" : "/en";
 
-const capabilities = tArray(locale, "common.home.onestop.capabilities");
+const buckets = [
+  { key: "talk", items: ["communications", "social_posting"] },
+  { key: "documents", items: ["files", "editing", "wiki", "signing"] },
+  { key: "sales", items: ["crm", "booking", "invoicing"] },
+  { key: "operations", items: ["automation", "project", "website"] },
+];
 ---
 <section id="onestop" class="onestop">
   <div class="container">
     <h2>{t(locale, "common.home.onestop.title")}</h2>
     <p class="lead muted">{t(locale, "common.home.onestop.intro")}</p>
     <p class="capabilities-title">{t(locale, "common.home.onestop.capabilities_title")}</p>
-    <ul class="services">
-      {capabilities.map((cap) => (
-        <li>{cap}</li>
+    <div class="buckets">
+      {buckets.map(({ key, items }) => (
+        <section class="bucket">
+          <h3>{t(locale, `common.home.onestop.buckets.${key}.title`)}</h3>
+          <ul class="services">
+            {items.map((item) => (
+              <li>{t(locale, `common.home.onestop.buckets.${key}.items.${item}`)}</li>
+            ))}
+          </ul>
+        </section>
       ))}
-    </ul>
+    </div>
     <p class="saas-replacement">{t(locale, "common.home.onestop.saas_replacement")}</p>
     <p class="email-note muted">{t(locale, "common.home.onestop.email_note")}</p>
     <p class="stack-link">
@@ -35,20 +47,32 @@ const capabilities = tArray(locale, "common.home.onestop.capabilities");
   }
   .lead { margin-bottom: var(--catena-space-6); }
   .capabilities-title {
-    margin: 0 0 var(--catena-space-3) 0;
+    margin: 0 0 var(--catena-space-4) 0;
     font-size: var(--catena-fs-sm);
     font-weight: var(--catena-fw-semibold);
     text-transform: uppercase;
     letter-spacing: var(--catena-tracking-wide);
     color: var(--catena-surface-fg-muted);
   }
+  .buckets {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: var(--catena-space-6);
+    margin: 0 0 var(--catena-space-10) 0;
+  }
+  .bucket h3 {
+    font-size: var(--catena-fs-base);
+    font-weight: var(--catena-fw-semibold);
+    margin: 0 0 var(--catena-space-3) 0;
+    color: var(--catena-surface-fg);
+  }
   .services {
     list-style: none;
     padding: 0;
-    margin: 0 0 var(--catena-space-10) 0;
-    display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: var(--catena-space-3);
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: var(--catena-space-2);
   }
   .services li {
     padding: var(--catena-space-3) var(--catena-space-4);
@@ -83,9 +107,9 @@ const capabilities = tArray(locale, "common.home.onestop.capabilities");
     color: var(--catena-surface-fg);
   }
   @media (max-width: 1023px) {
-    .services { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .buckets { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   }
   @media (max-width: 639px) {
-    .services { grid-template-columns: 1fr; }
+    .buckets { grid-template-columns: 1fr; }
   }
 </style>

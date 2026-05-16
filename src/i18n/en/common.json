@@ -78,21 +78,40 @@
       "title": "The Catena Suite. One operator. One invoice.",
       "intro": "All the capabilities your team needs to run the business, integrated and operated end-to-end.",
       "capabilities_title": "Capabilities available",
-      "capabilities": [
-        "Files and shared workspace",
-        "Integrated communications",
-        "CRM and customer follow-up",
-        "Client booking and scheduling",
-        "Workflow automation",
-        "Collaborative editing",
-        "Omnichannel social posting",
-        "Team documentation",
-        "Project planning and tracking",
-        "Document signing and audit trail",
-        "Quotes and invoices",
-        "Marketing website hosting",
-        "And more"
-      ],
+      "buckets": {
+        "talk": {
+          "title": "Talk to your team and your customers",
+          "items": {
+            "communications": "Integrated communications",
+            "social_posting": "Omnichannel social posting"
+          }
+        },
+        "documents": {
+          "title": "Work on documents together",
+          "items": {
+            "files": "Files and shared workspace",
+            "editing": "Collaborative editing",
+            "wiki": "Team documentation",
+            "signing": "Document signing and audit trail"
+          }
+        },
+        "sales": {
+          "title": "Sell, schedule, get paid",
+          "items": {
+            "crm": "CRM and customer follow-up",
+            "booking": "Client booking and scheduling",
+            "invoicing": "Quotes and invoices"
+          }
+        },
+        "operations": {
+          "title": "Run the rest",
+          "items": {
+            "automation": "Workflow automation",
+            "project": "Project planning and tracking",
+            "website": "Marketing website hosting"
+          }
+        }
+      },
       "saas_replacement": "Replaces roughly $40-$120 per employee per month in stacked SaaS subscriptions (Microsoft 365, Slack, HubSpot, Calendly, DocuSign, Asana, and the rest). See the comparison page for the row-by-row breakdown.",
       "email_note": "Email is integrated, not self-hosted -- 5 full-featured, privacy-focused providers to choose from based on your needs. We wire up DNS, deliverability, and SSO.",
       "stack_link": "Folding the Catena Suite into your IT shop? See the technical surface."

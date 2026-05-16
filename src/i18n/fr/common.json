@@ -78,21 +78,40 @@
       "title": "La Suite Catena. Un opérateur. Une facture.",
       "intro": "Toutes les capacités dont votre équipe a besoin pour faire tourner l'entreprise, intégrées et opérées de bout en bout.",
       "capabilities_title": "Capacités disponibles",
-      "capabilities": [
-        "Fichiers et espace partagé",
-        "Communications intégrées",
-        "CRM et suivi client",
-        "Réservation et agenda",
-        "Automatisation des processus",
-        "Édition collaborative",
-        "Publication sociale omnicanal",
-        "Documentation d'équipe",
-        "Planification et suivi de projets",
-        "Signature électronique avec piste d'audit",
-        "Estimés et factures",
-        "Hébergement de site web d'entreprise",
-        "Et plus encore"
-      ],
+      "buckets": {
+        "talk": {
+          "title": "Communiquez avec votre équipe et vos clients",
+          "items": {
+            "communications": "Communications intégrées",
+            "social_posting": "Publication sociale omnicanal"
+          }
+        },
+        "documents": {
+          "title": "Travaillez ensemble sur des documents",
+          "items": {
+            "files": "Fichiers et espace partagé",
+            "editing": "Édition collaborative",
+            "wiki": "Documentation d'équipe",
+            "signing": "Signature électronique avec piste d'audit"
+          }
+        },
+        "sales": {
+          "title": "Vendez, planifiez, encaissez",
+          "items": {
+            "crm": "CRM et suivi client",
+            "booking": "Réservation et agenda",
+            "invoicing": "Estimés et factures"
+          }
+        },
+        "operations": {
+          "title": "Faites tourner le reste",
+          "items": {
+            "automation": "Automatisation des processus",
+            "project": "Planification et suivi de projets",
+            "website": "Hébergement de site web d'entreprise"
+          }
+        }
+      },
       "saas_replacement": "Remplace environ 40 $ à 120 $ par employé par mois en abonnements SaaS empilés (Microsoft 365, Slack, HubSpot, Calendly, DocuSign, Asana, et le reste). Voir la page comparaison pour le détail ligne par ligne.",
       "email_note": "Le courriel est intégré, pas auto-hébergé -- choisissez parmi 5 fournisseurs complets et axés sur la confidentialité selon vos besoins. Nous configurons le DNS, la délivrabilité et le SSO.",
       "stack_link": "Vous intégrez la Suite Catena dans votre service TI? Voir la surface technique."
