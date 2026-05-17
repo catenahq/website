@@ -1,6 +1,6 @@
 import type { APIRoute } from "astro";
 import { readFileSync } from "node:fs";
-import { fileURLToPath } from "node:url";
+import { createRequire } from "node:module";
 import satori from "satori";
 import { Resvg } from "@resvg/resvg-js";
 import { ogPages } from "../../lib/og-pages";
@@ -13,7 +13,12 @@ import { ogPages } from "../../lib/og-pages";
 // cb36aee6: 1200x630, --catena-primary-900 background, lowercase
 // "catena" wordmark in Conthrax-SemiBold + the page title beneath.
 
-const fontPath = fileURLToPath(new URL("../../../public/fonts/conthrax-semibold.otf", import.meta.url));
+// Satori needs raw font bytes (not a CSS-bundled URL). Resolve the
+// OTF from @catenahq/contracts at build time so the binary stays
+// the single source of truth shared with the browser-side wordmark.
+const fontPath = createRequire(import.meta.url).resolve(
+  "@catenahq/contracts/brand/assets/conthrax-semibold.otf",
+);
 const fontData = readFileSync(fontPath);
 
 const BG = "#0b223b";

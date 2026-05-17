@@ -1,15 +1,5 @@
 @import "@catenahq/contracts/brand/tokens/all.css";
-
-/* Display face used only on the .brand wordmark. font-display: swap
-   keeps first paint immediate; Inter shows through until the OTF
-   lands a few ms later. */
-@font-face {
-  font-family: "Conthrax";
-  font-style: normal;
-  font-weight: 600;
-  font-display: swap;
-  src: url("/fonts/conthrax-semibold.otf") format("opentype");
-}
+@import "@catenahq/contracts/brand/wordmark/conthrax.css";
 
 *,
 *::before,

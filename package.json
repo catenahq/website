@@ -10,11 +10,13 @@
     "preview": "astro preview",
     "check": "astro check",
     "test:i18n": "node scripts/i18n-parity.mjs",
-    "check:unicode": "node scripts/check-unicode.mjs"
+    "check:unicode": "node scripts/check-unicode.mjs",
+    "sync:brand": "node scripts/sync-brand-assets.mjs",
+    "postinstall": "node scripts/sync-brand-assets.mjs"
   },
   "dependencies": {
     "@astrojs/sitemap": "^3.7.2",
-    "@catenahq/contracts": "file:./vendor/catenahq-contracts-0.2.0.tgz",
+    "@catenahq/contracts": "file:./vendor/catenahq-contracts-0.3.0.tgz",
     "@resvg/resvg-js": "^2.6.2",
     "astro": "^6.2.1",
     "astro-icon": "^1.1.5",
