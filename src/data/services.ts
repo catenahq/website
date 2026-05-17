@@ -55,7 +55,9 @@ export const SERVICES: Service[] = [
 
 export function appDocsHref(service: Service, locale: "en" | "fr"): string {
   const slug = service.docs_slug ?? service.slug;
-  const prefix = locale === "en" ? "/docs/apps" : "/docs/fr/apps";
+  // Docs live on docs.catena.run with FR as the default locale (no
+  // prefix) and EN under /en/.
+  const prefix = locale === "en" ? "https://docs.catena.run/en/apps" : "https://docs.catena.run/apps";
   return `${prefix}/${slug}/`;
 }
 

@@ -20,10 +20,10 @@ if (altLocale === "en") {
   const stripped = currentPath.replace(/^\/en(\/|$)/, "/");
   altPath = stripped || "/";
 }
-// Docs is a sub-build of this site (apps/docs at base="/docs"). Both
-// marketing + docs run defaultLocale=fr, so FR lives at /docs/ and
-// EN lives at /docs/en/.
-const docsHref = locale === "en" ? "/docs/en/" : "/docs/";
+// Docs ship as their own subdomain (catenahq/docs at docs.catena.run).
+// Both marketing + docs run defaultLocale=fr, so FR lives at the root
+// and EN lives under /en/.
+const docsHref = locale === "en" ? "https://docs.catena.run/en/" : "https://docs.catena.run/";
 ---
 <header class="site-header">
   <div class="container header-row">

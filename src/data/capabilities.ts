@@ -20,16 +20,16 @@ export const CAPABILITIES: Capability[] = [
     slug: "communications",
     app_slugs: ["rocketchat", "nextcloudtalk", "element", "linphone"],
     docs_href: {
-      en: "/docs/en/guides/communications-platforms/",
-      fr: "/docs/guides/communications-platforms/",
+      en: "https://docs.catena.run/en/guides/communications-platforms/",
+      fr: "https://docs.catena.run/guides/communications-platforms/",
     },
   },
   {
     slug: "files_and_workspace",
     app_slugs: ["nextcloud"],
     docs_href: {
-      en: "/docs/en/nextcloud-apps-vs-suite/",
-      fr: "/docs/nextcloud-apps-vs-suite/",
+      en: "https://docs.catena.run/en/nextcloud-apps-vs-suite/",
+      fr: "https://docs.catena.run/nextcloud-apps-vs-suite/",
     },
   },
   { slug: "collaborative_editing", app_slugs: ["onlyoffice"] },
@@ -40,8 +40,8 @@ export const CAPABILITIES: Capability[] = [
     slug: "booking",
     app_slugs: ["scheduler"],
     docs_href: {
-      en: "/docs/en/how-to-pick-a-scheduler/",
-      fr: "/docs/how-to-pick-a-scheduler/",
+      en: "https://docs.catena.run/en/how-to-pick-a-scheduler/",
+      fr: "https://docs.catena.run/how-to-pick-a-scheduler/",
     },
   },
   { slug: "invoicing",          app_slugs: ["invoiceninja"] },
@@ -57,8 +57,8 @@ export const CAPABILITIES: Capability[] = [
     slug: "email_integration",
     app_slugs: [],
     docs_href: {
-      en: "/docs/en/guides/email-providers/",
-      fr: "/docs/guides/email-providers/",
+      en: "https://docs.catena.run/en/guides/email-providers/",
+      fr: "https://docs.catena.run/guides/email-providers/",
     },
   },
 ];
