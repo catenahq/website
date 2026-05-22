@@ -1007,6 +1007,7 @@
       "section_external": "External SaaS",
       "section_qbo_bundle": "All-in QuickBooks bundle",
       "line_server": "Catena server",
+      "line_vps": "VPS hosting (passthrough)",
       "line_storage": "Storage ({gb} GB x ${rate}/GB)",
       "line_formula_per_seat": "{employees} x ${perSeat} = ${total}",
       "line_formula_per_seat_plus_base": "${base} base + {employees} x ${perSeat} = ${total}",

@@ -11,6 +11,12 @@
 
 export const STORAGE_RATE_CAD_PER_GB_PER_MONTH = 0.10;
 
+// VPS hosting passthrough -- the underlying provider charge (OVH BHS
+// default per project_default_architecture). Billed to the client by
+// the provider, not by Catena, but surfaced in the picker so the
+// monthly total reflects the true cost of running a Catena deployment.
+export const VPS_BASE_MONTHLY_CAD = 13.60;
+
 export type CategoryId =
   | "collaboration"
   | "sales_crm"

@@ -6,6 +6,7 @@ import {
   CATEGORIES,
   NEEDS,
   STORAGE_RATE_CAD_PER_GB_PER_MONTH,
+  VPS_BASE_MONTHLY_CAD,
   type App,
   type CategoryId,
 } from "../data/app-selector-data";
@@ -103,11 +104,13 @@ const PAYLOAD = {
     server_monthly_cents: SERVER_CENTS,
     app_monthly_cents: APP_UNIT_CENTS,
     storage_cad_per_gb_per_month: STORAGE_RATE_CAD_PER_GB_PER_MONTH,
+    vps_base_monthly_cad: VPS_BASE_MONTHLY_CAD,
     support_packs: SUPPORT_PACKS,
   },
   ui: {
     locale,
     server_line_label: t(locale, "common.app_selector.bill.line_server"),
+    vps_line_label: t(locale, "common.app_selector.bill.line_vps"),
     storage_line_template: t(locale, "common.app_selector.bill.line_storage"),
     formula_per_seat: t(locale, "common.app_selector.bill.line_formula_per_seat"),
     formula_per_seat_plus_base: t(
@@ -534,6 +537,12 @@ const PAYLOAD = {
       var serverCad = anyCatena ? P.server_monthly_cents / 100 : 0;
       if (serverCad > 0) {
         catenaLines.push({ label: UI.server_line_label, amount: serverCad });
+      }
+      if (anyCatena && P.vps_base_monthly_cad > 0) {
+        catenaLines.push({
+          label: UI.vps_line_label,
+          amount: P.vps_base_monthly_cad,
+        });
       }
       for (var i = 0; i < managedApps.length; i++) {
         catenaLines.push({
