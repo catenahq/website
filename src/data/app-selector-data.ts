@@ -298,6 +298,18 @@ export const APPS: readonly App[] = [
       { need: "newsletter_campaigns", strength: "primary" },
     ],
   },
+  // Vaultwarden: self-hosted Bitwarden-compatible vault. No catalog
+  // entry yet (no dokploy-templates compose); add `catalog_ref` once
+  // the template ships. The sales/4-defining-contract/planning.md
+  // historically argued AGAINST self-hosting the vault ("VPS death =
+  // vault death") -- revisit that doc if Vaultwarden becomes a
+  // first-class managed offer.
+  {
+    id: "vaultwarden",
+    label: "Vaultwarden",
+    type: "catena_managed",
+    covers: [{ need: "password_secrets_manager", strength: "primary" }],
+  },
   {
     id: "invoiceninja",
     label: "Invoice Ninja",
@@ -505,6 +517,23 @@ export const APPS: readonly App[] = [
       pricing_url: "https://proton.me/business",
     },
     covers: [{ need: "email_hosted", strength: "primary" }],
+  },
+
+  // External SaaS -- Bitwarden free tier. Personal/individual use is
+  // unlimited; the free Teams Starter org tops out at 2 users. For
+  // larger teams the paid Teams plan applies (~$4 USD/user/mo);
+  // verify and add a second row when a Catena client crosses the
+  // 2-user threshold.
+  {
+    id: "bitwarden_free",
+    label: "Bitwarden",
+    type: "external_saas",
+    pricing: {
+      kind: "flat",
+      monthly_cad: 0,
+      pricing_url: "https://bitwarden.com/pricing/",
+    },
+    covers: [{ need: "password_secrets_manager", strength: "primary" }],
   },
 
   // External SaaS -- phone
