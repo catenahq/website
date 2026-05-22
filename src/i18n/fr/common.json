@@ -1014,8 +1014,6 @@
       "covered": "Couvert",
       "gap": "Aucune application sélectionnée ne couvre ce besoin.",
       "overlap": "Couvert par {n} applications sélectionnées.",
-      "tier_trap": "Cocher ce besoin vous fait passer de {from} à {to} : +{delta} $ CAD/siège/mois pour les {employees} employés (+{monthly} $ CAD/mois).",
-      "tier_substitute": "Alternative gérée par Catena : {names}.",
       "no_app_yet": "Aucune application sélectionnée."
     },
     "bill": {

@@ -5,8 +5,6 @@ import {
   APPS,
   CATEGORIES,
   NEEDS,
-  TIER_GROUPS,
-  TIER_TRAP_SUBSTITUTES,
   STORAGE_RATE_CAD_PER_GB_PER_MONTH,
   type App,
   type CategoryId,
@@ -22,24 +20,11 @@ const { locale } = Astro.props;
 // known app id. Fails the build if the data file drifts (same role
 // the YAML validator served in the plan).
 const NEED_IDS = new Set(NEEDS.map((n) => n.id));
-const APP_IDS = new Set(APPS.map((a) => a.id));
 for (const app of APPS) {
   for (const edge of app.covers) {
     if (!NEED_IDS.has(edge.need)) {
       throw new Error(
         `app-selector: app ${app.id} covers unknown need ${edge.need}`,
-      );
-    }
-  }
-  if (app.catalog_ref && !app.catalog_ref) {
-    // placeholder for future: validate catalog_ref against dokploy-templates sibling
-  }
-}
-for (const group of TIER_GROUPS) {
-  for (const id of group.app_ids) {
-    if (!APP_IDS.has(id)) {
-      throw new Error(
-        `app-selector: tier group ${group.id} references unknown app ${id}`,
       );
     }
   }
@@ -108,13 +93,9 @@ const PAYLOAD = {
     pricing: a.pricing ?? null,
     pricing_url: a.pricing?.pricing_url ?? a.pricing_url ?? null,
     covers: a.covers,
-    tier_group: a.tier_group ?? null,
-    tier_rank: a.tier_rank ?? null,
     warning_key: a.warning_key ?? null,
     warning_label: a.warning_key ? appWarningLabels[a.warning_key] : null,
   })),
-  tier_groups: TIER_GROUPS,
-  tier_substitutes: TIER_TRAP_SUBSTITUTES,
   pricing: {
     currency: tiers.currency,
     server_monthly_cents: SERVER_CENTS,
@@ -146,11 +127,6 @@ const PAYLOAD = {
     status_covered: t(locale, "common.app_selector.status.covered"),
     status_gap: t(locale, "common.app_selector.status.gap"),
     status_overlap: t(locale, "common.app_selector.status.overlap"),
-    status_tier_trap: t(locale, "common.app_selector.status.tier_trap"),
-    status_tier_substitute: t(
-      locale,
-      "common.app_selector.status.tier_substitute",
-    ),
     status_no_app_yet: t(locale, "common.app_selector.status.no_app_yet"),
     copied: t(locale, "common.app_selector.buttons.copied"),
     summary_title: t(locale, "common.app_selector.summary.title"),
@@ -419,77 +395,8 @@ const PAYLOAD = {
       return { kind: "covered", apps: anyApps };
     }
 
-    // Tier-trap: for each tier group with any selected app, find the
-    // minimum rank required to cover every selected need in that group.
-    // If the user's selection in the group is below that, emit trap.
-    function tierTraps() {
-      var traps = {};
-      for (var i = 0; i < DATA.tier_groups.length; i++) {
-        var group = DATA.tier_groups[i];
-        var groupApps = group.app_ids
-          .map(appById)
-          .filter(function (a) {
-            return a;
-          });
-        var selectedInGroup = groupApps.filter(function (a) {
-          return state.apps.has(a.id);
-        });
-        if (selectedInGroup.length === 0) continue;
-
-        // For each ticked need that the group can cover, find the
-        // minimum rank required.
-        for (var n = 0; n < DATA.needs.length; n++) {
-          var needId = DATA.needs[n].id;
-          if (!state.needs.has(needId)) continue;
-          // does any app in the group cover this need at all?
-          var minRankCovering = null;
-          for (var k = 0; k < groupApps.length; k++) {
-            var ga = groupApps[k];
-            for (var c = 0; c < ga.covers.length; c++) {
-              if (ga.covers[c].need !== needId) continue;
-              if (ga.covers[c].strength !== "primary") continue;
-              if (
-                ga.covers[c].only_in_tier &&
-                ga.covers[c].only_in_tier !== ga.id
-              ) {
-                // edge applies only at a different (usually higher)
-                // tier id; skip this app's edge
-                continue;
-              }
-              if (minRankCovering == null || ga.tier_rank < minRankCovering) {
-                minRankCovering = ga.tier_rank;
-              }
-            }
-          }
-          if (minRankCovering == null) continue;
-          // is any selected app in this group at >= minRankCovering?
-          var bestSelectedRank = -1;
-          for (var s = 0; s < selectedInGroup.length; s++) {
-            if (selectedInGroup[s].tier_rank > bestSelectedRank) {
-              bestSelectedRank = selectedInGroup[s].tier_rank;
-            }
-          }
-          if (bestSelectedRank >= minRankCovering) continue;
-          // TRAP. Compute delta cost: cheapest tier covering need - current selected tier.
-          var fromApp = null;
-          var toApp = null;
-          for (var g = 0; g < groupApps.length; g++) {
-            if (groupApps[g].tier_rank === bestSelectedRank) fromApp = groupApps[g];
-            if (groupApps[g].tier_rank === minRankCovering) toApp = groupApps[g];
-          }
-          if (!fromApp || !toApp) continue;
-          traps[needId] = {
-            from: fromApp,
-            to: toApp,
-          };
-        }
-      }
-      return traps;
-    }
-
     // ----- render: needs -----
     function renderNeeds() {
-      var traps = tierTraps();
       var byCat = {};
       for (var i = 0; i < DATA.needs.length; i++) {
         var n = DATA.needs[i];
@@ -505,41 +412,15 @@ const PAYLOAD = {
           var nd = list[j];
           var ticked = state.needs.has(nd.id);
           var status = ticked ? needStatus(nd.id) : null;
-          var trap = ticked ? traps[nd.id] : null;
           var rowCls = "need";
           if (ticked) {
-            if (trap) rowCls += " tier-trap";
-            else if (status.kind === "gap") rowCls += " gap";
+            if (status.kind === "gap") rowCls += " gap";
             else if (status.kind === "overlap") rowCls += " overlap";
             else rowCls += " covered";
           }
           var hint = "";
           if (ticked) {
-            if (trap) {
-              var employees = Math.max(1, state.employees | 0);
-              var delta = approxTierDelta(trap.from, trap.to, employees);
-              hint += '<div class="hint trap">' + escapeHtml(
-                tpl(UI.status_tier_trap, {
-                  from: trap.from.label,
-                  to: trap.to.label,
-                  delta: delta.perSeat,
-                  monthly: delta.monthly,
-                  employees: employees,
-                })
-              ) + "</div>";
-              var subs = DATA.tier_substitutes[nd.id];
-              if (subs && subs.length) {
-                var subNames = subs
-                  .map(function (id) {
-                    var a = appById(id);
-                    return a ? a.label : id;
-                  })
-                  .join(", ");
-                hint += '<div class="hint substitute">' + escapeHtml(
-                  tpl(UI.status_tier_substitute, { names: subNames })
-                ) + "</div>";
-              }
-            } else if (status.kind === "gap") {
+            if (status.kind === "gap") {
               hint = '<div class="hint gap-hint">' + escapeHtml(UI.status_gap) + "</div>";
             } else if (status.kind === "overlap") {
               hint = '<div class="hint overlap-hint">' + escapeHtml(
@@ -565,25 +446,6 @@ const PAYLOAD = {
       els.needs.innerHTML = html;
     }
 
-    function approxTierDelta(fromApp, toApp, employees) {
-      // For per_seat pricing models in tier groups (Odoo CE -> Enterprise),
-      // CE costs 0 + Enterprise costs perSeat x e. Generalize:
-      var f = monthlyForApp(fromApp, employees);
-      var t = monthlyForApp(toApp, employees);
-      var deltaMonthly = t - f;
-      var perSeat = employees > 0 ? deltaMonthly / employees : deltaMonthly;
-      return {
-        perSeat: Math.round(perSeat * 100) / 100,
-        monthly: Math.round(deltaMonthly * 100) / 100,
-      };
-    }
-    function monthlyForApp(app, employees) {
-      var prevE = state.employees;
-      state.employees = employees;
-      var m = appMonthlyCad(app);
-      state.employees = prevE;
-      return m;
-    }
 
     // ----- render: apps -----
     function appCoversAnyTickedNeed(app) {
@@ -1129,13 +991,10 @@ const PAYLOAD = {
     display: flex; align-items: center; gap: var(--catena-space-2);
     cursor: pointer;
   }
-  /* Covered = green, gap = red, multi-primary overlap = yellow.
-     Tier-trap (separate concept: covered but at a more expensive
-     tier than necessary) gets orange to stay distinct from overlap. */
-  .app-selector .need.covered   { background: color-mix(in srgb, #16a34a 22%, transparent); border-left-color: #16a34a; }
-  .app-selector .need.gap       { background: color-mix(in srgb, #dc2626 22%, transparent); border-left-color: #dc2626; }
-  .app-selector .need.overlap   { background: color-mix(in srgb, #eab308 28%, transparent); border-left-color: #eab308; }
-  .app-selector .need.tier-trap { background: color-mix(in srgb, #d97706 22%, transparent); border-left-color: #d97706; }
+  /* Covered = green, gap = red, multi-primary overlap = yellow. */
+  .app-selector .need.covered { background: color-mix(in srgb, #16a34a 22%, transparent); border-left-color: #16a34a; }
+  .app-selector .need.gap     { background: color-mix(in srgb, #dc2626 22%, transparent); border-left-color: #dc2626; }
+  .app-selector .need.overlap { background: color-mix(in srgb, #eab308 28%, transparent); border-left-color: #eab308; }
   .app-selector .need .hint {
     margin-top: var(--catena-space-1);
     margin-left: 1.7rem;

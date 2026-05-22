@@ -107,7 +107,6 @@ export type Strength = "primary" | "secondary";
 export interface Coverage {
   need: string;
   strength: Strength;
-  only_in_tier?: string;
 }
 
 export type PricingModel =
@@ -137,13 +136,16 @@ export interface App {
   pricing?: PricingModel;
   pricing_url?: string;
   covers: Coverage[];
-  tier_group?: string;
-  tier_rank?: number;
   warning_key?: string;
 }
 
 export const APPS: readonly App[] = [
   // Catena-bundled (included in $400 server)
+  //
+  // Nextcloud is the Catena base: ticking it implies the managed
+  // server underneath, which carries Keycloak SSO + Restic backups.
+  // identity_sso and backups are therefore primary-covered here even
+  // though Nextcloud itself does not provide them directly.
   {
     id: "nextcloud",
     label: "Nextcloud",
@@ -154,6 +156,8 @@ export const APPS: readonly App[] = [
       { need: "internal_calendar", strength: "primary" },
       { need: "contacts_directory", strength: "primary" },
       { need: "internal_forms", strength: "primary" },
+      { need: "identity_sso", strength: "primary" },
+      { need: "backups", strength: "primary" },
       { need: "knowledge_wiki", strength: "secondary" },
       { need: "internal_chat", strength: "secondary" },
       { need: "internal_video", strength: "secondary" },
@@ -346,9 +350,12 @@ export const APPS: readonly App[] = [
     ],
   },
 
-  // External SaaS -- QBO Canada (tiered_by_users; tier_group qbo_core).
-  // QBO Canada tiers as of 2026-05-22: EasyStart / Plus / Advanced.
-  // No Essentials tier in Canada (US-only).
+  // External SaaS -- QBO Canada. Tiers as of 2026-05-22: EasyStart /
+  // Plus / Advanced. No Essentials tier in Canada (US-only). Each
+  // tier is a standalone row; the picker shows them all and the user
+  // picks one. Coverage differences are encoded directly in `covers`
+  // -- EasyStart skips inventory_management, Plus and Advanced
+  // include it.
   {
     id: "qbo_easystart",
     label: "QuickBooks Online EasyStart",
@@ -358,8 +365,6 @@ export const APPS: readonly App[] = [
       tiers: [{ max_users: 1, monthly_cad: 30 }],
       pricing_url: "https://quickbooks.intuit.com/ca/pricing/",
     },
-    tier_group: "qbo_core",
-    tier_rank: 1,
     covers: [
       { need: "accounting_gl", strength: "primary" },
       { need: "sales_tax_filing", strength: "primary" },
@@ -374,12 +379,10 @@ export const APPS: readonly App[] = [
       tiers: [{ max_users: 5, monthly_cad: 110 }],
       pricing_url: "https://quickbooks.intuit.com/ca/pricing/",
     },
-    tier_group: "qbo_core",
-    tier_rank: 2,
     covers: [
       { need: "accounting_gl", strength: "primary" },
       { need: "sales_tax_filing", strength: "primary" },
-      { need: "inventory_management", strength: "primary", only_in_tier: "qbo_plus" },
+      { need: "inventory_management", strength: "primary" },
     ],
   },
   {
@@ -391,8 +394,6 @@ export const APPS: readonly App[] = [
       tiers: [{ max_users: 25, monthly_cad: 220 }],
       pricing_url: "https://quickbooks.intuit.com/ca/pricing/",
     },
-    tier_group: "qbo_core",
-    tier_rank: 3,
     covers: [
       { need: "accounting_gl", strength: "primary" },
       { need: "sales_tax_filing", strength: "primary" },
@@ -426,8 +427,6 @@ export const APPS: readonly App[] = [
       per_seat_monthly_cad: 5,
       pricing_url: "https://quickbooks.intuit.com/ca/payroll/",
     },
-    tier_group: "qbo_payroll",
-    tier_rank: 1,
     covers: [{ need: "payroll", strength: "primary" }],
   },
   {
@@ -440,8 +439,6 @@ export const APPS: readonly App[] = [
       per_seat_monthly_cad: 5,
       pricing_url: "https://quickbooks.intuit.com/ca/payroll/",
     },
-    tier_group: "qbo_payroll",
-    tier_rank: 2,
     covers: [{ need: "payroll", strength: "primary" }],
   },
   {
@@ -454,8 +451,6 @@ export const APPS: readonly App[] = [
       per_seat_monthly_cad: 8,
       pricing_url: "https://quickbooks.intuit.com/ca/payroll/",
     },
-    tier_group: "qbo_payroll",
-    tier_rank: 3,
     covers: [{ need: "payroll", strength: "primary" }],
   },
 
@@ -559,7 +554,7 @@ export const APPS: readonly App[] = [
     type: "external_saas",
     pricing: {
       kind: "per_seat",
-      per_seat_monthly_cad: 10,
+      per_seat_monthly_cad: 8.10,
       pricing_url:
         "https://www.microsoft.com/en-ca/microsoft-365/business/compare-all-plans",
     },
@@ -615,18 +610,44 @@ export const APPS: readonly App[] = [
     ],
   },
 
-  // External SaaS -- Odoo Enterprise (paired with Odoo CE below)
+  // Odoo CE vs Enterprise -- paired rows, both external_saas so the
+  // bill column shows their respective costs side by side. CE is
+  // flat $0/mo (self-host yourself; no Catena management); Enterprise
+  // is per-seat. Coverage differences live directly in `covers` --
+  // Enterprise has the wider feature set (marketing, e-sign, studio
+  // workflows). No tier-trap warning: the picker just shows what
+  // each row covers and the user picks the cheaper covering option.
   {
-    id: "odoo_enterprise_standard",
-    label: "Odoo Enterprise (Standard)",
+    id: "odoo_ce",
+    label: "Odoo Community Edition",
+    type: "external_saas",
+    pricing: {
+      kind: "flat",
+      monthly_cad: 0,
+      pricing_url: "https://www.odoo.com/page/editions",
+    },
+    covers: [
+      { need: "accounting_gl", strength: "primary" },
+      { need: "sales_tax_filing", strength: "primary" },
+      { need: "crm_pipeline", strength: "primary" },
+      { need: "inventory_management", strength: "primary" },
+      { need: "ecommerce_storefront", strength: "primary" },
+      { need: "invoicing", strength: "primary" },
+      { need: "expenses", strength: "primary" },
+      { need: "quotes_estimates_crm", strength: "primary" },
+      { need: "project_management", strength: "primary" },
+      { need: "hr_records", strength: "primary" },
+    ],
+  },
+  {
+    id: "odoo_enterprise",
+    label: "Odoo Enterprise",
     type: "external_saas",
     pricing: {
       kind: "per_seat",
       per_seat_monthly_cad: 34,
       pricing_url: "https://www.odoo.com/page/pricing-plan",
     },
-    tier_group: "odoo",
-    tier_rank: 2,
     covers: [
       { need: "accounting_gl", strength: "primary" },
       { need: "sales_tax_filing", strength: "primary" },
@@ -639,97 +660,12 @@ export const APPS: readonly App[] = [
       { need: "project_management", strength: "primary" },
       { need: "time_tracking", strength: "primary" },
       { need: "hr_records", strength: "primary" },
-      { need: "contracts_signing", strength: "primary", only_in_tier: "odoo_enterprise_standard" },
-      { need: "marketing_automation", strength: "primary", only_in_tier: "odoo_enterprise_standard" },
-      { need: "email_marketing_mass", strength: "primary", only_in_tier: "odoo_enterprise_standard" },
-      { need: "appointment_booking", strength: "primary", only_in_tier: "odoo_enterprise_standard" },
-    ],
-  },
-  {
-    id: "odoo_enterprise_custom",
-    label: "Odoo Enterprise (Custom)",
-    type: "external_saas",
-    pricing: {
-      kind: "per_seat",
-      per_seat_monthly_cad: 51,
-      pricing_url: "https://www.odoo.com/page/pricing-plan",
-    },
-    tier_group: "odoo",
-    tier_rank: 3,
-    covers: [
-      { need: "accounting_gl", strength: "primary" },
-      { need: "sales_tax_filing", strength: "primary" },
-      { need: "crm_pipeline", strength: "primary" },
-      { need: "inventory_management", strength: "primary" },
-      { need: "ecommerce_storefront", strength: "primary" },
-      { need: "invoicing", strength: "primary" },
-      { need: "expenses", strength: "primary" },
-      { need: "quotes_estimates_crm", strength: "primary" },
-      { need: "project_management", strength: "primary" },
-      { need: "time_tracking", strength: "primary" },
-      { need: "hr_records", strength: "primary" },
-      { need: "contracts_signing", strength: "primary", only_in_tier: "odoo_enterprise_standard" },
-      { need: "marketing_automation", strength: "primary", only_in_tier: "odoo_enterprise_standard" },
-      { need: "email_marketing_mass", strength: "primary", only_in_tier: "odoo_enterprise_standard" },
-      { need: "appointment_booking", strength: "primary", only_in_tier: "odoo_enterprise_standard" },
-      { need: "workflow_automation_light", strength: "primary", only_in_tier: "odoo_enterprise_custom" },
-    ],
-  },
-
-  // External OSS -- Odoo Community Edition (free, self-host)
-  {
-    id: "odoo_ce",
-    label: "Odoo Community Edition",
-    type: "external_oss",
-    pricing_url: "https://www.odoo.com/page/editions",
-    tier_group: "odoo",
-    tier_rank: 1,
-    covers: [
-      { need: "accounting_gl", strength: "secondary" },
-      { need: "crm_pipeline", strength: "secondary" },
-      { need: "inventory_management", strength: "secondary" },
-      { need: "ecommerce_storefront", strength: "secondary" },
-      { need: "invoicing", strength: "secondary" },
-      { need: "project_management", strength: "secondary" },
-      { need: "hr_records", strength: "secondary" },
+      { need: "contracts_signing", strength: "primary" },
+      { need: "marketing_automation", strength: "primary" },
+      { need: "email_marketing_mass", strength: "primary" },
+      { need: "appointment_booking", strength: "primary" },
+      { need: "workflow_automation_light", strength: "primary" },
     ],
   },
 ];
 
-// Tier groups: when ticked apps from a group don't include the
-// minimum tier that covers all ticked needs in the group, the UI
-// surfaces a tier-trap warning. Ordered ascending by price.
-export interface TierGroup {
-  id: string;
-  app_ids: string[];
-}
-
-export const TIER_GROUPS: readonly TierGroup[] = [
-  {
-    id: "qbo_core",
-    app_ids: ["qbo_easystart", "qbo_plus", "qbo_advanced"],
-  },
-  {
-    id: "qbo_payroll",
-    app_ids: [
-      "qbo_payroll_easystart",
-      "qbo_payroll_essentials",
-      "qbo_payroll_premium",
-    ],
-  },
-  {
-    id: "odoo",
-    app_ids: ["odoo_ce", "odoo_enterprise_standard", "odoo_enterprise_custom"],
-  },
-];
-
-// When a need pushes a tier group to upgrade, the picker suggests a
-// Catena-managed substitute that covers the need directly.
-export const TIER_TRAP_SUBSTITUTES: Record<string, string[]> = {
-  email_marketing_mass: ["mautic", "espocrm"],
-  marketing_automation: ["mautic"],
-  contracts_signing: ["docuseal"],
-  appointment_booking: ["easyappointments"],
-  inventory_management: ["erpnext"],
-  workflow_automation_light: ["espocrm", "n8n"],
-};

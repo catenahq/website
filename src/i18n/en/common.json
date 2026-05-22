@@ -1014,8 +1014,6 @@
       "covered": "Covered",
       "gap": "No selected app covers this need.",
       "overlap": "Covered by {n} selected apps.",
-      "tier_trap": "Picking this moves you from {from} to {to}: +${delta} CAD/seat/month for all {employees} employees (+${monthly} CAD/mo).",
-      "tier_substitute": "Catena-managed alternative: {names}.",
       "no_app_yet": "No app selected yet."
     },
     "bill": {
