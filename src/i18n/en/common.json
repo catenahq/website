@@ -341,7 +341,8 @@
           "Cloudflare Tunnel + Tailscale + Keycloak SSO baseline",
           "Encrypted nightly backups to your own S3, drilled quarterly",
           "Gatus + self-hosted Healthchecks monitoring",
-          "4 business hour response SLA, no included hours"
+          "4 business hour response SLA, no included hours",
+          "Server health is on us, not your support hours -- OS, infrastructure, and monitoring."
         ]
       },
       "apps": {
@@ -355,7 +356,8 @@
           "CVE monitoring",
           "Upgrade testing on our own deployment first",
           "Vetted-catalog apps install at no extra setup cost",
-          "Custom (non-vetted) templates: $150 one-time setup"
+          "Custom (non-vetted) templates: $150 one-time setup",
+          "App upkeep is on us, not your support hours -- version updates, CVE response, SSO wiring."
         ]
       },
       "support": {
@@ -369,6 +371,14 @@
           "20 hours / $2,000 -- $100/h effective",
           "No pack: à-la-carte at $150/h daytime",
           "Non-deferrable; overage bills at the daytime rate"
+        ],
+        "covers_label": "Hours draw down for work like:",
+        "covers": [
+          "Adding or removing user accounts and group memberships",
+          "Marketing-website edits and copy changes (capped at 20% of your pack)",
+          "Incident response when an alert fires outside business hours",
+          "App configuration and integration tweaks",
+          "Operator-assisted training and onboarding sessions"
         ]
       }
     },

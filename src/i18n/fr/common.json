@@ -341,7 +341,8 @@
           "Cloudflare Tunnel + Tailscale + base Keycloak (SSO)",
           "Sauvegardes chiffrées chaque nuit vers votre S3, exercices trimestriels",
           "Supervision Gatus + Healthchecks auto-hébergé",
-          "SLA de réponse de 4 heures ouvrables, aucune heure incluse"
+          "SLA de réponse de 4 heures ouvrables, aucune heure incluse",
+          "La santé du serveur est à notre charge, pas vos heures de support -- OS, infrastructure et surveillance."
         ]
       },
       "apps": {
@@ -355,7 +356,8 @@
           "Surveillance CVE",
           "Tests de mise à niveau d'abord sur notre propre déploiement",
           "Catalogue éprouvé : installation sans frais supplémentaires",
-          "Modèles personnalisés (hors catalogue) : 150 $ frais unique"
+          "Modèles personnalisés (hors catalogue) : 150 $ frais unique",
+          "L'entretien des applications est à notre charge, pas vos heures de support -- mises à jour de version, correctifs CVE, branchement SSO."
         ]
       },
       "support": {
@@ -369,6 +371,14 @@
           "20 heures / 2 000 $ -- 100 $/h effectif",
           "Sans forfait : à-la-carte à 150 $/h en journée",
           "Non reportables ; dépassement facturé au tarif jour"
+        ],
+        "covers_label": "Les heures servent à des tâches comme :",
+        "covers": [
+          "Ajout ou retrait de comptes d'utilisateurs et appartenance aux groupes",
+          "Modifications du site web marketing et révisions de contenu (plafonné à 20 % de votre forfait)",
+          "Réponse aux incidents lorsqu'une alerte se déclenche hors heures d'ouverture",
+          "Ajustements de configuration et d'intégrations d'applications",
+          "Formation accompagnée et séances d'intégration"
         ]
       }
     },

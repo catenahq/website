@@ -19,6 +19,14 @@ const examples: ExampleKey[] = ["light", "standard", "heavy", "cabinet"];
 function modelFeats(key: ModelKey): string[] {
   return tArray(locale, `common.pricing.model.${key}.features`);
 }
+
+// Support card has an extra "Hours draw down for work like:" block to
+// disambiguate retainer scope (user admin, website edits, incident
+// response) from the server + apps fees. Server + apps don't have
+// this block; tArray returns [] for the missing keys.
+function modelCovers(key: ModelKey): string[] {
+  return tArray(locale, `common.pricing.model.${key}.covers`);
+}
 ---
 <section id="pricing" class="pricing">
   <div class="container">
@@ -38,6 +46,14 @@ function modelFeats(key: ModelKey): string[] {
           <ul class="features">
             {modelFeats(key).map((bullet) => <li>{bullet}</li>)}
           </ul>
+          {modelCovers(key).length > 0 && (
+            <div class="covers">
+              <p class="covers-label">{t(locale, `common.pricing.model.${key}.covers_label`)}</p>
+              <ul class="features covers-list">
+                {modelCovers(key).map((bullet) => <li>{bullet}</li>)}
+              </ul>
+            </div>
+          )}
         </article>
       ))}
     </div>
@@ -145,6 +161,24 @@ function modelFeats(key: ModelKey): string[] {
     content: "·";
     position: absolute;
     left: var(--catena-space-1);
+    color: var(--catena-surface-fg-muted);
+  }
+
+  /* Second-list block in the Support card -- disambiguates retainer
+     scope (what hours pay for) from the recurring fee bullets above. */
+  .covers {
+    margin-top: var(--catena-space-3);
+    padding-top: var(--catena-space-3);
+    border-top: 1px solid var(--catena-surface-border);
+    display: flex;
+    flex-direction: column;
+    gap: var(--catena-space-2);
+  }
+  .covers-label {
+    margin: 0;
+    font-size: var(--catena-fs-xs);
+    text-transform: uppercase;
+    letter-spacing: var(--catena-tracking-wide);
     color: var(--catena-surface-fg-muted);
   }
 
