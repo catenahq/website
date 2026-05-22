@@ -1030,11 +1030,8 @@
       "line_formula_tier": "Limite {users} utilisateurs, forfait {total} $",
       "subtotal": "Sous-total",
       "monthly_total": "Total mensuel",
-      "due_at_signup": "Dû au démarrage (une fois)",
       "support_pack_label": "Forfait support",
-      "installer_label": "Installation (une fois)",
       "support_pack_none": "Aucun forfait",
-      "installer_none": "Aucune installation",
       "tier_user_cap_ok": "{users} dans la limite de {cap} utilisateurs",
       "tier_user_cap_exceeded": "{users} dépasse la limite de {cap} utilisateurs -- choisir un palier supérieur"
     },

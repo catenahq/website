@@ -1030,11 +1030,8 @@
       "line_formula_tier": "{users} user cap, flat ${total}",
       "subtotal": "Subtotal",
       "monthly_total": "Monthly total",
-      "due_at_signup": "Due at signup (one-time)",
       "support_pack_label": "Support pack",
-      "installer_label": "Installer (one-time)",
       "support_pack_none": "No pack",
-      "installer_none": "No installer",
       "tier_user_cap_ok": "{users} within {cap}-user cap",
       "tier_user_cap_exceeded": "{users} exceeds {cap}-user cap -- pick a higher tier"
     },

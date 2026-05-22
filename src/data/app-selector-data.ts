@@ -151,7 +151,6 @@ export const APPS: readonly App[] = [
     catalog_ref: "nextcloud-s3-oidc",
     covers: [
       { need: "file_sharing", strength: "primary" },
-      { need: "collab_editing", strength: "primary" },
       { need: "internal_calendar", strength: "primary" },
       { need: "contacts_directory", strength: "primary" },
       { need: "internal_forms", strength: "primary" },
@@ -161,19 +160,23 @@ export const APPS: readonly App[] = [
       { need: "time_tracking", strength: "secondary" },
     ],
   },
+  // OnlyOffice + Collabora both ship Nextcloud-embedded document
+  // editing; either one (not both) is the real collab_editing
+  // provider. Marking each "primary" makes the overlap warning fire
+  // if the user ticks both, which is the correct nudge.
   {
     id: "onlyoffice",
     label: "OnlyOffice",
     type: "catena_bundled",
     catalog_ref: "onlyoffice",
-    covers: [{ need: "collab_editing", strength: "secondary" }],
+    covers: [{ need: "collab_editing", strength: "primary" }],
   },
   {
     id: "collabora",
     label: "Collabora",
     type: "catena_bundled",
     catalog_ref: "collabora",
-    covers: [{ need: "collab_editing", strength: "secondary" }],
+    covers: [{ need: "collab_editing", strength: "primary" }],
   },
 
   // Catena-managed ($100/mo each)

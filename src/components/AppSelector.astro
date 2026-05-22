@@ -63,17 +63,6 @@ const SUPPORT_PACKS: SupportPack[] = tiers.supportPacks.map((p: any) => ({
   label: p.displayName[locale] ?? p.displayName.en,
 }));
 
-interface Installer {
-  id: string;
-  one_time_cents: number;
-  label: string;
-}
-const INSTALLERS: Installer[] = tiers.installers.map((i: any) => ({
-  id: i.id,
-  one_time_cents: i.oneTimePriceCents,
-  label: i.displayName[locale] ?? i.displayName.en,
-}));
-
 // Localized labels and app warnings injected into the payload so the
 // client-side JS does not need to re-implement i18n lookup.
 const categoryLabels: Record<string, string> = {};
@@ -132,7 +121,6 @@ const PAYLOAD = {
     app_monthly_cents: APP_UNIT_CENTS,
     storage_cad_per_gb_per_month: STORAGE_RATE_CAD_PER_GB_PER_MONTH,
     support_packs: SUPPORT_PACKS,
-    installers: INSTALLERS,
   },
   ui: {
     locale,
@@ -146,7 +134,6 @@ const PAYLOAD = {
     formula_tier: t(locale, "common.app_selector.bill.line_formula_tier"),
     subtotal: t(locale, "common.app_selector.bill.subtotal"),
     monthly_total: t(locale, "common.app_selector.bill.monthly_total"),
-    due_at_signup: t(locale, "common.app_selector.bill.due_at_signup"),
     section_catena: t(locale, "common.app_selector.bill.section_catena"),
     section_external: t(locale, "common.app_selector.bill.section_external"),
     section_qbo_bundle: t(locale, "common.app_selector.bill.section_qbo_bundle"),
@@ -181,7 +168,6 @@ const PAYLOAD = {
     ),
     summary_none: t(locale, "common.app_selector.summary.none"),
     none_pack: t(locale, "common.app_selector.bill.support_pack_none"),
-    none_installer: t(locale, "common.app_selector.bill.installer_none"),
     empty_apps_hint: t(locale, "common.app_selector.empty_apps_hint"),
   },
 };
@@ -262,15 +248,6 @@ const PAYLOAD = {
               ))}
             </select>
           </label>
-          <label class="control">
-            <span class="ctl-label">{t(locale, "common.app_selector.bill.installer_label")}</span>
-            <select id="as-installer">
-              <option value="">{t(locale, "common.app_selector.bill.installer_none")}</option>
-              {INSTALLERS.map((i) => (
-                <option value={i.id}>{i.label}</option>
-              ))}
-            </select>
-          </label>
         </div>
       </aside>
     </div>
@@ -306,7 +283,6 @@ const PAYLOAD = {
       filter: "all",
       search: "",
       supportPack: "",
-      installer: "",
       showAllApps: false,
     };
 
@@ -318,7 +294,6 @@ const PAYLOAD = {
       storage: document.getElementById("as-storage"),
       search: document.getElementById("as-search"),
       supportPack: document.getElementById("as-support-pack"),
-      installer: document.getElementById("as-installer"),
       reset: document.getElementById("as-reset"),
       copy: document.getElementById("as-copy"),
       showAll: document.getElementById("as-show-all"),
@@ -707,19 +682,23 @@ const PAYLOAD = {
 
     // ----- render: bill -----
     function renderBill() {
-      // Catena subtotal
+      // Catena subtotal. Server fee applies whenever ANY Catena app
+      // (bundled or managed) is selected -- bundled apps (Nextcloud,
+      // OnlyOffice, Collabora) carry no per-app charge but still
+      // require the managed server underneath. Storage line tracks
+      // the same gate.
       var catenaLines = [];
-      var anyManaged = false;
+      var anyCatena = false;
       var managedApps = [];
       for (var i = 0; i < DATA.apps.length; i++) {
         var a = DATA.apps[i];
         if (!state.apps.has(a.id)) continue;
-        if (a.type === "catena_managed") {
-          anyManaged = true;
-          managedApps.push(a);
+        if (a.type === "catena_bundled" || a.type === "catena_managed") {
+          anyCatena = true;
+          if (a.type === "catena_managed") managedApps.push(a);
         }
       }
-      var serverCad = anyManaged ? P.server_monthly_cents / 100 : 0;
+      var serverCad = anyCatena ? P.server_monthly_cents / 100 : 0;
       if (serverCad > 0) {
         catenaLines.push({ label: UI.server_line_label, amount: serverCad });
       }
@@ -731,7 +710,7 @@ const PAYLOAD = {
       }
       var storageGb = Math.max(0, state.storage | 0);
       var storageAmt = storageGb * P.storage_cad_per_gb_per_month;
-      if (storageAmt > 0 && anyManaged) {
+      if (storageAmt > 0 && anyCatena) {
         catenaLines.push({
           label: tpl(UI.storage_line_template, {
             gb: storageGb,
@@ -849,23 +828,6 @@ const PAYLOAD = {
           "</span><strong>" +
           escapeHtml(fmt(monthlyTotal)) +
           "</strong></div>";
-
-        // Installer (one-time)
-        if (state.installer) {
-          for (var i = 0; i < P.installers.length; i++) {
-            if (P.installers[i].id === state.installer) {
-              var amt = P.installers[i].one_time_cents / 100;
-              html +=
-                '<div class="bill-onetime"><span>' +
-                escapeHtml(UI.due_at_signup) +
-                "</span><strong>" +
-                escapeHtml(fmt(amt)) +
-                "</strong><small class=\"muted\">" +
-                escapeHtml(P.installers[i].label) +
-                "</small></div>";
-            }
-          }
-        }
       }
       els.bill.innerHTML = html;
     }
@@ -947,18 +909,12 @@ const PAYLOAD = {
       renderBill();
       writeUrlHash();
     });
-    els.installer.addEventListener("change", function () {
-      state.installer = els.installer.value;
-      renderBill();
-      writeUrlHash();
-    });
     els.reset.addEventListener("click", function () {
       state.needs.clear();
       state.apps.clear();
       state.employees = 3;
       state.storage = 25;
       state.supportPack = "";
-      state.installer = "";
       state.filter = "all";
       state.search = "";
       state.showAllApps = false;
@@ -966,7 +922,6 @@ const PAYLOAD = {
       els.storage.value = "25";
       els.search.value = "";
       els.supportPack.value = "";
-      els.installer.value = "";
       els.showAll.checked = false;
       filterBtns.forEach(function (b) {
         b.classList.toggle("active", b.dataset.filter === "all");
@@ -1021,7 +976,6 @@ const PAYLOAD = {
       if (state.employees !== 3) params.set("e", String(state.employees));
       if (state.storage !== 25) params.set("s", String(state.storage));
       if (state.supportPack) params.set("p", state.supportPack);
-      if (state.installer) params.set("i", state.installer);
       var s = params.toString();
       var hash = s ? "#" + s : "";
       if (location.hash !== hash) {
@@ -1062,11 +1016,6 @@ const PAYLOAD = {
       if (p) {
         state.supportPack = p;
         els.supportPack.value = p;
-      }
-      var inst = params.get("i") || "";
-      if (inst) {
-        state.installer = inst;
-        els.installer.value = inst;
       }
     }
 
