@@ -137,49 +137,56 @@ export interface App {
   pricing_url?: string;
   covers: Coverage[];
   warning_key?: string;
+  // When true, the app is pre-selected on a fresh visit (no saved
+  // state in URL hash or localStorage). The user can untick it.
+  default_selected?: boolean;
 }
 
 export const APPS: readonly App[] = [
   // Catena-bundled (included in $400 server)
   //
-  // Nextcloud is the Catena base: ticking it implies the managed
-  // server underneath, which carries Keycloak SSO + Restic backups.
-  // identity_sso and backups are therefore primary-covered here even
-  // though Nextcloud itself does not provide them directly.
+  // Catena Suite covers the internal infrastructure that ships with
+  // the base server: Keycloak (identity_sso) and Restic (backups).
+  // Modelled as one virtual catena_bundled app rather than separate
+  // Keycloak/Restic rows because those pieces are not user-installable
+  // -- they come with the suite, always-on.
+  {
+    id: "catena_suite",
+    label: "Catena Suite",
+    type: "catena_bundled",
+    default_selected: true,
+    covers: [
+      { need: "identity_sso", strength: "primary" },
+      { need: "backups", strength: "primary" },
+    ],
+  },
   {
     id: "nextcloud",
     label: "Nextcloud",
     type: "catena_bundled",
     catalog_ref: "nextcloud-s3-oidc",
+    default_selected: true,
     covers: [
       { need: "file_sharing", strength: "primary" },
       { need: "internal_calendar", strength: "primary" },
       { need: "contacts_directory", strength: "primary" },
       { need: "internal_forms", strength: "primary" },
-      { need: "identity_sso", strength: "primary" },
-      { need: "backups", strength: "primary" },
       { need: "knowledge_wiki", strength: "secondary" },
       { need: "internal_chat", strength: "secondary" },
       { need: "internal_video", strength: "secondary" },
       { need: "time_tracking", strength: "secondary" },
     ],
   },
-  // OnlyOffice + Collabora both ship Nextcloud-embedded document
-  // editing; either one (not both) is the real collab_editing
-  // provider. Marking each "primary" makes the overlap warning fire
-  // if the user ticks both, which is the correct nudge.
+  // OnlyOffice / Collabora are picked per-client at install (Catena
+  // ships either, never both). Merged into one picker row so the
+  // user does not falsely see an overlap when the suite implies the
+  // generic "document editor". catalog_ref omitted -- two Dokploy
+  // templates back this depending on operator choice.
   {
-    id: "onlyoffice",
-    label: "OnlyOffice",
+    id: "office_editor",
+    label: "OnlyOffice / Collabora",
     type: "catena_bundled",
-    catalog_ref: "onlyoffice",
-    covers: [{ need: "collab_editing", strength: "primary" }],
-  },
-  {
-    id: "collabora",
-    label: "Collabora",
-    type: "catena_bundled",
-    catalog_ref: "collabora",
+    default_selected: true,
     covers: [{ need: "collab_editing", strength: "primary" }],
   },
 

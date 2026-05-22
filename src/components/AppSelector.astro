@@ -95,6 +95,7 @@ const PAYLOAD = {
     covers: a.covers,
     warning_key: a.warning_key ?? null,
     warning_label: a.warning_key ? appWarningLabels[a.warning_key] : null,
+    default_selected: a.default_selected === true,
   })),
   pricing: {
     currency: tiers.currency,
@@ -471,7 +472,7 @@ const PAYLOAD = {
             }
           }
           html +=
-            '<li class="' + rowCls + '">' +
+            '<li class="' + rowCls + '" data-need-id="' + escapeAttr(nd.id) + '">' +
             '<div class="need-row">' +
             '<label class="need-label"><input type="checkbox" data-need="' +
             escapeAttr(nd.id) + '"' + (ticked ? " checked" : "") + "/>" +
@@ -704,6 +705,17 @@ const PAYLOAD = {
         // App checkbox nested under a ticked need.
         if (t.checked) state.apps.add(t.dataset.app);
         else state.apps.delete(t.dataset.app);
+        // Pin the parent need's disclosure as explicitly expanded
+        // so the auto-collapse-when-covered default does not slam
+        // the dropdown shut on the user mid-interaction.
+        var parentLi = t.closest && t.closest("li.need[data-need-id]");
+        if (parentLi) {
+          var parentNeedId = parentLi.getAttribute("data-need-id");
+          if (parentNeedId) {
+            state.expandedNeeds.add(parentNeedId);
+            state.collapsedNeeds.delete(parentNeedId);
+          }
+        }
         renderAll();
       }
     });
@@ -744,6 +756,7 @@ const PAYLOAD = {
       els.employees.value = "3";
       els.storage.value = "25";
       els.supportPack.value = "";
+      applyDefaults();
       renderAll();
     });
     els.copy.addEventListener("click", function () {
@@ -803,6 +816,11 @@ const PAYLOAD = {
         localStorage.setItem("catena.app-selector", s);
       } catch (e) {}
     }
+    function applyDefaults() {
+      DATA.apps.forEach(function (a) {
+        if (a.default_selected) state.apps.add(a.id);
+      });
+    }
     function readUrlHash() {
       var raw = location.hash.replace(/^#/, "");
       if (!raw) {
@@ -810,7 +828,12 @@ const PAYLOAD = {
           raw = localStorage.getItem("catena.app-selector") || "";
         } catch (e) {}
       }
-      if (!raw) return;
+      // Returns true when saved state was found (URL hash or local
+      // storage). The init path uses this to decide whether to fall
+      // back to the data file's default_selected apps; without the
+      // bool we could not tell "user has explicitly unticked every
+      // default" from "no saved state at all".
+      if (!raw) return false;
       var params = new URLSearchParams(raw);
       var needs = (params.get("needs") || "").split(",").filter(Boolean);
       var apps = (params.get("apps") || "").split(",").filter(Boolean);
@@ -847,7 +870,8 @@ const PAYLOAD = {
       return escapeHtml(s);
     }
 
-    readUrlHash();
+    var loaded = readUrlHash();
+    if (!loaded) applyDefaults();
     renderAll();
   }
 
