@@ -701,7 +701,7 @@
     },
     "q4": {
       "question": "Can I leave with my data?",
-      "answer": "Yes, at any time, with everything intact. Your S3 backup bucket holds a full encrypted export; tear-down is fully managed on our side and complete. No exit fees, no proprietary glue to unwind."
+      "answer": "You don't have to leave -- you already own everything. The server, the data, and the backup buckets are all in your name. When you want to part ways, we hand over and step out. No exit fees, no proprietary glue to unwind."
     },
     "q5": {
       "question": "Do I need to be technical to use this?",
@@ -723,10 +723,6 @@
       "question": "Can I host my own apps alongside the suite?",
       "answer": "Yes. Dokploy lets you deploy any compose-shaped app under SSO + Cloudflare Tunnel. We can advise; we don't have to operate it."
     },
-    "q10": {
-      "question": "What if I outgrow 50 employees or 10 services?",
-      "answer": "Talk to us. The suite itself scales (Nextcloud comfortably runs on a 200-employee org). Beyond the typical configurations on the pricing page, we quote bespoke based on your actual app and support footprint."
-    },
     "q11": {
       "question": "Can I run this on my own hardware?",
       "answer": "Yes. Self-hosted installs on hardware you own (with or without a public IP) are available as a custom install. <a href='/en/contact'>Talk to us</a> to discuss the constraints and quote."
@@ -741,11 +737,11 @@
     },
     "q14": {
       "question": "Are you really an MSP? How are you different from my current MSP?",
-      "answer": "Yes, Catena is an MSP -- we run IT infrastructure on your behalf for a monthly retainer. The difference from a traditional MSP: our scope is bounded to the Catena Suite. We do not manage your workstations, printers, Microsoft 365, or office network (see <a href='/en/pricing#scope'>the Included / Not included grid</a>). For that work, you need a local technician we can refer you to. In exchange: you pay per server (not per seat), your code and data belong to you, and you can leave at any time with everything in hand."
+      "answer": "Yes, Catena is an MSP -- we run IT infrastructure on your behalf for a monthly retainer. The difference from a traditional MSP: our scope is bounded to the Catena Suite. We do not manage your workstations, printers, Microsoft 365, or office network (see <a href='/en/pricing#scope'>the Included / Not included grid</a>). If you need help with anything beyond the suite, talk to us. In exchange: you pay per server (not per seat), your code and data belong to you, and you can leave at any time with everything in hand."
     },
     "q15": {
       "question": "What can you produce as Law 25 documentation?",
-      "answer": "The Catena Suite is Law 25 compliant at the infrastructure level (Canadian residency, documented subprocessors, immutable backups, MFA, encryption, logging). For the documentation layer (PIA / EFVP, registers, policies, incident runbook), we offer separate compliance enablement: audit ($400) and initial pack (in build, under legal review). Important: we do not replace your internal privacy officer -- Law 25 requires this to be a person inside your organization -- we deliver the infrastructure and documents that person can adopt and sign. See <a href='/en/pricing#compliance'>the Law 25 section</a>."
+      "answer": "The Catena Suite is Law 25 compliant at the infrastructure level (Canadian residency, documented subprocessors, immutable backups, MFA, encryption, logging). For the documentation layer (PIA / EFVP, registers, policies, incident runbook), we offer separate compliance enablement: audit and initial pack (in build, under legal review). Important: we do not replace your internal privacy officer -- Law 25 requires this to be a person inside your organization -- we deliver the infrastructure and documents that person can adopt and sign. See <a href='/en/pricing#compliance'>the Law 25 section</a>."
     }
   },
   "about": {

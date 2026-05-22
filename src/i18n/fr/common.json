@@ -701,7 +701,7 @@
     },
     "q4": {
       "question": "Puis-je partir avec mes données ?",
-      "answer": "Oui, à tout moment, avec tout intact. Votre seau S3 de sauvegarde contient un export complet chiffré ; le retrait est entièrement géré de notre côté et complet. Aucuns frais de sortie, aucun collage propriétaire à défaire."
+      "answer": "Vous n'avez pas à partir -- vous possédez déjà tout. Le serveur, les données et les seaux de sauvegarde sont à votre nom. Quand vous voulez clore la relation, nous remettons les clés et nous nous retirons. Aucuns frais de sortie, aucun collage propriétaire à défaire."
     },
     "q5": {
       "question": "Dois-je être technique pour utiliser ceci ?",
@@ -723,10 +723,6 @@
       "question": "Puis-je héberger mes propres applications à côté de la suite ?",
       "answer": "Oui. Dokploy permet de déployer toute application au format compose sous SSO + Cloudflare Tunnel. Nous pouvons conseiller ; nous n'avons pas à l'opérer."
     },
-    "q10": {
-      "question": "Et si je dépasse 50 employés ou 10 services ?",
-      "answer": "Parlez-nous-en. La suite elle-même se met à l'échelle (Nextcloud tourne confortablement pour une organisation de 200 employés). Au-delà des configurations types de la page Tarifs, nous établissons un devis sur mesure selon votre empreinte réelle d'applications et de support."
-    },
     "q11": {
       "question": "Puis-je l'héberger sur mon propre matériel ?",
       "answer": "Oui. Les installations auto-hébergées sur du matériel qui vous appartient (avec ou sans IP publique) sont disponibles en installation sur mesure. <a href='/contact'>Contactez-nous</a> pour discuter des contraintes et obtenir un devis."
@@ -741,11 +737,11 @@
     },
     "q14": {
       "question": "Vous êtes vraiment un MSP ? En quoi êtes-vous différent de mon MSP actuel ?",
-      "answer": "Oui, Catena est un MSP -- nous opérons l'infrastructure IT à votre place selon un forfait mensuel. La différence avec un MSP traditionnel : notre portée se limite à la Suite Catena. Nous ne gérons pas vos postes de travail, vos imprimantes, votre Microsoft 365, ni votre réseau de bureau (voir <a href='/pricing#scope'>la grille Inclus / Non inclus</a>). Pour ce travail-là, vous avez besoin d'un technicien local que je peux vous référer. En échange : vous payez par serveur (pas par siège), votre code et vos données vous appartiennent, et vous pouvez quitter à tout moment avec tout en main."
+      "answer": "Oui, Catena est un MSP -- nous opérons l'infrastructure IT à votre place selon un forfait mensuel. La différence avec un MSP traditionnel : notre portée se limite à la Suite Catena. Nous ne gérons pas vos postes de travail, vos imprimantes, votre Microsoft 365, ni votre réseau de bureau (voir <a href='/pricing#scope'>la grille Inclus / Non inclus</a>). Pour tout besoin au-delà de la suite, parlez-nous-en. En échange : vous payez par serveur (pas par siège), votre code et vos données vous appartiennent, et vous pouvez quitter à tout moment avec tout en main."
     },
     "q15": {
       "question": "Que pouvez-vous produire comme documentation Loi 25 ?",
-      "answer": "La Suite Catena est conforme Loi 25 au niveau infrastructure (résidence canadienne, sous-traitants documentés, sauvegardes immuables, MFA, chiffrement, journalisation). Pour le volet documentaire (EFVP, registres, politiques, runbook d'incident), nous offrons un accompagnement séparé : audit ($400) et pack initial (en construction, revue juridique en cours). Important : nous ne vous remplaçons pas comme responsable de la protection des renseignements personnels -- Loi 25 exige que ce soit une personne à l'interne de votre organisation -- nous fournissons l'infrastructure et les documents que cette personne peut adopter et signer. Voir <a href='/pricing#compliance'>la section Conformité Loi 25</a>."
+      "answer": "La Suite Catena est conforme Loi 25 au niveau infrastructure (résidence canadienne, sous-traitants documentés, sauvegardes immuables, MFA, chiffrement, journalisation). Pour le volet documentaire (EFVP, registres, politiques, runbook d'incident), nous offrons un accompagnement séparé : audit et pack initial (en construction, revue juridique en cours). Important : nous ne vous remplaçons pas comme responsable de la protection des renseignements personnels -- Loi 25 exige que ce soit une personne à l'interne de votre organisation -- nous fournissons l'infrastructure et les documents que cette personne peut adopter et signer. Voir <a href='/pricing#compliance'>la section Conformité Loi 25</a>."
     }
   },
   "about": {
