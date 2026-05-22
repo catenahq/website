@@ -427,13 +427,16 @@ const PAYLOAD = {
         for (var j = 0; j < list.length; j++) {
           var nd = list[j];
           var ticked = state.needs.has(nd.id);
-          var status = ticked ? needStatus(nd.id) : null;
+          // Coverage is computed regardless of whether the need is
+          // ticked, so a need accidentally covered by an app the user
+          // picked under a different need still lights up green/blue.
+          // Only the "gap" (red) state requires the need to be ticked
+          // -- an unticked uncovered need is just neutral, not a gap.
+          var status = needStatus(nd.id);
           var rowCls = "need";
-          if (ticked) {
-            if (status.kind === "gap") rowCls += " gap";
-            else if (status.kind === "overlap") rowCls += " overlap";
-            else rowCls += " covered";
-          }
+          if (status.kind === "overlap") rowCls += " overlap";
+          else if (status.kind === "covered") rowCls += " covered";
+          else if (ticked && status.kind === "gap") rowCls += " gap";
           var nestedHtml = "";
           var hint = "";
           var disclosureHtml = "";
