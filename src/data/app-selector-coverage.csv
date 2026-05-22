@@ -11,7 +11,7 @@ crm_pipeline,sales_crm,,,,,,P,P,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,N,N,P,P
 lead_capture_forms,sales_crm,,,,,,P,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,N,N,P,P
 quotes_estimates_crm,sales_crm,,,,,,P,,,,,,,,,,,,,S,,,,,,,,,,,,,,,,,,,N,N,P,P
 email_marketing_mass,sales_crm,,,,,,P,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,N,N,P,P
-workflow_automation_light,sales_crm,,,,,,P,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,N,N,N,P
+sales_automation,sales_crm,,,,,,P,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,N,N,N,P
 social_posting,sales_crm,,,,,,,,,,,,,,,,P,,,,,,,,,,,,,,,,,,,,,,N,N,N,P
 marketing_automation,marketing,,,,,,,,,,,,,,,,,P,,,,,,,,,,,,,,,,,,,,,N,N,N,P
 newsletter_campaigns,marketing,,,,,,,,,,,,,,,,,P,,,,,,,,,,,,,,,,,,,,,N,N,,
@@ -37,7 +37,7 @@ email_hosted,communications,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,P,P,P,P,,,,,P,P,N,N
 project_management,operations,,S,,,,,,P,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,P,S,P,P
 time_tracking,operations,,S,,,,,,,,,,,,,,,,,S,P,,,,,P,,,,,,,,,,,,,P,N,P,P
 appointment_booking,operations,,S,,,,,,,,,P,,,,,,,,,,,,,,,,,,,,,,,,,,,P,P,N,P
-automation_glue,operations,N,N,N,N,N,N,N,N,N,N,N,N,N,N,P,N,N,N,N,N,N,N,N,N,N,N,N,N,N,N,N,N,N,N,N,N,N,P,S,N,S
+cross_app_automation,operations,N,N,N,N,N,N,N,N,N,N,N,N,N,N,P,N,N,N,N,N,N,N,N,N,N,N,N,N,N,N,N,N,N,N,N,N,N,P,S,N,S
 public_website,operations,P,,,,,,,,,,,,,P,,,,,,,,,,,,,,,,,,,,,,,,N,N,P,P
 identity_sso,infrastructure,P,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,P,P,N,N
 data_backups,infrastructure,P,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,N,N,N,N
