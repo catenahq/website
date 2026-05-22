@@ -51,6 +51,7 @@ export const NEEDS: readonly Need[] = [
   { id: "contacts_directory", category: "collaboration" },
   { id: "internal_forms", category: "collaboration" },
   { id: "knowledge_wiki", category: "collaboration" },
+  { id: "note_taking", category: "collaboration" },
   { id: "password_secrets_manager", category: "collaboration" },
 
   // sales_crm
@@ -532,6 +533,32 @@ export const APPS: readonly App[] = [
     covers: [{ need: "email_hosted", strength: "primary" }],
   },
 
+  // External OSS notes apps. Free, self-host yourself. Listed so
+  // clients evaluating note-taking against M365 OneNote can see the
+  // FOSS alternatives -- not Catena-managed.
+  {
+    id: "appflowy",
+    label: "AppFlowy",
+    type: "external_saas",
+    pricing: {
+      kind: "flat",
+      monthly_cad: 0,
+      pricing_url: "https://appflowy.com/",
+    },
+    covers: [{ need: "note_taking", strength: "primary" }],
+  },
+  {
+    id: "memos",
+    label: "Memos",
+    type: "external_saas",
+    pricing: {
+      kind: "flat",
+      monthly_cad: 0,
+      pricing_url: "https://usememos.com/",
+    },
+    covers: [{ need: "note_taking", strength: "primary" }],
+  },
+
   // External SaaS -- Bitwarden free tier. Personal/individual use is
   // unlimited; the free Teams Starter org tops out at 2 users. For
   // larger teams the paid Teams plan applies (~$4 USD/user/mo);
@@ -584,6 +611,8 @@ export const APPS: readonly App[] = [
       { need: "internal_video", strength: "primary" },
       { need: "internal_calendar", strength: "primary" },
       { need: "contacts_directory", strength: "primary" },
+      { need: "knowledge_wiki", strength: "primary" },
+      { need: "note_taking", strength: "primary" },
     ],
   },
   {
@@ -604,6 +633,8 @@ export const APPS: readonly App[] = [
       { need: "internal_video", strength: "primary" },
       { need: "internal_calendar", strength: "primary" },
       { need: "contacts_directory", strength: "primary" },
+      { need: "knowledge_wiki", strength: "primary" },
+      { need: "note_taking", strength: "primary" },
     ],
   },
 
@@ -625,6 +656,7 @@ export const APPS: readonly App[] = [
       { need: "internal_video", strength: "primary" },
       { need: "internal_calendar", strength: "primary" },
       { need: "contacts_directory", strength: "primary" },
+      { need: "knowledge_wiki", strength: "primary" },
     ],
   },
 
