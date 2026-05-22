@@ -182,6 +182,7 @@ const PAYLOAD = {
     summary_none: t(locale, "common.app_selector.summary.none"),
     none_pack: t(locale, "common.app_selector.bill.support_pack_none"),
     none_installer: t(locale, "common.app_selector.bill.installer_none"),
+    empty_apps_hint: t(locale, "common.app_selector.empty_apps_hint"),
   },
 };
 ---
@@ -240,6 +241,10 @@ const PAYLOAD = {
               {t(locale, "common.app_selector.filters.oss")}
             </button>
           </div>
+          <label class="show-all">
+            <input id="as-show-all" type="checkbox" />
+            <span>{t(locale, "common.app_selector.show_all_apps_label")}</span>
+          </label>
         </div>
         <div id="as-apps"></div>
       </section>
@@ -302,6 +307,7 @@ const PAYLOAD = {
       search: "",
       supportPack: "",
       installer: "",
+      showAllApps: false,
     };
 
     var els = {
@@ -315,6 +321,7 @@ const PAYLOAD = {
       installer: document.getElementById("as-installer"),
       reset: document.getElementById("as-reset"),
       copy: document.getElementById("as-copy"),
+      showAll: document.getElementById("as-show-all"),
     };
 
     // ----- helpers -----
@@ -604,6 +611,12 @@ const PAYLOAD = {
     }
 
     // ----- render: apps -----
+    function appCoversAnyTickedNeed(app) {
+      for (var i = 0; i < app.covers.length; i++) {
+        if (state.needs.has(app.covers[i].need)) return true;
+      }
+      return false;
+    }
     function renderApps() {
       var html = "";
       var search = state.search.trim().toLowerCase();
@@ -613,10 +626,36 @@ const PAYLOAD = {
         external_saas: [],
         external_oss: [],
       };
+      // When the user has not ticked any need AND not opted into
+      // "show all apps", the apps pane stays empty with a hint --
+      // the discovery flow is "tick a need first, see what covers it".
+      var needNothingTicked = state.needs.size === 0;
+      var hideUntilNeedsTicked = !state.showAllApps && needNothingTicked;
+      if (hideUntilNeedsTicked) {
+        els.apps.innerHTML =
+          '<p class="muted apps-empty">' +
+          escapeHtml(UI.empty_apps_hint) +
+          "</p>";
+        return;
+      }
       for (var i = 0; i < DATA.apps.length; i++) {
         var a = DATA.apps[i];
         if (state.filter !== "all" && a.type !== state.filter) continue;
         if (search && a.label.toLowerCase().indexOf(search) === -1) continue;
+        // Coverage-relevance filter: when needs are ticked and the
+        // user has not opted into "show all", hide apps that do not
+        // cover any of the ticked needs. A ticked app stays visible
+        // even if its only ticked-need-edge gets unticked, until the
+        // user explicitly unticks the app -- so the selection never
+        // disappears under the user's fingers.
+        if (
+          !state.showAllApps &&
+          !needNothingTicked &&
+          !state.apps.has(a.id) &&
+          !appCoversAnyTickedNeed(a)
+        ) {
+          continue;
+        }
         grouped[a.type].push(a);
       }
       var order = ["catena_bundled", "catena_managed", "external_saas", "external_oss"];
@@ -628,7 +667,7 @@ const PAYLOAD = {
           var a = grouped[typ][j];
           var ticked = state.apps.has(a.id);
           var monthly = appMonthlyCad(a);
-          var monthlyLabel = a.type === "external_oss" ? "—" : fmt(monthly);
+          var monthlyLabel = a.type === "external_oss" ? "--" : fmt(monthly);
           var warnHtml = a.warning_label
             ? '<div class="app-warn">' + escapeHtml(a.warning_label) + "</div>"
             : "";
@@ -657,7 +696,7 @@ const PAYLOAD = {
         }
         html += "</ul></div>";
       }
-      els.apps.innerHTML = html || "<p class=\"muted\">—</p>";
+      els.apps.innerHTML = html || '<p class="muted apps-empty">' + escapeHtml(UI.empty_apps_hint) + "</p>";
     }
     function typeLabel(typ) {
       for (var i = 0; i < DATA.apps.length; i++) {
@@ -885,6 +924,10 @@ const PAYLOAD = {
       state.search = els.search.value;
       renderApps();
     });
+    els.showAll.addEventListener("change", function () {
+      state.showAllApps = !!els.showAll.checked;
+      renderApps();
+    });
     var filterBtns = document.querySelectorAll(".filter");
     filterBtns.forEach(function (btn) {
       btn.addEventListener("click", function () {
@@ -914,11 +957,13 @@ const PAYLOAD = {
       state.installer = "";
       state.filter = "all";
       state.search = "";
+      state.showAllApps = false;
       els.employees.value = "3";
       els.storage.value = "25";
       els.search.value = "";
       els.supportPack.value = "";
       els.installer.value = "";
+      els.showAll.checked = false;
       filterBtns.forEach(function (b) {
         b.classList.toggle("active", b.dataset.filter === "all");
       });
@@ -1121,15 +1166,20 @@ const PAYLOAD = {
   }
   .need-list { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: var(--catena-space-1); }
   .need {
-    padding: var(--catena-space-2);
-    border-left: 3px solid transparent;
+    padding: var(--catena-space-2) var(--catena-space-3);
+    border-left: 5px solid transparent;
     border-radius: var(--catena-radius-sm);
+    transition: background 120ms ease;
   }
   .need label { display: flex; align-items: center; gap: var(--catena-space-2); cursor: pointer; }
-  .need.covered    { background: color-mix(in srgb, #16a34a 8%, transparent); border-left-color: #16a34a; }
-  .need.gap        { background: color-mix(in srgb, #dc2626 8%, transparent); border-left-color: #dc2626; }
-  .need.overlap    { background: color-mix(in srgb, #d97706 10%, transparent); border-left-color: #d97706; }
-  .need.tier-trap  { background: color-mix(in srgb, #eab308 14%, transparent); border-left-color: #eab308; }
+  /* Covered = green, gap = red, multi-primary overlap = yellow.
+     Tier-trap (separate concept: covered but at a more expensive
+     tier than necessary) gets orange so it stays visually distinct
+     from the overlap-yellow. */
+  .need.covered   { background: color-mix(in srgb, #16a34a 22%, transparent); border-left-color: #16a34a; }
+  .need.gap       { background: color-mix(in srgb, #dc2626 22%, transparent); border-left-color: #dc2626; }
+  .need.overlap   { background: color-mix(in srgb, #eab308 28%, transparent); border-left-color: #eab308; }
+  .need.tier-trap { background: color-mix(in srgb, #d97706 22%, transparent); border-left-color: #d97706; }
   .need .hint {
     margin-top: var(--catena-space-1);
     margin-left: 1.7rem;
@@ -1163,14 +1213,49 @@ const PAYLOAD = {
   .app-group { margin-bottom: var(--catena-space-5); }
   .app-list { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: var(--catena-space-1); }
   .app {
-    padding: var(--catena-space-2);
-    border-left: 3px solid transparent;
+    padding: var(--catena-space-2) var(--catena-space-3);
+    border-left: 4px solid transparent;
     border-radius: var(--catena-radius-sm);
   }
-  .app.selected { background: color-mix(in srgb, var(--catena-accent) 8%, transparent); border-left-color: var(--catena-accent); }
-  .app label { display: flex; align-items: center; gap: var(--catena-space-2); cursor: pointer; }
-  .app-label { flex: 1; }
-  .app-price { font-variant-numeric: tabular-nums; font-size: var(--catena-fs-sm); color: var(--catena-surface-fg-muted); }
+  .app.selected { background: color-mix(in srgb, var(--catena-accent) 12%, transparent); border-left-color: var(--catena-accent); }
+  .app label {
+    display: flex;
+    align-items: center;
+    gap: var(--catena-space-3);
+    cursor: pointer;
+    width: 100%;
+  }
+  .app-label {
+    flex: 1 1 auto;
+    min-width: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  .app-price {
+    flex: 0 0 auto;
+    min-width: 5.5rem;
+    margin-left: auto;
+    text-align: right;
+    font-variant-numeric: tabular-nums;
+    font-size: var(--catena-fs-sm);
+    color: var(--catena-surface-fg-muted);
+    white-space: nowrap;
+  }
+  .apps-empty {
+    margin: 0;
+    padding: var(--catena-space-6);
+    text-align: center;
+    font-size: var(--catena-fs-sm);
+  }
+  .show-all {
+    display: flex;
+    align-items: center;
+    gap: var(--catena-space-2);
+    font-size: var(--catena-fs-xs);
+    color: var(--catena-surface-fg-muted);
+    cursor: pointer;
+  }
   .app-warn {
     margin-top: var(--catena-space-1);
     margin-left: 1.7rem;

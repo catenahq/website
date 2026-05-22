@@ -1008,6 +1008,8 @@
       "oss": "External OSS"
     },
     "search_placeholder": "Search apps",
+    "show_all_apps_label": "Show all apps (ignore selected needs)",
+    "empty_apps_hint": "Tick a need on the left, or check \"show all apps\" to browse the full list.",
     "status": {
       "covered": "Covered",
       "gap": "No selected app covers this need.",
