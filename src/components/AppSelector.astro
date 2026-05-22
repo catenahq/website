@@ -273,10 +273,22 @@ const PAYLOAD = {
 </section>
 
 <script type="application/json" id="as-data" set:html={JSON.stringify(PAYLOAD)}></script>
-<script is:inline>
-  (function () {
-    "use strict";
-    var DATA = JSON.parse(document.getElementById("as-data").textContent);
+<script>
+  // @ts-nocheck -- inline browser glue, no type surface; data shape
+  // lives in src/data/app-selector-data.ts and is hydrated via the
+  // sibling <script type="application/json"> block.
+  //
+  // Re-run on every page load AND after every <ClientRouter /> swap.
+  // Without this listener, navigating into /app-selector via a soft
+  // nav lands on the swapped DOM with no JS bound -- inputs do nothing
+  // and the needs/apps panes never populate until a full refresh.
+  function initAppSelector() {
+    var dataEl = document.getElementById("as-data");
+    if (!dataEl) return; // not on this page
+    var root = document.querySelector(".app-selector");
+    if (!root || root.dataset.asInited === "1") return;
+    root.dataset.asInited = "1";
+    var DATA = JSON.parse(dataEl.textContent || "{}");
     var UI = DATA.ui;
     var P = DATA.pricing;
 
@@ -1021,7 +1033,11 @@ const PAYLOAD = {
 
     readUrlHash();
     renderAll();
-  })();
+  }
+
+  // Initial cold load + every soft-nav swap (ClientRouter fires this).
+  initAppSelector();
+  document.addEventListener("astro:page-load", initAppSelector);
 </script>
 
 <style>
