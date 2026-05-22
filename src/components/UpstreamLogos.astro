@@ -1,0 +1,69 @@
+---
+import { t } from "@catena/i18n";
+
+interface Props {
+  locale: "en" | "fr";
+}
+
+const { locale } = Astro.props;
+
+const names = [
+  "Nextcloud",
+  "OnlyOffice",
+  "Rocket.Chat",
+  "Element",
+  "EspoCRM",
+  "Plane",
+  "ERPNext",
+  "n8n",
+  "Keycloak",
+  "Dokploy",
+];
+---
+<section class="upstream" aria-label="Upstream projects we operate">
+  <div class="container">
+    <p class="label">{t(locale, "common.home.upstream.label")}</p>
+    <ul class="logos">
+      {names.map((name) => <li class="chip">{name}</li>)}
+    </ul>
+  </div>
+</section>
+
+<style>
+  .upstream {
+    padding: var(--catena-space-4) 0 var(--catena-space-10);
+    text-align: center;
+  }
+  .label {
+    margin: 0 0 var(--catena-space-5);
+    font-size: var(--catena-fs-xs);
+    color: var(--catena-neutral-600);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+  }
+  .logos {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: var(--catena-space-3) var(--catena-space-4);
+  }
+  .chip {
+    font-family: var(--catena-font-mono);
+    font-size: var(--catena-fs-sm);
+    color: var(--catena-neutral-700);
+    padding: var(--catena-space-2) var(--catena-space-3);
+    border: 1px solid var(--catena-surface-border);
+    border-radius: var(--catena-radius-md);
+    background: var(--catena-surface-bg);
+    white-space: nowrap;
+  }
+  @media (prefers-color-scheme: dark) {
+    .label,
+    .chip {
+      color: var(--catena-neutral-300);
+    }
+  }
+</style>
