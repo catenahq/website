@@ -137,9 +137,14 @@ export interface App {
   pricing_url?: string;
   covers: Coverage[];
   warning_key?: string;
-  // When true, the app is pre-selected on a fresh visit (no saved
-  // state in URL hash or localStorage). The user can untick it.
+  // Pre-ticked on a fresh visit (no saved state). User can untick;
+  // saved state wins on subsequent visits.
   default_selected?: boolean;
+  // Force-ticked on every init, regardless of saved state. Renders
+  // with a disabled checkbox so the user cannot untick it -- intended
+  // for the implicit suite baseline (Keycloak + Restic + the server
+  // itself), which is always there as soon as a Catena VPS exists.
+  always_selected?: boolean;
 }
 
 export const APPS: readonly App[] = [
@@ -154,7 +159,7 @@ export const APPS: readonly App[] = [
     id: "catena_suite",
     label: "Catena Suite",
     type: "catena_bundled",
-    default_selected: true,
+    always_selected: true,
     covers: [
       { need: "identity_sso", strength: "primary" },
       { need: "backups", strength: "primary" },

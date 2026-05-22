@@ -96,6 +96,7 @@ const PAYLOAD = {
     warning_key: a.warning_key ?? null,
     warning_label: a.warning_key ? appWarningLabels[a.warning_key] : null,
     default_selected: a.default_selected === true,
+    always_selected: a.always_selected === true,
   })),
   pricing: {
     currency: tiers.currency,
@@ -399,13 +400,18 @@ const PAYLOAD = {
       // Apps render only as nested rows under a ticked need now --
       // checkbox + label, nothing else (price, type, and warnings
       // already render in the bill column on the right).
+      // always_selected apps render with a disabled checkbox: the
+      // user sees the row, sees the tick, but can't untick it.
       var ticked = state.apps.has(a.id);
+      var locked = a.always_selected === true;
       return (
         '<li class="app ' + escapeAttr(a.type) +
-        (ticked ? " selected" : "") + '">' +
+        (ticked ? " selected" : "") +
+        (locked ? " locked" : "") + '">' +
         "<label>" +
         '<input type="checkbox" data-app="' + escapeAttr(a.id) + '"' +
-        (ticked ? " checked" : "") + "/>" +
+        (ticked ? " checked" : "") +
+        (locked ? " disabled" : "") + "/>" +
         '<span class="app-label">' + escapeHtml(a.label) + "</span>" +
         "</label>" +
         "</li>"
@@ -757,6 +763,7 @@ const PAYLOAD = {
       els.storage.value = "25";
       els.supportPack.value = "";
       applyDefaults();
+      ensureAlwaysSelected();
       renderAll();
     });
     els.copy.addEventListener("click", function () {
@@ -821,6 +828,17 @@ const PAYLOAD = {
         if (a.default_selected) state.apps.add(a.id);
       });
     }
+    function ensureAlwaysSelected() {
+      // Runs on every init AND every reset, regardless of saved
+      // state. Catena Suite is the implicit baseline: as soon as a
+      // Catena VPS exists, Keycloak + Restic are there. The user
+      // never gets a checkbox to opt out (renderAppRow emits the
+      // checkbox with `disabled`), but defensive add here covers
+      // saved-state migration from before this entry existed.
+      DATA.apps.forEach(function (a) {
+        if (a.always_selected) state.apps.add(a.id);
+      });
+    }
     function readUrlHash() {
       var raw = location.hash.replace(/^#/, "");
       if (!raw) {
@@ -872,6 +890,7 @@ const PAYLOAD = {
 
     var loaded = readUrlHash();
     if (!loaded) applyDefaults();
+    ensureAlwaysSelected();
     renderAll();
   }
 
@@ -1061,6 +1080,11 @@ const PAYLOAD = {
     background: color-mix(in srgb, var(--catena-accent) 12%, transparent);
     border-left-color: var(--catena-accent);
   }
+  .app-selector .app.locked {
+    opacity: 0.85;
+  }
+  .app-selector .app.locked label { cursor: default; }
+  .app-selector .app.locked input[type="checkbox"] { cursor: not-allowed; }
   .app-selector .app label {
     display: flex; align-items: center; gap: var(--catena-space-2);
     cursor: pointer;
