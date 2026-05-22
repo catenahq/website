@@ -159,12 +159,12 @@ const PAYLOAD = {
     <div class="controls">
       <label class="control">
         <span class="ctl-label">{t(locale, "common.app_selector.inputs.employees_label")}</span>
-        <input id="as-employees" type="number" min="1" max="500" value="3" inputmode="numeric" />
+        <input id="as-employees" type="number" min="1" max="500" value="10" inputmode="numeric" />
         <small class="muted">{t(locale, "common.app_selector.inputs.employees_help")}</small>
       </label>
       <label class="control">
         <span class="ctl-label">{t(locale, "common.app_selector.inputs.storage_label")}</span>
-        <input id="as-storage" type="number" min="0" max="100000" value="25" inputmode="numeric" />
+        <input id="as-storage" type="number" min="0" max="100000" value="100" inputmode="numeric" />
         <small class="muted">{t(locale, "common.app_selector.inputs.storage_help")}</small>
       </label>
       <div class="control control-actions">
@@ -224,8 +224,8 @@ const PAYLOAD = {
 
     // ----- state -----
     var state = {
-      employees: 3,
-      storage: 25,
+      employees: 10,
+      storage: 100,
       needs: new Set(),
       apps: new Set(),
       supportPack: "",
@@ -250,10 +250,13 @@ const PAYLOAD = {
     function isNeedExpanded(needId, status) {
       if (state.expandedNeeds.has(needId)) return true;
       if (state.collapsedNeeds.has(needId)) return false;
-      // Default: expanded only for gap or overlap (the cases that
-      // need user action). Covered (green) and secondary-only-covered
-      // (green-yellow) both auto-collapse -- the need is met, the
-      // color tells the story.
+      // Default: expanded only for TICKED needs in actionable states
+      // (gap or overlap). Unticked needs stay collapsed by default --
+      // otherwise every need would auto-expand on fresh load / reset,
+      // since unticked + no covering app selected reads as "gap".
+      // The user can click the name or arrow to peek at any need's
+      // apps; that records an explicit expandedNeeds override.
+      if (!state.needs.has(needId)) return false;
       return !!status && (status.kind === "gap" || status.kind === "overlap");
     }
     function toggleNeedDisclosure(needId, status) {
@@ -781,11 +784,11 @@ const PAYLOAD = {
       state.apps.clear();
       state.expandedNeeds.clear();
       state.collapsedNeeds.clear();
-      state.employees = 3;
-      state.storage = 25;
+      state.employees = 10;
+      state.storage = 100;
       state.supportPack = "";
-      els.employees.value = "3";
-      els.storage.value = "25";
+      els.employees.value = "10";
+      els.storage.value = "100";
       els.supportPack.value = "";
       applyDefaults();
       ensureAlwaysSelected();
@@ -836,8 +839,8 @@ const PAYLOAD = {
       var params = new URLSearchParams();
       if (state.needs.size) params.set("needs", Array.from(state.needs).join(","));
       if (state.apps.size) params.set("apps", Array.from(state.apps).join(","));
-      if (state.employees !== 3) params.set("e", String(state.employees));
-      if (state.storage !== 25) params.set("s", String(state.storage));
+      if (state.employees !== 10) params.set("e", String(state.employees));
+      if (state.storage !== 100) params.set("s", String(state.storage));
       if (state.supportPack) params.set("p", state.supportPack);
       var s = params.toString();
       var hash = s ? "#" + s : "";
