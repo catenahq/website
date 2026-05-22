@@ -331,34 +331,20 @@ export const APPS: readonly App[] = [
     ],
   },
 
-  // External SaaS -- QBO Canada (tiered_by_users; tier_group qbo_core)
+  // External SaaS -- QBO Canada (tiered_by_users; tier_group qbo_core).
+  // QBO Canada tiers as of 2026-05-22: EasyStart / Plus / Advanced.
+  // No Essentials tier in Canada (US-only).
   {
     id: "qbo_easystart",
     label: "QuickBooks Online EasyStart",
     type: "external_saas",
     pricing: {
       kind: "tiered_by_users",
-      tiers: [{ max_users: 1, monthly_cad: 22 }],
+      tiers: [{ max_users: 1, monthly_cad: 30 }],
       pricing_url: "https://quickbooks.intuit.com/ca/pricing/",
     },
     tier_group: "qbo_core",
     tier_rank: 1,
-    covers: [
-      { need: "accounting_gl", strength: "primary" },
-      { need: "sales_tax_filing", strength: "primary" },
-    ],
-  },
-  {
-    id: "qbo_essentials",
-    label: "QuickBooks Online Essentials",
-    type: "external_saas",
-    pricing: {
-      kind: "tiered_by_users",
-      tiers: [{ max_users: 3, monthly_cad: 50 }],
-      pricing_url: "https://quickbooks.intuit.com/ca/pricing/",
-    },
-    tier_group: "qbo_core",
-    tier_rank: 2,
     covers: [
       { need: "accounting_gl", strength: "primary" },
       { need: "sales_tax_filing", strength: "primary" },
@@ -370,11 +356,11 @@ export const APPS: readonly App[] = [
     type: "external_saas",
     pricing: {
       kind: "tiered_by_users",
-      tiers: [{ max_users: 5, monthly_cad: 75 }],
+      tiers: [{ max_users: 5, monthly_cad: 110 }],
       pricing_url: "https://quickbooks.intuit.com/ca/pricing/",
     },
     tier_group: "qbo_core",
-    tier_rank: 3,
+    tier_rank: 2,
     covers: [
       { need: "accounting_gl", strength: "primary" },
       { need: "sales_tax_filing", strength: "primary" },
@@ -387,11 +373,11 @@ export const APPS: readonly App[] = [
     type: "external_saas",
     pricing: {
       kind: "tiered_by_users",
-      tiers: [{ max_users: 25, monthly_cad: 200 }],
+      tiers: [{ max_users: 25, monthly_cad: 220 }],
       pricing_url: "https://quickbooks.intuit.com/ca/pricing/",
     },
     tier_group: "qbo_core",
-    tier_rank: 4,
+    tier_rank: 3,
     covers: [
       { need: "accounting_gl", strength: "primary" },
       { need: "sales_tax_filing", strength: "primary" },
@@ -413,15 +399,16 @@ export const APPS: readonly App[] = [
     covers: [{ need: "time_tracking", strength: "primary" }],
   },
 
-  // External SaaS -- QBO Online Payroll (add-on)
+  // External SaaS -- QBO Online Payroll (add-on). Canada tiers as of
+  // 2026-05-22: EasyStart / Essentials / Premium.
   {
-    id: "qbo_payroll_standard",
-    label: "QuickBooks Online Payroll (Standard)",
+    id: "qbo_payroll_easystart",
+    label: "QuickBooks Online Payroll (EasyStart)",
     type: "external_saas",
     pricing: {
       kind: "per_seat_plus_base",
-      base_monthly_cad: 25,
-      per_seat_monthly_cad: 4,
+      base_monthly_cad: 60,
+      per_seat_monthly_cad: 5,
       pricing_url: "https://quickbooks.intuit.com/ca/payroll/",
     },
     tier_group: "qbo_payroll",
@@ -429,17 +416,31 @@ export const APPS: readonly App[] = [
     covers: [{ need: "payroll", strength: "primary" }],
   },
   {
-    id: "qbo_payroll_advanced",
-    label: "QuickBooks Online Payroll (Advanced)",
+    id: "qbo_payroll_essentials",
+    label: "QuickBooks Online Payroll (Essentials)",
     type: "external_saas",
     pricing: {
       kind: "per_seat_plus_base",
-      base_monthly_cad: 50,
-      per_seat_monthly_cad: 8,
+      base_monthly_cad: 100,
+      per_seat_monthly_cad: 5,
       pricing_url: "https://quickbooks.intuit.com/ca/payroll/",
     },
     tier_group: "qbo_payroll",
     tier_rank: 2,
+    covers: [{ need: "payroll", strength: "primary" }],
+  },
+  {
+    id: "qbo_payroll_premium",
+    label: "QuickBooks Online Payroll (Premium)",
+    type: "external_saas",
+    pricing: {
+      kind: "per_seat_plus_base",
+      base_monthly_cad: 165,
+      per_seat_monthly_cad: 8,
+      pricing_url: "https://quickbooks.intuit.com/ca/payroll/",
+    },
+    tier_group: "qbo_payroll",
+    tier_rank: 3,
     covers: [{ need: "payroll", strength: "primary" }],
   },
 
@@ -674,11 +675,15 @@ export interface TierGroup {
 export const TIER_GROUPS: readonly TierGroup[] = [
   {
     id: "qbo_core",
-    app_ids: ["qbo_easystart", "qbo_essentials", "qbo_plus", "qbo_advanced"],
+    app_ids: ["qbo_easystart", "qbo_plus", "qbo_advanced"],
   },
   {
     id: "qbo_payroll",
-    app_ids: ["qbo_payroll_standard", "qbo_payroll_advanced"],
+    app_ids: [
+      "qbo_payroll_easystart",
+      "qbo_payroll_essentials",
+      "qbo_payroll_premium",
+    ],
   },
   {
     id: "odoo",

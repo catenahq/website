@@ -743,7 +743,11 @@ const PAYLOAD = {
 
       // External subtotal split: QBO ecosystem rows go in their own
       // bundle when accounting/payroll/time tracking needs are ticked.
-      var qboBundleIds = ["qbo_easystart", "qbo_essentials", "qbo_plus", "qbo_advanced", "qbo_time", "qbo_payroll_standard", "qbo_payroll_advanced"];
+      var qboBundleIds = [
+        "qbo_easystart", "qbo_plus", "qbo_advanced",
+        "qbo_time",
+        "qbo_payroll_easystart", "qbo_payroll_essentials", "qbo_payroll_premium",
+      ];
       var qboNeeds = ["accounting_gl", "payroll", "time_tracking"];
       var hasQboNeed = false;
       for (var qi = 0; qi < qboNeeds.length; qi++) {
@@ -1085,11 +1089,16 @@ const PAYLOAD = {
   document.addEventListener("astro:page-load", initAppSelector);
 </script>
 
-<style>
+<style is:global>
+  /* Global block on purpose: every .need / .app row is injected via
+     innerHTML at runtime and therefore never carries Astro's scoped-
+     CSS hash attribute. A default <style> block silently misses those
+     rows (no colours, glued price column). Every selector below is
+     namespaced under .app-selector so the global scope cannot leak. */
   .app-selector { padding: var(--catena-space-8) 0 var(--catena-space-24); }
   .app-selector .container { max-width: 86rem; }
 
-  .controls {
+  .app-selector .controls {
     display: grid;
     grid-template-columns: repeat(3, minmax(0, 1fr));
     gap: var(--catena-space-5);
@@ -1099,14 +1108,17 @@ const PAYLOAD = {
     border: 1px solid var(--catena-surface-border);
     border-radius: var(--catena-radius-md);
   }
-  .control { display: flex; flex-direction: column; gap: var(--catena-space-2); }
-  .ctl-label {
+  .app-selector .control { display: flex; flex-direction: column; gap: var(--catena-space-2); }
+  .app-selector .ctl-label {
     font-size: var(--catena-fs-xs);
     text-transform: uppercase;
     letter-spacing: var(--catena-tracking-wide);
     color: var(--catena-surface-fg-muted);
   }
-  .control input[type="number"], .control input[type="search"], .control select {
+  .app-selector .control input[type="number"],
+  .app-selector .control input[type="search"],
+  .app-selector .control select,
+  .app-selector input[type="search"]#as-search {
     padding: var(--catena-space-3);
     border: 1px solid var(--catena-surface-border);
     border-radius: var(--catena-radius-sm);
@@ -1114,42 +1126,32 @@ const PAYLOAD = {
     color: var(--catena-surface-fg);
     font-size: var(--catena-fs-base);
   }
-  .control small { font-size: var(--catena-fs-xs); line-height: 1.4; }
-  .control-actions { justify-content: flex-end; flex-direction: row; gap: var(--catena-space-3); align-items: flex-end; }
-  .btn {
-    padding: var(--catena-space-3) var(--catena-space-5);
-    border: 1px solid var(--catena-surface-border);
-    border-radius: var(--catena-radius-sm);
-    background: var(--catena-surface-bg);
-    color: var(--catena-surface-fg);
-    cursor: pointer;
-    font-size: var(--catena-fs-sm);
+  .app-selector .control small { font-size: var(--catena-fs-xs); line-height: 1.4; }
+  .app-selector .control-actions {
+    justify-content: flex-end;
+    flex-direction: row;
+    gap: var(--catena-space-3);
+    align-items: flex-end;
   }
-  .btn-primary {
-    background: var(--catena-accent);
-    color: var(--catena-on-accent, white);
-    border-color: var(--catena-accent);
-  }
-  .btn:hover { filter: brightness(0.97); }
 
-  .grid {
+  .app-selector .grid {
     display: grid;
     grid-template-columns: 1.1fr 1.2fr 1fr;
     gap: var(--catena-space-6);
     align-items: start;
   }
-  .pane {
+  .app-selector .pane {
     border: 1px solid var(--catena-surface-border);
     border-radius: var(--catena-radius-md);
     background: var(--catena-surface-bg);
     padding: var(--catena-space-5);
     min-height: 30rem;
   }
-  .pane h2 {
+  .app-selector .pane h2 {
     margin: 0 0 var(--catena-space-4) 0;
     font-size: var(--catena-fs-lg);
   }
-  .pane h3 {
+  .app-selector .pane h3 {
     margin: var(--catena-space-4) 0 var(--catena-space-2) 0;
     font-size: var(--catena-fs-sm);
     text-transform: uppercase;
@@ -1158,45 +1160,48 @@ const PAYLOAD = {
   }
 
   /* needs pane */
-  .cat { margin-bottom: var(--catena-space-3); }
-  .cat summary {
+  .app-selector .cat { margin-bottom: var(--catena-space-3); }
+  .app-selector .cat summary {
     cursor: pointer;
     padding: var(--catena-space-2) 0;
     font-weight: var(--catena-fw-medium);
   }
-  .need-list { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: var(--catena-space-1); }
-  .need {
+  .app-selector .need-list {
+    list-style: none; padding: 0; margin: 0;
+    display: flex; flex-direction: column; gap: var(--catena-space-1);
+  }
+  .app-selector .need {
     padding: var(--catena-space-2) var(--catena-space-3);
     border-left: 5px solid transparent;
     border-radius: var(--catena-radius-sm);
     transition: background 120ms ease;
   }
-  .need label { display: flex; align-items: center; gap: var(--catena-space-2); cursor: pointer; }
+  .app-selector .need label {
+    display: flex; align-items: center; gap: var(--catena-space-2);
+    cursor: pointer;
+  }
   /* Covered = green, gap = red, multi-primary overlap = yellow.
      Tier-trap (separate concept: covered but at a more expensive
-     tier than necessary) gets orange so it stays visually distinct
-     from the overlap-yellow. */
-  .need.covered   { background: color-mix(in srgb, #16a34a 22%, transparent); border-left-color: #16a34a; }
-  .need.gap       { background: color-mix(in srgb, #dc2626 22%, transparent); border-left-color: #dc2626; }
-  .need.overlap   { background: color-mix(in srgb, #eab308 28%, transparent); border-left-color: #eab308; }
-  .need.tier-trap { background: color-mix(in srgb, #d97706 22%, transparent); border-left-color: #d97706; }
-  .need .hint {
+     tier than necessary) gets orange to stay distinct from overlap. */
+  .app-selector .need.covered   { background: color-mix(in srgb, #16a34a 22%, transparent); border-left-color: #16a34a; }
+  .app-selector .need.gap       { background: color-mix(in srgb, #dc2626 22%, transparent); border-left-color: #dc2626; }
+  .app-selector .need.overlap   { background: color-mix(in srgb, #eab308 28%, transparent); border-left-color: #eab308; }
+  .app-selector .need.tier-trap { background: color-mix(in srgb, #d97706 22%, transparent); border-left-color: #d97706; }
+  .app-selector .need .hint {
     margin-top: var(--catena-space-1);
     margin-left: 1.7rem;
     font-size: var(--catena-fs-xs);
     line-height: 1.4;
   }
-  .need .hint.substitute { color: var(--catena-surface-fg-muted); }
+  .app-selector .need .hint.substitute { color: var(--catena-surface-fg-muted); }
 
   /* apps pane */
-  .apps-controls {
+  .app-selector .apps-controls {
     display: flex; flex-direction: column; gap: var(--catena-space-3);
     margin-bottom: var(--catena-space-4);
   }
-  .filters {
-    display: flex; flex-wrap: wrap; gap: var(--catena-space-2);
-  }
-  .filter {
+  .app-selector .filters { display: flex; flex-wrap: wrap; gap: var(--catena-space-2); }
+  .app-selector .filter {
     padding: var(--catena-space-1) var(--catena-space-3);
     border: 1px solid var(--catena-surface-border);
     border-radius: var(--catena-radius-pill, 999px);
@@ -1205,34 +1210,44 @@ const PAYLOAD = {
     font-size: var(--catena-fs-xs);
     color: var(--catena-surface-fg);
   }
-  .filter.active {
+  .app-selector .filter.active {
     background: var(--catena-accent);
     color: var(--catena-on-accent, white);
     border-color: var(--catena-accent);
   }
-  .app-group { margin-bottom: var(--catena-space-5); }
-  .app-list { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: var(--catena-space-1); }
-  .app {
+  .app-selector .show-all {
+    display: flex; align-items: center; gap: var(--catena-space-2);
+    font-size: var(--catena-fs-xs);
+    color: var(--catena-surface-fg-muted);
+    cursor: pointer;
+  }
+  .app-selector .app-group { margin-bottom: var(--catena-space-5); }
+  .app-selector .app-list {
+    list-style: none; padding: 0; margin: 0;
+    display: flex; flex-direction: column; gap: var(--catena-space-1);
+  }
+  .app-selector .app {
     padding: var(--catena-space-2) var(--catena-space-3);
     border-left: 4px solid transparent;
     border-radius: var(--catena-radius-sm);
   }
-  .app.selected { background: color-mix(in srgb, var(--catena-accent) 12%, transparent); border-left-color: var(--catena-accent); }
-  .app label {
-    display: flex;
-    align-items: center;
-    gap: var(--catena-space-3);
+  .app-selector .app.selected {
+    background: color-mix(in srgb, var(--catena-accent) 12%, transparent);
+    border-left-color: var(--catena-accent);
+  }
+  .app-selector .app label {
+    display: flex; align-items: center; gap: var(--catena-space-3);
     cursor: pointer;
     width: 100%;
   }
-  .app-label {
+  .app-selector .app-label {
     flex: 1 1 auto;
     min-width: 0;
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
   }
-  .app-price {
+  .app-selector .app-price {
     flex: 0 0 auto;
     min-width: 5.5rem;
     margin-left: auto;
@@ -1242,28 +1257,20 @@ const PAYLOAD = {
     color: var(--catena-surface-fg-muted);
     white-space: nowrap;
   }
-  .apps-empty {
+  .app-selector .apps-empty {
     margin: 0;
     padding: var(--catena-space-6);
     text-align: center;
     font-size: var(--catena-fs-sm);
   }
-  .show-all {
-    display: flex;
-    align-items: center;
-    gap: var(--catena-space-2);
-    font-size: var(--catena-fs-xs);
-    color: var(--catena-surface-fg-muted);
-    cursor: pointer;
-  }
-  .app-warn {
+  .app-selector .app-warn {
     margin-top: var(--catena-space-1);
     margin-left: 1.7rem;
     font-size: var(--catena-fs-xs);
     color: color-mix(in srgb, #d97706 90%, var(--catena-surface-fg));
     line-height: 1.4;
   }
-  .price-url {
+  .app-selector .price-url {
     display: block;
     margin-left: 1.7rem;
     font-size: var(--catena-fs-xs);
@@ -1271,38 +1278,42 @@ const PAYLOAD = {
   }
 
   /* bill pane */
-  .bill-section { margin-bottom: var(--catena-space-4); }
-  .bill-section.bundle { background: color-mix(in srgb, var(--catena-accent) 6%, transparent); padding: var(--catena-space-3); border-radius: var(--catena-radius-sm); }
-  .bill-row {
+  .app-selector .bill-section { margin-bottom: var(--catena-space-4); }
+  .app-selector .bill-section.bundle {
+    background: color-mix(in srgb, var(--catena-accent) 6%, transparent);
+    padding: var(--catena-space-3);
+    border-radius: var(--catena-radius-sm);
+  }
+  .app-selector .bill-row {
     display: flex; justify-content: space-between; gap: var(--catena-space-2);
     padding: var(--catena-space-1) 0;
     font-size: var(--catena-fs-sm);
   }
-  .row-label { flex: 1; min-width: 0; }
-  .row-amount { font-variant-numeric: tabular-nums; }
-  .bill-subtotal {
+  .app-selector .row-label { flex: 1; min-width: 0; }
+  .app-selector .row-amount { font-variant-numeric: tabular-nums; }
+  .app-selector .bill-subtotal {
     display: flex; justify-content: space-between;
     padding: var(--catena-space-2) 0 0 0;
     border-top: 1px solid var(--catena-surface-border);
     margin-top: var(--catena-space-2);
     font-size: var(--catena-fs-sm);
   }
-  .bill-total {
+  .app-selector .bill-total {
     display: flex; justify-content: space-between; align-items: baseline;
     padding: var(--catena-space-3) 0;
     margin-top: var(--catena-space-3);
     border-top: 2px solid var(--catena-surface-fg);
     font-size: var(--catena-fs-lg);
   }
-  .bill-onetime {
+  .app-selector .bill-onetime {
     display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap;
     padding: var(--catena-space-2) 0;
     color: var(--catena-surface-fg-muted);
     font-size: var(--catena-fs-sm);
   }
-  .bill-onetime small { flex-basis: 100%; }
+  .app-selector .bill-onetime small { flex-basis: 100%; }
 
-  .extras {
+  .app-selector .extras {
     display: flex; flex-direction: column; gap: var(--catena-space-3);
     margin-top: var(--catena-space-5);
     padding-top: var(--catena-space-4);
@@ -1310,7 +1321,7 @@ const PAYLOAD = {
   }
 
   @media (max-width: 1023px) {
-    .controls { grid-template-columns: 1fr; }
-    .grid { grid-template-columns: 1fr; }
+    .app-selector .controls { grid-template-columns: 1fr; }
+    .app-selector .grid { grid-template-columns: 1fr; }
   }
 </style>
