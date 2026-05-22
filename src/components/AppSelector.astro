@@ -347,20 +347,11 @@ const PAYLOAD = {
         });
       }
       if (pm.kind === "tiered_by_users") {
+        // QBO tier "user cap" is per access account, not per business
+        // employee count, so comparing to state.employees is
+        // misleading -- just show the flat tier price.
         var picked = pm.tiers[0];
-        for (var i = 0; i < pm.tiers.length; i++) {
-          if (pm.tiers[i].max_users >= e) {
-            picked = pm.tiers[i];
-            break;
-          }
-          picked = pm.tiers[i];
-        }
-        var cap = picked.max_users;
-        var capLabel =
-          e <= cap
-            ? tpl(UI.tier_user_cap_ok, { users: e, cap: cap })
-            : tpl(UI.tier_user_cap_exceeded, { users: e, cap: cap });
-        return tpl(UI.formula_tier, { users: cap, total: picked.monthly_cad }) + " (" + capLabel + ")";
+        return tpl(UI.formula_tier, { total: picked.monthly_cad });
       }
       return "";
     }
@@ -985,6 +976,20 @@ const PAYLOAD = {
     padding: var(--catena-space-5);
     min-height: 30rem;
   }
+  /* Keep the bill column visible while scrolling the long needs
+     list. align-items:start on the grid makes the cell shrink to
+     the bill's natural height, but sticky resolves relative to the
+     containing block (the grid), so the pane stays visible against
+     the page scroll as long as the grid is in view. */
+  .app-selector .bill-pane {
+    position: sticky;
+    /* Site header is sticky at top:0 with ~5rem of padding+content;
+       clear it so the bill summary doesn't hide behind the nav. */
+    top: 5rem;
+    align-self: start;
+    max-height: calc(100vh - 6rem);
+    overflow-y: auto;
+  }
   .app-selector .pane h2 {
     margin: 0 0 var(--catena-space-4) 0;
     font-size: var(--catena-fs-lg);
@@ -1170,5 +1175,12 @@ const PAYLOAD = {
   @media (max-width: 1023px) {
     .app-selector .controls { grid-template-columns: 1fr; }
     .app-selector .grid { grid-template-columns: 1fr; }
+    /* No room to stick on narrow viewports; the bill is below the
+       needs list and the user scrolls through both naturally. */
+    .app-selector .bill-pane {
+      position: static;
+      max-height: none;
+      overflow-y: visible;
+    }
   }
 </style>

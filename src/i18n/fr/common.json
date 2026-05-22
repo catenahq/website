@@ -985,7 +985,7 @@
       "line_storage": "Stockage ({gb} Go x {rate} $/Go)",
       "line_formula_per_seat": "{employees} x {perSeat} $ = {total} $",
       "line_formula_per_seat_plus_base": "{base} $ de base + {employees} x {perSeat} $ = {total} $",
-      "line_formula_tier": "Limite {users} utilisateurs, forfait {total} $",
+      "line_formula_tier": "forfait {total} $ / mois",
       "subtotal": "Sous-total",
       "monthly_total": "Total mensuel",
       "support_pack_label": "Forfait support",

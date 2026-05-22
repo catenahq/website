@@ -985,7 +985,7 @@
       "line_storage": "Storage ({gb} GB x ${rate}/GB)",
       "line_formula_per_seat": "{employees} x ${perSeat} = ${total}",
       "line_formula_per_seat_plus_base": "${base} base + {employees} x ${perSeat} = ${total}",
-      "line_formula_tier": "{users} user cap, flat ${total}",
+      "line_formula_tier": "flat ${total} / month",
       "subtotal": "Subtotal",
       "monthly_total": "Monthly total",
       "support_pack_label": "Support pack",
