@@ -34,7 +34,7 @@ communications,phone_dial_in_meetings,,,,,P,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,S,,,,
 communications,email_hosted,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,P,P,P,P,,,,,P,P,P,,
 operations,project_management,,,,,,,,P,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,P,P
 operations,time_tracking,,S,,,,,,,,,,,,,,,,,S,P,,,,,P,,,,,,,,,,,,,,,,,P
-operations,appointment_booking,,,,,,,,,,,P,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,P
+operations,appointment_booking,,S,,,,,,,,,P,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,P
 operations,automation_glue,,,,,,,,,,,,,,,P,,,,,,,,,,,,,,,,,,,,,,,,,,,
 operations,public_website,,,,,,,,,,,,,,P,,,,,,,,,,,,,,,,,,,,,,,,,,,,
 marketing,marketing_automation,,,,,,,,,,,,,,,,,P,,,,,,,,,,,,,,,,,,,,,,,,,P

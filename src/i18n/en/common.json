@@ -333,15 +333,14 @@
     "model": {
       "server": {
         "name": "Server",
-        "price": "$400",
+        "price": "$200",
         "price_unit": "/ month",
-        "tagline": "The hardened base. One server, one monthly fee, unlimited team members.",
+        "tagline": "The hardened base. One server, one monthly fee, unlimited team members. Pick which apps run on top.",
         "features": [
           "OS patching, firewall, secrets management",
           "Cloudflare Tunnel + Tailscale + Keycloak SSO baseline",
           "Encrypted nightly backups to your own S3, drilled quarterly",
           "Gatus + self-hosted Healthchecks monitoring",
-          "Nextcloud + OnlyOffice (or Collabora) installed and managed",
           "4 business hour response SLA, no included hours"
         ]
       },
@@ -349,7 +348,7 @@
         "name": "Apps",
         "price": "$100",
         "price_unit": "/ month per app",
-        "tagline": "Every app beyond Nextcloud and OnlyOffice.",
+        "tagline": "Every app you run on the server.",
         "features": [
           "Installation and Keycloak SSO integration",
           "Updates and version-pinning discipline",
@@ -379,61 +378,34 @@
     "examples": {
       "light": {
         "name": "Light",
-        "total": "~$650",
+        "total": "~$550",
         "total_unit": "/ month",
         "tagline": "5-15 employees, 2-3 apps, occasional support.",
-        "components": "Server + 1 extra app + ad-hoc support (~1 hour / month)"
+        "components": "Server + 2 apps + ad-hoc support (~1 hour / month)"
       },
       "standard": {
         "name": "Standard",
         "total": "$1,300",
         "total_unit": "/ month",
         "tagline": "15-25 employees, 4-5 apps, predictable monthly support.",
-        "components": "Server + 3 extra apps + 5-hour support pack"
+        "components": "Server + 5 apps + 5-hour support pack"
       },
       "heavy": {
         "name": "Heavy",
         "total": "$2,100",
         "total_unit": "/ month",
         "tagline": "25-50 employees, 6-10 apps, regular ops cadence.",
-        "components": "Server + 6 extra apps + 10-hour support pack"
+        "components": "Server + 8 apps + 10-hour support pack"
       },
       "cabinet": {
         "name": "Cabinet",
         "total": "$2,900",
         "total_unit": "/ month",
         "tagline": "Professional services with deep integration and high responsiveness.",
-        "components": "Server + 5 extra apps + 20-hour support pack"
+        "components": "Server + 7 apps + 20-hour support pack"
       }
     },
     "commitment_note": "Managed subscription carries a 6-month minimum commitment. After that, cancel any month with no exit fee. We hand back the suite and your S3 export per the engagement letter.",
-    "install_title": "One-time install",
-    "install_intro": "How you get onto the model. Separate one-time fee, not part of the monthly subscription.",
-    "tiers": {
-      "base": {
-        "name": "Base installer",
-        "price": "$200",
-        "price_unit": "one-time",
-        "tagline": "Bring your own keys; portal-driven self-serve install.",
-        "features": [
-          "Nextcloud + OnlyOffice (or Collabora) ready to go",
-          "Software suite provisioning via the client portal",
-          "You provide Cloudflare, Tailscale, server, S3, SMTP credentials",
-          "No included support."
-        ]
-      },
-      "assisted": {
-        "name": "Assisted",
-        "price": "$300",
-        "price_unit": "one-time",
-        "tagline": "Base + a 1-hour onboarding call to walk you through provider account creation.",
-        "features": [
-          "Everything in Base",
-          "60-minute call to set up Cloudflare, Tailscale, OVH, eazybackup, SMTP",
-          "No included support."
-        ]
-      }
-    },
     "alacarte_support_note": "Hours outside your support pack bill at the time-of-day rate grid below.",
     "sovereignty": {
       "no_per_seat_title": "No per-seat charges",
@@ -721,7 +693,7 @@
     },
     "q2": {
       "question": "What else can I run on the suite?",
-      "answer": "Anything that fits a Dokploy compose template. Out of the box you get the core duo (Nextcloud + OnlyOffice / Collabora) plus our vetted optional list (Rocket.Chat, Plane, DocuSeal, Invoice Ninja, Outline, EspoCRM, n8n, Postiz, Twenty, WordPress, ERPNext, ActualBudget, Easy!Appointments). Anything else is a custom-template request -- talk to us. To explore the broader self-hosted ecosystem: <a href='https://github.com/awesome-selfhosted/awesome-selfhosted' target='_blank' rel='noopener noreferrer'>awesome-selfhosted</a>, <a href='https://awweso.me/' target='_blank' rel='noopener noreferrer'>awweso.me</a>, <a href='https://templates.dokploy.com/' target='_blank' rel='noopener noreferrer'>Dokploy templates</a>, <a href='https://github.com/awesome-foss/awesome-sysadmin' target='_blank' rel='noopener noreferrer'>awesome-sysadmin</a>."
+      "answer": "Anything that fits a Dokploy compose template. Our vetted catalog (Nextcloud, OnlyOffice / Collabora, Rocket.Chat, Plane, DocuSeal, Invoice Ninja, Outline, EspoCRM, n8n, Postiz, Twenty, WordPress, ERPNext, Easy!Appointments, and others) installs at no extra setup cost. Anything else is a custom-template request -- talk to us. To explore the broader self-hosted ecosystem: <a href='https://github.com/awesome-selfhosted/awesome-selfhosted' target='_blank' rel='noopener noreferrer'>awesome-selfhosted</a>, <a href='https://awweso.me/' target='_blank' rel='noopener noreferrer'>awweso.me</a>, <a href='https://templates.dokploy.com/' target='_blank' rel='noopener noreferrer'>Dokploy templates</a>, <a href='https://github.com/awesome-foss/awesome-sysadmin' target='_blank' rel='noopener noreferrer'>awesome-sysadmin</a>."
     },
     "q3": {
       "question": "What happens if you get hit by a bus?",
@@ -837,7 +809,7 @@
     "scope_title": "Service scope",
     "scope_body": "Your subscription components -- server, apps, and support pack -- define what is included. See the <a href='/en/pricing'>Pricing page</a> for the public model. Changes to scope (adding or removing apps, support pack changes) are agreed in writing.",
     "billing_title": "Pricing and billing",
-    "billing_body": "Base and Assisted installers are one-time charges. The managed subscription (server + apps + support pack) carries a 6-month minimum commitment, billed monthly. À-la-carte support is billed at the published rate in 15-minute increments. Card processing via Stripe.",
+    "billing_body": "The managed subscription (server + apps + support pack) carries a 6-month minimum commitment, billed monthly. À-la-carte support is billed at the published rate in 15-minute increments. Card processing via Stripe.",
     "ownership_title": "Data ownership",
     "ownership_body": "All client data, infrastructure, and credentials belong to the client. Our role is service provider only. You can export and migrate at any time; the engagement letter documents the handover process.",
     "liability_title": "Limitation of liability",

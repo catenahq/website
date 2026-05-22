@@ -333,15 +333,14 @@
     "model": {
       "server": {
         "name": "Serveur",
-        "price": "400 $",
+        "price": "200 $",
         "price_unit": "/ mois",
-        "tagline": "La base durcie. Un serveur, un forfait mensuel, équipe illimitée.",
+        "tagline": "La base durcie. Un serveur, un forfait mensuel, équipe illimitée. Choisissez les applications à y déployer.",
         "features": [
           "Correctifs OS, pare-feu, gestion des secrets",
           "Cloudflare Tunnel + Tailscale + base Keycloak (SSO)",
           "Sauvegardes chiffrées chaque nuit vers votre S3, exercices trimestriels",
           "Supervision Gatus + Healthchecks auto-hébergé",
-          "Nextcloud + OnlyOffice (ou Collabora) installés et gérés",
           "SLA de réponse de 4 heures ouvrables, aucune heure incluse"
         ]
       },
@@ -349,7 +348,7 @@
         "name": "Applications",
         "price": "100 $",
         "price_unit": "/ mois par application",
-        "tagline": "Toute application au-delà de Nextcloud et OnlyOffice.",
+        "tagline": "Chaque application déployée sur le serveur.",
         "features": [
           "Installation et intégration SSO Keycloak",
           "Mises à jour et discipline de versions",
@@ -379,61 +378,34 @@
     "examples": {
       "light": {
         "name": "Léger",
-        "total": "~650 $",
+        "total": "~550 $",
         "total_unit": "/ mois",
         "tagline": "5 à 15 employés, 2 à 3 applications, support occasionnel.",
-        "components": "Serveur + 1 application supplémentaire + support à-la-carte (~1 heure / mois)"
+        "components": "Serveur + 2 applications + support à-la-carte (~1 heure / mois)"
       },
       "standard": {
         "name": "Standard",
         "total": "1 300 $",
         "total_unit": "/ mois",
         "tagline": "15 à 25 employés, 4 à 5 applications, support mensuel prévisible.",
-        "components": "Serveur + 3 applications supplémentaires + forfait support de 5 heures"
+        "components": "Serveur + 5 applications + forfait support de 5 heures"
       },
       "heavy": {
         "name": "Intensif",
         "total": "2 100 $",
         "total_unit": "/ mois",
         "tagline": "25 à 50 employés, 6 à 10 applications, cadence opérationnelle régulière.",
-        "components": "Serveur + 6 applications supplémentaires + forfait support de 10 heures"
+        "components": "Serveur + 8 applications + forfait support de 10 heures"
       },
       "cabinet": {
         "name": "Cabinet",
         "total": "2 900 $",
         "total_unit": "/ mois",
         "tagline": "Services professionnels avec intégration approfondie et haute réactivité.",
-        "components": "Serveur + 5 applications supplémentaires + forfait support de 20 heures"
+        "components": "Serveur + 7 applications + forfait support de 20 heures"
       }
     },
     "commitment_note": "L'abonnement géré comporte un engagement minimum de 6 mois. Au-delà, vous pouvez résilier à tout moment sans frais de sortie. Nous vous remettons la suite et votre export S3 selon la lettre de mandat.",
-    "install_title": "Installation unique",
-    "install_intro": "Comment vous démarrez sur le modèle. Frais unique distinct de l'abonnement mensuel.",
-    "tiers": {
-      "base": {
-        "name": "Installation initiale",
-        "price": "200 $",
-        "price_unit": "frais unique",
-        "tagline": "Apportez vos propres clés ; installation libre-service via le portail client.",
-        "features": [
-          "Nextcloud + OnlyOffice (ou Collabora) prêts à l'emploi",
-          "Provisionnement de la suite logicielle via le portail client",
-          "Vous fournissez les identifiants Cloudflare, Tailscale, serveur, S3, SMTP",
-          "Aucun support inclus."
-        ]
-      },
-      "assisted": {
-        "name": "Accompagnement",
-        "price": "300 $",
-        "price_unit": "frais unique",
-        "tagline": "Base + un appel d'onboarding d'une heure pour vous guider à travers la création des comptes fournisseurs.",
-        "features": [
-          "Tout ce qui est inclus dans Base",
-          "Appel de 60 minutes pour configurer Cloudflare, Tailscale, OVH, eazybackup, SMTP",
-          "Aucun support inclus."
-        ]
-      }
-    },
     "alacarte_support_note": "Les heures hors forfait de support sont facturées selon la grille tarifaire ci-dessous, selon l'heure d'intervention.",
     "sovereignty": {
       "no_per_seat_title": "Aucun frais par utilisateur",
@@ -721,7 +693,7 @@
     },
     "q2": {
       "question": "Que puis-je faire tourner d'autre sur la suite ?",
-      "answer": "Tout ce qui s'inscrit dans un modèle compose Dokploy. Vous obtenez d'emblée le duo principal (Nextcloud + OnlyOffice / Collabora) plus notre liste optionnelle éprouvée (Rocket.Chat, Plane, DocuSeal, Invoice Ninja, Outline, EspoCRM, n8n, Postiz, Twenty, WordPress, ERPNext, ActualBudget, Easy!Appointments). Toute autre application est une demande de modèle personnalisé -- parlez-nous-en. Pour explorer l'écosystème auto-hébergé plus large : <a href='https://github.com/awesome-selfhosted/awesome-selfhosted' target='_blank' rel='noopener noreferrer'>awesome-selfhosted</a>, <a href='https://awweso.me/' target='_blank' rel='noopener noreferrer'>awweso.me</a>, <a href='https://templates.dokploy.com/' target='_blank' rel='noopener noreferrer'>modèles Dokploy</a>, <a href='https://github.com/awesome-foss/awesome-sysadmin' target='_blank' rel='noopener noreferrer'>awesome-sysadmin</a>."
+      "answer": "Tout ce qui s'inscrit dans un modèle compose Dokploy. Notre catalogue éprouvé (Nextcloud, OnlyOffice / Collabora, Rocket.Chat, Plane, DocuSeal, Invoice Ninja, Outline, EspoCRM, n8n, Postiz, Twenty, WordPress, ERPNext, Easy!Appointments et plus) s'installe sans frais de configuration supplémentaires. Toute autre application est une demande de modèle personnalisé -- parlez-nous-en. Pour explorer l'écosystème auto-hébergé plus large : <a href='https://github.com/awesome-selfhosted/awesome-selfhosted' target='_blank' rel='noopener noreferrer'>awesome-selfhosted</a>, <a href='https://awweso.me/' target='_blank' rel='noopener noreferrer'>awweso.me</a>, <a href='https://templates.dokploy.com/' target='_blank' rel='noopener noreferrer'>modèles Dokploy</a>, <a href='https://github.com/awesome-foss/awesome-sysadmin' target='_blank' rel='noopener noreferrer'>awesome-sysadmin</a>."
     },
     "q3": {
       "question": "Que se passe-t-il si vous êtes frappé par un autobus ?",
@@ -837,7 +809,7 @@
     "scope_title": "Portée du service",
     "scope_body": "Les composantes de votre abonnement -- serveur, applications et forfait support -- définissent ce qui est inclus. Voir la <a href='/pricing'>page Tarifs</a> pour le modèle public. Les changements de portée (ajout ou retrait d'applications, changement de forfait support) sont convenus par écrit.",
     "billing_title": "Tarification et facturation",
-    "billing_body": "Les installations Base et Accompagnement sont des frais uniques. L'abonnement géré (serveur + applications + forfait support) comporte un engagement minimum de 6 mois, facturé mensuellement. Le support à-la-carte est facturé au tarif publié par tranches de 15 minutes. Traitement des cartes via Stripe.",
+    "billing_body": "L'abonnement géré (serveur + applications + forfait support) comporte un engagement minimum de 6 mois, facturé mensuellement. Le support à-la-carte est facturé au tarif publié par tranches de 15 minutes. Traitement des cartes via Stripe.",
     "ownership_title": "Propriété des données",
     "ownership_body": "Toutes les données client, l'infrastructure et les identifiants appartiennent au client. Notre rôle est uniquement celui de prestataire de services. Vous pouvez exporter et migrer à tout moment ; la lettre de mandat documente le processus de remise.",
     "liability_title": "Limitation de responsabilité",

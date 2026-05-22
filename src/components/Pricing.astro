@@ -16,13 +16,6 @@ const modelCards: ModelKey[] = ["server", "apps", "support"];
 type ExampleKey = "light" | "standard" | "heavy" | "cabinet";
 const examples: ExampleKey[] = ["light", "standard", "heavy", "cabinet"];
 
-type InstallKey = "base" | "assisted";
-const installTiers: InstallKey[] = ["base", "assisted"];
-
-function feats(tier: InstallKey): string[] {
-  return tArray(locale, `common.pricing.tiers.${tier}.features`);
-}
-
 function modelFeats(key: ModelKey): string[] {
   return tArray(locale, `common.pricing.model.${key}.features`);
 }
@@ -69,24 +62,6 @@ function modelFeats(key: ModelKey): string[] {
 
     <p class="muted detail commitment-note">{t(locale, "common.pricing.commitment_note")}</p>
 
-    <h3 class="section-heading">{t(locale, "common.pricing.install_title")}</h3>
-    <p class="muted install-intro">{t(locale, "common.pricing.install_intro")}</p>
-    <div class="install-cards">
-      {installTiers.map((tier) => (
-        <article class="install-card">
-          <h4>{t(locale, `common.pricing.tiers.${tier}.name`)}</h4>
-          <p class="price">
-            <span class="amount">{t(locale, `common.pricing.tiers.${tier}.price`)}</span>
-            <span class="unit muted">{t(locale, `common.pricing.tiers.${tier}.price_unit`)}</span>
-          </p>
-          <p class="tagline muted">{t(locale, `common.pricing.tiers.${tier}.tagline`)}</p>
-          <ul class="features">
-            {feats(tier).map((bullet) => <li>{bullet}</li>)}
-          </ul>
-        </article>
-      ))}
-    </div>
-
     <p class="muted detail">{t(locale, "common.pricing.alacarte_support_note")}</p>
 
     <a class="btn btn-primary cta" href={locale === "fr" ? "/contact" : "/en/contact"}>
@@ -105,8 +80,7 @@ function modelFeats(key: ModelKey): string[] {
   }
   .section-heading:first-of-type { margin-top: var(--catena-space-8); }
 
-  .examples-intro,
-  .install-intro {
+  .examples-intro {
     margin: 0 0 var(--catena-space-6) 0;
     max-width: 56rem;
   }
@@ -223,26 +197,6 @@ function modelFeats(key: ModelKey): string[] {
     line-height: var(--catena-lh-relaxed);
   }
 
-  .install-cards {
-    display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: var(--catena-space-5);
-    max-width: 48rem;
-  }
-  .install-card {
-    padding: var(--catena-space-6);
-    border: 1px solid var(--catena-surface-border);
-    border-radius: var(--catena-radius-md);
-    background: var(--catena-surface-bg);
-    display: flex;
-    flex-direction: column;
-    gap: var(--catena-space-3);
-  }
-  .install-card h4 {
-    font-size: var(--catena-fs-lg);
-    margin: 0;
-  }
-
   .detail {
     margin-top: var(--catena-space-6);
     font-size: var(--catena-fs-sm);
@@ -259,6 +213,5 @@ function modelFeats(key: ModelKey): string[] {
   }
   @media (max-width: 639px) {
     .example-cards { grid-template-columns: 1fr; }
-    .install-cards { grid-template-columns: 1fr; }
   }
 </style>
