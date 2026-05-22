@@ -205,15 +205,30 @@ const appsById = new Map(appsList.map((a) => [a.id, a]));
 
 const covTable = parseCsv(coverageCsv);
 const covHeader = covTable[0];
-const appIdCols = covHeader.slice(2);
+// Locate the category + need columns by name so the CSV can be saved
+// from a spreadsheet with either column order (`category,need,...` or
+// `need,category,...`). Everything past those two is an app-id column.
+const needColIdx = covHeader.indexOf("need");
+const categoryColIdx = covHeader.indexOf("category");
+if (needColIdx === -1 || categoryColIdx === -1) {
+  throw new Error(
+    "app-selector-coverage.csv must have `need` and `category` columns",
+  );
+}
+const appIdCols = covHeader.filter(
+  (_, i) => i !== needColIdx && i !== categoryColIdx,
+);
+const appIdColPositions = covHeader
+  .map((h, i) => ({ h, i }))
+  .filter(({ i }) => i !== needColIdx && i !== categoryColIdx);
 const needsList: Need[] = [];
 
 for (const row of covTable.slice(1)) {
-  const category = row[0] as CategoryId;
-  const need = row[1];
+  const category = row[categoryColIdx] as CategoryId;
+  const need = row[needColIdx];
   needsList.push({ id: need, category });
-  for (let i = 0; i < appIdCols.length; i++) {
-    const cell = row[i + 2];
+  for (let i = 0; i < appIdColPositions.length; i++) {
+    const cell = row[appIdColPositions[i].i];
     if (cell === "P" || cell === "S") {
       const app = appsById.get(appIdCols[i]);
       if (app) {
