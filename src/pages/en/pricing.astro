@@ -14,7 +14,7 @@ const locale = "en";
 <Base
   locale={locale}
   title={t(locale, "common.pricing.title")}
-  description="Catena pricing: per-server monthly retainer (Small / Medium / Large), time-of-day hourly rates for out-of-retainer work, case-by-case data migration, Law 25 compliance in build. Itemized website add-on."
+  description="Catena pricing: composable per-server + per-app + support pack. Time-of-day hourly rates for out-of-pack work. Case-by-case data migration. Law 25 compliance in build. Itemized website add-on."
 >
   <ServiceJsonLd
     slot="head"
@@ -23,9 +23,11 @@ const locale = "en";
     serviceType="Managed IT services"
     url="https://catena.run/en/pricing/"
     offers={[
-      { name: "Small business", price: "500", unit: "Recurring", url: "https://catena.run/en/pricing/" },
-      { name: "Medium business", price: "950", unit: "Recurring", url: "https://catena.run/en/pricing/" },
-      { name: "Large business", price: "1600", unit: "Recurring", url: "https://catena.run/en/pricing/" },
+      { name: "Managed server", price: "400", unit: "Recurring", url: "https://catena.run/en/pricing/" },
+      { name: "Per-app management", price: "100", unit: "Recurring", url: "https://catena.run/en/pricing/" },
+      { name: "5-hour support pack", price: "600", unit: "Recurring", url: "https://catena.run/en/pricing/" },
+      { name: "10-hour support pack", price: "1100", unit: "Recurring", url: "https://catena.run/en/pricing/" },
+      { name: "20-hour support pack", price: "2000", unit: "Recurring", url: "https://catena.run/en/pricing/" },
       { name: "Base installer", price: "200", unit: "OneTime", url: "https://catena.run/en/pricing/" },
       { name: "Assisted install", price: "300", unit: "OneTime", url: "https://catena.run/en/pricing/" },
     ]}
