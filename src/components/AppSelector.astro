@@ -458,9 +458,12 @@ const PAYLOAD = {
           var nestedHtml = "";
           var hint = "";
           var disclosureHtml = "";
-          var available = ticked ? appsCoveringNeed(nd.id) : [];
-          var expanded = ticked && available.length > 0 && isNeedExpanded(nd.id, status);
-          if (ticked && available.length > 0) {
+          // Apps + disclosure render regardless of whether the need
+          // is ticked -- peek-without-committing lets the user see
+          // which apps would cover a need before deciding to track it.
+          var available = appsCoveringNeed(nd.id);
+          var expanded = available.length > 0 && isNeedExpanded(nd.id, status);
+          if (available.length > 0) {
             disclosureHtml =
               '<button type="button" class="need-disclosure" data-need-disclosure="' +
               escapeAttr(nd.id) + '" aria-expanded="' + (expanded ? "true" : "false") +
@@ -471,14 +474,16 @@ const PAYLOAD = {
               (expanded ? "&#9662;" : "&#9656;") +
               "</span></button>";
           }
-          if (ticked) {
-            if (expanded) {
-              nestedHtml = '<ul class="apps-under-need">';
-              for (var k = 0; k < available.length; k++) {
-                nestedHtml += renderAppRow(available[k]);
-              }
-              nestedHtml += "</ul>";
+          if (expanded) {
+            nestedHtml = '<ul class="apps-under-need">';
+            for (var k = 0; k < available.length; k++) {
+              nestedHtml += renderAppRow(available[k]);
             }
+            nestedHtml += "</ul>";
+          }
+          if (ticked) {
+            // Gap + overlap hints stay ticked-only: they describe a
+            // committed selection state, not a hypothetical preview.
             if (status.kind === "gap" && available.length === 0) {
               hint = '<div class="hint gap-hint">' + escapeHtml(UI.status_gap) + "</div>";
             }
@@ -753,7 +758,7 @@ const PAYLOAD = {
         : null;
       if (!btn) return;
       var needId = btn.getAttribute("data-need-disclosure");
-      if (!needId || !state.needs.has(needId)) return;
+      if (!needId) return;
       ev.preventDefault();
       toggleNeedDisclosure(needId, needStatus(needId));
       renderNeeds();
