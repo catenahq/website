@@ -29,7 +29,7 @@ qbo_payroll_essentials,QuickBooks Online Payroll Essentials,external_saas,,,,per
 qbo_payroll_premium,QuickBooks Online Payroll Premium,external_saas,,,,per_seat_plus_base,,8,165,,,https://quickbooks.intuit.com/ca/payroll/,
 wagepoint,Wagepoint,external_saas,,,,per_seat_plus_base,,6,40,,,https://wagepoint.com/ca/pricing,
 infomaniak_mail,Infomaniak Mail,external_saas,,,,per_seat,,2.5,,,,https://www.infomaniak.com/en/mail,
-mailbox_org,Mailbox.org,external_saas,,,,per_seat,,4,40,,,https://mailbox.org/en/private-customers,
+mailbox_org,Mailbox.org,external_saas,,,,per_seat_plus_base,,1.65,40,,,https://mailbox.org/en/private-customers,
 ovh_email_pro,OVH Email Pro,external_saas,,,,per_seat,,6.7,,,,https://www.ovhcloud.com/en-ca/emails/email-pro/,
 proton_mail_business,Proton Mail Business,external_saas,,,,per_seat,,12,,,,https://proton.me/business,
 appflowy,AppFlowy,catena_managed,,,,,,,,,,https://appflowy.com/,
