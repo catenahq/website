@@ -64,5 +64,20 @@ export default defineConfig({
         "@catena/i18n": fileURLToPath(new URL("./src/i18n/index.js", import.meta.url)),
       },
     },
+    // The sibling `../contracts/` checkout holds brand assets (fonts,
+    // logos) that `@catenahq/contracts` imports. npm symlinks it into
+    // node_modules but Vite's dev fs-allow-list resolves through the
+    // symlink to the REAL path and rejects it as outside the project
+    // root, throwing "outside of Vite serving allow list" for each
+    // .otf/.svg request. Allow the sibling explicitly. See
+    // CLAUDE.md "Brand + pricing + legal contracts (sibling read)".
+    server: {
+      fs: {
+        allow: [
+          fileURLToPath(new URL(".", import.meta.url)),
+          fileURLToPath(new URL("../contracts", import.meta.url)),
+        ],
+      },
+    },
   },
 });
