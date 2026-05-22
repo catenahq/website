@@ -961,7 +961,8 @@
       "marketing_automation": "Automatisation marketing",
       "newsletter_campaigns": "Campagnes d'infolettre",
       "identity_sso": "Authentification unique (SSO)",
-      "backups": "Sauvegardes chiffrées"
+      "data_backups": "Sauvegardes des données",
+      "email_backups": "Sauvegardes des courriels"
     },
     "app_warnings": {
       "erpnext_not_recommended": "Non recommandé pour les nouveaux clients. Lacunes de conformité et de paiements dans le contexte PME canadien; conservé au catalogue pour les besoins spécialisés uniquement."

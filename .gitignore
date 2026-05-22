@@ -15,6 +15,7 @@ dist/
 .DS_Store
 .idea/
 .vscode/
+.~lock*
 
 # token-savior MCP per-project index cache.
 .token-savior-cache.json

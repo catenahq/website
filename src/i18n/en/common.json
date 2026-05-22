@@ -961,7 +961,8 @@
       "marketing_automation": "Marketing automation",
       "newsletter_campaigns": "Newsletter campaigns",
       "identity_sso": "Single sign-on (SSO)",
-      "backups": "Encrypted backups"
+      "data_backups": "Data backups",
+      "email_backups": "Email backups"
     },
     "app_warnings": {
       "erpnext_not_recommended": "Not recommended for new clients. Compliance and payment gaps in the Canadian SMB use case; kept in catalog for specialized needs only."
