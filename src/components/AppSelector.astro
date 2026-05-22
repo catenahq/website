@@ -1,0 +1,1215 @@
+---
+import { t, tArray } from "@catena/i18n";
+import tiers from "@catenahq/contracts/pricing/tiers.json";
+import {
+  APPS,
+  CATEGORIES,
+  NEEDS,
+  TIER_GROUPS,
+  TIER_TRAP_SUBSTITUTES,
+  STORAGE_RATE_CAD_PER_GB_PER_MONTH,
+  type App,
+  type CategoryId,
+} from "../data/app-selector-data";
+
+interface Props {
+  locale: "en" | "fr";
+}
+
+const { locale } = Astro.props;
+
+// Sanity-check that every coverage edge references a known need-id +
+// known app id. Fails the build if the data file drifts (same role
+// the YAML validator served in the plan).
+const NEED_IDS = new Set(NEEDS.map((n) => n.id));
+const APP_IDS = new Set(APPS.map((a) => a.id));
+for (const app of APPS) {
+  for (const edge of app.covers) {
+    if (!NEED_IDS.has(edge.need)) {
+      throw new Error(
+        `app-selector: app ${app.id} covers unknown need ${edge.need}`,
+      );
+    }
+  }
+  if (app.catalog_ref && !app.catalog_ref) {
+    // placeholder for future: validate catalog_ref against dokploy-templates sibling
+  }
+}
+for (const group of TIER_GROUPS) {
+  for (const id of group.app_ids) {
+    if (!APP_IDS.has(id)) {
+      throw new Error(
+        `app-selector: tier group ${group.id} references unknown app ${id}`,
+      );
+    }
+  }
+}
+
+// Pricing pulled live from the vendored contracts tarball. Cents ->
+// CAD for display.
+const SERVER_CENTS = tiers.components.server.monthlyPriceCents;
+const APP_UNIT_CENTS = tiers.components.app.monthlyPriceCents;
+
+interface SupportPack {
+  id: string;
+  hours: number;
+  monthly_cents: number;
+  label: string;
+}
+const SUPPORT_PACKS: SupportPack[] = tiers.supportPacks.map((p: any) => ({
+  id: p.id,
+  hours: p.hours,
+  monthly_cents: p.monthlyPriceCents,
+  label: p.displayName[locale] ?? p.displayName.en,
+}));
+
+interface Installer {
+  id: string;
+  one_time_cents: number;
+  label: string;
+}
+const INSTALLERS: Installer[] = tiers.installers.map((i: any) => ({
+  id: i.id,
+  one_time_cents: i.oneTimePriceCents,
+  label: i.displayName[locale] ?? i.displayName.en,
+}));
+
+// Localized labels and app warnings injected into the payload so the
+// client-side JS does not need to re-implement i18n lookup.
+const categoryLabels: Record<string, string> = {};
+for (const c of CATEGORIES) {
+  categoryLabels[c] = t(locale, `common.app_selector.categories.${c}`);
+}
+
+const needLabels: Record<string, string> = {};
+for (const n of NEEDS) {
+  needLabels[n.id] = t(locale, `common.app_selector.needs.${n.id}`);
+}
+
+const appTypeLabels = {
+  catena_bundled: t(locale, "common.app_selector.app_types.catena_bundled"),
+  catena_managed: t(locale, "common.app_selector.app_types.catena_managed"),
+  external_saas: t(locale, "common.app_selector.app_types.external_saas"),
+  external_oss: t(locale, "common.app_selector.app_types.external_oss"),
+};
+
+const appWarningLabels: Record<string, string> = {
+  erpnext_not_recommended: t(
+    locale,
+    "common.app_selector.app_warnings.erpnext_not_recommended",
+  ),
+};
+
+// Build the in-page dataset. Embedded as JSON in a <script type="application/json">
+// block, then read once on page load by the inline script.
+const PAYLOAD = {
+  locale,
+  categories: CATEGORIES.map((id) => ({ id, label: categoryLabels[id] })),
+  needs: NEEDS.map((n) => ({
+    id: n.id,
+    category: n.category,
+    label: needLabels[n.id],
+  })),
+  apps: APPS.map((a: App) => ({
+    id: a.id,
+    label: a.label,
+    type: a.type,
+    type_label: appTypeLabels[a.type],
+    catalog_ref: a.catalog_ref ?? null,
+    pricing: a.pricing ?? null,
+    pricing_url: a.pricing?.pricing_url ?? a.pricing_url ?? null,
+    covers: a.covers,
+    tier_group: a.tier_group ?? null,
+    tier_rank: a.tier_rank ?? null,
+    warning_key: a.warning_key ?? null,
+    warning_label: a.warning_key ? appWarningLabels[a.warning_key] : null,
+  })),
+  tier_groups: TIER_GROUPS,
+  tier_substitutes: TIER_TRAP_SUBSTITUTES,
+  pricing: {
+    currency: tiers.currency,
+    server_monthly_cents: SERVER_CENTS,
+    app_monthly_cents: APP_UNIT_CENTS,
+    storage_cad_per_gb_per_month: STORAGE_RATE_CAD_PER_GB_PER_MONTH,
+    support_packs: SUPPORT_PACKS,
+    installers: INSTALLERS,
+  },
+  ui: {
+    locale,
+    server_line_label: t(locale, "common.app_selector.bill.line_server"),
+    storage_line_template: t(locale, "common.app_selector.bill.line_storage"),
+    formula_per_seat: t(locale, "common.app_selector.bill.line_formula_per_seat"),
+    formula_per_seat_plus_base: t(
+      locale,
+      "common.app_selector.bill.line_formula_per_seat_plus_base",
+    ),
+    formula_tier: t(locale, "common.app_selector.bill.line_formula_tier"),
+    subtotal: t(locale, "common.app_selector.bill.subtotal"),
+    monthly_total: t(locale, "common.app_selector.bill.monthly_total"),
+    due_at_signup: t(locale, "common.app_selector.bill.due_at_signup"),
+    section_catena: t(locale, "common.app_selector.bill.section_catena"),
+    section_external: t(locale, "common.app_selector.bill.section_external"),
+    section_qbo_bundle: t(locale, "common.app_selector.bill.section_qbo_bundle"),
+    empty_hint: t(locale, "common.app_selector.bill.empty_hint"),
+    tier_user_cap_ok: t(locale, "common.app_selector.bill.tier_user_cap_ok"),
+    tier_user_cap_exceeded: t(
+      locale,
+      "common.app_selector.bill.tier_user_cap_exceeded",
+    ),
+    status_covered: t(locale, "common.app_selector.status.covered"),
+    status_gap: t(locale, "common.app_selector.status.gap"),
+    status_overlap: t(locale, "common.app_selector.status.overlap"),
+    status_tier_trap: t(locale, "common.app_selector.status.tier_trap"),
+    status_tier_substitute: t(
+      locale,
+      "common.app_selector.status.tier_substitute",
+    ),
+    status_no_app_yet: t(locale, "common.app_selector.status.no_app_yet"),
+    copied: t(locale, "common.app_selector.buttons.copied"),
+    summary_title: t(locale, "common.app_selector.summary.title"),
+    summary_needs_heading: t(
+      locale,
+      "common.app_selector.summary.needs_heading",
+    ),
+    summary_apps_heading: t(
+      locale,
+      "common.app_selector.summary.apps_heading",
+    ),
+    summary_bill_heading: t(
+      locale,
+      "common.app_selector.summary.bill_heading",
+    ),
+    summary_none: t(locale, "common.app_selector.summary.none"),
+    none_pack: t(locale, "common.app_selector.bill.support_pack_none"),
+    none_installer: t(locale, "common.app_selector.bill.installer_none"),
+  },
+};
+---
+<section class="app-selector" aria-labelledby="app-selector-heading">
+  <div class="container">
+    <div class="controls">
+      <label class="control">
+        <span class="ctl-label">{t(locale, "common.app_selector.inputs.employees_label")}</span>
+        <input id="as-employees" type="number" min="1" max="500" value="3" inputmode="numeric" />
+        <small class="muted">{t(locale, "common.app_selector.inputs.employees_help")}</small>
+      </label>
+      <label class="control">
+        <span class="ctl-label">{t(locale, "common.app_selector.inputs.storage_label")}</span>
+        <input id="as-storage" type="number" min="0" max="100000" value="25" inputmode="numeric" />
+        <small class="muted">{t(locale, "common.app_selector.inputs.storage_help")}</small>
+      </label>
+      <div class="control control-actions">
+        <button id="as-reset" type="button" class="btn">
+          {t(locale, "common.app_selector.buttons.reset")}
+        </button>
+        <button id="as-copy" type="button" class="btn btn-primary">
+          {t(locale, "common.app_selector.buttons.copy_summary")}
+        </button>
+      </div>
+    </div>
+
+    <div class="grid">
+      <section class="pane needs-pane" aria-labelledby="as-needs-heading">
+        <h2 id="as-needs-heading">{t(locale, "common.app_selector.headings.needs")}</h2>
+        <div id="as-needs"></div>
+      </section>
+
+      <section class="pane apps-pane" aria-labelledby="as-apps-heading">
+        <h2 id="as-apps-heading">{t(locale, "common.app_selector.headings.apps")}</h2>
+        <div class="apps-controls">
+          <input
+            id="as-search"
+            type="search"
+            placeholder={t(locale, "common.app_selector.search_placeholder")}
+            aria-label={t(locale, "common.app_selector.search_placeholder")}
+          />
+          <div class="filters" role="group">
+            <button type="button" class="filter active" data-filter="all">
+              {t(locale, "common.app_selector.filters.all")}
+            </button>
+            <button type="button" class="filter" data-filter="catena_bundled">
+              {t(locale, "common.app_selector.filters.bundled")}
+            </button>
+            <button type="button" class="filter" data-filter="catena_managed">
+              {t(locale, "common.app_selector.filters.managed")}
+            </button>
+            <button type="button" class="filter" data-filter="external_saas">
+              {t(locale, "common.app_selector.filters.saas")}
+            </button>
+            <button type="button" class="filter" data-filter="external_oss">
+              {t(locale, "common.app_selector.filters.oss")}
+            </button>
+          </div>
+        </div>
+        <div id="as-apps"></div>
+      </section>
+
+      <aside class="pane bill-pane" aria-labelledby="as-bill-heading">
+        <h2 id="as-bill-heading">{t(locale, "common.app_selector.headings.bill")}</h2>
+        <div id="as-bill"></div>
+        <div class="extras">
+          <label class="control">
+            <span class="ctl-label">{t(locale, "common.app_selector.bill.support_pack_label")}</span>
+            <select id="as-support-pack">
+              <option value="">{t(locale, "common.app_selector.bill.support_pack_none")}</option>
+              {SUPPORT_PACKS.map((p) => (
+                <option value={p.id}>{p.label}</option>
+              ))}
+            </select>
+          </label>
+          <label class="control">
+            <span class="ctl-label">{t(locale, "common.app_selector.bill.installer_label")}</span>
+            <select id="as-installer">
+              <option value="">{t(locale, "common.app_selector.bill.installer_none")}</option>
+              {INSTALLERS.map((i) => (
+                <option value={i.id}>{i.label}</option>
+              ))}
+            </select>
+          </label>
+        </div>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<script type="application/json" id="as-data" set:html={JSON.stringify(PAYLOAD)}></script>
+<script is:inline>
+  (function () {
+    "use strict";
+    var DATA = JSON.parse(document.getElementById("as-data").textContent);
+    var UI = DATA.ui;
+    var P = DATA.pricing;
+
+    // ----- state -----
+    var state = {
+      employees: 3,
+      storage: 25,
+      needs: new Set(),
+      apps: new Set(),
+      filter: "all",
+      search: "",
+      supportPack: "",
+      installer: "",
+    };
+
+    var els = {
+      needs: document.getElementById("as-needs"),
+      apps: document.getElementById("as-apps"),
+      bill: document.getElementById("as-bill"),
+      employees: document.getElementById("as-employees"),
+      storage: document.getElementById("as-storage"),
+      search: document.getElementById("as-search"),
+      supportPack: document.getElementById("as-support-pack"),
+      installer: document.getElementById("as-installer"),
+      reset: document.getElementById("as-reset"),
+      copy: document.getElementById("as-copy"),
+    };
+
+    // ----- helpers -----
+    function fmt(amount) {
+      return amount.toLocaleString(DATA.locale === "fr" ? "fr-CA" : "en-CA", {
+        style: "currency",
+        currency: P.currency,
+        maximumFractionDigits: 2,
+      });
+    }
+    function cents(c) {
+      return fmt(c / 100);
+    }
+    function tpl(s, params) {
+      return s.replace(/\{(\w+)\}/g, function (_, k) {
+        return params[k] != null ? String(params[k]) : "{" + k + "}";
+      });
+    }
+
+    function appById(id) {
+      for (var i = 0; i < DATA.apps.length; i++) {
+        if (DATA.apps[i].id === id) return DATA.apps[i];
+      }
+      return null;
+    }
+    function needById(id) {
+      for (var i = 0; i < DATA.needs.length; i++) {
+        if (DATA.needs[i].id === id) return DATA.needs[i];
+      }
+      return null;
+    }
+
+    // ----- pricing math -----
+    function appMonthlyCad(app) {
+      if (app.type === "catena_bundled") return 0;
+      if (app.type === "catena_managed") return P.app_monthly_cents / 100;
+      if (app.type === "external_oss") return 0;
+      var pm = app.pricing;
+      if (!pm) return 0;
+      var e = Math.max(1, state.employees | 0);
+      if (pm.kind === "flat") return pm.monthly_cad;
+      if (pm.kind === "per_seat") return pm.per_seat_monthly_cad * e;
+      if (pm.kind === "per_seat_plus_base") {
+        return pm.base_monthly_cad + pm.per_seat_monthly_cad * e;
+      }
+      if (pm.kind === "tiered_by_users") {
+        var t = pm.tiers[0];
+        for (var i = 0; i < pm.tiers.length; i++) {
+          if (pm.tiers[i].max_users >= e) {
+            return pm.tiers[i].monthly_cad;
+          }
+          t = pm.tiers[i];
+        }
+        // exceeds every tier; bill the largest
+        return t.monthly_cad;
+      }
+      return 0;
+    }
+
+    function lineFormula(app) {
+      var pm = app.pricing;
+      if (!pm) return "";
+      var e = Math.max(1, state.employees | 0);
+      if (pm.kind === "per_seat") {
+        return tpl(UI.formula_per_seat, {
+          employees: e,
+          perSeat: pm.per_seat_monthly_cad,
+          total: pm.per_seat_monthly_cad * e,
+        });
+      }
+      if (pm.kind === "per_seat_plus_base") {
+        return tpl(UI.formula_per_seat_plus_base, {
+          base: pm.base_monthly_cad,
+          employees: e,
+          perSeat: pm.per_seat_monthly_cad,
+          total: pm.base_monthly_cad + pm.per_seat_monthly_cad * e,
+        });
+      }
+      if (pm.kind === "tiered_by_users") {
+        var picked = pm.tiers[0];
+        for (var i = 0; i < pm.tiers.length; i++) {
+          if (pm.tiers[i].max_users >= e) {
+            picked = pm.tiers[i];
+            break;
+          }
+          picked = pm.tiers[i];
+        }
+        var cap = picked.max_users;
+        var capLabel =
+          e <= cap
+            ? tpl(UI.tier_user_cap_ok, { users: e, cap: cap })
+            : tpl(UI.tier_user_cap_exceeded, { users: e, cap: cap });
+        return tpl(UI.formula_tier, { users: cap, total: picked.monthly_cad }) + " (" + capLabel + ")";
+      }
+      return "";
+    }
+
+    // ----- need-state computation -----
+    // For each ticked need: covered? gap? overlap? tier-trap?
+    function needStatus(needId) {
+      var primaryApps = [];
+      var anyApps = [];
+      for (var i = 0; i < DATA.apps.length; i++) {
+        var app = DATA.apps[i];
+        if (!state.apps.has(app.id)) continue;
+        for (var j = 0; j < app.covers.length; j++) {
+          var c = app.covers[j];
+          if (c.need !== needId) continue;
+          anyApps.push(app);
+          if (c.strength === "primary") primaryApps.push(app);
+          break;
+        }
+      }
+      if (anyApps.length === 0) {
+        return { kind: "gap" };
+      }
+      if (primaryApps.length >= 2) {
+        return { kind: "overlap", apps: primaryApps };
+      }
+      return { kind: "covered", apps: anyApps };
+    }
+
+    // Tier-trap: for each tier group with any selected app, find the
+    // minimum rank required to cover every selected need in that group.
+    // If the user's selection in the group is below that, emit trap.
+    function tierTraps() {
+      var traps = {};
+      for (var i = 0; i < DATA.tier_groups.length; i++) {
+        var group = DATA.tier_groups[i];
+        var groupApps = group.app_ids
+          .map(appById)
+          .filter(function (a) {
+            return a;
+          });
+        var selectedInGroup = groupApps.filter(function (a) {
+          return state.apps.has(a.id);
+        });
+        if (selectedInGroup.length === 0) continue;
+
+        // For each ticked need that the group can cover, find the
+        // minimum rank required.
+        for (var n = 0; n < DATA.needs.length; n++) {
+          var needId = DATA.needs[n].id;
+          if (!state.needs.has(needId)) continue;
+          // does any app in the group cover this need at all?
+          var minRankCovering = null;
+          for (var k = 0; k < groupApps.length; k++) {
+            var ga = groupApps[k];
+            for (var c = 0; c < ga.covers.length; c++) {
+              if (ga.covers[c].need !== needId) continue;
+              if (ga.covers[c].strength !== "primary") continue;
+              if (
+                ga.covers[c].only_in_tier &&
+                ga.covers[c].only_in_tier !== ga.id
+              ) {
+                // edge applies only at a different (usually higher)
+                // tier id; skip this app's edge
+                continue;
+              }
+              if (minRankCovering == null || ga.tier_rank < minRankCovering) {
+                minRankCovering = ga.tier_rank;
+              }
+            }
+          }
+          if (minRankCovering == null) continue;
+          // is any selected app in this group at >= minRankCovering?
+          var bestSelectedRank = -1;
+          for (var s = 0; s < selectedInGroup.length; s++) {
+            if (selectedInGroup[s].tier_rank > bestSelectedRank) {
+              bestSelectedRank = selectedInGroup[s].tier_rank;
+            }
+          }
+          if (bestSelectedRank >= minRankCovering) continue;
+          // TRAP. Compute delta cost: cheapest tier covering need - current selected tier.
+          var fromApp = null;
+          var toApp = null;
+          for (var g = 0; g < groupApps.length; g++) {
+            if (groupApps[g].tier_rank === bestSelectedRank) fromApp = groupApps[g];
+            if (groupApps[g].tier_rank === minRankCovering) toApp = groupApps[g];
+          }
+          if (!fromApp || !toApp) continue;
+          traps[needId] = {
+            from: fromApp,
+            to: toApp,
+          };
+        }
+      }
+      return traps;
+    }
+
+    // ----- render: needs -----
+    function renderNeeds() {
+      var traps = tierTraps();
+      var byCat = {};
+      for (var i = 0; i < DATA.needs.length; i++) {
+        var n = DATA.needs[i];
+        (byCat[n.category] = byCat[n.category] || []).push(n);
+      }
+      var html = "";
+      for (var c = 0; c < DATA.categories.length; c++) {
+        var cat = DATA.categories[c];
+        var list = byCat[cat.id] || [];
+        if (list.length === 0) continue;
+        html += '<details class="cat" open><summary>' + escapeHtml(cat.label) + '</summary><ul class="need-list">';
+        for (var j = 0; j < list.length; j++) {
+          var nd = list[j];
+          var ticked = state.needs.has(nd.id);
+          var status = ticked ? needStatus(nd.id) : null;
+          var trap = ticked ? traps[nd.id] : null;
+          var rowCls = "need";
+          if (ticked) {
+            if (trap) rowCls += " tier-trap";
+            else if (status.kind === "gap") rowCls += " gap";
+            else if (status.kind === "overlap") rowCls += " overlap";
+            else rowCls += " covered";
+          }
+          var hint = "";
+          if (ticked) {
+            if (trap) {
+              var employees = Math.max(1, state.employees | 0);
+              var delta = approxTierDelta(trap.from, trap.to, employees);
+              hint += '<div class="hint trap">' + escapeHtml(
+                tpl(UI.status_tier_trap, {
+                  from: trap.from.label,
+                  to: trap.to.label,
+                  delta: delta.perSeat,
+                  monthly: delta.monthly,
+                  employees: employees,
+                })
+              ) + "</div>";
+              var subs = DATA.tier_substitutes[nd.id];
+              if (subs && subs.length) {
+                var subNames = subs
+                  .map(function (id) {
+                    var a = appById(id);
+                    return a ? a.label : id;
+                  })
+                  .join(", ");
+                hint += '<div class="hint substitute">' + escapeHtml(
+                  tpl(UI.status_tier_substitute, { names: subNames })
+                ) + "</div>";
+              }
+            } else if (status.kind === "gap") {
+              hint = '<div class="hint gap-hint">' + escapeHtml(UI.status_gap) + "</div>";
+            } else if (status.kind === "overlap") {
+              hint = '<div class="hint overlap-hint">' + escapeHtml(
+                tpl(UI.status_overlap, { n: status.apps.length })
+              ) + " (" + status.apps.map(function (a) { return escapeHtml(a.label); }).join(", ") + ")</div>";
+            }
+          }
+          html +=
+            '<li class="' +
+            rowCls +
+            '"><label><input type="checkbox" data-need="' +
+            escapeAttr(nd.id) +
+            '"' +
+            (ticked ? " checked" : "") +
+            '/><span>' +
+            escapeHtml(nd.label) +
+            "</span></label>" +
+            hint +
+            "</li>";
+        }
+        html += "</ul></details>";
+      }
+      els.needs.innerHTML = html;
+    }
+
+    function approxTierDelta(fromApp, toApp, employees) {
+      // For per_seat pricing models in tier groups (Odoo CE -> Enterprise),
+      // CE costs 0 + Enterprise costs perSeat x e. Generalize:
+      var f = monthlyForApp(fromApp, employees);
+      var t = monthlyForApp(toApp, employees);
+      var deltaMonthly = t - f;
+      var perSeat = employees > 0 ? deltaMonthly / employees : deltaMonthly;
+      return {
+        perSeat: Math.round(perSeat * 100) / 100,
+        monthly: Math.round(deltaMonthly * 100) / 100,
+      };
+    }
+    function monthlyForApp(app, employees) {
+      var prevE = state.employees;
+      state.employees = employees;
+      var m = appMonthlyCad(app);
+      state.employees = prevE;
+      return m;
+    }
+
+    // ----- render: apps -----
+    function renderApps() {
+      var html = "";
+      var search = state.search.trim().toLowerCase();
+      var grouped = {
+        catena_bundled: [],
+        catena_managed: [],
+        external_saas: [],
+        external_oss: [],
+      };
+      for (var i = 0; i < DATA.apps.length; i++) {
+        var a = DATA.apps[i];
+        if (state.filter !== "all" && a.type !== state.filter) continue;
+        if (search && a.label.toLowerCase().indexOf(search) === -1) continue;
+        grouped[a.type].push(a);
+      }
+      var order = ["catena_bundled", "catena_managed", "external_saas", "external_oss"];
+      for (var g = 0; g < order.length; g++) {
+        var typ = order[g];
+        if (grouped[typ].length === 0) continue;
+        html += '<div class="app-group"><h3>' + escapeHtml(typeLabel(typ)) + "</h3><ul class=\"app-list\">";
+        for (var j = 0; j < grouped[typ].length; j++) {
+          var a = grouped[typ][j];
+          var ticked = state.apps.has(a.id);
+          var monthly = appMonthlyCad(a);
+          var monthlyLabel = a.type === "external_oss" ? "—" : fmt(monthly);
+          var warnHtml = a.warning_label
+            ? '<div class="app-warn">' + escapeHtml(a.warning_label) + "</div>"
+            : "";
+          var priceUrl = a.pricing_url
+            ? '<a class="price-url" href="' +
+              escapeAttr(a.pricing_url) +
+              '" target="_blank" rel="noopener">' +
+              escapeHtml(a.pricing_url.replace(/^https?:\/\//, "").split("/")[0]) +
+              "</a>"
+            : "";
+          html +=
+            '<li class="app ' +
+            (ticked ? "selected" : "") +
+            '"><label><input type="checkbox" data-app="' +
+            escapeAttr(a.id) +
+            '"' +
+            (ticked ? " checked" : "") +
+            '/><span class="app-label">' +
+            escapeHtml(a.label) +
+            '</span><span class="app-price">' +
+            escapeHtml(monthlyLabel) +
+            "</span></label>" +
+            warnHtml +
+            priceUrl +
+            "</li>";
+        }
+        html += "</ul></div>";
+      }
+      els.apps.innerHTML = html || "<p class=\"muted\">—</p>";
+    }
+    function typeLabel(typ) {
+      for (var i = 0; i < DATA.apps.length; i++) {
+        if (DATA.apps[i].type === typ) return DATA.apps[i].type_label;
+      }
+      return typ;
+    }
+
+    // ----- render: bill -----
+    function renderBill() {
+      // Catena subtotal
+      var catenaLines = [];
+      var anyManaged = false;
+      var managedApps = [];
+      for (var i = 0; i < DATA.apps.length; i++) {
+        var a = DATA.apps[i];
+        if (!state.apps.has(a.id)) continue;
+        if (a.type === "catena_managed") {
+          anyManaged = true;
+          managedApps.push(a);
+        }
+      }
+      var serverCad = anyManaged ? P.server_monthly_cents / 100 : 0;
+      if (serverCad > 0) {
+        catenaLines.push({ label: UI.server_line_label, amount: serverCad });
+      }
+      for (var i = 0; i < managedApps.length; i++) {
+        catenaLines.push({
+          label: managedApps[i].label,
+          amount: P.app_monthly_cents / 100,
+        });
+      }
+      var storageGb = Math.max(0, state.storage | 0);
+      var storageAmt = storageGb * P.storage_cad_per_gb_per_month;
+      if (storageAmt > 0 && anyManaged) {
+        catenaLines.push({
+          label: tpl(UI.storage_line_template, {
+            gb: storageGb,
+            rate: P.storage_cad_per_gb_per_month.toFixed(2),
+          }),
+          amount: storageAmt,
+        });
+      }
+
+      // External subtotal split: QBO ecosystem rows go in their own
+      // bundle when accounting/payroll/time tracking needs are ticked.
+      var qboBundleIds = ["qbo_easystart", "qbo_essentials", "qbo_plus", "qbo_advanced", "qbo_time", "qbo_payroll_standard", "qbo_payroll_advanced"];
+      var qboNeeds = ["accounting_gl", "payroll", "time_tracking"];
+      var hasQboNeed = false;
+      for (var qi = 0; qi < qboNeeds.length; qi++) {
+        if (state.needs.has(qboNeeds[qi])) {
+          hasQboNeed = true;
+          break;
+        }
+      }
+
+      var externalLines = [];
+      var qboLines = [];
+      for (var i = 0; i < DATA.apps.length; i++) {
+        var a = DATA.apps[i];
+        if (!state.apps.has(a.id)) continue;
+        if (a.type !== "external_saas") continue;
+        var amount = appMonthlyCad(a);
+        var line = { label: a.label, amount: amount, formula: lineFormula(a) };
+        if (hasQboNeed && qboBundleIds.indexOf(a.id) !== -1) {
+          qboLines.push(line);
+        } else {
+          externalLines.push(line);
+        }
+      }
+
+      var html = "";
+      var monthlyTotal = 0;
+
+      if (catenaLines.length === 0 && externalLines.length === 0 && qboLines.length === 0) {
+        html = '<p class="muted empty">' + escapeHtml(UI.empty_hint) + "</p>";
+      } else {
+        if (catenaLines.length) {
+          var sub = 0;
+          var rows = "";
+          for (var i = 0; i < catenaLines.length; i++) {
+            sub += catenaLines[i].amount;
+            rows += billRow(catenaLines[i].label, catenaLines[i].amount, "");
+          }
+          monthlyTotal += sub;
+          html +=
+            '<section class="bill-section"><h3>' +
+            escapeHtml(UI.section_catena) +
+            "</h3>" +
+            rows +
+            billSubtotal(sub) +
+            "</section>";
+        }
+        if (qboLines.length) {
+          var sub = 0;
+          var rows = "";
+          for (var i = 0; i < qboLines.length; i++) {
+            sub += qboLines[i].amount;
+            rows += billRow(qboLines[i].label, qboLines[i].amount, qboLines[i].formula);
+          }
+          monthlyTotal += sub;
+          html +=
+            '<section class="bill-section bundle"><h3>' +
+            escapeHtml(UI.section_qbo_bundle) +
+            "</h3>" +
+            rows +
+            billSubtotal(sub) +
+            "</section>";
+        }
+        if (externalLines.length) {
+          var sub = 0;
+          var rows = "";
+          for (var i = 0; i < externalLines.length; i++) {
+            sub += externalLines[i].amount;
+            rows += billRow(externalLines[i].label, externalLines[i].amount, externalLines[i].formula);
+          }
+          monthlyTotal += sub;
+          html +=
+            '<section class="bill-section"><h3>' +
+            escapeHtml(UI.section_external) +
+            "</h3>" +
+            rows +
+            billSubtotal(sub) +
+            "</section>";
+        }
+
+        // Support pack
+        if (state.supportPack) {
+          for (var i = 0; i < P.support_packs.length; i++) {
+            if (P.support_packs[i].id === state.supportPack) {
+              var amt = P.support_packs[i].monthly_cents / 100;
+              monthlyTotal += amt;
+              html +=
+                '<section class="bill-section"><h3>' +
+                escapeHtml(P.support_packs[i].label) +
+                "</h3>" +
+                billRow(P.support_packs[i].label, amt, "") +
+                "</section>";
+            }
+          }
+        }
+
+        html +=
+          '<div class="bill-total"><span>' +
+          escapeHtml(UI.monthly_total) +
+          "</span><strong>" +
+          escapeHtml(fmt(monthlyTotal)) +
+          "</strong></div>";
+
+        // Installer (one-time)
+        if (state.installer) {
+          for (var i = 0; i < P.installers.length; i++) {
+            if (P.installers[i].id === state.installer) {
+              var amt = P.installers[i].one_time_cents / 100;
+              html +=
+                '<div class="bill-onetime"><span>' +
+                escapeHtml(UI.due_at_signup) +
+                "</span><strong>" +
+                escapeHtml(fmt(amt)) +
+                "</strong><small class=\"muted\">" +
+                escapeHtml(P.installers[i].label) +
+                "</small></div>";
+            }
+          }
+        }
+      }
+      els.bill.innerHTML = html;
+    }
+    function billRow(label, amount, formula) {
+      return (
+        '<div class="bill-row"><span class="row-label">' +
+        escapeHtml(label) +
+        (formula
+          ? ' <small class="muted">' + escapeHtml(formula) + "</small>"
+          : "") +
+        '</span><span class="row-amount">' +
+        escapeHtml(fmt(amount)) +
+        "</span></div>"
+      );
+    }
+    function billSubtotal(amount) {
+      return (
+        '<div class="bill-subtotal"><span>' +
+        escapeHtml(UI.subtotal) +
+        "</span><strong>" +
+        escapeHtml(fmt(amount)) +
+        "</strong></div>"
+      );
+    }
+
+    // ----- render entry -----
+    function renderAll() {
+      renderNeeds();
+      renderApps();
+      renderBill();
+      writeUrlHash();
+    }
+
+    // ----- events -----
+    els.needs.addEventListener("change", function (ev) {
+      var t = ev.target;
+      if (t && t.dataset && t.dataset.need) {
+        if (t.checked) state.needs.add(t.dataset.need);
+        else state.needs.delete(t.dataset.need);
+        renderAll();
+      }
+    });
+    els.apps.addEventListener("change", function (ev) {
+      var t = ev.target;
+      if (t && t.dataset && t.dataset.app) {
+        if (t.checked) state.apps.add(t.dataset.app);
+        else state.apps.delete(t.dataset.app);
+        renderAll();
+      }
+    });
+    els.employees.addEventListener("input", function () {
+      state.employees = Math.max(1, parseInt(els.employees.value || "1", 10));
+      renderAll();
+    });
+    els.storage.addEventListener("input", function () {
+      state.storage = Math.max(0, parseInt(els.storage.value || "0", 10));
+      renderAll();
+    });
+    els.search.addEventListener("input", function () {
+      state.search = els.search.value;
+      renderApps();
+    });
+    var filterBtns = document.querySelectorAll(".filter");
+    filterBtns.forEach(function (btn) {
+      btn.addEventListener("click", function () {
+        state.filter = btn.dataset.filter;
+        filterBtns.forEach(function (b) {
+          b.classList.toggle("active", b === btn);
+        });
+        renderApps();
+      });
+    });
+    els.supportPack.addEventListener("change", function () {
+      state.supportPack = els.supportPack.value;
+      renderBill();
+      writeUrlHash();
+    });
+    els.installer.addEventListener("change", function () {
+      state.installer = els.installer.value;
+      renderBill();
+      writeUrlHash();
+    });
+    els.reset.addEventListener("click", function () {
+      state.needs.clear();
+      state.apps.clear();
+      state.employees = 3;
+      state.storage = 25;
+      state.supportPack = "";
+      state.installer = "";
+      state.filter = "all";
+      state.search = "";
+      els.employees.value = "3";
+      els.storage.value = "25";
+      els.search.value = "";
+      els.supportPack.value = "";
+      els.installer.value = "";
+      filterBtns.forEach(function (b) {
+        b.classList.toggle("active", b.dataset.filter === "all");
+      });
+      renderAll();
+    });
+    els.copy.addEventListener("click", function () {
+      var text = buildSummaryMarkdown();
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(text).then(function () {
+          els.copy.textContent = UI.copied;
+          setTimeout(function () {
+            els.copy.textContent = els.copy.dataset.originalLabel;
+          }, 1800);
+        });
+      }
+    });
+    els.copy.dataset.originalLabel = els.copy.textContent;
+
+    function buildSummaryMarkdown() {
+      var lines = ["# " + UI.summary_title, ""];
+      lines.push("## " + UI.summary_needs_heading);
+      if (state.needs.size === 0) {
+        lines.push("- " + UI.summary_none);
+      } else {
+        DATA.needs.forEach(function (n) {
+          if (state.needs.has(n.id)) lines.push("- " + n.label);
+        });
+      }
+      lines.push("");
+      lines.push("## " + UI.summary_apps_heading);
+      if (state.apps.size === 0) {
+        lines.push("- " + UI.summary_none);
+      } else {
+        DATA.apps.forEach(function (a) {
+          if (state.apps.has(a.id)) {
+            lines.push("- " + a.label + " (" + a.type_label + ")");
+          }
+        });
+      }
+      lines.push("");
+      lines.push("## " + UI.summary_bill_heading);
+      lines.push("- " + (els.bill.innerText || "").replace(/\n+/g, " | "));
+      return lines.join("\n");
+    }
+
+    // ----- URL-hash persistence -----
+    function writeUrlHash() {
+      var params = new URLSearchParams();
+      if (state.needs.size) params.set("needs", Array.from(state.needs).join(","));
+      if (state.apps.size) params.set("apps", Array.from(state.apps).join(","));
+      if (state.employees !== 3) params.set("e", String(state.employees));
+      if (state.storage !== 25) params.set("s", String(state.storage));
+      if (state.supportPack) params.set("p", state.supportPack);
+      if (state.installer) params.set("i", state.installer);
+      var s = params.toString();
+      var hash = s ? "#" + s : "";
+      if (location.hash !== hash) {
+        history.replaceState(null, "", location.pathname + location.search + hash);
+      }
+      try {
+        localStorage.setItem("catena.app-selector", s);
+      } catch (e) {}
+    }
+    function readUrlHash() {
+      var raw = location.hash.replace(/^#/, "");
+      if (!raw) {
+        try {
+          raw = localStorage.getItem("catena.app-selector") || "";
+        } catch (e) {}
+      }
+      if (!raw) return;
+      var params = new URLSearchParams(raw);
+      var needs = (params.get("needs") || "").split(",").filter(Boolean);
+      var apps = (params.get("apps") || "").split(",").filter(Boolean);
+      needs.forEach(function (n) {
+        state.needs.add(n);
+      });
+      apps.forEach(function (a) {
+        state.apps.add(a);
+      });
+      var e = parseInt(params.get("e") || "", 10);
+      if (!isNaN(e) && e >= 1) {
+        state.employees = e;
+        els.employees.value = String(e);
+      }
+      var s = parseInt(params.get("s") || "", 10);
+      if (!isNaN(s) && s >= 0) {
+        state.storage = s;
+        els.storage.value = String(s);
+      }
+      var p = params.get("p") || "";
+      if (p) {
+        state.supportPack = p;
+        els.supportPack.value = p;
+      }
+      var inst = params.get("i") || "";
+      if (inst) {
+        state.installer = inst;
+        els.installer.value = inst;
+      }
+    }
+
+    // ----- escape -----
+    function escapeHtml(s) {
+      return String(s).replace(/[&<>"']/g, function (c) {
+        return c === "&" ? "&amp;" : c === "<" ? "&lt;" : c === ">" ? "&gt;" : c === "\"" ? "&quot;" : "&#39;";
+      });
+    }
+    function escapeAttr(s) {
+      return escapeHtml(s);
+    }
+
+    readUrlHash();
+    renderAll();
+  })();
+</script>
+
+<style>
+  .app-selector { padding: var(--catena-space-8) 0 var(--catena-space-24); }
+  .app-selector .container { max-width: 86rem; }
+
+  .controls {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: var(--catena-space-5);
+    margin-bottom: var(--catena-space-8);
+    padding: var(--catena-space-5);
+    background: var(--catena-surface-bg-muted);
+    border: 1px solid var(--catena-surface-border);
+    border-radius: var(--catena-radius-md);
+  }
+  .control { display: flex; flex-direction: column; gap: var(--catena-space-2); }
+  .ctl-label {
+    font-size: var(--catena-fs-xs);
+    text-transform: uppercase;
+    letter-spacing: var(--catena-tracking-wide);
+    color: var(--catena-surface-fg-muted);
+  }
+  .control input[type="number"], .control input[type="search"], .control select {
+    padding: var(--catena-space-3);
+    border: 1px solid var(--catena-surface-border);
+    border-radius: var(--catena-radius-sm);
+    background: var(--catena-surface-bg);
+    color: var(--catena-surface-fg);
+    font-size: var(--catena-fs-base);
+  }
+  .control small { font-size: var(--catena-fs-xs); line-height: 1.4; }
+  .control-actions { justify-content: flex-end; flex-direction: row; gap: var(--catena-space-3); align-items: flex-end; }
+  .btn {
+    padding: var(--catena-space-3) var(--catena-space-5);
+    border: 1px solid var(--catena-surface-border);
+    border-radius: var(--catena-radius-sm);
+    background: var(--catena-surface-bg);
+    color: var(--catena-surface-fg);
+    cursor: pointer;
+    font-size: var(--catena-fs-sm);
+  }
+  .btn-primary {
+    background: var(--catena-accent);
+    color: var(--catena-on-accent, white);
+    border-color: var(--catena-accent);
+  }
+  .btn:hover { filter: brightness(0.97); }
+
+  .grid {
+    display: grid;
+    grid-template-columns: 1.1fr 1.2fr 1fr;
+    gap: var(--catena-space-6);
+    align-items: start;
+  }
+  .pane {
+    border: 1px solid var(--catena-surface-border);
+    border-radius: var(--catena-radius-md);
+    background: var(--catena-surface-bg);
+    padding: var(--catena-space-5);
+    min-height: 30rem;
+  }
+  .pane h2 {
+    margin: 0 0 var(--catena-space-4) 0;
+    font-size: var(--catena-fs-lg);
+  }
+  .pane h3 {
+    margin: var(--catena-space-4) 0 var(--catena-space-2) 0;
+    font-size: var(--catena-fs-sm);
+    text-transform: uppercase;
+    letter-spacing: var(--catena-tracking-wide);
+    color: var(--catena-surface-fg-muted);
+  }
+
+  /* needs pane */
+  .cat { margin-bottom: var(--catena-space-3); }
+  .cat summary {
+    cursor: pointer;
+    padding: var(--catena-space-2) 0;
+    font-weight: var(--catena-fw-medium);
+  }
+  .need-list { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: var(--catena-space-1); }
+  .need {
+    padding: var(--catena-space-2);
+    border-left: 3px solid transparent;
+    border-radius: var(--catena-radius-sm);
+  }
+  .need label { display: flex; align-items: center; gap: var(--catena-space-2); cursor: pointer; }
+  .need.covered    { background: color-mix(in srgb, #16a34a 8%, transparent); border-left-color: #16a34a; }
+  .need.gap        { background: color-mix(in srgb, #dc2626 8%, transparent); border-left-color: #dc2626; }
+  .need.overlap    { background: color-mix(in srgb, #d97706 10%, transparent); border-left-color: #d97706; }
+  .need.tier-trap  { background: color-mix(in srgb, #eab308 14%, transparent); border-left-color: #eab308; }
+  .need .hint {
+    margin-top: var(--catena-space-1);
+    margin-left: 1.7rem;
+    font-size: var(--catena-fs-xs);
+    line-height: 1.4;
+  }
+  .need .hint.substitute { color: var(--catena-surface-fg-muted); }
+
+  /* apps pane */
+  .apps-controls {
+    display: flex; flex-direction: column; gap: var(--catena-space-3);
+    margin-bottom: var(--catena-space-4);
+  }
+  .filters {
+    display: flex; flex-wrap: wrap; gap: var(--catena-space-2);
+  }
+  .filter {
+    padding: var(--catena-space-1) var(--catena-space-3);
+    border: 1px solid var(--catena-surface-border);
+    border-radius: var(--catena-radius-pill, 999px);
+    background: var(--catena-surface-bg);
+    cursor: pointer;
+    font-size: var(--catena-fs-xs);
+    color: var(--catena-surface-fg);
+  }
+  .filter.active {
+    background: var(--catena-accent);
+    color: var(--catena-on-accent, white);
+    border-color: var(--catena-accent);
+  }
+  .app-group { margin-bottom: var(--catena-space-5); }
+  .app-list { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: var(--catena-space-1); }
+  .app {
+    padding: var(--catena-space-2);
+    border-left: 3px solid transparent;
+    border-radius: var(--catena-radius-sm);
+  }
+  .app.selected { background: color-mix(in srgb, var(--catena-accent) 8%, transparent); border-left-color: var(--catena-accent); }
+  .app label { display: flex; align-items: center; gap: var(--catena-space-2); cursor: pointer; }
+  .app-label { flex: 1; }
+  .app-price { font-variant-numeric: tabular-nums; font-size: var(--catena-fs-sm); color: var(--catena-surface-fg-muted); }
+  .app-warn {
+    margin-top: var(--catena-space-1);
+    margin-left: 1.7rem;
+    font-size: var(--catena-fs-xs);
+    color: color-mix(in srgb, #d97706 90%, var(--catena-surface-fg));
+    line-height: 1.4;
+  }
+  .price-url {
+    display: block;
+    margin-left: 1.7rem;
+    font-size: var(--catena-fs-xs);
+    color: var(--catena-surface-fg-muted);
+  }
+
+  /* bill pane */
+  .bill-section { margin-bottom: var(--catena-space-4); }
+  .bill-section.bundle { background: color-mix(in srgb, var(--catena-accent) 6%, transparent); padding: var(--catena-space-3); border-radius: var(--catena-radius-sm); }
+  .bill-row {
+    display: flex; justify-content: space-between; gap: var(--catena-space-2);
+    padding: var(--catena-space-1) 0;
+    font-size: var(--catena-fs-sm);
+  }
+  .row-label { flex: 1; min-width: 0; }
+  .row-amount { font-variant-numeric: tabular-nums; }
+  .bill-subtotal {
+    display: flex; justify-content: space-between;
+    padding: var(--catena-space-2) 0 0 0;
+    border-top: 1px solid var(--catena-surface-border);
+    margin-top: var(--catena-space-2);
+    font-size: var(--catena-fs-sm);
+  }
+  .bill-total {
+    display: flex; justify-content: space-between; align-items: baseline;
+    padding: var(--catena-space-3) 0;
+    margin-top: var(--catena-space-3);
+    border-top: 2px solid var(--catena-surface-fg);
+    font-size: var(--catena-fs-lg);
+  }
+  .bill-onetime {
+    display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap;
+    padding: var(--catena-space-2) 0;
+    color: var(--catena-surface-fg-muted);
+    font-size: var(--catena-fs-sm);
+  }
+  .bill-onetime small { flex-basis: 100%; }
+
+  .extras {
+    display: flex; flex-direction: column; gap: var(--catena-space-3);
+    margin-top: var(--catena-space-5);
+    padding-top: var(--catena-space-4);
+    border-top: 1px dashed var(--catena-surface-border);
+  }
+
+  @media (max-width: 1023px) {
+    .controls { grid-template-columns: 1fr; }
+    .grid { grid-template-columns: 1fr; }
+  }
+</style>

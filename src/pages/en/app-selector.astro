@@ -1,0 +1,21 @@
+---
+import Base from "../../layouts/Base.astro";
+import PageTitle from "../../components/PageTitle.astro";
+import AppSelector from "../../components/AppSelector.astro";
+import CTA from "../../components/CTA.astro";
+import { t } from "@catena/i18n";
+
+const locale = "en";
+---
+<Base
+  locale={locale}
+  title={t(locale, "common.app_selector.title")}
+  description={t(locale, "common.app_selector.meta_description")}
+>
+  <PageTitle
+    title={t(locale, "common.app_selector.title")}
+    intro={t(locale, "common.app_selector.intro")}
+  />
+  <AppSelector locale={locale} />
+  <CTA locale={locale} />
+</Base>

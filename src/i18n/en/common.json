@@ -920,5 +920,133 @@
     "cta_body": "The fastest way is a 30-minute discovery call. No pitch, no commitment.",
     "cta_primary": "Book a discovery call",
     "cta_secondary": "See all pricing"
+  },
+  "app_selector": {
+    "title": "App selector",
+    "intro": "Tick the business needs that apply to you, then tick apps to cover them. The bill on the right updates live; gaps and overlaps are flagged inline. Mix Catena-managed apps with external SaaS to compare suites side by side.",
+    "meta_description": "Map your business needs to the right apps -- Catena-managed, included with the server, or external SaaS. See a live monthly cost and compare a Catena suite to QuickBooks-only or Microsoft 365-only setups.",
+    "footer_link": "App selector",
+    "inputs": {
+      "employees_label": "Employees",
+      "employees_help": "Drives per-seat external SaaS pricing. Catena pricing is per server + per app; never per seat.",
+      "storage_label": "Storage (GB)",
+      "storage_help": "Approximate Catena backup overhead at $0.10 CAD/GB/month."
+    },
+    "headings": {
+      "needs": "Needs",
+      "apps": "Apps",
+      "bill": "Monthly bill",
+      "summary": "Selection summary"
+    },
+    "categories": {
+      "collaboration": "Collaboration and files",
+      "sales_crm": "Sales and CRM",
+      "billing": "Billing and payments",
+      "back_office": "Back-office (accounting, payroll, HR)",
+      "communications": "Communications",
+      "operations": "Operations and projects",
+      "marketing": "Marketing and growth",
+      "infrastructure": "Infrastructure and identity"
+    },
+    "needs": {
+      "file_sharing": "File hosting and sharing",
+      "collab_editing": "Collaborative document editing",
+      "internal_calendar": "Internal calendars",
+      "contacts_directory": "Contacts directory",
+      "internal_forms": "Internal forms and surveys",
+      "knowledge_wiki": "Knowledge base / wiki",
+      "password_secrets_manager": "Password and secrets manager",
+      "crm_pipeline": "CRM and sales pipeline",
+      "lead_capture_forms": "Lead-capture web forms",
+      "quotes_estimates_crm": "Quotes and estimates",
+      "email_marketing_mass": "Mass email marketing",
+      "workflow_automation_light": "Light workflow automation",
+      "social_posting": "Social media posting",
+      "invoicing": "Invoicing",
+      "payments_stripe": "Online payments (Stripe)",
+      "expenses": "Expense tracking",
+      "recurring_billing": "Recurring billing / subscriptions",
+      "client_portal_billing": "Client billing portal",
+      "contracts_signing": "Contracts and document signing",
+      "accounting_gl": "Accounting (general ledger)",
+      "sales_tax_filing": "Sales-tax filing (GST/QST)",
+      "payroll": "Payroll",
+      "hr_records": "HR records",
+      "inventory_management": "Inventory management",
+      "ecommerce_storefront": "E-commerce storefront",
+      "internal_chat": "Internal team chat",
+      "internal_video": "Internal video meetings",
+      "customer_inbox_omnichannel": "Customer inbox (omnichannel)",
+      "customer_support_tickets": "Customer support tickets",
+      "phone_calls": "Phone calls (in / out)",
+      "phone_dial_in_meetings": "Phone dial-in for meetings",
+      "email_hosted": "Hosted email (not self-hosted)",
+      "project_management": "Project management",
+      "time_tracking": "Time tracking",
+      "appointment_booking": "Customer booking pages",
+      "automation_glue": "Cross-app automation glue",
+      "public_website": "Public marketing website",
+      "marketing_automation": "Marketing automation",
+      "newsletter_campaigns": "Newsletter campaigns",
+      "identity_sso": "Single sign-on (SSO)",
+      "backups": "Encrypted backups"
+    },
+    "app_types": {
+      "catena_bundled": "Included",
+      "catena_managed": "Managed",
+      "external_saas": "External SaaS",
+      "external_oss": "External (self-host)"
+    },
+    "app_warnings": {
+      "erpnext_not_recommended": "Not recommended for new clients. Compliance and payment gaps in the Canadian SMB use case; kept in catalog for specialized needs only."
+    },
+    "filters": {
+      "all": "All",
+      "bundled": "Included",
+      "managed": "Managed",
+      "saas": "External SaaS",
+      "oss": "External OSS"
+    },
+    "search_placeholder": "Search apps",
+    "status": {
+      "covered": "Covered",
+      "gap": "No selected app covers this need.",
+      "overlap": "Covered by {n} selected apps.",
+      "tier_trap": "Picking this moves you from {from} to {to}: +${delta} CAD/seat/month for all {employees} employees (+${monthly} CAD/mo).",
+      "tier_substitute": "Catena-managed alternative: {names}.",
+      "no_app_yet": "No app selected yet."
+    },
+    "bill": {
+      "empty_hint": "Tick a need or an app to start pricing.",
+      "section_catena": "Catena",
+      "section_external": "External SaaS",
+      "section_qbo_bundle": "All-in QuickBooks bundle",
+      "line_server": "Catena server",
+      "line_storage": "Storage ({gb} GB x ${rate}/GB)",
+      "line_formula_per_seat": "{employees} x ${perSeat} = ${total}",
+      "line_formula_per_seat_plus_base": "${base} base + {employees} x ${perSeat} = ${total}",
+      "line_formula_tier": "{users} user cap, flat ${total}",
+      "subtotal": "Subtotal",
+      "monthly_total": "Monthly total",
+      "due_at_signup": "Due at signup (one-time)",
+      "support_pack_label": "Support pack",
+      "installer_label": "Installer (one-time)",
+      "support_pack_none": "No pack",
+      "installer_none": "No installer",
+      "tier_user_cap_ok": "{users} within {cap}-user cap",
+      "tier_user_cap_exceeded": "{users} exceeds {cap}-user cap -- pick a higher tier"
+    },
+    "buttons": {
+      "reset": "Reset",
+      "copy_summary": "Copy summary",
+      "copied": "Copied to clipboard."
+    },
+    "summary": {
+      "title": "Catena app selector -- summary",
+      "needs_heading": "Selected needs",
+      "apps_heading": "Selected apps",
+      "bill_heading": "Monthly bill",
+      "none": "(none)"
+    }
   }
 }
