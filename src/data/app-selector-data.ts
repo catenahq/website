@@ -19,9 +19,7 @@
 // CSVs are inlined into the bundle at build time via Vite's `?raw`
 // import; reading from disk at runtime would break because the bundled
 // chunk lives next to .prerender/chunks/, not next to the source.
-// @ts-expect-error -- vite ?raw suffix returns a string at build time
 import appsCsv from "./app-selector-apps.csv?raw";
-// @ts-expect-error -- vite ?raw suffix returns a string at build time
 import coverageCsv from "./app-selector-coverage.csv?raw";
 
 export const STORAGE_RATE_CAD_PER_GB_PER_MONTH = 0.10;

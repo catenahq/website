@@ -250,9 +250,11 @@ const PAYLOAD = {
     function isNeedExpanded(needId, status) {
       if (state.expandedNeeds.has(needId)) return true;
       if (state.collapsedNeeds.has(needId)) return false;
-      // Default: expanded for any non-covered ticked need (gap or
-      // overlap), collapsed once the need is cleanly covered.
-      return !!status && status.kind !== "covered";
+      // Default: expanded only for gap or overlap (the cases that
+      // need user action). Covered (green) and secondary-only-covered
+      // (green-yellow) both auto-collapse -- the need is met, the
+      // color tells the story.
+      return !!status && (status.kind === "gap" || status.kind === "overlap");
     }
     function toggleNeedDisclosure(needId, status) {
       var open = isNeedExpanded(needId, status);
@@ -382,6 +384,11 @@ const PAYLOAD = {
       if (primaryApps.length >= 2) {
         return { kind: "overlap", apps: primaryApps };
       }
+      if (primaryApps.length === 0) {
+        // Covered, but only by apps whose coverage is secondary --
+        // capability exists, but no selected app is the best fit.
+        return { kind: "secondary", apps: anyApps };
+      }
       return { kind: "covered", apps: anyApps };
     }
 
@@ -446,6 +453,7 @@ const PAYLOAD = {
           var rowCls = "need";
           if (status.kind === "overlap") rowCls += " overlap";
           else if (status.kind === "covered") rowCls += " covered";
+          else if (status.kind === "secondary") rowCls += " secondary";
           else if (ticked && status.kind === "gap") rowCls += " gap";
           var nestedHtml = "";
           var hint = "";
@@ -1000,9 +1008,10 @@ const PAYLOAD = {
     cursor: pointer;
   }
   /* Covered = green, gap = red, multi-primary overlap = blue. */
-  .app-selector .need.covered { background: color-mix(in srgb, #16a34a 22%, transparent); border-left-color: #16a34a; }
-  .app-selector .need.gap     { background: color-mix(in srgb, #dc2626 22%, transparent); border-left-color: #dc2626; }
-  .app-selector .need.overlap { background: color-mix(in srgb, #2563eb 22%, transparent); border-left-color: #2563eb; }
+  .app-selector .need.covered   { background: color-mix(in srgb, #16a34a 22%, transparent); border-left-color: #16a34a; }
+  .app-selector .need.secondary { background: color-mix(in srgb, #84cc16 22%, transparent); border-left-color: #84cc16; }
+  .app-selector .need.gap       { background: color-mix(in srgb, #dc2626 22%, transparent); border-left-color: #dc2626; }
+  .app-selector .need.overlap   { background: color-mix(in srgb, #2563eb 22%, transparent); border-left-color: #2563eb; }
 
   /* Per-need disclosure (arrow on the right of each ticked need). */
   .app-selector .need-row {
