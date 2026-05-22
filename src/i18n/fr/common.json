@@ -934,7 +934,6 @@
     },
     "headings": {
       "needs": "Besoins",
-      "apps": "Applications",
       "bill": "Facture mensuelle",
       "summary": "Résumé de la sélection"
     },
@@ -991,25 +990,11 @@
       "identity_sso": "Authentification unique (SSO)",
       "backups": "Sauvegardes chiffrées"
     },
-    "app_types": {
-      "catena_bundled": "Inclus",
-      "catena_managed": "Géré",
-      "external_saas": "SaaS externe",
-      "external_oss": "Externe (auto-hébergé)"
-    },
     "app_warnings": {
       "erpnext_not_recommended": "Non recommandé pour les nouveaux clients. Lacunes de conformité et de paiements dans le contexte PME canadien; conservé au catalogue pour les besoins spécialisés uniquement."
     },
-    "filters": {
-      "all": "Tout",
-      "bundled": "Inclus",
-      "managed": "Géré",
-      "saas": "SaaS externe",
-      "oss": "OSS externe"
-    },
-    "search_placeholder": "Rechercher une application",
-    "show_all_apps_label": "Afficher toutes les applications (ignorer les besoins sélectionnés)",
-    "empty_apps_hint": "Cochez un besoin à gauche, ou activez \"afficher toutes les applications\" pour voir la liste complète.",
+    "disclosure_show_apps": "Afficher les applications qui couvrent ce besoin",
+    "disclosure_hide_apps": "Masquer les applications qui couvrent ce besoin",
     "status": {
       "covered": "Couvert",
       "gap": "Aucune application sélectionnée ne couvre ce besoin.",

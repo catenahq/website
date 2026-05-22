@@ -144,7 +144,8 @@ const PAYLOAD = {
     ),
     summary_none: t(locale, "common.app_selector.summary.none"),
     none_pack: t(locale, "common.app_selector.bill.support_pack_none"),
-    empty_apps_hint: t(locale, "common.app_selector.empty_apps_hint"),
+    disclosure_show_apps: t(locale, "common.app_selector.disclosure_show_apps"),
+    disclosure_hide_apps: t(locale, "common.app_selector.disclosure_hide_apps"),
   },
 };
 ---
@@ -174,37 +175,7 @@ const PAYLOAD = {
     <div class="grid">
       <section class="pane needs-pane" aria-labelledby="as-needs-heading">
         <h2 id="as-needs-heading">{t(locale, "common.app_selector.headings.needs")}</h2>
-        <label class="show-all">
-          <input id="as-show-all" type="checkbox" />
-          <span>{t(locale, "common.app_selector.show_all_apps_label")}</span>
-        </label>
         <div id="as-needs"></div>
-        <div id="as-all-apps-section" hidden>
-          <h3 class="all-apps-heading">{t(locale, "common.app_selector.headings.apps")}</h3>
-          <div class="apps-controls">
-            <input
-              id="as-search"
-              type="search"
-              placeholder={t(locale, "common.app_selector.search_placeholder")}
-              aria-label={t(locale, "common.app_selector.search_placeholder")}
-            />
-            <div class="filters" role="group">
-              <button type="button" class="filter active" data-filter="all">
-                {t(locale, "common.app_selector.filters.all")}
-              </button>
-              <button type="button" class="filter" data-filter="catena_bundled">
-                {t(locale, "common.app_selector.filters.bundled")}
-              </button>
-              <button type="button" class="filter" data-filter="catena_managed">
-                {t(locale, "common.app_selector.filters.managed")}
-              </button>
-              <button type="button" class="filter" data-filter="external_saas">
-                {t(locale, "common.app_selector.filters.saas")}
-              </button>
-            </div>
-          </div>
-          <div id="as-apps"></div>
-        </div>
       </section>
 
       <aside class="pane bill-pane" aria-labelledby="as-bill-heading">
@@ -252,25 +223,42 @@ const PAYLOAD = {
       storage: 25,
       needs: new Set(),
       apps: new Set(),
-      filter: "all",
-      search: "",
       supportPack: "",
-      showAllApps: false,
+      // Per-need disclosure overrides. Default behaviour: a ticked
+      // need expands automatically iff it is NOT covered (gap or
+      // overlap). The user can click the arrow to override either
+      // way; that click records the override in one of these sets.
+      expandedNeeds: new Set(),   // explicitly opened by the user
+      collapsedNeeds: new Set(),  // explicitly closed by the user
     };
 
     var els = {
       needs: document.getElementById("as-needs"),
-      apps: document.getElementById("as-apps"),
-      allAppsSection: document.getElementById("as-all-apps-section"),
       bill: document.getElementById("as-bill"),
       employees: document.getElementById("as-employees"),
       storage: document.getElementById("as-storage"),
-      search: document.getElementById("as-search"),
       supportPack: document.getElementById("as-support-pack"),
       reset: document.getElementById("as-reset"),
       copy: document.getElementById("as-copy"),
-      showAll: document.getElementById("as-show-all"),
     };
+
+    function isNeedExpanded(needId, status) {
+      if (state.expandedNeeds.has(needId)) return true;
+      if (state.collapsedNeeds.has(needId)) return false;
+      // Default: expanded for any non-covered ticked need (gap or
+      // overlap), collapsed once the need is cleanly covered.
+      return !!status && status.kind !== "covered";
+    }
+    function toggleNeedDisclosure(needId, status) {
+      var open = isNeedExpanded(needId, status);
+      if (open) {
+        state.expandedNeeds.delete(needId);
+        state.collapsedNeeds.add(needId);
+      } else {
+        state.collapsedNeeds.delete(needId);
+        state.expandedNeeds.add(needId);
+      }
+    }
 
     // ----- helpers -----
     function fmt(amount) {
@@ -406,41 +394,19 @@ const PAYLOAD = {
       return out;
     }
 
-    function renderAppRow(a, ctx) {
+    function renderAppRow(a) {
+      // Apps render only as nested rows under a ticked need now --
+      // checkbox + label, nothing else (price, type, and warnings
+      // already render in the bill column on the right).
       var ticked = state.apps.has(a.id);
-      // Nested rows (under a need) stay compact: checkbox + label only.
-      // Type pill, price, and warnings already render in the flat
-      // catalogue (when "show all" is on) and in the bill column, so
-      // repeating them under every covered need would be noise.
-      if (ctx === "nested") {
-        return (
-          '<li class="app ' + ctx + " " + escapeAttr(a.type) +
-          (ticked ? " selected" : "") + '">' +
-          '<label>' +
-          '<input type="checkbox" data-app="' + escapeAttr(a.id) + '"' +
-          (ticked ? " checked" : "") + "/>" +
-          '<span class="app-label">' + escapeHtml(a.label) + "</span>" +
-          "</label>" +
-          "</li>"
-        );
-      }
-      var monthly = appMonthlyCad(a);
-      var monthlyLabel = fmt(monthly);
-      var warnHtml = a.warning_label
-        ? '<div class="app-warn">' + escapeHtml(a.warning_label) + "</div>"
-        : "";
       return (
-        '<li class="app ' + ctx + " " + escapeAttr(a.type) +
+        '<li class="app ' + escapeAttr(a.type) +
         (ticked ? " selected" : "") + '">' +
-        '<label>' +
+        "<label>" +
         '<input type="checkbox" data-app="' + escapeAttr(a.id) + '"' +
         (ticked ? " checked" : "") + "/>" +
         '<span class="app-label">' + escapeHtml(a.label) + "</span>" +
-        '<span class="app-pill app-pill-' + escapeAttr(a.type) + '">' +
-        escapeHtml(a.type_label) + "</span>" +
-        '<span class="app-price">' + escapeHtml(monthlyLabel) + "</span>" +
         "</label>" +
-        warnHtml +
         "</li>"
       );
     }
@@ -470,15 +436,29 @@ const PAYLOAD = {
           }
           var nestedHtml = "";
           var hint = "";
+          var disclosureHtml = "";
+          var available = ticked ? appsCoveringNeed(nd.id) : [];
+          var expanded = ticked && available.length > 0 && isNeedExpanded(nd.id, status);
+          if (ticked && available.length > 0) {
+            disclosureHtml =
+              '<button type="button" class="need-disclosure" data-need-disclosure="' +
+              escapeAttr(nd.id) + '" aria-expanded="' + (expanded ? "true" : "false") +
+              '" aria-label="' + escapeAttr(
+                expanded ? UI.disclosure_hide_apps : UI.disclosure_show_apps
+              ) + '">' +
+              '<span class="arrow" aria-hidden="true">' +
+              (expanded ? "&#9662;" : "&#9656;") +
+              "</span></button>";
+          }
           if (ticked) {
-            var available = appsCoveringNeed(nd.id);
-            if (available.length > 0) {
+            if (expanded) {
               nestedHtml = '<ul class="apps-under-need">';
               for (var k = 0; k < available.length; k++) {
-                nestedHtml += renderAppRow(available[k], "nested");
+                nestedHtml += renderAppRow(available[k]);
               }
               nestedHtml += "</ul>";
-            } else if (status.kind === "gap") {
+            }
+            if (status.kind === "gap" && available.length === 0) {
               hint = '<div class="hint gap-hint">' + escapeHtml(UI.status_gap) + "</div>";
             }
             if (status.kind === "overlap") {
@@ -489,9 +469,12 @@ const PAYLOAD = {
           }
           html +=
             '<li class="' + rowCls + '">' +
+            '<div class="need-row">' +
             '<label class="need-label"><input type="checkbox" data-need="' +
             escapeAttr(nd.id) + '"' + (ticked ? " checked" : "") + "/>" +
             "<span>" + escapeHtml(nd.label) + "</span></label>" +
+            disclosureHtml +
+            "</div>" +
             nestedHtml +
             hint +
             "</li>";
@@ -502,50 +485,11 @@ const PAYLOAD = {
     }
 
 
-    // ----- render: flat "all apps" catalogue (only when showAllApps) -----
-    function renderApps() {
-      if (els.allAppsSection) {
-        els.allAppsSection.hidden = !state.showAllApps;
-      }
-      if (!state.showAllApps) {
-        els.apps.innerHTML = "";
-        return;
-      }
-      var html = "";
-      var search = state.search.trim().toLowerCase();
-      var grouped = {
-        catena_bundled: [],
-        catena_managed: [],
-        external_saas: [],
-      };
-      for (var i = 0; i < DATA.apps.length; i++) {
-        var a = DATA.apps[i];
-        if (state.filter !== "all" && a.type !== state.filter) continue;
-        if (search && a.label.toLowerCase().indexOf(search) === -1) continue;
-        if (!grouped[a.type]) continue;
-        grouped[a.type].push(a);
-      }
-      var order = ["catena_bundled", "catena_managed", "external_saas"];
-      for (var g = 0; g < order.length; g++) {
-        var typ = order[g];
-        if (grouped[typ].length === 0) continue;
-        html += '<div class="app-group"><h4>' + escapeHtml(typeLabel(typ)) + '</h4><ul class="app-list">';
-        for (var j = 0; j < grouped[typ].length; j++) {
-          html += renderAppRow(grouped[typ][j], "flat");
-        }
-        html += "</ul></div>";
-      }
-      els.apps.innerHTML = html;
-    }
-
     function pruneOrphanApps() {
-      // When showAllApps is off, the only way to see/check apps is
-      // through a ticked need. After a need is unchecked, drop any
-      // ticked app that no longer covers a ticked need -- otherwise
-      // the app stays invisible in state with no UI handle to remove
-      // it. When showAllApps is on, the user can manage apps directly
-      // in the flat catalogue, so leave selections alone.
-      if (state.showAllApps) return;
+      // After a need is unchecked, drop any ticked app whose covers
+      // no longer intersect any ticked need -- otherwise the app
+      // stays in state.apps with no visible handle to remove it
+      // (the nested rows only appear under ticked needs).
       var toRemove = [];
       state.apps.forEach(function (appId) {
         var app = appById(appId);
@@ -557,12 +501,6 @@ const PAYLOAD = {
         if (!stillCovers) toRemove.push(appId);
       });
       toRemove.forEach(function (id) { state.apps.delete(id); });
-    }
-    function typeLabel(typ) {
-      for (var i = 0; i < DATA.apps.length; i++) {
-        if (DATA.apps[i].type === typ) return DATA.apps[i].type_label;
-      }
-      return typ;
     }
 
     // ----- render: bill -----
@@ -741,7 +679,6 @@ const PAYLOAD = {
     // ----- render entry -----
     function renderAll() {
       renderNeeds();
-      renderApps();
       renderBill();
       writeUrlHash();
     }
@@ -755,6 +692,8 @@ const PAYLOAD = {
           state.needs.add(t.dataset.need);
         } else {
           state.needs.delete(t.dataset.need);
+          state.expandedNeeds.delete(t.dataset.need);
+          state.collapsedNeeds.delete(t.dataset.need);
           pruneOrphanApps();
         }
         renderAll();
@@ -765,14 +704,18 @@ const PAYLOAD = {
         renderAll();
       }
     });
-    els.apps.addEventListener("change", function (ev) {
-      // App checkbox in the optional "all apps" flat catalogue.
-      var t = ev.target;
-      if (t && t.dataset && t.dataset.app) {
-        if (t.checked) state.apps.add(t.dataset.app);
-        else state.apps.delete(t.dataset.app);
-        renderAll();
-      }
+    els.needs.addEventListener("click", function (ev) {
+      // Disclosure toggle. Walk up to the button so clicks on the
+      // inner arrow span still resolve.
+      var btn = ev.target && ev.target.closest
+        ? ev.target.closest("[data-need-disclosure]")
+        : null;
+      if (!btn) return;
+      var needId = btn.getAttribute("data-need-disclosure");
+      if (!needId || !state.needs.has(needId)) return;
+      ev.preventDefault();
+      toggleNeedDisclosure(needId, needStatus(needId));
+      renderNeeds();
     });
     els.employees.addEventListener("input", function () {
       state.employees = Math.max(1, parseInt(els.employees.value || "1", 10));
@@ -782,24 +725,6 @@ const PAYLOAD = {
       state.storage = Math.max(0, parseInt(els.storage.value || "0", 10));
       renderAll();
     });
-    els.search.addEventListener("input", function () {
-      state.search = els.search.value;
-      renderApps();
-    });
-    els.showAll.addEventListener("change", function () {
-      state.showAllApps = !!els.showAll.checked;
-      renderApps();
-    });
-    var filterBtns = document.querySelectorAll(".filter");
-    filterBtns.forEach(function (btn) {
-      btn.addEventListener("click", function () {
-        state.filter = btn.dataset.filter;
-        filterBtns.forEach(function (b) {
-          b.classList.toggle("active", b === btn);
-        });
-        renderApps();
-      });
-    });
     els.supportPack.addEventListener("change", function () {
       state.supportPack = els.supportPack.value;
       renderBill();
@@ -808,20 +733,14 @@ const PAYLOAD = {
     els.reset.addEventListener("click", function () {
       state.needs.clear();
       state.apps.clear();
+      state.expandedNeeds.clear();
+      state.collapsedNeeds.clear();
       state.employees = 3;
       state.storage = 25;
       state.supportPack = "";
-      state.filter = "all";
-      state.search = "";
-      state.showAllApps = false;
       els.employees.value = "3";
       els.storage.value = "25";
-      els.search.value = "";
       els.supportPack.value = "";
-      els.showAll.checked = false;
-      filterBtns.forEach(function (b) {
-        b.classList.toggle("active", b.dataset.filter === "all");
-      });
       renderAll();
     });
     els.copy.addEventListener("click", function () {
@@ -1025,10 +944,36 @@ const PAYLOAD = {
     display: flex; align-items: center; gap: var(--catena-space-2);
     cursor: pointer;
   }
-  /* Covered = green, gap = red, multi-primary overlap = yellow. */
+  /* Covered = green, gap = red, multi-primary overlap = blue. */
   .app-selector .need.covered { background: color-mix(in srgb, #16a34a 22%, transparent); border-left-color: #16a34a; }
   .app-selector .need.gap     { background: color-mix(in srgb, #dc2626 22%, transparent); border-left-color: #dc2626; }
-  .app-selector .need.overlap { background: color-mix(in srgb, #eab308 28%, transparent); border-left-color: #eab308; }
+  .app-selector .need.overlap { background: color-mix(in srgb, #2563eb 22%, transparent); border-left-color: #2563eb; }
+
+  /* Per-need disclosure (arrow on the right of each ticked need). */
+  .app-selector .need-row {
+    display: flex;
+    align-items: center;
+    gap: var(--catena-space-2);
+  }
+  .app-selector .need-row .need-label { flex: 1 1 auto; min-width: 0; }
+  .app-selector .need-disclosure {
+    flex: 0 0 auto;
+    width: 1.75rem;
+    height: 1.75rem;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    border: 1px solid var(--catena-surface-border);
+    background: var(--catena-surface-bg);
+    color: var(--catena-surface-fg-muted);
+    border-radius: var(--catena-radius-sm);
+    cursor: pointer;
+    font-size: var(--catena-fs-sm);
+    line-height: 1;
+  }
+  .app-selector .need-disclosure:hover { filter: brightness(0.96); }
+  .app-selector .need-disclosure[aria-expanded="true"] .arrow { color: var(--catena-surface-fg); }
   .app-selector .need .hint {
     margin-top: var(--catena-space-1);
     margin-left: 1.7rem;
@@ -1079,74 +1024,10 @@ const PAYLOAD = {
     word-break: break-word;
   }
 
-  .app-selector .all-apps-heading {
-    margin-top: var(--catena-space-8);
-  }
-  .app-selector .app-pill {
-    flex: 0 0 auto;
-    padding: 0 var(--catena-space-2);
-    border-radius: var(--catena-radius-pill, 999px);
-    font-size: var(--catena-fs-xs);
-    line-height: 1.6;
-    border: 1px solid var(--catena-surface-border);
-    color: var(--catena-surface-fg-muted);
-    background: var(--catena-surface-bg-muted);
-    white-space: nowrap;
-  }
-  .app-selector .app-pill-catena_bundled {
-    background: color-mix(in srgb, var(--catena-accent) 14%, transparent);
-    border-color: color-mix(in srgb, var(--catena-accent) 30%, transparent);
-    color: var(--catena-surface-fg);
-  }
-  .app-selector .app-pill-catena_managed {
-    background: color-mix(in srgb, var(--catena-accent) 10%, transparent);
-    border-color: color-mix(in srgb, var(--catena-accent) 25%, transparent);
-    color: var(--catena-surface-fg);
-  }
-  .app-selector .app-pill-external_saas,
-  .app-selector .app-pill-external_oss {
-    background: var(--catena-surface-bg-muted);
-    color: var(--catena-surface-fg-muted);
-  }
-
-  /* apps pane */
-  .app-selector .apps-controls {
-    display: flex; flex-direction: column; gap: var(--catena-space-3);
-    margin-bottom: var(--catena-space-4);
-  }
-  .app-selector .filters { display: flex; flex-wrap: wrap; gap: var(--catena-space-2); }
-  .app-selector .filter {
-    padding: var(--catena-space-1) var(--catena-space-3);
-    border: 1px solid var(--catena-surface-border);
-    border-radius: var(--catena-radius-pill, 999px);
-    background: var(--catena-surface-bg);
-    cursor: pointer;
-    font-size: var(--catena-fs-xs);
-    color: var(--catena-surface-fg);
-  }
-  .app-selector .filter.active {
-    background: var(--catena-accent);
-    color: var(--catena-on-accent, white);
-    border-color: var(--catena-accent);
-  }
-  .app-selector .show-all {
-    display: flex; align-items: center; gap: var(--catena-space-2);
-    margin: 0 0 var(--catena-space-4) 0;
-    padding: var(--catena-space-2) var(--catena-space-3);
-    font-size: var(--catena-fs-xs);
-    color: var(--catena-surface-fg-muted);
-    background: var(--catena-surface-bg-muted);
-    border-radius: var(--catena-radius-sm);
-    cursor: pointer;
-  }
-  .app-selector .app-group { margin-bottom: var(--catena-space-5); }
-  .app-selector .app-list {
-    list-style: none; padding: 0; margin: 0;
-    display: flex; flex-direction: column; gap: var(--catena-space-1);
-  }
+  /* App rows (rendered only nested under ticked needs). */
   .app-selector .app {
-    padding: var(--catena-space-2) var(--catena-space-3);
-    border-left: 4px solid transparent;
+    padding: var(--catena-space-1) var(--catena-space-2);
+    border-left: 3px solid transparent;
     border-radius: var(--catena-radius-sm);
   }
   .app-selector .app.selected {
@@ -1154,45 +1035,12 @@ const PAYLOAD = {
     border-left-color: var(--catena-accent);
   }
   .app-selector .app label {
-    display: flex; align-items: center; gap: var(--catena-space-3);
+    display: flex; align-items: center; gap: var(--catena-space-2);
     cursor: pointer;
-    width: 100%;
   }
   .app-selector .app-label {
     flex: 1 1 auto;
     min-width: 0;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-  }
-  .app-selector .app-price {
-    flex: 0 0 auto;
-    min-width: 5.5rem;
-    margin-left: auto;
-    text-align: right;
-    font-variant-numeric: tabular-nums;
-    font-size: var(--catena-fs-sm);
-    color: var(--catena-surface-fg-muted);
-    white-space: nowrap;
-  }
-  .app-selector .apps-empty {
-    margin: 0;
-    padding: var(--catena-space-6);
-    text-align: center;
-    font-size: var(--catena-fs-sm);
-  }
-  .app-selector .app-warn {
-    margin-top: var(--catena-space-1);
-    margin-left: 1.7rem;
-    font-size: var(--catena-fs-xs);
-    color: color-mix(in srgb, #d97706 90%, var(--catena-surface-fg));
-    line-height: 1.4;
-  }
-  .app-selector .price-url {
-    display: block;
-    margin-left: 1.7rem;
-    font-size: var(--catena-fs-xs);
-    color: var(--catena-surface-fg-muted);
   }
 
   /* bill pane */

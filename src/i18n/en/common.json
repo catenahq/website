@@ -934,7 +934,6 @@
     },
     "headings": {
       "needs": "Needs",
-      "apps": "Apps",
       "bill": "Monthly bill",
       "summary": "Selection summary"
     },
@@ -991,25 +990,11 @@
       "identity_sso": "Single sign-on (SSO)",
       "backups": "Encrypted backups"
     },
-    "app_types": {
-      "catena_bundled": "Included",
-      "catena_managed": "Managed",
-      "external_saas": "External SaaS",
-      "external_oss": "External (self-host)"
-    },
     "app_warnings": {
       "erpnext_not_recommended": "Not recommended for new clients. Compliance and payment gaps in the Canadian SMB use case; kept in catalog for specialized needs only."
     },
-    "filters": {
-      "all": "All",
-      "bundled": "Included",
-      "managed": "Managed",
-      "saas": "External SaaS",
-      "oss": "External OSS"
-    },
-    "search_placeholder": "Search apps",
-    "show_all_apps_label": "Show all apps (ignore selected needs)",
-    "empty_apps_hint": "Tick a need on the left, or check \"show all apps\" to browse the full list.",
+    "disclosure_show_apps": "Show covering apps",
+    "disclosure_hide_apps": "Hide covering apps",
     "status": {
       "covered": "Covered",
       "gap": "No selected app covers this need.",
