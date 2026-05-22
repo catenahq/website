@@ -11,25 +11,31 @@ github.com/catenahq/docs and ships as its own deployment.
 - `npm run check` -- typecheck (Astro check).
 - `npm run test:i18n` -- bilingual parity gate (EN + FR key parity).
 
-## Brand assets
+## Brand + pricing + legal contracts (sibling read)
 
-Brand tokens come from `@catenahq/contracts/brand`, vendored locally
-under `vendor/catenahq-contracts-X.Y.Z.tgz`. Do not edit the
-vendored copy by hand.
+`@catenahq/contracts` is consumed via sibling-directory read, NOT a
+vendored tarball. `package.json` declares it as
+`"@catenahq/contracts": "file:../contracts"`, so npm symlinks
+`node_modules/@catenahq/contracts` to the sibling `catena/contracts/`
+checkout. Edits in `contracts/` are visible immediately on the next
+`npm run dev` / `npm run build`.
 
-To bump the vendored version: run the "Bump @catenahq/contracts to
-latest" workflow (Actions tab -> Run workflow), or wait for the
-daily cron. The companion `contracts-freshness` job in `ci.yml`
-fails the build whenever the vendored version drifts from the
-latest tag on `catenahq/contracts`, so a stale vendored copy blocks
-every merge until a bump PR lands.
+Local dev assumes the standard `catena/website/` + `catena/contracts/`
+sibling layout (the workspace layout). CI mirrors this: the website
+job checks out the website repo into `website/` and catenahq/contracts
+into `contracts/` under `$GITHUB_WORKSPACE`, then runs npm install +
+build with `working-directory: ./website`.
 
 Required repository secret:
 
   CONTRACTS_READ_TOKEN  fine-grained GitHub PAT with
                         `Contents: read` on catenahq/contracts only.
-                        Used by both contracts-update.yml and the
-                        contracts-freshness gate.
+                        Used by the sibling-checkout step in ci.yml.
+
+No version pinning, no freshness gate, no bump workflow. To roll out
+a contracts change: edit `contracts/`, push contracts, push website
+(or whichever consumer needs the new value). CI re-clones contracts
+fresh on every run.
 
 ## Content rules
 
