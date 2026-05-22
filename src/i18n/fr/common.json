@@ -37,7 +37,7 @@
     "fr": "Français"
   },
   "banner": {
-    "message": "Nous accueillons nos premiers clients. Accompagnement personnel, ligne directe avec l'opérateur.",
+    "message": "Nous accueillons nos premiers clients. Accompagnement personnel, ligne directe.",
     "cta_label": "Réserver un appel découverte",
     "cta_href": "/contact"
   },
@@ -55,12 +55,19 @@
   },
   "home": {
     "hero": {
-      "headline": "Catena. Services TI gérés pour PME québécoises.",
-      "subheadline": "MSP indépendant. Nous gérons vos courriels, fichiers, CRM et sauvegardes sur des logiciels libres que vous possédez -- conforme Loi 25 et LPRPDE par conception."
+      "headline": "Vos logiciels. Vos données. Notre expertise.",
+      "subheadline": "Courriels, fichiers, discussions, CRM, agendas, facturation -- une suite libre gérée, sur une infrastructure à votre nom. Nous choisissons des outils qui vieillissent bien, les opérons avec de vrais exercices de sauvegarde et une discipline de versions, et vous en remettons les clés à tout moment."
+    },
+    "bio": {
+      "body": "Mené par Marc-Antoine Lalonde, basé au Québec.",
+      "link_label": "En savoir plus sur ma façon de travailler"
     },
     "dogfood": {
       "title": "Nous sommes notre premier client.",
       "body": "Tout ce que vous voyez -- ce site, la documentation, le portail client, la facturation, nos tableaux de bord d'incidents -- tourne sur la même Suite Catena que nous vendons. Chaque mise à jour que vous installez passe d'abord par notre propre déploiement."
+    },
+    "upstream": {
+      "label": "Bâti sur des logiciels libres que vous connaissez peut-être déjà"
     },
     "sovereignty": {
       "title": "La souveraineté, simplifiée",
@@ -75,7 +82,7 @@
       "exit_body": "Aucun verrou. Quittez avec vos données à tout moment en un seul clic."
     },
     "onestop": {
-      "title": "La Suite Catena. Un opérateur. Une facture.",
+      "title": "La Suite Catena. Un contact. Une facture.",
       "intro": "Toutes les capacités dont votre équipe a besoin pour faire tourner l'entreprise, intégrées et opérées de bout en bout.",
       "capabilities_title": "Capacités disponibles",
       "buckets": {
@@ -112,9 +119,8 @@
           }
         }
       },
-      "saas_replacement": "Remplace environ 40 $ à 120 $ par employé par mois en abonnements SaaS empilés (Microsoft 365, Slack, HubSpot, Calendly, DocuSign, Asana, et le reste). Voir la page comparaison pour le détail ligne par ligne.",
       "email_note": "Le courriel est intégré, pas auto-hébergé -- choisissez parmi 5 fournisseurs complets et axés sur la confidentialité selon vos besoins. Nous configurons le DNS, la délivrabilité et le SSO.",
-      "stack_link": "Vous intégrez la Suite Catena dans votre service TI? Voir la surface technique."
+      "stack_link": "Voir la surface technique."
     }
   },
   "features": {
@@ -132,7 +138,7 @@
       "awesome_sysadmin": "awesome-sysadmin"
     },
     "extra_apps_footnote": "Toute application hors de notre liste éprouvée est une demande de modèle personnalisé -- parlez-nous-en.",
-    "technical_link_title": "Vous évaluez la suite pour votre service TI ?",
+    "technical_link_title": "Envie d'aller plus loin ?",
     "technical_link_body": "La surface technique (Ansible, Tailscale, Cloudflare Tunnel, Keycloak, SOPS, Restic, Dokploy, supervision) vit sur sa propre page pour garder la vue applications-au-quotidien lisible.",
     "technical_link_label": "Voir la surface technique",
     "technical_page_title": "Surface technique",
@@ -236,12 +242,12 @@
     "capabilities": {
       "communications": {
         "title": "Communications intégrées",
-        "intro": "Messagerie interne d'équipe, visioconférence, boîte de support client et appels téléphoniques classiques. Aucun outil unique ne couvre tout ; le guide en lien parcourt quelle combinaison convient à quelle situation.",
+        "intro": "Messagerie interne d'équipe, visioconférence, boîte de support client et appels téléphoniques classiques. Joue le rôle que Slack, Microsoft Teams ou Zoom jouent ailleurs. Aucun outil unique ne couvre tout ; le guide en lien parcourt quelle combinaison convient à quelle situation.",
         "cta_label": "Choisir parmi les options"
       },
       "files_and_workspace": {
         "title": "Fichiers et espace partagé",
-        "intro": "Le disque partagé de votre équipe. Synchronisation bureau et mobile, historique de versions, dossiers partagés, partage par lien avec expiration. Les fichiers restent sur votre serveur, pas chez un tiers. Nextcloud regroupe aussi des outils intégrés de base pour la discussion, le wiki, l'agenda, les contacts, les notes et les tâches -- assez pour les petites équipes avant d'ajouter les applications dédiées de la suite.",
+        "intro": "Le disque partagé de votre équipe. Équivalent libre de SharePoint, OneDrive ou Dropbox. Synchronisation bureau et mobile, historique de versions, dossiers partagés, partage par lien avec expiration. Les fichiers restent sur votre serveur, pas chez un tiers. Nextcloud regroupe aussi des outils intégrés de base pour la discussion, le wiki, l'agenda, les contacts, les notes et les tâches -- assez pour les petites équipes avant d'ajouter les applications dédiées de la suite.",
         "cta_label": "Comparer les applications Nextcloud à la suite"
       },
       "collaborative_editing": {
@@ -250,7 +256,7 @@
       },
       "team_documentation": {
         "title": "Documentation d'équipe",
-        "intro": "Un wiki pour les procédures, politiques et fiches pratiques de votre équipe. Mieux que des dossiers partagés éparpillés et des Google Docs introuvables."
+        "intro": "Un wiki pour les procédures, politiques et fiches pratiques de votre équipe. Alternative libre à Notion ou Confluence. Mieux que des dossiers partagés éparpillés et des Google Docs introuvables."
       },
       "document_signing": {
         "title": "Signature électronique avec piste d'audit",
@@ -258,11 +264,11 @@
       },
       "crm": {
         "title": "CRM et suivi client",
-        "intro": "Contacts, opportunités, suivis, calendriers par membre, coordination d'équipe. Léger pour un usage quotidien, assez profond pour évoluer avec vous. Authentification unique avec le reste de la suite."
+        "intro": "Contacts, opportunités, suivis, calendriers par membre, coordination d'équipe. Alternative libre à HubSpot, Salesforce ou Pipedrive. Léger pour un usage quotidien, assez profond pour évoluer avec vous. Authentification unique avec le reste de la suite."
       },
       "booking": {
         "title": "Réservation et agenda",
-        "intro": "Page de réservation client pour un ou plusieurs prestataires. Calendriers du personnel synchronisés avec Nextcloud. Paiements Stripe pour cliniques, salons, cours. Différentes équipes ont différents besoins en réservation -- l'outil de sélection en lien vous oriente vers le bon.",
+        "intro": "Page de réservation client pour un ou plusieurs prestataires. Alternative libre à Calendly ou Acuity. Calendriers du personnel synchronisés avec Nextcloud. Paiements Stripe pour cliniques, salons, cours. Différentes équipes ont différents besoins en réservation -- l'outil de sélection en lien vous oriente vers le bon.",
         "cta_label": "Trouver le bon agenda"
       },
       "invoicing": {
@@ -271,7 +277,7 @@
       },
       "workflow_automation": {
         "title": "Automatisation des processus",
-        "intro": "Reliez les outils. Quand un formulaire arrive, créez un contact EspoCRM, envoyez un courriel de confirmation, planifiez un suivi -- sans copier-coller."
+        "intro": "Reliez les outils. Alternative libre à Zapier ou Make. Quand un formulaire arrive, créez un contact EspoCRM, envoyez un courriel de confirmation, planifiez un suivi -- sans copier-coller."
       },
       "project_management": {
         "title": "Planification et suivi de projets",
@@ -299,11 +305,11 @@
     "buckets": {
       "secure_deployment": {
         "title": "Déploiement sécurisé",
-        "intro": "Chaque serveur reçoit la même base durcie. Ansible exécute l'automatisation de déploiement ; SOPS chiffre les secrets dans Git avec age, déchiffrés uniquement au déploiement. Aucun secret n'atterrit en clair sur disque hors du gestionnaire de mots de passe matériellement protégé de l'opérateur. Ajoutez un destinataire ; rotation propre."
+        "intro": "Chaque serveur reçoit la même base durcie. Ansible exécute l'automatisation de déploiement ; SOPS chiffre les secrets dans Git avec age, déchiffrés uniquement au déploiement. Aucun secret n'atterrit en clair sur disque hors de notre gestionnaire de mots de passe matériellement protégé. Ajoutez un destinataire ; rotation propre."
       },
       "secure_access": {
         "title": "Accès sécurisé",
-        "intro": "Trois couches de contrôle d'accès. Cloudflare Tunnel termine TLS à la périphérie : l'hôte n'expose aucun port (80/443 restent fermés, aucune configuration de routeur requise). Tailscale porte le chemin admin de l'opérateur sur un maillage privé, et le SSH public ferme après le bootstrap. Keycloak gère l'identité par application (utilisateurs, groupes, politique de mot de passe, MFA) : une seule connexion pour toutes les applications de la suite ; oauth2-proxy précède les applications non-OIDC via Traefik forward-auth."
+        "intro": "Trois couches de contrôle d'accès. Cloudflare Tunnel termine TLS à la périphérie : l'hôte n'expose aucun port (80/443 restent fermés, aucune configuration de routeur requise). Tailscale porte notre chemin admin sur un maillage privé, et le SSH public ferme après le bootstrap. Keycloak gère l'identité par application (utilisateurs, groupes, politique de mot de passe, MFA) : une seule connexion pour toutes les applications de la suite ; oauth2-proxy précède les applications non-OIDC via Traefik forward-auth."
       },
       "backup_recovery": {
         "title": "Sauvegarde et restauration",
@@ -315,17 +321,94 @@
       },
       "observability": {
         "title": "Supervision",
-        "intro": "Deux points de supervision séparés. Gatus sonde les points HTTP depuis l'intérieur et l'extérieur du réseau. Un Healthchecks auto-hébergé effectue la supervision « homme mort » sur chaque tâche planifiée. Chacun peut tomber sans entraîner l'autre dans l'ombre."
+        "intro": "Deux points de supervision séparés. Gatus sonde les points HTTP depuis l'intérieur et l'extérieur du réseau. Un Healthchecks auto-hébergé effectue la supervision \"homme mort\" sur chaque tâche planifiée. Chacun peut tomber sans entraîner l'autre dans l'ombre."
       }
     },
     "architecture_link": "Comment la suite s'assemble"
   },
   "pricing": {
     "title": "Tarifs",
-    "intro": "Tarification transparente, axée sur la souveraineté. Vous payez par serveur, pas par utilisateur. Aucun palier d'usage, aucuns frais surprise, aucuns frais de sortie. Tous les prix en dollars canadiens (CAD).",
-    "bundle_note": "Tous les paliers incluent Nextcloud et OnlyOffice (ou Collabora). Essayez les outils intégrés de base de Nextcloud -- clavardage, wiki, calendrier, contacts, notes, tâches -- avant d'ajouter des extras ; certains clients les trouvent suffisants.",
-    "extras_note": "Ajoutez n'importe quelle application du catalogue éprouvé pour 50 $ / mois par application. Modèle personnalisé (hors catalogue) : 150 $ frais unique. Les modèles éprouvés s'installent sans frais d'installation.",
-    "alacarte_support_note": "Support à-la-carte disponible -- voir la grille tarifaire selon l'heure d'intervention ci-dessous.",
+    "intro": "Tarification transparente, axée sur la souveraineté. Vous payez par serveur, pas par utilisateur. Trois lignes : le serveur, les applications que vous y faites tourner, et le support que vous utilisez vraiment. Ajustez l'une sans renégocier de palier. Tous les prix en dollars canadiens (CAD).",
+    "build_title": "Composez votre abonnement",
+    "model": {
+      "server": {
+        "name": "Serveur",
+        "price": "400 $",
+        "price_unit": "/ mois",
+        "tagline": "La base durcie. Un serveur, un forfait mensuel, équipe illimitée.",
+        "features": [
+          "Correctifs OS, pare-feu, gestion des secrets",
+          "Cloudflare Tunnel + Tailscale + base Keycloak (SSO)",
+          "Sauvegardes chiffrées chaque nuit vers votre S3, exercices trimestriels",
+          "Supervision Gatus + Healthchecks auto-hébergé",
+          "Nextcloud + OnlyOffice (ou Collabora) installés et gérés",
+          "SLA de réponse de 4 heures ouvrables, aucune heure incluse"
+        ]
+      },
+      "apps": {
+        "name": "Applications",
+        "price": "100 $",
+        "price_unit": "/ mois par application",
+        "tagline": "Toute application au-delà de Nextcloud et OnlyOffice.",
+        "features": [
+          "Installation et intégration SSO Keycloak",
+          "Mises à jour et discipline de versions",
+          "Surveillance CVE",
+          "Tests de mise à niveau d'abord sur notre propre déploiement",
+          "Catalogue éprouvé : installation sans frais supplémentaires",
+          "Modèles personnalisés (hors catalogue) : 150 $ frais unique"
+        ]
+      },
+      "support": {
+        "name": "Support",
+        "price": "À partir de 600 $",
+        "price_unit": "/ mois ou à-la-carte",
+        "tagline": "Choisissez un forfait ou payez à l'usage.",
+        "features": [
+          "5 heures / 600 $ -- 120 $/h effectif",
+          "10 heures / 1 100 $ -- 110 $/h effectif",
+          "20 heures / 2 000 $ -- 100 $/h effectif",
+          "Sans forfait : à-la-carte à 150 $/h en journée",
+          "Non reportables ; dépassement facturé au tarif jour"
+        ]
+      }
+    },
+    "hosting_note": "L'hébergement et les sauvegardes sont en refacturation directe. Le VPS OVH et le seau S3 eazybackup arrivent sur votre facture, à votre nom, au prix affiché du fournisseur. Catena ne marge pas sur l'infrastructure.",
+    "examples_title": "Configurations types",
+    "examples_intro": "Quatre compositions courantes pour ancrer vos attentes. Combinez à votre guise selon votre équipe.",
+    "examples": {
+      "light": {
+        "name": "Léger",
+        "total": "~650 $",
+        "total_unit": "/ mois",
+        "tagline": "5 à 15 employés, 2 à 3 applications, support occasionnel.",
+        "components": "Serveur + 1 application supplémentaire + support à-la-carte (~1 heure / mois)"
+      },
+      "standard": {
+        "name": "Standard",
+        "total": "1 300 $",
+        "total_unit": "/ mois",
+        "tagline": "15 à 25 employés, 4 à 5 applications, support mensuel prévisible.",
+        "components": "Serveur + 3 applications supplémentaires + forfait support de 5 heures"
+      },
+      "heavy": {
+        "name": "Intensif",
+        "total": "2 100 $",
+        "total_unit": "/ mois",
+        "tagline": "25 à 50 employés, 6 à 10 applications, cadence opérationnelle régulière.",
+        "components": "Serveur + 6 applications supplémentaires + forfait support de 10 heures"
+      },
+      "cabinet": {
+        "name": "Cabinet",
+        "total": "2 900 $",
+        "total_unit": "/ mois",
+        "tagline": "Services professionnels avec intégration approfondie et haute réactivité.",
+        "components": "Serveur + 5 applications supplémentaires + forfait support de 20 heures"
+      }
+    },
+    "commitment_note": "L'abonnement géré comporte un engagement minimum de 6 mois. Au-delà, vous pouvez résilier à tout moment sans frais de sortie. Nous vous remettons la suite et votre export S3 selon la lettre de mandat.",
+    "install_title": "Installation unique",
+    "install_intro": "Comment vous démarrez sur le modèle. Frais unique distinct de l'abonnement mensuel.",
     "tiers": {
       "base": {
         "name": "Installation initiale",
@@ -349,46 +432,9 @@
           "Appel de 60 minutes pour configurer Cloudflare, Tailscale, OVH, eazybackup, SMTP",
           "Aucun support inclus."
         ]
-      },
-      "small": {
-        "name": "Petite entreprise",
-        "price": "500 $",
-        "price_unit": "/ mois",
-        "tagline": "Jusqu'à 10 employés.",
-        "features": [
-          "Nextcloud + OnlyOffice (ou Collabora) prêts à l'emploi",
-          "2 applications supplémentaires au choix",
-          "Installation incluse ; mises à jour gérées et application des correctifs CVE",
-          "2 heures de support non reportables par mois",
-          "Onboarding courriel inclus",
-          "Engagement minimum de 6 mois"
-        ]
-      },
-      "medium": {
-        "name": "Moyenne entreprise",
-        "price": "950 $",
-        "price_unit": "/ mois",
-        "tagline": "Jusqu'à 25 employés.",
-        "features": [
-          "Tout ce qui est inclus dans Petite entreprise",
-          "+2 applications (total 4) au choix",
-          "+3 heures (total 5) de support non reportables par mois",
-          "Engagement minimum de 6 mois"
-        ]
-      },
-      "large": {
-        "name": "Grande entreprise",
-        "price": "1 600 $",
-        "price_unit": "/ mois",
-        "tagline": "Jusqu'à 50 employés.",
-        "features": [
-          "Tout ce qui est inclus dans Moyenne entreprise",
-          "+4 (total 10) applications au choix",
-          "+5 (total 10) heures de support non reportables par mois",
-          "Engagement minimum de 6 mois"
-        ]
       }
     },
+    "alacarte_support_note": "Les heures hors forfait de support sont facturées selon la grille tarifaire ci-dessous, selon l'heure d'intervention.",
     "sovereignty": {
       "no_per_seat_title": "Aucun frais par utilisateur",
       "no_per_seat_body": "Un seul tarif mensuel par serveur. Ajoutez autant de membres d'équipe que vous voulez, sans frais additionnels.",
@@ -404,13 +450,13 @@
       "intro": "Le forfait mensuel couvre la Suite Catena que nous opérons pour vous. Pour le matériel sur place ou les outils que nous n'hébergeons pas, vous avez besoin d'un technicien local.",
       "included_title": "Inclus dans le forfait",
       "included": [
-        "Support pour toutes les apps de votre Suite Catena (Nextcloud, EspoCRM, Cal.com, etc.)",
+        "Support pour toutes les apps de votre Suite Catena (Nextcloud, EspoCRM, Easy!Appointments, etc.)",
         "Mises à jour de sécurité et de versions",
         "Sauvegardes et restauration",
         "Surveillance et alertes",
         "Ajout / retrait d'utilisateurs",
         "Petites modifications au site web (< 1h / mois)",
-        "Réponse aux incidents selon le SLA du palier"
+        "Réponse aux incidents selon le SLA de la lettre de mandat"
       ],
       "not_included_title": "Non inclus",
       "not_included": [
@@ -458,7 +504,7 @@
         "bilingual_price": "+100 $ / page",
         "extra_page_label": "Page additionnelle (au-delà des 5)",
         "extra_page_price": "+500 $ / page",
-        "embeds_label": "Intégrations standards (Cal.com, formulaire EspoCRM, etc.)",
+        "embeds_label": "Intégrations standards (Easy!Appointments, formulaire EspoCRM, etc.)",
         "embeds_price": "inclus",
         "examples_title": "Exemples",
         "examples": [
@@ -491,7 +537,7 @@
       "pricing": {
         "label": "Modèle tarifaire",
         "catena": {
-          "verdict": "fixe",
+          "verdict": "par serveur",
           "tone": "good"
         },
         "saas": {
@@ -671,7 +717,7 @@
     "intro": "Les questions que les prospects posent le plus souvent avant de prendre un appel découverte. Réponses courtes ; les versions longues vivent sur À propos / Tarifs / Comparaison.",
     "q1": {
       "question": "Catena tourne-t-elle sur la Suite Catena ?",
-      "answer": "Même suite. Même opérateur. En production depuis le lancement. catena.run, la documentation à /docs, le portail client, les vérifications externes des services client, le traitement des paiements et la facturation tournent tous sur la Suite Catena que nous vendons. Toute la surface de revenu est sur le produit. Manger sa propre nourriture est notre garantie."
+      "answer": "Même suite. Mêmes mains. En production depuis le lancement. catena.run, la documentation à /docs, le portail client, les vérifications externes des services client, le traitement des paiements et la facturation tournent tous sur la Suite Catena que nous vendons. Toute la surface de revenu est sur le produit. Manger sa propre nourriture est notre garantie."
     },
     "q2": {
       "question": "Que puis-je faire tourner d'autre sur la suite ?",
@@ -679,11 +725,11 @@
     },
     "q3": {
       "question": "Que se passe-t-il si vous êtes frappé par un autobus ?",
-      "answer": "Toute la suite est libre et opérateur-portable. Un autre opérateur compétent peut la reprendre avec la même automatisation."
+      "answer": "Toute la suite est libre et portable. Un autre partenaire TI compétent peut la reprendre avec la même automatisation."
     },
     "q4": {
       "question": "Puis-je partir avec mes données ?",
-      "answer": "Oui, à tout moment, avec tout intact. Votre seau S3 de sauvegarde contient un export complet chiffré ; le retrait est piloté par l'opérateur et complet. Aucuns frais de sortie, aucun collage propriétaire à défaire."
+      "answer": "Oui, à tout moment, avec tout intact. Votre seau S3 de sauvegarde contient un export complet chiffré ; le retrait est entièrement géré de notre côté et complet. Aucuns frais de sortie, aucun collage propriétaire à défaire."
     },
     "q5": {
       "question": "Dois-je être technique pour utiliser ceci ?",
@@ -695,7 +741,7 @@
     },
     "q7": {
       "question": "Comment gagnez-vous votre vie ?",
-      "answer": "Un forfait mensuel fixe par serveur, sans frais par utilisateur. Voir la <a href='/pricing'>page Tarifs</a>."
+      "answer": "Abonnement mensuel par serveur, plus par application et un forfait de support optionnel. Aucun frais par utilisateur, jamais. L'hébergement et les sauvegardes sont en refacturation directe sur vos comptes. Voir la <a href='/pricing'>page Tarifs</a>."
     },
     "q8": {
       "question": "Hébergez-vous le courriel ?",
@@ -707,7 +753,7 @@
     },
     "q10": {
       "question": "Et si je dépasse 50 employés ou 10 services ?",
-      "answer": "Parlez-nous-en. La suite elle-même se met à l'échelle (Nextcloud tourne confortablement pour une organisation de 200 employés) ; les paliers de forfait au-dessus de Grande entreprise sont sur mesure."
+      "answer": "Parlez-nous-en. La suite elle-même se met à l'échelle (Nextcloud tourne confortablement pour une organisation de 200 employés). Au-delà des configurations types de la page Tarifs, nous établissons un devis sur mesure selon votre empreinte réelle d'applications et de support."
     },
     "q11": {
       "question": "Puis-je l'héberger sur mon propre matériel ?",
@@ -719,7 +765,7 @@
     },
     "q13": {
       "question": "Quelle est la différence entre Catena et la Suite Catena ?",
-      "answer": "Catena est l'entreprise (le MSP). La Suite Catena est le logiciel que Catena opère pour vous : Nextcloud, EspoCRM, Cal.com, Rocket.Chat, Keycloak, et les outils Ansible / sauvegardes / supervision qui font tourner tout ça. Votre facture vient de Catena ; votre courriel et vos fichiers vivent sur la Suite Catena."
+      "answer": "Catena est l'entreprise (le MSP). La Suite Catena est le logiciel que Catena opère pour vous : Nextcloud, EspoCRM, Easy!Appointments, Rocket.Chat, Keycloak, et les outils Ansible / sauvegardes / supervision qui font tourner tout ça. Votre facture vient de Catena ; votre courriel et vos fichiers vivent sur la Suite Catena."
     },
     "q14": {
       "question": "Vous êtes vraiment un MSP ? En quoi êtes-vous différent de mon MSP actuel ?",
@@ -732,7 +778,21 @@
   },
   "about": {
     "title": "À propos",
-    "intro": "Catena est dirigée par un seul opérateur, Marc-Antoine Lalonde. Voici ce que ça veut dire concrètement.",
+    "intro": "Catena est dirigée par Marc-Antoine Lalonde. Voici ce que ça veut dire concrètement.",
+    "facts_title": "Mes engagements",
+    "facts": {
+      "response_label": "Temps de réponse",
+      "response_value": "4 heures ouvrables",
+      "response_note": "niveau standard, urgences disponibles",
+      "cadence_label": "Cadence",
+      "cadence_value": "Revue trimestrielle",
+      "cadence_note": "plus résumé mensuel par courriel",
+      "continuity_label": "Continuité",
+      "continuity_value": "Transférable",
+      "continuity_note": "libre, portable, aucun verrou"
+    },
+    "bus_factor_note": "Inquiet d'une entreprise à une seule personne ? Toute la suite est libre et portable -- un autre partenaire TI compétent peut reprendre votre suite avec la même automatisation.",
+    "bus_factor_link_label": "Voir la FAQ sur la continuité",
     "story_title": "Bref parcours",
     "story_body": "Treize ans de leadership technique en logiciel et en infrastructure. Cinq ans en solo, à bâtir et opérer les suites de mes propres entreprises. Catena est ce que je fais de mieux et que j'aime le plus: choisir les bons outils, connaître leurs modes de défaillance, et les opérer de bout en bout sur la Suite Catena. Basé au Québec; livraison bilingue.",
     "bring_title": "Ce que j'apporte",
@@ -748,7 +808,7 @@
     "work_cadence_title": "Cadence",
     "work_cadence_body": "Appel de revue trimestrielle. Courriel mensuel résumant ce qui a été mis à jour, restauré, et validé sur votre suite. Les exercices gérés de sauvegarde-restauration et leur rapport arrivent dans votre boîte.",
     "work_continuity_title": "En cas d'imprévu",
-    "work_continuity_body": "Rien dans votre suite n'est fermé ou propriétaire à moi. Toute la pile est libre et portable d'un opérateur à l'autre ; un autre opérateur compétent peut reprendre votre suite avec la même automatisation.",
+    "work_continuity_body": "Rien dans votre suite n'est fermé ou propriétaire à moi. Toute la suite est libre et portable ; un autre partenaire TI compétent peut reprendre votre suite avec la même automatisation.",
     "portfolio_link_label": "Parcours et portfolio",
     "portfolio_link_url": "https://ma-lalonde.dev"
   },
@@ -756,7 +816,7 @@
     "title": "Politique de confidentialité",
     "intro": "Catena ne partage, ne vend, ne loue pas vos données et n'entraîne aucune IA dessus. Toute la raison d'être de la suite est qu'elle vous appartient.",
     "collect_title": "Ce que nous collectons",
-    "collect_body": "Informations de facturation (via Stripe -- les numéros de carte ne touchent jamais nos serveurs). Informations de compte du portail (courriel, nom, entreprise). Les identifiants que vous saisissez pour déployer votre suite sont transmis en vol au runner de l'opérateur et ne sont pas conservés dans notre base de données. Journaux côté serveur des actions de l'opérateur pour le support et l'audit.",
+    "collect_body": "Informations de facturation (via Stripe -- les numéros de carte ne touchent jamais nos serveurs). Informations de compte du portail (courriel, nom, entreprise). Les identifiants que vous saisissez pour déployer votre suite sont transmis en vol à notre runner de déploiement et ne sont pas conservés dans notre base de données. Journaux côté serveur de nos actions pour le support et l'audit.",
     "dont_title": "Ce que nous ne faisons pas",
     "dont_body": "Nous ne vendons pas, ne louons pas, ne partageons pas vos données. Nous n'entraînons pas de modèles d'IA dessus. Nous ne les analysons pas à des fins publicitaires. Nous n'utilisons pas de traceurs tiers sur le site marketing ni sur le portail.",
     "where_title": "Où vivent les données",
@@ -772,14 +832,14 @@
   },
   "terms": {
     "title": "Conditions d'utilisation",
-    "intro": "Ces conditions encadrent la relation entre Catena (l'opérateur) et vous (le client). Elles sont volontairement concises -- la lettre de mandat signée à l'inscription est le contrat de référence ; cette page en résume les engagements principaux.",
+    "intro": "Ces conditions encadrent la relation entre Catena (le prestataire de services) et vous (le client). Elles sont volontairement concises -- la lettre de mandat signée à l'inscription est le contrat de référence ; cette page en résume les engagements principaux.",
     "review_notice": "Cette page est un brouillon en attente de révision juridique. Parlez-nous directement pour les conditions contractuelles dans votre lettre de mandat.",
     "scope_title": "Portée du service",
-    "scope_body": "Le palier tarifaire que vous avez acheté définit ce qui est inclus. Voir la <a href='/pricing'>page Tarifs</a> pour l'échelle publique. Les changements de portée (ajout ou retrait de services, changement de palier d'employés) sont convenus par écrit.",
+    "scope_body": "Les composantes de votre abonnement -- serveur, applications et forfait support -- définissent ce qui est inclus. Voir la <a href='/pricing'>page Tarifs</a> pour le modèle public. Les changements de portée (ajout ou retrait d'applications, changement de forfait support) sont convenus par écrit.",
     "billing_title": "Tarification et facturation",
-    "billing_body": "Base et Accompagnement sont des frais uniques. Petite / Moyenne / Grande entreprise comportent un engagement minimum de 6 mois, facturés mensuellement. Le support À-la-carte est facturé au tarif publié par tranches de 30 minutes. Traitement des cartes via Stripe.",
+    "billing_body": "Les installations Base et Accompagnement sont des frais uniques. L'abonnement géré (serveur + applications + forfait support) comporte un engagement minimum de 6 mois, facturé mensuellement. Le support à-la-carte est facturé au tarif publié par tranches de 15 minutes. Traitement des cartes via Stripe.",
     "ownership_title": "Propriété des données",
-    "ownership_body": "Toutes les données client, l'infrastructure et les identifiants appartiennent au client. Notre rôle est uniquement opérateur. Vous pouvez exporter et migrer à tout moment ; la lettre de mandat documente le processus de remise.",
+    "ownership_body": "Toutes les données client, l'infrastructure et les identifiants appartiennent au client. Notre rôle est uniquement celui de prestataire de services. Vous pouvez exporter et migrer à tout moment ; la lettre de mandat documente le processus de remise.",
     "liability_title": "Limitation de responsabilité",
     "liability_body": "La responsabilité est plafonnée à un montant proportionnel au plus récent forfait mensuel ; les limites contraignantes figurent dans votre lettre de mandat.",
     "sla_title": "Niveaux de service",
@@ -787,7 +847,7 @@
     "aup_title": "Usage acceptable",
     "aup_body": "Aucun contenu illégal, aucun pourriel (envois en masse non sollicités), aucune distribution de logiciel malveillant, aucune revente de la suite en mode service à des tiers sans accord préalable. Posture standard pour les services Internet.",
     "termination_title": "Résiliation",
-    "termination_body": "L'une ou l'autre partie peut mettre fin selon la lettre de mandat. À la résiliation, l'opérateur effectue la remise de la suite et de l'export S3 du client ; les données conservées sur les systèmes de l'opérateur sont purgées dans les 30 jours.",
+    "termination_body": "L'une ou l'autre partie peut mettre fin selon la lettre de mandat. À la résiliation, nous effectuons la remise de la suite et de l'export S3 du client ; les données conservées sur les systèmes de Catena sont purgées dans les 30 jours.",
     "perservice_title": "Conditions par service",
     "perservice_body": "Chaque application en amont dans la suite porte sa propre licence et politique d'usage acceptable (Nextcloud GPL, Rocket.Chat MIT, OnlyOffice AGPL, etc.). Le lien Page du projet sur /features pointe vers les conditions officielles de chaque amont.",
     "law_title": "Loi applicable",
@@ -795,7 +855,7 @@
   },
   "portal": {
     "signin_title": "Portail Catena",
-    "signin_body": "Connectez-vous avec le compte Keycloak (SSO) que votre opérateur a créé pour vous. Nouveau ? Demandez une invitation à votre opérateur.",
+    "signin_body": "Connectez-vous avec le compte Keycloak (SSO) créé pour vous. Nouveau ? Demandez une invitation à votre contact Catena.",
     "signin_button": "Se connecter avec Keycloak",
     "shell_brand": "Catena",
     "nav_dashboard": "Tableau de bord",
@@ -813,7 +873,7 @@
     "why_intro": "N'importe qui peut lancer un site web cette année -- les constructeurs IA en livrent un en un après-midi. La vraie question est ce qui se passe plus tard, quand la plateforme augmente ses prix, ferme, décide que votre secteur viole ses conditions d'utilisation, ou que votre entreprise grandit. Quatre raisons pour lesquelles un site construit avec Catena tient le coup.",
     "why_card1_title": "Vous possédez les fichiers",
     "why_card1_body": "Code source dans un dépôt Git à votre nom. Contenu en markdown que n'importe qui peut lire. Changement d'hébergeur en cinq minutes par simple changement d'adaptateur Astro. Le site est un dossier de fichiers qui vous appartient, pas une ligne dans la base de données de quelqu'un d'autre.",
-    "why_card2_title": "Branché sur votre infrastructure",
+    "why_card2_title": "Branché sur votre Suite Catena",
     "why_card2_body": "Intégrations de réservation qui reconnaissent l'utilisateur connecté. Formulaires de contact qui tombent directement dans votre CRM. Espaces membres protégés par votre SSO. Les constructeurs IA ne peuvent pas faire ça -- ils n'opèrent pas les systèmes à l'autre bout. Votre Suite Catena, oui.",
     "why_card3_title": "Conçu pour la troisième année",
     "why_card3_body": "Quand la plateforme double ses prix, se fait racheter, décide que votre fournisseur de paiement n'est plus permis, ou tombe pendant dix-huit heures, la réponse ne devrait pas être un ticket de support. Avec un site Catena, la réponse est un redéploiement : mêmes fichiers, autre hébergeur, cinq minutes.",
@@ -845,7 +905,7 @@
       "Sitemap.xml et robots.txt configurés",
       "Politique de confidentialité bilingue conforme Loi 25 (si bilinguisme acheté)",
       "Métadonnées Open Graph pour les partages sociaux",
-      "Intégrations Cal.com / EspoCRM (booking, formulaires de contact)",
+      "Intégrations Easy!Appointments / EspoCRM (booking, formulaires de contact)",
       "Hébergement sur votre Suite Catena (aucun fournisseur tiers à payer)"
     ],
     "not_included_title": "Ce qui n'est pas inclus",
