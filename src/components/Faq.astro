@@ -44,7 +44,7 @@ const jsonLd = {
     <p class="muted intro">{t(locale, "common.faq.intro")}</p>
     <div class="qa-list">
       {items.map((item, idx) => (
-        <details class="qa" open={idx === 0}>
+        <details class="qa" id={item.id} open={idx === 0}>
           <summary>
             <h2>{item.question}</h2>
           </summary>
@@ -54,6 +54,21 @@ const jsonLd = {
     </div>
   </div>
 </section>
+
+<script>
+  // Open the matching FAQ entry when the URL carries a hash (e.g.
+  // /faq#q3 from the About page bus-factor link) and scroll to it.
+  function openHashTarget() {
+    const hash = window.location.hash.slice(1);
+    if (!hash) return;
+    const el = document.getElementById(hash);
+    if (!el || el.tagName !== "DETAILS") return;
+    (el as HTMLDetailsElement).open = true;
+    el.scrollIntoView({ block: "start" });
+  }
+  openHashTarget();
+  window.addEventListener("hashchange", openHashTarget);
+</script>
 
 <style>
   .faq { padding: var(--catena-space-8) 0 var(--catena-space-24); }

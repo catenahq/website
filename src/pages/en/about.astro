@@ -5,7 +5,9 @@ import CTA from "../../components/CTA.astro";
 import { t } from "@catena/i18n";
 
 const locale = "en";
+const prefix = "/en";
 
+const facts = ["response", "cadence", "continuity"];
 const bringPoints = ["judgment", "failure", "ownership"];
 const workPoints = ["response", "cadence", "continuity"];
 ---
@@ -18,25 +20,48 @@ const workPoints = ["response", "cadence", "continuity"];
     title={t(locale, "common.about.title")}
     intro={t(locale, "common.about.intro")}
   />
+  <section class="facts">
+    <div class="container">
+      <p class="facts-title">{t(locale, "common.about.facts_title")}</p>
+      <dl class="facts-grid">
+        {facts.map((key) => (
+          <div class="fact">
+            <dt>{t(locale, `common.about.facts.${key}_label`)}</dt>
+            <dd>
+              <span class="fact-value">{t(locale, `common.about.facts.${key}_value`)}</span>
+              <span class="fact-note">{t(locale, `common.about.facts.${key}_note`)}</span>
+            </dd>
+          </div>
+        ))}
+      </dl>
+    </div>
+  </section>
   <section class="story">
     <div class="container">
       <div class="story-grid">
         <div class="story-text">
           <h2>{t(locale, "common.about.story_title")}</h2>
           <p>{t(locale, "common.about.story_body")}</p>
+          <p class="bus-factor">
+            <span>{t(locale, "common.about.bus_factor_note")}</span>
+            <a href={`${prefix}/faq#q3`}>{t(locale, "common.about.bus_factor_link_label")} &rarr;</a>
+          </p>
           <p class="portfolio-link">
             <a href={t(locale, "common.about.portfolio_link_url")}>
               {t(locale, "common.about.portfolio_link_label")} &rarr;
             </a>
           </p>
         </div>
-        <div class="headshot" aria-hidden="true">
+        <div class="headshot">
           <!--
             TODO before launch: replace placeholder with a real
-            headshot at apps/website/public/headshot.jpg (or .webp,
-            target ~480x480, ~50 KB).
+            headshot at public/about/marc-antoine.jpg (or .webp,
+            target ~480x480, ~50 KB) and swap the markup below for
+            an <img src="/about/marc-antoine.jpg" ...>.
           -->
-          <div class="headshot-placeholder"></div>
+          <div class="headshot-placeholder" aria-label="Marc-Antoine Lalonde">
+            <span class="headshot-initials" aria-hidden="true">M-A.L.</span>
+          </div>
         </div>
       </div>
     </div>
@@ -90,6 +115,20 @@ const workPoints = ["response", "cadence", "continuity"];
   .portfolio-link {
     font-size: var(--catena-fs-sm);
   }
+  .bus-factor {
+    font-size: var(--catena-fs-sm);
+    line-height: var(--catena-lh-relaxed);
+    padding: var(--catena-space-4) var(--catena-space-5);
+    border-left: 3px solid var(--catena-accent);
+    background: var(--catena-surface-bg-muted);
+    border-radius: var(--catena-radius-sm);
+    margin: var(--catena-space-2) 0 var(--catena-space-4) 0;
+  }
+  .bus-factor a {
+    display: inline-block;
+    margin-top: var(--catena-space-1);
+    text-decoration: underline;
+  }
   .headshot {
     display: flex;
     justify-content: center;
@@ -102,6 +141,66 @@ const workPoints = ["response", "cadence", "continuity"];
       color-mix(in srgb, var(--catena-accent) 25%, var(--catena-surface-bg-muted)) 0%,
       var(--catena-surface-bg-muted) 100%);
     border: 1px solid var(--catena-surface-border);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .headshot-initials {
+    font-family: var(--catena-font-mono);
+    font-size: var(--catena-fs-3xl);
+    font-weight: var(--catena-fw-semibold);
+    color: color-mix(in srgb, var(--catena-accent) 50%, var(--catena-surface-fg-muted));
+    letter-spacing: 0.05em;
+  }
+  .facts {
+    padding: var(--catena-space-6) 0 var(--catena-space-10);
+  }
+  .facts-title {
+    font-size: var(--catena-fs-sm);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--catena-surface-fg-muted);
+    margin: 0 0 var(--catena-space-5) 0;
+    font-weight: var(--catena-fw-semibold);
+  }
+  .facts-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: var(--catena-space-4);
+    margin: 0;
+  }
+  .fact {
+    padding: var(--catena-space-5);
+    border: 1px solid var(--catena-surface-border);
+    border-radius: var(--catena-radius-md);
+    background: var(--catena-surface-bg);
+  }
+  .fact dt {
+    font-size: var(--catena-fs-xs);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--catena-surface-fg-muted);
+    margin-bottom: var(--catena-space-2);
+  }
+  .fact dd {
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: var(--catena-space-1);
+  }
+  .fact-value {
+    font-size: var(--catena-fs-xl);
+    font-weight: var(--catena-fw-semibold);
+    color: var(--catena-surface-fg);
+  }
+  .fact-note {
+    font-size: var(--catena-fs-sm);
+    color: var(--catena-surface-fg-muted);
+  }
+  @media (max-width: 767px) {
+    .facts-grid {
+      grid-template-columns: 1fr;
+    }
   }
   .bring, .work {
     padding: var(--catena-space-12) 0;
