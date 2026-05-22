@@ -491,9 +491,12 @@ const PAYLOAD = {
           html +=
             '<li class="' + rowCls + '" data-need-id="' + escapeAttr(nd.id) + '">' +
             '<div class="need-row">' +
-            '<label class="need-label"><input type="checkbox" data-need="' +
-            escapeAttr(nd.id) + '"' + (ticked ? " checked" : "") + "/>" +
-            "<span>" + escapeHtml(nd.label) + "</span></label>" +
+            '<span class="need-label"><input type="checkbox" data-need="' +
+            escapeAttr(nd.id) + '"' + (ticked ? " checked" : "") +
+            ' aria-label="' + escapeAttr(nd.label) + '"/>' +
+            '<span class="need-name" data-need-disclosure="' +
+            escapeAttr(nd.id) + '">' +
+            escapeHtml(nd.label) + "</span></span>" +
             disclosureHtml +
             "</div>" +
             nestedHtml +
@@ -1020,6 +1023,7 @@ const PAYLOAD = {
     gap: var(--catena-space-2);
   }
   .app-selector .need-row .need-label { flex: 1 1 auto; min-width: 0; }
+  .app-selector .need-name { cursor: pointer; user-select: none; }
   .app-selector .need-disclosure {
     flex: 0 0 auto;
     width: 1.75rem;
