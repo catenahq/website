@@ -5,11 +5,12 @@
  * site. The data structure here mirrors the operator-side picker
  * contract; if you change one the other must change in the same PR.
  *
- * v1 status: cal-diy + easy-appointments are the only shipped
- * templates. Branches B (resource booking), C (group meeting
- * poll), and D (events) are deferred -- the picker presents them
- * but recommends nothing until a real client ask drives a catalog
- * entry.
+ * v1 status: easy-appointments is the sole shipped scheduler
+ * (cal.diy dropped 2026-05-22 as not robust enough for production
+ * clients). EA covers both solo and multi-provider branches.
+ * Branches B (resource booking), C (group meeting poll), and D
+ * (events) are deferred -- the picker presents them but recommends
+ * nothing until a real client ask drives a catalog entry.
  */
 interface Props {
   locale: "en" | "fr";
@@ -152,7 +153,13 @@ const questions: Question[] = [
           en: "One person (solo practitioner / single provider)",
           fr: "Une seule personne (prestataire solo)",
         },
-        branch: "q3_solo_paid",
+        recommendation: {
+          template_id: "easyappointments",
+          rationale: {
+            en: "Easy!Appointments single-provider mode covers solo bookings. Paid bookings flow through the Stripe bridge (n8n + Stripe Checkout) added at deploy time.",
+            fr: "Le mode mono-prestataire d'Easy!Appointments couvre les réservations en solo. Les paiements transitent par la passerelle Stripe (n8n + Stripe Checkout) ajoutée au déploiement.",
+          },
+        },
       },
       {
         id: "team",
@@ -170,56 +177,12 @@ const questions: Question[] = [
       },
     ],
   },
-  {
-    id: "q3_solo_paid",
-    prompt: {
-      en: "Do you need paid bookings (Stripe)?",
-      fr: "Avez-vous besoin de paiements à la réservation (Stripe)?",
-    },
-    answers: [
-      {
-        id: "paid",
-        label: {
-          en: "Yes -- accept Stripe payments at booking time",
-          fr: "Oui -- accepter les paiements Stripe à la réservation",
-        },
-        recommendation: {
-          template_id: "cal-diy",
-          rationale: {
-            en: "cal.diy ships native Stripe integration; the booking-page UX is polished out of the box.",
-            fr: "cal.diy intègre Stripe nativement; la page de réservation est soignée d'emblée.",
-          },
-        },
-      },
-      {
-        id: "free",
-        label: {
-          en: "No -- free bookings are fine",
-          fr: "Non -- réservations sans paiement",
-        },
-        recommendation: {
-          template_id: "cal-diy",
-          rationale: {
-            en: "cal.diy is the more polished option for solo bookings even without Stripe; Easy!Appointments single-provider is the bridge if cal.diy is not yet stable on your stack.",
-            fr: "cal.diy reste plus soigné pour les réservations solo même sans Stripe; Easy!Appointments mono-prestataire est l'option de repli si cal.diy n'est pas encore stable sur votre suite.",
-          },
-        },
-      },
-    ],
-  },
 ];
 
 const templateInfo: Record<
   string,
   { name: string; docPath: { en: string; fr: string } }
 > = {
-  "cal-diy": {
-    name: "cal.diy",
-    docPath: {
-      en: "https://docs.catena.run/en/apps/cal-diy/",
-      fr: "https://docs.catena.run/apps/cal-diy/",
-    },
-  },
   easyappointments: {
     name: "Easy!Appointments",
     docPath: {
