@@ -26,16 +26,16 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Check out website
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
         with:
           path: website
       - name: Check out sibling contracts
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
         with:
           repository: catenahq/contracts
           token: ${{ secrets.CONTRACTS_READ_TOKEN }}
           path: contracts
-      - uses: actions/setup-node@v4
+      - uses: actions/setup-node@v6
         with:
           node-version: "22"
           cache: "npm"
