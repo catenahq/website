@@ -1,12 +1,15 @@
-name: Trivy fs (report-only)
+name: Trivy fs
 
-# Wave 3 IaC + secret + lockfile gate. Filesystem scan only:
-# the website Docker image is built at deploy time via Dokploy
-# using a vendor/ path that the CI's sibling-read pattern does
-# not mirror, so image scanning is deferred to Wave 4. The fs
-# scan still catches lockfile CVEs, Dockerfile base-image
-# misconfig, and any committed secrets.
-# exit-code: '0' keeps it report-only.
+# Wave 4 (blocking) IaC + secret + lockfile gate. Filesystem scan
+# only: the website Docker image is built at deploy time via Dokploy
+# using a vendor/ path that the CI's sibling-read pattern does not
+# mirror, so image scanning is still deferred. The fs scan catches
+# lockfile CVEs, Dockerfile base-image misconfig, and any committed
+# secrets.
+#
+# Promoted from report-only on 2026-05-24 (Wave 4). Severity floor
+# HIGH+CRITICAL, ignore-unfixed:true so unpatched CVEs do not block
+# until a fix exists upstream.
 
 on:
   pull_request:
@@ -28,7 +31,8 @@ jobs:
           scan-type: 'fs'
           scan-ref: '.'
           severity: HIGH,CRITICAL
-          exit-code: '0'
+          exit-code: '1'
+          ignore-unfixed: true
           format: 'json'
           output: 'trivy-fs.json'
       - name: Upload report
