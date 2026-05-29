@@ -23,7 +23,7 @@ on:
 jobs:
   website:
     name: website (i18n parity + typecheck + build)
-    runs-on: [self-hosted, laptop]
+    runs-on: self-hosted
     steps:
       - name: Check out website
         uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6
