@@ -565,7 +565,7 @@
   },
   "comparison": {
     "title": "Comparaison",
-    "intro": "Lecture honnête de la place de Catena par rapport aux alternatives que les PME évaluent. L'axe dominant est la souveraineté : qui possède les données, l'infrastructure, les clés.",
+    "intro": "Lecture honnête de la place de Catena par rapport aux alternatives que les PME évaluent. Catena se décline en deux éditions : une édition Communauté gratuite et auto-hébergée, et l'édition Business gérée. La colonne Catena reflète l'édition gérée; avec Communauté, vous obtenez les mêmes lignes de propriété, opérées par vous. L'axe dominant est la souveraineté : qui possède les données, l'infrastructure, les clés.",
     "cols": {
       "catena": "Catena",
       "saas": "SaaS (M365 / Google)",
@@ -576,7 +576,7 @@
       "pricing": {
         "label": "Modèle tarifaire",
         "catena": {
-          "verdict": "par serveur",
+          "verdict": "gratuit ou par serveur",
           "tone": "good"
         },
         "saas": {

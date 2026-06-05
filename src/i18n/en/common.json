@@ -565,7 +565,7 @@
   },
   "comparison": {
     "title": "Comparison",
-    "intro": "Honest read on where Catena fits versus the alternatives most SMBs evaluate. The dominant axis is sovereignty: who owns the data, the infrastructure, the keys.",
+    "intro": "Honest read on where Catena fits versus the alternatives most SMBs evaluate. Catena comes in two editions: a free self-hosted Community edition and the managed Business edition. The Catena column reflects the managed edition; with Community you get the same ownership rows, self-operated. The dominant axis is sovereignty: who owns the data, the infrastructure, the keys.",
     "cols": {
       "catena": "Catena",
       "saas": "SaaS (M365 / Google)",
@@ -576,7 +576,7 @@
       "pricing": {
         "label": "Pricing model",
         "catena": {
-          "verdict": "per-server",
+          "verdict": "free or per-server",
           "tone": "good"
         },
         "saas": {
