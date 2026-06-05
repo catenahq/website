@@ -758,6 +758,10 @@
       "question": "Catena tourne-t-elle sur la Suite Catena ?",
       "answer": "Même suite. Mêmes mains. En production depuis le lancement. catena.run, la documentation à /docs, le portail client, les vérifications externes des services client, le traitement des paiements et la facturation tournent tous sur la Suite Catena que nous vendons. Toute la surface de revenu est sur le produit. Manger sa propre nourriture est notre garantie."
     },
+    "q16": {
+      "question": "Catena est-elle gratuite ?",
+      "answer": "L'édition Communauté l'est, oui : toute la suite, code source disponible, auto-hébergée sur une infrastructure qui vous appartient, sans frais de licence ni télémétrie. Vous l'installez et l'opérez vous-même avec le <a href='https://docs.catena.run/'>guide d'auto-hébergement</a> et la documentation communautaire. Catena Business est l'édition gérée payante, où nous opérons le cycle de vie pour vous : sauvegardes immuables hors site, mises à jour gérées, supervision, identité et rapport d'assurance mensuel. Mêmes logiciels dans les deux cas -- commencez gratuitement et passez au mode géré quand vous préférez ne pas gérer de serveur."
+    },
     "q2": {
       "question": "Que puis-je faire tourner d'autre sur la suite ?",
       "answer": "Tout ce qui s'inscrit dans un modèle compose Dokploy. Notre catalogue éprouvé (Nextcloud, OnlyOffice / Collabora, Rocket.Chat, Plane, DocuSeal, Invoice Ninja, Outline, EspoCRM, n8n, Postiz, Twenty, WordPress, ERPNext, Easy!Appointments et plus) s'installe sans frais de configuration supplémentaires. Toute autre application est une demande de modèle personnalisé -- parlez-nous-en. Pour explorer l'écosystème auto-hébergé plus large : <a href='https://github.com/awesome-selfhosted/awesome-selfhosted' target='_blank' rel='noopener noreferrer'>awesome-selfhosted</a>, <a href='https://awweso.me/' target='_blank' rel='noopener noreferrer'>awweso.me</a>, <a href='https://templates.dokploy.com/' target='_blank' rel='noopener noreferrer'>modèles Dokploy</a>, <a href='https://github.com/awesome-foss/awesome-sysadmin' target='_blank' rel='noopener noreferrer'>awesome-sysadmin</a>."
@@ -780,7 +784,7 @@
     },
     "q7": {
       "question": "Comment gagnez-vous votre vie ?",
-      "answer": "Abonnement mensuel par serveur, plus par application et un forfait de support optionnel. Aucun frais par utilisateur, jamais. L'hébergement et les sauvegardes sont en refacturation directe sur vos comptes. Voir la <a href='/pricing'>page Tarifs</a>."
+      "answer": "L'édition Communauté est gratuite; nous gagnons notre vie avec Catena Business, l'édition gérée : un abonnement mensuel par serveur, plus par application et un forfait de support optionnel. Aucun frais par utilisateur, jamais. L'hébergement et les sauvegardes sont en refacturation directe sur vos comptes. Voir la <a href='/pricing'>page Tarifs</a>."
     },
     "q8": {
       "question": "Hébergez-vous le courriel ?",
@@ -792,7 +796,7 @@
     },
     "q11": {
       "question": "Puis-je l'héberger sur mon propre matériel ?",
-      "answer": "Oui. Les installations auto-hébergées sur du matériel qui vous appartient (avec ou sans IP publique) sont disponibles en installation sur mesure. <a href='/contact'>Contactez-nous</a> pour discuter des contraintes et obtenir un devis."
+      "answer": "Oui. L'édition Communauté gratuite s'installe sur du matériel ou un VPS qui vous appartient, avec ou sans IP publique. Si vous préférez ne pas l'opérer vous-même, Catena Business est l'édition gérée. <a href='/contact'>Contactez-nous</a> si vous voulez que nous opérions l'édition gérée sur votre propre matériel."
     },
     "q12": {
       "question": "Dans quelle devise sont vos tarifs ?",
@@ -800,11 +804,11 @@
     },
     "q13": {
       "question": "Quelle est la différence entre Catena et la Suite Catena ?",
-      "answer": "Catena est l'entreprise (le MSP). La Suite Catena est le logiciel que Catena opère pour vous : Nextcloud, EspoCRM, Easy!Appointments, Rocket.Chat, Keycloak, et les outils Ansible / sauvegardes / supervision qui font tourner tout ça. Votre facture vient de Catena ; votre courriel et vos fichiers vivent sur la Suite Catena."
+      "answer": "Catena est l'entreprise derrière le produit. La Suite Catena est le logiciel que Catena conçoit et opère : Nextcloud, EspoCRM, Easy!Appointments, Rocket.Chat, Keycloak, et les outils Ansible / sauvegardes / supervision qui font tourner tout ça. Avec l'édition Business, votre facture vient de Catena et votre courriel et vos fichiers vivent sur la Suite Catena ; avec l'édition Communauté, vous faites tourner cette même suite vous-même."
     },
     "q14": {
       "question": "Vous êtes vraiment un MSP ? En quoi êtes-vous différent de mon MSP actuel ?",
-      "answer": "Oui, Catena est un MSP -- nous opérons l'infrastructure IT à votre place selon un forfait mensuel. La différence avec un MSP traditionnel : notre portée se limite à la Suite Catena. Nous ne gérons pas vos postes de travail, vos imprimantes, votre Microsoft 365, ni votre réseau de bureau (voir <a href='/pricing#scope'>la grille Inclus / Non inclus</a>). Pour tout besoin au-delà de la suite, parlez-nous-en. En échange : vous payez par serveur (pas par siège), votre code et vos données vous appartiennent, et vous pouvez quitter à tout moment avec tout en main."
+      "answer": "Catena Business est un service géré -- nous opérons la Suite Catena à votre place selon un abonnement mensuel -- donc cette partie fonctionne comme un MSP. Deux choses la distinguent d'un MSP traditionnel : le logiciel est un produit que vous pouvez aussi auto-héberger gratuitement (l'édition Communauté), et la portée gérée se limite à la Suite Catena. Nous ne gérons pas vos postes de travail, vos imprimantes, votre Microsoft 365, ni votre réseau de bureau (voir <a href='/pricing#scope'>la grille Inclus / Non inclus</a>). En échange : vous payez par serveur (pas par siège), votre code et vos données vous appartiennent, et vous pouvez quitter à tout moment avec tout en main."
     },
     "q15": {
       "question": "Que pouvez-vous produire comme documentation Loi 25 ?",
