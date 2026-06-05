@@ -743,6 +743,7 @@
       "company_label": "Company (optional)",
       "intent_label": "What are you looking for? (pick all that apply)",
       "intent_managed": "A managed software suite for my company",
+      "intent_community": "Help self-hosting the Community edition",
       "intent_website": "A website on the suite",
       "intent_partnership": "Partnership / referral",
       "intent_other": "Something else",
@@ -962,7 +963,7 @@
   },
   "app_selector": {
     "title": "App selector",
-    "intro": "Tick the business needs that apply to you, then tick apps to cover them. The bill on the right updates live; gaps and overlaps are flagged inline. Mix Catena-managed apps with external SaaS to compare suites side by side.",
+    "intro": "Tick the business needs that apply to you, then tick apps to cover them. The bill on the right updates live; gaps and overlaps are flagged inline. Mix Catena-managed apps with external SaaS to compare suites side by side. Prices shown are for managed Catena Business; the same apps are free to self-host with Catena Community.",
     "meta_description": "Map your business needs to the right apps -- Catena-managed, included with the server, or external SaaS. See a live monthly cost and compare a Catena suite to QuickBooks-only or Microsoft 365-only setups.",
     "footer_link": "App selector",
     "inputs": {

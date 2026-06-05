@@ -743,6 +743,7 @@
       "company_label": "Entreprise (facultatif)",
       "intent_label": "Que cherchez-vous? (cochez tout ce qui s'applique)",
       "intent_managed": "Une suite logicielle gérée pour mon entreprise",
+      "intent_community": "De l'aide pour auto-héberger l'édition Communauté",
       "intent_website": "Un site web sur la suite",
       "intent_partnership": "Partenariat / référencement",
       "intent_other": "Autre chose",
@@ -962,7 +963,7 @@
   },
   "app_selector": {
     "title": "Choix des applications",
-    "intro": "Cochez les besoins de votre entreprise, puis cochez les applications qui les couvrent. La facture mensuelle se met à jour à droite; les manques et les chevauchements sont signalés à côté de chaque besoin. Combinez les applications gérées par Catena et les SaaS externes pour comparer deux suites côte à côte.",
+    "intro": "Cochez les besoins de votre entreprise, puis cochez les applications qui les couvrent. La facture mensuelle se met à jour à droite; les manques et les chevauchements sont signalés à côté de chaque besoin. Combinez les applications gérées par Catena et les SaaS externes pour comparer deux suites côte à côte. Les prix affichés sont pour l'édition gérée Catena Business; les mêmes applications sont gratuites en auto-hébergement avec Catena Communauté.",
     "meta_description": "Faites correspondre vos besoins d'affaires aux bonnes applications -- gérées par Catena, incluses avec le serveur, ou SaaS externes. Coût mensuel calculé en direct, avec comparaison face à une suite tout-QuickBooks ou tout-Microsoft 365.",
     "footer_link": "Choix des applications",
     "inputs": {
