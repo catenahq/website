@@ -1,7 +1,7 @@
 {
   "brand": {
     "name": "Catena",
-    "tagline": "Managed IT services for Quebec SMBs."
+    "tagline": "The business suite you own."
   },
   "nav": {
     "features": "Features",
@@ -22,6 +22,7 @@
     "see_pricing": "See pricing",
     "book_discovery": "Book a discovery call",
     "see_features": "See what's included",
+    "get_started_free": "Get started free",
     "discovery_url": "https://app.catena.run/discovery"
   },
   "footer": {
@@ -55,8 +56,8 @@
   },
   "home": {
     "hero": {
-      "headline": "Your apps. Your data. Our expertise.",
-      "subheadline": "Email, files, chat, CRM, scheduling, billing - a unified business suite tailored to your work, on infrastructure you own. We assemble and manage it for you."
+      "headline": "Your apps. Your data. Your choice.",
+      "subheadline": "Email, files, chat, CRM, scheduling, billing - one unified business suite on infrastructure you own. Run it yourself with the free Community Edition, or let us operate it for you."
     },
     "bio": {
       "body": "Run by Marc-Antoine Lalonde, based in Quebec.",

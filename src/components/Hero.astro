@@ -13,11 +13,11 @@ const prefix = locale === "fr" ? "" : "/en";
     <h1>{t(locale, "common.home.hero.headline")}</h1>
     <p class="lead muted">{t(locale, "common.home.hero.subheadline")}</p>
     <div class="cta-row">
-      <a class="btn btn-primary" href={t(locale, "common.cta.discovery_url")}>
-        {t(locale, "common.cta.book_discovery")}
+      <a class="btn btn-primary" href={`${prefix}/pricing`}>
+        {t(locale, "common.cta.get_started_free")}
       </a>
-      <a class="btn btn-secondary" href={`${prefix}/features`}>
-        {t(locale, "common.cta.see_features")}
+      <a class="btn btn-secondary" href={t(locale, "common.cta.discovery_url")}>
+        {t(locale, "common.cta.book_discovery")}
       </a>
     </div>
   </div>

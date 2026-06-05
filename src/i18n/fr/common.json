@@ -1,7 +1,7 @@
 {
   "brand": {
     "name": "Catena",
-    "tagline": "Services TI gérés pour PME québécoises."
+    "tagline": "La suite logicielle qui vous appartient."
   },
   "nav": {
     "features": "Fonctionnalités",
@@ -22,6 +22,7 @@
     "see_pricing": "Voir les tarifs",
     "book_discovery": "Réserver un appel découverte",
     "see_features": "Voir ce qui est inclus",
+    "get_started_free": "Commencer gratuitement",
     "discovery_url": "https://app.catena.run/discovery"
   },
   "footer": {
@@ -55,8 +56,8 @@
   },
   "home": {
     "hero": {
-      "headline": "Vos logiciels. Vos données. Notre expertise.",
-      "subheadline": "Courriels, fichiers, discussions, CRM, agendas, facturation - une suite logicielle unifiée adaptée à votre travail, sur une infrastructure qui vous appartient. Nous l'assemblons et la gérons pour vous."
+      "headline": "Vos logiciels. Vos données. Votre choix.",
+      "subheadline": "Courriels, fichiers, discussions, CRM, agendas, facturation - une suite logicielle unifiée sur une infrastructure qui vous appartient. Hébergez-la vous-même avec l'édition Communauté gratuite, ou laissez-nous l'opérer pour vous."
     },
     "bio": {
       "body": "Mené par Marc-Antoine Lalonde, basé au Québec.",
