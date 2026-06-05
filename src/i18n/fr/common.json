@@ -122,6 +122,47 @@
       },
       "email_note": "Le courriel est intégré, pas auto-hébergé -- choisissez parmi 5 fournisseurs complets et axés sur la confidentialité selon vos besoins. Nous configurons le DNS, la délivrabilité et le SSO.",
       "stack_link": "Voir la surface technique."
+    },
+    "editions": {
+      "title": "Une suite, trois façons de la faire tourner.",
+      "intro": "Mêmes logiciels, mêmes applications, même authentification unique. Choisissez la part que vous voulez opérer vous-même.",
+      "community": {
+        "name": "Communauté",
+        "price": "Gratuit, auto-hébergé",
+        "tagline": "Faites tourner toute la suite vous-même sur une infrastructure qui vous appartient. Code source disponible, aucuns frais de licence, aucune télémétrie.",
+        "features": [
+          "Le catalogue complet d'applications, déployé avec un seul installateur",
+          "Authentification unique dans toute la suite",
+          "Sauvegardes chiffrées locales",
+          "Soutien communautaire et documentation"
+        ],
+        "cta_label": "Obtenir l'édition Communauté"
+      },
+      "business": {
+        "name": "Business",
+        "price": "Géré, à partir de 200 $ CA / mois",
+        "tagline": "Nous opérons tout le cycle de vie pour que votre équipe ne touche jamais à un serveur.",
+        "features": [
+          "Tout ce qu'offre Communauté, géré pour vous",
+          "Sauvegardes immuables hors site, supervisées et testées par restauration",
+          "Mises à jour gérées avec réponse aux CVE et restauration en cas de régression",
+          "Identité gérée et rapport d'assurance mensuel",
+          "SLA sur le temps de réponse"
+        ],
+        "cta_label": "Réserver un appel découverte"
+      },
+      "bespoke": {
+        "name": "Sur mesure",
+        "price": "Devis personnalisé",
+        "tagline": "Concevez une suite adaptée à votre flux de travail exact, accompagné de bout en bout.",
+        "features": [
+          "Sélection d'applications et intégrations sur mesure",
+          "Planification du flux de travail, de la migration et du déploiement",
+          "Tarif établi en privé selon votre portée"
+        ],
+        "cta_label": "Nous contacter"
+      },
+      "footnote": "Commencez gratuitement en auto-hébergé; passez au mode géré quand vous préférez que nous l'opérions. Mêmes données, mêmes applications, aucune migration."
     }
   },
   "features": {

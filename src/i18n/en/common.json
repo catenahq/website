@@ -122,6 +122,47 @@
       },
       "email_note": "Email is integrated, not self-hosted -- 5 full-featured, privacy-focused providers to choose from based on your needs. We wire up DNS, deliverability, and SSO.",
       "stack_link": "See the technical surface."
+    },
+    "editions": {
+      "title": "One suite, three ways to run it.",
+      "intro": "Same software, same apps, same single sign-on. Choose how much you want to operate yourself.",
+      "community": {
+        "name": "Community",
+        "price": "Free, self-hosted",
+        "tagline": "Run the whole suite yourself on infrastructure you own. Source-available, no licence fee, no telemetry.",
+        "features": [
+          "The full app catalog, deployed with one installer",
+          "Single sign-on across the suite",
+          "Local encrypted backups",
+          "Community support and documentation"
+        ],
+        "cta_label": "Get the Community Edition"
+      },
+      "business": {
+        "name": "Business",
+        "price": "Managed, from $200 CAD / month",
+        "tagline": "We operate the whole lifecycle so your team never touches a server.",
+        "features": [
+          "Everything in Community, run for you",
+          "Offsite immutable backups, monitored and restore-tested",
+          "Managed updates with CVE response and rollback",
+          "Managed identity and a monthly assurance report",
+          "Response-time SLA"
+        ],
+        "cta_label": "Book a discovery call"
+      },
+      "bespoke": {
+        "name": "Bespoke",
+        "price": "Custom quote",
+        "tagline": "Design a suite around your exact workflow, advised end to end.",
+        "features": [
+          "Custom app selection and integrations",
+          "Workflow, migration, and rollout planning",
+          "Priced privately to your scope"
+        ],
+        "cta_label": "Talk to us"
+      },
+      "footnote": "Start free and self-hosted; move to managed when you would rather we run it. Same data, same apps, no migration."
     }
   },
   "features": {

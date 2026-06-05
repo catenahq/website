@@ -1,0 +1,119 @@
+---
+// Three editions: Community (free, self-hosted), Business (managed),
+// Bespoke (advisory). High-level overview on the homepage; the detailed
+// per-component breakdown lives on the Pricing page.
+import { t, tArray } from "@catena/i18n";
+
+interface Props {
+  locale: "en" | "fr";
+}
+const { locale } = Astro.props;
+const prefix = locale === "fr" ? "" : "/en";
+
+type EditionKey = "community" | "business" | "bespoke";
+const editions: EditionKey[] = ["community", "business", "bespoke"];
+
+const ctaHref: Record<EditionKey, string> = {
+  community: `${prefix}/pricing#community`,
+  business: t(locale, "common.cta.discovery_url"),
+  bespoke: `${prefix}/contact`,
+};
+---
+<section id="editions" class="editions">
+  <div class="container">
+    <h2>{t(locale, "common.home.editions.title")}</h2>
+    <p class="lead muted">{t(locale, "common.home.editions.intro")}</p>
+    <div class="grid">
+      {editions.map((key) => (
+        <article class={`edition ${key === "business" ? "featured" : ""}`}>
+          <h3>{t(locale, `common.home.editions.${key}.name`)}</h3>
+          <p class="price">{t(locale, `common.home.editions.${key}.price`)}</p>
+          <p class="tagline muted">{t(locale, `common.home.editions.${key}.tagline`)}</p>
+          <ul class="features">
+            {tArray(locale, `common.home.editions.${key}.features`).map((f) => <li>{f}</li>)}
+          </ul>
+          <a
+            class={`btn ${key === "business" ? "btn-primary" : "btn-secondary"} cta`}
+            href={ctaHref[key]}
+          >
+            {t(locale, `common.home.editions.${key}.cta_label`)}
+          </a>
+        </article>
+      ))}
+    </div>
+    <p class="muted detail">{t(locale, "common.home.editions.footnote")}</p>
+  </div>
+</section>
+
+<style>
+  .editions { padding: var(--catena-space-24) 0; }
+  .lead { margin-bottom: var(--catena-space-12); max-width: 56rem; }
+
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: var(--catena-space-6);
+    align-items: stretch;
+  }
+  .edition {
+    padding: var(--catena-space-8) var(--catena-space-6);
+    border: 1px solid var(--catena-surface-border);
+    border-radius: var(--catena-radius-lg);
+    background: var(--catena-surface-bg);
+    display: flex;
+    flex-direction: column;
+    gap: var(--catena-space-3);
+  }
+  .edition.featured {
+    border-color: var(--catena-accent);
+    box-shadow: var(--catena-shadow-sm);
+  }
+  .edition h3 {
+    font-size: var(--catena-fs-xl);
+    margin: 0;
+  }
+  .price {
+    margin: 0;
+    font-size: var(--catena-fs-lg);
+    font-weight: var(--catena-fw-semibold);
+  }
+  .tagline {
+    margin: 0;
+    font-size: var(--catena-fs-sm);
+    line-height: var(--catena-lh-relaxed);
+  }
+  .features {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 var(--catena-space-2) 0;
+    display: flex;
+    flex-direction: column;
+    gap: var(--catena-space-2);
+    flex: 1;
+  }
+  .features li {
+    font-size: var(--catena-fs-sm);
+    line-height: var(--catena-lh-relaxed);
+    padding-left: var(--catena-space-4);
+    position: relative;
+  }
+  .features li::before {
+    content: "·";
+    position: absolute;
+    left: var(--catena-space-1);
+    color: var(--catena-surface-fg-muted);
+  }
+  .cta {
+    margin-top: auto;
+    width: fit-content;
+  }
+  .detail {
+    margin-top: var(--catena-space-8);
+    max-width: 56rem;
+    font-size: var(--catena-fs-sm);
+  }
+
+  @media (max-width: 1023px) {
+    .grid { grid-template-columns: 1fr; }
+  }
+</style>
