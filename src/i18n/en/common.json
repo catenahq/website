@@ -38,9 +38,9 @@
     "fr": "Français"
   },
   "banner": {
-    "message": "Now booking founding clients. Personal onboarding, direct line.",
-    "cta_label": "Book a discovery call",
-    "cta_href": "/en/contact"
+    "message": "New: Catena Community - self-host the whole suite, free.",
+    "cta_label": "Get the Community Edition",
+    "cta_href": "https://docs.catena.run/"
   },
   "notfound": {
     "title": "Page not found",
@@ -817,7 +817,7 @@
   },
   "about": {
     "title": "About",
-    "intro": "Catena is led by Marc-Antoine Lalonde. Here is what that means in practice.",
+    "intro": "Catena is the business suite you own - free to self-host, or managed by us. It is led by Marc-Antoine Lalonde. Here is what that means in practice.",
     "facts_title": "What I commit to",
     "facts": {
       "response_label": "Response time",

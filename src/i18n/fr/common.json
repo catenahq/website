@@ -38,9 +38,9 @@
     "fr": "Français"
   },
   "banner": {
-    "message": "Nous accueillons nos premiers clients. Accompagnement personnel, ligne directe.",
-    "cta_label": "Réserver un appel découverte",
-    "cta_href": "/contact"
+    "message": "Nouveau : Catena Communauté - auto-hébergez toute la suite, gratuitement.",
+    "cta_label": "Obtenir l'édition Communauté",
+    "cta_href": "https://docs.catena.run/"
   },
   "notfound": {
     "title": "Page introuvable",
@@ -817,7 +817,7 @@
   },
   "about": {
     "title": "À propos",
-    "intro": "Catena est dirigée par Marc-Antoine Lalonde. Voici ce que ça veut dire concrètement.",
+    "intro": "Catena est la suite logicielle qui vous appartient - gratuite en auto-hébergement, ou gérée par nous. Elle est dirigée par Marc-Antoine Lalonde. Voici ce que ça veut dire concrètement.",
     "facts_title": "Mes engagements",
     "facts": {
       "response_label": "Temps de réponse",
