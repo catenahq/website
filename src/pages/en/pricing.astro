@@ -1,6 +1,7 @@
 ---
 import Base from "../../layouts/Base.astro";
 import PageTitle from "../../components/PageTitle.astro";
+import PricingCommunity from "../../components/PricingCommunity.astro";
 import PricingSovereignty from "../../components/PricingSovereignty.astro";
 import Pricing from "../../components/Pricing.astro";
 import PricingScope from "../../components/PricingScope.astro";
@@ -34,6 +35,7 @@ const locale = "en";
     title={t(locale, "common.pricing.title")}
     intro={t(locale, "common.pricing.intro")}
   />
+  <PricingCommunity locale={locale} />
   <PricingSovereignty locale={locale} />
   <Pricing locale={locale} />
   <PricingScope locale={locale} />

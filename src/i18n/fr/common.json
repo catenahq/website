@@ -370,8 +370,23 @@
   },
   "pricing": {
     "title": "Tarifs",
-    "intro": "Tarification transparente, axée sur la souveraineté. Vous payez par serveur, pas par utilisateur. Trois lignes : le serveur, les applications que vous y faites tourner, et le support que vous utilisez vraiment. Ajustez l'une sans renégocier de palier. Tous les prix en dollars canadiens (CAD).",
-    "build_title": "Composez votre abonnement",
+    "intro": "Deux éditions. Catena Communauté est gratuite et auto-hébergée - faites tourner toute la suite vous-même. Catena Business est l'abonnement géré détaillé ci-dessous : transparent, axé sur la souveraineté, et facturé par serveur, pas par utilisateur. Trois lignes - le serveur, les applications que vous y faites tourner, et le support que vous utilisez vraiment - ajustables en tout temps. Tous les prix en dollars canadiens (CAD).",
+    "community": {
+      "title": "Catena Communauté",
+      "price": "Gratuit",
+      "price_unit": "auto-hébergé",
+      "tagline": "Toute la suite, code source disponible, sur une infrastructure qui vous appartient. Aucuns frais de licence, aucune télémétrie. Vous l'opérez; les applications et vos données ne quittent jamais votre contrôle.",
+      "features": [
+        "Le catalogue complet d'applications vérifiées, déployé avec un seul installateur",
+        "Authentification unique dans toute la suite (un seul identifiant pour chaque application)",
+        "Sauvegardes chiffrées locales que vous contrôlez",
+        "Documentation en libre-service et soutien communautaire"
+      ],
+      "cta_label": "Lire le guide d'auto-hébergement",
+      "cta_url": "https://docs.catena.run/",
+      "managed_note": "Vous préférez ne pas gérer de serveur vous-même? Tout ce qui suit est Catena Business, l'édition gérée : nous opérons le cycle de vie et ajoutons des sauvegardes immuables hors site, des mises à jour gérées avec réponse aux CVE, la supervision et un rapport d'assurance mensuel."
+    },
+    "build_title": "Composez votre abonnement Catena Business",
     "model": {
       "server": {
         "name": "Serveur",

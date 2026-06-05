@@ -370,8 +370,23 @@
   },
   "pricing": {
     "title": "Pricing",
-    "intro": "Transparent, sovereignty-first pricing. Pay per server, not per seat. Three line items: the server, the apps you run on it, and the support you actually use. Resize any one without renegotiating a tier. All prices in Canadian dollars (CAD).",
-    "build_title": "Build your subscription",
+    "intro": "Two editions. Catena Community is free and self-hosted - run the whole suite yourself. Catena Business is the managed subscription detailed below: transparent, sovereignty-first, and priced per server, not per seat. Three line items - the server, the apps you run on it, and the support you actually use - resized any time. All prices in Canadian dollars (CAD).",
+    "community": {
+      "title": "Catena Community",
+      "price": "Free",
+      "price_unit": "self-hosted",
+      "tagline": "The whole suite, source-available, running on infrastructure you own. No licence fee, no telemetry. You operate it; the apps and your data never leave your control.",
+      "features": [
+        "The full vetted app catalog, deployed with one installer",
+        "Single sign-on across the suite (one login for every app)",
+        "Local encrypted backups you control",
+        "Self-service docs and community support"
+      ],
+      "cta_label": "Read the self-hosting guide",
+      "cta_url": "https://docs.catena.run/",
+      "managed_note": "Would rather not run a server yourself? Everything below is Catena Business, the managed edition: we operate the lifecycle and add offsite immutable backups, managed updates with CVE response, monitoring, and a monthly assurance report."
+    },
+    "build_title": "Build your Catena Business subscription",
     "model": {
       "server": {
         "name": "Server",
