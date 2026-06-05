@@ -40,7 +40,7 @@
   "banner": {
     "message": "Nouveau : Catena Communauté - auto-hébergez toute la suite, gratuitement.",
     "cta_label": "Obtenir l'édition Communauté",
-    "cta_href": "https://docs.catena.run/"
+    "cta_href": "https://github.com/catenahq/catena"
   },
   "notfound": {
     "title": "Page introuvable",
@@ -382,8 +382,8 @@
         "Sauvegardes chiffrées locales que vous contrôlez",
         "Documentation en libre-service et soutien communautaire"
       ],
-      "cta_label": "Lire le guide d'auto-hébergement",
-      "cta_url": "https://docs.catena.run/",
+      "cta_label": "Obtenir sur GitHub",
+      "cta_url": "https://github.com/catenahq/catena",
       "managed_note": "Vous préférez ne pas gérer de serveur vous-même? Tout ce qui suit est Catena Business, l'édition gérée : nous opérons le cycle de vie et ajoutons des sauvegardes immuables hors site, des mises à jour gérées avec réponse aux CVE, la supervision et un rapport d'assurance mensuel."
     },
     "build_title": "Composez votre abonnement Catena Business",
@@ -761,7 +761,7 @@
     },
     "q16": {
       "question": "Catena est-elle gratuite ?",
-      "answer": "L'édition Communauté l'est, oui : toute la suite, code source disponible, auto-hébergée sur une infrastructure qui vous appartient, sans frais de licence ni télémétrie. Vous l'installez et l'opérez vous-même avec le <a href='https://docs.catena.run/'>guide d'auto-hébergement</a> et la documentation communautaire. Catena Business est l'édition gérée payante, où nous opérons le cycle de vie pour vous : sauvegardes immuables hors site, mises à jour gérées, supervision, identité et rapport d'assurance mensuel. Mêmes logiciels dans les deux cas -- commencez gratuitement et passez au mode géré quand vous préférez ne pas gérer de serveur."
+      "answer": "L'édition Communauté l'est, oui : toute la suite, code source disponible, auto-hébergée sur une infrastructure qui vous appartient, sans frais de licence ni télémétrie. Vous l'installez et l'opérez vous-même depuis <a href='https://github.com/catenahq/catena'>GitHub</a> et la documentation communautaire. Catena Business est l'édition gérée payante, où nous opérons le cycle de vie pour vous : sauvegardes immuables hors site, mises à jour gérées, supervision, identité et rapport d'assurance mensuel. Mêmes logiciels dans les deux cas -- commencez gratuitement et passez au mode géré quand vous préférez ne pas gérer de serveur."
     },
     "q2": {
       "question": "Que puis-je faire tourner d'autre sur la suite ?",
