@@ -40,7 +40,7 @@
   "banner": {
     "message": "New: Catena Community - self-host the whole suite, free.",
     "cta_label": "Get the Community Edition",
-    "cta_href": "https://github.com/catenahq/catena"
+    "cta_href": "https://github.com/catenahq/catena-ce"
   },
   "notfound": {
     "title": "Page not found",
@@ -383,7 +383,7 @@
         "Self-service docs and community support"
       ],
       "cta_label": "Get it on GitHub",
-      "cta_url": "https://github.com/catenahq/catena",
+      "cta_url": "https://github.com/catenahq/catena-ce",
       "managed_note": "Would rather not run a server yourself? Everything below is Catena Business, the managed edition: we operate the lifecycle and add offsite immutable backups, managed updates with CVE response, monitoring, and a monthly assurance report."
     },
     "build_title": "Build your Catena Business subscription",
@@ -761,7 +761,7 @@
     },
     "q16": {
       "question": "Is Catena free?",
-      "answer": "The Community edition is, yes: the whole suite, source-available, self-hosted on infrastructure you own, with no licence fee and no telemetry. You install and operate it yourself from <a href='https://github.com/catenahq/catena'>GitHub</a> and the community docs. Catena Business is the paid managed edition, where we run the lifecycle for you: offsite immutable backups, managed updates, monitoring, identity, and a monthly assurance report. Same software either way -- start free and move to managed whenever you would rather not run a server."
+      "answer": "The Community edition is, yes: the whole suite, source-available, self-hosted on infrastructure you own, with no licence fee and no telemetry. You install and operate it yourself from <a href='https://github.com/catenahq/catena-ce'>GitHub</a> and the community docs. Catena Business is the paid managed edition, where we run the lifecycle for you: offsite immutable backups, managed updates, monitoring, identity, and a monthly assurance report. Same software either way -- start free and move to managed whenever you would rather not run a server."
     },
     "q2": {
       "question": "What else can I run on the suite?",
