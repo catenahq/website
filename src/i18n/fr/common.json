@@ -1180,8 +1180,6 @@
       "line_formula_tier": "forfait {total} $ / mois",
       "subtotal": "Sous-total",
       "monthly_total": "Total mensuel",
-      "support_pack_label": "Forfait support",
-      "support_pack_none": "Aucun forfait",
       "tier_user_cap_ok": "{users} dans la limite de {cap} utilisateurs",
       "tier_user_cap_exceeded": "{users} dépasse la limite de {cap} utilisateurs -- choisir un palier supérieur"
     },

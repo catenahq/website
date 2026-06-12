@@ -1180,8 +1180,6 @@
       "line_formula_tier": "flat ${total} / month",
       "subtotal": "Subtotal",
       "monthly_total": "Monthly total",
-      "support_pack_label": "Support pack",
-      "support_pack_none": "No pack",
       "tier_user_cap_ok": "{users} within {cap}-user cap",
       "tier_user_cap_exceeded": "{users} exceeds {cap}-user cap -- pick a higher tier"
     },
