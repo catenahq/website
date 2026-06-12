@@ -987,7 +987,7 @@
     },
     "q7": {
       "question": "Comment gagnez-vous votre vie ?",
-      "answer": "L'édition Communauté est gratuite; nous gagnons notre vie avec Catena Business, l'édition gérée : un abonnement mensuel par serveur, plus par application, avec le support manuel facturé à l'heure seulement selon l'usage. Aucun frais par utilisateur, jamais. L'hébergement et les sauvegardes sont en refacturation directe sur vos comptes. Voir la <a href='/pricing'>page Tarifs</a>."
+      "answer": "L'édition Communauté est gratuite; nous gagnons notre vie avec Catena Business, l'édition gérée : un abonnement mensuel par serveur, plus par application, avec le support manuel facturé à l'heure seulement selon l'usage. Aucun frais par utilisateur, jamais. L'hébergement et les sauvegardes sont en refacturation directe sur vos comptes. Voir la <a href='/#pricing'>section Tarifs</a>."
     },
     "q8": {
       "question": "Hébergez-vous le courriel ?",
@@ -1011,11 +1011,11 @@
     },
     "q14": {
       "question": "Vous êtes vraiment un MSP ? En quoi êtes-vous différent de mon MSP actuel ?",
-      "answer": "Catena Business est un service géré -- nous opérons la Suite Catena à votre place selon un abonnement mensuel -- donc cette partie fonctionne comme un MSP. Deux choses la distinguent d'un MSP traditionnel : le logiciel est un produit que vous pouvez aussi auto-héberger gratuitement (l'édition Communauté), et la portée gérée se limite à la Suite Catena. Nous ne gérons pas vos postes de travail, vos imprimantes, votre Microsoft 365, ni votre réseau de bureau (voir <a href='/pricing#scope'>la grille Inclus / Non inclus</a>). En échange : vous payez par serveur (pas par siège), votre code et vos données vous appartiennent, et vous pouvez quitter à tout moment avec tout en main."
+      "answer": "Catena Business est un service géré -- nous opérons la Suite Catena à votre place selon un abonnement mensuel -- donc cette partie fonctionne comme un MSP. Deux choses la distinguent d'un MSP traditionnel : le logiciel est un produit que vous pouvez aussi auto-héberger gratuitement (l'édition Communauté), et la portée gérée se limite à la Suite Catena. Nous ne gérons pas vos postes de travail, vos imprimantes, votre Microsoft 365, ni votre réseau de bureau (voir <a href='/#pricing'>la grille des éditions</a>). En échange : vous payez par serveur (pas par siège), votre code et vos données vous appartiennent, et vous pouvez quitter à tout moment avec tout en main."
     },
     "q15": {
       "question": "Que pouvez-vous produire comme documentation Loi 25 ?",
-      "answer": "La Suite Catena est conforme Loi 25 au niveau infrastructure (résidence canadienne, sous-traitants documentés, sauvegardes immuables, MFA, chiffrement, journalisation). Pour le volet documentaire (EFVP, registres, politiques, runbook d'incident), nous offrons un accompagnement séparé : audit et pack initial (en construction, revue juridique en cours). Important : nous ne vous remplaçons pas comme responsable de la protection des renseignements personnels -- Loi 25 exige que ce soit une personne à l'interne de votre organisation -- nous fournissons l'infrastructure et les documents que cette personne peut adopter et signer. Voir <a href='/pricing#compliance'>la section Conformité Loi 25</a>."
+      "answer": "La Suite Catena est conforme Loi 25 au niveau infrastructure (résidence canadienne, sous-traitants documentés, sauvegardes immuables, MFA, chiffrement, journalisation). Pour le volet documentaire (EFVP, registres, politiques, runbook d'incident), nous offrons un accompagnement séparé : audit et pack initial (en construction, revue juridique en cours). Important : nous ne vous remplaçons pas comme responsable de la protection des renseignements personnels -- Loi 25 exige que ce soit une personne à l'interne de votre organisation -- nous fournissons l'infrastructure et les documents que cette personne peut adopter et signer. <a href='/contact'>Parlez-nous de la conformité Loi 25</a>."
     }
   },
   "about": {
@@ -1077,7 +1077,7 @@
     "intro": "Ces conditions encadrent la relation entre Catena (le prestataire de services) et vous (le client). Elles sont volontairement concises -- la lettre de mandat signée à l'inscription est le contrat de référence ; cette page en résume les engagements principaux.",
     "review_notice": "Cette page est un brouillon en attente de révision juridique. Parlez-nous directement pour les conditions contractuelles dans votre lettre de mandat.",
     "scope_title": "Portée du service",
-    "scope_body": "Les composantes de votre abonnement -- serveur et applications -- définissent ce qui est inclus, avec le support manuel facturé à l'heure selon l'usage. Voir la <a href='/pricing'>page Tarifs</a> pour le modèle public. Les changements de portée (ajout ou retrait d'applications) sont convenus par écrit.",
+    "scope_body": "Les composantes de votre abonnement -- serveur et applications -- définissent ce qui est inclus, avec le support manuel facturé à l'heure selon l'usage. Voir la <a href='/#pricing'>section Tarifs</a> pour le modèle public. Les changements de portée (ajout ou retrait d'applications) sont convenus par écrit.",
     "billing_title": "Tarification et facturation",
     "billing_body": "L'abonnement géré (serveur + applications) comporte un engagement minimum de 6 mois, facturé mensuellement. Le support manuel est facturé au tarif publié par tranches de 15 minutes, selon l'usage. Traitement des cartes via Stripe.",
     "ownership_title": "Propriété des données",
@@ -1091,7 +1091,7 @@
     "termination_title": "Résiliation",
     "termination_body": "L'une ou l'autre partie peut mettre fin selon la lettre de mandat. À la résiliation, nous effectuons la remise de la suite et de l'export S3 du client ; les données conservées sur les systèmes de Catena sont purgées dans les 30 jours.",
     "perservice_title": "Conditions par service",
-    "perservice_body": "Chaque application en amont dans la suite porte sa propre licence et politique d'usage acceptable (Nextcloud GPL, Rocket.Chat MIT, OnlyOffice AGPL, etc.). Le lien Page du projet sur /features pointe vers les conditions officielles de chaque amont.",
+    "perservice_body": "Chaque application en amont dans la suite porte sa propre licence et politique d'usage acceptable (Nextcloud GPL, Rocket.Chat MIT, OnlyOffice AGPL, etc.). Les conditions officielles de chaque amont sont liées depuis la documentation de chaque application.",
     "law_title": "Loi applicable",
     "law_body": "Québec, Canada. Les litiges relèvent des tribunaux du district judiciaire de Montréal."
   },

@@ -987,7 +987,7 @@
     },
     "q7": {
       "question": "How do you make money?",
-      "answer": "The Community edition is free; we make our money on Catena Business, the managed edition: a monthly subscription per server, plus per-app, with hands-on support billed hourly only as you use it. No per-seat, ever. Hosting and backups are passthrough to your own accounts. See the <a href='/en/pricing'>Pricing page</a>."
+      "answer": "The Community edition is free; we make our money on Catena Business, the managed edition: a monthly subscription per server, plus per-app, with hands-on support billed hourly only as you use it. No per-seat, ever. Hosting and backups are passthrough to your own accounts. See the <a href='/en/#pricing'>pricing section</a>."
     },
     "q8": {
       "question": "Do you self-host email?",
@@ -1011,11 +1011,11 @@
     },
     "q14": {
       "question": "Are you really an MSP? How are you different from my current MSP?",
-      "answer": "Catena Business is a managed service -- we run the Catena Suite on your behalf for a monthly subscription -- so that part works like an MSP. Two things set it apart from a traditional MSP: the software is a product you can also self-host for free (the Community edition), and the managed scope is bounded to the Catena Suite. We do not manage your workstations, printers, Microsoft 365, or office network (see <a href='/en/pricing#scope'>the Included / Not included grid</a>). In exchange: you pay per server (not per seat), your code and data belong to you, and you can leave at any time with everything in hand."
+      "answer": "Catena Business is a managed service -- we run the Catena Suite on your behalf for a monthly subscription -- so that part works like an MSP. Two things set it apart from a traditional MSP: the software is a product you can also self-host for free (the Community edition), and the managed scope is bounded to the Catena Suite. We do not manage your workstations, printers, Microsoft 365, or office network (see <a href='/en/#pricing'>the editions grid</a>). In exchange: you pay per server (not per seat), your code and data belong to you, and you can leave at any time with everything in hand."
     },
     "q15": {
       "question": "What can you produce as Law 25 documentation?",
-      "answer": "The Catena Suite is Law 25 compliant at the infrastructure level (Canadian residency, documented subprocessors, immutable backups, MFA, encryption, logging). For the documentation layer (PIA / EFVP, registers, policies, incident runbook), we offer separate compliance enablement: audit and initial pack (in build, under legal review). Important: we do not replace your internal privacy officer -- Law 25 requires this to be a person inside your organization -- we deliver the infrastructure and documents that person can adopt and sign. See <a href='/en/pricing#compliance'>the Law 25 section</a>."
+      "answer": "The Catena Suite is Law 25 compliant at the infrastructure level (Canadian residency, documented subprocessors, immutable backups, MFA, encryption, logging). For the documentation layer (PIA / EFVP, registers, policies, incident runbook), we offer separate compliance enablement: audit and initial pack (in build, under legal review). Important: we do not replace your internal privacy officer -- Law 25 requires this to be a person inside your organization -- we deliver the infrastructure and documents that person can adopt and sign. <a href='/en/contact'>Talk to us about Law 25 compliance</a>."
     }
   },
   "about": {
@@ -1077,7 +1077,7 @@
     "intro": "These terms cover the relationship between Catena (the service provider) and you (the client). They are deliberately concise -- the engagement letter you sign at signup is the canonical contract; this page summarizes its main commitments.",
     "review_notice": "This page is a draft pending legal review. Talk to us directly for the binding terms in your engagement letter.",
     "scope_title": "Service scope",
-    "scope_body": "Your subscription components -- server and apps -- define what is included, with hands-on support billed hourly as used. See the <a href='/en/pricing'>Pricing page</a> for the public model. Changes to scope (adding or removing apps) are agreed in writing.",
+    "scope_body": "Your subscription components -- server and apps -- define what is included, with hands-on support billed hourly as used. See the <a href='/en/#pricing'>pricing section</a> for the public model. Changes to scope (adding or removing apps) are agreed in writing.",
     "billing_title": "Pricing and billing",
     "billing_body": "The managed subscription (server + apps) carries a 6-month minimum commitment, billed monthly. Hands-on support is billed at the published rate in 15-minute increments, as used. Card processing via Stripe.",
     "ownership_title": "Data ownership",
@@ -1091,7 +1091,7 @@
     "termination_title": "Termination",
     "termination_body": "Either party may terminate per the engagement letter. On termination, we hand over the suite and the client's S3 export; data retained on Catena-owned systems is purged within 30 days.",
     "perservice_title": "Per-service terms",
-    "perservice_body": "Each upstream app in the suite carries its own license and acceptable-use policy (Nextcloud GPL, Rocket.Chat MIT, OnlyOffice AGPL, etc.). The Project page link on /features points to each upstream's official terms.",
+    "perservice_body": "Each upstream app in the suite carries its own license and acceptable-use policy (Nextcloud GPL, Rocket.Chat MIT, OnlyOffice AGPL, etc.). Each upstream's official terms are linked from that app's documentation.",
     "law_title": "Governing law",
     "law_body": "Quebec, Canada. Disputes go to the courts of the judicial district of Montreal."
   },
