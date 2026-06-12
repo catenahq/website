@@ -6,6 +6,7 @@
 // the docs-only checkmark exception does not apply here). Source of truth
 // for the cells: catena-ce/README.md Editions table + contracts tiers.json.
 import { t } from "@catena/i18n";
+import MatrixCell from "./MatrixCell.astro";
 
 interface Props {
   locale: "en" | "fr";
@@ -58,8 +59,19 @@ const discoveryUrl = t(locale, "common.cta.discovery_url");
                   <th scope="row" class="rowhead">
                     {t(locale, `${base}.groups.${group.key}.rows.${row}.label`)}
                   </th>
-                  <td>{t(locale, `${base}.groups.${group.key}.rows.${row}.community`)}</td>
-                  <td class="business">{t(locale, `${base}.groups.${group.key}.rows.${row}.business`)}</td>
+                  <td>
+                    <MatrixCell
+                      value={t(locale, `${base}.groups.${group.key}.rows.${row}.community`)}
+                      locale={locale}
+                    />
+                  </td>
+                  <td class="business">
+                    <MatrixCell
+                      value={t(locale, `${base}.groups.${group.key}.rows.${row}.business`)}
+                      business
+                      locale={locale}
+                    />
+                  </td>
                 </tr>
               ))}
             </>
@@ -68,7 +80,6 @@ const discoveryUrl = t(locale, "common.cta.discovery_url");
       </table>
     </div>
 
-    <p class="legend muted">{t(locale, `${base}.legend`)}</p>
     <p class="anchor">{t(locale, `${base}.anchor`)}</p>
     <a class="btn btn-primary" href={discoveryUrl}>{t(locale, `${base}.cta_label`)}</a>
   </div>
@@ -117,10 +128,6 @@ const discoveryUrl = t(locale, "common.cta.discovery_url");
     background: color-mix(in srgb, var(--catena-accent) 7%, var(--catena-surface-bg));
     color: var(--catena-surface-fg);
     font-weight: var(--catena-fw-medium);
-  }
-  .legend {
-    margin-top: var(--catena-space-5);
-    font-size: var(--catena-fs-sm);
   }
   .anchor {
     margin-top: var(--catena-space-4);

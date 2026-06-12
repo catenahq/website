@@ -23,7 +23,6 @@ const items = [
 <section id="features" class="caps">
   <div class="container">
     <h2>{t(locale, "common.home.features.title")}</h2>
-    <p class="lead muted">{t(locale, "common.home.features.intro")}</p>
     <div class="grid">
       {items.map((key) => (
         <article class="card">
@@ -36,9 +35,12 @@ const items = [
 </section>
 
 <style>
-  .caps { padding: var(--catena-space-24) 0; }
-  .lead { margin-bottom: var(--catena-space-10); max-width: 56rem; }
+  .caps {
+    padding: var(--catena-space-24) 0;
+    background: var(--catena-surface-bg-muted);
+  }
   .grid {
+    margin-top: var(--catena-space-10);
     display: grid;
     grid-template-columns: repeat(3, minmax(0, 1fr));
     gap: var(--catena-space-5);

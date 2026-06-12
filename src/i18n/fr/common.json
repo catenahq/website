@@ -59,7 +59,6 @@
     },
     "features": {
       "title": "L'environnement qui fait tourner vos services",
-      "intro": "Catena crée l'environnement qui fait fonctionner vos applications : connexions sécurisées, sauvegardes, identité, mises à jour, supervision et automatisation.",
       "items": {
         "secure_connections": {
           "title": "Connexions sécurisées",
@@ -97,7 +96,6 @@
     "pricing_matrix": {
       "title": "Communauté ou Business : ce que vous obtenez",
       "intro": "Auto-hébergez l'édition Communauté gratuitement, ou laissez-nous opérer l'édition Business. Voici ce que chaque édition inclut.",
-      "legend": "Manuel : vous l'exécutez vous-même. Automatisé : nous l'opérons pour vous.",
       "col_feature": "Capacité",
       "cols": {
         "community": "Communauté",
@@ -113,13 +111,13 @@
           "rows": {
             "admin_tunnel": {
               "label": "Tunnel Admin (Tailscale)",
-              "community": "Oui",
-              "business": "Oui"
+              "community": "yes",
+              "business": "yes"
             },
             "app_tunnel": {
               "label": "Tunnel Applications + DDoS (Cloudflare)",
-              "community": "Oui",
-              "business": "Oui"
+              "community": "yes",
+              "business": "yes"
             }
           }
         },
@@ -128,13 +126,13 @@
           "rows": {
             "templates": {
               "label": "Modèles d'applications réutilisables",
-              "community": "Oui",
-              "business": "Oui"
+              "community": "yes",
+              "business": "yes"
             },
             "unlimited": {
               "label": "Déploiement illimité d'applications",
-              "community": "Oui",
-              "business": "Oui"
+              "community": "yes",
+              "business": "yes"
             }
           }
         },
@@ -143,13 +141,13 @@
           "rows": {
             "sso": {
               "label": "Authentification unique + RBAC",
-              "community": "Oui",
-              "business": "Oui"
+              "community": "yes",
+              "business": "yes"
             },
             "audit": {
               "label": "Piste d'audit signée",
-              "community": "Non",
-              "business": "Oui"
+              "community": "no",
+              "business": "yes"
             }
           }
         },
@@ -163,8 +161,8 @@
             },
             "cve": {
               "label": "Surveillance des vulnérabilités (CVE)",
-              "community": "Non",
-              "business": "Oui"
+              "community": "no",
+              "business": "yes"
             }
           }
         },
@@ -173,8 +171,8 @@
           "rows": {
             "dashboard": {
               "label": "Tableau de bord de supervision",
-              "community": "Oui",
-              "business": "Oui"
+              "community": "yes",
+              "business": "yes"
             },
             "alerts": {
               "label": "Alertes d'état des services",
@@ -183,8 +181,8 @@
             },
             "central": {
               "label": "Supervision centralisée",
-              "community": "Non",
-              "business": "Oui"
+              "community": "no",
+              "business": "yes"
             }
           }
         },
@@ -198,7 +196,7 @@
             },
             "immutable": {
               "label": "Sauvegardes immuables hors site",
-              "community": "Non",
+              "community": "no",
               "business": "Automatisées"
             }
           }
@@ -215,7 +213,9 @@
         }
       },
       "anchor": "À partir de 200 $ / mois par serveur, plus 100 $ / mois par application.",
-      "cta_label": "Réserver un appel découverte"
+      "cta_label": "Réserver un appel découverte",
+      "yes_label": "Inclus",
+      "no_label": "Non inclus"
     },
     "faq_home": {
       "title": "Questions fréquentes",
@@ -224,8 +224,8 @@
   },
   "features": {
     "tool_comparison": {
-      "title": "Comment se positionnent les choix de la Suite Catena",
-      "intro": "Côte à côte avec les forfaits SaaS que les PME évaluent le plus souvent. Les choix de la Suite Catena sont libres, mono-tenant et tournent sur une infrastructure qui vous appartient.",
+      "title": "Applications suggérées pour chaque besoin",
+      "intro": "Une application libre suggérée pour chaque besoin, à côté des forfaits SaaS que les PME évaluent le plus souvent. Ce sont des points de départ, pas des limites : des centaines d'autres applications auto-hébergeables tournent sur Catena.",
       "category_label": "Catégorie",
       "cols": {
         "catena": "Catena",

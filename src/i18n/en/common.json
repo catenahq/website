@@ -59,7 +59,6 @@
     },
     "features": {
       "title": "The environment that runs your services",
-      "intro": "Catena builds the environment that runs your apps: secure connections, backups, identity, updates, monitoring, and automation.",
       "items": {
         "secure_connections": {
           "title": "Secure connections",
@@ -97,7 +96,6 @@
     "pricing_matrix": {
       "title": "Community or Business: what you get",
       "intro": "Self-host the Community edition for free, or let us operate the Business edition. Here is what each one includes.",
-      "legend": "Manual: you run it yourself. Automated: we operate it for you.",
       "col_feature": "Capability",
       "cols": {
         "community": "Community",
@@ -113,13 +111,13 @@
           "rows": {
             "admin_tunnel": {
               "label": "Admin tunnel (Tailscale)",
-              "community": "Yes",
-              "business": "Yes"
+              "community": "yes",
+              "business": "yes"
             },
             "app_tunnel": {
               "label": "App tunnel + DDoS (Cloudflare)",
-              "community": "Yes",
-              "business": "Yes"
+              "community": "yes",
+              "business": "yes"
             }
           }
         },
@@ -128,13 +126,13 @@
           "rows": {
             "templates": {
               "label": "Reusable app templates",
-              "community": "Yes",
-              "business": "Yes"
+              "community": "yes",
+              "business": "yes"
             },
             "unlimited": {
               "label": "Unlimited app deployment",
-              "community": "Yes",
-              "business": "Yes"
+              "community": "yes",
+              "business": "yes"
             }
           }
         },
@@ -143,13 +141,13 @@
           "rows": {
             "sso": {
               "label": "Single sign-on + RBAC",
-              "community": "Yes",
-              "business": "Yes"
+              "community": "yes",
+              "business": "yes"
             },
             "audit": {
               "label": "Signed audit trail",
-              "community": "No",
-              "business": "Yes"
+              "community": "no",
+              "business": "yes"
             }
           }
         },
@@ -163,8 +161,8 @@
             },
             "cve": {
               "label": "Vulnerability (CVE) monitoring",
-              "community": "No",
-              "business": "Yes"
+              "community": "no",
+              "business": "yes"
             }
           }
         },
@@ -173,8 +171,8 @@
           "rows": {
             "dashboard": {
               "label": "Monitoring dashboard",
-              "community": "Yes",
-              "business": "Yes"
+              "community": "yes",
+              "business": "yes"
             },
             "alerts": {
               "label": "Service status alerts",
@@ -183,8 +181,8 @@
             },
             "central": {
               "label": "Centralized monitoring",
-              "community": "No",
-              "business": "Yes"
+              "community": "no",
+              "business": "yes"
             }
           }
         },
@@ -198,7 +196,7 @@
             },
             "immutable": {
               "label": "Offsite immutable backups",
-              "community": "No",
+              "community": "no",
               "business": "Automated"
             }
           }
@@ -215,7 +213,9 @@
         }
       },
       "anchor": "From $200/mo per server, plus $100/mo per app.",
-      "cta_label": "Book a discovery call"
+      "cta_label": "Book a discovery call",
+      "yes_label": "Included",
+      "no_label": "Not included"
     },
     "faq_home": {
       "title": "Common questions",
@@ -224,8 +224,8 @@
   },
   "features": {
     "tool_comparison": {
-      "title": "How the Catena Suite picks compare",
-      "intro": "Side-by-side with the SaaS bundles most SMBs evaluate. The Catena Suite picks are open-source, single-tenant, and run on infrastructure you own.",
+      "title": "Suggested apps for each capability",
+      "intro": "A suggested open-source app for each capability, side by side with the SaaS bundles most SMBs evaluate. These are starting points, not limits: hundreds of other self-hostable apps run on Catena.",
       "category_label": "Category",
       "cols": {
         "catena": "Catena",
