@@ -56,8 +56,9 @@
   },
   "home": {
     "hero": {
-      "headline": "Vos logiciels. Vos données. Votre choix.",
-      "subheadline": "Courriels, fichiers, discussions, CRM, agendas, facturation - une suite logicielle unifiée sur une infrastructure qui vous appartient. Hébergez-la vous-même avec l'édition Communauté gratuite, ou laissez-nous l'opérer pour vous."
+      "eyebrow": "Des logiciels modernes, sans les tracas modernes.",
+      "headline": "Possédez les logiciels qui font tourner votre entreprise.",
+      "subheadline": "Les outils dont votre entreprise dépend au quotidien - fichiers, courriels, discussions, réservation, CRM - sur un serveur qui vous appartient. Nous l'opérons pour vous, ou vous l'auto-hébergez. Facturé par application, jamais par utilisateur."
     },
     "bio": {
       "body": "Mené par Marc-Antoine Lalonde, basé au Québec.",
@@ -162,7 +163,128 @@
         ],
         "cta_label": "Nous contacter"
       },
-      "footnote": "Commencez gratuitement en auto-hébergé; passez au mode géré quand vous préférez que nous l'opérions. Mêmes données, mêmes applications, aucune migration."
+      "footnote": "Aucuns frais par utilisateur, jamais. Ajoutez toute votre équipe sans frais supplémentaires. L'hébergement et les sauvegardes sont refacturés à vos propres comptes, au prix coûtant. Une équipe TI à l'interne ? Un siège développeur à 15 $ / mois lui donne un accès de déploiement à son propre projet. <a href=\"PRICING_HREF\">Voir tous les tarifs</a>."
+    },
+    "what": {
+      "title": "Ce qu'est Catena",
+      "intro": "Votre serveur est un VPS ordinaire, enregistré à votre nom. Catena, c'est tout ce qui y est installé : le durcissement, l'authentification unique, les sauvegardes et la supervision qui le transforment en une suite d'affaires privée que vous contrôlez, faisant tourner les applications de votre choix.",
+      "vps_label": "Votre VPS, à votre nom",
+      "layer_label": "La couche Catena : durcissement, authentification unique, réseau privé, sauvegardes, supervision",
+      "flow_user": "Votre équipe",
+      "flow_internet": "Internet",
+      "flow_edge": "Cloudflare",
+      "flow_edge_note": "DNS + bouclier DDoS",
+      "flow_tunnel": "Tunnel chiffré",
+      "flow_tunnel_note": "aucun port ouvert",
+      "flow_sso": "Authentification unique",
+      "flow_sso_note": "Keycloak",
+      "apps_label": "Vos applications",
+      "managed_title": "Toujours actif, même machine",
+      "managed_items": [
+        "Tableau de bord d'administration",
+        "Sauvegardes : quotidiennes et hors site",
+        "Supervision et alertes",
+        "Mises à jour automatiques et analyse CVE",
+        "Hôte durci et pare-feu"
+      ]
+    },
+    "capabilities": {
+      "title": "Ce dont nous nous occupons à votre place",
+      "intro": "Le travail d'infrastructure ingrat mais essentiel, fait pour vous et visible dès que vous voulez vérifier.",
+      "cards": {
+        "data": {
+          "title": "Vous ne perdrez pas vos données",
+          "body": "Sauvegardes quotidiennes plus copies immuables hors site, avec restauration et retour arrière en un clic. La récupération est incluse dans chaque édition : vous pouvez toujours récupérer vos données, même en auto-hébergé."
+        },
+        "access": {
+          "title": "Vous contrôlez les accès",
+          "body": "Authentification unique dans toutes les applications, permissions par rôle, et une piste d'audit de qui a fait quoi."
+        },
+        "secure": {
+          "title": "La sécurité se maintient d'elle-même",
+          "body": "Serveurs durcis, mises à jour automatiques et analyse CVE continue, testées sur notre propre déploiement avant le vôtre."
+        },
+        "visible": {
+          "title": "Vous voyez que ça fonctionne",
+          "body": "Un tableau de bord d'administration en direct, plus supervision et alertes depuis l'intérieur et l'extérieur du réseau."
+        },
+        "connected": {
+          "title": "Vos outils communiquent entre eux",
+          "body": "Connecteurs natifs là où ils existent, et un moteur d'automatisation intégré pour relier vos applications entre elles et aux services externes que vous utilisez encore."
+        }
+      }
+    },
+    "compare": {
+      "title": "Possédé, pas loué",
+      "intro": "Comment Catena se compare au SaaS par utilisateur que la plupart des entreprises paient. Le comparatif complet à quatre colonnes est sur la page comparaison.",
+      "col_catena": "Catena",
+      "col_saas": "Microsoft 365 / Google / SaaS typique",
+      "rows": {
+        "billing": {
+          "label": "Unité de facturation",
+          "catena": "Par application, par mois",
+          "saas": "Par utilisateur, par mois"
+        },
+        "staff": {
+          "label": "Ajouter du personnel",
+          "catena": "Sans frais supplémentaires",
+          "saas": "Payer chaque nouveau siège"
+        },
+        "data": {
+          "label": "Où vivent vos données",
+          "catena": "Un serveur qui vous appartient",
+          "saas": "Nuage du fournisseur, souvent à l'étranger"
+        },
+        "profiling": {
+          "label": "Utilisées pour vous profiler ou entraîner une IA",
+          "catena": "Non",
+          "saas": "Souvent, par défaut"
+        },
+        "exit": {
+          "label": "Partir avec tout",
+          "catena": "Intégré",
+          "saas": "Export laborieux, verrouillage"
+        },
+        "stop": {
+          "label": "Si vous cessez de payer",
+          "catena": "L'auto-hébergé continue de tourner",
+          "saas": "Accès coupé"
+        },
+        "residency": {
+          "label": "Résidence des données / Loi 25",
+          "catena": "Votre juridiction",
+          "saas": "Les conditions du fournisseur"
+        }
+      },
+      "link_label": "Voir le comparatif complet"
+    },
+    "fit": {
+      "title": "Catena vous convient-il ?",
+      "best_title": "Catena convient surtout quand",
+      "best_items": [
+        "Les factures par utilisateur gonflent chaque fois que vous embauchez.",
+        "Vous voulez posséder vos données, votre domaine et votre porte de sortie.",
+        "Vous préférez un seul interlocuteur responsable plutôt que cinq portails fournisseurs."
+      ],
+      "paths_title": "Quelle que soit la configuration de votre équipe, il y a une voie",
+      "paths": {
+        "noit": {
+          "title": "Aucune équipe TI",
+          "body": "Nous opérons tout. Si vous êtes une petite équipe avec un ou deux outils, Microsoft 365, Google ou l'édition Communauté gratuite en auto-hébergé peuvent suffire, et nous vous le dirons."
+        },
+        "devops": {
+          "title": "Vous avez une équipe TI ou devops",
+          "body": "Vous voudrez tout de même des sauvegardes immuables gérées et le durcissement plutôt que d'opérer Communauté vous-même. Pour vos propres services sur mesure, un siège développeur à 15 $ / mois donne à votre équipe un accès de déploiement direct à son propre projet."
+        },
+        "proprietary": {
+          "title": "Lié à une application propriétaire",
+          "body": "Si vous dépendez d'un outil précis sans équivalent libre, nous hébergeons et opérons le reste de vos logiciels autour."
+        }
+      }
+    },
+    "faq_home": {
+      "title": "Questions fréquentes",
+      "link_label": "Voir toutes les questions"
     }
   },
   "features": {

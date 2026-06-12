@@ -56,8 +56,9 @@
   },
   "home": {
     "hero": {
-      "headline": "Your apps. Your data. Your choice.",
-      "subheadline": "Email, files, chat, CRM, scheduling, billing - one unified business suite on infrastructure you own. Run it yourself with the free Community Edition, or let us operate it for you."
+      "eyebrow": "Modern software, no modern headaches.",
+      "headline": "Own the software your business runs on.",
+      "subheadline": "The everyday tools your business depends on - files, email, chat, booking, CRM - on a server that's yours. We run it for you, or you self-host. Priced per app, never per seat."
     },
     "bio": {
       "body": "Run by Marc-Antoine Lalonde, based in Quebec.",
@@ -162,7 +163,128 @@
         ],
         "cta_label": "Talk to us"
       },
-      "footnote": "Start free and self-hosted; move to managed when you would rather we run it. Same data, same apps, no migration."
+      "footnote": "No per-seat fees, ever. Add your whole team at no extra cost. Hosting and backups are passed through to your own accounts at cost. Got an in-house IT team? A $15 / month developer seat gives them deploy access to their own project. <a href=\"PRICING_HREF\">See the full pricing</a>."
+    },
+    "what": {
+      "title": "What Catena is",
+      "intro": "Your server is an ordinary VPS, registered in your name. Catena is everything installed on it: the hardening, single sign-on, backups, and monitoring that turn it into a private business suite you control, running whatever apps you choose.",
+      "vps_label": "Your VPS, in your name",
+      "layer_label": "The Catena layer: hardening, single sign-on, private network, backups, monitoring",
+      "flow_user": "Your team",
+      "flow_internet": "Internet",
+      "flow_edge": "Cloudflare",
+      "flow_edge_note": "DNS + DDoS shield",
+      "flow_tunnel": "Encrypted tunnel",
+      "flow_tunnel_note": "zero open ports",
+      "flow_sso": "Single sign-on",
+      "flow_sso_note": "Keycloak",
+      "apps_label": "Your apps",
+      "managed_title": "Always on, same machine",
+      "managed_items": [
+        "Admin dashboard",
+        "Backups: daily plus offsite",
+        "Monitoring and alerts",
+        "Auto updates and CVE scanning",
+        "Hardened host and firewall"
+      ]
+    },
+    "capabilities": {
+      "title": "What we handle so you don't",
+      "intro": "The unglamorous, critical infrastructure work, done for you and visible whenever you want to check.",
+      "cards": {
+        "data": {
+          "title": "You won't lose your data",
+          "body": "Daily backups plus offsite immutable copies, with one-click restore and rollback. Recovery ships in every edition, so you can always get your data back, even self-hosted."
+        },
+        "access": {
+          "title": "You control who gets in",
+          "body": "Single sign-on across every app, role-based permissions, and an audit trail of who did what."
+        },
+        "secure": {
+          "title": "It stays secure on its own",
+          "body": "Hardened servers, automatic updates, and continuous CVE scanning, tested on our own deployment before yours."
+        },
+        "visible": {
+          "title": "You can see it working",
+          "body": "A live admin dashboard, plus monitoring and alerts from inside and outside the network."
+        },
+        "connected": {
+          "title": "Your tools work together",
+          "body": "Native connectors where they exist, and a built-in automation engine to wire your apps to each other and to the outside services you still use."
+        }
+      }
+    },
+    "compare": {
+      "title": "Owned, not rented",
+      "intro": "How Catena lines up against the per-seat SaaS most businesses pay for. The full four-way breakdown is on the comparison page.",
+      "col_catena": "Catena",
+      "col_saas": "Microsoft 365 / Google / typical SaaS",
+      "rows": {
+        "billing": {
+          "label": "Billing unit",
+          "catena": "Per app, per month",
+          "saas": "Per user, per month"
+        },
+        "staff": {
+          "label": "Add staff",
+          "catena": "No extra charge",
+          "saas": "Pay for every new seat"
+        },
+        "data": {
+          "label": "Where your data lives",
+          "catena": "A server you own",
+          "saas": "Vendor cloud, often another country"
+        },
+        "profiling": {
+          "label": "Used to profile you or train AI",
+          "catena": "No",
+          "saas": "Often, by default"
+        },
+        "exit": {
+          "label": "Leave and take everything",
+          "catena": "Built in",
+          "saas": "Export friction, lock-in"
+        },
+        "stop": {
+          "label": "If you stop paying",
+          "catena": "Self-host keeps running",
+          "saas": "Access cut off"
+        },
+        "residency": {
+          "label": "Data residency / Law 25",
+          "catena": "Your jurisdiction",
+          "saas": "Vendor's terms"
+        }
+      },
+      "link_label": "See the full comparison"
+    },
+    "fit": {
+      "title": "Is Catena a fit?",
+      "best_title": "Catena fits best when",
+      "best_items": [
+        "Per-seat bills grow every time you hire.",
+        "You want to own your data, your domain, and your exit path.",
+        "You would rather have one accountable contact than five vendor portals."
+      ],
+      "paths_title": "However your team is set up, there is a path",
+      "paths": {
+        "noit": {
+          "title": "No IT team",
+          "body": "We run everything. If you are small and use only a tool or two, Microsoft 365, Google, or free self-hosted Community may be all you need, and we will say so."
+        },
+        "devops": {
+          "title": "You have an IT or devops team",
+          "body": "You will still want managed immutable backups and hardening rather than self-running Community. For your team's own custom services, a $15 / month developer seat gives them direct deploy access to their own project."
+        },
+        "proprietary": {
+          "title": "Tied to a proprietary app",
+          "body": "If you depend on a specific tool with no open alternative, we host and run the rest of your software around it."
+        }
+      }
+    },
+    "faq_home": {
+      "title": "Common questions",
+      "link_label": "See all questions"
     }
   },
   "features": {

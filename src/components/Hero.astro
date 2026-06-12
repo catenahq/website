@@ -6,18 +6,18 @@ interface Props {
 }
 
 const { locale } = Astro.props;
-const prefix = locale === "fr" ? "" : "/en";
 ---
 <section class="hero">
   <div class="container hero-inner">
+    <p class="eyebrow">{t(locale, "common.home.hero.eyebrow")}</p>
     <h1>{t(locale, "common.home.hero.headline")}</h1>
     <p class="lead muted">{t(locale, "common.home.hero.subheadline")}</p>
     <div class="cta-row">
-      <a class="btn btn-primary" href={`${prefix}/pricing`}>
-        {t(locale, "common.cta.get_started_free")}
-      </a>
-      <a class="btn btn-secondary" href={t(locale, "common.cta.discovery_url")}>
+      <a class="btn btn-primary" href={t(locale, "common.cta.discovery_url")}>
         {t(locale, "common.cta.book_discovery")}
+      </a>
+      <a class="btn btn-secondary" href="#editions">
+        {t(locale, "common.cta.see_pricing")}
       </a>
     </div>
   </div>
@@ -35,6 +35,12 @@ const prefix = locale === "fr" ? "" : "/en";
     z-index: 1;
     text-align: center;
     max-width: var(--catena-content-narrow);
+  }
+  .eyebrow {
+    font-size: var(--catena-fs-sm);
+    font-weight: var(--catena-fw-medium);
+    color: var(--catena-accent);
+    margin-bottom: var(--catena-space-3);
   }
   .hero h1 {
     font-size: var(--catena-fs-5xl);

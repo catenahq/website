@@ -18,6 +18,13 @@ const ctaHref: Record<EditionKey, string> = {
   business: t(locale, "common.cta.discovery_url"),
   bespoke: `${prefix}/contact`,
 };
+
+// Footnote carries a /pricing link; the href is locale-prefixed at
+// render time (the i18n string holds a PRICING_HREF placeholder).
+const footnote = t(locale, "common.home.editions.footnote").replace(
+  "PRICING_HREF",
+  `${prefix}/pricing`,
+);
 ---
 <section id="editions" class="editions">
   <div class="container">
@@ -41,7 +48,7 @@ const ctaHref: Record<EditionKey, string> = {
         </article>
       ))}
     </div>
-    <p class="muted detail">{t(locale, "common.home.editions.footnote")}</p>
+    <p class="muted detail" set:html={footnote}></p>
   </div>
 </section>
 
@@ -112,6 +119,7 @@ const ctaHref: Record<EditionKey, string> = {
     max-width: 56rem;
     font-size: var(--catena-fs-sm);
   }
+  .detail :global(a) { text-decoration: underline; }
 
   @media (max-width: 1023px) {
     .grid { grid-template-columns: 1fr; }
