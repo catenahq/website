@@ -58,7 +58,8 @@
     "hero": {
       "eyebrow": "Des logiciels modernes, sans les tracas modernes.",
       "headline": "Possédez les logiciels qui font tourner votre entreprise.",
-      "subheadline": "Les outils dont votre entreprise dépend au quotidien - fichiers, courriels, discussions, réservation, CRM - sur un serveur qui vous appartient. Nous l'opérons pour vous, ou vous l'auto-hébergez. Facturé par application, jamais par utilisateur."
+      "subheadline": "Les outils dont votre entreprise dépend au quotidien - fichiers, courriels, discussions, réservation, CRM - sur un serveur qui vous appartient. Nous l'opérons pour vous, ou vous l'auto-hébergez. Facturé par application, jamais par utilisateur.",
+      "scroll_cue": "Découvrir Catena"
     },
     "bio": {
       "body": "Mené par Marc-Antoine Lalonde, basé au Québec.",
@@ -188,31 +189,109 @@
         "Hôte durci et pare-feu"
       ]
     },
-    "capabilities": {
-      "title": "Ce dont nous nous occupons à votre place",
-      "intro": "Le travail d'infrastructure ingrat mais essentiel, fait pour vous et visible dès que vous voulez vérifier.",
-      "cards": {
-        "data": {
-          "title": "Vous ne perdrez pas vos données",
-          "body": "Sauvegardes quotidiennes plus copies immuables hors site, avec restauration et retour arrière en un clic. La récupération est incluse dans chaque édition : vous pouvez toujours récupérer vos données, même en auto-hébergé."
+    "features": {
+      "title": "L'environnement qui fait tourner vos services",
+      "intro": "Catena crée l'environnement qui fait fonctionner vos applications : connexions sécurisées, sauvegardes, identité, mises à jour, supervision et automatisation.",
+      "items": {
+        "secure_connections": {
+          "title": "Connexions sécurisées",
+          "body": "Atteignez vos services par des tunnels Admin et Applications dédiés, avec protection DDoS et réconciliation des ports réseau."
         },
-        "access": {
-          "title": "Vous contrôlez les accès",
-          "body": "Authentification unique dans toutes les applications, permissions par rôle, et une piste d'audit de qui a fait quoi."
+        "backups": {
+          "title": "Sauvegardes",
+          "body": "Gardez vos données en sûreté grâce à des sauvegardes incrémentielles et vérifiables."
         },
-        "secure": {
-          "title": "La sécurité se maintient d'elle-même",
-          "body": "Serveurs durcis, mises à jour automatiques et analyse CVE continue, testées sur notre propre déploiement avant le vôtre."
+        "sso": {
+          "title": "Authentification unique",
+          "body": "Une seule connexion pour tous vos services, avec permissions par rôle et piste d'audit."
         },
-        "visible": {
-          "title": "Vous voyez que ça fonctionne",
-          "body": "Un tableau de bord d'administration en direct, plus supervision et alertes depuis l'intérieur et l'extérieur du réseau."
+        "safe_updates": {
+          "title": "Mises à jour sûres",
+          "body": "Votre infrastructure et vos services restent à jour automatiquement, avec surveillance continue des menaces et reprise automatique en cas de panne."
         },
-        "connected": {
-          "title": "Vos outils communiquent entre eux",
-          "body": "Connecteurs natifs là où ils existent, et un moteur d'automatisation intégré pour relier vos applications entre elles et aux services externes que vous utilisez encore."
+        "admin_dashboard": {
+          "title": "Tableau de bord d'administration",
+          "body": "Surveillez votre infrastructure, vos services, vos utilisateurs et leurs permissions depuis un seul tableau de bord unifié."
+        },
+        "monitoring": {
+          "title": "Supervision et alertes",
+          "body": "Recevez des alertes quand un service tombe ou que les ressources du serveur sont saturées."
+        },
+        "automation": {
+          "title": "Automatisation",
+          "body": "Utilisez des connecteurs natifs ou ajoutez un moteur d'automatisation pour relier vos applications et gagner du temps."
         }
       }
+    },
+    "apps": {
+      "full_catalog": "Voir le catalogue complet des applications"
+    },
+    "pricing_matrix": {
+      "title": "Communauté ou Business : ce que vous obtenez",
+      "intro": "Auto-hébergez l'édition Communauté gratuitement, ou laissez-nous opérer l'édition Business. Voici ce que chaque édition inclut.",
+      "legend": "Manuel : vous l'exécutez vous-même. Automatisé : nous l'opérons pour vous.",
+      "col_feature": "Capacité",
+      "cols": {
+        "community": "Communauté",
+        "business": "Business"
+      },
+      "col_notes": {
+        "community": "auto-hébergé, gratuit",
+        "business": "géré"
+      },
+      "groups": {
+        "connectivity": {
+          "label": "Connectivité",
+          "rows": {
+            "admin_tunnel": { "label": "Tunnel Admin (Tailscale)", "community": "Oui", "business": "Oui" },
+            "app_tunnel": { "label": "Tunnel Applications + DDoS (Cloudflare)", "community": "Oui", "business": "Oui" }
+          }
+        },
+        "apps": {
+          "label": "Applications",
+          "rows": {
+            "templates": { "label": "Modèles d'applications réutilisables", "community": "Oui", "business": "Oui" },
+            "unlimited": { "label": "Déploiement illimité d'applications", "community": "Oui", "business": "Oui" }
+          }
+        },
+        "identity": {
+          "label": "Identité et accès",
+          "rows": {
+            "sso": { "label": "Authentification unique + RBAC", "community": "Oui", "business": "Oui" },
+            "audit": { "label": "Piste d'audit signée", "community": "Non", "business": "Oui" }
+          }
+        },
+        "updates": {
+          "label": "Mises à jour et sécurité",
+          "rows": {
+            "service_updates": { "label": "Mises à jour des services", "community": "Manuelles", "business": "Automatisées" },
+            "cve": { "label": "Surveillance des vulnérabilités (CVE)", "community": "Non", "business": "Oui" }
+          }
+        },
+        "observability": {
+          "label": "Supervision",
+          "rows": {
+            "dashboard": { "label": "Tableau de bord de supervision", "community": "Oui", "business": "Oui" },
+            "alerts": { "label": "Alertes d'état des services", "community": "Interne", "business": "Interne + externe" },
+            "central": { "label": "Supervision centralisée", "community": "Non", "business": "Oui" }
+          }
+        },
+        "data": {
+          "label": "Données et sauvegardes",
+          "rows": {
+            "backups": { "label": "Sauvegardes", "community": "Manuelles", "business": "Automatisées" },
+            "immutable": { "label": "Sauvegardes immuables hors site", "community": "Non", "business": "Automatisées" }
+          }
+        },
+        "support": {
+          "label": "Support",
+          "rows": {
+            "support": { "label": "Support", "community": "Communautaire (tickets GitHub)", "business": "Dédié + SLA par application" }
+          }
+        }
+      },
+      "anchor": "À partir de 200 $ / mois par serveur, plus 100 $ / mois par application.",
+      "cta_label": "Réserver un appel découverte"
     },
     "compare": {
       "title": "Possédé, pas loué",

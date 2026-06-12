@@ -16,10 +16,11 @@ const { locale } = Astro.props;
       <a class="btn btn-primary" href={t(locale, "common.cta.discovery_url")}>
         {t(locale, "common.cta.book_discovery")}
       </a>
-      <a class="btn btn-secondary" href="#editions">
-        {t(locale, "common.cta.see_pricing")}
-      </a>
     </div>
+    <a class="scroll-cue" href="#features">
+      <span>{t(locale, "common.home.hero.scroll_cue")}</span>
+      <span class="arrow" aria-hidden="true">&darr;</span>
+    </a>
   </div>
   <div class="hero-bg" aria-hidden="true"></div>
 </section>
@@ -60,6 +61,30 @@ const { locale } = Astro.props;
     gap: var(--catena-space-4);
     justify-content: center;
     flex-wrap: wrap;
+  }
+  .scroll-cue {
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--catena-space-1);
+    margin-top: var(--catena-space-10);
+    font-size: var(--catena-fs-sm);
+    color: var(--catena-surface-fg-muted);
+  }
+  .scroll-cue:hover {
+    text-decoration: none;
+    color: var(--catena-surface-fg);
+  }
+  .scroll-cue .arrow {
+    font-size: var(--catena-fs-lg);
+    animation: scroll-bounce 1.8s ease-in-out infinite;
+  }
+  @keyframes scroll-bounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(4px); }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .scroll-cue .arrow { animation: none; }
   }
   .hero-bg {
     position: absolute;

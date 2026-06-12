@@ -1,0 +1,32 @@
+---
+// Home "apps comparison": the per-category Catena-vs-Microsoft/Google/SaaS
+// table (reused from the retired Features page) plus a link out to the full
+// app catalog, which now lives in the docs site. Keeps the home page a
+// self-contained pitch -- depth is one click away in docs.
+import ToolComparisonTable from "./ToolComparisonTable.astro";
+import { t } from "@catena/i18n";
+
+interface Props {
+  locale: "en" | "fr";
+}
+const { locale } = Astro.props;
+const catalogHref = locale === "en"
+  ? "https://docs.catena.run/en/apps/"
+  : "https://docs.catena.run/apps/";
+---
+<div id="apps">
+  <ToolComparisonTable locale={locale} />
+  <div class="container apps-more">
+    <a href={catalogHref}>{t(locale, "common.home.apps.full_catalog")} &rarr;</a>
+  </div>
+</div>
+
+<style>
+  .apps-more {
+    padding-bottom: var(--catena-space-8);
+  }
+  .apps-more a {
+    font-size: var(--catena-fs-sm);
+    text-decoration: underline;
+  }
+</style>

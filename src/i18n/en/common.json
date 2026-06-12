@@ -58,7 +58,8 @@
     "hero": {
       "eyebrow": "Modern software, no modern headaches.",
       "headline": "Own the software your business runs on.",
-      "subheadline": "The everyday tools your business depends on - files, email, chat, booking, CRM - on a server that's yours. We run it for you, or you self-host. Priced per app, never per seat."
+      "subheadline": "The everyday tools your business depends on - files, email, chat, booking, CRM - on a server that's yours. We run it for you, or you self-host. Priced per app, never per seat.",
+      "scroll_cue": "Discover Catena"
     },
     "bio": {
       "body": "Run by Marc-Antoine Lalonde, based in Quebec.",
@@ -188,31 +189,109 @@
         "Hardened host and firewall"
       ]
     },
-    "capabilities": {
-      "title": "What we handle so you don't",
-      "intro": "The unglamorous, critical infrastructure work, done for you and visible whenever you want to check.",
-      "cards": {
-        "data": {
-          "title": "You won't lose your data",
-          "body": "Daily backups plus offsite immutable copies, with one-click restore and rollback. Recovery ships in every edition, so you can always get your data back, even self-hosted."
+    "features": {
+      "title": "The environment that runs your services",
+      "intro": "Catena builds the environment that runs your apps: secure connections, backups, identity, updates, monitoring, and automation.",
+      "items": {
+        "secure_connections": {
+          "title": "Secure connections",
+          "body": "Reach your services through dedicated Admin and App tunnels, with DDoS protection and network-port reconciliation."
         },
-        "access": {
-          "title": "You control who gets in",
-          "body": "Single sign-on across every app, role-based permissions, and an audit trail of who did what."
+        "backups": {
+          "title": "Backups",
+          "body": "Keep your data safe with verifiable, incremental backups."
         },
-        "secure": {
-          "title": "It stays secure on its own",
-          "body": "Hardened servers, automatic updates, and continuous CVE scanning, tested on our own deployment before yours."
+        "sso": {
+          "title": "Single sign-on",
+          "body": "One login across every service, with role-based permissions and an audit trail."
         },
-        "visible": {
-          "title": "You can see it working",
-          "body": "A live admin dashboard, plus monitoring and alerts from inside and outside the network."
+        "safe_updates": {
+          "title": "Safe updates",
+          "body": "Your infrastructure and services stay up to date automatically, with continuous threat monitoring and automatic fault recovery."
         },
-        "connected": {
-          "title": "Your tools work together",
-          "body": "Native connectors where they exist, and a built-in automation engine to wire your apps to each other and to the outside services you still use."
+        "admin_dashboard": {
+          "title": "Admin dashboard",
+          "body": "Monitor your infrastructure, services, users, and their permissions from a single, unified pane of glass."
+        },
+        "monitoring": {
+          "title": "Monitoring and alerts",
+          "body": "Get alerts when a service goes down or the server's resources are overused."
+        },
+        "automation": {
+          "title": "Automation",
+          "body": "Use native connectors or add an automation engine to connect your apps and save time."
         }
       }
+    },
+    "apps": {
+      "full_catalog": "Browse the full app catalog"
+    },
+    "pricing_matrix": {
+      "title": "Community or Business: what you get",
+      "intro": "Self-host the Community edition for free, or let us operate the Business edition. Here is what each one includes.",
+      "legend": "Manual: you run it yourself. Automated: we operate it for you.",
+      "col_feature": "Capability",
+      "cols": {
+        "community": "Community",
+        "business": "Business"
+      },
+      "col_notes": {
+        "community": "self-hosted, free",
+        "business": "managed"
+      },
+      "groups": {
+        "connectivity": {
+          "label": "Connectivity",
+          "rows": {
+            "admin_tunnel": { "label": "Admin tunnel (Tailscale)", "community": "Yes", "business": "Yes" },
+            "app_tunnel": { "label": "App tunnel + DDoS (Cloudflare)", "community": "Yes", "business": "Yes" }
+          }
+        },
+        "apps": {
+          "label": "Apps",
+          "rows": {
+            "templates": { "label": "Reusable app templates", "community": "Yes", "business": "Yes" },
+            "unlimited": { "label": "Unlimited app deployment", "community": "Yes", "business": "Yes" }
+          }
+        },
+        "identity": {
+          "label": "Identity and access",
+          "rows": {
+            "sso": { "label": "Single sign-on + RBAC", "community": "Yes", "business": "Yes" },
+            "audit": { "label": "Signed audit trail", "community": "No", "business": "Yes" }
+          }
+        },
+        "updates": {
+          "label": "Updates and security",
+          "rows": {
+            "service_updates": { "label": "Service updates", "community": "Manual", "business": "Automated" },
+            "cve": { "label": "Vulnerability (CVE) monitoring", "community": "No", "business": "Yes" }
+          }
+        },
+        "observability": {
+          "label": "Observability",
+          "rows": {
+            "dashboard": { "label": "Monitoring dashboard", "community": "Yes", "business": "Yes" },
+            "alerts": { "label": "Service status alerts", "community": "Internal", "business": "Internal + external" },
+            "central": { "label": "Centralized monitoring", "community": "No", "business": "Yes" }
+          }
+        },
+        "data": {
+          "label": "Data and backups",
+          "rows": {
+            "backups": { "label": "Backups", "community": "Manual", "business": "Automated" },
+            "immutable": { "label": "Offsite immutable backups", "community": "No", "business": "Automated" }
+          }
+        },
+        "support": {
+          "label": "Support",
+          "rows": {
+            "support": { "label": "Support", "community": "Community (GitHub issues)", "business": "Dedicated + per-app SLA" }
+          }
+        }
+      },
+      "anchor": "From $200/mo per server, plus $100/mo per app.",
+      "cta_label": "Book a discovery call"
     },
     "compare": {
       "title": "Owned, not rented",
