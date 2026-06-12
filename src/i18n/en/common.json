@@ -31,11 +31,6 @@
     "en": "English",
     "fr": "Français"
   },
-  "banner": {
-    "message": "New: Catena Community - self-host the whole suite, free.",
-    "cta_label": "Get the Community Edition",
-    "cta_href": "https://github.com/catenahq/catena-ce"
-  },
   "notfound": {
     "title": "Page not found",
     "headline": "That page doesn't exist.",

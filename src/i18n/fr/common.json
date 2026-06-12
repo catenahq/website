@@ -31,11 +31,6 @@
     "en": "English",
     "fr": "Français"
   },
-  "banner": {
-    "message": "Nouveau : Catena Communauté - auto-hébergez toute la suite, gratuitement.",
-    "cta_label": "Obtenir l'édition Communauté",
-    "cta_href": "https://github.com/catenahq/catena-ce"
-  },
   "notfound": {
     "title": "Page introuvable",
     "headline": "Cette page n'existe pas.",
