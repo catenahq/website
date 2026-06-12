@@ -69,16 +69,10 @@ const orgJsonLd = {
 // own title prop when present, falling back to the same humanizer.
 const segments = subpath ? subpath.split("/").filter(Boolean) : [];
 const slugToNavKey: Record<string, string> = {
-  features: "common.nav.features",
-  pricing: "common.nav.pricing",
-  comparison: "common.nav.comparison",
   about: "common.nav.about",
   contact: "common.nav.contact",
   docs: "common.nav.docs",
-  "site-web": "common.nav.site_web",
-  scheduler: "common.nav.scheduler",
   status: "common.nav.status",
-  conformite: "common.nav.conformite",
 };
 const humanize = (slug: string) =>
   slug.replace(/-/g, " ").replace(/\b\w/g, (c) => c.toUpperCase());
