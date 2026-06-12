@@ -59,6 +59,7 @@ function modelCovers(key: ModelKey): string[] {
     </div>
 
     <p class="muted detail hosting-note">{t(locale, "common.pricing.hosting_note")}</p>
+    <p class="muted detail devseat-note">{t(locale, "common.pricing.devseat_note")}</p>
 
     <h3 class="section-heading">{t(locale, "common.pricing.examples_title")}</h3>
     <p class="muted examples-intro">{t(locale, "common.pricing.examples_intro")}</p>
@@ -183,11 +184,13 @@ function modelCovers(key: ModelKey): string[] {
   }
 
   .hosting-note,
+  .devseat-note,
   .commitment-note {
     margin: var(--catena-space-5) 0 0 0;
     max-width: 56rem;
     font-size: var(--catena-fs-sm);
   }
+  .devseat-note { margin-top: var(--catena-space-3); }
 
   .example-cards {
     display: grid;

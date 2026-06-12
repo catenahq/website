@@ -541,20 +541,20 @@
       },
       "support": {
         "name": "Support",
-        "price": "From $600",
-        "price_unit": "/ month or à-la-carte",
-        "tagline": "Pick a pack or pay as you go.",
+        "price": "Included",
+        "price_unit": "SLA + hourly as used",
+        "tagline": "A response-time SLA comes with every managed server. Extra hands-on work is billed hourly, only when you actually use it.",
         "features": [
-          "5 hours / $600 -- $120/h effective",
-          "10 hours / $1,100 -- $110/h effective",
-          "20 hours / $2,000 -- $100/h effective",
-          "No pack: à-la-carte at $150/h daytime",
-          "Non-deferrable; overage bills at the daytime rate"
+          "4 business-hour response SLA, included with the server",
+          "Managed helpdesk for your team (Business edition)",
+          "Hourly support billed as used: $150 daytime, $225 evening, $300 night",
+          "Billed in 15-minute increments, no monthly minimum",
+          "Self-hosting Community? Support is community-driven via GitHub issues on catena-ce"
         ],
-        "covers_label": "Hours draw down for work like:",
+        "covers_label": "Hourly support covers work like:",
         "covers": [
           "Adding or removing user accounts and group memberships",
-          "Marketing-website edits and copy changes (capped at 20% of your pack)",
+          "Marketing-website edits and copy changes beyond the small monthly inclusion",
           "Incident response when an alert fires outside business hours",
           "App configuration and integration tweaks",
           "Operator-assisted training and onboarding sessions"
@@ -562,40 +562,41 @@
       }
     },
     "hosting_note": "Hosting and backups are passthrough. The OVH VPS and the eazybackup S3 bucket land on your invoice, in your name, at the vendor's published price. Catena does not markup infrastructure.",
+    "devseat_note": "Developer access: $15 / month per developer seat gives an in-house team direct deploy access to their own project, for custom services they run themselves alongside the managed suite.",
     "examples_title": "Typical setups",
-    "examples_intro": "Four common compositions to anchor expectations. Mix and match to fit your team.",
+    "examples_intro": "Four common compositions to anchor expectations. The totals are the recurring server + apps fee; hands-on support is billed hourly on top, only as used. Mix and match to fit your team.",
     "examples": {
       "light": {
         "name": "Light",
-        "total": "~$550",
+        "total": "$400",
         "total_unit": "/ month",
-        "tagline": "5-15 employees, 2-3 apps, occasional support.",
-        "components": "Server + 2 apps + ad-hoc support (~1 hour / month)"
+        "tagline": "5-15 employees, a couple of apps, occasional support.",
+        "components": "Server + 2 apps. Support hourly as needed."
       },
       "standard": {
         "name": "Standard",
-        "total": "$1,300",
+        "total": "$700",
         "total_unit": "/ month",
-        "tagline": "15-25 employees, 4-5 apps, predictable monthly support.",
-        "components": "Server + 5 apps + 5-hour support pack"
+        "tagline": "15-25 employees, four or five apps, steady cadence.",
+        "components": "Server + 5 apps. Support hourly as needed."
       },
       "heavy": {
         "name": "Heavy",
-        "total": "$2,100",
+        "total": "$1,000",
         "total_unit": "/ month",
-        "tagline": "25-50 employees, 6-10 apps, regular ops cadence.",
-        "components": "Server + 8 apps + 10-hour support pack"
+        "tagline": "25-50 employees, more apps, regular ops cadence.",
+        "components": "Server + 8 apps. Support hourly as needed."
       },
       "cabinet": {
         "name": "Cabinet",
-        "total": "$2,900",
+        "total": "$1,400",
         "total_unit": "/ month",
-        "tagline": "Professional services with deep integration and high responsiveness.",
-        "components": "Server + 7 apps + 20-hour support pack"
+        "tagline": "Professional services with deep integration across the suite.",
+        "components": "Server + 12 apps. Support hourly as needed."
       }
     },
     "commitment_note": "Managed subscription carries a 6-month minimum commitment. After that, cancel any month with no exit fee. We hand back the suite and your S3 export per the engagement letter.",
-    "alacarte_support_note": "Hours outside your support pack bill at the time-of-day rate grid below.",
+    "alacarte_support_note": "Hands-on support is billed at the time-of-day rate grid below, only for the hours you use.",
     "sovereignty": {
       "no_per_seat_title": "No per-seat charges",
       "no_per_seat_body": "One monthly fee per server. Add unlimited team members at no extra cost.",
@@ -907,7 +908,7 @@
     },
     "q7": {
       "question": "How do you make money?",
-      "answer": "The Community edition is free; we make our money on Catena Business, the managed edition: a monthly subscription per server, plus per-app and an optional support pack. No per-seat, ever. Hosting and backups are passthrough to your own accounts. See the <a href='/en/pricing'>Pricing page</a>."
+      "answer": "The Community edition is free; we make our money on Catena Business, the managed edition: a monthly subscription per server, plus per-app, with hands-on support billed hourly only as you use it. No per-seat, ever. Hosting and backups are passthrough to your own accounts. See the <a href='/en/pricing'>Pricing page</a>."
     },
     "q8": {
       "question": "Do you self-host email?",
@@ -997,9 +998,9 @@
     "intro": "These terms cover the relationship between Catena (the service provider) and you (the client). They are deliberately concise -- the engagement letter you sign at signup is the canonical contract; this page summarizes its main commitments.",
     "review_notice": "This page is a draft pending legal review. Talk to us directly for the binding terms in your engagement letter.",
     "scope_title": "Service scope",
-    "scope_body": "Your subscription components -- server, apps, and support pack -- define what is included. See the <a href='/en/pricing'>Pricing page</a> for the public model. Changes to scope (adding or removing apps, support pack changes) are agreed in writing.",
+    "scope_body": "Your subscription components -- server and apps -- define what is included, with hands-on support billed hourly as used. See the <a href='/en/pricing'>Pricing page</a> for the public model. Changes to scope (adding or removing apps) are agreed in writing.",
     "billing_title": "Pricing and billing",
-    "billing_body": "The managed subscription (server + apps + support pack) carries a 6-month minimum commitment, billed monthly. À-la-carte support is billed at the published rate in 15-minute increments. Card processing via Stripe.",
+    "billing_body": "The managed subscription (server + apps) carries a 6-month minimum commitment, billed monthly. Hands-on support is billed at the published rate in 15-minute increments, as used. Card processing via Stripe.",
     "ownership_title": "Data ownership",
     "ownership_body": "All client data, infrastructure, and credentials belong to the client. Our role is service provider only. You can export and migrate at any time; the engagement letter documents the handover process.",
     "liability_title": "Limitation of liability",

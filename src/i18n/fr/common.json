@@ -541,20 +541,20 @@
       },
       "support": {
         "name": "Support",
-        "price": "À partir de 600 $",
-        "price_unit": "/ mois ou à-la-carte",
-        "tagline": "Choisissez un forfait ou payez à l'usage.",
+        "price": "Inclus",
+        "price_unit": "SLA + à l'heure selon l'usage",
+        "tagline": "Un SLA sur le temps de réponse accompagne chaque serveur géré. Le travail manuel supplémentaire est facturé à l'heure, seulement quand vous l'utilisez.",
         "features": [
-          "5 heures / 600 $ -- 120 $/h effectif",
-          "10 heures / 1 100 $ -- 110 $/h effectif",
-          "20 heures / 2 000 $ -- 100 $/h effectif",
-          "Sans forfait : à-la-carte à 150 $/h en journée",
-          "Non reportables ; dépassement facturé au tarif jour"
+          "SLA de réponse de 4 heures ouvrables, inclus avec le serveur",
+          "Centre d'assistance géré pour votre équipe (édition Business)",
+          "Support à l'heure selon l'usage : 150 $ en journée, 225 $ en soirée, 300 $ la nuit",
+          "Facturé par tranches de 15 minutes, sans minimum mensuel",
+          "Vous auto-hébergez Communauté ? Le soutien est communautaire via les tickets GitHub sur catena-ce"
         ],
-        "covers_label": "Les heures servent à des tâches comme :",
+        "covers_label": "Le support à l'heure couvre des tâches comme :",
         "covers": [
           "Ajout ou retrait de comptes d'utilisateurs et appartenance aux groupes",
-          "Modifications du site web marketing et révisions de contenu (plafonné à 20 % de votre forfait)",
+          "Modifications du site web marketing et révisions de contenu au-delà de la petite inclusion mensuelle",
           "Réponse aux incidents lorsqu'une alerte se déclenche hors heures d'ouverture",
           "Ajustements de configuration et d'intégrations d'applications",
           "Formation accompagnée et séances d'intégration"
@@ -562,40 +562,41 @@
       }
     },
     "hosting_note": "L'hébergement et les sauvegardes sont en refacturation directe. Le VPS OVH et le seau S3 eazybackup arrivent sur votre facture, à votre nom, au prix affiché du fournisseur. Catena ne marge pas sur l'infrastructure.",
+    "devseat_note": "Accès développeur : un siège développeur à 15 $ / mois donne à une équipe interne un accès de déploiement direct à son propre projet, pour les services sur mesure qu'elle opère elle-même à côté de la suite gérée.",
     "examples_title": "Configurations types",
-    "examples_intro": "Quatre compositions courantes pour ancrer vos attentes. Combinez à votre guise selon votre équipe.",
+    "examples_intro": "Quatre compositions courantes pour ancrer vos attentes. Les totaux correspondent aux frais récurrents serveur + applications ; le support manuel s'ajoute à l'heure, seulement selon l'usage. Combinez à votre guise selon votre équipe.",
     "examples": {
       "light": {
         "name": "Léger",
-        "total": "~550 $",
+        "total": "400 $",
         "total_unit": "/ mois",
-        "tagline": "5 à 15 employés, 2 à 3 applications, support occasionnel.",
-        "components": "Serveur + 2 applications + support à-la-carte (~1 heure / mois)"
+        "tagline": "5 à 15 employés, deux ou trois applications, support occasionnel.",
+        "components": "Serveur + 2 applications. Support à l'heure au besoin."
       },
       "standard": {
         "name": "Standard",
-        "total": "1 300 $",
+        "total": "700 $",
         "total_unit": "/ mois",
-        "tagline": "15 à 25 employés, 4 à 5 applications, support mensuel prévisible.",
-        "components": "Serveur + 5 applications + forfait support de 5 heures"
+        "tagline": "15 à 25 employés, quatre ou cinq applications, cadence régulière.",
+        "components": "Serveur + 5 applications. Support à l'heure au besoin."
       },
       "heavy": {
         "name": "Intensif",
-        "total": "2 100 $",
+        "total": "1 000 $",
         "total_unit": "/ mois",
-        "tagline": "25 à 50 employés, 6 à 10 applications, cadence opérationnelle régulière.",
-        "components": "Serveur + 8 applications + forfait support de 10 heures"
+        "tagline": "25 à 50 employés, plus d'applications, cadence opérationnelle régulière.",
+        "components": "Serveur + 8 applications. Support à l'heure au besoin."
       },
       "cabinet": {
         "name": "Cabinet",
-        "total": "2 900 $",
+        "total": "1 400 $",
         "total_unit": "/ mois",
-        "tagline": "Services professionnels avec intégration approfondie et haute réactivité.",
-        "components": "Serveur + 7 applications + forfait support de 20 heures"
+        "tagline": "Services professionnels avec intégration approfondie dans toute la suite.",
+        "components": "Serveur + 12 applications. Support à l'heure au besoin."
       }
     },
     "commitment_note": "L'abonnement géré comporte un engagement minimum de 6 mois. Au-delà, vous pouvez résilier à tout moment sans frais de sortie. Nous vous remettons la suite et votre export S3 selon la lettre de mandat.",
-    "alacarte_support_note": "Les heures hors forfait de support sont facturées selon la grille tarifaire ci-dessous, selon l'heure d'intervention.",
+    "alacarte_support_note": "Le support manuel est facturé selon la grille tarifaire ci-dessous, uniquement pour les heures que vous utilisez.",
     "sovereignty": {
       "no_per_seat_title": "Aucun frais par utilisateur",
       "no_per_seat_body": "Un seul tarif mensuel par serveur. Ajoutez autant de membres d'équipe que vous voulez, sans frais additionnels.",
@@ -907,7 +908,7 @@
     },
     "q7": {
       "question": "Comment gagnez-vous votre vie ?",
-      "answer": "L'édition Communauté est gratuite; nous gagnons notre vie avec Catena Business, l'édition gérée : un abonnement mensuel par serveur, plus par application et un forfait de support optionnel. Aucun frais par utilisateur, jamais. L'hébergement et les sauvegardes sont en refacturation directe sur vos comptes. Voir la <a href='/pricing'>page Tarifs</a>."
+      "answer": "L'édition Communauté est gratuite; nous gagnons notre vie avec Catena Business, l'édition gérée : un abonnement mensuel par serveur, plus par application, avec le support manuel facturé à l'heure seulement selon l'usage. Aucun frais par utilisateur, jamais. L'hébergement et les sauvegardes sont en refacturation directe sur vos comptes. Voir la <a href='/pricing'>page Tarifs</a>."
     },
     "q8": {
       "question": "Hébergez-vous le courriel ?",
@@ -997,9 +998,9 @@
     "intro": "Ces conditions encadrent la relation entre Catena (le prestataire de services) et vous (le client). Elles sont volontairement concises -- la lettre de mandat signée à l'inscription est le contrat de référence ; cette page en résume les engagements principaux.",
     "review_notice": "Cette page est un brouillon en attente de révision juridique. Parlez-nous directement pour les conditions contractuelles dans votre lettre de mandat.",
     "scope_title": "Portée du service",
-    "scope_body": "Les composantes de votre abonnement -- serveur, applications et forfait support -- définissent ce qui est inclus. Voir la <a href='/pricing'>page Tarifs</a> pour le modèle public. Les changements de portée (ajout ou retrait d'applications, changement de forfait support) sont convenus par écrit.",
+    "scope_body": "Les composantes de votre abonnement -- serveur et applications -- définissent ce qui est inclus, avec le support manuel facturé à l'heure selon l'usage. Voir la <a href='/pricing'>page Tarifs</a> pour le modèle public. Les changements de portée (ajout ou retrait d'applications) sont convenus par écrit.",
     "billing_title": "Tarification et facturation",
-    "billing_body": "L'abonnement géré (serveur + applications + forfait support) comporte un engagement minimum de 6 mois, facturé mensuellement. Le support à-la-carte est facturé au tarif publié par tranches de 15 minutes. Traitement des cartes via Stripe.",
+    "billing_body": "L'abonnement géré (serveur + applications) comporte un engagement minimum de 6 mois, facturé mensuellement. Le support manuel est facturé au tarif publié par tranches de 15 minutes, selon l'usage. Traitement des cartes via Stripe.",
     "ownership_title": "Propriété des données",
     "ownership_body": "Toutes les données client, l'infrastructure et les identifiants appartiennent au client. Notre rôle est uniquement celui de prestataire de services. Vous pouvez exporter et migrer à tout moment ; la lettre de mandat documente le processus de remise.",
     "liability_title": "Limitation de responsabilité",
