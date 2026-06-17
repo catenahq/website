@@ -18,13 +18,15 @@
     "@astrojs/sitemap": "^3.7.2",
     "@catenahq/contracts": "file:../contracts",
     "@resvg/resvg-js": "^2.6.2",
-    "astro": "^6.2.1",
+    "astro": "^6.4.7",
     "astro-icon": "^1.1.5",
     "marked": "^18.0.0",
     "satori": "^0.26.0"
   },
   "overrides": {
-    "yaml": ">=2.8.3"
+    "yaml": ">=2.8.3",
+    "vite": ">=7.3.5 <8",
+    "esbuild": ">=0.28.1"
   },
   "devDependencies": {
     "@astrojs/check": "^0.9.9",
