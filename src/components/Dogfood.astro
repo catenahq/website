@@ -6,12 +6,16 @@ interface Props {
 }
 
 const { locale } = Astro.props;
+const statusUrl = "https://status.catena.run";
 ---
 <section class="dogfood">
   <div class="container">
     <div class="card">
       <h2>{t(locale, "common.home.dogfood.title")}</h2>
       <p class="muted">{t(locale, "common.home.dogfood.body")}</p>
+      <p class="status-link">
+        <a href={statusUrl}>{t(locale, "common.home.dogfood.link")}</a>
+      </p>
     </div>
   </div>
 </section>
@@ -37,5 +41,13 @@ const { locale } = Astro.props;
   .card p {
     margin: 0;
     line-height: var(--catena-lh-relaxed);
+  }
+  .status-link {
+    margin-top: var(--catena-space-4) !important;
+    font-weight: 600;
+  }
+  .status-link a {
+    color: var(--catena-surface-fg);
+    text-decoration: underline;
   }
 </style>

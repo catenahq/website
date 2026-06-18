@@ -59,6 +59,7 @@ const legalLinks = [
       &copy; {year} <span class="brand-mark">{t(locale, "common.brand.name")}</span>.
       {t(locale, "common.footer.rights")}
       {t(locale, "common.footer.made_in")}
+      <a class="edit-on-github" href="https://github.com/catenahq">{t(locale, "common.footer.edit_on_github")}</a>
     </p>
   </div>
 </footer>
@@ -108,6 +109,11 @@ const legalLinks = [
     font-family: "Conthrax", var(--catena-font-sans);
     font-weight: 600;
     text-transform: lowercase;
+  }
+  .edit-on-github {
+    margin-left: var(--catena-space-2);
+    color: var(--catena-surface-fg-muted);
+    text-decoration: underline;
   }
   @media (max-width: 767px) {
     .footer-cols {

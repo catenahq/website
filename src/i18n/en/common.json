@@ -25,7 +25,8 @@
     "language": "Language",
     "col_product": "Product",
     "col_company": "Company",
-    "col_legal": "Legal"
+    "col_legal": "Legal",
+    "edit_on_github": "Edit on GitHub"
   },
   "lang": {
     "en": "English",
@@ -49,8 +50,9 @@
       "scroll_cue": "Discover Catena"
     },
     "dogfood": {
-      "title": "We're our first client.",
-      "body": "Everything you see -- this site, the docs, the client portal, billing, our incident dashboards -- runs on the same Catena Suite we sell. Every update you install has run on our own deployment first."
+      "title": "We run Catena on Catena.",
+      "body": "Everything you see -- this site, the docs, the client portal, billing, our incident dashboards -- runs on the same Catena Suite we sell.",
+      "link": "See our service status (coming soon)"
     },
     "features": {
       "title": "The environment that runs your services",

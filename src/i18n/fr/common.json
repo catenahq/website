@@ -25,7 +25,8 @@
     "language": "Langue",
     "col_product": "Produit",
     "col_company": "Entreprise",
-    "col_legal": "Mentions légales"
+    "col_legal": "Mentions légales",
+    "edit_on_github": "Modifier sur GitHub"
   },
   "lang": {
     "en": "English",
@@ -49,8 +50,9 @@
       "scroll_cue": "Découvrir Catena"
     },
     "dogfood": {
-      "title": "Nous sommes notre premier client.",
-      "body": "Tout ce que vous voyez -- ce site, la documentation, le portail client, la facturation, nos tableaux de bord d'incidents -- tourne sur la même Suite Catena que nous vendons. Chaque mise à jour que vous installez passe d'abord par notre propre déploiement."
+      "title": "Nous opérons Catena sur Catena.",
+      "body": "Tout ce que vous voyez -- ce site, la documentation, le portail client, la facturation, nos tableaux de bord d'incidents -- tourne sur la même Suite Catena que nous vendons.",
+      "link": "Voir l'état de nos services (à venir)"
     },
     "features": {
       "title": "L'environnement qui fait tourner vos services",
