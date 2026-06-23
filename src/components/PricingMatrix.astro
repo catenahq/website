@@ -1,10 +1,9 @@
 ---
-// Community vs Business capability matrix for the home page. Columns are
-// the client-facing edition names (never the internal catena-ce / -ee
-// binary names). This is "what you get per edition," a billing/managed-
-// scope view -- not license gating. Cell values are plain text (no emoji;
-// the docs-only checkmark exception does not apply here). Source of truth
-// for the cells: catena-ce/README.md Editions table + contracts tiers.json.
+// Community / Business / Enterprise capability matrix for the home page.
+// Columns are the client-facing edition names (never the internal
+// catena-ce / -ee binary names). This is "what you get per edition," a
+// billing/managed-scope view -- not license gating. Every cell is a
+// binary yes/no rendered as a green check or red x by MatrixCell.
 import { t } from "@catena/i18n";
 import MatrixCell from "./MatrixCell.astro";
 
@@ -13,20 +12,25 @@ interface Props {
 }
 const { locale } = Astro.props;
 
-// Group + row order. Shared rows lead each group; cells resolve from
-// common.home.pricing_matrix.groups.<g>.rows.<r>.{label,community,business}.
+// Edition columns, in order. Business is the highlighted middle tier.
+const cols = ["community", "business", "enterprise"] as const;
+
+// Group + row order. Cells resolve from
+// common.home.pricing_matrix.groups.<g>.rows.<r>.{label,community,business,enterprise}.
 const groups = [
   { key: "connectivity", rows: ["admin_tunnel", "app_tunnel"] },
   { key: "apps", rows: ["templates", "unlimited"] },
   { key: "identity", rows: ["sso", "audit"] },
-  { key: "updates", rows: ["service_updates", "cve"] },
-  { key: "observability", rows: ["dashboard", "alerts", "central"] },
-  { key: "data", rows: ["backups", "immutable"] },
-  { key: "support", rows: ["support"] },
+  { key: "updates", rows: ["manual_updates", "auto_updates", "cve"] },
+  { key: "automation", rows: ["workflows"] },
+  { key: "observability", rows: ["dashboard", "internal_alerts", "external_alerts", "central"] },
+  { key: "data", rows: ["manual_backups", "scheduled_backups", "immutable"] },
+  { key: "support", rows: ["community_support", "dedicated_support"] },
 ] as const;
 
 const base = "common.home.pricing_matrix";
 const discoveryUrl = t(locale, "common.cta.discovery_url");
+const colClass = (c: string) => (c === "business" ? "val business" : "val");
 ---
 <section id="pricing" class="matrix">
   <div class="container">
@@ -38,40 +42,33 @@ const discoveryUrl = t(locale, "common.cta.discovery_url");
         <thead>
           <tr>
             <th scope="col" class="rowhead">{t(locale, `${base}.col_feature`)}</th>
-            <th scope="col">
-              <span class="col-name">{t(locale, `${base}.cols.community`)}</span>
-              <span class="col-note">{t(locale, `${base}.col_notes.community`)}</span>
-            </th>
-            <th scope="col" class="business">
-              <span class="col-name">{t(locale, `${base}.cols.business`)}</span>
-              <span class="col-note">{t(locale, `${base}.col_notes.business`)}</span>
-            </th>
+            {cols.map((c) => (
+              <th scope="col" class={colClass(c)}>
+                <span class="col-name">{t(locale, `${base}.cols.${c}`)}</span>
+                <span class="col-note">{t(locale, `${base}.col_notes.${c}`)}</span>
+              </th>
+            ))}
           </tr>
         </thead>
         <tbody>
           {groups.map((group) => (
             <>
               <tr class="group-row">
-                <th scope="colgroup" colspan="3">{t(locale, `${base}.groups.${group.key}.label`)}</th>
+                <th scope="colgroup" colspan={cols.length + 1}>{t(locale, `${base}.groups.${group.key}.label`)}</th>
               </tr>
               {group.rows.map((row) => (
                 <tr>
                   <th scope="row" class="rowhead">
                     {t(locale, `${base}.groups.${group.key}.rows.${row}.label`)}
                   </th>
-                  <td>
-                    <MatrixCell
-                      value={t(locale, `${base}.groups.${group.key}.rows.${row}.community`)}
-                      locale={locale}
-                    />
-                  </td>
-                  <td class="business">
-                    <MatrixCell
-                      value={t(locale, `${base}.groups.${group.key}.rows.${row}.business`)}
-                      business
-                      locale={locale}
-                    />
-                  </td>
+                  {cols.map((c) => (
+                    <td class={colClass(c)}>
+                      <MatrixCell
+                        value={t(locale, `${base}.groups.${group.key}.rows.${row}.${c}`)}
+                        locale={locale}
+                      />
+                    </td>
+                  ))}
                 </tr>
               ))}
             </>
@@ -104,6 +101,7 @@ const discoveryUrl = t(locale, "common.cta.discovery_url");
     border-bottom: 1px solid var(--catena-surface-border);
     vertical-align: top;
   }
+  .val { text-align: center; }
   thead th {
     font-weight: var(--catena-fw-semibold);
     color: var(--catena-surface-fg);

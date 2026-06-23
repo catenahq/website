@@ -1,48 +1,32 @@
 ---
-// One pricing-matrix cell. "yes" -> green check, "no" -> red x. Any other
-// value is a qualified label (e.g. Automated, Internal + external); on the
-// Business column it is prefixed with a green check, on Community it is text
-// only. Marks are inline SVG (not emoji) so the unicode gate stays clean.
+// One pricing-matrix cell: "yes" -> green check, "no" -> red x. Marks
+// are inline SVG (not emoji) so the unicode gate stays clean.
 import { t } from "@catena/i18n";
 
 interface Props {
   value: string;
-  business?: boolean;
   locale: "en" | "fr";
 }
-const { value, business = false, locale } = Astro.props;
+const { value, locale } = Astro.props;
 const base = "common.home.pricing_matrix";
 const isYes = value === "yes";
-const isNo = value === "no";
 ---
-{isYes && (
+{isYes ? (
   <span class="mark yes">
     <svg viewBox="0 0 16 16" width="18" height="18" aria-hidden="true"><path d="M13.5 4.5 6.5 11.5 3 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
     <span class="sr-only">{t(locale, `${base}.yes_label`)}</span>
   </span>
-)}
-{isNo && (
+) : (
   <span class="mark no">
     <svg viewBox="0 0 16 16" width="18" height="18" aria-hidden="true"><path d="M4 4 12 12 M12 4 4 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
     <span class="sr-only">{t(locale, `${base}.no_label`)}</span>
   </span>
 )}
-{!isYes && !isNo && (
-  <span class="qual">
-    {business && (
-      <span class="mark yes" aria-hidden="true">
-        <svg viewBox="0 0 16 16" width="18" height="18"><path d="M13.5 4.5 6.5 11.5 3 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-      </span>
-    )}
-    <span>{value}</span>
-  </span>
-)}
 
 <style>
-  .mark { display: inline-flex; align-items: center; }
+  .mark { display: inline-flex; align-items: center; justify-content: center; }
   .mark.yes { color: #16a34a; }
   .mark.no { color: #dc2626; }
-  .qual { display: inline-flex; align-items: center; gap: var(--catena-space-2); }
   .sr-only {
     position: absolute;
     width: 1px;

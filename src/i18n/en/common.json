@@ -86,16 +86,18 @@
       "full_catalog": "Browse the full app catalog"
     },
     "pricing_matrix": {
-      "title": "Community or Business: what you get",
-      "intro": "Self-host the Community edition for free, or let us operate the Business edition. Here is what each one includes.",
+      "title": "Community, Business, or Enterprise: what you get",
+      "intro": "Self-host the Community edition for free, let us run the Business edition with automation, or add dedicated external support with Enterprise. Here is what each one includes.",
       "col_feature": "Capability",
       "cols": {
         "community": "Community",
-        "business": "Business"
+        "business": "Business",
+        "enterprise": "Enterprise"
       },
       "col_notes": {
         "community": "self-hosted, free",
-        "business": "managed"
+        "business": "managed + automation",
+        "enterprise": "managed + support"
       },
       "groups": {
         "connectivity": {
@@ -104,12 +106,14 @@
             "admin_tunnel": {
               "label": "Admin tunnel (Tailscale)",
               "community": "yes",
-              "business": "yes"
+              "business": "yes",
+              "enterprise": "yes"
             },
             "app_tunnel": {
               "label": "App tunnel + DDoS (Cloudflare)",
               "community": "yes",
-              "business": "yes"
+              "business": "yes",
+              "enterprise": "yes"
             }
           }
         },
@@ -119,12 +123,14 @@
             "templates": {
               "label": "Reusable app templates",
               "community": "yes",
-              "business": "yes"
+              "business": "yes",
+              "enterprise": "yes"
             },
             "unlimited": {
               "label": "Unlimited app deployment",
               "community": "yes",
-              "business": "yes"
+              "business": "yes",
+              "enterprise": "yes"
             }
           }
         },
@@ -134,27 +140,48 @@
             "sso": {
               "label": "Single sign-on + RBAC",
               "community": "yes",
-              "business": "yes"
+              "business": "yes",
+              "enterprise": "yes"
             },
             "audit": {
               "label": "Signed audit trail",
               "community": "no",
-              "business": "yes"
+              "business": "yes",
+              "enterprise": "yes"
             }
           }
         },
         "updates": {
           "label": "Updates and security",
           "rows": {
-            "service_updates": {
-              "label": "Service updates",
-              "community": "Manual",
-              "business": "Automated"
+            "manual_updates": {
+              "label": "Manual updates",
+              "community": "yes",
+              "business": "yes",
+              "enterprise": "yes"
+            },
+            "auto_updates": {
+              "label": "Automatic updates",
+              "community": "no",
+              "business": "yes",
+              "enterprise": "yes"
             },
             "cve": {
               "label": "Vulnerability (CVE) monitoring",
               "community": "no",
-              "business": "yes"
+              "business": "yes",
+              "enterprise": "yes"
+            }
+          }
+        },
+        "automation": {
+          "label": "Automation",
+          "rows": {
+            "workflows": {
+              "label": "Workflow automation engine",
+              "community": "no",
+              "business": "yes",
+              "enterprise": "yes"
             }
           }
         },
@@ -164,42 +191,66 @@
             "dashboard": {
               "label": "Monitoring dashboard",
               "community": "yes",
-              "business": "yes"
+              "business": "yes",
+              "enterprise": "yes"
             },
-            "alerts": {
-              "label": "Service status alerts",
-              "community": "Internal",
-              "business": "Internal + external"
+            "internal_alerts": {
+              "label": "Internal status alerts",
+              "community": "yes",
+              "business": "yes",
+              "enterprise": "yes"
+            },
+            "external_alerts": {
+              "label": "External status alerts",
+              "community": "no",
+              "business": "yes",
+              "enterprise": "yes"
             },
             "central": {
               "label": "Centralized monitoring",
               "community": "no",
-              "business": "yes"
+              "business": "yes",
+              "enterprise": "yes"
             }
           }
         },
         "data": {
           "label": "Data and backups",
           "rows": {
-            "backups": {
-              "label": "Backups",
-              "community": "Manual",
-              "business": "Automated"
+            "manual_backups": {
+              "label": "Manual backups",
+              "community": "yes",
+              "business": "yes",
+              "enterprise": "yes"
+            },
+            "scheduled_backups": {
+              "label": "Scheduled backups",
+              "community": "no",
+              "business": "yes",
+              "enterprise": "yes"
             },
             "immutable": {
               "label": "Offsite immutable backups",
               "community": "no",
-              "business": "Automated"
+              "business": "yes",
+              "enterprise": "yes"
             }
           }
         },
         "support": {
           "label": "Support",
           "rows": {
-            "support": {
-              "label": "Support",
-              "community": "Community (GitHub issues)",
-              "business": "Dedicated + per-app SLA"
+            "community_support": {
+              "label": "Community support (GitHub issues)",
+              "community": "yes",
+              "business": "yes",
+              "enterprise": "yes"
+            },
+            "dedicated_support": {
+              "label": "Dedicated support + per-app SLA",
+              "community": "no",
+              "business": "no",
+              "enterprise": "yes"
             }
           }
         }
