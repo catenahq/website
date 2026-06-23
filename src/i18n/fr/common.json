@@ -50,7 +50,7 @@
     },
     "features": {
       "title": "L'environnement qui fait tourner vos services",
-      "subtitle": "Ajoutez un sous-titre pour cette section ici.",
+      "subtitle": "Catena s'installe sur un VPS ou un ordinateur dédié que vous possédez pour offrir des capacités intégrées.",
       "items": {
         "secure_connections": {
           "title": "Connexions sécurisées",

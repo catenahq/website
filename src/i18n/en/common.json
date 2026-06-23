@@ -50,7 +50,7 @@
     },
     "features": {
       "title": "The environment that runs your services",
-      "subtitle": "Add a subtitle for this section here.",
+      "subtitle": "Catena installs to a dedicated VPS or computer you own to provide integrated capabilities.",
       "items": {
         "secure_connections": {
           "title": "Secure connections",
