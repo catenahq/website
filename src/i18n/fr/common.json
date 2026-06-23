@@ -44,15 +44,9 @@
   },
   "home": {
     "hero": {
-      "eyebrow": "Des logiciels modernes, sans les tracas modernes.",
       "headline": "Possédez les logiciels qui font tourner votre entreprise.",
       "subheadline": "Les outils dont votre entreprise dépend au quotidien - fichiers, courriels, discussions, réservation, CRM - sur un serveur qui vous appartient. Nous l'opérons pour vous, ou vous l'auto-hébergez. Facturé par application, jamais par utilisateur.",
       "scroll_cue": "Découvrir Catena"
-    },
-    "dogfood": {
-      "title": "Nous opérons Catena sur Catena.",
-      "body": "Tout ce que vous voyez -- ce site, la documentation, le portail client, la facturation, nos tableaux de bord d'incidents -- tourne sur la même Suite Catena que nous vendons.",
-      "link": "Voir l'état de nos services (à venir)"
     },
     "features": {
       "title": "L'environnement qui fait tourner vos services",

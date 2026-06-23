@@ -9,7 +9,6 @@ const { locale } = Astro.props;
 ---
 <section class="hero">
   <div class="container hero-inner">
-    <p class="eyebrow">{t(locale, "common.home.hero.eyebrow")}</p>
     <h1>{t(locale, "common.home.hero.headline")}</h1>
     <p class="lead muted">{t(locale, "common.home.hero.subheadline")}</p>
     <div class="cta-row">
@@ -36,12 +35,6 @@ const { locale } = Astro.props;
     z-index: 1;
     text-align: center;
     max-width: var(--catena-content-narrow);
-  }
-  .eyebrow {
-    font-size: var(--catena-fs-sm);
-    font-weight: var(--catena-fw-medium);
-    color: var(--catena-accent);
-    margin-bottom: var(--catena-space-3);
   }
   .hero h1 {
     font-size: var(--catena-fs-5xl);

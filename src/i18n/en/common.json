@@ -44,15 +44,9 @@
   },
   "home": {
     "hero": {
-      "eyebrow": "Modern software, no modern headaches.",
       "headline": "Own the software your business runs on.",
       "subheadline": "The everyday tools your business depends on - files, email, chat, booking, CRM - on a server that's yours. We run it for you, or you self-host. Priced per app, never per seat.",
       "scroll_cue": "Discover Catena"
-    },
-    "dogfood": {
-      "title": "We run Catena on Catena.",
-      "body": "Everything you see -- this site, the docs, the client portal, billing, our incident dashboards -- runs on the same Catena Suite we sell.",
-      "link": "See our service status (coming soon)"
     },
     "features": {
       "title": "The environment that runs your services",
