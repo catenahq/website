@@ -9,7 +9,7 @@ interface Props {
   locale: "en" | "fr";
 }
 const { locale } = Astro.props;
-const prefix = locale === "fr" ? "" : "/en";
+const prefix = locale === "en" ? "" : "/fr";
 
 // Objection-killers most relevant to a first-time visitor.
 const QUESTIONS = ["q4", "q3", "q5", "q6", "q7", "q11"] as const;

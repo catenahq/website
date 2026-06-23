@@ -6,24 +6,24 @@ interface Props {
 }
 
 const { locale } = Astro.props;
-const prefix = locale === "fr" ? "" : "/en";
+const prefix = locale === "en" ? "" : "/fr";
 const altLocale: "en" | "fr" = locale === "fr" ? "en" : "fr";
 
 // Language switcher: preserve the current page when toggling locales.
-// FR <-> EN slugs are identical for every marketing page (the guides
+// EN <-> FR slugs are identical for every marketing page (the guides
 // -- the one place we needed slug translation -- moved to apps/docs).
 const currentPath = Astro.url.pathname;
 let altPath: string;
-if (altLocale === "en") {
-  altPath = currentPath === "/" ? "/en/" : `/en${currentPath}`;
+if (altLocale === "fr") {
+  altPath = currentPath === "/" ? "/fr/" : `/fr${currentPath}`;
 } else {
-  const stripped = currentPath.replace(/^\/en(\/|$)/, "/");
+  const stripped = currentPath.replace(/^\/fr(\/|$)/, "/");
   altPath = stripped || "/";
 }
 // Docs ship as their own subdomain (catenahq/docs at docs.catena.run).
-// Both marketing + docs run defaultLocale=fr, so FR lives at the root
-// and EN lives under /en/.
-const docsHref = locale === "en" ? "https://docs.catena.run/en/" : "https://docs.catena.run/";
+// Both marketing + docs run defaultLocale=en, so EN lives at the root
+// and FR lives under /fr/.
+const docsHref = locale === "fr" ? "https://docs.catena.run/fr/" : "https://docs.catena.run/";
 ---
 <header class="site-header">
   <div class="container header-row">
