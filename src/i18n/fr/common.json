@@ -50,6 +50,7 @@
     },
     "features": {
       "title": "L'environnement qui fait tourner vos services",
+      "subtitle": "Ajoutez un sous-titre pour cette section ici.",
       "items": {
         "secure_connections": {
           "title": "Connexions sécurisées",
@@ -80,10 +81,6 @@
           "body": "Utilisez des connecteurs natifs ou ajoutez un moteur d'automatisation pour relier vos applications et gagner du temps."
         }
       }
-    },
-    "text": {
-      "title": "Titre de section",
-      "body": "Ajoutez votre texte de section ici."
     },
     "apps": {
       "full_catalog": "Voir le catalogue complet des applications"

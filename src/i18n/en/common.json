@@ -50,6 +50,7 @@
     },
     "features": {
       "title": "The environment that runs your services",
+      "subtitle": "Add a subtitle for this section here.",
       "items": {
         "secure_connections": {
           "title": "Secure connections",
@@ -80,10 +81,6 @@
           "body": "Use native connectors or add an automation engine to connect your apps and save time."
         }
       }
-    },
-    "text": {
-      "title": "Section heading",
-      "body": "Add your section copy here."
     },
     "apps": {
       "full_catalog": "Browse the full app catalog"

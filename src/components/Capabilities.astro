@@ -23,6 +23,7 @@ const items = [
 <section id="features" class="caps">
   <div class="container">
     <h2>{t(locale, "common.home.features.title")}</h2>
+    <p class="subtitle muted">{t(locale, "common.home.features.subtitle")}</p>
     <div class="grid">
       {items.map((key) => (
         <article class="card">
@@ -38,6 +39,11 @@ const items = [
   .caps {
     padding: var(--catena-space-24) 0;
     background: var(--catena-surface-bg-muted);
+  }
+  .subtitle {
+    margin: var(--catena-space-3) 0 0 0;
+    max-width: 56rem;
+    line-height: var(--catena-lh-relaxed);
   }
   .grid {
     margin-top: var(--catena-space-10);
