@@ -211,8 +211,8 @@
   },
   "features": {
     "tool_comparison": {
-      "title": "Suggested apps for each capability",
-      "intro": "A suggested open-source app for each capability, side by side with the SaaS bundles most SMBs evaluate. These are starting points, not limits: hundreds of other self-hostable apps run on Catena.",
+      "title": "An app for every need",
+      "intro": "An example open-source app for each capability, side by side with the SaaS bundles most SMBs evaluate. These are starting points, not limits: hundreds of other self-hostable apps run on Catena.",
       "category_label": "Category",
       "cols": {
         "catena": "Catena",

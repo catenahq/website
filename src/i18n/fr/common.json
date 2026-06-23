@@ -211,8 +211,8 @@
   },
   "features": {
     "tool_comparison": {
-      "title": "Applications suggérées pour chaque besoin",
-      "intro": "Une application libre suggérée pour chaque besoin, à côté des forfaits SaaS que les PME évaluent le plus souvent. Ce sont des points de départ, pas des limites : des centaines d'autres applications auto-hébergeables tournent sur Catena.",
+      "title": "Une app pour chaque besoin",
+      "intro": "Un exemple d'application libre pour chaque besoin, à côté des forfaits SaaS que les PME évaluent le plus souvent. Ce sont des points de départ, pas des limites : des centaines d'autres applications auto-hébergeables tournent sur Catena.",
       "category_label": "Catégorie",
       "cols": {
         "catena": "Catena",
