@@ -45,7 +45,7 @@
   "home": {
     "hero": {
       "headline": "Own the software your business runs on.",
-      "subheadline": "The everyday tools your business depends on - files, email, chat, booking, CRM - on a server that's yours. We run it for you, or you self-host. Priced per app, never per seat.",
+      "subheadline": "The everyday tools your business depends on - files, email, chat, booking, CRM - on a server that's yours. We run it for you, or you self-host.",
       "scroll_cue": "Discover Catena"
     },
     "features": {
@@ -80,6 +80,10 @@
           "body": "Use native connectors or add an automation engine to connect your apps and save time."
         }
       }
+    },
+    "text": {
+      "title": "Section heading",
+      "body": "Add your section copy here."
     },
     "apps": {
       "full_catalog": "Browse the full app catalog"

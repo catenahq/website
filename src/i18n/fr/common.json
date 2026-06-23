@@ -45,7 +45,7 @@
   "home": {
     "hero": {
       "headline": "Possédez les logiciels qui font tourner votre entreprise.",
-      "subheadline": "Les outils dont votre entreprise dépend au quotidien - fichiers, courriels, discussions, réservation, CRM - sur un serveur qui vous appartient. Nous l'opérons pour vous, ou vous l'auto-hébergez. Facturé par application, jamais par utilisateur.",
+      "subheadline": "Les outils dont votre entreprise dépend au quotidien - fichiers, courriels, discussions, réservation, CRM - sur un serveur qui vous appartient. Nous l'opérons pour vous, ou vous l'auto-hébergez.",
       "scroll_cue": "Découvrir Catena"
     },
     "features": {
@@ -80,6 +80,10 @@
           "body": "Utilisez des connecteurs natifs ou ajoutez un moteur d'automatisation pour relier vos applications et gagner du temps."
         }
       }
+    },
+    "text": {
+      "title": "Titre de section",
+      "body": "Ajoutez votre texte de section ici."
     },
     "apps": {
       "full_catalog": "Voir le catalogue complet des applications"

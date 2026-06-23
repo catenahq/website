@@ -1,0 +1,32 @@
+---
+// A plain prose section for the home page: a heading plus a paragraph
+// of copy. Same titled-section shell as ToolComparisonTable, minus the
+// table. Placeholder copy lives in common.home.text -- replace it.
+import { t } from "@catena/i18n";
+
+interface Props {
+  locale: "en" | "fr";
+}
+const { locale } = Astro.props;
+---
+<section class="text-section">
+  <div class="container">
+    <h2>{t(locale, "common.home.text.title")}</h2>
+    <p class="body muted">{t(locale, "common.home.text.body")}</p>
+  </div>
+</section>
+
+<style>
+  .text-section {
+    padding: var(--catena-space-16) 0;
+  }
+  .text-section h2 {
+    font-size: var(--catena-fs-2xl);
+    margin: 0 0 var(--catena-space-3) 0;
+  }
+  .text-section .body {
+    margin: 0;
+    max-width: 56rem;
+    line-height: var(--catena-lh-relaxed);
+  }
+</style>
