@@ -207,10 +207,6 @@
       "cta_label": "Réserver un appel découverte",
       "yes_label": "Inclus",
       "no_label": "Non inclus"
-    },
-    "faq_home": {
-      "title": "Questions fréquentes",
-      "link_label": "Voir toutes les questions"
     }
   },
   "features": {
