@@ -146,7 +146,7 @@
             "audit": {
               "label": "Piste d'audit signée",
               "community": "no",
-              "business": "yes",
+              "business": "no",
               "enterprise": "yes"
             }
           }
@@ -168,17 +168,6 @@
             },
             "cve": {
               "label": "Surveillance des vulnérabilités (CVE)",
-              "community": "no",
-              "business": "yes",
-              "enterprise": "yes"
-            }
-          }
-        },
-        "automation": {
-          "label": "Automatisation",
-          "rows": {
-            "workflows": {
-              "label": "Moteur d'automatisation des flux",
               "community": "no",
               "business": "yes",
               "enterprise": "yes"
@@ -209,7 +198,7 @@
             "central": {
               "label": "Supervision centralisée",
               "community": "no",
-              "business": "yes",
+              "business": "no",
               "enterprise": "yes"
             }
           }
