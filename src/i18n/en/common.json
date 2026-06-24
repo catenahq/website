@@ -45,8 +45,7 @@
   "home": {
     "hero": {
       "headline": "Own the software your business runs on.",
-      "subheadline": "The everyday tools your business depends on - files, email, chat, booking, CRM - on a server that's yours. We run it for you, or you self-host.",
-      "scroll_cue": "Discover Catena"
+      "subheadline": "The everyday tools your business depends on - files, email, chat, booking, CRM, and more - on a server that's yours."
     },
     "features": {
       "title": "The environment that runs your services",

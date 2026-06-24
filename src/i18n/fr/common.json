@@ -45,8 +45,7 @@
   "home": {
     "hero": {
       "headline": "Possédez les logiciels qui font tourner votre entreprise.",
-      "subheadline": "Les outils dont votre entreprise dépend au quotidien - fichiers, courriels, discussions, réservation, CRM - sur un serveur qui vous appartient. Nous l'opérons pour vous, ou vous l'auto-hébergez.",
-      "scroll_cue": "Découvrir Catena"
+      "subheadline": "Les outils dont votre entreprise dépend au quotidien - fichiers, courriels, discussions, réservation, CRM et plus encore - sur un serveur qui vous appartient."
     },
     "features": {
       "title": "L'environnement qui fait tourner vos services",
@@ -86,7 +85,7 @@
       "full_catalog": "Voir le catalogue complet des applications"
     },
     "pricing_matrix": {
-      "title": "Communauté, Pro ou Enterprise : ce que vous obtenez",
+      "title": "Communauté, Pro ou Enterprise",
       "intro": "Auto-hébergez l'édition Communauté gratuitement, laissez-nous opérer l'édition Pro avec l'automatisation, ou ajoutez un support externe dédié avec Enterprise. Voici ce que chaque édition inclut.",
       "cols": {
         "community": "Communauté",
