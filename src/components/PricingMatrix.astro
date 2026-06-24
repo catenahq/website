@@ -26,7 +26,7 @@ const groups = [
   { key: "updates", rows: ["manual_updates", "auto_updates", "cve"] },
   { key: "observability", rows: ["dashboard", "internal_alerts", "external_alerts", "central"] },
   { key: "data", rows: ["manual_backups", "scheduled_backups", "immutable"] },
-  { key: "support", rows: ["community_support", "priority_support", "sla"] },
+  { key: "support", rows: ["community_support", "helpdesk", "oncall", "installation", "sla"] },
 ] as const;
 
 const base = "common.home.pricing_matrix";
@@ -41,11 +41,19 @@ const colClass = (c: string) => `val ${c}`;
       <table>
         <thead>
           <tr>
-            <th scope="col" class="rowhead">{t(locale, `${base}.col_feature`)}</th>
+            <th scope="col" class="rowhead"></th>
             {cols.map((c) => (
               <th scope="col" class={colClass(c)}>
                 <span class="col-name">{t(locale, `${base}.cols.${c}`)}</span>
               </th>
+            ))}
+          </tr>
+          <tr class="price-row">
+            <th scope="col"></th>
+            {cols.map((c) => (
+              <td class={colClass(c)}>
+                <span class="price">{t(locale, `${base}.prices.${c}`)}</span>
+              </td>
             ))}
           </tr>
         </thead>
@@ -73,6 +81,23 @@ const colClass = (c: string) => `val ${c}`;
               ))}
             </>
           ))}
+          <tr class="cta-row">
+            <th scope="row"></th>
+            {cols.map((c) => (
+              <td class="val">
+                {c === "community" && (
+                  <a class="btn btn-primary get-started" href="https://github.com/catenahq/catena-ce" target="_blank" rel="noopener noreferrer">
+                    {t(locale, `${base}.get_started`)}
+                  </a>
+                )}
+                {c === "enterprise" && (
+                  <a class="btn btn-secondary get-started" href={t(locale, "common.cta.discovery_url")} target="_blank" rel="noopener noreferrer">
+                    {t(locale, `${base}.talk_to_us`)}
+                  </a>
+                )}
+              </td>
+            ))}
+          </tr>
         </tbody>
       </table>
     </div>
@@ -111,6 +136,21 @@ const colClass = (c: string) => `val ${c}`;
     display: block;
     font-size: var(--catena-fs-lg);
   }
+  .price-row .price {
+    display: block;
+    text-align: center;
+    font-size: var(--catena-fs-base);
+    font-weight: var(--catena-fw-bold);
+    color: var(--catena-surface-fg);
+  }
+  .cta-row .get-started {
+    display: inline-flex;
+    width: 100%;
+    justify-content: center;
+  }
+  .cta-row th,
+  .cta-row .val { border-bottom: none; }
+  .cta-row .val { padding-top: var(--catena-space-5); }
   .rowhead {
     font-weight: var(--catena-fw-medium);
     color: var(--catena-surface-fg-muted);
@@ -136,8 +176,8 @@ const colClass = (c: string) => `val ${c}`;
   thead .community { border-top: 2px solid var(--m-bronze); }
   thead .business { border-top: 2px solid var(--m-silver); }
   thead .enterprise { border-top: 2px solid var(--m-gold); }
-  tbody tr:last-child .community { border-bottom: 2px solid var(--m-bronze); }
-  tbody tr:last-child .business { border-bottom: 2px solid var(--m-silver); }
-  tbody tr:last-child .enterprise { border-bottom: 2px solid var(--m-gold); }
+  tbody tr:nth-last-child(2) .community { border-bottom: 2px solid var(--m-bronze); }
+  tbody tr:nth-last-child(2) .business { border-bottom: 2px solid var(--m-silver); }
+  tbody tr:nth-last-child(2) .enterprise { border-bottom: 2px solid var(--m-gold); }
 
 </style>

@@ -88,12 +88,18 @@
     "pricing_matrix": {
       "title": "Communauté, Pro ou Enterprise : ce que vous obtenez",
       "intro": "Auto-hébergez l'édition Communauté gratuitement, laissez-nous opérer l'édition Pro avec l'automatisation, ou ajoutez un support externe dédié avec Enterprise. Voici ce que chaque édition inclut.",
-      "col_feature": "Capacité",
       "cols": {
         "community": "Communauté",
         "business": "Pro",
         "enterprise": "Enterprise"
       },
+      "prices": {
+        "community": "Gratuit",
+        "business": "100 $",
+        "enterprise": "Sur mesure"
+      },
+      "get_started": "Commencer",
+      "talk_to_us": "Contactez-nous",
       "groups": {
         "connectivity": {
           "label": "Connectivité",
@@ -230,10 +236,22 @@
               "business": "yes",
               "enterprise": "yes"
             },
-            "priority_support": {
-              "label": "Support prioritaire",
+            "installation": {
+              "label": "Soutien à l'installation",
+              "community": "no",
+              "business": "no",
+              "enterprise": "yes"
+            },
+            "helpdesk": {
+              "label": "Centre d'assistance",
               "community": "no",
               "business": "yes",
+              "enterprise": "yes"
+            },
+            "oncall": {
+              "label": "Soutien sur appel",
+              "community": "no",
+              "business": "no",
               "enterprise": "yes"
             },
             "sla": {
@@ -298,7 +316,7 @@
         },
         "project": {
           "label": "Gestion de projet",
-          "catena": "Plane",
+          "catena": "OpenProject",
           "microsoft": "Project / Planner",
           "google": "(tiers)",
           "saas": "Jira, Linear, Asana"

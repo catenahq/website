@@ -86,14 +86,20 @@
       "full_catalog": "Browse the full app catalog"
     },
     "pricing_matrix": {
-      "title": "Community, Pro, or Enterprise: what you get",
+      "title": "Community, Pro, or Enterprise",
       "intro": "Self-host the Community edition for free, let us run the Pro edition with automation, or add dedicated external support with Enterprise. Here is what each one includes.",
-      "col_feature": "Capability",
       "cols": {
         "community": "Community",
         "business": "Pro",
         "enterprise": "Enterprise"
       },
+      "prices": {
+        "community": "Free",
+        "business": "$100",
+        "enterprise": "Bespoke"
+      },
+      "get_started": "Get started",
+      "talk_to_us": "Talk to us",
       "groups": {
         "connectivity": {
           "label": "Connectivity",
@@ -230,10 +236,22 @@
               "business": "yes",
               "enterprise": "yes"
             },
-            "priority_support": {
-              "label": "Priority support",
+            "installation": {
+              "label": "Installation support",
+              "community": "no",
+              "business": "no",
+              "enterprise": "yes"
+            },
+            "helpdesk": {
+              "label": "Helpdesk",
               "community": "no",
               "business": "yes",
+              "enterprise": "yes"
+            },
+            "oncall": {
+              "label": "On-call support",
+              "community": "no",
+              "business": "no",
               "enterprise": "yes"
             },
             "sla": {
@@ -298,7 +316,7 @@
         },
         "project": {
           "label": "Project management",
-          "catena": "Plane",
+          "catena": "OpenProject",
           "microsoft": "Project / Planner",
           "google": "N/A",
           "saas": "Jira, Linear, Asana"
