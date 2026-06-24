@@ -95,7 +95,7 @@
       },
       "prices": {
         "community": "Gratuit",
-        "business": "100 $",
+        "business": "100 $ / mois",
         "enterprise": "Sur mesure"
       },
       "get_started": "Commencer",
