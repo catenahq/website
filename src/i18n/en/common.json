@@ -50,7 +50,7 @@
     },
     "features": {
       "title": "The environment that runs your services",
-      "subtitle": "Catena installs to a dedicated VPS or computer you own to provide integrated capabilities.",
+      "subtitle": "Catena installs to a dedicated VPS or computer you own to securely provide integrated capabilities.",
       "items": {
         "secure_connections": {
           "title": "Secure connections",
@@ -93,11 +93,6 @@
         "community": "Community",
         "business": "Pro",
         "enterprise": "Enterprise"
-      },
-      "col_notes": {
-        "community": "self-hosted, free",
-        "business": "managed + automation",
-        "enterprise": "managed + support"
       },
       "groups": {
         "connectivity": {
@@ -235,8 +230,14 @@
               "business": "yes",
               "enterprise": "yes"
             },
-            "dedicated_support": {
-              "label": "Dedicated support + per-app SLA",
+            "priority_support": {
+              "label": "Priority support",
+              "community": "no",
+              "business": "yes",
+              "enterprise": "yes"
+            },
+            "sla": {
+              "label": "Per-app SLA",
               "community": "no",
               "business": "no",
               "enterprise": "yes"

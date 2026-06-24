@@ -50,7 +50,7 @@
     },
     "features": {
       "title": "L'environnement qui fait tourner vos services",
-      "subtitle": "Catena s'installe sur un VPS ou un ordinateur dédié que vous possédez pour offrir des capacités intégrées.",
+      "subtitle": "Catena s'installe sur un VPS ou un ordinateur dédié que vous possédez pour offrir des capacités intégrées de façon sécuritaire.",
       "items": {
         "secure_connections": {
           "title": "Connexions sécurisées",
@@ -93,11 +93,6 @@
         "community": "Communauté",
         "business": "Pro",
         "enterprise": "Enterprise"
-      },
-      "col_notes": {
-        "community": "auto-hébergé, gratuit",
-        "business": "géré + automatisation",
-        "enterprise": "géré + support"
       },
       "groups": {
         "connectivity": {
@@ -235,8 +230,14 @@
               "business": "yes",
               "enterprise": "yes"
             },
-            "dedicated_support": {
-              "label": "Support dédié + SLA par application",
+            "priority_support": {
+              "label": "Support prioritaire",
+              "community": "no",
+              "business": "yes",
+              "enterprise": "yes"
+            },
+            "sla": {
+              "label": "SLA par application",
               "community": "no",
               "business": "no",
               "enterprise": "yes"
