@@ -86,12 +86,12 @@
       "full_catalog": "Browse the full app catalog"
     },
     "pricing_matrix": {
-      "title": "Community, Business, or Enterprise: what you get",
-      "intro": "Self-host the Community edition for free, let us run the Business edition with automation, or add dedicated external support with Enterprise. Here is what each one includes.",
+      "title": "Community, Pro, or Enterprise: what you get",
+      "intro": "Self-host the Community edition for free, let us run the Pro edition with automation, or add dedicated external support with Enterprise. Here is what each one includes.",
       "col_feature": "Capability",
       "cols": {
         "community": "Community",
-        "business": "Business",
+        "business": "Pro",
         "enterprise": "Enterprise"
       },
       "col_notes": {

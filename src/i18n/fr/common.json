@@ -86,12 +86,12 @@
       "full_catalog": "Voir le catalogue complet des applications"
     },
     "pricing_matrix": {
-      "title": "Communauté, Business ou Enterprise : ce que vous obtenez",
-      "intro": "Auto-hébergez l'édition Communauté gratuitement, laissez-nous opérer l'édition Business avec l'automatisation, ou ajoutez un support externe dédié avec Enterprise. Voici ce que chaque édition inclut.",
+      "title": "Communauté, Pro ou Enterprise : ce que vous obtenez",
+      "intro": "Auto-hébergez l'édition Communauté gratuitement, laissez-nous opérer l'édition Pro avec l'automatisation, ou ajoutez un support externe dédié avec Enterprise. Voici ce que chaque édition inclut.",
       "col_feature": "Capacité",
       "cols": {
         "community": "Communauté",
-        "business": "Business",
+        "business": "Pro",
         "enterprise": "Enterprise"
       },
       "col_notes": {
