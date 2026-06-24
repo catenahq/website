@@ -78,8 +78,9 @@ const colClass = (c: string) => `val ${c}`;
       </table>
     </div>
 
-    <p class="anchor">{t(locale, `${base}.anchor`)}</p>
-    <a class="btn btn-primary" href={discoveryUrl}>{t(locale, `${base}.cta_label`)}</a>
+    <div class="matrix-cta">
+      <a class="btn btn-primary" href={discoveryUrl}>{t(locale, `${base}.cta_label`)}</a>
+    </div>
   </div>
 </section>
 
@@ -144,10 +145,8 @@ const colClass = (c: string) => `val ${c}`;
   tbody tr:last-child .business { border-bottom: 2px solid var(--m-silver); }
   tbody tr:last-child .enterprise { border-bottom: 2px solid var(--m-gold); }
 
-  .anchor {
-    margin-top: var(--catena-space-4);
-    font-size: var(--catena-fs-lg);
-    font-weight: var(--catena-fw-semibold);
+  .matrix-cta {
+    margin-top: var(--catena-space-8);
+    text-align: center;
   }
-  .matrix .btn { margin-top: var(--catena-space-4); }
 </style>
