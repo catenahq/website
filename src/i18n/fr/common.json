@@ -396,7 +396,7 @@
     },
     "q2": {
       "question": "Que puis-je faire tourner d'autre sur la suite ?",
-      "answer": "Tout ce qui s'inscrit dans un modèle compose Dokploy. Notre catalogue éprouvé (Nextcloud, OnlyOffice / Collabora, Rocket.Chat, Plane, DocuSeal, Invoice Ninja, Outline, EspoCRM, n8n, Postiz, Twenty, WordPress, ERPNext, Easy!Appointments et plus) s'installe sans frais de configuration supplémentaires. Toute autre application est une demande de modèle personnalisé -- parlez-nous-en. Pour explorer l'écosystème auto-hébergé plus large : <a href='https://github.com/awesome-selfhosted/awesome-selfhosted' target='_blank' rel='noopener noreferrer'>awesome-selfhosted</a>, <a href='https://awweso.me/' target='_blank' rel='noopener noreferrer'>awweso.me</a>, <a href='https://templates.dokploy.com/' target='_blank' rel='noopener noreferrer'>modèles Dokploy</a>, <a href='https://github.com/awesome-foss/awesome-sysadmin' target='_blank' rel='noopener noreferrer'>awesome-sysadmin</a>."
+      "answer": "Tout ce qui s'inscrit dans un modèle compose Dokploy. Notre catalogue éprouvé (Nextcloud, Euro Office / Collabora, Rocket.Chat, Plane, DocuSeal, Invoice Ninja, Outline, EspoCRM, n8n, Postiz, Twenty, WordPress, ERPNext, Easy!Appointments et plus) s'installe sans frais de configuration supplémentaires. Toute autre application est une demande de modèle personnalisé -- parlez-nous-en. Pour explorer l'écosystème auto-hébergé plus large : <a href='https://github.com/awesome-selfhosted/awesome-selfhosted' target='_blank' rel='noopener noreferrer'>awesome-selfhosted</a>, <a href='https://awweso.me/' target='_blank' rel='noopener noreferrer'>awweso.me</a>, <a href='https://templates.dokploy.com/' target='_blank' rel='noopener noreferrer'>modèles Dokploy</a>, <a href='https://github.com/awesome-foss/awesome-sysadmin' target='_blank' rel='noopener noreferrer'>awesome-sysadmin</a>."
     },
     "q3": {
       "question": "Que se passe-t-il si vous êtes frappé par un autobus ?",
@@ -520,7 +520,7 @@
     "termination_title": "Résiliation",
     "termination_body": "L'une ou l'autre partie peut mettre fin selon la lettre de mandat. À la résiliation, nous effectuons la remise de la suite et de l'export S3 du client ; les données conservées sur les systèmes de Catena sont purgées dans les 30 jours.",
     "perservice_title": "Conditions par service",
-    "perservice_body": "Chaque application en amont dans la suite porte sa propre licence et politique d'usage acceptable (Nextcloud GPL, Rocket.Chat MIT, OnlyOffice AGPL, etc.). Les conditions officielles de chaque amont sont liées depuis la documentation de chaque application.",
+    "perservice_body": "Chaque application en amont dans la suite porte sa propre licence et politique d'usage acceptable (Nextcloud GPL, Rocket.Chat MIT, Euro Office AGPL, etc.). Les conditions officielles de chaque amont sont liées depuis la documentation de chaque application.",
     "law_title": "Loi applicable",
     "law_body": "Québec, Canada. Les litiges relèvent des tribunaux du district judiciaire de Montréal."
   },

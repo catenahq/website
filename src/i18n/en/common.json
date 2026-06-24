@@ -396,7 +396,7 @@
     },
     "q2": {
       "question": "What else can I run on the suite?",
-      "answer": "Anything that fits a Dokploy compose template. Our vetted catalog (Nextcloud, OnlyOffice / Collabora, Rocket.Chat, Plane, DocuSeal, Invoice Ninja, Outline, EspoCRM, n8n, Postiz, Twenty, WordPress, ERPNext, Easy!Appointments, and others) installs at no extra setup cost. Anything else is a custom-template request -- talk to us. To explore the broader self-hosted ecosystem: <a href='https://github.com/awesome-selfhosted/awesome-selfhosted' target='_blank' rel='noopener noreferrer'>awesome-selfhosted</a>, <a href='https://awweso.me/' target='_blank' rel='noopener noreferrer'>awweso.me</a>, <a href='https://templates.dokploy.com/' target='_blank' rel='noopener noreferrer'>Dokploy templates</a>, <a href='https://github.com/awesome-foss/awesome-sysadmin' target='_blank' rel='noopener noreferrer'>awesome-sysadmin</a>."
+      "answer": "Anything that fits a Dokploy compose template. Our vetted catalog (Nextcloud, Euro Office / Collabora, Rocket.Chat, Plane, DocuSeal, Invoice Ninja, Outline, EspoCRM, n8n, Postiz, Twenty, WordPress, ERPNext, Easy!Appointments, and others) installs at no extra setup cost. Anything else is a custom-template request -- talk to us. To explore the broader self-hosted ecosystem: <a href='https://github.com/awesome-selfhosted/awesome-selfhosted' target='_blank' rel='noopener noreferrer'>awesome-selfhosted</a>, <a href='https://awweso.me/' target='_blank' rel='noopener noreferrer'>awweso.me</a>, <a href='https://templates.dokploy.com/' target='_blank' rel='noopener noreferrer'>Dokploy templates</a>, <a href='https://github.com/awesome-foss/awesome-sysadmin' target='_blank' rel='noopener noreferrer'>awesome-sysadmin</a>."
     },
     "q3": {
       "question": "What happens if you get hit by a bus?",
@@ -520,7 +520,7 @@
     "termination_title": "Termination",
     "termination_body": "Either party may terminate per the engagement letter. On termination, we hand over the suite and the client's S3 export; data retained on Catena-owned systems is purged within 30 days.",
     "perservice_title": "Per-service terms",
-    "perservice_body": "Each upstream app in the suite carries its own license and acceptable-use policy (Nextcloud GPL, Rocket.Chat MIT, OnlyOffice AGPL, etc.). Each upstream's official terms are linked from that app's documentation.",
+    "perservice_body": "Each upstream app in the suite carries its own license and acceptable-use policy (Nextcloud GPL, Rocket.Chat MIT, Euro Office AGPL, etc.). Each upstream's official terms are linked from that app's documentation.",
     "law_title": "Governing law",
     "law_body": "Quebec, Canada. Disputes go to the courts of the judicial district of Montreal."
   },
