@@ -86,7 +86,8 @@
     },
     "pricing_matrix": {
       "title": "Communauté, Pro ou Enterprise",
-      "intro": "Auto-hébergez l'édition Communauté gratuitement, laissez-nous opérer l'édition Pro avec l'automatisation, ou ajoutez un support externe dédié avec Enterprise. Voici ce que chaque édition inclut.",
+      "intro": "Vous hébergez chaque édition. L'édition Communauté est gratuite et auto-hébergée. L'édition Pro ajoute l'automatisation qui la maintient à jour, sauvegardée et supervisée. L'édition Enterprise ajoute un support dédié et des SLA par application. Voici ce que chaque édition inclut.",
+      "note": "Les alertes sur l'hôte ne peuvent pas se déclencher si le serveur entier est hors service. La supervision indépendante observe depuis l'extérieur et détecte donc une panne totale.",
       "cols": {
         "community": "Communauté",
         "business": "Pro",
@@ -144,7 +145,13 @@
               "enterprise": "yes"
             },
             "audit": {
-              "label": "Piste d'audit signée",
+              "label": "Panneau de journal d'audit",
+              "community": "no",
+              "business": "yes",
+              "enterprise": "yes"
+            },
+            "attestation": {
+              "label": "Attestation mensuelle signée",
               "community": "no",
               "business": "no",
               "enterprise": "yes"
@@ -160,14 +167,20 @@
               "business": "yes",
               "enterprise": "yes"
             },
+            "version_cve_visibility": {
+              "label": "Visibilité des versions et CVE",
+              "community": "yes",
+              "business": "yes",
+              "enterprise": "yes"
+            },
             "auto_updates": {
               "label": "Mises à jour automatiques",
               "community": "no",
               "business": "yes",
               "enterprise": "yes"
             },
-            "cve": {
-              "label": "Surveillance des vulnérabilités (CVE)",
+            "cve_remediation": {
+              "label": "Correction des CVE",
               "community": "no",
               "business": "yes",
               "enterprise": "yes"
@@ -184,13 +197,13 @@
               "enterprise": "yes"
             },
             "internal_alerts": {
-              "label": "Alertes d'état internes",
+              "label": "Alertes sur l'hôte (Gatus + ntfy)",
               "community": "yes",
               "business": "yes",
               "enterprise": "yes"
             },
             "external_alerts": {
-              "label": "Alertes d'état externes",
+              "label": "Supervision indépendante de la disponibilité (Healthchecks)",
               "community": "no",
               "business": "yes",
               "enterprise": "yes"
@@ -213,7 +226,13 @@
               "enterprise": "yes"
             },
             "scheduled_backups": {
-              "label": "Sauvegardes planifiées",
+              "label": "Sauvegarde quotidienne planifiée",
+              "community": "yes",
+              "business": "yes",
+              "enterprise": "yes"
+            },
+            "subdaily": {
+              "label": "Cadence configurable (infra-quotidienne)",
               "community": "no",
               "business": "yes",
               "enterprise": "yes"

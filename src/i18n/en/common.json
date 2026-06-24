@@ -86,7 +86,8 @@
     },
     "pricing_matrix": {
       "title": "Community, Pro, or Enterprise",
-      "intro": "Self-host the Community edition for free, let us run the Pro edition with automation, or add dedicated external support with Enterprise. Here is what each one includes.",
+      "intro": "You host every edition. Community is free and self-hosted. Pro adds the automation that keeps it patched, backed up, and monitored. Enterprise adds dedicated support and per-app SLAs. Here is what each one includes.",
+      "note": "On-host alerts cannot fire if the whole server is down. Independent uptime monitoring watches from outside, so it still catches a total outage.",
       "cols": {
         "community": "Community",
         "business": "Pro",
@@ -144,7 +145,13 @@
               "enterprise": "yes"
             },
             "audit": {
-              "label": "Signed audit trail",
+              "label": "Audit log panel",
+              "community": "no",
+              "business": "yes",
+              "enterprise": "yes"
+            },
+            "attestation": {
+              "label": "Signed monthly attestation",
               "community": "no",
               "business": "no",
               "enterprise": "yes"
@@ -160,14 +167,20 @@
               "business": "yes",
               "enterprise": "yes"
             },
+            "version_cve_visibility": {
+              "label": "Version + CVE visibility",
+              "community": "yes",
+              "business": "yes",
+              "enterprise": "yes"
+            },
             "auto_updates": {
               "label": "Automatic updates",
               "community": "no",
               "business": "yes",
               "enterprise": "yes"
             },
-            "cve": {
-              "label": "Vulnerability (CVE) monitoring",
+            "cve_remediation": {
+              "label": "CVE remediation",
               "community": "no",
               "business": "yes",
               "enterprise": "yes"
@@ -184,13 +197,13 @@
               "enterprise": "yes"
             },
             "internal_alerts": {
-              "label": "Internal status alerts",
+              "label": "On-host alerts (Gatus + ntfy)",
               "community": "yes",
               "business": "yes",
               "enterprise": "yes"
             },
             "external_alerts": {
-              "label": "External status alerts",
+              "label": "Independent uptime monitoring (Healthchecks)",
               "community": "no",
               "business": "yes",
               "enterprise": "yes"
@@ -213,7 +226,13 @@
               "enterprise": "yes"
             },
             "scheduled_backups": {
-              "label": "Scheduled backups",
+              "label": "Daily scheduled backup",
+              "community": "yes",
+              "business": "yes",
+              "enterprise": "yes"
+            },
+            "subdaily": {
+              "label": "Sub-daily / configurable cadence",
               "community": "no",
               "business": "yes",
               "enterprise": "yes"
