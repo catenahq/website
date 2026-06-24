@@ -30,7 +30,6 @@ const groups = [
 ] as const;
 
 const base = "common.home.pricing_matrix";
-const discoveryUrl = t(locale, "common.cta.discovery_url");
 const colClass = (c: string) => `val ${c}`;
 ---
 <section id="pricing" class="matrix">
@@ -76,10 +75,6 @@ const colClass = (c: string) => `val ${c}`;
           ))}
         </tbody>
       </table>
-    </div>
-
-    <div class="matrix-cta">
-      <a class="btn btn-primary" href={discoveryUrl}>{t(locale, `${base}.cta_label`)}</a>
     </div>
   </div>
 </section>
@@ -145,8 +140,4 @@ const colClass = (c: string) => `val ${c}`;
   tbody tr:last-child .business { border-bottom: 2px solid var(--m-silver); }
   tbody tr:last-child .enterprise { border-bottom: 2px solid var(--m-gold); }
 
-  .matrix-cta {
-    margin-top: var(--catena-space-8);
-    text-align: center;
-  }
 </style>
