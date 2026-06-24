@@ -1,10 +1,10 @@
 ---
-// Community vs Business capability matrix for the home page. Columns are
-// the client-facing edition names (never the internal catena-ce / -ee
-// binary names). This is "what you get per edition," a billing/managed-
-// scope view -- not license gating. Cell values are plain text (no emoji;
-// the docs-only checkmark exception does not apply here). Source of truth
-// for the cells: catena-ce/README.md Editions table + contracts tiers.json.
+// Community / Pro / Enterprise capability matrix for the home page.
+// Columns are the client-facing edition names (never the internal
+// catena-ce / -ee binary names). This is "what you get per edition," a
+// billing/managed-scope view -- not license gating. Every cell is a
+// binary yes/no rendered as a green check or red x by MatrixCell. Each
+// edition column carries a bronze / silver / gold frame.
 import { t } from "@catena/i18n";
 import MatrixCell from "./MatrixCell.astro";
 
@@ -13,20 +13,24 @@ interface Props {
 }
 const { locale } = Astro.props;
 
-// Group + row order. Shared rows lead each group; cells resolve from
-// common.home.pricing_matrix.groups.<g>.rows.<r>.{label,community,business}.
+// Edition columns, in order: community (bronze), business (silver),
+// enterprise (gold). The `business` key drives the "Pro" label.
+const cols = ["community", "business", "enterprise"] as const;
+
+// Group + row order. Cells resolve from
+// common.home.pricing_matrix.groups.<g>.rows.<r>.{label,community,business,enterprise}.
 const groups = [
   { key: "connectivity", rows: ["admin_tunnel", "app_tunnel"] },
   { key: "apps", rows: ["templates", "unlimited"] },
   { key: "identity", rows: ["sso", "audit"] },
-  { key: "updates", rows: ["service_updates", "cve"] },
-  { key: "observability", rows: ["dashboard", "alerts", "central"] },
-  { key: "data", rows: ["backups", "immutable"] },
-  { key: "support", rows: ["support"] },
+  { key: "updates", rows: ["manual_updates", "auto_updates", "cve"] },
+  { key: "observability", rows: ["dashboard", "internal_alerts", "external_alerts", "central"] },
+  { key: "data", rows: ["manual_backups", "scheduled_backups", "immutable"] },
+  { key: "support", rows: ["community_support", "helpdesk", "oncall", "installation", "sla"] },
 ] as const;
 
 const base = "common.home.pricing_matrix";
-const discoveryUrl = t(locale, "common.cta.discovery_url");
+const colClass = (c: string) => `val ${c}`;
 ---
 <section id="pricing" class="matrix">
   <div class="container">
@@ -37,63 +41,85 @@ const discoveryUrl = t(locale, "common.cta.discovery_url");
       <table>
         <thead>
           <tr>
-            <th scope="col" class="rowhead">{t(locale, `${base}.col_feature`)}</th>
-            <th scope="col">
-              <span class="col-name">{t(locale, `${base}.cols.community`)}</span>
-              <span class="col-note">{t(locale, `${base}.col_notes.community`)}</span>
-            </th>
-            <th scope="col" class="business">
-              <span class="col-name">{t(locale, `${base}.cols.business`)}</span>
-              <span class="col-note">{t(locale, `${base}.col_notes.business`)}</span>
-            </th>
+            <th scope="col" class="rowhead"></th>
+            {cols.map((c) => (
+              <th scope="col" class={colClass(c)}>
+                <span class="col-name">{t(locale, `${base}.cols.${c}`)}</span>
+              </th>
+            ))}
+          </tr>
+          <tr class="price-row">
+            <th scope="col"></th>
+            {cols.map((c) => (
+              <td class={colClass(c)}>
+                <span class="price">{t(locale, `${base}.prices.${c}`)}</span>
+              </td>
+            ))}
           </tr>
         </thead>
         <tbody>
           {groups.map((group) => (
             <>
               <tr class="group-row">
-                <th scope="colgroup" colspan="3">{t(locale, `${base}.groups.${group.key}.label`)}</th>
+                <th scope="row">{t(locale, `${base}.groups.${group.key}.label`)}</th>
+                {cols.map((c) => <td class={colClass(c)}></td>)}
               </tr>
               {group.rows.map((row) => (
                 <tr>
                   <th scope="row" class="rowhead">
                     {t(locale, `${base}.groups.${group.key}.rows.${row}.label`)}
                   </th>
-                  <td>
-                    <MatrixCell
-                      value={t(locale, `${base}.groups.${group.key}.rows.${row}.community`)}
-                      locale={locale}
-                    />
-                  </td>
-                  <td class="business">
-                    <MatrixCell
-                      value={t(locale, `${base}.groups.${group.key}.rows.${row}.business`)}
-                      business
-                      locale={locale}
-                    />
-                  </td>
+                  {cols.map((c) => (
+                    <td class={colClass(c)}>
+                      <MatrixCell
+                        value={t(locale, `${base}.groups.${group.key}.rows.${row}.${c}`)}
+                        locale={locale}
+                      />
+                    </td>
+                  ))}
                 </tr>
               ))}
             </>
           ))}
+          <tr class="cta-row">
+            <th scope="row"></th>
+            {cols.map((c) => (
+              <td class="val">
+                {c === "community" && (
+                  <a class="btn btn-primary get-started" href="https://github.com/catenahq/catena-ce" target="_blank" rel="noopener noreferrer">
+                    {t(locale, `${base}.get_started`)}
+                  </a>
+                )}
+                {c === "enterprise" && (
+                  <a class="btn btn-secondary get-started" href={t(locale, "common.cta.discovery_url")} target="_blank" rel="noopener noreferrer">
+                    {t(locale, `${base}.talk_to_us`)}
+                  </a>
+                )}
+              </td>
+            ))}
+          </tr>
         </tbody>
       </table>
     </div>
-
-    <p class="anchor">{t(locale, `${base}.anchor`)}</p>
-    <a class="btn btn-primary" href={discoveryUrl}>{t(locale, `${base}.cta_label`)}</a>
   </div>
 </section>
 
 <style>
-  .matrix { padding: var(--catena-space-24) 0; }
+  .matrix {
+    padding: var(--catena-space-24) 0;
+    background: var(--catena-surface-bg-muted);
+    --m-bronze: #b08d57;
+    --m-silver: #9aa0a6;
+    --m-gold: #e6b800;
+  }
   .lead { margin-bottom: var(--catena-space-10); max-width: 56rem; }
 
   .table-wrap { overflow-x: auto; }
   table {
     width: 100%;
-    border-collapse: collapse;
-    font-size: var(--catena-fs-sm);
+    border-collapse: separate;
+    border-spacing: 10px 0;
+    font-size: var(--catena-fs-base);
   }
   th, td {
     text-align: left;
@@ -101,38 +127,57 @@ const discoveryUrl = t(locale, "common.cta.discovery_url");
     border-bottom: 1px solid var(--catena-surface-border);
     vertical-align: top;
   }
+  .val { text-align: center; width: 18%; }
   thead th {
     font-weight: var(--catena-fw-semibold);
     color: var(--catena-surface-fg);
   }
-  .col-name { display: block; }
-  .col-note {
+  thead .val .col-name {
     display: block;
-    font-size: var(--catena-fs-xs);
-    font-weight: var(--catena-fw-normal);
-    color: var(--catena-surface-fg-muted);
+    font-size: var(--catena-fs-lg);
   }
+  .price-row .price {
+    display: block;
+    text-align: center;
+    font-size: var(--catena-fs-base);
+    font-weight: var(--catena-fw-bold);
+    color: var(--catena-surface-fg);
+  }
+  .cta-row .get-started {
+    display: inline-flex;
+    width: 100%;
+    justify-content: center;
+  }
+  .cta-row th,
+  .cta-row .val { border-bottom: none; }
+  .cta-row .val { padding-top: var(--catena-space-5); }
   .rowhead {
     font-weight: var(--catena-fw-medium);
     color: var(--catena-surface-fg-muted);
   }
-  .group-row th {
-    padding-top: var(--catena-space-5);
-    font-size: var(--catena-fs-xs);
-    text-transform: uppercase;
-    letter-spacing: var(--catena-tracking-wide);
-    color: var(--catena-surface-fg-muted);
+  .group-row th,
+  .group-row .val {
+    background: color-mix(in srgb, var(--catena-accent) 8%, transparent);
     border-bottom: 1px solid var(--catena-surface-border);
   }
-  td.business, th.business {
-    background: color-mix(in srgb, var(--catena-accent) 7%, var(--catena-surface-bg));
-    color: var(--catena-surface-fg);
-    font-weight: var(--catena-fw-medium);
-  }
-  .anchor {
-    margin-top: var(--catena-space-4);
-    font-size: var(--catena-fs-lg);
+  .group-row th {
+    padding-top: var(--catena-space-4);
+    font-size: var(--catena-fs-base);
     font-weight: var(--catena-fw-semibold);
+    text-transform: uppercase;
+    letter-spacing: var(--catena-tracking-wide);
+    color: var(--catena-surface-fg);
   }
-  .matrix .btn { margin-top: var(--catena-space-4); }
+
+  /* Per-edition bronze / silver / gold frames. */
+  .community { border-left: 2px solid var(--m-bronze); border-right: 2px solid var(--m-bronze); }
+  .business { border-left: 2px solid var(--m-silver); border-right: 2px solid var(--m-silver); }
+  .enterprise { border-left: 2px solid var(--m-gold); border-right: 2px solid var(--m-gold); }
+  thead .community { border-top: 2px solid var(--m-bronze); }
+  thead .business { border-top: 2px solid var(--m-silver); }
+  thead .enterprise { border-top: 2px solid var(--m-gold); }
+  tbody tr:nth-last-child(2) .community { border-bottom: 2px solid var(--m-bronze); }
+  tbody tr:nth-last-child(2) .business { border-bottom: 2px solid var(--m-silver); }
+  tbody tr:nth-last-child(2) .enterprise { border-bottom: 2px solid var(--m-gold); }
+
 </style>

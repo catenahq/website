@@ -14,7 +14,7 @@ interface Props {
   ogImage?: string;
 }
 
-const { title, description, locale = "fr", ogImage } = Astro.props;
+const { title, description, locale = "en", ogImage } = Astro.props;
 
 // Self-hosted Plausible analytics. Wired at build time via env vars
 // so the snippet only ships when the operator has actually deployed
@@ -37,19 +37,19 @@ const pageDesc = description ?? brandTagline;
 // locale default. The per-page endpoint at src/pages/og/[...].png.ts
 // emits one PNG for every entry in lib/og-pages.ts.
 const localeDefault = locale === "en" ? "/og-default-en.png" : "/og-default-fr.png";
-const subpathTrimmed = Astro.url.pathname.replace(/^\/en\//, "/").replace(/^\//, "").replace(/\/$/, "");
+const subpathTrimmed = Astro.url.pathname.replace(/^\/fr\//, "/").replace(/^\//, "").replace(/\/$/, "");
 const perPageOg = ogImagePathFor(locale, subpathTrimmed);
 const finalOgImage = ogImage ?? perPageOg ?? localeDefault;
 
-// Locale-agnostic subpath. Strips a leading "/en/" so we can re-emit
+// Locale-agnostic subpath. Strips a leading "/fr/" so we can re-emit
 // the same logical path in every locale via getRelativeLocaleUrl.
-// "/" -> "", "/about" -> "about", "/en/" -> "", "/en/about" -> "about".
+// "/" -> "", "/about" -> "about", "/fr/" -> "", "/fr/about" -> "about".
 const pathname = Astro.url.pathname;
-const subpath = pathname.replace(/^\/en(\/|$)/, "/").replace(/^\//, "");
+const subpath = pathname.replace(/^\/fr(\/|$)/, "/").replace(/^\//, "");
 
 const site = Astro.site!;
 const canonical = new URL(getRelativeLocaleUrl(locale, subpath), site).toString();
-const xDefault = new URL(getRelativeLocaleUrl("fr", subpath), site).toString();
+const xDefault = new URL(getRelativeLocaleUrl("en", subpath), site).toString();
 const ogImageUrl = new URL(finalOgImage, site).toString();
 const ogLocale = locale === "fr" ? "fr_CA" : "en_CA";
 

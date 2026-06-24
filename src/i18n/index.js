@@ -16,7 +16,7 @@ import frErrors from "./fr/errors.json" with { type: "json" };
 export const locales = /** @type {const} */ (["en", "fr"]);
 
 /** Default locale when none is specified. */
-export const defaultLocale = "fr";
+export const defaultLocale = "en";
 
 const bundles = {
   en: { common: enCommon, errors: enErrors },

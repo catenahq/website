@@ -36,6 +36,24 @@ const categories = [
   "wiki",
   "social",
 ] as const;
+// Upstream homepage per category's Catena pick. URLs are facts (not
+// translatable copy) so they live here, keyed by category, rather than
+// in the i18n bundles. Sourced from the dokploy-templates catalog
+// (upstream_url); OpenProject is not in the catalog and uses its
+// canonical site.
+const CATENA_URLS: Record<typeof categories[number], string> = {
+  files: "https://nextcloud.com/",
+  office: "https://github.com/euro-office",
+  chat: "https://www.rocket.chat/",
+  crm: "https://www.espocrm.com/",
+  booking: "https://easyappointments.org/",
+  project: "https://www.openproject.org/",
+  automation: "https://n8n.io/",
+  esign: "https://www.docuseal.com/",
+  invoicing: "https://www.invoiceninja.com/",
+  wiki: "https://www.getoutline.com/",
+  social: "https://postiz.com/",
+};
 ---
 <section class="tool-comparison">
   <div class="container">
@@ -63,7 +81,13 @@ const categories = [
               <th class="row-head">{t(locale, `common.features.tool_comparison.rows.${cat}.label`)}</th>
               {cols.map((c) => (
                 <td class={c === "catena" ? "highlight" : ""}>
-                  {t(locale, `common.features.tool_comparison.rows.${cat}.${c}`)}
+                  {c === "catena" ? (
+                    <a class="app-link" href={CATENA_URLS[cat]} target="_blank" rel="noopener noreferrer">
+                      {t(locale, `common.features.tool_comparison.rows.${cat}.${c}`)}
+                    </a>
+                  ) : (
+                    t(locale, `common.features.tool_comparison.rows.${cat}.${c}`)
+                  )}
                 </td>
               ))}
             </tr>
@@ -124,5 +148,14 @@ const categories = [
   }
   thead .highlight {
     background: color-mix(in srgb, var(--catena-accent) 16%, transparent);
+  }
+  .app-link {
+    color: inherit;
+    text-decoration: underline;
+    text-decoration-color: color-mix(in srgb, var(--catena-accent) 50%, transparent);
+    text-underline-offset: 2px;
+  }
+  .app-link:hover {
+    text-decoration-color: var(--catena-accent);
   }
 </style>

@@ -4,8 +4,8 @@ import PageTitle from "../../components/PageTitle.astro";
 import CTA from "../../components/CTA.astro";
 import { t } from "@catena/i18n";
 
-const locale = "en";
-const prefix = "/en";
+const locale = "fr";
+const prefix = "/fr";
 
 const facts = ["response", "cadence", "continuity"];
 const bringPoints = ["judgment", "failure", "ownership"];
@@ -14,7 +14,7 @@ const workPoints = ["response", "cadence", "continuity"];
 <Base
   locale={locale}
   title={t(locale, "common.about.title")}
-  description="Catena, led by Marc-Antoine Lalonde -- 13 years of technical leadership, 5 years solo. Tech-selection judgment, failure-mode expertise, end-to-end ownership. How we work, response times, continuity plan."
+  description="Catena, dirigée par Marc-Antoine Lalonde -- 13 ans de leadership technique, 5 ans en solo. Jugement de sélection d'outils, expertise des modes de défaillance, propriété de bout en bout. Cadence de travail, temps de réponse, plan de continuité."
 >
   <PageTitle
     title={t(locale, "common.about.title")}

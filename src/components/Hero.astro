@@ -9,7 +9,6 @@ const { locale } = Astro.props;
 ---
 <section class="hero">
   <div class="container hero-inner">
-    <p class="eyebrow">{t(locale, "common.home.hero.eyebrow")}</p>
     <h1>{t(locale, "common.home.hero.headline")}</h1>
     <p class="lead muted">{t(locale, "common.home.hero.subheadline")}</p>
     <div class="cta-row">
@@ -17,10 +16,6 @@ const { locale } = Astro.props;
         {t(locale, "common.cta.book_discovery")}
       </a>
     </div>
-    <p class="scroll-cue">
-      <span>{t(locale, "common.home.hero.scroll_cue")}</span>
-      <span class="arrow" aria-hidden="true">&darr;</span>
-    </p>
   </div>
   <div class="hero-bg" aria-hidden="true"></div>
 </section>
@@ -36,12 +31,6 @@ const { locale } = Astro.props;
     z-index: 1;
     text-align: center;
     max-width: var(--catena-content-narrow);
-  }
-  .eyebrow {
-    font-size: var(--catena-fs-sm);
-    font-weight: var(--catena-fw-medium);
-    color: var(--catena-accent);
-    margin-bottom: var(--catena-space-3);
   }
   .hero h1 {
     font-size: var(--catena-fs-5xl);
@@ -61,27 +50,6 @@ const { locale } = Astro.props;
     gap: var(--catena-space-4);
     justify-content: center;
     flex-wrap: wrap;
-  }
-  .scroll-cue {
-    display: inline-flex;
-    flex-direction: column;
-    align-items: center;
-    gap: var(--catena-space-2);
-    margin-top: var(--catena-space-12);
-    font-size: var(--catena-fs-xl);
-    font-weight: var(--catena-fw-medium);
-    color: var(--catena-surface-fg-muted);
-  }
-  .scroll-cue .arrow {
-    font-size: var(--catena-fs-3xl);
-    animation: scroll-bounce 1.8s ease-in-out infinite;
-  }
-  @keyframes scroll-bounce {
-    0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(4px); }
-  }
-  @media (prefers-reduced-motion: reduce) {
-    .scroll-cue .arrow { animation: none; }
   }
   .hero-bg {
     position: absolute;

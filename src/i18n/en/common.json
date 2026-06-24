@@ -44,18 +44,12 @@
   },
   "home": {
     "hero": {
-      "eyebrow": "Modern software, no modern headaches.",
       "headline": "Own the software your business runs on.",
-      "subheadline": "The everyday tools your business depends on - files, email, chat, booking, CRM - on a server that's yours. We run it for you, or you self-host. Priced per app, never per seat.",
-      "scroll_cue": "Discover Catena"
-    },
-    "dogfood": {
-      "title": "We run Catena on Catena.",
-      "body": "Everything you see -- this site, the docs, the client portal, billing, our incident dashboards -- runs on the same Catena Suite we sell.",
-      "link": "See our service status (coming soon)"
+      "subheadline": "The everyday tools your business depends on - files, email, chat, booking, CRM, and more - on a server that's yours."
     },
     "features": {
       "title": "The environment that runs your services",
+      "subtitle": "Catena installs to a dedicated VPS or computer you own to securely provide integrated capabilities.",
       "items": {
         "secure_connections": {
           "title": "Secure connections",
@@ -91,17 +85,20 @@
       "full_catalog": "Browse the full app catalog"
     },
     "pricing_matrix": {
-      "title": "Community or Business: what you get",
-      "intro": "Self-host the Community edition for free, or let us operate the Business edition. Here is what each one includes.",
-      "col_feature": "Capability",
+      "title": "Community, Pro, or Enterprise",
+      "intro": "Self-host the Community edition for free, let us run the Pro edition with automation, or add dedicated external support with Enterprise. Here is what each one includes.",
       "cols": {
         "community": "Community",
-        "business": "Business"
+        "business": "Pro",
+        "enterprise": "Enterprise"
       },
-      "col_notes": {
-        "community": "self-hosted, free",
-        "business": "managed"
+      "prices": {
+        "community": "Free",
+        "business": "$100 / month",
+        "enterprise": "Bespoke"
       },
+      "get_started": "Get started",
+      "talk_to_us": "Talk to us",
       "groups": {
         "connectivity": {
           "label": "Connectivity",
@@ -109,12 +106,14 @@
             "admin_tunnel": {
               "label": "Admin tunnel (Tailscale)",
               "community": "yes",
-              "business": "yes"
+              "business": "yes",
+              "enterprise": "yes"
             },
             "app_tunnel": {
               "label": "App tunnel + DDoS (Cloudflare)",
               "community": "yes",
-              "business": "yes"
+              "business": "yes",
+              "enterprise": "yes"
             }
           }
         },
@@ -124,12 +123,14 @@
             "templates": {
               "label": "Reusable app templates",
               "community": "yes",
-              "business": "yes"
+              "business": "yes",
+              "enterprise": "yes"
             },
             "unlimited": {
               "label": "Unlimited app deployment",
               "community": "yes",
-              "business": "yes"
+              "business": "yes",
+              "enterprise": "yes"
             }
           }
         },
@@ -139,27 +140,37 @@
             "sso": {
               "label": "Single sign-on + RBAC",
               "community": "yes",
-              "business": "yes"
+              "business": "yes",
+              "enterprise": "yes"
             },
             "audit": {
               "label": "Signed audit trail",
               "community": "no",
-              "business": "yes"
+              "business": "no",
+              "enterprise": "yes"
             }
           }
         },
         "updates": {
           "label": "Updates and security",
           "rows": {
-            "service_updates": {
-              "label": "Service updates",
-              "community": "Manual",
-              "business": "Automated"
+            "manual_updates": {
+              "label": "Manual updates",
+              "community": "yes",
+              "business": "yes",
+              "enterprise": "yes"
+            },
+            "auto_updates": {
+              "label": "Automatic updates",
+              "community": "no",
+              "business": "yes",
+              "enterprise": "yes"
             },
             "cve": {
               "label": "Vulnerability (CVE) monitoring",
               "community": "no",
-              "business": "yes"
+              "business": "yes",
+              "enterprise": "yes"
             }
           }
         },
@@ -169,60 +180,96 @@
             "dashboard": {
               "label": "Monitoring dashboard",
               "community": "yes",
-              "business": "yes"
+              "business": "yes",
+              "enterprise": "yes"
             },
-            "alerts": {
-              "label": "Service status alerts",
-              "community": "Internal",
-              "business": "Internal + external"
+            "internal_alerts": {
+              "label": "Internal status alerts",
+              "community": "yes",
+              "business": "yes",
+              "enterprise": "yes"
+            },
+            "external_alerts": {
+              "label": "External status alerts",
+              "community": "no",
+              "business": "yes",
+              "enterprise": "yes"
             },
             "central": {
               "label": "Centralized monitoring",
               "community": "no",
-              "business": "yes"
+              "business": "no",
+              "enterprise": "yes"
             }
           }
         },
         "data": {
           "label": "Data and backups",
           "rows": {
-            "backups": {
-              "label": "Backups",
-              "community": "Manual",
-              "business": "Automated"
+            "manual_backups": {
+              "label": "Manual backups",
+              "community": "yes",
+              "business": "yes",
+              "enterprise": "yes"
+            },
+            "scheduled_backups": {
+              "label": "Scheduled backups",
+              "community": "no",
+              "business": "yes",
+              "enterprise": "yes"
             },
             "immutable": {
               "label": "Offsite immutable backups",
               "community": "no",
-              "business": "Automated"
+              "business": "yes",
+              "enterprise": "yes"
             }
           }
         },
         "support": {
           "label": "Support",
           "rows": {
-            "support": {
-              "label": "Support",
-              "community": "Community (GitHub issues)",
-              "business": "Dedicated + per-app SLA"
+            "community_support": {
+              "label": "Community support (GitHub issues)",
+              "community": "yes",
+              "business": "yes",
+              "enterprise": "yes"
+            },
+            "installation": {
+              "label": "Installation support",
+              "community": "no",
+              "business": "no",
+              "enterprise": "yes"
+            },
+            "helpdesk": {
+              "label": "Helpdesk",
+              "community": "no",
+              "business": "yes",
+              "enterprise": "yes"
+            },
+            "oncall": {
+              "label": "On-call support",
+              "community": "no",
+              "business": "no",
+              "enterprise": "yes"
+            },
+            "sla": {
+              "label": "Per-app SLA",
+              "community": "no",
+              "business": "no",
+              "enterprise": "yes"
             }
           }
         }
       },
-      "anchor": "From $200/mo per server, plus $100/mo per app.",
-      "cta_label": "Book a discovery call",
       "yes_label": "Included",
       "no_label": "Not included"
-    },
-    "faq_home": {
-      "title": "Common questions",
-      "link_label": "See all questions"
     }
   },
   "features": {
     "tool_comparison": {
-      "title": "Suggested apps for each capability",
-      "intro": "A suggested open-source app for each capability, side by side with the SaaS bundles most SMBs evaluate. These are starting points, not limits: hundreds of other self-hostable apps run on Catena.",
+      "title": "An app for every need",
+      "intro": "An example open-source app for each capability, side by side with the SaaS bundles most SMBs evaluate. These are starting points, not limits: hundreds of other self-hostable apps run on Catena.",
       "category_label": "Category",
       "cols": {
         "catena": "Catena",
@@ -240,7 +287,7 @@
         },
         "office": {
           "label": "Office editing",
-          "catena": "OnlyOffice",
+          "catena": "Euro Office",
           "microsoft": "Word / Excel / PowerPoint",
           "google": "Docs / Sheets / Slides",
           "saas": "Zoho, Quip"
@@ -268,7 +315,7 @@
         },
         "project": {
           "label": "Project management",
-          "catena": "Plane",
+          "catena": "OpenProject",
           "microsoft": "Project / Planner",
           "google": "N/A",
           "saas": "Jira, Linear, Asana"
@@ -349,7 +396,7 @@
     },
     "q2": {
       "question": "What else can I run on the suite?",
-      "answer": "Anything that fits a Dokploy compose template. Our vetted catalog (Nextcloud, OnlyOffice / Collabora, Rocket.Chat, Plane, DocuSeal, Invoice Ninja, Outline, EspoCRM, n8n, Postiz, Twenty, WordPress, ERPNext, Easy!Appointments, and others) installs at no extra setup cost. Anything else is a custom-template request -- talk to us. To explore the broader self-hosted ecosystem: <a href='https://github.com/awesome-selfhosted/awesome-selfhosted' target='_blank' rel='noopener noreferrer'>awesome-selfhosted</a>, <a href='https://awweso.me/' target='_blank' rel='noopener noreferrer'>awweso.me</a>, <a href='https://templates.dokploy.com/' target='_blank' rel='noopener noreferrer'>Dokploy templates</a>, <a href='https://github.com/awesome-foss/awesome-sysadmin' target='_blank' rel='noopener noreferrer'>awesome-sysadmin</a>."
+      "answer": "Anything that fits a Dokploy compose template. Our vetted catalog (Nextcloud, Euro Office / Collabora, Rocket.Chat, Plane, DocuSeal, Invoice Ninja, Outline, EspoCRM, n8n, Postiz, Twenty, WordPress, ERPNext, Easy!Appointments, and others) installs at no extra setup cost. Anything else is a custom-template request -- talk to us. To explore the broader self-hosted ecosystem: <a href='https://github.com/awesome-selfhosted/awesome-selfhosted' target='_blank' rel='noopener noreferrer'>awesome-selfhosted</a>, <a href='https://awweso.me/' target='_blank' rel='noopener noreferrer'>awweso.me</a>, <a href='https://templates.dokploy.com/' target='_blank' rel='noopener noreferrer'>Dokploy templates</a>, <a href='https://github.com/awesome-foss/awesome-sysadmin' target='_blank' rel='noopener noreferrer'>awesome-sysadmin</a>."
     },
     "q3": {
       "question": "What happens if you get hit by a bus?",
@@ -473,7 +520,7 @@
     "termination_title": "Termination",
     "termination_body": "Either party may terminate per the engagement letter. On termination, we hand over the suite and the client's S3 export; data retained on Catena-owned systems is purged within 30 days.",
     "perservice_title": "Per-service terms",
-    "perservice_body": "Each upstream app in the suite carries its own license and acceptable-use policy (Nextcloud GPL, Rocket.Chat MIT, OnlyOffice AGPL, etc.). Each upstream's official terms are linked from that app's documentation.",
+    "perservice_body": "Each upstream app in the suite carries its own license and acceptable-use policy (Nextcloud GPL, Rocket.Chat MIT, Euro Office AGPL, etc.). Each upstream's official terms are linked from that app's documentation.",
     "law_title": "Governing law",
     "law_body": "Quebec, Canada. Disputes go to the courts of the judicial district of Montreal."
   },

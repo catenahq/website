@@ -3,13 +3,13 @@ import Base from "../layouts/Base.astro";
 import PageTitle from "../components/PageTitle.astro";
 import { t } from "@catena/i18n";
 
-const locale = "fr";
+const locale = "en";
 const sections = ["collect", "dont", "where", "subprocessors", "rights", "cookies", "contact"];
 ---
 <Base
   locale={locale}
   title={t(locale, "common.privacy.title")}
-  description="Ce que catena collecte, ce que nous n'en faisons pas, où vivent les données, vos droits d'accès / correction / suppression sous la Loi 25 et la LPRPDE."
+  description="What catena collects, what we don't do with it, where data lives, your access / correction / deletion rights under Loi 25 + PIPEDA."
 >
   <PageTitle
     title={t(locale, "common.privacy.title")}

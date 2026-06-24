@@ -5,9 +5,9 @@ import sitemap from "@astrojs/sitemap";
 
 // catena.run -- public marketing site.
 //
-// i18n: FR is the default and serves at /; EN serves at /en/. Astro's
-// i18n routing keeps non-default locale-folders prefixed. Quebec-based
-// operator + bilingual delivery -> French is the primary surface.
+// i18n: EN is the default and serves at /; FR serves at /fr/. Astro's
+// i18n routing keeps non-default locale-folders prefixed. Bilingual
+// delivery -> English is the primary surface, French under /fr/.
 //
 // Output: static. The Dockerfile multi-stages the build then nginx
 // serves dist/. No runtime JS framework -- the scroll-vignettes
@@ -25,7 +25,7 @@ export default defineConfig({
   },
   i18n: {
     locales: ["en", "fr"],
-    defaultLocale: "fr",
+    defaultLocale: "en",
     routing: {
       prefixDefaultLocale: false,
     },
@@ -38,19 +38,19 @@ export default defineConfig({
   // mechanism.
   redirects: {
     "/guides":                            "https://docs.catena.run/guides/email-providers/",
-    "/guides/fournisseurs-courriel":      "https://docs.catena.run/guides/email-providers/",
-    "/guides/comptes-fournisseurs":       "https://docs.catena.run/guides/provider-accounts/",
-    "/guides/dns-durci":                  "https://docs.catena.run/guides/dns-hardening/",
-    "/en/guides":                         "https://docs.catena.run/en/guides/email-providers/",
-    "/en/guides/email-providers":         "https://docs.catena.run/en/guides/email-providers/",
-    "/en/guides/provider-accounts":       "https://docs.catena.run/en/guides/provider-accounts/",
-    "/en/guides/dns-hardening":           "https://docs.catena.run/en/guides/dns-hardening/",
+    "/guides/email-providers":            "https://docs.catena.run/guides/email-providers/",
+    "/guides/provider-accounts":          "https://docs.catena.run/guides/provider-accounts/",
+    "/guides/dns-hardening":              "https://docs.catena.run/guides/dns-hardening/",
+    "/fr/guides":                         "https://docs.catena.run/fr/guides/email-providers/",
+    "/fr/guides/fournisseurs-courriel":   "https://docs.catena.run/fr/guides/email-providers/",
+    "/fr/guides/comptes-fournisseurs":    "https://docs.catena.run/fr/guides/provider-accounts/",
+    "/fr/guides/dns-durci":               "https://docs.catena.run/fr/guides/dns-hardening/",
   },
   integrations: [
     icon(),
     sitemap({
       i18n: {
-        defaultLocale: "fr",
+        defaultLocale: "en",
         locales: {
           en: "en-CA",
           fr: "fr-CA",
