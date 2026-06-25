@@ -22,10 +22,10 @@ const cols = ["community", "business", "enterprise"] as const;
 const groups = [
   { key: "connectivity", rows: ["admin_tunnel", "app_tunnel"] },
   { key: "apps", rows: ["templates", "unlimited"] },
-  { key: "identity", rows: ["sso", "audit"] },
-  { key: "updates", rows: ["manual_updates", "auto_updates", "cve"] },
+  { key: "identity", rows: ["sso", "audit", "attestation"] },
+  { key: "updates", rows: ["manual_updates", "version_cve_visibility", "auto_updates", "cve_remediation"] },
   { key: "observability", rows: ["dashboard", "internal_alerts", "external_alerts", "central"] },
-  { key: "data", rows: ["manual_backups", "scheduled_backups", "immutable"] },
+  { key: "data", rows: ["manual_backups", "scheduled_backups", "subdaily", "immutable"] },
   { key: "support", rows: ["community_support", "helpdesk", "oncall", "installation", "sla"] },
 ] as const;
 
@@ -101,6 +101,7 @@ const colClass = (c: string) => `val ${c}`;
         </tbody>
       </table>
     </div>
+    <p class="matrix-note muted">{t(locale, `${base}.note`)}</p>
   </div>
 </section>
 
@@ -113,6 +114,11 @@ const colClass = (c: string) => `val ${c}`;
     --m-gold: #e6b800;
   }
   .lead { margin-bottom: var(--catena-space-10); max-width: 56rem; }
+  .matrix-note {
+    margin-top: var(--catena-space-5);
+    max-width: 56rem;
+    font-size: var(--catena-fs-sm);
+  }
 
   .table-wrap { overflow-x: auto; }
   table {
