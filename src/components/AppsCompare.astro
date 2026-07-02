@@ -12,7 +12,7 @@ interface Props {
 const { locale } = Astro.props;
 const catalogHref = locale === "fr"
   ? "https://docs.catena.run/fr/apps/"
-  : "https://docs.catena.run/apps/";
+  : "https://docs.catena.run/en/apps/";
 ---
 <div id="apps">
   <ToolComparisonTable locale={locale} />

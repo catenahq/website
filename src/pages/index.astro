@@ -1,15 +1,29 @@
 ---
-import Base from "../layouts/Base.astro";
-import Hero from "../components/Hero.astro";
-import Capabilities from "../components/Capabilities.astro";
-import AppsCompare from "../components/AppsCompare.astro";
-import PricingMatrix from "../components/PricingMatrix.astro";
-import CTA from "../components/CTA.astro";
+// Root language selector. In production nginx intercepts / with an
+// Accept-Language + `lang` cookie 302 before this file is ever served;
+// this page is the dev/preview and no-nginx fallback. It prefers the
+// `lang` cookie (a remembered manual choice), then the browser
+// language, defaulting to English. The <meta refresh> covers no-JS.
 ---
-<Base locale="en">
-  <Hero locale="en" />
-  <Capabilities locale="en" />
-  <AppsCompare locale="en" />
-  <PricingMatrix locale="en" />
-  <CTA locale="en" />
-</Base>
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="robots" content="noindex" />
+    <meta http-equiv="refresh" content="0; url=/en/" />
+    <link rel="canonical" href="https://catena.run/en/" />
+    <title>catena</title>
+    <script is:inline>
+      (function () {
+        var m = document.cookie.match(/(?:^|;\s*)lang=(en|fr)\b/);
+        var lang = m
+          ? m[1]
+          : (navigator.language || "en").toLowerCase().slice(0, 2) === "fr"
+            ? "fr"
+            : "en";
+        location.replace("/" + lang + "/");
+      })();
+    </script>
+  </head>
+  <body></body>
+</html>

@@ -7,8 +7,8 @@ interface Props {
 
 const { locale } = Astro.props;
 const year = new Date().getFullYear();
-const prefix = locale === "en" ? "" : "/fr";
-const docsHref = locale === "fr" ? "https://docs.catena.run/fr/" : "https://docs.catena.run/";
+const prefix = `/${locale}`;
+const docsHref = locale === "fr" ? "https://docs.catena.run/fr/" : "https://docs.catena.run/en/";
 
 const productLinks = [
   { href: `${prefix}/faq`,          label: t(locale, "common.faq.title") },

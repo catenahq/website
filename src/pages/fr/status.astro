@@ -1,7 +1,6 @@
 ---
 import Base from "../../layouts/Base.astro";
 import PageTitle from "../../components/PageTitle.astro";
-import { t } from "@catena/i18n";
 
 const locale = "fr";
 const statusUrl = "https://status.catena.run";
@@ -23,7 +22,7 @@ const statusUrl = "https://status.catena.run";
       <p>Les sondes Gatus tournent à partir d'un serveur distinct de celui qui héberge les services, pour que la page reste consultable même si un service principal tombe. Un panne touchant l'infrastructure Catena est visible publiquement; nous ne pouvons pas la cacher.</p>
       <p>Pour les clients sous forfait, le suivi de disponibilité de votre propre Suite Catena est dans votre portail client à <a href="https://app.catena.run">app.catena.run</a> (section Surveillance). Les seuils SLA dépendent de votre palier (palier Petite entreprise: meilleur effort; paliers Moyenne / Grande: 99,5 %).</p>
       <h2>Tableau Gatus</h2>
-      <p class="muted">Embed à venir une fois Gatus exposé publiquement à <code>{statusUrl}</code>. En attendant, contactez <a href="mailto:hello@catena.run">hello@catena.run</a> ou <a href="/contact">prenez un appel</a> si vous suspectez une panne.</p>
+      <p class="muted">Embed à venir une fois Gatus exposé publiquement à <code>{statusUrl}</code>. En attendant, contactez <a href="mailto:hello@catena.run">hello@catena.run</a> ou <a href="/fr/contact">prenez un appel</a> si vous suspectez une panne.</p>
       <div class="placeholder">
         <p class="muted"><strong>État : en construction.</strong> Le tableau Gatus public sera embarqué ici dans la prochaine itération. L'instance Gatus interne tourne déjà et alimente les alertes opérateur.</p>
       </div>
