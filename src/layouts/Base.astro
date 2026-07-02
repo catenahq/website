@@ -133,9 +133,9 @@ const breadcrumbJsonLd = segments.length === 0 ? null : {
     <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16.png" />
     <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
 
-    <script type="application/ld+json" set:html={JSON.stringify(orgJsonLd)} />
+    <script type="application/ld+json" is:inline set:html={JSON.stringify(orgJsonLd)} />
     {breadcrumbJsonLd && (
-      <script type="application/ld+json" set:html={JSON.stringify(breadcrumbJsonLd)} />
+      <script type="application/ld+json" is:inline set:html={JSON.stringify(breadcrumbJsonLd)} />
     )}
     <ClientRouter />
     <script>
