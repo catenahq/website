@@ -5,9 +5,10 @@ import sitemap from "@astrojs/sitemap";
 
 // catena.run -- public marketing site.
 //
-// i18n: EN is the default and serves at /; FR serves at /fr/. Astro's
-// i18n routing keeps non-default locale-folders prefixed. Bilingual
-// delivery -> English is the primary surface, French under /fr/.
+// i18n: every locale is prefixed. EN serves at /en/, FR at /fr/. A bare
+// / request is language-detected and redirected by nginx (Accept-Language
+// + lang cookie); src/pages/index.astro is the dev/preview fallback.
+// Bilingual delivery -> EN and FR are peers, neither at the bare root.
 //
 // Output: static. The Dockerfile multi-stages the build then nginx
 // serves dist/. No runtime JS framework -- the scroll-vignettes
@@ -27,7 +28,11 @@ export default defineConfig({
     locales: ["en", "fr"],
     defaultLocale: "en",
     routing: {
-      prefixDefaultLocale: false,
+      prefixDefaultLocale: true,
+      // Keep our own src/pages/index.astro at / (the language-detecting
+      // fallback). redirectToDefaultLocale:true would replace it with a
+      // plain / -> /en/ redirect, dropping cookie/browser detection.
+      redirectToDefaultLocale: false,
     },
   },
   // Guides moved from /guides/ (marketing) to the docs knowledge base
