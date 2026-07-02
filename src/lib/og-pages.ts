@@ -11,12 +11,10 @@ export interface OgPage {
 
 export const ogPages: OgPage[] = [
   // FR
-  { locale: "fr", subpath: "about",               title: "À propos" },
   { locale: "fr", subpath: "contact",             title: "Contact" },
   { locale: "fr", subpath: "faq",                 title: "Foire aux questions" },
   { locale: "fr", subpath: "status",              title: "État des services" },
   // EN
-  { locale: "en", subpath: "about",               title: "About" },
   { locale: "en", subpath: "contact",             title: "Contact" },
   { locale: "en", subpath: "faq",                 title: "Frequently asked questions" },
   { locale: "en", subpath: "status",              title: "Service status" },

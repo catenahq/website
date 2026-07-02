@@ -26,6 +26,17 @@ const locale = "en";
       </article>
     </div>
   </section>
+  <section class="who">
+    <div class="container">
+      <article class="who-card">
+        <h3>{t(locale, "common.contact.about_title")}</h3>
+        <p class="muted">{t(locale, "common.contact.about_body")}</p>
+        <a class="who-link" href={t(locale, "common.contact.portfolio_link_url")}>
+          {t(locale, "common.contact.portfolio_link_label")} &rarr;
+        </a>
+      </article>
+    </div>
+  </section>
   <ContactForm locale={locale} />
 </Base>
 
@@ -57,5 +68,30 @@ const locale = "en";
   }
   .discovery-card .btn {
     margin-top: var(--catena-space-2);
+  }
+  .who {
+    padding-bottom: var(--catena-space-16);
+  }
+  .who-card {
+    margin: 0 auto;
+    max-width: 36rem;
+    padding: var(--catena-space-8);
+    border: 1px solid var(--catena-surface-border);
+    border-radius: var(--catena-radius-lg);
+    background: var(--catena-surface-bg);
+    text-align: center;
+  }
+  .who-card h3 {
+    font-size: var(--catena-fs-lg);
+    margin: 0 0 var(--catena-space-3) 0;
+  }
+  .who-card p {
+    margin: 0 0 var(--catena-space-3) 0;
+    line-height: var(--catena-lh-relaxed);
+    font-size: var(--catena-fs-sm);
+  }
+  .who-link {
+    font-size: var(--catena-fs-sm);
+    text-decoration: underline;
   }
 </style>
