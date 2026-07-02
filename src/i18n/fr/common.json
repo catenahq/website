@@ -447,7 +447,7 @@
     },
     "q11": {
       "question": "Puis-je l'héberger sur mon propre matériel ?",
-      "answer": "Oui. L'édition Communauté gratuite s'installe sur du matériel ou un VPS qui vous appartient, avec ou sans IP publique. Si vous préférez ne pas l'opérer vous-même, Catena Business est l'édition gérée. <a href='/contact'>Contactez-nous</a> si vous voulez que nous opérions l'édition gérée sur votre propre matériel."
+      "answer": "Oui. L'édition Communauté gratuite s'installe sur du matériel ou un VPS qui vous appartient, avec ou sans IP publique. Si vous préférez ne pas l'opérer vous-même, Catena Business est l'édition gérée. <a href='/fr/contact'>Contactez-nous</a> si vous voulez que nous opérions l'édition gérée sur votre propre matériel."
     },
     "q12": {
       "question": "Dans quelle devise sont vos tarifs ?",
@@ -463,7 +463,7 @@
     },
     "q15": {
       "question": "Que pouvez-vous produire comme documentation Loi 25 ?",
-      "answer": "La Suite Catena est conforme Loi 25 au niveau infrastructure (résidence canadienne, sous-traitants documentés, sauvegardes immuables, MFA, chiffrement, journalisation). Pour le volet documentaire (EFVP, registres, politiques, runbook d'incident), nous offrons un accompagnement séparé : audit et pack initial (en construction, revue juridique en cours). Important : nous ne vous remplaçons pas comme responsable de la protection des renseignements personnels -- Loi 25 exige que ce soit une personne à l'interne de votre organisation -- nous fournissons l'infrastructure et les documents que cette personne peut adopter et signer. <a href='/contact'>Parlez-nous de la conformité Loi 25</a>."
+      "answer": "La Suite Catena est conforme Loi 25 au niveau infrastructure (résidence canadienne, sous-traitants documentés, sauvegardes immuables, MFA, chiffrement, journalisation). Pour le volet documentaire (EFVP, registres, politiques, runbook d'incident), nous offrons un accompagnement séparé : audit et pack initial (en construction, revue juridique en cours). Important : nous ne vous remplaçons pas comme responsable de la protection des renseignements personnels -- Loi 25 exige que ce soit une personne à l'interne de votre organisation -- nous fournissons l'infrastructure et les documents que cette personne peut adopter et signer. <a href='/fr/contact'>Parlez-nous de la conformité Loi 25</a>."
     }
   },
   "about": {

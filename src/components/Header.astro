@@ -6,28 +6,25 @@ interface Props {
 }
 
 const { locale } = Astro.props;
-const prefix = locale === "en" ? "" : "/fr";
+const prefix = `/${locale}`;
 const altLocale: "en" | "fr" = locale === "fr" ? "en" : "fr";
 
 // Language switcher: preserve the current page when toggling locales.
 // EN <-> FR slugs are identical for every marketing page (the guides
 // -- the one place we needed slug translation -- moved to apps/docs).
+// Swap the leading /en or /fr segment for the other locale, keeping
+// the rest of the path.
 const currentPath = Astro.url.pathname;
-let altPath: string;
-if (altLocale === "fr") {
-  altPath = currentPath === "/" ? "/fr/" : `/fr${currentPath}`;
-} else {
-  const stripped = currentPath.replace(/^\/fr(\/|$)/, "/");
-  altPath = stripped || "/";
-}
+const subpath = currentPath.replace(/^\/(en|fr)(?=\/|$)/, "");
+const altPath = `/${altLocale}${subpath}`;
 // Docs ship as their own subdomain (catenahq/docs at docs.catena.run).
-// Both marketing + docs run defaultLocale=en, so EN lives at the root
-// and FR lives under /fr/.
-const docsHref = locale === "fr" ? "https://docs.catena.run/fr/" : "https://docs.catena.run/";
+// Both marketing + docs prefix every locale, so EN lives under /en/
+// and FR under /fr/.
+const docsHref = locale === "fr" ? "https://docs.catena.run/fr/" : "https://docs.catena.run/en/";
 ---
 <header class="site-header">
   <div class="container header-row">
-    <a href={prefix || "/"} class="brand" data-astro-prefetch>
+    <a href={`${prefix}/`} class="brand" data-astro-prefetch>
       {t(locale, "common.brand.name")}
     </a>
     <nav>

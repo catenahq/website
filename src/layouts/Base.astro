@@ -37,7 +37,7 @@ const pageDesc = description ?? brandTagline;
 // locale default. The per-page endpoint at src/pages/og/[...].png.ts
 // emits one PNG for every entry in lib/og-pages.ts.
 const localeDefault = locale === "en" ? "/og-default-en.png" : "/og-default-fr.png";
-const subpathTrimmed = Astro.url.pathname.replace(/^\/fr\//, "/").replace(/^\//, "").replace(/\/$/, "");
+const subpathTrimmed = Astro.url.pathname.replace(/^\/(en|fr)\//, "/").replace(/^\//, "").replace(/\/$/, "");
 const perPageOg = ogImagePathFor(locale, subpathTrimmed);
 const finalOgImage = ogImage ?? perPageOg ?? localeDefault;
 
@@ -45,7 +45,7 @@ const finalOgImage = ogImage ?? perPageOg ?? localeDefault;
 // the same logical path in every locale via getRelativeLocaleUrl.
 // "/" -> "", "/about" -> "about", "/fr/" -> "", "/fr/about" -> "about".
 const pathname = Astro.url.pathname;
-const subpath = pathname.replace(/^\/fr(\/|$)/, "/").replace(/^\//, "");
+const subpath = pathname.replace(/^\/(en|fr)(\/|$)/, "/").replace(/^\//, "");
 
 const site = Astro.site!;
 const canonical = new URL(getRelativeLocaleUrl(locale, subpath), site).toString();
@@ -138,6 +138,20 @@ const breadcrumbJsonLd = segments.length === 0 ? null : {
       <script type="application/ld+json" set:html={JSON.stringify(breadcrumbJsonLd)} />
     )}
     <ClientRouter />
+    <script>
+      // Remember the language the visitor is actually reading so the
+      // nginx redirect at / can honour it on later visits. Reads the
+      // current <html lang> (updated by the view-transition router on
+      // navigation) and re-fires after each client-side page load.
+      const setLangCookie = () => {
+        const lang = document.documentElement.lang;
+        if (lang === "en" || lang === "fr") {
+          document.cookie = `lang=${lang}; path=/; max-age=31536000; samesite=lax`;
+        }
+      };
+      setLangCookie();
+      document.addEventListener("astro:page-load", setLangCookie);
+    </script>
     {plausibleHost && (
       <script
         is:inline

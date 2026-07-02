@@ -1,6 +1,6 @@
 ---
-import Base from "../../layouts/Base.astro";
-import PageTitle from "../../components/PageTitle.astro";
+import Base from "../../../layouts/Base.astro";
+import PageTitle from "../../../components/PageTitle.astro";
 import { marked } from "marked";
 import msa from "@catenahq/contracts/legal/msa.json";
 import { readFileSync } from "node:fs";
@@ -27,7 +27,7 @@ const pageIntro = "Full text of the Master Services Agreement (MSA) you accept a
       <p class="version-pin">
         Version: <code>{msa.version.slice(0, 12)}</code>
         &middot; Effective {msa.effectiveDate}
-        &middot; <a href="/legal/master-agreement" class="alt-locale">Français</a>
+        &middot; <a href="/fr/legal/master-agreement" class="alt-locale">Français</a>
       </p>
       <article set:html={html}></article>
     </div>
