@@ -40,11 +40,18 @@ const categories = [
 // translatable copy) so they live here, keyed by category, rather than
 // in the i18n bundles. Sourced from the dokploy-templates catalog
 // (upstream_url); OpenProject is not in the catalog and uses its
-// canonical site.
-const CATENA_URLS: Record<typeof categories[number], string> = {
+// canonical site. A category may map to more than one pick (chat ships
+// both Element and Nextcloud Talk): those use an array of label+href
+// pairs, rendered as separate links, and carry their labels here since
+// the i18n bundle holds a single string per cell.
+type CatenaLink = { label: string; href: string };
+const CATENA_URLS: Record<typeof categories[number], string | CatenaLink[]> = {
   files: "https://nextcloud.com/",
   office: "https://github.com/euro-office",
-  chat: "https://www.rocket.chat/",
+  chat: [
+    { label: "Element", href: "https://element.io/" },
+    { label: "Nextcloud Talk", href: "https://nextcloud.com/talk/" },
+  ],
   crm: "https://www.espocrm.com/",
   booking: "https://easyappointments.org/",
   project: "https://www.openproject.org/",
@@ -82,9 +89,18 @@ const CATENA_URLS: Record<typeof categories[number], string> = {
               {cols.map((c) => (
                 <td class={c === "catena" ? "highlight" : ""}>
                   {c === "catena" ? (
-                    <a class="app-link" href={CATENA_URLS[cat]} target="_blank" rel="noopener noreferrer">
-                      {t(locale, `common.features.tool_comparison.rows.${cat}.${c}`)}
-                    </a>
+                    Array.isArray(CATENA_URLS[cat]) ? (
+                      (CATENA_URLS[cat] as CatenaLink[]).map((lnk, i) => (
+                        <Fragment>
+                          {i > 0 && " / "}
+                          <a class="app-link" href={lnk.href} target="_blank" rel="noopener noreferrer">{lnk.label}</a>
+                        </Fragment>
+                      ))
+                    ) : (
+                      <a class="app-link" href={CATENA_URLS[cat] as string} target="_blank" rel="noopener noreferrer">
+                        {t(locale, `common.features.tool_comparison.rows.${cat}.${c}`)}
+                      </a>
+                    )
                   ) : (
                     t(locale, `common.features.tool_comparison.rows.${cat}.${c}`)
                   )}

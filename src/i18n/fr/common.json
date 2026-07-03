@@ -4,7 +4,6 @@
     "tagline": "La suite logicielle qui vous appartient."
   },
   "nav": {
-    "about": "À propos",
     "docs": "Documentation",
     "portal": "Portail client",
     "contact": "Contact",
@@ -26,7 +25,8 @@
     "col_product": "Produit",
     "col_company": "Entreprise",
     "col_legal": "Mentions légales",
-    "edit_on_github": "Modifier sur GitHub"
+    "portfolio": "Portfolio",
+    "github": "GitHub"
   },
   "lang": {
     "en": "English",
@@ -313,7 +313,6 @@
         },
         "chat": {
           "label": "Messagerie et réunions",
-          "catena": "Rocket.Chat",
           "microsoft": "Teams",
           "google": "Meet / Chat",
           "saas": "Slack, Zoom"
@@ -385,6 +384,10 @@
     "discovery_link_label": "Réserver un appel découverte",
     "discovery_link_url": "https://app.catena.run/discovery",
     "response_body": "Nous visons répondre dans un jour ouvrable.",
+    "about_title": "Avec qui vous travaillez",
+    "about_body": "Catena est dirigée par Marc-Antoine Lalonde. Ce que vous obtenez, c'est du jugement sur le choix des outils, la connaissance de leurs modes de défaillance et une prise en charge de bout en bout - pas une liste de fonctionnalités.",
+    "portfolio_link_label": "Parcours et portfolio",
+    "portfolio_link_url": "https://ma-lalonde.dev",
     "form": {
       "title": "Envoyer un message",
       "intro": "Ou remplissez le formulaire ci-dessous. Les réponses partent de la même boîte.",
@@ -404,7 +407,7 @@
   },
   "faq": {
     "title": "Foire aux questions",
-    "intro": "Les questions que les prospects posent le plus souvent avant de prendre un appel découverte. Réponses courtes ; les versions longues vivent sur À propos / Tarifs / Comparaison.",
+    "intro": "Les questions que les prospects posent le plus souvent avant de prendre un appel découverte. Réponses courtes ; les versions longues vivent sur Tarifs / Comparaison.",
     "q1": {
       "question": "Catena tourne-t-elle sur la Suite Catena ?",
       "answer": "Même suite. Mêmes mains. En production depuis le lancement. catena.run, la documentation à /docs, le portail client, les vérifications externes des services client, le traitement des paiements et la facturation tournent tous sur la Suite Catena que nous vendons. Toute la surface de revenu est sur le produit. Manger sa propre nourriture est notre garantie."
@@ -465,42 +468,6 @@
       "question": "Que pouvez-vous produire comme documentation Loi 25 ?",
       "answer": "La Suite Catena est conforme Loi 25 au niveau infrastructure (résidence canadienne, sous-traitants documentés, sauvegardes immuables, MFA, chiffrement, journalisation). Pour le volet documentaire (EFVP, registres, politiques, runbook d'incident), nous offrons un accompagnement séparé : audit et pack initial (en construction, revue juridique en cours). Important : nous ne vous remplaçons pas comme responsable de la protection des renseignements personnels -- Loi 25 exige que ce soit une personne à l'interne de votre organisation -- nous fournissons l'infrastructure et les documents que cette personne peut adopter et signer. <a href='/fr/contact'>Parlez-nous de la conformité Loi 25</a>."
     }
-  },
-  "about": {
-    "title": "À propos",
-    "intro": "Catena est la suite logicielle qui vous appartient - gratuite en auto-hébergement, ou gérée par nous. Elle est dirigée par Marc-Antoine Lalonde. Voici ce que ça veut dire concrètement.",
-    "facts_title": "Mes engagements",
-    "facts": {
-      "response_label": "Temps de réponse",
-      "response_value": "4 heures ouvrables",
-      "response_note": "niveau standard, urgences disponibles",
-      "cadence_label": "Cadence",
-      "cadence_value": "Revue trimestrielle",
-      "cadence_note": "plus résumé mensuel par courriel",
-      "continuity_label": "Continuité",
-      "continuity_value": "Transférable",
-      "continuity_note": "libre, portable, aucun verrou"
-    },
-    "bus_factor_note": "Inquiet d'une entreprise à une seule personne ? Toute la suite est libre et portable -- un autre partenaire TI compétent peut reprendre votre suite avec la même automatisation.",
-    "bus_factor_link_label": "Voir la FAQ sur la continuité",
-    "story_title": "Bref parcours",
-    "story_body": "Treize ans de leadership technique en logiciel et en infrastructure. Cinq ans en solo, à bâtir et opérer les suites de mes propres entreprises. Catena est ce que je fais de mieux et que j'aime le plus: choisir les bons outils, connaître leurs modes de défaillance, et les opérer de bout en bout sur la Suite Catena. Basé au Québec; livraison bilingue.",
-    "bring_title": "Ce que j'apporte",
-    "bring_judgment_title": "Jugement dans le choix d'outils",
-    "bring_judgment_body": "Choisir les outils n'est pas la partie banalisée de ce travail. Savoir quels projets libres sont en santé, lesquels seront maintenus, et lesquels casseront silencieusement dans deux ans -- c'est le facteur différenciant.",
-    "bring_failure_title": "Expertise des modes de défaillance",
-    "bring_failure_body": "Je conçois à partir des scénarios de récupération. Reprise après sinistre, retours en arrière, migration, démantèlement. Le jour où ça casse n'est pas le jour pour apprendre à le réparer.",
-    "bring_ownership_title": "Propriété de bout en bout",
-    "bring_ownership_body": "Du provisionnement aux sauvegardes à la migration à la remise, un seul ensemble d'outils unifiés. Aucune excuse, aucun report, seulement la responsabilité.",
-    "work_title": "Comment je travaille",
-    "work_response_title": "Temps de réponse",
-    "work_response_body": "Niveau standard: 4 heures ouvrables. Disponible pour urgences. Un ensemble de boutons de dépannage est fourni avec votre serveur pour vous permettre de reprendre la main entretemps.",
-    "work_cadence_title": "Cadence",
-    "work_cadence_body": "Appel de revue trimestrielle. Courriel mensuel résumant ce qui a été mis à jour, restauré, et validé sur votre suite. Les exercices gérés de sauvegarde-restauration et leur rapport arrivent dans votre boîte.",
-    "work_continuity_title": "En cas d'imprévu",
-    "work_continuity_body": "Rien dans votre suite n'est fermé ou propriétaire à moi. Toute la suite est libre et portable ; un autre partenaire TI compétent peut reprendre votre suite avec la même automatisation.",
-    "portfolio_link_label": "Parcours et portfolio",
-    "portfolio_link_url": "https://ma-lalonde.dev"
   },
   "privacy": {
     "title": "Politique de confidentialité",

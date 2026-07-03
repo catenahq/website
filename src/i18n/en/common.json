@@ -4,7 +4,6 @@
     "tagline": "The business suite you own."
   },
   "nav": {
-    "about": "About",
     "docs": "Docs",
     "portal": "Client portal",
     "contact": "Contact",
@@ -26,7 +25,8 @@
     "col_product": "Product",
     "col_company": "Company",
     "col_legal": "Legal",
-    "edit_on_github": "Edit on GitHub"
+    "portfolio": "Portfolio",
+    "github": "GitHub"
   },
   "lang": {
     "en": "English",
@@ -313,7 +313,6 @@
         },
         "chat": {
           "label": "Team chat & meetings",
-          "catena": "Rocket.Chat",
           "microsoft": "Teams",
           "google": "Meet / Chat",
           "saas": "Slack, Zoom"
@@ -385,6 +384,10 @@
     "discovery_link_label": "Book a discovery call",
     "discovery_link_url": "https://app.catena.run/discovery",
     "response_body": "We aim to reply within one business day.",
+    "about_title": "Who you are working with",
+    "about_body": "Catena is led by Marc-Antoine Lalonde. What you get is judgment about which tools to pick, knowing how they fail, and owning them end to end - not a list of features.",
+    "portfolio_link_label": "Full background and portfolio",
+    "portfolio_link_url": "https://ma-lalonde.dev",
     "form": {
       "title": "Send a message",
       "intro": "Or fill in the form below. Replies come from the same inbox.",
@@ -404,7 +407,7 @@
   },
   "faq": {
     "title": "Frequently asked questions",
-    "intro": "The questions prospects ask most often before booking a discovery call. Short answers; the longer story is in About / Pricing / Comparison.",
+    "intro": "The questions prospects ask most often before booking a discovery call. Short answers; the longer story is in Pricing / Comparison.",
     "q1": {
       "question": "Does Catena run on the Catena Suite?",
       "answer": "Same suite. Same hands. Live since launch. catena.run, the docs at /docs, the client portal, the external healthchecks for client services, payment processing, and invoicing all run on the Catena Suite we sell. The whole revenue surface is on the product. Dogfooding is the warranty."
@@ -465,42 +468,6 @@
       "question": "What can you produce as Law 25 documentation?",
       "answer": "The Catena Suite is Law 25 compliant at the infrastructure level (Canadian residency, documented subprocessors, immutable backups, MFA, encryption, logging). For the documentation layer (PIA / EFVP, registers, policies, incident runbook), we offer separate compliance enablement: audit and initial pack (in build, under legal review). Important: we do not replace your internal privacy officer -- Law 25 requires this to be a person inside your organization -- we deliver the infrastructure and documents that person can adopt and sign. <a href='/en/contact'>Talk to us about Law 25 compliance</a>."
     }
-  },
-  "about": {
-    "title": "About",
-    "intro": "Catena is the business suite you own - free to self-host, or managed by us. It is led by Marc-Antoine Lalonde. Here is what that means in practice.",
-    "facts_title": "What I commit to",
-    "facts": {
-      "response_label": "Response time",
-      "response_value": "4 business hours",
-      "response_note": "standard tier, emergency available",
-      "cadence_label": "Cadence",
-      "cadence_value": "Quarterly review",
-      "cadence_note": "plus monthly summary email",
-      "continuity_label": "Continuity",
-      "continuity_value": "Hand-overable",
-      "continuity_note": "open-source, portable, no lock-in"
-    },
-    "bus_factor_note": "Worried about a one-person business? The whole suite is open-source and portable -- another competent IT partner can pick up your suite using the same automation.",
-    "bus_factor_link_label": "Read the bus-factor FAQ",
-    "story_title": "Brief story",
-    "story_body": "Thirteen years of technical leadership across software, infrastructure work and systems integration. Five years solo, building and running my companies' suites. Catena is what I am best at and what I most enjoy: picking the right tools, knowing how they fail, and operating them end to end on the Catena Suite. Quebec-based; bilingual delivery.",
-    "bring_title": "What I bring",
-    "bring_judgment_title": "Tech-selection judgment",
-    "bring_judgment_body": "Picking tools is not the commodity part of this work. Knowing which open-source projects are healthy, which will be maintained, and which will silently break in two years -- that is the differentiator.",
-    "bring_failure_title": "Failure-mode expertise",
-    "bring_failure_body": "I design backwards from the recovery scenarios. Disaster recovery, rollbacks, migration, decommission. The day a thing breaks is not the day to learn how to fix it.",
-    "bring_ownership_title": "End-to-end ownership",
-    "bring_ownership_body": "From provisioning to backups to migration to handover, one set of unified tools. No excuses, no deferral, only accountability.",
-    "work_title": "How I work",
-    "work_response_title": "Response time",
-    "work_response_body": "Standard tier: 4 business hours. Emergency service available. Basic set of \"panic buttons\" in your server so you can take over in the meantime.",
-    "work_cadence_title": "Cadence",
-    "work_cadence_body": "Quarterly review call. Monthly summary email of what was bumped, restored, and validated on your suite. Managed backup-restore drills and the report lands in your inbox.",
-    "work_continuity_title": "In case of unforeseen event",
-    "work_continuity_body": "Nothing in your suite is closed-source or proprietary to me. The whole suite is open-source and portable; another competent IT partner can pick up your suite using the same automation.",
-    "portfolio_link_label": "Longer history / portfolio",
-    "portfolio_link_url": "https://ma-lalonde.dev"
   },
   "privacy": {
     "title": "Privacy policy",
