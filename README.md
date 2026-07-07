@@ -34,8 +34,8 @@ npm run test:i18n
 Dockerfile is multi-stage: Astro build inside `node:22-alpine`,
 served from `nginx:alpine`. Build context is this repo's root.
 
-In Dokploy: Create Compose -> GitHub source pointing at this repo,
-`composePath: dokploy.compose.yml`.
+In Portainer: create a Stack from a Git repository pointing at this
+repo, `composePath: dokploy.compose.yml`.
 
 ## Add a page
 
