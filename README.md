@@ -31,11 +31,10 @@ npm run test:i18n
 
 ## Deploy
 
-Dockerfile is multi-stage: Astro build inside `node:22-alpine`,
-served from `nginx:alpine`. Build context is this repo's root.
-
-In Portainer: create a Stack from a Git repository pointing at this
-repo, `composePath: dokploy.compose.yml`.
+GitHub Pages via `.github/workflows/deploy-pages.yml`: every push to
+`main` builds (`npm run build` -> `dist/`) and publishes. The custom
+domain catena.run is set via `public/CNAME`. `dev` is the active-edit
+branch and does not deploy.
 
 ## Add a page
 
