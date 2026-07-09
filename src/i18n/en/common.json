@@ -333,7 +333,7 @@
         },
         "project": {
           "label": "Project management",
-          "catena": "OpenProject",
+          "catena": "Plane",
           "microsoft": "Project / Planner",
           "google": "N/A",
           "saas": "Jira, Linear, Asana"
@@ -414,11 +414,11 @@
     },
     "q16": {
       "question": "Is Catena free?",
-      "answer": "The Community edition is, yes: the whole suite, source-available, self-hosted on infrastructure you own, with no licence fee and no telemetry. You install and operate it yourself from <a href='https://github.com/catenahq/catena-ce'>GitHub</a> and the community docs. Catena Business is the paid managed edition, where we run the lifecycle for you: offsite immutable backups, managed updates, monitoring, identity, and a monthly assurance report. Same software either way -- start free and move to managed whenever you would rather not run a server."
+      "answer": "The Community edition is, yes: the whole suite, source-available, self-hosted on infrastructure you own, with no licence fee and no telemetry. You install and operate it yourself from <a href='https://github.com/catenahq/catena-ce'>GitHub</a> and the community docs. Catena Pro is the paid managed edition, where we run the lifecycle for you: offsite immutable backups, managed updates, monitoring, identity, and a monthly assurance report. Same software either way -- start free and move to managed whenever you would rather not run a server."
     },
     "q2": {
       "question": "What else can I run on the suite?",
-      "answer": "Anything that fits a Dokploy compose template. Our vetted catalog (Nextcloud, Euro Office / Collabora, Rocket.Chat, Plane, DocuSeal, Invoice Ninja, Outline, EspoCRM, n8n, Postiz, Twenty, WordPress, ERPNext, Easy!Appointments, and others) installs at no extra setup cost. Anything else is a custom-template request -- talk to us. To explore the broader self-hosted ecosystem: <a href='https://github.com/awesome-selfhosted/awesome-selfhosted' target='_blank' rel='noopener noreferrer'>awesome-selfhosted</a>, <a href='https://awweso.me/' target='_blank' rel='noopener noreferrer'>awweso.me</a>, <a href='https://templates.dokploy.com/' target='_blank' rel='noopener noreferrer'>Dokploy templates</a>, <a href='https://github.com/awesome-foss/awesome-sysadmin' target='_blank' rel='noopener noreferrer'>awesome-sysadmin</a>."
+      "answer": "Anything that fits a compose-shaped app template. Our vetted catalog (Nextcloud, Euro Office / Collabora, Rocket.Chat, Plane, DocuSeal, Invoice Ninja, Outline, EspoCRM, n8n, Postiz, Twenty, WordPress, ERPNext, Easy!Appointments, and others) installs at no extra setup cost -- browse it at <a href='https://docs.catena.run/en/apps/' target='_blank' rel='noopener noreferrer'>docs.catena.run</a>. Anything else is a custom-template request -- talk to us. To explore the broader self-hosted ecosystem: <a href='https://github.com/awesome-selfhosted/awesome-selfhosted' target='_blank' rel='noopener noreferrer'>awesome-selfhosted</a>, <a href='https://awweso.me/' target='_blank' rel='noopener noreferrer'>awweso.me</a>, <a href='https://github.com/awesome-foss/awesome-sysadmin' target='_blank' rel='noopener noreferrer'>awesome-sysadmin</a>."
     },
     "q3": {
       "question": "What happens if you get hit by a bus?",
@@ -438,19 +438,19 @@
     },
     "q7": {
       "question": "How do you make money?",
-      "answer": "The Community edition is free; we make our money on Catena Business, the managed edition: a monthly subscription per server, plus per-app, with hands-on support billed hourly only as you use it. No per-seat, ever. Hosting and backups are passthrough to your own accounts. See the <a href='/en/#pricing'>pricing section</a>."
+      "answer": "The Community edition is free; we make our money on Catena Pro, the managed edition: a monthly subscription per server, plus per-app, with hands-on support billed hourly only as you use it. No per-seat, ever. Hosting and backups are passthrough to your own accounts. See the <a href='/en/#pricing'>pricing section</a>."
     },
     "q8": {
-      "question": "Do you self-host email?",
-      "answer": "No -- email delivery is a full-time specialty (deliverability, spam compliance, bounce handling). We integrate with five privacy-focused providers and wire up DNS + SSO so your team uses email like any other app. Suggested clients: Nextcloud's built-in mail interface (browser-based), Thunderbird (desktop, free, cross-platform), or Betterbird (Thunderbird fork with extra polish)."
+      "question": "Can I self-host my email?",
+      "answer": "You can. The catalog includes a full mail server app (mailboxes, IMAP, webmail through Nextcloud) that keeps your email on the server you own; outbound delivery goes through an SMTP relay so your messages don't land in spam. For most teams we still recommend starting with one of the five privacy-focused email providers we integrate -- we wire up DNS + SSO either way, and you can bring email in-house later without changing how your team works. Suggested clients: Nextcloud's built-in mail interface (browser-based), Thunderbird (desktop, free, cross-platform), or Betterbird (Thunderbird fork with extra polish)."
     },
     "q9": {
       "question": "Can I host my own apps alongside the suite?",
-      "answer": "Yes. Dokploy lets you deploy any compose-shaped app under SSO + Cloudflare Tunnel. We can advise; we don't have to operate it."
+      "answer": "Yes. Portainer lets you deploy any compose-shaped app under SSO + Cloudflare Tunnel. We can advise; we don't have to operate it."
     },
     "q11": {
       "question": "Can I run this on my own hardware?",
-      "answer": "Yes. The free Community edition self-installs on hardware or a VPS you own, with or without a public IP. If you would rather not run it yourself, Catena Business is the managed edition. <a href='/en/contact'>Talk to us</a> if you want us to run the managed edition on your own hardware."
+      "answer": "Yes. The free Community edition self-installs on hardware or a VPS you own, with or without a public IP. If you would rather not run it yourself, Catena Pro is the managed edition. <a href='/en/contact'>Talk to us</a> if you want us to run the managed edition on your own hardware."
     },
     "q12": {
       "question": "What currency are your prices in?",
@@ -458,11 +458,11 @@
     },
     "q13": {
       "question": "What's the difference between Catena and the Catena Suite?",
-      "answer": "Catena is the company behind it. The Catena Suite is the software Catena builds and operates: Nextcloud, EspoCRM, Easy!Appointments, Rocket.Chat, Keycloak, and the Ansible / backups / monitoring tooling that runs the whole thing. On the Business edition your invoice comes from Catena and your email and files live on the Catena Suite; on the Community edition you run that same suite yourself."
+      "answer": "Catena is the company behind it. The Catena Suite is the software Catena builds and operates: Nextcloud, EspoCRM, Easy!Appointments, Rocket.Chat, Keycloak, and the Ansible / backups / monitoring tooling that runs the whole thing. On the Pro edition your invoice comes from Catena and your email and files live on the Catena Suite; on the Community edition you run that same suite yourself."
     },
     "q14": {
       "question": "Are you really an MSP? How are you different from my current MSP?",
-      "answer": "Catena Business is a managed service -- we run the Catena Suite on your behalf for a monthly subscription -- so that part works like an MSP. Two things set it apart from a traditional MSP: the software is a product you can also self-host for free (the Community edition), and the managed scope is bounded to the Catena Suite. We do not manage your workstations, printers, Microsoft 365, or office network (see <a href='/en/#pricing'>the editions grid</a>). In exchange: you pay per server (not per seat), your code and data belong to you, and you can leave at any time with everything in hand."
+      "answer": "Catena Pro is a managed service -- we run the Catena Suite on your behalf for a monthly subscription -- so that part works like an MSP. Two things set it apart from a traditional MSP: the software is a product you can also self-host for free (the Community edition), and the managed scope is bounded to the Catena Suite. We do not manage your workstations, printers, Microsoft 365, or office network (see <a href='/en/#pricing'>the editions grid</a>). In exchange: you pay per server (not per seat), your code and data belong to you, and you can leave at any time with everything in hand."
     },
     "q15": {
       "question": "What can you produce as Law 25 documentation?",

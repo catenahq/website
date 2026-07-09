@@ -38,9 +38,8 @@ const categories = [
 ] as const;
 // Upstream homepage per category's Catena pick. URLs are facts (not
 // translatable copy) so they live here, keyed by category, rather than
-// in the i18n bundles. Sourced from the dokploy-templates catalog
-// (upstream_url); OpenProject is not in the catalog and uses its
-// canonical site. A category may map to more than one pick (chat ships
+// in the i18n bundles. Sourced from the catena-templates catalog
+// (upstream_url). A category may map to more than one pick (chat ships
 // both Element and Nextcloud Talk): those use an array of label+href
 // pairs, rendered as separate links, and carry their labels here since
 // the i18n bundle holds a single string per cell.
@@ -54,7 +53,7 @@ const CATENA_URLS: Record<typeof categories[number], string | CatenaLink[]> = {
   ],
   crm: "https://www.espocrm.com/",
   booking: "https://easyappointments.org/",
-  project: "https://www.openproject.org/",
+  project: "https://plane.so/",
   automation: "https://n8n.io/",
   esign: "https://www.docuseal.com/",
   invoicing: "https://www.invoiceninja.com/",
