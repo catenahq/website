@@ -7,11 +7,23 @@
 // edition column carries a bronze / silver / gold frame.
 import { t } from "@catena/i18n";
 import MatrixCell from "./MatrixCell.astro";
+import tiers from "@catenahq/contracts/pricing/tiers.json";
 
 interface Props {
   locale: "en" | "fr";
 }
 const { locale } = Astro.props;
+
+// The Pro price renders from the canonical pricing contract
+// (contracts/pricing/tiers.json), not from a hand-synced i18n string,
+// so the matrix cannot drift from the versioned offer.
+const serverCents = tiers.components.server.monthlyPriceCents;
+const serverAmount =
+  serverCents % 100 === 0 ? String(serverCents / 100) : (serverCents / 100).toFixed(2);
+const proPrice =
+  locale === "en" ? `$${serverAmount} / month` : `${serverAmount} $ / mois`;
+const priceCell = (c: string) =>
+  c === "business" ? proPrice : t(locale, `${base}.prices.${c}`);
 
 // Edition columns, in order: community (bronze), business (silver),
 // enterprise (gold). The `business` key drives the "Pro" label.
@@ -52,7 +64,7 @@ const colClass = (c: string) => `val ${c}`;
             <th scope="col"></th>
             {cols.map((c) => (
               <td class={colClass(c)}>
-                <span class="price">{t(locale, `${base}.prices.${c}`)}</span>
+                <span class="price">{priceCell(c)}</span>
               </td>
             ))}
           </tr>
