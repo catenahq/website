@@ -53,3 +53,12 @@ fresh on every run.
 
 Use the Astro MCP (`mcp__Astro_docs__search_astro_docs`) for any
 Astro / Starlight feature question rather than guessing from memory.
+
+## Security invariants (machine-enforced -- do not weaken silently)
+
+- Prices render from @catenahq/contracts pricing/tiers.json (single
+  versioned source); never reintroduce hand-synced price strings.
+- Legal pages render verbatim from the contracts package; msa.json
+  pins the accepted revision -- never inline legal text here.
+- No secrets in tree or history (gitleaks; history re-rooted clean at
+  publication 2026-07-12 -- never push the backup-pre-reroot-* branches).
