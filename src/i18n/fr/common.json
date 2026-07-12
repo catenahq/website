@@ -225,13 +225,13 @@
               "enterprise": "yes"
             },
             "scheduled_backups": {
-              "label": "Sauvegarde quotidienne planifiée",
+              "label": "Sauvegarde hebdomadaire planifiée",
               "community": "yes",
               "business": "yes",
               "enterprise": "yes"
             },
             "subdaily": {
-              "label": "Cadence configurable (infra-quotidienne)",
+              "label": "Cadence quotidienne et infra-quotidienne",
               "community": "no",
               "business": "yes",
               "enterprise": "yes"
