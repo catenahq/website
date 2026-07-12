@@ -1,0 +1,201 @@
+---
+// Community / Pro / Enterprise capability matrix for the home page.
+// Columns are the client-facing edition names (never the internal
+// catena-ce / -ee binary names). This is "what you get per edition," a
+// billing/managed-scope view -- not license gating. Every cell is a
+// binary yes/no rendered as a green check or red x by MatrixCell. Each
+// edition column carries a bronze / silver / gold frame.
+import { t } from "@catena/i18n";
+import MatrixCell from "./MatrixCell.astro";
+import tiers from "@catenahq/contracts/pricing/tiers.json";
+
+interface Props {
+  locale: "en" | "fr";
+}
+const { locale } = Astro.props;
+
+// The Pro price renders from the canonical pricing contract
+// (contracts/pricing/tiers.json), not from a hand-synced i18n string,
+// so the matrix cannot drift from the versioned offer.
+const serverCents = tiers.components.server.monthlyPriceCents;
+const serverAmount =
+  serverCents % 100 === 0 ? String(serverCents / 100) : (serverCents / 100).toFixed(2);
+const proPrice =
+  locale === "en" ? `$${serverAmount} / month` : `${serverAmount} $ / mois`;
+const priceCell = (c: string) =>
+  c === "business" ? proPrice : t(locale, `${base}.prices.${c}`);
+
+// Edition columns, in order: community (bronze), business (silver),
+// enterprise (gold). The `business` key drives the "Pro" label.
+const cols = ["community", "business", "enterprise"] as const;
+
+// Group + row order. Cells resolve from
+// common.home.pricing_matrix.groups.<g>.rows.<r>.{label,community,business,enterprise}.
+const groups = [
+  { key: "connectivity", rows: ["admin_tunnel", "app_tunnel"] },
+  { key: "apps", rows: ["templates", "unlimited"] },
+  { key: "identity", rows: ["sso", "audit", "attestation"] },
+  { key: "updates", rows: ["manual_updates", "version_cve_visibility", "auto_updates", "cve_remediation"] },
+  { key: "observability", rows: ["dashboard", "internal_alerts", "external_alerts", "central"] },
+  { key: "data", rows: ["manual_backups", "scheduled_backups", "subdaily", "immutable"] },
+  { key: "support", rows: ["community_support", "helpdesk", "oncall", "installation", "sla"] },
+] as const;
+
+const base = "common.home.pricing_matrix";
+const colClass = (c: string) => `val ${c}`;
+---
+<section id="pricing" class="matrix">
+  <div class="container">
+    <h2>{t(locale, `${base}.title`)}</h2>
+    <p class="lead muted">{t(locale, `${base}.intro`)}</p>
+
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th scope="col" class="rowhead"></th>
+            {cols.map((c) => (
+              <th scope="col" class={colClass(c)}>
+                <span class="col-name">{t(locale, `${base}.cols.${c}`)}</span>
+              </th>
+            ))}
+          </tr>
+          <tr class="price-row">
+            <th scope="col"></th>
+            {cols.map((c) => (
+              <td class={colClass(c)}>
+                <span class="price">{priceCell(c)}</span>
+              </td>
+            ))}
+          </tr>
+        </thead>
+        <tbody>
+          {groups.map((group) => (
+            <>
+              <tr class="group-row">
+                <th scope="row">{t(locale, `${base}.groups.${group.key}.label`)}</th>
+                {cols.map((c) => <td class={colClass(c)}></td>)}
+              </tr>
+              {group.rows.map((row) => (
+                <tr>
+                  <th scope="row" class="rowhead">
+                    {t(locale, `${base}.groups.${group.key}.rows.${row}.label`)}
+                  </th>
+                  {cols.map((c) => (
+                    <td class={colClass(c)}>
+                      <MatrixCell
+                        value={t(locale, `${base}.groups.${group.key}.rows.${row}.${c}`)}
+                        locale={locale}
+                      />
+                    </td>
+                  ))}
+                </tr>
+              ))}
+            </>
+          ))}
+          <tr class="cta-row">
+            <th scope="row"></th>
+            {cols.map((c) => (
+              <td class="val">
+                {c === "community" && (
+                  <a class="btn btn-primary get-started" href="https://github.com/catenahq/catena-ce" target="_blank" rel="noopener noreferrer">
+                    {t(locale, `${base}.get_started`)}
+                  </a>
+                )}
+                {c === "enterprise" && (
+                  <a class="btn btn-secondary get-started" href={t(locale, "common.cta.discovery_url")} target="_blank" rel="noopener noreferrer">
+                    {t(locale, `${base}.talk_to_us`)}
+                  </a>
+                )}
+              </td>
+            ))}
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="matrix-note muted">{t(locale, `${base}.note`)}</p>
+  </div>
+</section>
+
+<style>
+  .matrix {
+    padding: var(--catena-space-24) 0;
+    background: var(--catena-surface-bg-muted);
+    --m-bronze: #b08d57;
+    --m-silver: #9aa0a6;
+    --m-gold: #e6b800;
+  }
+  .lead { margin-bottom: var(--catena-space-10); max-width: 56rem; }
+  .matrix-note {
+    margin-top: var(--catena-space-5);
+    max-width: 56rem;
+    font-size: var(--catena-fs-sm);
+  }
+
+  .table-wrap { overflow-x: auto; }
+  table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 10px 0;
+    font-size: var(--catena-fs-base);
+  }
+  th, td {
+    text-align: left;
+    padding: var(--catena-space-3) var(--catena-space-4);
+    border-bottom: 1px solid var(--catena-surface-border);
+    vertical-align: top;
+  }
+  .val { text-align: center; width: 18%; }
+  thead th {
+    font-weight: var(--catena-fw-semibold);
+    color: var(--catena-surface-fg);
+  }
+  thead .val .col-name {
+    display: block;
+    font-size: var(--catena-fs-lg);
+  }
+  .price-row .price {
+    display: block;
+    text-align: center;
+    font-size: var(--catena-fs-base);
+    font-weight: var(--catena-fw-bold);
+    color: var(--catena-surface-fg);
+  }
+  .cta-row .get-started {
+    display: inline-flex;
+    width: 100%;
+    justify-content: center;
+  }
+  .cta-row th,
+  .cta-row .val { border-bottom: none; }
+  .cta-row .val { padding-top: var(--catena-space-5); }
+  .rowhead {
+    font-weight: var(--catena-fw-medium);
+    color: var(--catena-surface-fg-muted);
+  }
+  .group-row th,
+  .group-row .val {
+    background: color-mix(in srgb, var(--catena-accent) 8%, transparent);
+    border-bottom: 1px solid var(--catena-surface-border);
+  }
+  .group-row th {
+    padding-top: var(--catena-space-4);
+    font-size: var(--catena-fs-base);
+    font-weight: var(--catena-fw-semibold);
+    text-transform: uppercase;
+    letter-spacing: var(--catena-tracking-wide);
+    color: var(--catena-surface-fg);
+  }
+
+  /* Per-edition bronze / silver / gold frames. */
+  .community { border-left: 2px solid var(--m-bronze); border-right: 2px solid var(--m-bronze); }
+  .business { border-left: 2px solid var(--m-silver); border-right: 2px solid var(--m-silver); }
+  .enterprise { border-left: 2px solid var(--m-gold); border-right: 2px solid var(--m-gold); }
+  thead .community { border-top: 2px solid var(--m-bronze); }
+  thead .business { border-top: 2px solid var(--m-silver); }
+  thead .enterprise { border-top: 2px solid var(--m-gold); }
+  tbody tr:nth-last-child(2) .community { border-bottom: 2px solid var(--m-bronze); }
+  tbody tr:nth-last-child(2) .business { border-bottom: 2px solid var(--m-silver); }
+  tbody tr:nth-last-child(2) .enterprise { border-bottom: 2px solid var(--m-gold); }
+
+</style>

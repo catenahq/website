@@ -1,0 +1,171 @@
+---
+import "../styles/global.css";
+import { ClientRouter } from "astro:transitions";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+import { getRelativeLocaleUrl } from "astro:i18n";
+import { t } from "@catena/i18n";
+import { ogImagePathFor } from "../lib/og-pages";
+
+interface Props {
+  title?: string;
+  description?: string;
+  locale?: "en" | "fr";
+  ogImage?: string;
+}
+
+const { title, description, locale = "en", ogImage } = Astro.props;
+
+// Self-hosted Plausible analytics. Wired at build time via env vars
+// so the snippet only ships when the operator has actually deployed
+// a Plausible instance. Cookieless config -- no banner required.
+//
+//   PUBLIC_PLAUSIBLE_HOST   https origin of the self-hosted Plausible
+//                           (e.g. https://plausible.catena.run). When
+//                           unset, no analytics snippet is emitted.
+//   PUBLIC_PLAUSIBLE_DOMAIN data-domain the Plausible site is keyed
+//                           on. Defaults to the marketing site host
+//                           (catena.run) -- override for staging.
+const plausibleHost = import.meta.env.PUBLIC_PLAUSIBLE_HOST as string | undefined;
+const plausibleDomain = (import.meta.env.PUBLIC_PLAUSIBLE_DOMAIN as string | undefined) ?? "catena.run";
+
+const brandName = t(locale, "common.brand.name");
+const brandTagline = t(locale, "common.brand.tagline");
+const pageTitle = title ? `${title} -- ${brandName}` : `${brandName} -- ${brandTagline}`;
+const pageDesc = description ?? brandTagline;
+// OG image resolution: explicit prop > per-page generated card >
+// locale default. The per-page endpoint at src/pages/og/[...].png.ts
+// emits one PNG for every entry in lib/og-pages.ts.
+const localeDefault = locale === "en" ? "/og-default-en.png" : "/og-default-fr.png";
+const subpathTrimmed = Astro.url.pathname.replace(/^\/(en|fr)\//, "/").replace(/^\//, "").replace(/\/$/, "");
+const perPageOg = ogImagePathFor(locale, subpathTrimmed);
+const finalOgImage = ogImage ?? perPageOg ?? localeDefault;
+
+// Locale-agnostic subpath. Strips a leading "/fr/" so we can re-emit
+// the same logical path in every locale via getRelativeLocaleUrl.
+// "/" -> "", "/about" -> "about", "/fr/" -> "", "/fr/about" -> "about".
+const pathname = Astro.url.pathname;
+const subpath = pathname.replace(/^\/(en|fr)(\/|$)/, "/").replace(/^\//, "");
+
+const site = Astro.site!;
+const canonical = new URL(getRelativeLocaleUrl(locale, subpath), site).toString();
+const xDefault = new URL(getRelativeLocaleUrl("en", subpath), site).toString();
+const ogImageUrl = new URL(finalOgImage, site).toString();
+const ogLocale = locale === "fr" ? "fr_CA" : "en_CA";
+
+const orgJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  name: brandName,
+  url: new URL("/", site).toString(),
+  logo: new URL("/favicon.svg", site).toString(),
+};
+
+// BreadcrumbList JSON-LD. Skipped on the homepage (no chain to
+// describe). For intermediate segments we look up the nav label so
+// FR pages get FR breadcrumbs; for unknown slugs (e.g. "technical",
+// "faq") we humanize the slug. The final crumb prefers the page's
+// own title prop when present, falling back to the same humanizer.
+const segments = subpath ? subpath.split("/").filter(Boolean) : [];
+const slugToNavKey: Record<string, string> = {
+  contact: "common.nav.contact",
+  docs: "common.nav.docs",
+  status: "common.nav.status",
+};
+const humanize = (slug: string) =>
+  slug.replace(/-/g, " ").replace(/\b\w/g, (c) => c.toUpperCase());
+const crumbItems = segments.map((seg, i) => {
+  const path = "/" + segments.slice(0, i + 1).join("/") + "/";
+  const url = new URL(getRelativeLocaleUrl(locale, path.slice(1)), site).toString();
+  const isLast = i === segments.length - 1;
+  const navKey = slugToNavKey[seg];
+  const name = navKey ? t(locale, navKey) : isLast && title ? title : humanize(seg);
+  return { name, url };
+});
+const breadcrumbJsonLd = segments.length === 0 ? null : {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    {
+      "@type": "ListItem",
+      position: 1,
+      name: brandName,
+      item: new URL(getRelativeLocaleUrl(locale, ""), site).toString(),
+    },
+    ...crumbItems.map((c, i) => ({
+      "@type": "ListItem",
+      position: i + 2,
+      name: c.name,
+      item: c.url,
+    })),
+  ],
+};
+---
+<!doctype html>
+<html lang={locale}>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{pageTitle}</title>
+    <meta name="description" content={pageDesc} />
+
+    <link rel="canonical" href={canonical} />
+    <link rel="alternate" hreflang="en" href={new URL(getRelativeLocaleUrl("en", subpath), site).toString()} />
+    <link rel="alternate" hreflang="fr" href={new URL(getRelativeLocaleUrl("fr", subpath), site).toString()} />
+    <link rel="alternate" hreflang="x-default" href={xDefault} />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content={ogLocale} />
+    <meta property="og:site_name" content={brandName} />
+    <meta property="og:title" content={pageTitle} />
+    <meta property="og:description" content={pageDesc} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={ogImageUrl} />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={pageTitle} />
+    <meta name="twitter:description" content={pageDesc} />
+    <meta name="twitter:image" content={ogImageUrl} />
+
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16.png" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+
+    <script type="application/ld+json" is:inline set:html={JSON.stringify(orgJsonLd)} />
+    {breadcrumbJsonLd && (
+      <script type="application/ld+json" is:inline set:html={JSON.stringify(breadcrumbJsonLd)} />
+    )}
+    <ClientRouter />
+    <script>
+      // Remember the language the visitor is actually reading so the
+      // nginx redirect at / can honour it on later visits. Reads the
+      // current <html lang> (updated by the view-transition router on
+      // navigation) and re-fires after each client-side page load.
+      const setLangCookie = () => {
+        const lang = document.documentElement.lang;
+        if (lang === "en" || lang === "fr") {
+          document.cookie = `lang=${lang}; path=/; max-age=31536000; samesite=lax`;
+        }
+      };
+      setLangCookie();
+      document.addEventListener("astro:page-load", setLangCookie);
+    </script>
+    {plausibleHost && (
+      <script
+        is:inline
+        defer
+        data-domain={plausibleDomain}
+        src={`${plausibleHost.replace(/\/$/, "")}/js/script.js`}
+      />
+    )}
+    <slot name="head" />
+  </head>
+  <body>
+    <Header locale={locale} />
+    <main>
+      <slot />
+    </main>
+    <Footer locale={locale} />
+  </body>
+</html>

@@ -1,0 +1,81 @@
+---
+import Base from "../../../layouts/Base.astro";
+import PageTitle from "../../../components/PageTitle.astro";
+import { marked } from "marked";
+import { readFileSync } from "node:fs";
+import { createRequire } from "node:module";
+
+const locale = "fr";
+
+// The schedule prose ships in @catenahq/contracts/legal/data-export-and-termination.md.
+// Same resolve-through-package-exports pattern as master-agreement:
+// a contracts bump that moves the file fails the build up front. The
+// canonical legal text is English; both locale routes render it with
+// localized page chrome (mirrors /legal/master-agreement).
+const req = createRequire(import.meta.url);
+const mdPath = req.resolve("@catenahq/contracts/legal/data-export-and-termination.md");
+const rawMd = readFileSync(mdPath, "utf8")
+  // Cross-schedule links in the source are repo-relative .md paths;
+  // rewrite them to the rendered routes for this locale.
+  .replaceAll("](master-agreement.md)", "](/fr/legal/master-agreement)")
+  .replaceAll("](sla.md)", "](/fr/legal/sla)")
+  .replaceAll("](subprocessors.md)", "](/fr/legal/subprocessors)")
+  .replaceAll("](data-export-and-termination.md)", "](/fr/legal/data-export-and-termination)");
+const html = marked.parse(rawMd) as string;
+
+const pageTitle = "Exportation des données et fin de contrat (Annexe C)";
+const pageIntro = "Comment vos données partent avec vous : procédure d'exportation et effets de la fin du contrat. Annexe C de la Convention de services principale.";
+---
+<Base
+  locale={locale}
+  title={pageTitle}
+  description="Annexe d'exportation des données et de fin de contrat catena (Annexe C). Portabilité et effets post-terminaison, rendus depuis le paquet de contrats versionné."
+>
+  <PageTitle title={pageTitle} intro={pageIntro} />
+  <section class="prose">
+    <div class="container">
+      <p class="version-pin">
+        <a href="/fr/legal/master-agreement">Convention de services principale</a>
+        &middot; <a href="/en/legal/data-export-and-termination" class="alt-locale">English</a>
+      </p>
+      <article set:html={html}></article>
+    </div>
+  </section>
+</Base>
+
+<style>
+  .prose { padding: var(--catena-space-8) 0 var(--catena-space-24); }
+  .prose article { max-width: 64rem; }
+  .prose article h1 { font-size: var(--catena-fs-2xl); margin: 0 0 var(--catena-space-6); }
+  .prose article h2 { font-size: var(--catena-fs-xl); margin: var(--catena-space-8) 0 var(--catena-space-3); }
+  .prose article h3 { font-size: var(--catena-fs-lg); margin: var(--catena-space-6) 0 var(--catena-space-2); }
+  .prose article p, .prose article li {
+    line-height: var(--catena-lh-relaxed);
+    margin: 0 0 var(--catena-space-3);
+  }
+  .prose article ul { padding-left: var(--catena-space-6); margin: 0 0 var(--catena-space-4); }
+  .prose article table { border-collapse: collapse; margin: 0 0 var(--catena-space-4); }
+  .prose article th, .prose article td {
+    border: 1px solid var(--catena-border);
+    padding: var(--catena-space-2) var(--catena-space-3);
+    text-align: left;
+  }
+  .prose article blockquote {
+    padding: var(--catena-space-4) var(--catena-space-5);
+    border-left: 3px solid var(--catena-accent);
+    background: var(--catena-surface-bg-muted);
+    border-radius: var(--catena-radius-sm);
+    margin: var(--catena-space-4) 0;
+  }
+  .prose article code { font-family: var(--catena-font-mono); font-size: 0.9em; }
+  .version-pin {
+    padding: var(--catena-space-4) var(--catena-space-5);
+    border: 1px solid var(--catena-border);
+    background: var(--catena-surface-bg-muted);
+    border-radius: var(--catena-radius-sm);
+    max-width: 64rem;
+    margin-bottom: var(--catena-space-6);
+    font-size: var(--catena-fs-sm);
+  }
+  .alt-locale { text-decoration: underline; }
+</style>

@@ -1,0 +1,526 @@
+{
+  "brand": {
+    "name": "Catena",
+    "tagline": "The business suite you own."
+  },
+  "nav": {
+    "docs": "Docs",
+    "portal": "Client portal",
+    "contact": "Contact",
+    "status": "Service status"
+  },
+  "cta": {
+    "primary": "Get started",
+    "secondary": "Talk to us",
+    "see_pricing": "See pricing",
+    "book_discovery": "Book a discovery call",
+    "see_features": "See what's included",
+    "get_started_free": "Get started free",
+    "discovery_url": "https://app.catena.run/discovery"
+  },
+  "footer": {
+    "rights": "All rights reserved.",
+    "made_in": "Built in QC, CA.",
+    "language": "Language",
+    "col_product": "Product",
+    "col_company": "Company",
+    "col_legal": "Legal",
+    "portfolio": "Portfolio",
+    "github": "GitHub",
+    "trust": "Trust and validation"
+  },
+  "lang": {
+    "en": "English",
+    "fr": "Français"
+  },
+  "notfound": {
+    "title": "Page not found",
+    "headline": "That page doesn't exist.",
+    "body": "The link may be stale or the page has moved. Here are a few useful starting points:",
+    "links": {
+      "home": "Home",
+      "docs": "Docs",
+      "contact": "Contact us"
+    }
+  },
+  "home": {
+    "hero": {
+      "headline": "Own the software your business runs on.",
+      "subheadline": "The everyday tools your business depends on - files, email, chat, booking, CRM, and more - on a server that's yours."
+    },
+    "features": {
+      "title": "The environment that runs your services",
+      "subtitle": "Catena installs to a dedicated VPS or computer you own to securely provide integrated capabilities.",
+      "items": {
+        "secure_connections": {
+          "title": "Secure connections",
+          "body": "Reach your services through dedicated Admin and App tunnels, with DDoS protection and network-port reconciliation."
+        },
+        "backups": {
+          "title": "Backups",
+          "body": "Keep your data safe with verifiable, incremental backups."
+        },
+        "sso": {
+          "title": "Single sign-on",
+          "body": "One login across every service, with role-based permissions and an audit trail."
+        },
+        "safe_updates": {
+          "title": "Safe updates",
+          "body": "Your infrastructure and services stay up to date automatically, with continuous threat monitoring and automatic fault recovery."
+        },
+        "admin_dashboard": {
+          "title": "Admin dashboard",
+          "body": "Monitor your infrastructure, services, users, and their permissions from a single, unified pane of glass."
+        },
+        "monitoring": {
+          "title": "Monitoring and alerts",
+          "body": "Get alerts when a service goes down or the server's resources are overused."
+        },
+        "automation": {
+          "title": "Automation",
+          "body": "Use native connectors or add an automation engine to connect your apps and save time."
+        }
+      }
+    },
+    "apps": {
+      "full_catalog": "Browse the full app catalog"
+    },
+    "pricing_matrix": {
+      "title": "Community, Pro, or Enterprise",
+      "intro": "You host every edition. Community is free and self-hosted. Pro adds the automation that keeps it patched, backed up, and monitored. Enterprise adds dedicated support and per-app SLAs. Here is what each one includes.",
+      "note": "On-host alerts cannot fire if the whole server is down. Independent uptime monitoring watches from outside, so it still catches a total outage.",
+      "cols": {
+        "community": "Community",
+        "business": "Pro",
+        "enterprise": "Enterprise"
+      },
+      "prices": {
+        "community": "Free",
+        "enterprise": "Bespoke"
+      },
+      "get_started": "Get started",
+      "talk_to_us": "Talk to us",
+      "groups": {
+        "connectivity": {
+          "label": "Connectivity",
+          "rows": {
+            "admin_tunnel": {
+              "label": "Admin tunnel (Tailscale)",
+              "community": "yes",
+              "business": "yes",
+              "enterprise": "yes"
+            },
+            "app_tunnel": {
+              "label": "App tunnel + DDoS (Cloudflare)",
+              "community": "yes",
+              "business": "yes",
+              "enterprise": "yes"
+            }
+          }
+        },
+        "apps": {
+          "label": "Apps",
+          "rows": {
+            "templates": {
+              "label": "Reusable app templates",
+              "community": "yes",
+              "business": "yes",
+              "enterprise": "yes"
+            },
+            "unlimited": {
+              "label": "Unlimited app deployment",
+              "community": "yes",
+              "business": "yes",
+              "enterprise": "yes"
+            }
+          }
+        },
+        "identity": {
+          "label": "Identity and access",
+          "rows": {
+            "sso": {
+              "label": "Single sign-on + RBAC",
+              "community": "yes",
+              "business": "yes",
+              "enterprise": "yes"
+            },
+            "audit": {
+              "label": "Audit log panel",
+              "community": "no",
+              "business": "yes",
+              "enterprise": "yes"
+            },
+            "attestation": {
+              "label": "Signed monthly attestation",
+              "community": "no",
+              "business": "no",
+              "enterprise": "yes"
+            }
+          }
+        },
+        "updates": {
+          "label": "Updates and security",
+          "rows": {
+            "manual_updates": {
+              "label": "Manual updates",
+              "community": "yes",
+              "business": "yes",
+              "enterprise": "yes"
+            },
+            "version_cve_visibility": {
+              "label": "Version + CVE visibility",
+              "community": "yes",
+              "business": "yes",
+              "enterprise": "yes"
+            },
+            "auto_updates": {
+              "label": "Automatic updates",
+              "community": "no",
+              "business": "yes",
+              "enterprise": "yes"
+            },
+            "cve_remediation": {
+              "label": "CVE remediation",
+              "community": "no",
+              "business": "yes",
+              "enterprise": "yes"
+            }
+          }
+        },
+        "observability": {
+          "label": "Observability",
+          "rows": {
+            "dashboard": {
+              "label": "Monitoring dashboard",
+              "community": "yes",
+              "business": "yes",
+              "enterprise": "yes"
+            },
+            "internal_alerts": {
+              "label": "On-host alerts (Gatus + ntfy)",
+              "community": "yes",
+              "business": "yes",
+              "enterprise": "yes"
+            },
+            "external_alerts": {
+              "label": "Independent uptime monitoring (Healthchecks)",
+              "community": "no",
+              "business": "yes",
+              "enterprise": "yes"
+            },
+            "central": {
+              "label": "Centralized monitoring",
+              "community": "no",
+              "business": "no",
+              "enterprise": "yes"
+            }
+          }
+        },
+        "data": {
+          "label": "Data and backups",
+          "rows": {
+            "manual_backups": {
+              "label": "Manual backups",
+              "community": "yes",
+              "business": "yes",
+              "enterprise": "yes"
+            },
+            "scheduled_backups": {
+              "label": "Weekly scheduled backup",
+              "community": "yes",
+              "business": "yes",
+              "enterprise": "yes"
+            },
+            "subdaily": {
+              "label": "Daily and sub-daily cadence",
+              "community": "no",
+              "business": "yes",
+              "enterprise": "yes"
+            },
+            "immutable": {
+              "label": "Offsite immutable backups",
+              "community": "no",
+              "business": "yes",
+              "enterprise": "yes"
+            }
+          }
+        },
+        "support": {
+          "label": "Support",
+          "rows": {
+            "community_support": {
+              "label": "Community support (GitHub issues)",
+              "community": "yes",
+              "business": "yes",
+              "enterprise": "yes"
+            },
+            "installation": {
+              "label": "Installation support",
+              "community": "no",
+              "business": "no",
+              "enterprise": "yes"
+            },
+            "helpdesk": {
+              "label": "Helpdesk",
+              "community": "no",
+              "business": "yes",
+              "enterprise": "yes"
+            },
+            "oncall": {
+              "label": "On-call support",
+              "community": "no",
+              "business": "no",
+              "enterprise": "yes"
+            },
+            "sla": {
+              "label": "Per-app SLA",
+              "community": "no",
+              "business": "no",
+              "enterprise": "yes"
+            }
+          }
+        }
+      },
+      "yes_label": "Included",
+      "no_label": "Not included"
+    }
+  },
+  "features": {
+    "tool_comparison": {
+      "title": "An app for every need",
+      "intro": "An example open-source app for each capability, side by side with the SaaS bundles most SMBs evaluate. These are starting points, not limits: hundreds of other self-hostable apps run on Catena.",
+      "category_label": "Category",
+      "cols": {
+        "catena": "Catena",
+        "microsoft": "Microsoft 365",
+        "google": "Google Workspace",
+        "saas": "Other monthly SaaS"
+      },
+      "rows": {
+        "files": {
+          "label": "Files & sync",
+          "catena": "Nextcloud",
+          "microsoft": "OneDrive / SharePoint",
+          "google": "Google Drive",
+          "saas": "Dropbox, Box"
+        },
+        "office": {
+          "label": "Office editing",
+          "catena": "Euro Office",
+          "microsoft": "Word / Excel / PowerPoint",
+          "google": "Docs / Sheets / Slides",
+          "saas": "Zoho, Quip"
+        },
+        "chat": {
+          "label": "Team chat & meetings",
+          "microsoft": "Teams",
+          "google": "Meet / Chat",
+          "saas": "Slack, Zoom"
+        },
+        "crm": {
+          "label": "CRM",
+          "catena": "EspoCRM",
+          "microsoft": "Dynamics 365",
+          "google": "N/A",
+          "saas": "HubSpot, Salesforce, Pipedrive"
+        },
+        "booking": {
+          "label": "Bookings & scheduling",
+          "catena": "Easy!Appointments",
+          "microsoft": "Bookings",
+          "google": "Appointment Schedules",
+          "saas": "Calendly, Acuity"
+        },
+        "project": {
+          "label": "Project management",
+          "catena": "Plane",
+          "microsoft": "Project / Planner",
+          "google": "N/A",
+          "saas": "Jira, Linear, Asana"
+        },
+        "automation": {
+          "label": "Workflow automation",
+          "catena": "n8n",
+          "microsoft": "Power Automate",
+          "google": "AppScript",
+          "saas": "Zapier, Make"
+        },
+        "esign": {
+          "label": "E-signature",
+          "catena": "DocuSeal",
+          "microsoft": "N/A",
+          "google": "N/A",
+          "saas": "DocuSign, HelloSign"
+        },
+        "invoicing": {
+          "label": "Invoicing",
+          "catena": "Invoice Ninja",
+          "microsoft": "Dynamics 365 Finance",
+          "google": "N/A",
+          "saas": "FreshBooks, Wave, QuickBooks"
+        },
+        "wiki": {
+          "label": "Knowledge base",
+          "catena": "Outline",
+          "microsoft": "SharePoint Wiki",
+          "google": "Sites",
+          "saas": "Notion, Confluence"
+        },
+        "social": {
+          "label": "Social scheduling",
+          "catena": "Postiz",
+          "microsoft": "N/A",
+          "google": "N/A",
+          "saas": "Buffer, Hootsuite"
+        }
+      }
+    }
+  },
+  "contact": {
+    "title": "Contact",
+    "intro": "The fastest way to reach us is a 30-minute discovery call. We do not pitch on first contact -- we ask questions and work out together whether Catena is the right fit.",
+    "discovery_title": "Discovery call",
+    "discovery_body": "Thirty minutes, no commitment. We listen, you decide whether anything we offer matches your situation. Bring questions, not a brief.",
+    "discovery_link_label": "Book a discovery call",
+    "discovery_link_url": "https://app.catena.run/discovery",
+    "response_body": "We aim to reply within one business day.",
+    "about_title": "Who you are working with",
+    "about_body": "Catena is led by Marc-Antoine Lalonde. What you get is judgment about which tools to pick, knowing how they fail, and owning them end to end - not a list of features.",
+    "portfolio_link_label": "Full background and portfolio",
+    "portfolio_link_url": "https://ma-lalonde.dev",
+    "form": {
+      "title": "Send a message",
+      "intro": "Or fill in the form below. Replies come from the same inbox.",
+      "name_label": "Your name",
+      "email_label": "Your email",
+      "company_label": "Company (optional)",
+      "intent_label": "What are you looking for? (pick all that apply)",
+      "intent_managed": "A managed software suite for my company",
+      "intent_community": "Help self-hosting the Community edition",
+      "intent_website": "A website on the suite",
+      "intent_partnership": "Partnership / referral",
+      "intent_other": "Something else",
+      "message_label": "Message",
+      "submit_label": "Send",
+      "mailto_fallback": "Or just email us directly:"
+    }
+  },
+  "faq": {
+    "title": "Frequently asked questions",
+    "intro": "The questions prospects ask most often before booking a discovery call. Short answers; the longer story is in Pricing / Comparison.",
+    "q1": {
+      "question": "Does Catena run on the Catena Suite?",
+      "answer": "Same suite. Same hands. Live since launch. catena.run, the docs at /docs, the client portal, the external healthchecks for client services, payment processing, and invoicing all run on the Catena Suite we sell. The whole revenue surface is on the product. Dogfooding is the warranty."
+    },
+    "q16": {
+      "question": "Is Catena free?",
+      "answer": "The Community edition is, yes: the whole suite, source-available, self-hosted on infrastructure you own, with no licence fee and no telemetry. You install and operate it yourself from <a href='https://github.com/catenahq/catena-ce'>GitHub</a> and the community docs. Catena Pro is the paid managed edition, where we run the lifecycle for you: offsite immutable backups, managed updates, monitoring, identity, and a monthly assurance report. Same software either way -- start free and move to managed whenever you would rather not run a server."
+    },
+    "q2": {
+      "question": "What else can I run on the suite?",
+      "answer": "Anything that fits a compose-shaped app template. Our vetted catalog (Nextcloud, Euro Office / Collabora, Rocket.Chat, Plane, DocuSeal, Invoice Ninja, Outline, EspoCRM, n8n, Postiz, Twenty, WordPress, ERPNext, Easy!Appointments, and others) installs at no extra setup cost -- browse it at <a href='https://docs.catena.run/en/apps/' target='_blank' rel='noopener noreferrer'>docs.catena.run</a>. Anything else is a custom-template request -- talk to us. To explore the broader self-hosted ecosystem: <a href='https://github.com/awesome-selfhosted/awesome-selfhosted' target='_blank' rel='noopener noreferrer'>awesome-selfhosted</a>, <a href='https://awweso.me/' target='_blank' rel='noopener noreferrer'>awweso.me</a>, <a href='https://github.com/awesome-foss/awesome-sysadmin' target='_blank' rel='noopener noreferrer'>awesome-sysadmin</a>."
+    },
+    "q3": {
+      "question": "What happens if you get hit by a bus?",
+      "answer": "The whole suite is open-source and portable. Another competent IT partner can pick it up using the same automation."
+    },
+    "q4": {
+      "question": "Can I leave with my data?",
+      "answer": "You don't have to leave -- you already own everything. The server, the data, and the backup buckets are all in your name. When you want to part ways, we hand over and step out. No exit fees, no proprietary glue to unwind."
+    },
+    "q5": {
+      "question": "Do I need to be technical to use this?",
+      "answer": "No. Daily use is browser-based (Nextcloud / Rocket.Chat / etc.). The technical surface is what we operate on your behalf -- your team only ever sees apps."
+    },
+    "q6": {
+      "question": "Where is my data physically located?",
+      "answer": "On the server you own, at the provider you chose. Default deployment: OVH BHS (Beauharnois, Quebec) for the live server + hot S3 mirror; eazybackup (Canadian-owned, datacenter in Ottawa, Canada -- Canadian government-grade certified, with Object Lock + versioning) for the cold mirror. Both Canadian-jurisdiction, Law-25-friendly."
+    },
+    "q7": {
+      "question": "How do you make money?",
+      "answer": "The Community edition is free; we make our money on Catena Pro, the managed edition: a monthly subscription per server, plus per-app, with hands-on support billed hourly only as you use it. No per-seat, ever. Hosting and backups are passthrough to your own accounts. See the <a href='/en/#pricing'>pricing section</a>."
+    },
+    "q8": {
+      "question": "Can I self-host my email?",
+      "answer": "You can. The catalog includes a full mail server app (mailboxes, IMAP, webmail through Nextcloud) that keeps your email on the server you own; outbound delivery goes through an SMTP relay so your messages don't land in spam. For most teams we still recommend starting with one of the five privacy-focused email providers we integrate -- we wire up DNS + SSO either way, and you can bring email in-house later without changing how your team works. Suggested clients: Nextcloud's built-in mail interface (browser-based), Thunderbird (desktop, free, cross-platform), or Betterbird (Thunderbird fork with extra polish)."
+    },
+    "q9": {
+      "question": "Can I host my own apps alongside the suite?",
+      "answer": "Yes. Portainer lets you deploy any compose-shaped app under SSO + Cloudflare Tunnel. We can advise; we don't have to operate it."
+    },
+    "q11": {
+      "question": "Can I run this on my own hardware?",
+      "answer": "Yes. The free Community edition self-installs on hardware or a VPS you own, with or without a public IP. If you would rather not run it yourself, Catena Pro is the managed edition. <a href='/en/contact'>Talk to us</a> if you want us to run the managed edition on your own hardware."
+    },
+    "q12": {
+      "question": "What currency are your prices in?",
+      "answer": "Canadian dollars (CAD). Cross-border prospects pay via Stripe in CAD; Stripe handles the conversion at their interbank rate at billing time."
+    },
+    "q13": {
+      "question": "What's the difference between Catena and the Catena Suite?",
+      "answer": "Catena is the company behind it. The Catena Suite is the software Catena builds and operates: Nextcloud, EspoCRM, Easy!Appointments, Rocket.Chat, Keycloak, and the Ansible / backups / monitoring tooling that runs the whole thing. On the Pro edition your invoice comes from Catena and your email and files live on the Catena Suite; on the Community edition you run that same suite yourself."
+    },
+    "q14": {
+      "question": "Are you really an MSP? How are you different from my current MSP?",
+      "answer": "Catena Pro is a managed service -- we run the Catena Suite on your behalf for a monthly subscription -- so that part works like an MSP. Two things set it apart from a traditional MSP: the software is a product you can also self-host for free (the Community edition), and the managed scope is bounded to the Catena Suite. We do not manage your workstations, printers, Microsoft 365, or office network (see <a href='/en/#pricing'>the editions grid</a>). In exchange: you pay per server (not per seat), your code and data belong to you, and you can leave at any time with everything in hand."
+    },
+    "q15": {
+      "question": "What can you produce as Law 25 documentation?",
+      "answer": "The Catena Suite is Law 25 compliant at the infrastructure level (Canadian residency, documented subprocessors, immutable backups, MFA, encryption, logging). For the documentation layer (PIA / EFVP, registers, policies, incident runbook), we offer separate compliance enablement: audit and initial pack (in build, under legal review). Important: we do not replace your internal privacy officer -- Law 25 requires this to be a person inside your organization -- we deliver the infrastructure and documents that person can adopt and sign. <a href='/en/contact'>Talk to us about Law 25 compliance</a>."
+    }
+  },
+  "privacy": {
+    "title": "Privacy policy",
+    "intro": "Catena does not share, sell, rent, or train AI on your data. The whole point of the suite is that you own it.",
+    "collect_title": "What we collect",
+    "collect_body": "Billing information (via Stripe -- card numbers never touch our servers). Portal account information (email, name, company). Credentials you enter to deploy your suite are passed in-flight to our deployment runner and are not persisted in our database. Server-side logs of our actions for support and audit.",
+    "dont_title": "What we do not do",
+    "dont_body": "We do not sell, rent, or share your data. We do not train AI models on it. We do not analyze it for advertising. We do not use third-party trackers on the marketing site or the portal.",
+    "where_title": "Where data lives",
+    "where_body": "Your suite data lives on the server you own, the S3 bucket you own, and the third-party accounts you yourself selected (Cloudflare, Tailscale, your VPS provider, your SMTP provider, etc.). The portal itself runs on Canadian-jurisdiction infrastructure and is hosted on the Catena Suite -- the same product we sell.",
+    "subprocessors_title": "Subprocessors",
+    "subprocessors_body": "Stripe (payment processing). Cloudflare (Tunnel + edge for catena.run + the portal). Keycloak (identity, on our infrastructure). The providers you yourself selected for your suite (named in your engagement letter).",
+    "rights_title": "Your rights",
+    "rights_body": "Law 25 and PIPEDA grant you the right to access, correct, and delete personal information we hold. Contact privacy@catena.run (or hello@catena.run interim) and we will respond within 30 days.",
+    "cookies_title": "Cookies and analytics",
+    "cookies_body": "Minimal session cookies on the portal for authentication. No third-party trackers, no advertising cookies, no cookies on the marketing site. Aggregate visit analytics on the marketing site via a self-hosted Plausible instance -- no cookies, no fingerprinting, no personal data; Law 25 / GDPR compliant with no consent banner required.",
+    "contact_title": "Questions",
+    "contact_body": "Email hello@catena.run. We answer privacy questions within one business day."
+  },
+  "terms": {
+    "title": "Terms of service",
+    "intro": "These terms cover the relationship between Catena (the service provider) and you (the client). They are deliberately concise -- the engagement letter you sign at signup is the canonical contract; this page summarizes its main commitments.",
+    "review_notice": "This page is a draft pending legal review. Talk to us directly for the binding terms in your engagement letter.",
+    "scope_title": "Service scope",
+    "scope_body": "Your subscription components -- server and apps -- define what is included, with hands-on support billed hourly as used. See the <a href='/en/#pricing'>pricing section</a> for the public model. Changes to scope (adding or removing apps) are agreed in writing.",
+    "billing_title": "Pricing and billing",
+    "billing_body": "The managed subscription (server + apps) carries a 6-month minimum commitment, billed monthly. Hands-on support is billed at the published rate in 15-minute increments, as used. Card processing via Stripe.",
+    "ownership_title": "Data ownership",
+    "ownership_body": "All client data, infrastructure, and credentials belong to the client. Our role is service provider only. You can export and migrate at any time; the engagement letter documents the handover process.",
+    "liability_title": "Limitation of liability",
+    "liability_body": "Liability is capped at amounts proportionate to the most recent monthly retainer; the binding limits are set out in your engagement letter.",
+    "sla_title": "Service levels",
+    "sla_body": "Target uptime, response times, and recovery objectives for restore drills are set out in your engagement letter and reviewed at the quarterly check-in.",
+    "aup_title": "Acceptable use",
+    "aup_body": "No illegal content, no unsolicited bulk email (spam), no malware distribution, no resale of the suite as-a-service to third parties without prior agreement. Standard internet-services posture.",
+    "termination_title": "Termination",
+    "termination_body": "Either party may terminate per the engagement letter. On termination, we hand over the suite and the client's S3 export; data retained on Catena-owned systems is purged within 30 days.",
+    "perservice_title": "Per-service terms",
+    "perservice_body": "Each upstream app in the suite carries its own license and acceptable-use policy (Nextcloud GPL, Rocket.Chat MIT, Euro Office AGPL, etc.). Each upstream's official terms are linked from that app's documentation.",
+    "law_title": "Governing law",
+    "law_body": "Quebec, Canada. Disputes go to the courts of the judicial district of Montreal."
+  },
+  "portal": {
+    "signin_title": "Catena portal",
+    "signin_body": "Sign in with the Keycloak (SSO) account set up for you. New here? Ask your Catena contact for an invite.",
+    "signin_button": "Sign in with Keycloak",
+    "shell_brand": "Catena",
+    "nav_dashboard": "Dashboard",
+    "nav_installation": "Installation",
+    "nav_order": "Order",
+    "nav_request": "Request work",
+    "nav_billing": "Billing",
+    "shell_signout": "Sign out",
+    "shell_lang_label": "Switch language"
+  }
+}

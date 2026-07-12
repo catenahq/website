@@ -1,0 +1,41 @@
+---
+// One pricing-matrix cell: "yes" -> green check, "no" -> red x. Marks
+// are inline SVG (not emoji) so the unicode gate stays clean.
+import { t } from "@catena/i18n";
+
+interface Props {
+  value: string;
+  locale: "en" | "fr";
+}
+const { value, locale } = Astro.props;
+const base = "common.home.pricing_matrix";
+const isYes = value === "yes";
+---
+{isYes ? (
+  <span class="mark yes">
+    <svg viewBox="0 0 16 16" width="18" height="18" aria-hidden="true"><path d="M13.5 4.5 6.5 11.5 3 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    <span class="sr-only">{t(locale, `${base}.yes_label`)}</span>
+  </span>
+) : (
+  <span class="mark no">
+    <svg viewBox="0 0 16 16" width="18" height="18" aria-hidden="true"><path d="M4 4 12 12 M12 4 4 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+    <span class="sr-only">{t(locale, `${base}.no_label`)}</span>
+  </span>
+)}
+
+<style>
+  .mark { display: inline-flex; align-items: center; justify-content: center; }
+  .mark.yes { color: #16a34a; }
+  .mark.no { color: #dc2626; }
+  .sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    white-space: nowrap;
+    border: 0;
+  }
+</style>
