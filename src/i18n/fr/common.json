@@ -197,13 +197,13 @@
               "enterprise": "yes"
             },
             "internal_alerts": {
-              "label": "Alertes sur l'hôte (Gatus + ntfy)",
+              "label": "Alertes sur l'hôte",
               "community": "yes",
               "business": "yes",
               "enterprise": "yes"
             },
             "external_alerts": {
-              "label": "Supervision indépendante de la disponibilité (Healthchecks)",
+              "label": "Supervision indépendante de la disponibilité",
               "community": "no",
               "business": "yes",
               "enterprise": "yes"

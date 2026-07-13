@@ -197,13 +197,13 @@
               "enterprise": "yes"
             },
             "internal_alerts": {
-              "label": "On-host alerts (Gatus + ntfy)",
+              "label": "On-host alerts",
               "community": "yes",
               "business": "yes",
               "enterprise": "yes"
             },
             "external_alerts": {
-              "label": "Independent uptime monitoring (Healthchecks)",
+              "label": "Independent uptime monitoring",
               "community": "no",
               "business": "yes",
               "enterprise": "yes"
