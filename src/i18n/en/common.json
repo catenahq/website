@@ -288,7 +288,7 @@
   "features": {
     "tool_comparison": {
       "title": "An app for every need",
-      "intro": "An example open-source app for each capability, side by side with the SaaS bundles most SMBs evaluate. These are starting points, not limits: hundreds of other self-hostable apps run on Catena.",
+      "intro": "An example open-source app for common needs, side by side with the SaaS bundles most SMBs evaluate. These are starting points, not limits: hundreds of other self-hostable apps run on Catena.",
       "category_label": "Category",
       "cols": {
         "catena": "Catena",
