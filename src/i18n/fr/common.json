@@ -86,13 +86,12 @@
       "full_catalog": "Voir le catalogue complet des applications"
     },
     "pricing_matrix": {
-      "title": "Communauté, Pro ou Enterprise",
-      "intro": "Vous hébergez chaque édition. L'édition Communauté est gratuite et auto-hébergée. L'édition Pro ajoute l'automatisation qui la maintient à jour, sauvegardée et supervisée. L'édition Enterprise ajoute un support dédié et des SLA par application. Voici ce que chaque édition inclut.",
-      "note": "Les alertes sur l'hôte ne peuvent pas se déclencher si le serveur entier est hors service. La supervision indépendante observe depuis l'extérieur et détecte donc une panne totale.",
+      "title": "Communauté, Pro ou Entreprise",
+      "intro": "Vous hébergez chaque édition. L'édition Communauté est gratuite et auto-hébergée. L'édition Pro ajoute l'automatisation qui la maintient à jour, sauvegardée et supervisée automatiquement. L'édition Entreprise ajoute un support dédié et des SLA par application. Voici ce que chaque édition inclut.",
       "cols": {
         "community": "Communauté",
         "business": "Pro",
-        "enterprise": "Enterprise"
+        "enterprise": "Entreprise"
       },
       "prices": {
         "community": "Gratuit",

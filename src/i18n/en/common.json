@@ -87,8 +87,7 @@
     },
     "pricing_matrix": {
       "title": "Community, Pro, or Enterprise",
-      "intro": "You host every edition. Community is free and self-hosted. Pro adds the automation that keeps it patched, backed up, and monitored. Enterprise adds dedicated support and per-app SLAs. Here is what each one includes.",
-      "note": "On-host alerts cannot fire if the whole server is down. Independent uptime monitoring watches from outside, so it still catches a total outage.",
+      "intro": "You host every edition. Community is free and self-hosted. Pro adds the automation that keeps it patched, backed up, and monitored automatically. Enterprise adds dedicated support and per-app SLAs. Here is what each one includes.",
       "cols": {
         "community": "Community",
         "business": "Pro",
