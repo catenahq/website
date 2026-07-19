@@ -32,7 +32,7 @@ const cols = ["community", "business", "enterprise"] as const;
 // Group + row order. Cells resolve from
 // common.home.pricing_matrix.groups.<g>.rows.<r>.{label,community,business,enterprise}.
 const groups = [
-  { key: "connectivity", rows: ["admin_tunnel", "app_tunnel"] },
+  { key: "connectivity", rows: ["admin_tunnel", "app_tunnel", "multi_domain"] },
   { key: "apps", rows: ["templates", "unlimited"] },
   { key: "identity", rows: ["sso", "audit", "attestation"] },
   { key: "updates", rows: ["manual_updates", "version_cve_visibility", "auto_updates", "cve_remediation"] },

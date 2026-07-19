@@ -114,6 +114,12 @@
               "community": "yes",
               "business": "yes",
               "enterprise": "yes"
+            },
+            "multi_domain": {
+              "label": "Domaines multiples",
+              "community": "no",
+              "business": "yes",
+              "enterprise": "yes"
             }
           }
         },
