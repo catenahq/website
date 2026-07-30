@@ -8,7 +8,7 @@ const statusUrl = "https://status.catena.run";
 <Base
   locale={locale}
   title="État des services"
-  description="État en temps réel des services Catena (catena.run, le portail client, la documentation, l'API de facturation). Disponibilité publiée 24/7 par Gatus, sondes indépendantes du serveur applicatif. Si la page principale tombe, cette page reste affichée."
+  description="État en temps réel des services Catena (catena.run, la documentation, l'API de facturation). Disponibilité publiée 24/7 par Gatus, sondes indépendantes du serveur applicatif. Si la page principale tombe, cette page reste affichée."
 >
   <PageTitle
     title="État des services"
@@ -18,9 +18,9 @@ const statusUrl = "https://status.catena.run";
   <section class="status-info">
     <div class="container">
       <h2>Ce que vous voyez ici</h2>
-      <p>Cette page affiche l'état en temps réel des services que Catena opère pour vous-mêmes -- le site marketing (<a href="https://catena.run">catena.run</a>), la documentation (<a href="https://docs.catena.run">docs.catena.run</a>), le portail client (<a href="https://app.catena.run">app.catena.run</a>), et l'API de facturation.</p>
+      <p>Cette page affiche l'état en temps réel des services que Catena opère pour vous-mêmes -- le site marketing (<a href="https://catena.run">catena.run</a>), la documentation (<a href="https://docs.catena.run">docs.catena.run</a>), et l'API de facturation.</p>
       <p>Les sondes Gatus tournent à partir d'un serveur distinct de celui qui héberge les services, pour que la page reste consultable même si un service principal tombe. Un panne touchant l'infrastructure Catena est visible publiquement; nous ne pouvons pas la cacher.</p>
-      <p>Pour les clients sous forfait, le suivi de disponibilité de votre propre Suite Catena est dans votre portail client à <a href="https://app.catena.run">app.catena.run</a> (section Surveillance). Les seuils SLA dépendent de votre palier (palier Petite entreprise: meilleur effort; paliers Moyenne / Grande: 99,5 %).</p>
+      <p>Pour les clients sous forfait, les seuils SLA dépendent de votre palier (palier Petite entreprise: meilleur effort; paliers Moyenne / Grande: 99,5 %).</p>
       <h2>Tableau Gatus</h2>
       <p class="muted">Embed à venir une fois Gatus exposé publiquement à <code>{statusUrl}</code>. En attendant, contactez <a href="mailto:hello@catena.run">hello@catena.run</a> ou <a href="/fr/contact">prenez un appel</a> si vous suspectez une panne.</p>
       <div class="placeholder">

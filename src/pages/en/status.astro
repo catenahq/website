@@ -8,7 +8,7 @@ const statusUrl = "https://status.catena.run";
 <Base
   locale={locale}
   title="Service status"
-  description="Real-time status of Catena services (catena.run, the client portal, the docs, the billing API). Uptime probed 24/7 by Gatus, on a host separate from the application server. If the main site goes down, this page stays up."
+  description="Real-time status of Catena services (catena.run, the docs, the billing API). Uptime probed 24/7 by Gatus, on a host separate from the application server. If the main site goes down, this page stays up."
 >
   <PageTitle
     title="Service status"
@@ -18,9 +18,9 @@ const statusUrl = "https://status.catena.run";
   <section class="status-info">
     <div class="container">
       <h2>What you see here</h2>
-      <p>This page shows real-time status of the services Catena operates for ourselves -- the marketing site (<a href="https://catena.run">catena.run</a>), the docs (<a href="https://docs.catena.run">docs.catena.run</a>), the client portal (<a href="https://app.catena.run">app.catena.run</a>), and the billing API.</p>
+      <p>This page shows real-time status of the services Catena operates for ourselves -- the marketing site (<a href="https://catena.run">catena.run</a>), the docs (<a href="https://docs.catena.run">docs.catena.run</a>), and the billing API.</p>
       <p>Gatus probes run on a host separate from the one serving the apps, so this page stays consultable even if a primary service goes down. Any outage hitting Catena infrastructure is publicly visible; we can't hide it.</p>
-      <p>For clients on a retainer, uptime tracking for your own Catena Suite is in your client portal at <a href="https://app.catena.run">app.catena.run</a> (Monitoring section). SLA thresholds depend on your tier (Small: best-effort; Medium / Large: 99.5%).</p>
+      <p>For clients on a retainer, SLA thresholds depend on your tier (Small: best-effort; Medium / Large: 99.5%).</p>
       <h2>Gatus dashboard</h2>
       <p class="muted">Embed coming once Gatus is publicly exposed at <code>{statusUrl}</code>. In the meantime, email <a href="mailto:hello@catena.run">hello@catena.run</a> or <a href="/en/contact">book a call</a> if you suspect an outage.</p>
       <div class="placeholder">

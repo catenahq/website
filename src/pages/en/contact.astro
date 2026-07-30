@@ -9,23 +9,12 @@ const locale = "en";
 <Base
   locale={locale}
   title={t(locale, "common.contact.title")}
-  description="Reach catena. Book a 30-minute discovery call or send a message via the form. We do not pitch on first contact -- we ask questions."
+  description="Reach catena. Send a message via the form. We do not pitch on first contact -- we ask questions."
 >
   <PageTitle
     title={t(locale, "common.contact.title")}
     intro={t(locale, "common.contact.intro")}
   />
-  <section class="contact-info">
-    <div class="container">
-      <article class="discovery-card">
-        <h3>{t(locale, "common.contact.discovery_title")}</h3>
-        <p class="muted">{t(locale, "common.contact.discovery_body")}</p>
-        <a class="btn btn-primary" href={t(locale, "common.contact.discovery_link_url")}>
-          {t(locale, "common.contact.discovery_link_label")} &rarr;
-        </a>
-      </article>
-    </div>
-  </section>
   <section class="who">
     <div class="container">
       <article class="who-card">

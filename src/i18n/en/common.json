@@ -5,7 +5,6 @@
   },
   "nav": {
     "docs": "Docs",
-    "portal": "Client portal",
     "contact": "Contact",
     "status": "Service status"
   },
@@ -16,7 +15,7 @@
     "book_discovery": "Book a discovery call",
     "see_features": "See what's included",
     "get_started_free": "Get started free",
-    "discovery_url": "https://app.catena.run/discovery"
+    "discovery_url": "/en/contact"
   },
   "footer": {
     "rights": "All rights reserved.",
@@ -384,10 +383,6 @@
   "contact": {
     "title": "Contact",
     "intro": "The fastest way to reach us is a 30-minute discovery call. We do not pitch on first contact -- we ask questions and work out together whether Catena is the right fit.",
-    "discovery_title": "Discovery call",
-    "discovery_body": "Thirty minutes, no commitment. We listen, you decide whether anything we offer matches your situation. Bring questions, not a brief.",
-    "discovery_link_label": "Book a discovery call",
-    "discovery_link_url": "https://app.catena.run/discovery",
     "response_body": "We aim to reply within one business day.",
     "about_title": "Who you are working with",
     "about_body": "Catena is led by Marc-Antoine Lalonde. What you get is judgment about which tools to pick, knowing how they fail, and owning them end to end - not a list of features.",
@@ -415,7 +410,7 @@
     "intro": "The questions prospects ask most often before booking a discovery call. Short answers; the longer story is in Pricing / Comparison.",
     "q1": {
       "question": "Does Catena run on the Catena Suite?",
-      "answer": "Same suite. Same hands. Live since launch. catena.run, the docs at /docs, the client portal, the external healthchecks for client services, payment processing, and invoicing all run on the Catena Suite we sell. The whole revenue surface is on the product. Dogfooding is the warranty."
+      "answer": "Same suite. Same hands. Live since launch. catena.run, the docs at /docs, the external healthchecks for client services, payment processing, and invoicing all run on the Catena Suite we sell. The whole revenue surface is on the product. Dogfooding is the warranty."
     },
     "q16": {
       "question": "Is Catena free?",
@@ -478,17 +473,17 @@
     "title": "Privacy policy",
     "intro": "Catena does not share, sell, rent, or train AI on your data. The whole point of the suite is that you own it.",
     "collect_title": "What we collect",
-    "collect_body": "Billing information (via Stripe -- card numbers never touch our servers). Portal account information (email, name, company). Credentials you enter to deploy your suite are passed in-flight to our deployment runner and are not persisted in our database. Server-side logs of our actions for support and audit.",
+    "collect_body": "Billing information (via Stripe -- card numbers never touch our servers). Credentials you enter to deploy your suite are passed in-flight to our deployment runner and are not persisted in our database. Server-side logs of our actions for support and audit.",
     "dont_title": "What we do not do",
-    "dont_body": "We do not sell, rent, or share your data. We do not train AI models on it. We do not analyze it for advertising. We do not use third-party trackers on the marketing site or the portal.",
+    "dont_body": "We do not sell, rent, or share your data. We do not train AI models on it. We do not analyze it for advertising. We do not use third-party trackers on the marketing site.",
     "where_title": "Where data lives",
-    "where_body": "Your suite data lives on the server you own, the S3 bucket you own, and the third-party accounts you yourself selected (Cloudflare, Tailscale, your VPS provider, your SMTP provider, etc.). The portal itself runs on Canadian-jurisdiction infrastructure and is hosted on the Catena Suite -- the same product we sell.",
+    "where_body": "Your suite data lives on the server you own, the S3 bucket you own, and the third-party accounts you yourself selected (Cloudflare, Tailscale, your VPS provider, your SMTP provider, etc.).",
     "subprocessors_title": "Subprocessors",
-    "subprocessors_body": "Stripe (payment processing). Cloudflare (Tunnel + edge for catena.run + the portal). Keycloak (identity, on our infrastructure). The providers you yourself selected for your suite (named in your engagement letter).",
+    "subprocessors_body": "Stripe (payment processing). Cloudflare (Tunnel + edge for catena.run). Keycloak (identity, on our infrastructure). The providers you yourself selected for your suite (named in your engagement letter).",
     "rights_title": "Your rights",
     "rights_body": "Law 25 and PIPEDA grant you the right to access, correct, and delete personal information we hold. Contact privacy@catena.run (or hello@catena.run interim) and we will respond within 30 days.",
     "cookies_title": "Cookies and analytics",
-    "cookies_body": "Minimal session cookies on the portal for authentication. No third-party trackers, no advertising cookies, no cookies on the marketing site. Aggregate visit analytics on the marketing site via a self-hosted Plausible instance -- no cookies, no fingerprinting, no personal data; Law 25 / GDPR compliant with no consent banner required.",
+    "cookies_body": "No third-party trackers, no advertising cookies, no cookies on the marketing site. Aggregate visit analytics on the marketing site via a self-hosted Plausible instance -- no cookies, no fingerprinting, no personal data; Law 25 / GDPR compliant with no consent banner required.",
     "contact_title": "Questions",
     "contact_body": "Email hello@catena.run. We answer privacy questions within one business day."
   },
@@ -514,18 +509,5 @@
     "perservice_body": "Each upstream app in the suite carries its own license and acceptable-use policy (Nextcloud GPL, Rocket.Chat MIT, Euro Office AGPL, etc.). Each upstream's official terms are linked from that app's documentation.",
     "law_title": "Governing law",
     "law_body": "Quebec, Canada. Disputes go to the courts of the judicial district of Montreal."
-  },
-  "portal": {
-    "signin_title": "Catena portal",
-    "signin_body": "Sign in with the Keycloak (SSO) account set up for you. New here? Ask your Catena contact for an invite.",
-    "signin_button": "Sign in with Keycloak",
-    "shell_brand": "Catena",
-    "nav_dashboard": "Dashboard",
-    "nav_installation": "Installation",
-    "nav_order": "Order",
-    "nav_request": "Request work",
-    "nav_billing": "Billing",
-    "shell_signout": "Sign out",
-    "shell_lang_label": "Switch language"
   }
 }
