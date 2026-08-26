@@ -438,7 +438,7 @@
     },
     "q7": {
       "question": "How do you make money?",
-      "answer": "The Community edition is free; we make our money on Catena Pro, the managed edition: a monthly subscription per server, plus per-app, with hands-on support billed hourly only as you use it. No per-seat, ever. Hosting and backups are passthrough to your own accounts. See the <a href='/en/#pricing'>pricing section</a>."
+      "answer": "The Community edition is free; we make our money on Catena Pro, the managed edition: one flat monthly retainer per server, unlimited apps, with hands-on support billed hourly only as you use it. No per-seat and no per-app, ever. Hosting and backups are passthrough to your own accounts. See the <a href='/en/#pricing'>pricing section</a>."
     },
     "q8": {
       "question": "Can I self-host my email?",
@@ -492,9 +492,9 @@
     "intro": "These terms cover the relationship between Catena (the service provider) and you (the client). They are deliberately concise -- the engagement letter you sign at signup is the canonical contract; this page summarizes its main commitments.",
     "review_notice": "This page is a draft pending legal review. Talk to us directly for the binding terms in your engagement letter.",
     "scope_title": "Service scope",
-    "scope_body": "Your subscription components -- server and apps -- define what is included, with hands-on support billed hourly as used. See the <a href='/en/#pricing'>pricing section</a> for the public model. Changes to scope (adding or removing apps) are agreed in writing.",
+    "scope_body": "Your Catena Pro subscription -- one flat retainer per server, unlimited apps -- defines what is included, with hands-on support billed hourly as used. See the <a href='/en/#pricing'>pricing section</a> for the public model. Changes to scope are agreed in writing.",
     "billing_title": "Pricing and billing",
-    "billing_body": "The managed subscription (server + apps) carries a 6-month minimum commitment, billed monthly. Hands-on support is billed at the published rate in 15-minute increments, as used. Card processing via Stripe.",
+    "billing_body": "The managed subscription is one flat retainer per server, billed monthly, with no minimum term. Hands-on support is billed at the published rate in 15-minute increments, as used. Card processing via Stripe.",
     "ownership_title": "Data ownership",
     "ownership_body": "All client data, infrastructure, and credentials belong to the client. Our role is service provider only. You can export and migrate at any time; the engagement letter documents the handover process.",
     "liability_title": "Limitation of liability",

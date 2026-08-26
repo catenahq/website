@@ -17,11 +17,11 @@ const { locale } = Astro.props;
 // The Pro price renders from the canonical pricing contract
 // (contracts/pricing/tiers.json), not from a hand-synced i18n string,
 // so the matrix cannot drift from the versioned offer.
-const serverCents = tiers.components.server.monthlyPriceCents;
-const serverAmount =
-  serverCents % 100 === 0 ? String(serverCents / 100) : (serverCents / 100).toFixed(2);
+const proCents = tiers.plan.monthlyPriceCents;
+const proAmount =
+  proCents % 100 === 0 ? String(proCents / 100) : (proCents / 100).toFixed(2);
 const proPrice =
-  locale === "en" ? `$${serverAmount} / month` : `${serverAmount} $ / mois`;
+  locale === "en" ? `$${proAmount} / month` : `${proAmount} $ / mois`;
 const priceCell = (c: string) =>
   c === "business" ? proPrice : t(locale, `${base}.prices.${c}`);
 

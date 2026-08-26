@@ -438,7 +438,7 @@
     },
     "q7": {
       "question": "Comment gagnez-vous votre vie ?",
-      "answer": "L'édition Communauté est gratuite; nous gagnons notre vie avec Catena Pro, l'édition gérée : un abonnement mensuel par serveur, plus par application, avec le support manuel facturé à l'heure seulement selon l'usage. Aucun frais par utilisateur, jamais. L'hébergement et les sauvegardes sont en refacturation directe sur vos comptes. Voir la <a href='/#pricing'>section Tarifs</a>."
+      "answer": "L'édition Communauté est gratuite; nous gagnons notre vie avec Catena Pro, l'édition gérée : un forfait mensuel fixe par serveur, applications illimitées, avec le support manuel facturé à l'heure seulement selon l'usage. Aucun frais par utilisateur ni par application, jamais. L'hébergement et les sauvegardes sont en refacturation directe sur vos comptes. Voir la <a href='/#pricing'>section Tarifs</a>."
     },
     "q8": {
       "question": "Puis-je auto-héberger mon courriel ?",
@@ -492,9 +492,9 @@
     "intro": "Ces conditions encadrent la relation entre Catena (le prestataire de services) et vous (le client). Elles sont volontairement concises -- la lettre de mandat signée à l'inscription est le contrat de référence ; cette page en résume les engagements principaux.",
     "review_notice": "Cette page est un brouillon en attente de révision juridique. Parlez-nous directement pour les conditions contractuelles dans votre lettre de mandat.",
     "scope_title": "Portée du service",
-    "scope_body": "Les composantes de votre abonnement -- serveur et applications -- définissent ce qui est inclus, avec le support manuel facturé à l'heure selon l'usage. Voir la <a href='/#pricing'>section Tarifs</a> pour le modèle public. Les changements de portée (ajout ou retrait d'applications) sont convenus par écrit.",
+    "scope_body": "Votre abonnement Catena Pro -- un forfait fixe par serveur, applications illimitées -- définit ce qui est inclus, avec le support manuel facturé à l'heure selon l'usage. Voir la <a href='/#pricing'>section Tarifs</a> pour le modèle public. Les changements de portée sont convenus par écrit.",
     "billing_title": "Tarification et facturation",
-    "billing_body": "L'abonnement géré (serveur + applications) comporte un engagement minimum de 6 mois, facturé mensuellement. Le support manuel est facturé au tarif publié par tranches de 15 minutes, selon l'usage. Traitement des cartes via Stripe.",
+    "billing_body": "L'abonnement géré est un forfait fixe par serveur, facturé mensuellement, sans engagement minimum. Le support manuel est facturé au tarif publié par tranches de 15 minutes, selon l'usage. Traitement des cartes via Stripe.",
     "ownership_title": "Propriété des données",
     "ownership_body": "Toutes les données client, l'infrastructure et les identifiants appartiennent au client. Notre rôle est uniquement celui de prestataire de services. Vous pouvez exporter et migrer à tout moment ; la lettre de mandat documente le processus de remise.",
     "liability_title": "Limitation de responsabilité",
