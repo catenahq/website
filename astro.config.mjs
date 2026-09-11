@@ -35,12 +35,12 @@ export default defineConfig({
       redirectToDefaultLocale: false,
     },
   },
-  // Guides moved from /guides/ (marketing) to the docs knowledge base
-  // in May 2026, then to docs.catena.run when docs lifted to its own
-  // subdomain. Preserve external links and SEO juice with static
-  // redirects emitted at build time as <meta http-equiv="refresh">
-  // HTML stubs. Cross-origin targets are supported by the meta refresh
-  // mechanism.
+  // The guides live at docs.catena.run. External links and search
+  // results still point at the paths on the left, so each one is emitted
+  // at build time as an HTML stub carrying <meta http-equiv="refresh">,
+  // which keeps them resolving and preserves their SEO weight. A meta
+  // refresh handles the cross-origin target that a server redirect on a
+  // static host cannot.
   redirects: {
     "/guides":                            "https://docs.catena.run/guides/email-providers/",
     "/guides/email-providers":            "https://docs.catena.run/guides/email-providers/",
