@@ -10,7 +10,8 @@
     "preview": "astro preview",
     "check": "astro check",
     "test:i18n": "node scripts/i18n-parity.mjs",
-    "check:unicode": "node scripts/check-unicode.mjs",
+    "check:unicode": "node ../contracts/scripts/check-unicode.mjs",
+    "check:prose": "node ../contracts/scripts/check-prose.mjs",
     "sync:brand": "node scripts/sync-brand-assets.mjs",
     "postinstall": "node scripts/sync-brand-assets.mjs"
   },
