@@ -20,7 +20,6 @@
     "@catenahq/contracts": "file:../contracts",
     "@resvg/resvg-js": "^2.6.2",
     "astro": "^7.0.0",
-    "astro-icon": "^1.1.5",
     "marked": "^18.0.0",
     "satori": "^0.33.0"
   },
@@ -31,7 +30,6 @@
   },
   "devDependencies": {
     "@astrojs/check": "^0.9.9",
-    "@iconify-json/simple-icons": "^1.2.80",
     "typescript": "^6.0.3"
   }
 }

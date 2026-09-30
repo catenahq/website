@@ -63,8 +63,8 @@ const orgJsonLd = {
 
 // BreadcrumbList JSON-LD. Skipped on the homepage (no chain to
 // describe). For intermediate segments we look up the nav label so
-// FR pages get FR breadcrumbs; for unknown slugs (e.g. "technical",
-// "faq") we humanize the slug. The final crumb prefers the page's
+// FR pages get FR breadcrumbs; for unknown slugs (e.g. "legal") we
+// humanize the slug. The final crumb prefers the page's
 // own title prop when present, falling back to the same humanizer.
 const segments = subpath ? subpath.split("/").filter(Boolean) : [];
 const slugToNavKey: Record<string, string> = {

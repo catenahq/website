@@ -1,6 +1,5 @@
 import { defineConfig } from "astro/config";
 import { fileURLToPath } from "node:url";
-import icon from "astro-icon";
 import sitemap from "@astrojs/sitemap";
 
 // catena.run -- public marketing site.
@@ -52,7 +51,6 @@ export default defineConfig({
     "/fr/guides/dns-durci":               "https://docs.catena.run/fr/guides/dns-hardening/",
   },
   integrations: [
-    icon(),
     sitemap({
       i18n: {
         defaultLocale: "en",

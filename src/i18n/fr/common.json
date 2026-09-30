@@ -25,8 +25,7 @@
     "col_company": "Entreprise",
     "col_legal": "Mentions légales",
     "portfolio": "Portfolio",
-    "github": "GitHub",
-    "trust": "Confiance et validation"
+    "github": "GitHub"
   },
   "lang": {
     "en": "English",
@@ -74,15 +73,14 @@
         "monitoring": {
           "title": "Supervision et alertes",
           "body": "Recevez des alertes quand un service tombe ou que les ressources du serveur sont saturées."
-        },
-        "automation": {
-          "title": "Automatisation",
-          "body": "Utilisez des connecteurs natifs ou ajoutez un moteur d'automatisation pour relier vos applications et gagner du temps."
         }
       }
     },
     "apps": {
-      "full_catalog": "Voir le catalogue complet des applications"
+      "title": "Une app pour chaque besoin",
+      "intro": "Hébergez vos propres applications ou découvrez-en des centaines pour héberger et partager vos fichiers, gérer vos photos, discuter avec vos collègues et vos amis, gérer votre entreprise, et bien plus encore!",
+      "discover": "Découvrez des applications sur <a href='https://awweso.me/' target='_blank' rel='noopener noreferrer'>awweso.me</a> ou trouvez des solutions de rechange aux services des géants du numérique sur <a href='https://openalternative.co/' target='_blank' rel='noopener noreferrer'>openalternative.co</a>.",
+      "catalog": "Consultez notre catalogue d'applications préintégrées sur <a href='https://github.com/catenahq/catena-templates' target='_blank' rel='noopener noreferrer'>github.com/catenahq/catena-templates</a> ou <a href='https://docs.catena.run/fr/manage-apps/'>apprenez à configurer le déploiement de vos applications pour Catena</a>."
     },
     "pricing_matrix": {
       "title": "Communauté, Pro ou Entreprise",
@@ -289,97 +287,6 @@
       "no_label": "Non inclus"
     }
   },
-  "features": {
-    "tool_comparison": {
-      "title": "Une app pour chaque besoin",
-      "intro": "Un exemple d'application libre pour des besoins communs, à côté des forfaits SaaS que les PME évaluent le plus souvent. Ce sont des points de départ, pas des limites : des centaines d'autres applications auto-hébergeables tournent sur Catena.",
-      "category_label": "Catégorie",
-      "cols": {
-        "catena": "Catena",
-        "microsoft": "Microsoft 365",
-        "google": "Google Workspace",
-        "saas": "Autre SaaS mensuel"
-      },
-      "rows": {
-        "files": {
-          "label": "Fichiers et synchronisation",
-          "catena": "Nextcloud",
-          "microsoft": "OneDrive / SharePoint",
-          "google": "Google Drive",
-          "saas": "Dropbox, Box"
-        },
-        "office": {
-          "label": "Bureautique",
-          "catena": "Euro Office",
-          "microsoft": "Word / Excel / PowerPoint",
-          "google": "Docs / Sheets / Slides",
-          "saas": "Zoho, Quip"
-        },
-        "chat": {
-          "label": "Messagerie et réunions",
-          "microsoft": "Teams",
-          "google": "Meet / Chat",
-          "saas": "Slack, Zoom"
-        },
-        "crm": {
-          "label": "CRM",
-          "catena": "EspoCRM",
-          "microsoft": "Dynamics 365",
-          "google": "(tiers)",
-          "saas": "HubSpot, Salesforce, Pipedrive"
-        },
-        "booking": {
-          "label": "Réservations et agenda",
-          "catena": "Easy!Appointments",
-          "microsoft": "Bookings",
-          "google": "Plages de rendez-vous",
-          "saas": "Calendly, Acuity"
-        },
-        "project": {
-          "label": "Gestion de projet",
-          "catena": "Plane",
-          "microsoft": "Project / Planner",
-          "google": "(tiers)",
-          "saas": "Jira, Linear, Asana"
-        },
-        "automation": {
-          "label": "Automatisation",
-          "catena": "n8n",
-          "microsoft": "Power Automate",
-          "google": "AppScript",
-          "saas": "Zapier, Make"
-        },
-        "esign": {
-          "label": "Signature électronique",
-          "catena": "DocuSeal",
-          "microsoft": "(tiers)",
-          "google": "(tiers)",
-          "saas": "DocuSign, HelloSign"
-        },
-        "invoicing": {
-          "label": "Facturation",
-          "catena": "Invoice Ninja",
-          "microsoft": "Dynamics 365 Finance",
-          "google": "(tiers)",
-          "saas": "FreshBooks, Wave, QuickBooks"
-        },
-        "wiki": {
-          "label": "Base de connaissances",
-          "catena": "Outline",
-          "microsoft": "SharePoint Wiki",
-          "google": "Sites",
-          "saas": "Notion, Confluence"
-        },
-        "social": {
-          "label": "Médias sociaux",
-          "catena": "Postiz",
-          "microsoft": "(tiers)",
-          "google": "(tiers)",
-          "saas": "Buffer, Hootsuite"
-        }
-      }
-    }
-  },
   "contact": {
     "title": "Contact",
     "intro": "Le moyen le plus rapide est un appel découverte de 30 minutes. Nous ne vendons rien lors d'un premier contact -- nous posons des questions et déterminons ensemble si Catena correspond à votre situation.",
@@ -403,70 +310,6 @@
       "message_label": "Message",
       "submit_label": "Envoyer",
       "mailto_fallback": "Ou écrivez-nous directement:"
-    }
-  },
-  "faq": {
-    "title": "Foire aux questions",
-    "intro": "Les questions que les prospects posent le plus souvent avant de prendre un appel découverte. Réponses courtes ; les versions longues vivent sur Tarifs / Comparaison.",
-    "q1": {
-      "question": "Catena tourne-t-elle sur la Suite Catena ?",
-      "answer": "Même suite. Mêmes mains. En production depuis le lancement. catena.run, la documentation à /docs, les vérifications externes des services client, le traitement des paiements et la facturation tournent tous sur la Suite Catena que nous vendons. Toute la surface de revenu est sur le produit. Manger sa propre nourriture est notre garantie."
-    },
-    "q16": {
-      "question": "Catena est-elle gratuite ?",
-      "answer": "L'édition Communauté l'est, oui : toute la suite, code source disponible, auto-hébergée sur une infrastructure qui vous appartient, sans frais de licence ni télémétrie. Vous l'installez et l'opérez vous-même depuis <a href='https://github.com/catenahq/catena-ce'>GitHub</a> et la documentation communautaire. Catena Pro est l'édition gérée payante, où nous opérons le cycle de vie pour vous : sauvegardes immuables hors site, mises à jour gérées, supervision, identité et rapport d'assurance mensuel. Mêmes logiciels dans les deux cas -- commencez gratuitement et passez au mode géré quand vous préférez ne pas gérer de serveur."
-    },
-    "q2": {
-      "question": "Que puis-je faire tourner d'autre sur la suite ?",
-      "answer": "Tout ce qui s'inscrit dans un modèle d'application au format compose. Notre catalogue éprouvé (Nextcloud, Euro Office / Collabora, Rocket.Chat, Plane, DocuSeal, Invoice Ninja, Outline, EspoCRM, n8n, Postiz, Twenty, WordPress, ERPNext, Easy!Appointments et plus) s'installe sans frais de configuration supplémentaires -- consultez-le sur <a href='https://docs.catena.run/fr/apps/' target='_blank' rel='noopener noreferrer'>docs.catena.run</a>. Toute autre application est une demande de modèle personnalisé -- parlez-nous-en. Pour explorer l'écosystème auto-hébergé plus large : <a href='https://github.com/awesome-selfhosted/awesome-selfhosted' target='_blank' rel='noopener noreferrer'>awesome-selfhosted</a>, <a href='https://awweso.me/' target='_blank' rel='noopener noreferrer'>awweso.me</a>, <a href='https://github.com/awesome-foss/awesome-sysadmin' target='_blank' rel='noopener noreferrer'>awesome-sysadmin</a>."
-    },
-    "q3": {
-      "question": "Que se passe-t-il si vous êtes frappé par un autobus ?",
-      "answer": "Toute la suite est libre et portable. Un autre partenaire TI compétent peut la reprendre avec la même automatisation."
-    },
-    "q4": {
-      "question": "Puis-je partir avec mes données ?",
-      "answer": "Vous n'avez pas à partir -- vous possédez déjà tout. Le serveur, les données et les seaux de sauvegarde sont à votre nom. Quand vous voulez clore la relation, nous remettons les clés et nous nous retirons. Aucuns frais de sortie, aucun collage propriétaire à défaire."
-    },
-    "q5": {
-      "question": "Dois-je être technique pour utiliser ceci ?",
-      "answer": "Non. L'usage quotidien est dans le navigateur (Nextcloud / Rocket.Chat / etc.). La surface technique est ce que nous opérons pour vous -- votre équipe ne voit que des applications."
-    },
-    "q6": {
-      "question": "Où mes données sont-elles physiquement situées ?",
-      "answer": "Sur le serveur qui vous appartient, chez le fournisseur que vous avez choisi. Déploiement par défaut : OVH BHS (Beauharnois, Québec) pour le serveur principal + miroir S3 chaud ; eazybackup (entreprise canadienne, centre de données à Ottawa, Canada -- certifié niveau gouvernemental canadien, avec Object Lock + versionnement) pour le miroir froid. Les deux en juridiction canadienne, conformes à la Loi 25."
-    },
-    "q7": {
-      "question": "Comment gagnez-vous votre vie ?",
-      "answer": "L'édition Communauté est gratuite; nous gagnons notre vie avec Catena Pro, l'édition gérée : un forfait mensuel fixe par serveur, applications illimitées, avec le support manuel facturé à l'heure seulement selon l'usage. Aucun frais par utilisateur ni par application, jamais. L'hébergement et les sauvegardes sont en refacturation directe sur vos comptes. Voir la <a href='/#pricing'>section Tarifs</a>."
-    },
-    "q8": {
-      "question": "Puis-je auto-héberger mon courriel ?",
-      "answer": "Oui. Le catalogue comprend une application serveur de courriel complète (boîtes, IMAP, webmail via Nextcloud) qui garde vos courriels sur le serveur qui vous appartient ; l'envoi sortant passe par un relais SMTP pour que vos messages n'aboutissent pas dans les pourriels. Pour la plupart des équipes, nous recommandons quand même de commencer avec l'un des cinq fournisseurs de courriel axés sur la confidentialité que nous intégrons -- nous configurons DNS + SSO dans les deux cas, et vous pouvez rapatrier le courriel plus tard sans changer les habitudes de votre équipe. Clients suggérés : l'interface courriel intégrée à Nextcloud (navigateur), Thunderbird (bureau, libre, multiplateforme) ou Betterbird (variante de Thunderbird avec finitions supplémentaires)."
-    },
-    "q9": {
-      "question": "Puis-je héberger mes propres applications à côté de la suite ?",
-      "answer": "Oui. Portainer permet de déployer toute application au format compose sous SSO + Cloudflare Tunnel. Nous pouvons conseiller ; nous n'avons pas à l'opérer."
-    },
-    "q11": {
-      "question": "Puis-je l'héberger sur mon propre matériel ?",
-      "answer": "Oui. L'édition Communauté gratuite s'installe sur du matériel ou un VPS qui vous appartient, avec ou sans IP publique. Si vous préférez ne pas l'opérer vous-même, Catena Pro est l'édition gérée. <a href='/fr/contact'>Contactez-nous</a> si vous voulez que nous opérions l'édition gérée sur votre propre matériel."
-    },
-    "q12": {
-      "question": "Dans quelle devise sont vos tarifs ?",
-      "answer": "Dollars canadiens (CAD). Les prospects hors Canada paient via Stripe en CAD ; Stripe gère la conversion au taux interbancaire au moment de la facturation."
-    },
-    "q13": {
-      "question": "Quelle est la différence entre Catena et la Suite Catena ?",
-      "answer": "Catena est l'entreprise derrière le produit. La Suite Catena est le logiciel que Catena conçoit et opère : Nextcloud, EspoCRM, Easy!Appointments, Rocket.Chat, Keycloak, et les outils Ansible / sauvegardes / supervision qui font tourner tout ça. Avec l'édition Pro, votre facture vient de Catena et votre courriel et vos fichiers vivent sur la Suite Catena ; avec l'édition Communauté, vous faites tourner cette même suite vous-même."
-    },
-    "q14": {
-      "question": "Vous êtes vraiment un MSP ? En quoi êtes-vous différent de mon MSP actuel ?",
-      "answer": "Catena Pro est un service géré -- nous opérons la Suite Catena à votre place selon un abonnement mensuel -- donc cette partie fonctionne comme un MSP. Deux choses la distinguent d'un MSP traditionnel : le logiciel est un produit que vous pouvez aussi auto-héberger gratuitement (l'édition Communauté), et la portée gérée se limite à la Suite Catena. Nous ne gérons pas vos postes de travail, vos imprimantes, votre Microsoft 365, ni votre réseau de bureau (voir <a href='/#pricing'>la grille des éditions</a>). En échange : vous payez par serveur (pas par siège), votre code et vos données vous appartiennent, et vous pouvez quitter à tout moment avec tout en main."
-    },
-    "q15": {
-      "question": "Que pouvez-vous produire comme documentation Loi 25 ?",
-      "answer": "La Suite Catena est conforme Loi 25 au niveau infrastructure (résidence canadienne, sous-traitants documentés, sauvegardes immuables, MFA, chiffrement, journalisation). Pour le volet documentaire (EFVP, registres, politiques, runbook d'incident), nous offrons un accompagnement séparé : audit et pack initial (en construction, revue juridique en cours). Important : nous ne vous remplaçons pas comme responsable de la protection des renseignements personnels -- Loi 25 exige que ce soit une personne à l'interne de votre organisation -- nous fournissons l'infrastructure et les documents que cette personne peut adopter et signer. <a href='/fr/contact'>Parlez-nous de la conformité Loi 25</a>."
     }
   },
   "privacy": {

@@ -9,12 +9,9 @@ const { locale } = Astro.props;
 const year = new Date().getFullYear();
 const prefix = `/${locale}`;
 const docsHref = locale === "fr" ? "https://docs.catena.run/fr/" : "https://docs.catena.run/en/";
-const trustHref = `${docsHref}trust/`;
 
 const productLinks = [
-  { href: `${prefix}/faq`,          label: t(locale, "common.faq.title") },
   { href: docsHref,                 label: t(locale, "common.nav.docs") },
-  { href: trustHref,                label: t(locale, "common.footer.trust") },
 ];
 
 const companyLinks = [
