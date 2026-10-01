@@ -10,10 +10,8 @@ const prefix = `/${locale}`;
 const altLocale: "en" | "fr" = locale === "fr" ? "en" : "fr";
 
 // Language switcher: preserve the current page when toggling locales.
-// EN <-> FR slugs are identical for every marketing page (the guides
-// -- the one place we needed slug translation -- moved to apps/docs).
-// Swap the leading /en or /fr segment for the other locale, keeping
-// the rest of the path.
+// EN and FR slugs are identical for every page, so swap the leading
+// /en or /fr segment for the other locale, keeping the rest of the path.
 const currentPath = Astro.url.pathname;
 const subpath = currentPath.replace(/^\/(en|fr)(?=\/|$)/, "");
 const altPath = `/${altLocale}${subpath}`;

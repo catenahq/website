@@ -8,8 +8,7 @@
 # checkout step puts contracts at $GITHUB_WORKSPACE/contracts and the
 # website job at $GITHUB_WORKSPACE/website. Local dev mirrors this
 # layout (both repos checked out side-by-side under catena/).
-# catenahq/contracts is public (2026-07-11), so the checkout needs no
-# token.
+# catenahq/contracts is public, so the checkout needs no token.
 
 name: CI
 

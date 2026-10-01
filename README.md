@@ -1,11 +1,10 @@
 # catenahq/website -- catena.run
 
-Astro static marketing site. EN at `/`, FR at `/fr/`. Self-contained.
-Brand tokens come from `@catenahq/contracts/brand`. Page-level prose
-stays in the components themselves until enough copy accumulates to
-justify a content collection.
+Astro static marketing site. EN at `/en/`, FR at `/fr/`; `/` sends the
+visitor to one of them by `lang` cookie, then browser language.
+Self-contained. Brand tokens come from `@catenahq/contracts/brand`.
 
-The docs site (catena.run/docs) lives in its own repo at
+The docs site (docs.catena.run) lives in its own repo at
 github.com/catenahq/docs.
 
 ## Develop
@@ -38,20 +37,19 @@ branch and does not deploy.
 
 ## Add a page
 
-Drop a file under `src/pages/<slug>.astro` for the EN version and
-`src/pages/fr/<slug>.astro` for the FR mirror. Use the `Base.astro`
-layout with the right `locale` prop. Shared chrome strings (nav,
-CTAs, errors) live in `src/i18n/`. Section copy goes inline in the
-component.
+Add one file, `src/pages/[locale]/<slug>.astro`. Its `getStaticPaths`
+returns every entry of `locales` from `@catena/i18n`, so it renders at
+`/en/<slug>` and `/fr/<slug>` (see `src/pages/[locale]/contact.astro`).
+Use the `Base.astro` layout with the page's `locale`. Page strings live
+in `src/i18n/<lang>/`, with the same keys in every locale.
 
 ## Add a language
 
-1. Add a new locale dir under `src/pages/<lang>/` mirroring the EN
-   tree.
-2. Add it to `astro.config.mjs::i18n.locales`.
-3. Add it to `src/i18n/<lang>/` (one JSON file per namespace,
+1. Add it to `astro.config.mjs::i18n.locales`.
+2. Add it to `src/i18n/<lang>/` (one JSON file per namespace,
    mirroring the EN shape).
-4. Add it to `LOCALES` in `scripts/i18n-parity.mjs`.
-5. Add it to `locales` + the `bundles` map in `src/i18n/index.js`.
-6. Run `npm run test:i18n` -- it will tell you which keys still need
+3. Add it to `LOCALES` in `scripts/i18n-parity.mjs`.
+4. Add it to `locales` + the `bundles` map in `src/i18n/index.js`;
+   every page under `src/pages/[locale]/` then renders it.
+5. Run `npm run test:i18n` -- it will tell you which keys still need
    translation.
