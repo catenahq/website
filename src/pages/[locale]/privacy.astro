@@ -1,0 +1,9 @@
+---
+import PolicyPage from "../../components/PolicyPage.astro";
+import { locales } from "@catena/i18n";
+
+export const getStaticPaths = () => locales.map((locale) => ({ params: { locale } }));
+const locale = Astro.params.locale as "en" | "fr";
+const sections = ["collect", "dont", "where", "subprocessors", "rights", "cookies", "contact"];
+---
+<PolicyPage locale={locale} ns="privacy" sections={sections} />

@@ -289,6 +289,7 @@
   },
   "contact": {
     "title": "Contact",
+    "description": "Reach catena. Send a message via the form. We do not pitch on first contact -- we ask questions.",
     "intro": "The fastest way to reach us is a 30-minute discovery call. We do not pitch on first contact -- we ask questions and work out together whether Catena is the right fit.",
     "response_body": "We aim to reply within one business day.",
     "about_title": "Who you are working with",
@@ -314,6 +315,7 @@
   },
   "privacy": {
     "title": "Privacy policy",
+    "description": "What catena collects, what we don't do with it, where data lives, your access / correction / deletion rights under Loi 25 + PIPEDA.",
     "intro": "Catena does not share, sell, rent, or train AI on your data. The whole point of the suite is that you own it.",
     "collect_title": "What we collect",
     "collect_body": "Billing information (via Stripe -- card numbers never touch our servers). Credentials you enter to deploy your suite are passed in-flight to our deployment runner and are not persisted in our database. Server-side logs of our actions for support and audit.",
@@ -332,6 +334,7 @@
   },
   "terms": {
     "title": "Terms of service",
+    "description": "Catena's terms of service. Service scope, pricing and billing, data ownership, acceptable use, termination, governing law (Quebec, Canada).",
     "intro": "These terms cover the relationship between Catena (the service provider) and you (the client). They are deliberately concise -- the engagement letter you sign at signup is the canonical contract; this page summarizes its main commitments.",
     "review_notice": "This page is a draft pending legal review. Talk to us directly for the binding terms in your engagement letter.",
     "scope_title": "Service scope",
@@ -352,5 +355,40 @@
     "perservice_body": "Each upstream app in the suite carries its own license and acceptable-use policy (Nextcloud GPL, Rocket.Chat MIT, Euro Office AGPL, etc.). Each upstream's official terms are linked from that app's documentation.",
     "law_title": "Governing law",
     "law_body": "Quebec, Canada. Disputes go to the courts of the judicial district of Montreal."
+  },
+  "status": {
+    "title": "Service status",
+    "description": "Real-time status of Catena services (catena.run, the docs, the billing API). Uptime probed 24/7 by Gatus, on a host separate from the application server. If the main site goes down, this page stays up.",
+    "intro": "Public uptime of Catena services. Refreshed minute-by-minute by Gatus.",
+    "what_title": "What you see here",
+    "what_body_1": "This page shows real-time status of the services Catena operates for ourselves -- the marketing site (<a href='https://catena.run'>catena.run</a>), the docs (<a href='https://docs.catena.run'>docs.catena.run</a>), and the billing API.",
+    "what_body_2": "Gatus probes run on a host separate from the one serving the apps, so this page stays consultable even if a primary service goes down. Any outage hitting Catena infrastructure is publicly visible; we can't hide it.",
+    "what_body_3": "For clients on a retainer, SLA thresholds depend on your tier (Small: best-effort; Medium / Large: 99.5%).",
+    "dashboard_title": "Gatus dashboard",
+    "dashboard_body": "Embed coming once Gatus is publicly exposed at <code>https://status.catena.run</code>. In the meantime, email <a href='mailto:hello@catena.run'>hello@catena.run</a> or <a href='/en/contact'>book a call</a> if you suspect an outage.",
+    "placeholder": "<strong>Status: in build.</strong> The public Gatus dashboard will be embedded here in the next iteration. The internal Gatus instance is already running and powering operator alerts."
+  },
+  "legal": {
+    "effective": "Effective",
+    "master-agreement": {
+      "title": "Master Services Agreement",
+      "intro": "Full text of the Master Services Agreement (MSA).",
+      "description": "Catena Master Services Agreement. Canonical text, version-pinned by commit SHA. Governing law: Quebec, Canada."
+    },
+    "sla": {
+      "title": "Service Level Agreement (Schedule A)",
+      "intro": "Uptime and response targets. Schedule A to the Master Services Agreement, appended to every executed MSA.",
+      "description": "Catena Service Level Agreement (Schedule A). Canonical text rendered from the versioned contracts package."
+    },
+    "subprocessors": {
+      "title": "Subprocessor list (Schedule D)",
+      "intro": "Third parties that may process client personal information on our behalf (Law 25 art. 18.3 disclosure). Schedule D to the Master Services Agreement.",
+      "description": "Catena subprocessor list (Schedule D). Law 25 disclosure of third parties, rendered from the versioned contracts package."
+    },
+    "data-export-and-termination": {
+      "title": "Data export and termination (Schedule C)",
+      "intro": "How your data leaves with you: export procedure and termination effects. Schedule C to the Master Services Agreement.",
+      "description": "Catena data export and termination schedule (Schedule C). Portability and post-termination effects, rendered from the versioned contracts package."
+    }
   }
 }

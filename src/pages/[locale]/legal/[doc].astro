@@ -2,41 +2,48 @@
 import Base from "../../../layouts/Base.astro";
 import PageTitle from "../../../components/PageTitle.astro";
 import { marked } from "marked";
+import msa from "@catenahq/contracts/legal/msa.json";
 import { readFileSync } from "node:fs";
 import { createRequire } from "node:module";
+import { locales, t } from "@catena/i18n";
 
-const locale = "fr";
+export function getStaticPaths() {
+  const docs = ["master-agreement", "sla", "subprocessors", "data-export-and-termination"];
+  return locales.flatMap((locale) => docs.map((doc) => ({ params: { locale, doc } })));
+}
 
-// The schedule prose ships in @catenahq/contracts/legal/subprocessors.md.
-// Same resolve-through-package-exports pattern as master-agreement:
-// a contracts bump that moves the file fails the build up front. The
-// canonical legal text is English; both locale routes render it with
-// localized page chrome (mirrors /legal/master-agreement).
+const locale = Astro.params.locale as "en" | "fr";
+const { doc } = Astro.params;
+const altLocale = locale === "fr" ? "en" : "fr";
+
+// The legal prose ships in @catenahq/contracts/legal/<doc>.md. Resolving it
+// through the package exports, read at build time, means a contracts change
+// that moves a file fails the build up front. The canonical legal text is
+// English; every locale renders it with localized page chrome.
 const req = createRequire(import.meta.url);
-const mdPath = req.resolve("@catenahq/contracts/legal/subprocessors.md");
-const rawMd = readFileSync(mdPath, "utf8")
+const rawMd = readFileSync(req.resolve(`@catenahq/contracts/legal/${doc}.md`), "utf8")
   // Cross-schedule links in the source are repo-relative .md paths;
   // rewrite them to the rendered routes for this locale.
-  .replaceAll("](master-agreement.md)", "](/fr/legal/master-agreement)")
-  .replaceAll("](sla.md)", "](/fr/legal/sla)")
-  .replaceAll("](subprocessors.md)", "](/fr/legal/subprocessors)")
-  .replaceAll("](data-export-and-termination.md)", "](/fr/legal/data-export-and-termination)");
+  .replace(/\]\(([a-z-]+)\.md\)/g, `](/${locale}/legal/$1)`);
 const html = marked.parse(rawMd) as string;
 
-const pageTitle = "Liste des sous-traitants (Annexe D)";
-const pageIntro = "Tiers susceptibles de traiter des renseignements personnels des clients en notre nom (divulgation Loi 25, art. 18.3). Annexe D de la Convention de services principale.";
+const key = `common.legal.${doc}`;
+const pageTitle = t(locale, `${key}.title`);
 ---
-<Base
-  locale={locale}
-  title={pageTitle}
-  description="Liste des sous-traitants catena (Annexe D). Divulgation Loi 25 des tiers, rendue depuis le paquet de contrats versionné."
->
-  <PageTitle title={pageTitle} intro={pageIntro} />
+<Base locale={locale} title={pageTitle} description={t(locale, `${key}.description`)}>
+  <PageTitle title={pageTitle} intro={t(locale, `${key}.intro`)} />
   <section class="prose">
     <div class="container">
       <p class="version-pin">
-        <a href="/fr/legal/master-agreement">Convention de services principale</a>
-        &middot; <a href="/en/legal/subprocessors" class="alt-locale">English</a>
+        {doc === "master-agreement" ? (
+          <Fragment>
+            Version: <code>{msa.version.slice(0, 12)}</code>
+            &middot; {`${t(locale, "common.legal.effective")} ${msa.effectiveDate}`}
+          </Fragment>
+        ) : (
+          <a href={`/${locale}/legal/master-agreement`}>{t(locale, "common.legal.master-agreement.title")}</a>
+        )}
+        &middot; <a href={`/${altLocale}/legal/${doc}`} class="alt-locale">{t(locale, `common.lang.${altLocale}`)}</a>
       </p>
       <article set:html={html}></article>
     </div>
@@ -77,5 +84,6 @@ const pageIntro = "Tiers susceptibles de traiter des renseignements personnels d
     margin-bottom: var(--catena-space-6);
     font-size: var(--catena-fs-sm);
   }
+  .version-pin code { font-family: var(--catena-font-mono); }
   .alt-locale { text-decoration: underline; }
 </style>

@@ -289,6 +289,7 @@
   },
   "contact": {
     "title": "Contact",
+    "description": "Joindre catena. Réservez un appel découverte de 30 minutes ou envoyez un message via le formulaire. Aucun pitch lors d'un premier contact -- nous posons des questions.",
     "intro": "Le moyen le plus rapide est un appel découverte de 30 minutes. Nous ne vendons rien lors d'un premier contact -- nous posons des questions et déterminons ensemble si Catena correspond à votre situation.",
     "response_body": "Nous visons répondre dans un jour ouvrable.",
     "about_title": "Avec qui vous travaillez",
@@ -314,6 +315,7 @@
   },
   "privacy": {
     "title": "Politique de confidentialité",
+    "description": "Ce que catena collecte, ce que nous n'en faisons pas, où vivent les données, vos droits d'accès / correction / suppression sous la Loi 25 et la LPRPDE.",
     "intro": "Catena ne partage, ne vend, ne loue pas vos données et n'entraîne aucune IA dessus. Toute la raison d'être de la suite est qu'elle vous appartient.",
     "collect_title": "Ce que nous collectons",
     "collect_body": "Informations de facturation (via Stripe -- les numéros de carte ne touchent jamais nos serveurs). Les identifiants que vous saisissez pour déployer votre suite sont transmis en vol à notre runner de déploiement et ne sont pas conservés dans notre base de données. Journaux côté serveur de nos actions pour le support et l'audit.",
@@ -332,6 +334,7 @@
   },
   "terms": {
     "title": "Conditions d'utilisation",
+    "description": "Conditions d'utilisation de catena. Portée du service, tarification, propriété des données, usage acceptable, résiliation, loi applicable (Québec, Canada).",
     "intro": "Ces conditions encadrent la relation entre Catena (le prestataire de services) et vous (le client). Elles sont volontairement concises -- la lettre de mandat signée à l'inscription est le contrat de référence ; cette page en résume les engagements principaux.",
     "review_notice": "Cette page est un brouillon en attente de révision juridique. Parlez-nous directement pour les conditions contractuelles dans votre lettre de mandat.",
     "scope_title": "Portée du service",
@@ -352,5 +355,40 @@
     "perservice_body": "Chaque application en amont dans la suite porte sa propre licence et politique d'usage acceptable (Nextcloud GPL, Rocket.Chat MIT, Euro Office AGPL, etc.). Les conditions officielles de chaque amont sont liées depuis la documentation de chaque application.",
     "law_title": "Loi applicable",
     "law_body": "Québec, Canada. Les litiges relèvent des tribunaux du district judiciaire de Montréal."
+  },
+  "status": {
+    "title": "État des services",
+    "description": "État en temps réel des services Catena (catena.run, la documentation, l'API de facturation). Disponibilité publiée 24/7 par Gatus, sondes indépendantes du serveur applicatif. Si la page principale tombe, cette page reste affichée.",
+    "intro": "Disponibilité publique des services Catena. Mis à jour à la minute par Gatus.",
+    "what_title": "Ce que vous voyez ici",
+    "what_body_1": "Cette page affiche l'état en temps réel des services que Catena opère pour vous-mêmes -- le site marketing (<a href='https://catena.run'>catena.run</a>), la documentation (<a href='https://docs.catena.run'>docs.catena.run</a>), et l'API de facturation.",
+    "what_body_2": "Les sondes Gatus tournent à partir d'un serveur distinct de celui qui héberge les services, pour que la page reste consultable même si un service principal tombe. Un panne touchant l'infrastructure Catena est visible publiquement; nous ne pouvons pas la cacher.",
+    "what_body_3": "Pour les clients sous forfait, les seuils SLA dépendent de votre palier (palier Petite entreprise: meilleur effort; paliers Moyenne / Grande: 99,5 %).",
+    "dashboard_title": "Tableau Gatus",
+    "dashboard_body": "Embed à venir une fois Gatus exposé publiquement à <code>https://status.catena.run</code>. En attendant, contactez <a href='mailto:hello@catena.run'>hello@catena.run</a> ou <a href='/fr/contact'>prenez un appel</a> si vous suspectez une panne.",
+    "placeholder": "<strong>État : en construction.</strong> Le tableau Gatus public sera embarqué ici dans la prochaine itération. L'instance Gatus interne tourne déjà et alimente les alertes opérateur."
+  },
+  "legal": {
+    "effective": "En vigueur depuis le",
+    "master-agreement": {
+      "title": "Convention de services principale",
+      "intro": "Texte intégral de la Convention de services principale (MSA).",
+      "description": "Convention de services principale catena. Texte canonique versionné, identifie par SHA de commit. Loi applicable: Quebec, Canada."
+    },
+    "sla": {
+      "title": "Entente de niveau de service (Annexe A)",
+      "intro": "Cibles de disponibilité et de délais de réponse. Annexe A de la Convention de services principale, jointe à chaque MSA signée.",
+      "description": "Entente de niveau de service catena (Annexe A). Texte canonique rendu depuis le paquet de contrats versionné."
+    },
+    "subprocessors": {
+      "title": "Liste des sous-traitants (Annexe D)",
+      "intro": "Tiers susceptibles de traiter des renseignements personnels des clients en notre nom (divulgation Loi 25, art. 18.3). Annexe D de la Convention de services principale.",
+      "description": "Liste des sous-traitants catena (Annexe D). Divulgation Loi 25 des tiers, rendue depuis le paquet de contrats versionné."
+    },
+    "data-export-and-termination": {
+      "title": "Exportation des données et fin de contrat (Annexe C)",
+      "intro": "Comment vos données partent avec vous : procédure d'exportation et effets de la fin du contrat. Annexe C de la Convention de services principale.",
+      "description": "Annexe d'exportation des données et de fin de contrat catena (Annexe C). Portabilité et effets post-terminaison, rendus depuis le paquet de contrats versionné."
+    }
   }
 }
