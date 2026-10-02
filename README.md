@@ -46,9 +46,10 @@ in `src/i18n/<lang>/`, with the same keys in every locale.
 ## Styling
 
 Tailwind CSS. `src/styles/global.css` loads the brand theme from
-`@catenahq/contracts/brand/theme.css` (utilities such as `bg-page`,
-`text-heading`, `text-muted`, `border-line`, `bg-primary`) and defines
-the button utilities (`btn-primary`, `btn-secondary`, `btn-tertiary`).
+`@catenahq/contracts/brand/theme.css`: utilities such as `bg-page`,
+`text-heading`, `text-muted`, `border-line`, `bg-primary`, and the
+`btn-primary` / `btn-secondary` / `btn-tertiary` buttons the docs site
+shares.
 Sections are built from the widgets in `src/components/astrowind/`,
 adapted from AstroWind (MIT, notice in that directory): `Hero`,
 `Features2`, `Content`, `CallToAction`, inside `WidgetWrapper` with a

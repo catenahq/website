@@ -63,7 +63,7 @@ const isActive = (href: string) => href.startsWith("/") && trimSlash(href) === c
       <div class="hidden lg:self-center lg:flex items-center fixed w-full lg:w-auto lg:static justify-end left-0 bottom-0 p-3 lg:p-0 lg:justify-self-end">
         <div class="items-center flex justify-between w-full lg:w-auto gap-2">
           <ToggleTheme label={themeLabel} />
-          <a href={langLink.href} class="btn-secondary py-2 px-4 text-sm" aria-label={langLink.ariaLabel} data-lang-toggle>
+          <a href={langLink.href} class="btn-secondary py-2 px-4 md:px-4 text-sm" aria-label={langLink.ariaLabel} data-lang-toggle>
             {langLink.text}
           </a>
         </div>

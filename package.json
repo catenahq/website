@@ -12,8 +12,8 @@
     "test:i18n": "node scripts/i18n-parity.mjs",
     "check:unicode": "node ../contracts/scripts/check-unicode.mjs",
     "check:prose": "node ../contracts/scripts/check-prose.mjs",
-    "sync:brand": "node scripts/sync-brand-assets.mjs",
-    "postinstall": "node scripts/sync-brand-assets.mjs"
+    "sync:brand": "node ../contracts/scripts/sync-brand-assets.mjs",
+    "postinstall": "node ../contracts/scripts/sync-brand-assets.mjs"
   },
   "dependencies": {
     "@astrojs/sitemap": "^3.7.2",
