@@ -124,7 +124,11 @@ const colClass = (c: string) => `val ${c}`;
     --m-gold: #e6b800;
   }
 
-  .table-wrap { overflow-x: auto; }
+  /* The table scrolls inside this box on a narrow screen. `relative` makes
+     it the containing block of each cell's visually hidden label, which is
+     absolutely positioned: without it the labels of the off-screen columns
+     sit outside the scroll box and widen the whole page. */
+  .table-wrap { overflow-x: auto; position: relative; }
   table {
     width: 100%;
     border-collapse: separate;

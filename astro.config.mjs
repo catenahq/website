@@ -3,6 +3,7 @@ import { fileURLToPath } from "node:url";
 import sitemap from "@astrojs/sitemap";
 import tailwindcss from "@tailwindcss/vite";
 import icon from "astro-icon";
+import { inter } from "@catenahq/contracts/brand/fonts.mjs";
 
 // catena.run -- public marketing site.
 //
@@ -16,7 +17,8 @@ import icon from "astro-icon";
 //
 // Styling: Tailwind CSS (src/styles/global.css) over the brand theme in
 // @catenahq/contracts, with components adapted from AstroWind under
-// src/components/astrowind/. Inter is self-hosted through the Fonts API.
+// src/components/astrowind/. Inter is self-hosted through the Fonts API,
+// with the entry the docs site shares (contracts brand/fonts.mjs).
 //
 // SEO: the sitemap emits hreflang alternates per locale and is
 // referenced from public/robots.txt.
@@ -46,26 +48,16 @@ export default defineConfig({
   // refresh handles the cross-origin target that a server redirect on a
   // static host cannot.
   redirects: {
-    "/guides":                            "https://docs.catena.run/guides/email-providers/",
-    "/guides/email-providers":            "https://docs.catena.run/guides/email-providers/",
-    "/guides/provider-accounts":          "https://docs.catena.run/guides/provider-accounts/",
-    "/guides/dns-hardening":              "https://docs.catena.run/guides/dns-hardening/",
-    "/fr/guides":                         "https://docs.catena.run/fr/guides/email-providers/",
-    "/fr/guides/fournisseurs-courriel":   "https://docs.catena.run/fr/guides/email-providers/",
+    "/guides":                            "https://docs.catena.run/en/guides/provider-accounts/",
+    "/guides/email-providers":            "https://docs.catena.run/en/guides/provider-accounts/",
+    "/guides/provider-accounts":          "https://docs.catena.run/en/guides/provider-accounts/",
+    "/guides/dns-hardening":              "https://docs.catena.run/en/",
+    "/fr/guides":                         "https://docs.catena.run/fr/guides/provider-accounts/",
+    "/fr/guides/fournisseurs-courriel":   "https://docs.catena.run/fr/guides/provider-accounts/",
     "/fr/guides/comptes-fournisseurs":    "https://docs.catena.run/fr/guides/provider-accounts/",
-    "/fr/guides/dns-durci":               "https://docs.catena.run/fr/guides/dns-hardening/",
+    "/fr/guides/dns-durci":               "https://docs.catena.run/fr/",
   },
-  fonts: [
-    {
-      provider: fontProviders.fontsource(),
-      name: "Inter",
-      cssVariable: "--font-inter",
-      weights: ["100 900"],
-      styles: ["normal"],
-      subsets: ["latin", "latin-ext"],
-      fallbacks: ["sans-serif"],
-    },
-  ],
+  fonts: [inter(fontProviders)],
   integrations: [
     // Only the Tabler icons the pages name are bundled.
     icon({

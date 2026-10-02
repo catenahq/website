@@ -9,13 +9,6 @@
 
 @custom-variant intersect (&:not([no-intersect]));
 
-/* Inter is self-hosted through the Astro Fonts API (astro.config.mjs), which
-   names it --font-inter; the brand stack is its fallback. */
-@theme inline {
-  --font-sans: var(--font-inter), var(--catena-font-sans);
-  --font-heading: var(--font-inter), var(--catena-font-sans);
-}
-
 @theme {
   --animate-fade: fadeInUp 0.5s both;
 

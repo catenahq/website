@@ -34,7 +34,7 @@ const pageTitle = t(locale, `${key}.title`);
 <Base locale={locale} title={pageTitle} description={t(locale, `${key}.description`)}>
   <PageTitle title={pageTitle} intro={t(locale, `${key}.intro`)} />
   <Prose>
-    <p class="not-prose rounded-md border border-line bg-page-muted px-5 py-4 text-sm">
+    <p class="not-prose mb-8 rounded-md border border-line bg-page-muted px-5 py-4 text-sm">
       {doc === "master-agreement" ? (
         <Fragment>
           Version: <code class="font-mono">{msa.version.slice(0, 12)}</code>
