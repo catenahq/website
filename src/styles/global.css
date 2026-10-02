@@ -1,104 +1,84 @@
-@import "@catenahq/contracts/brand/tokens/all.css";
-@import "@catenahq/contracts/brand/wordmark/conthrax.css";
+/* The site's Tailwind CSS entry. The brand tokens and the Conthrax wordmark
+   load from Base.astro; this file adds the brand's Tailwind theme and the
+   site-wide utilities. */
+@import "tailwindcss";
+@plugin "@tailwindcss/typography";
+@import "@catenahq/contracts/brand/theme.css";
 
-*,
-*::before,
-*::after {
-  box-sizing: border-box;
-}
+@variant dark (&:where(.dark, .dark *));
 
-html {
-  font-family: var(--catena-font-sans);
-  font-size: 16px;
-  color: var(--catena-surface-fg);
-  background: var(--catena-surface-bg);
-  line-height: var(--catena-lh-normal);
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
+@custom-variant intersect (&:not([no-intersect]));
 
-body {
-  margin: 0;
-  min-height: 100vh;
+/* Inter is self-hosted through the Astro Fonts API (astro.config.mjs), which
+   names it --font-inter; the brand stack is its fallback. */
+@theme inline {
+  --font-sans: var(--font-inter), var(--catena-font-sans);
+  --font-heading: var(--font-inter), var(--catena-font-sans);
 }
 
-a {
-  color: var(--catena-link);
-  text-decoration: none;
-  transition: color 120ms ease;
-}
-a:hover {
-  color: var(--catena-link-hover);
-  text-decoration: underline;
-  text-underline-offset: 0.2em;
+@theme {
+  --animate-fade: fadeInUp 0.5s both;
+
+  @keyframes fadeInUp {
+    0% {
+      opacity: 0;
+      transform: translateY(0.75rem);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
 }
 
-h1, h2, h3, h4, h5, h6 {
-  font-weight: var(--catena-fw-semibold);
-  line-height: var(--catena-lh-tight);
-  letter-spacing: var(--catena-tracking-tight);
-  margin: 0 0 var(--catena-space-4);
+@utility btn {
+  @apply inline-flex items-center justify-center rounded-full border-line border bg-transparent font-medium text-center text-base text-default leading-snug transition py-3.5 px-6 md:px-8 ease-in duration-200 focus:ring-primary focus:ring-offset-page focus:ring-2 focus:ring-offset-2 hover:bg-page-muted cursor-pointer;
 }
 
-h1 { font-size: var(--catena-fs-4xl); }
-h2 { font-size: var(--catena-fs-3xl); }
-h3 { font-size: var(--catena-fs-2xl); }
-h4 { font-size: var(--catena-fs-xl); }
-
-p {
-  margin: 0 0 var(--catena-space-4);
+@utility btn-primary {
+  @apply btn font-semibold bg-primary text-white border-primary hover:bg-secondary hover:border-secondary hover:text-white;
 }
 
-code, pre {
-  font-family: var(--catena-font-mono);
-  font-size: 0.95em;
+@utility btn-secondary {
+  @apply btn;
 }
 
-.container {
-  width: 100%;
-  max-width: var(--catena-content-default);
-  margin: 0 auto;
-  padding: 0 var(--catena-space-6);
+@utility btn-tertiary {
+  @apply btn border-none shadow-none text-muted hover:text-default;
 }
 
-.container-wide {
-  width: 100%;
-  max-width: var(--catena-content-wide);
-  margin: 0 auto;
-  padding: 0 var(--catena-space-6);
+/* Sticky header: solid page background on phones, translucent with blur from
+   the desktop breakpoint, once the page scrolls (Header.astro sets .scroll). */
+#header.scroll > div:first-child {
+  @apply bg-page lg:backdrop-blur-md border-b border-line;
+}
+@media (width >= 64rem) {
+  #header.scroll > div:first-child {
+    background-color: color-mix(in srgb, var(--catena-surface-bg) 90%, transparent);
+  }
 }
 
-.btn {
-  display: inline-flex;
-  align-items: center;
-  gap: var(--catena-space-2);
-  padding: var(--catena-space-3) var(--catena-space-6);
-  border-radius: var(--catena-radius-md);
-  font-weight: var(--catena-fw-semibold);
-  font-size: var(--catena-fs-base);
-  text-decoration: none;
-  transition: background 120ms ease, color 120ms ease, transform 120ms ease;
-  border: 1px solid transparent;
-}
-.btn:hover { text-decoration: none; transform: translateY(-1px); }
-
-.btn-primary {
-  background: var(--catena-accent);
-  color: var(--catena-neutral-0);
-}
-.btn-primary:hover {
-  background: var(--catena-primary-700);
-  color: var(--catena-neutral-0);
+#header.expanded nav {
+  position: fixed;
+  top: 70px;
+  left: 0;
+  right: 0;
+  bottom: 70px !important;
+  padding: 0 5px;
 }
 
-.btn-secondary {
-  background: transparent;
-  color: var(--catena-surface-fg);
-  border-color: var(--catena-surface-border);
-}
-.btn-secondary:hover {
-  background: var(--catena-surface-bg-muted);
-  color: var(--catena-surface-fg);
+#header nav .aw-link-active {
+  @apply text-link;
 }
 
-.muted { color: var(--catena-surface-fg-muted); }
+/* Inline code in prose without the typography plugin's backticks. */
+.prose :where(code):not(:where(pre *)) {
+  background-color: color-mix(in oklab, var(--catena-surface-fg) 8%, transparent);
+  border-radius: 0.25rem;
+  padding: 0.125rem 0.375rem;
+  font-weight: 500;
+}
+.prose :where(code):not(:where(pre *))::before,
+.prose :where(code):not(:where(pre *))::after {
+  content: none;
+}

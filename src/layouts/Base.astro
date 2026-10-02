@@ -1,10 +1,16 @@
 ---
+import "@catenahq/contracts/brand/tokens/all.css";
+import "@catenahq/contracts/brand/wordmark/conthrax.css";
 import "../styles/global.css";
+import { Font } from "astro:assets";
 import { ClientRouter } from "astro:transitions";
-import Header from "../components/Header.astro";
-import Footer from "../components/Footer.astro";
+import ApplyColorMode from "../components/astrowind/ApplyColorMode.astro";
+import Intersect from "../components/astrowind/Intersect.astro";
+import Header from "../components/astrowind/Header.astro";
+import Footer from "../components/astrowind/Footer.astro";
 import { getRelativeLocaleUrl } from "astro:i18n";
 import { t } from "@catena/i18n";
+import { headerData, footerData } from "../navigation";
 import { ogImagePathFor } from "../lib/og-pages";
 
 interface Props {
@@ -132,6 +138,9 @@ const breadcrumbJsonLd = segments.length === 0 ? null : {
     <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16.png" />
     <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
 
+    <Font cssVariable="--font-inter" preload />
+    <ApplyColorMode />
+
     <script type="application/ld+json" is:inline set:html={JSON.stringify(orgJsonLd)} />
     {breadcrumbJsonLd && (
       <script type="application/ld+json" is:inline set:html={JSON.stringify(breadcrumbJsonLd)} />
@@ -161,11 +170,12 @@ const breadcrumbJsonLd = segments.length === 0 ? null : {
     )}
     <slot name="head" />
   </head>
-  <body>
-    <Header locale={locale} />
-    <main>
+  <body class="antialiased text-default bg-page tracking-tight min-h-screen flex flex-col">
+    <Header {...headerData(locale, Astro.url.pathname)} />
+    <main class="flex-1">
       <slot />
     </main>
-    <Footer locale={locale} />
+    <Footer {...footerData(locale)} />
+    <Intersect />
   </body>
 </html>

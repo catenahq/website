@@ -7,6 +7,8 @@
 // edition column carries a bronze / silver / gold frame.
 import { t } from "@catena/i18n";
 import MatrixCell from "./MatrixCell.astro";
+import Headline from "./astrowind/Headline.astro";
+import WidgetWrapper from "./astrowind/WidgetWrapper.astro";
 import tiers from "@catenahq/contracts/pricing/tiers.json";
 
 interface Props {
@@ -44,10 +46,9 @@ const groups = [
 const base = "common.home.pricing_matrix";
 const colClass = (c: string) => `val ${c}`;
 ---
-<section id="pricing" class="matrix">
-  <div class="container">
-    <h2>{t(locale, `${base}.title`)}</h2>
-    <p class="lead muted">{t(locale, `${base}.intro`)}</p>
+<WidgetWrapper id="pricing" muted>
+  <div class="matrix">
+    <Headline title={t(locale, `${base}.title`)} subtitle={t(locale, `${base}.intro`)} />
 
     <div class="table-wrap">
       <table>
@@ -114,17 +115,14 @@ const colClass = (c: string) => `val ${c}`;
       </table>
     </div>
   </div>
-</section>
+</WidgetWrapper>
 
 <style>
   .matrix {
-    padding: var(--catena-space-24) 0;
-    background: var(--catena-surface-bg-muted);
     --m-bronze: #b08d57;
     --m-silver: #9aa0a6;
     --m-gold: #e6b800;
   }
-  .lead { margin-bottom: var(--catena-space-10); max-width: 56rem; }
 
   .table-wrap { overflow-x: auto; }
   table {

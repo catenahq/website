@@ -1,19 +1,62 @@
 ---
 import Base from "../../layouts/Base.astro";
-import Hero from "../../components/Hero.astro";
-import Capabilities from "../../components/Capabilities.astro";
-import Apps from "../../components/Apps.astro";
+import Hero from "../../components/astrowind/Hero.astro";
+import Features2 from "../../components/astrowind/Features2.astro";
+import Content from "../../components/astrowind/Content.astro";
+import CallToAction from "../../components/astrowind/CallToAction.astro";
 import PricingMatrix from "../../components/PricingMatrix.astro";
-import CTA from "../../components/CTA.astro";
-import { locales } from "@catena/i18n";
+import { locales, t } from "@catena/i18n";
 
 export const getStaticPaths = () => locales.map((locale) => ({ params: { locale } }));
 const locale = Astro.params.locale as "en" | "fr";
+
+const book = {
+  variant: "primary" as const,
+  text: t(locale, "common.cta.book_discovery"),
+  href: t(locale, "common.cta.discovery_url"),
+};
+
+// The six capabilities the environment provides, each with its icon.
+const features = [
+  ["secure_connections", "tabler:shield-lock"],
+  ["backups", "tabler:database-export"],
+  ["sso", "tabler:key"],
+  ["safe_updates", "tabler:refresh"],
+  ["admin_dashboard", "tabler:layout-dashboard"],
+  ["monitoring", "tabler:bell-ringing"],
+].map(([key, icon]) => ({
+  title: t(locale, `common.home.features.items.${key}.title`),
+  description: t(locale, `common.home.features.items.${key}.body`),
+  icon,
+}));
 ---
 <Base locale={locale}>
-  <Hero locale={locale} />
-  <Capabilities locale={locale} />
-  <Apps locale={locale} />
+  <Hero
+    title={t(locale, "common.home.hero.headline")}
+    subtitle={t(locale, "common.home.hero.subheadline")}
+    actions={[book, { variant: "secondary", text: t(locale, "common.cta.see_features"), href: "#features" }]}
+  />
+  <Features2
+    id="features"
+    title={t(locale, "common.home.features.title")}
+    subtitle={t(locale, "common.home.features.subtitle")}
+    items={features}
+    muted
+  />
+  <Content
+    id="apps"
+    title={t(locale, "common.home.apps.title")}
+    subtitle={t(locale, "common.home.apps.intro")}
+    items={[
+      { description: t(locale, "common.home.apps.discover"), icon: "tabler:world" },
+      { description: t(locale, "common.home.apps.catalog"), icon: "tabler:apps" },
+    ]}
+    columns={2}
+  />
   <PricingMatrix locale={locale} />
-  <CTA locale={locale} />
+  <CallToAction
+    title={t(locale, "common.home.cta.title")}
+    subtitle={t(locale, "common.home.cta.subtitle")}
+    actions={[book]}
+  />
 </Base>

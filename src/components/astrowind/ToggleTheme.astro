@@ -1,0 +1,53 @@
+---
+import { Icon } from "astro-icon/components";
+
+interface Props {
+  label: string;
+}
+
+const { label } = Astro.props;
+---
+
+<aw-theme-toggle>
+  <button
+    type="button"
+    class="text-muted hover:bg-page-muted focus:outline-none focus:ring-4 focus:ring-line rounded-lg text-sm p-2.5 inline-flex items-center"
+    aria-label={label}
+    data-aw-toggle-color-scheme
+  >
+    <span class="relative block w-6 h-6 lg:w-5 lg:h-5">
+      <Icon
+        name="tabler:moon"
+        class="absolute inset-0 h-full w-full transition-[opacity,transform] duration-200 motion-reduce:transition-none [html.dark_&]:-rotate-90 [html.dark_&]:scale-0 [html.dark_&]:opacity-0"
+      />
+      <Icon
+        name="tabler:sun"
+        class="absolute inset-0 h-full w-full rotate-90 scale-0 opacity-0 transition-[opacity,transform] duration-200 motion-reduce:transition-none [html.dark_&]:rotate-0 [html.dark_&]:scale-100 [html.dark_&]:opacity-100"
+      />
+    </span>
+  </button>
+</aw-theme-toggle>
+
+<style>
+  aw-theme-toggle {
+    display: contents;
+  }
+</style>
+
+<script>
+  class AwThemeToggle extends HTMLElement {
+    connectedCallback() {
+      this.querySelector("[data-aw-toggle-color-scheme]")?.addEventListener("click", () => {
+        const root = document.documentElement;
+        const isDark = root.classList.toggle("dark");
+        root.classList.toggle("light", !isDark);
+        localStorage.theme = isDark ? "dark" : "light";
+        document.dispatchEvent(new CustomEvent("aw:theme-change"));
+      });
+    }
+  }
+
+  if (!customElements.get("aw-theme-toggle")) {
+    customElements.define("aw-theme-toggle", AwThemeToggle);
+  }
+</script>

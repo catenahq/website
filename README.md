@@ -43,6 +43,23 @@ returns every entry of `locales` from `@catena/i18n`, so it renders at
 Use the `Base.astro` layout with the page's `locale`. Page strings live
 in `src/i18n/<lang>/`, with the same keys in every locale.
 
+## Styling
+
+Tailwind CSS. `src/styles/global.css` loads the brand theme from
+`@catenahq/contracts/brand/theme.css` (utilities such as `bg-page`,
+`text-heading`, `text-muted`, `border-line`, `bg-primary`) and defines
+the button utilities (`btn-primary`, `btn-secondary`, `btn-tertiary`).
+Sections are built from the widgets in `src/components/astrowind/`,
+adapted from AstroWind (MIT, notice in that directory): `Hero`,
+`Features2`, `Content`, `CallToAction`, inside `WidgetWrapper` with a
+`Headline`. Header and footer content per locale comes from
+`src/navigation.ts`. Icons are Tabler icons through astro-icon; a new
+icon name is added to the `include` list in `astro.config.mjs`.
+
+The theme toggle stores the visitor's choice and sets `dark` or `light`
+on `<html>`; the brand tokens and Tailwind's `dark:` variant both read
+it, and the OS preference applies when nothing is stored.
+
 ## Add a language
 
 1. Add it to `astro.config.mjs::i18n.locales`.

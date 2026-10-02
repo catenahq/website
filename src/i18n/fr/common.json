@@ -6,7 +6,10 @@
   "nav": {
     "docs": "Documentation",
     "contact": "Contact",
-    "status": "État des services"
+    "status": "État des services",
+    "main_label": "Navigation principale",
+    "toggle_menu": "Ouvrir ou fermer le menu",
+    "toggle_theme": "Basculer entre le mode clair et le mode sombre"
   },
   "cta": {
     "primary": "Commencer",
@@ -25,7 +28,8 @@
     "col_company": "Entreprise",
     "col_legal": "Mentions légales",
     "portfolio": "Portfolio",
-    "github": "GitHub"
+    "github": "GitHub",
+    "nav_label": "Pied de page"
   },
   "lang": {
     "en": "English",
@@ -285,6 +289,10 @@
       },
       "yes_label": "Inclus",
       "no_label": "Non inclus"
+    },
+    "cta": {
+      "title": "Prêt à reprendre possession de vos données ?",
+      "subtitle": "Une démo de 30 minutes suffit pour confirmer si catena correspond à votre cas d'usage."
     }
   },
   "contact": {

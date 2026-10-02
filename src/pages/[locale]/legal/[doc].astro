@@ -1,6 +1,7 @@
 ---
 import Base from "../../../layouts/Base.astro";
 import PageTitle from "../../../components/PageTitle.astro";
+import Prose from "../../../components/Prose.astro";
 import { marked } from "marked";
 import msa from "@catenahq/contracts/legal/msa.json";
 import { readFileSync } from "node:fs";
@@ -32,58 +33,18 @@ const pageTitle = t(locale, `${key}.title`);
 ---
 <Base locale={locale} title={pageTitle} description={t(locale, `${key}.description`)}>
   <PageTitle title={pageTitle} intro={t(locale, `${key}.intro`)} />
-  <section class="prose">
-    <div class="container">
-      <p class="version-pin">
-        {doc === "master-agreement" ? (
-          <Fragment>
-            Version: <code>{msa.version.slice(0, 12)}</code>
-            &middot; {`${t(locale, "common.legal.effective")} ${msa.effectiveDate}`}
-          </Fragment>
-        ) : (
-          <a href={`/${locale}/legal/master-agreement`}>{t(locale, "common.legal.master-agreement.title")}</a>
-        )}
-        &middot; <a href={`/${altLocale}/legal/${doc}`} class="alt-locale">{t(locale, `common.lang.${altLocale}`)}</a>
-      </p>
-      <article set:html={html}></article>
-    </div>
-  </section>
+  <Prose>
+    <p class="not-prose rounded-md border border-line bg-page-muted px-5 py-4 text-sm">
+      {doc === "master-agreement" ? (
+        <Fragment>
+          Version: <code class="font-mono">{msa.version.slice(0, 12)}</code>
+          &middot; {`${t(locale, "common.legal.effective")} ${msa.effectiveDate}`}
+        </Fragment>
+      ) : (
+        <a class="text-link underline" href={`/${locale}/legal/master-agreement`}>{t(locale, "common.legal.master-agreement.title")}</a>
+      )}
+      &middot; <a href={`/${altLocale}/legal/${doc}`} class="text-link underline">{t(locale, `common.lang.${altLocale}`)}</a>
+    </p>
+    <Fragment set:html={html} />
+  </Prose>
 </Base>
-
-<style>
-  .prose { padding: var(--catena-space-8) 0 var(--catena-space-24); }
-  .prose article { max-width: 64rem; }
-  .prose article h1 { font-size: var(--catena-fs-2xl); margin: 0 0 var(--catena-space-6); }
-  .prose article h2 { font-size: var(--catena-fs-xl); margin: var(--catena-space-8) 0 var(--catena-space-3); }
-  .prose article h3 { font-size: var(--catena-fs-lg); margin: var(--catena-space-6) 0 var(--catena-space-2); }
-  .prose article p, .prose article li {
-    line-height: var(--catena-lh-relaxed);
-    margin: 0 0 var(--catena-space-3);
-  }
-  .prose article ul { padding-left: var(--catena-space-6); margin: 0 0 var(--catena-space-4); }
-  .prose article table { border-collapse: collapse; margin: 0 0 var(--catena-space-4); }
-  .prose article th, .prose article td {
-    border: 1px solid var(--catena-border);
-    padding: var(--catena-space-2) var(--catena-space-3);
-    text-align: left;
-  }
-  .prose article blockquote {
-    padding: var(--catena-space-4) var(--catena-space-5);
-    border-left: 3px solid var(--catena-accent);
-    background: var(--catena-surface-bg-muted);
-    border-radius: var(--catena-radius-sm);
-    margin: var(--catena-space-4) 0;
-  }
-  .prose article code { font-family: var(--catena-font-mono); font-size: 0.9em; }
-  .version-pin {
-    padding: var(--catena-space-4) var(--catena-space-5);
-    border: 1px solid var(--catena-border);
-    background: var(--catena-surface-bg-muted);
-    border-radius: var(--catena-radius-sm);
-    max-width: 64rem;
-    margin-bottom: var(--catena-space-6);
-    font-size: var(--catena-fs-sm);
-  }
-  .version-pin code { font-family: var(--catena-font-mono); }
-  .alt-locale { text-decoration: underline; }
-</style>

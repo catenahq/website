@@ -6,7 +6,10 @@
   "nav": {
     "docs": "Docs",
     "contact": "Contact",
-    "status": "Service status"
+    "status": "Service status",
+    "main_label": "Main navigation",
+    "toggle_menu": "Open or close the menu",
+    "toggle_theme": "Switch between light and dark mode"
   },
   "cta": {
     "primary": "Get started",
@@ -25,7 +28,8 @@
     "col_company": "Company",
     "col_legal": "Legal",
     "portfolio": "Portfolio",
-    "github": "GitHub"
+    "github": "GitHub",
+    "nav_label": "Footer"
   },
   "lang": {
     "en": "English",
@@ -285,6 +289,10 @@
       },
       "yes_label": "Included",
       "no_label": "Not included"
+    },
+    "cta": {
+      "title": "Ready to own your data again?",
+      "subtitle": "A 30-minute call is enough to confirm whether catena fits your use case."
     }
   },
   "contact": {

@@ -1,0 +1,58 @@
+---
+import { Icon } from "astro-icon/components";
+import Headline from "./Headline.astro";
+import WidgetWrapper from "./WidgetWrapper.astro";
+import { getColumnsClass, type Item } from "./types";
+
+interface Props {
+  title?: string;
+  subtitle?: string;
+  /** Body text, HTML. */
+  content?: string;
+  items?: Item[];
+  columns?: number;
+  id?: string;
+  muted?: boolean;
+}
+
+const { title, subtitle, content, items = [], columns, id, muted = false } = Astro.props;
+---
+
+<WidgetWrapper id={id} muted={muted} containerClass="max-w-5xl">
+  <Headline
+    title={title}
+    subtitle={subtitle}
+    classes={{
+      container: "max-w-xl sm:mx-auto lg:max-w-2xl",
+      title: "text-4xl md:text-5xl font-bold tracking-tight mb-4 font-heading",
+      subtitle: "max-w-3xl mx-auto sm:text-center text-xl text-muted",
+    }}
+  />
+  {content && <div class="mb-12 text-lg text-default [&_p]:mb-4 [&_a]:text-link [&_a]:underline [&_code]:font-mono" set:html={content} />}
+  {
+    items.length > 0 && (
+      <div class:list={["grid mx-auto gap-y-4 md:gap-y-8 gap-8", getColumnsClass(columns)]}>
+        {items.map(({ title: itemTitle, description, icon }) => (
+          <div class="flex flex-row max-w-none intersect-once motion-safe:md:opacity-0 motion-safe:md:intersect:animate-fade">
+            <div class="flex justify-center">
+              <Icon
+                name={icon || "tabler:check"}
+                class="flex h-7 w-7 items-center justify-center rounded-full bg-primary text-white p-1 mr-2"
+              />
+            </div>
+            <div class="mt-0.5">
+              {itemTitle && <h3 class="text-lg font-medium leading-6 text-heading ml-2">{itemTitle}</h3>}
+              {description && (
+                <p
+                  class:list={[{ "mt-3": itemTitle }, "text-muted ml-2 [&_a]:text-link [&_a]:underline"]}
+                  set:html={description}
+                />
+              )}
+            </div>
+          </div>
+        ))}
+      </div>
+    )
+  }
+  <slot />
+</WidgetWrapper>

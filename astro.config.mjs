@@ -1,6 +1,8 @@
-import { defineConfig } from "astro/config";
+import { defineConfig, fontProviders } from "astro/config";
 import { fileURLToPath } from "node:url";
 import sitemap from "@astrojs/sitemap";
+import tailwindcss from "@tailwindcss/vite";
+import icon from "astro-icon";
 
 // catena.run -- public marketing site.
 //
@@ -11,6 +13,10 @@ import sitemap from "@astrojs/sitemap";
 //
 // Output: static. GitHub Pages serves dist/
 // (.github/workflows/deploy-pages.yml). No runtime JS framework.
+//
+// Styling: Tailwind CSS (src/styles/global.css) over the brand theme in
+// @catenahq/contracts, with components adapted from AstroWind under
+// src/components/astrowind/. Inter is self-hosted through the Fonts API.
 //
 // SEO: the sitemap emits hreflang alternates per locale and is
 // referenced from public/robots.txt.
@@ -49,7 +55,27 @@ export default defineConfig({
     "/fr/guides/comptes-fournisseurs":    "https://docs.catena.run/fr/guides/provider-accounts/",
     "/fr/guides/dns-durci":               "https://docs.catena.run/fr/guides/dns-hardening/",
   },
+  fonts: [
+    {
+      provider: fontProviders.fontsource(),
+      name: "Inter",
+      cssVariable: "--font-inter",
+      weights: ["100 900"],
+      styles: ["normal"],
+      subsets: ["latin", "latin-ext"],
+      fallbacks: ["sans-serif"],
+    },
+  ],
   integrations: [
+    // Only the Tabler icons the pages name are bundled.
+    icon({
+      include: {
+        tabler: [
+          "moon", "sun", "check", "brand-github", "world", "apps",
+          "shield-lock", "database-export", "key", "refresh", "layout-dashboard", "bell-ringing",
+        ],
+      },
+    }),
     sitemap({
       i18n: {
         defaultLocale: "en",
@@ -61,6 +87,7 @@ export default defineConfig({
     }),
   ],
   vite: {
+    plugins: [tailwindcss()],
     resolve: {
       alias: {
         "@catena/i18n": fileURLToPath(new URL("./src/i18n/index.js", import.meta.url)),
