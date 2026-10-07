@@ -1,5 +1,5 @@
 ---
-// Community / Pro / Enterprise capability matrix for the home page.
+// Community / Catena Pro / Catena Business capability matrix for the home page.
 // Columns are the client-facing edition names (never the internal
 // catena-ce / -ee binary names). This is "what you get per edition," a
 // billing/managed-scope view -- not license gating. Every cell is a
@@ -28,7 +28,8 @@ const priceCell = (c: string) =>
   c === "business" ? proPrice : t(locale, `${base}.prices.${c}`);
 
 // Edition columns, in order: community (bronze), business (silver),
-// enterprise (gold). The `business` key drives the "Pro" label.
+// enterprise (gold). The keys are the generated matrix's tier names: the
+// `business` key is labelled Catena Pro, the `enterprise` key Catena Business.
 const cols = ["community", "business", "enterprise"] as const;
 
 // Group + row order. Cells resolve from

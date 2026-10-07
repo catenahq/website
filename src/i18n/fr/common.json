@@ -87,12 +87,12 @@
       "catalog": "Consultez notre catalogue d'applications préintégrées sur <a href='https://github.com/catenahq/catena-templates' target='_blank' rel='noopener noreferrer'>github.com/catenahq/catena-templates</a> ou <a href='https://docs.catena.run/fr/manage-apps/'>apprenez à configurer le déploiement de vos applications pour Catena</a>."
     },
     "pricing_matrix": {
-      "title": "Communauté, Pro ou Entreprise",
-      "intro": "Vous hébergez chaque édition. L'édition Communauté est gratuite et auto-hébergée. L'édition Pro ajoute l'automatisation qui la maintient à jour, sauvegardée et supervisée automatiquement. L'édition Entreprise ajoute un support dédié et des SLA par application. Voici ce que chaque édition inclut.",
+      "title": "Communauté, Catena Pro ou Catena Business",
+      "intro": "Chaque édition s'exécute sur le serveur de l'organisation. L'édition Communauté est gratuite et auto-hébergée. Catena Pro ajoute l'automatisation qui la maintient à jour, sauvegardée et supervisée automatiquement. Catena Business ajoute un support dédié et des SLA par application. Voici ce que chaque édition inclut.",
       "cols": {
         "community": "Communauté",
-        "business": "Pro",
-        "enterprise": "Entreprise"
+        "business": "Catena Pro",
+        "enterprise": "Catena Business"
       },
       "prices": {
         "community": "Gratuit",
@@ -346,7 +346,7 @@
     "intro": "Ces conditions encadrent la relation entre Catena (le prestataire de services) et vous (le client). Elles sont volontairement concises -- la lettre de mandat signée à l'inscription est le contrat de référence ; cette page en résume les engagements principaux.",
     "review_notice": "Cette page est un brouillon en attente de révision juridique. Parlez-nous directement pour les conditions contractuelles dans votre lettre de mandat.",
     "scope_title": "Portée du service",
-    "scope_body": "Votre abonnement Catena Pro -- un forfait fixe par serveur, applications illimitées -- définit ce qui est inclus, avec le support manuel facturé à l'heure selon l'usage. Voir la <a href='/#pricing'>section Tarifs</a> pour le modèle public. Les changements de portée sont convenus par écrit.",
+    "scope_body": "L'abonnement, Catena Pro ou Catena Business -- un forfait fixe par serveur, applications illimitées -- définit ce qui est inclus, avec le support manuel facturé à l'heure selon l'usage. Voir la <a href='/#pricing'>section Tarifs</a> pour le modèle public. Les changements de portée sont convenus par écrit.",
     "billing_title": "Tarification et facturation",
     "billing_body": "L'abonnement géré est un forfait fixe par serveur, facturé mensuellement, sans engagement minimum. Le support manuel est facturé au tarif publié par tranches de 15 minutes, selon l'usage. Paiement et taxes de vente via Polar, le marchand officiel.",
     "ownership_title": "Propriété des données",

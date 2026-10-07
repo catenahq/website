@@ -87,12 +87,12 @@
       "catalog": "Check out our pre-integrated app catalog at <a href='https://github.com/catenahq/catena-templates' target='_blank' rel='noopener noreferrer'>github.com/catenahq/catena-templates</a> or <a href='https://docs.catena.run/en/manage-apps/'>learn how to configure your apps' deployment for Catena</a>."
     },
     "pricing_matrix": {
-      "title": "Community, Pro, or Enterprise",
-      "intro": "You host every edition. Community is free and self-hosted. Pro adds the automation that keeps it patched, backed up, and monitored automatically. Enterprise adds dedicated support and per-app SLAs. Here is what each one includes.",
+      "title": "Community, Catena Pro, or Catena Business",
+      "intro": "Every edition runs on the organization's own server. Community is free and self-hosted. Catena Pro adds the automation that keeps it patched, backed up, and monitored automatically. Catena Business adds dedicated support and per-app SLAs. Here is what each one includes.",
       "cols": {
         "community": "Community",
-        "business": "Pro",
-        "enterprise": "Enterprise"
+        "business": "Catena Pro",
+        "enterprise": "Catena Business"
       },
       "prices": {
         "community": "Free",
@@ -346,7 +346,7 @@
     "intro": "These terms cover the relationship between Catena (the service provider) and you (the client). They are deliberately concise -- the engagement letter you sign at signup is the canonical contract; this page summarizes its main commitments.",
     "review_notice": "This page is a draft pending legal review. Talk to us directly for the binding terms in your engagement letter.",
     "scope_title": "Service scope",
-    "scope_body": "Your Catena Pro subscription -- one flat retainer per server, unlimited apps -- defines what is included, with hands-on support billed hourly as used. See the <a href='/en/#pricing'>pricing section</a> for the public model. Changes to scope are agreed in writing.",
+    "scope_body": "The subscription, Catena Pro or Catena Business -- one flat price per server, unlimited apps -- defines what is included, with hands-on support billed hourly as used. See the <a href='/en/#pricing'>pricing section</a> for the public model. Changes to scope are agreed in writing.",
     "billing_title": "Pricing and billing",
     "billing_body": "The managed subscription is one flat retainer per server, billed monthly, with no minimum term. Hands-on support is billed at the published rate in 15-minute increments, as used. Payment and sales tax via Polar, the merchant of record.",
     "ownership_title": "Data ownership",
