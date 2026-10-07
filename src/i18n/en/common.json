@@ -153,7 +153,7 @@
             "audit": {
               "label": "Audit log panel",
               "community": "no",
-              "business": "yes",
+              "business": "no",
               "enterprise": "yes"
             },
             "attestation": {
