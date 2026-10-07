@@ -2,9 +2,10 @@
 // Community / Catena Pro / Catena Business capability matrix for the home page.
 // Columns are the client-facing edition names (never the internal
 // catena-ce / -ee binary names). This is "what you get per edition," a
-// billing/managed-scope view -- not license gating. Every cell is a
-// binary yes/no rendered as a green check or red x by MatrixCell. Each
-// edition column carries a bronze / silver / gold frame.
+// billing/managed-scope view -- not license gating. A cell is "yes" or
+// "no", rendered as a green check or red x by MatrixCell, or a short text
+// such as an included quantity. Each edition column carries a bronze /
+// silver / gold frame.
 import { t } from "@catena/i18n";
 import MatrixCell from "./MatrixCell.astro";
 import Headline from "./astrowind/Headline.astro";
@@ -40,8 +41,8 @@ const groups = [
   { key: "identity", rows: ["sso", "audit", "attestation"] },
   { key: "updates", rows: ["manual_updates", "version_cve_visibility", "auto_updates", "cve_remediation"] },
   { key: "observability", rows: ["dashboard", "internal_alerts", "external_alerts", "central"] },
-  { key: "data", rows: ["manual_backups", "scheduled_backups", "subdaily", "immutable"] },
-  { key: "support", rows: ["community_support", "helpdesk", "oncall", "installation", "sla"] },
+  { key: "data", rows: ["manual_backups", "scheduled_backups", "immutable"] },
+  { key: "support", rows: ["community_support", "helpdesk", "assistance", "oncall", "installation", "sla"] },
 ] as const;
 
 const base = "common.home.pricing_matrix";

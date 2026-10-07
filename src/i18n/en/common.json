@@ -59,8 +59,8 @@
           "body": "Reach your services through dedicated Admin and App tunnels, with DDoS protection and network-port reconciliation."
         },
         "backups": {
-          "title": "Backups",
-          "body": "Keep your data safe with verifiable, incremental backups."
+          "title": "Backup, restore, and migrate",
+          "body": "Keep your data safe with verifiable, incremental backups, then restore a single app or the whole server, or move it to a new machine."
         },
         "sso": {
           "title": "Single sign-on",
@@ -88,7 +88,7 @@
     },
     "pricing_matrix": {
       "title": "Community, Catena Pro, or Catena Business",
-      "intro": "Every edition runs on the organization's own server. Community is free and self-hosted. Catena Pro adds the automation that keeps it patched, backed up, and monitored automatically. Catena Business adds dedicated support and per-app SLAs. Here is what each one includes.",
+      "intro": "Every edition runs on the organization's own server. Community is free and self-hosted. Catena Pro adds the automation that keeps it patched, backed up, and monitored automatically. Catena Business adds included assistance hours and a service-level agreement. Here is what each one includes.",
       "cols": {
         "community": "Community",
         "business": "Catena Pro",
@@ -186,7 +186,7 @@
               "enterprise": "yes"
             },
             "cve_remediation": {
-              "label": "CVE remediation",
+              "label": "Automatic CVE remediation",
               "community": "no",
               "business": "yes",
               "enterprise": "yes"
@@ -209,13 +209,13 @@
               "enterprise": "yes"
             },
             "external_alerts": {
-              "label": "Independent uptime monitoring",
+              "label": "External uptime monitoring",
               "community": "no",
               "business": "yes",
               "enterprise": "yes"
             },
             "central": {
-              "label": "Centralized monitoring",
+              "label": "Monitoring-as-a-service",
               "community": "no",
               "business": "no",
               "enterprise": "yes"
@@ -232,19 +232,13 @@
               "enterprise": "yes"
             },
             "scheduled_backups": {
-              "label": "Weekly scheduled backup",
-              "community": "yes",
-              "business": "yes",
-              "enterprise": "yes"
-            },
-            "subdaily": {
-              "label": "Daily and sub-daily cadence",
+              "label": "Scheduled backups",
               "community": "no",
               "business": "yes",
               "enterprise": "yes"
             },
             "immutable": {
-              "label": "Offsite immutable backups",
+              "label": "Additional immutable backups",
               "community": "no",
               "business": "yes",
               "enterprise": "yes"
@@ -279,10 +273,16 @@
               "enterprise": "yes"
             },
             "sla": {
-              "label": "Per-app SLA",
+              "label": "Service-level agreement support",
               "community": "no",
               "business": "no",
               "enterprise": "yes"
+            },
+            "assistance": {
+              "label": "Included assistance",
+              "community": "no",
+              "business": "no",
+              "enterprise": "2 hours / month"
             }
           }
         }

@@ -59,8 +59,8 @@
           "body": "Atteignez vos services par des tunnels Admin et Applications dédiés, avec protection DDoS et réconciliation des ports réseau."
         },
         "backups": {
-          "title": "Sauvegardes",
-          "body": "Gardez vos données en sûreté grâce à des sauvegardes incrémentielles et vérifiables."
+          "title": "Sauvegarde, restauration et migration",
+          "body": "Gardez vos données en sûreté grâce à des sauvegardes incrémentielles et vérifiables, puis restaurez une seule application ou le serveur entier, ou déplacez-le vers une nouvelle machine."
         },
         "sso": {
           "title": "Authentification unique",
@@ -88,7 +88,7 @@
     },
     "pricing_matrix": {
       "title": "Communauté, Catena Pro ou Catena Business",
-      "intro": "Chaque édition s'exécute sur le serveur de l'organisation. L'édition Communauté est gratuite et auto-hébergée. Catena Pro ajoute l'automatisation qui la maintient à jour, sauvegardée et supervisée automatiquement. Catena Business ajoute un support dédié et des SLA par application. Voici ce que chaque édition inclut.",
+      "intro": "Chaque édition s'exécute sur le serveur de l'organisation. L'édition Communauté est gratuite et auto-hébergée. Catena Pro ajoute l'automatisation qui la maintient à jour, sauvegardée et supervisée automatiquement. Catena Business ajoute des heures d'assistance incluses et une entente de niveau de service. Voici ce que chaque édition inclut.",
       "cols": {
         "community": "Communauté",
         "business": "Catena Pro",
@@ -186,7 +186,7 @@
               "enterprise": "yes"
             },
             "cve_remediation": {
-              "label": "Correction des CVE",
+              "label": "Correction automatique des CVE",
               "community": "no",
               "business": "yes",
               "enterprise": "yes"
@@ -209,13 +209,13 @@
               "enterprise": "yes"
             },
             "external_alerts": {
-              "label": "Supervision indépendante de la disponibilité",
+              "label": "Supervision externe de la disponibilité",
               "community": "no",
               "business": "yes",
               "enterprise": "yes"
             },
             "central": {
-              "label": "Supervision centralisée",
+              "label": "Supervision en tant que service",
               "community": "no",
               "business": "no",
               "enterprise": "yes"
@@ -232,19 +232,13 @@
               "enterprise": "yes"
             },
             "scheduled_backups": {
-              "label": "Sauvegarde hebdomadaire planifiée",
-              "community": "yes",
-              "business": "yes",
-              "enterprise": "yes"
-            },
-            "subdaily": {
-              "label": "Cadence quotidienne et infra-quotidienne",
+              "label": "Sauvegardes planifiées",
               "community": "no",
               "business": "yes",
               "enterprise": "yes"
             },
             "immutable": {
-              "label": "Sauvegardes immuables hors site",
+              "label": "Sauvegardes immuables supplémentaires",
               "community": "no",
               "business": "yes",
               "enterprise": "yes"
@@ -279,10 +273,16 @@
               "enterprise": "yes"
             },
             "sla": {
-              "label": "SLA par application",
+              "label": "Soutien selon une entente de niveau de service",
               "community": "no",
               "business": "no",
               "enterprise": "yes"
+            },
+            "assistance": {
+              "label": "Assistance incluse",
+              "community": "no",
+              "business": "no",
+              "enterprise": "2 heures / mois"
             }
           }
         }
