@@ -4,7 +4,8 @@
 # The custom domain catena.run is set via public/CNAME (persisted on
 # deploy). Runs on push to main (the protected deploy branch), and daily
 # so a price changed in Polar reaches the site; dev is the active-edit
-# branch and does not deploy.
+# branch and does not deploy. Every run builds main: a scheduled run
+# starts on the default branch, which is dev.
 #
 # @catenahq/contracts is consumed via sibling read (file:../contracts);
 # the build checks out catenahq/contracts alongside. contracts is
@@ -38,6 +39,7 @@ jobs:
       - name: Check out website
         uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7
         with:
+          ref: main
           path: website
           persist-credentials: false
       - name: Check out sibling contracts
