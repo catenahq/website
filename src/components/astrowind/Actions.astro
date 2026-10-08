@@ -1,0 +1,23 @@
+---
+// A centred row of call-to-action buttons, stacked on phones.
+import { twMerge } from "tailwind-merge";
+import Button from "./Button.astro";
+import type { CallToAction } from "./types";
+
+interface Props {
+  actions: CallToAction[];
+  class?: string;
+}
+
+const { actions, class: className = "" } = Astro.props;
+---
+
+<div class={twMerge("max-w-xs sm:max-w-md m-auto flex flex-nowrap flex-col sm:flex-row sm:justify-center gap-4", className)}>
+  {
+    actions.map((action) => (
+      <div class="flex w-full sm:w-auto">
+        <Button {...action} class="w-full sm:mb-0 whitespace-nowrap" />
+      </div>
+    ))
+  }
+</div>

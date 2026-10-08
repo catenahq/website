@@ -1,5 +1,8 @@
 ---
 import { t } from "@catena/i18n";
+import Button from "./astrowind/Button.astro";
+import Headline from "./astrowind/Headline.astro";
+import WidgetWrapper from "./astrowind/WidgetWrapper.astro";
 
 interface Props {
   locale: "en" | "fr";
@@ -7,139 +10,51 @@ interface Props {
 
 const { locale } = Astro.props;
 
-const intents = [
-  { value: "managed", labelKey: "intent_managed" },
-  { value: "community", labelKey: "intent_community" },
-  { value: "website", labelKey: "intent_website" },
-  { value: "partnership", labelKey: "intent_partnership" },
-  { value: "other", labelKey: "intent_other" },
-];
+const intents = ["managed", "community", "website", "partnership", "other"];
+const k = (key: string) => t(locale, `common.contact.form.${key}`);
+const field = "py-3 px-4 block w-full rounded-lg border border-line bg-page text-default font-normal";
 ---
-<section class="contact-form">
-  <div class="container">
-    <div class="form-wrap">
-      <h2>{t(locale, "common.contact.form.title")}</h2>
-      <p class="muted lead">{t(locale, "common.contact.form.intro")}</p>
-      <!--
-        TODO before launch: wire to a Cloudflare Worker or Formspree
-        endpoint and replace the action URL below. The Worker should
-        forward to hello@catena.run + post to a healthchecks-style
-        monitor so missed submissions get noticed.
-      -->
-      <form action="https://formspree.io/f/REPLACE" method="POST" class="form">
-        <label>
-          <span>{t(locale, "common.contact.form.name_label")}</span>
-          <input type="text" name="name" required autocomplete="name" />
-        </label>
-        <label>
-          <span>{t(locale, "common.contact.form.email_label")}</span>
-          <input type="email" name="email" required autocomplete="email" />
-        </label>
-        <label>
-          <span>{t(locale, "common.contact.form.company_label")}</span>
-          <input type="text" name="company" autocomplete="organization" />
-        </label>
-        <fieldset>
-          <legend>{t(locale, "common.contact.form.intent_label")}</legend>
-          {intents.map((intent) => (
-            <label class="check">
-              <input type="checkbox" name="intent" value={intent.value} />
-              <span>{t(locale, `common.contact.form.${intent.labelKey}`)}</span>
-            </label>
-          ))}
-        </fieldset>
-        <label>
-          <span>{t(locale, "common.contact.form.message_label")}</span>
-          <textarea name="message" required rows="6"></textarea>
-        </label>
-        <button type="submit" class="btn btn-primary">
-          {t(locale, "common.contact.form.submit_label")}
-        </button>
-      </form>
-      <p class="response muted">{t(locale, "common.contact.response_body")}</p>
-      <p class="fallback muted">
-        {t(locale, "common.contact.form.mailto_fallback")}
-        <a href="mailto:hello@catena.run">hello@catena.run</a>
-      </p>
-    </div>
+<WidgetWrapper muted>
+  <Headline title={k("title")} subtitle={k("intro")} />
+  <div class="flex flex-col max-w-xl mx-auto rounded-lg border border-line bg-page shadow p-4 sm:p-6 lg:p-8 w-full">
+    <!--
+      TODO before launch: wire to a Cloudflare Worker or Formspree
+      endpoint and replace the action URL below. The Worker should
+      forward to hello@catena.run + post to a healthchecks-style
+      monitor so missed submissions get noticed.
+    -->
+    <form action="https://formspree.io/f/REPLACE" method="POST" class="grid gap-6">
+      <label class="flex flex-col gap-2 text-sm font-medium">
+        {k("name_label")}
+        <input type="text" name="name" required autocomplete="name" class={field} />
+      </label>
+      <label class="flex flex-col gap-2 text-sm font-medium">
+        {k("email_label")}
+        <input type="email" name="email" required autocomplete="email" class={field} />
+      </label>
+      <label class="flex flex-col gap-2 text-sm font-medium">
+        {k("company_label")}
+        <input type="text" name="company" autocomplete="organization" class={field} />
+      </label>
+      <fieldset class="flex flex-col gap-2 rounded-lg border border-line p-4">
+        <legend class="px-2 text-sm font-medium">{k("intent_label")}</legend>
+        {intents.map((intent) => (
+          <label class="flex items-center gap-2 text-sm">
+            <input type="checkbox" name="intent" value={intent} class="accent-primary" />
+            {k(`intent_${intent}`)}
+          </label>
+        ))}
+      </fieldset>
+      <label class="flex flex-col gap-2 text-sm font-medium">
+        {k("message_label")}
+        <textarea name="message" required rows="6" class:list={[field, "resize-y"]}></textarea>
+      </label>
+      <Button variant="primary" type="submit">{k("submit_label")}</Button>
+    </form>
+    <p class="mt-6 text-center text-sm text-muted">{t(locale, "common.contact.response_body")}</p>
+    <p class="mt-3 text-center text-sm text-muted">
+      {k("mailto_fallback")}
+      <a class="text-link underline" href="mailto:hello@catena.run">hello@catena.run</a>
+    </p>
   </div>
-</section>
-
-<style>
-  .contact-form {
-    padding: var(--catena-space-12) 0 var(--catena-space-24);
-    background: var(--catena-surface-bg-muted);
-  }
-  .form-wrap {
-    max-width: var(--catena-content-narrow);
-    margin: 0 auto;
-    text-align: center;
-  }
-  .form-wrap h2 {
-    text-align: center;
-  }
-  .lead {
-    margin-bottom: var(--catena-space-8);
-    text-align: center;
-  }
-  .form {
-    display: grid;
-    gap: var(--catena-space-5);
-    text-align: left;
-  }
-  label {
-    display: flex;
-    flex-direction: column;
-    gap: var(--catena-space-2);
-    font-size: var(--catena-fs-sm);
-    font-weight: var(--catena-fw-medium);
-  }
-  input[type="text"],
-  input[type="email"],
-  textarea {
-    padding: var(--catena-space-3) var(--catena-space-4);
-    border: 1px solid var(--catena-surface-border);
-    border-radius: var(--catena-radius-sm);
-    background: var(--catena-surface-bg);
-    color: var(--catena-surface-fg);
-    font-family: inherit;
-    font-size: var(--catena-fs-base);
-    font-weight: var(--catena-fw-normal);
-  }
-  input:focus,
-  textarea:focus {
-    outline: 2px solid var(--catena-accent);
-    outline-offset: 2px;
-  }
-  fieldset {
-    border: 1px solid var(--catena-surface-border);
-    border-radius: var(--catena-radius-sm);
-    padding: var(--catena-space-4);
-    display: flex;
-    flex-direction: column;
-    gap: var(--catena-space-2);
-  }
-  legend {
-    font-size: var(--catena-fs-sm);
-    font-weight: var(--catena-fw-medium);
-    padding: 0 var(--catena-space-2);
-  }
-  label.check {
-    flex-direction: row;
-    align-items: center;
-    gap: var(--catena-space-2);
-    font-weight: var(--catena-fw-normal);
-  }
-  textarea { resize: vertical; }
-  button[type="submit"] {
-    justify-self: center;
-  }
-  .response {
-    margin-top: var(--catena-space-6);
-    font-size: var(--catena-fs-sm);
-  }
-  .fallback {
-    margin-top: var(--catena-space-3);
-    font-size: var(--catena-fs-sm);
-  }
-</style>
+</WidgetWrapper>

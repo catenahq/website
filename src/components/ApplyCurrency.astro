@@ -1,0 +1,15 @@
+<script is:inline>
+  // Sets html[data-currency] before first paint, and again after every
+  // client-side navigation; the pricing matrix shows the prices in that
+  // currency. The choice made in the header's selector wins; otherwise a
+  // browser set to en-US gets USD. FR pages always show CAD.
+  function applyCurrency() {
+    var root = document.documentElement;
+    var stored = localStorage.currency;
+    var usd = root.lang === "en" && (stored ? stored === "usd" : navigator.language === "en-US");
+    root.dataset.currency = usd ? "usd" : "cad";
+  }
+
+  applyCurrency();
+  document.addEventListener("astro:after-swap", applyCurrency);
+</script>

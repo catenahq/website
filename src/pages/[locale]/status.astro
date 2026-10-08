@@ -1,0 +1,35 @@
+---
+import Base from "../../layouts/Base.astro";
+import PageTitle from "../../components/PageTitle.astro";
+import Content from "../../components/astrowind/Content.astro";
+import { locales, t } from "@catena/i18n";
+
+export const getStaticPaths = () => locales.map((locale) => ({ params: { locale } }));
+const locale = Astro.params.locale as "en" | "fr";
+
+const paragraphs = (...keys: string[]) =>
+  keys.map((k) => `<p>${t(locale, `common.status.${k}`)}</p>`).join("");
+---
+<Base
+  locale={locale}
+  title={t(locale, "common.status.title")}
+  description={t(locale, "common.status.description")}
+>
+  <PageTitle
+    title={t(locale, "common.status.title")}
+    intro={t(locale, "common.status.intro")}
+  />
+  <Content
+    title={t(locale, "common.status.what_title")}
+    content={paragraphs("what_body_1", "what_body_2", "what_body_3")}
+  />
+  <Content
+    title={t(locale, "common.status.dashboard_title")}
+    content={paragraphs("dashboard_body")}
+    muted
+  >
+    <div class="p-6 rounded-lg border border-dashed border-line bg-page text-muted [&_code]:font-mono">
+      <p set:html={t(locale, "common.status.placeholder")} />
+    </div>
+  </Content>
+</Base>

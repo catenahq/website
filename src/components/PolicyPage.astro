@@ -1,0 +1,37 @@
+---
+// A policy page (privacy, terms). Every string comes from the common.<ns>
+// i18n namespace: title, description, intro, and one <section>_title /
+// <section>_body pair per section. Bodies render as HTML.
+import Base from "../layouts/Base.astro";
+import PageTitle from "./PageTitle.astro";
+import Prose from "./Prose.astro";
+import { t } from "@catena/i18n";
+
+interface Props {
+  locale: "en" | "fr";
+  ns: string;
+  sections: string[];
+  notice?: string;
+}
+
+const { locale, ns, sections, notice } = Astro.props;
+---
+<Base
+  locale={locale}
+  title={t(locale, `common.${ns}.title`)}
+  description={t(locale, `common.${ns}.description`)}
+>
+  <PageTitle
+    title={t(locale, `common.${ns}.title`)}
+    intro={t(locale, `common.${ns}.intro`)}
+  />
+  <Prose>
+    {notice && <p class="not-prose rounded-md border-l-4 border-primary bg-page-muted px-5 py-4 text-sm">{notice}</p>}
+    {sections.map((s) => (
+      <Fragment>
+        <h2>{t(locale, `common.${ns}.${s}_title`)}</h2>
+        <p set:html={t(locale, `common.${ns}.${s}_body`)}></p>
+      </Fragment>
+    ))}
+  </Prose>
+</Base>

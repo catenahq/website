@@ -6,8 +6,9 @@
 #
 # Behavior: gitleaks runs against the staged diff before every
 # commit (~1s). Blocks the commit if a leaked secret is detected.
-# Same gitleaks version as .github/workflows/gitleaks.yml, so the
-# local pre-commit verdict matches the CI gate.
+# Same gitleaks version as scanctl/tools.lock (the scanner
+# .github/workflows/security.yml runs), so the local pre-commit
+# verdict matches the CI gate.
 #
 # Bypass (use sparingly, only for documented false positives):
 #   git commit --no-verify

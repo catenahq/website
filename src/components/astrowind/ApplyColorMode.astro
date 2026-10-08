@@ -1,0 +1,18 @@
+<script is:inline>
+  // Applies the visitor's color scheme before first paint, so it runs inline
+  // in <head>, and again after every client-side navigation. A choice saved by
+  // the theme toggle wins; otherwise the OS preference decides. <html> gets
+  // exactly one of `dark` / `light`, the explicit selectors the brand tokens
+  // and Tailwind's dark variant read.
+  function applyTheme() {
+    var stored = localStorage.theme;
+    var dark =
+      stored === "dark" ||
+      (stored !== "light" && window.matchMedia("(prefers-color-scheme: dark)").matches);
+    document.documentElement.classList.toggle("dark", dark);
+    document.documentElement.classList.toggle("light", !dark);
+  }
+
+  applyTheme();
+  document.addEventListener("astro:after-swap", applyTheme);
+</script>

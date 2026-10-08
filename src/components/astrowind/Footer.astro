@@ -1,0 +1,62 @@
+---
+import { Icon } from "astro-icon/components";
+import type { Link } from "./types";
+
+interface Props {
+  homeHref: string;
+  brandName: string;
+  tagline: string;
+  columns: { title: string; links: Link[] }[];
+  socialLinks: Link[];
+  /** Copyright line, HTML. */
+  footNote: string;
+  navLabel: string;
+}
+
+const { homeHref, brandName, tagline, columns, socialLinks, footNote, navLabel } = Astro.props;
+---
+
+<footer class="relative border-t border-line bg-page-muted not-prose">
+  <div class="relative max-w-7xl mx-auto px-4 sm:px-6">
+    <nav class="grid grid-cols-12 gap-4 gap-y-8 sm:gap-8 py-8 md:py-12" aria-label={navLabel}>
+      <div class="col-span-12 lg:col-span-6">
+        <a class="inline-block font-wordmark font-semibold text-xl lowercase text-heading" href={homeHref}>{brandName}</a>
+        <p class="mt-2 text-sm text-muted">{tagline}</p>
+      </div>
+      {
+        columns.map(({ title, links }) => (
+          <div class="col-span-6 md:col-span-4 lg:col-span-2">
+            <h3 class="font-medium mb-2 text-heading">{title}</h3>
+            <ul class="text-sm">
+              {links.map(({ text, href }) => (
+                <li class="mb-2">
+                  <a class="text-muted hover:text-default hover:underline transition duration-150 ease-in-out" href={href}>
+                    {text}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+        ))
+      }
+    </nav>
+    <div class="md:flex md:items-center md:justify-between py-6 md:py-8 border-t border-line">
+      <ul class="flex mb-4 md:order-1 -ml-2 md:ml-4 md:mb-0">
+        {
+          socialLinks.map(({ ariaLabel, href, icon }) => (
+            <li>
+              <a
+                class="text-muted hover:bg-page focus:outline-none focus:ring-4 focus:ring-line rounded-lg text-sm p-2.5 inline-flex items-center"
+                aria-label={ariaLabel}
+                href={href}
+              >
+                {icon && <Icon name={icon} class="w-5 h-5" />}
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+      <p class="text-sm text-muted mr-4" set:html={footNote} />
+    </div>
+  </div>
+</footer>

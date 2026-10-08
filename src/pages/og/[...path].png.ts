@@ -9,8 +9,8 @@ import { ogPages } from "../../lib/og-pages";
 // catch-all [...path] receives e.g. "fr/features". getStaticPaths
 // emits one entry per page registered in src/lib/og-pages.ts.
 //
-// Layout matches the static og-default-{en,fr}.png shipped in
-// cb36aee6: 1200x630, --catena-primary-900 background, lowercase
+// Layout matches the static og-default-{en,fr}.png:
+// 1200x630, --catena-primary-900 background, lowercase
 // "catena" wordmark in Conthrax-SemiBold + the page title beneath.
 
 // Satori needs raw font bytes (not a CSS-bundled URL). Resolve the

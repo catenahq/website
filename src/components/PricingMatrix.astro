@@ -1,53 +1,61 @@
 ---
-// Community / Pro / Enterprise capability matrix for the home page.
+// Community / Catena Pro / Catena Business capability matrix for the home page.
 // Columns are the client-facing edition names (never the internal
 // catena-ce / -ee binary names). This is "what you get per edition," a
-// billing/managed-scope view -- not license gating. Every cell is a
-// binary yes/no rendered as a green check or red x by MatrixCell. Each
-// edition column carries a bronze / silver / gold frame.
+// billing/managed-scope view -- not license gating. A cell is "yes" or
+// "no", rendered as a green check or red x by MatrixCell, or a short text
+// such as an included quantity. Each edition column carries a bronze /
+// silver / gold frame.
 import { t } from "@catena/i18n";
 import MatrixCell from "./MatrixCell.astro";
-import tiers from "@catenahq/contracts/pricing/tiers.json";
+import Headline from "./astrowind/Headline.astro";
+import WidgetWrapper from "./astrowind/WidgetWrapper.astro";
+import { CURRENCIES, editionPrices, type Currency } from "../lib/polar-prices";
 
 interface Props {
   locale: "en" | "fr";
 }
 const { locale } = Astro.props;
 
-// The Pro price renders from the canonical pricing contract
-// (contracts/pricing/tiers.json), not from a hand-synced i18n string,
-// so the matrix cannot drift from the versioned offer.
-const serverCents = tiers.components.server.monthlyPriceCents;
-const serverAmount =
-  serverCents % 100 === 0 ? String(serverCents / 100) : (serverCents / 100).toFixed(2);
-const proPrice =
-  locale === "en" ? `$${serverAmount} / month` : `${serverAmount} $ / mois`;
-const priceCell = (c: string) =>
-  c === "business" ? proPrice : t(locale, `${base}.prices.${c}`);
+// The paid columns show the monthly price of their Polar product, so the
+// page cannot drift from what checkout charges. An EN page carries every
+// currency and html[data-currency], set by the header's selector, shows
+// one; a FR page shows CAD only.
+const prices = await editionPrices();
+const pageCurrencies: readonly Currency[] = locale === "fr" ? ["cad"] : CURRENCIES;
+const editionOf = { business: "pro", enterprise: "business" } as const;
+const amount = (cents: number) => {
+  const s = cents % 100 === 0 ? String(cents / 100) : (cents / 100).toFixed(2);
+  return locale === "fr" ? s.replace(".", ",") : s;
+};
+const formatPrice = (cents: number, currency: Currency) =>
+  locale === "fr"
+    ? `${amount(cents)} $ / mois`
+    : `${currency === "usd" ? "US$" : "CA$"}${amount(cents)} / month`;
 
 // Edition columns, in order: community (bronze), business (silver),
-// enterprise (gold). The `business` key drives the "Pro" label.
+// enterprise (gold). The keys are the generated matrix's tier names: the
+// `business` key is labelled Catena Pro, the `enterprise` key Catena Business.
 const cols = ["community", "business", "enterprise"] as const;
 
 // Group + row order. Cells resolve from
 // common.home.pricing_matrix.groups.<g>.rows.<r>.{label,community,business,enterprise}.
 const groups = [
-  { key: "connectivity", rows: ["admin_tunnel", "app_tunnel"] },
+  { key: "connectivity", rows: ["admin_tunnel", "app_tunnel", "multi_domain"] },
   { key: "apps", rows: ["templates", "unlimited"] },
   { key: "identity", rows: ["sso", "audit", "attestation"] },
   { key: "updates", rows: ["manual_updates", "version_cve_visibility", "auto_updates", "cve_remediation"] },
-  { key: "observability", rows: ["dashboard", "internal_alerts", "external_alerts", "central"] },
-  { key: "data", rows: ["manual_backups", "scheduled_backups", "subdaily", "immutable"] },
-  { key: "support", rows: ["community_support", "helpdesk", "oncall", "installation", "sla"] },
+  { key: "observability", rows: ["dashboard", "internal_alerts", "central"] },
+  { key: "data", rows: ["manual_backups", "scheduled_backups", "immutable"] },
+  { key: "support", rows: ["community_support", "helpdesk", "oncall", "installation", "sla", "app_support"] },
 ] as const;
 
 const base = "common.home.pricing_matrix";
 const colClass = (c: string) => `val ${c}`;
 ---
-<section id="pricing" class="matrix">
-  <div class="container">
-    <h2>{t(locale, `${base}.title`)}</h2>
-    <p class="lead muted">{t(locale, `${base}.intro`)}</p>
+<WidgetWrapper id="pricing" muted>
+  <div class="matrix">
+    <Headline title={t(locale, `${base}.title`)} subtitle={t(locale, `${base}.intro`)} />
 
     <div class="table-wrap">
       <table>
@@ -64,7 +72,17 @@ const colClass = (c: string) => `val ${c}`;
             <th scope="col"></th>
             {cols.map((c) => (
               <td class={colClass(c)}>
-                <span class="price">{priceCell(c)}</span>
+                {c === "community" ? (
+                  <span class="price">{t(locale, `${base}.prices.community`)}</span>
+                ) : prices ? (
+                  pageCurrencies.map((cur) => (
+                    <span class="price" data-currency={locale === "fr" ? undefined : cur}>
+                      {formatPrice(prices[editionOf[c]][cur], cur)}
+                    </span>
+                  ))
+                ) : (
+                  <span class="price">--</span>
+                )}
               </td>
             ))}
           </tr>
@@ -113,26 +131,21 @@ const colClass = (c: string) => `val ${c}`;
         </tbody>
       </table>
     </div>
-    <p class="matrix-note muted">{t(locale, `${base}.note`)}</p>
   </div>
-</section>
+</WidgetWrapper>
 
 <style>
   .matrix {
-    padding: var(--catena-space-24) 0;
-    background: var(--catena-surface-bg-muted);
     --m-bronze: #b08d57;
     --m-silver: #9aa0a6;
     --m-gold: #e6b800;
   }
-  .lead { margin-bottom: var(--catena-space-10); max-width: 56rem; }
-  .matrix-note {
-    margin-top: var(--catena-space-5);
-    max-width: 56rem;
-    font-size: var(--catena-fs-sm);
-  }
 
-  .table-wrap { overflow-x: auto; }
+  /* The table scrolls inside this box on a narrow screen. `relative` makes
+     it the containing block of each cell's visually hidden label, which is
+     absolutely positioned: without it the labels of the off-screen columns
+     sit outside the scroll box and widen the whole page. */
+  .table-wrap { overflow-x: auto; position: relative; }
   table {
     width: 100%;
     border-collapse: separate;
@@ -161,6 +174,8 @@ const colClass = (c: string) => `val ${c}`;
     font-weight: var(--catena-fw-bold);
     color: var(--catena-surface-fg);
   }
+  :global(html:not([data-currency="usd"])) .price[data-currency="usd"],
+  :global(html[data-currency="usd"]) .price[data-currency="cad"] { display: none; }
   .cta-row .get-started {
     display: inline-flex;
     width: 100%;

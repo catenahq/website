@@ -1,0 +1,29 @@
+---
+import Base from "../../layouts/Base.astro";
+import PageTitle from "../../components/PageTitle.astro";
+import ContactForm from "../../components/ContactForm.astro";
+import { locales, t } from "@catena/i18n";
+
+export const getStaticPaths = () => locales.map((locale) => ({ params: { locale } }));
+const locale = Astro.params.locale as "en" | "fr";
+---
+<Base
+  locale={locale}
+  title={t(locale, "common.contact.title")}
+  description={t(locale, "common.contact.description")}
+>
+  <PageTitle
+    title={t(locale, "common.contact.title")}
+    intro={t(locale, "common.contact.intro")}
+  />
+  <section class="px-4 pb-16">
+    <article class="mx-auto max-w-xl rounded-lg border border-line bg-page p-8 text-center">
+      <h2 class="text-lg font-bold text-heading">{t(locale, "common.contact.about_title")}</h2>
+      <p class="mt-3 text-sm text-muted">{t(locale, "common.contact.about_body")}</p>
+      <a class="mt-3 inline-block text-sm text-link underline" href={t(locale, "common.contact.portfolio_link_url")}>
+        {t(locale, "common.contact.portfolio_link_label")} &rarr;
+      </a>
+    </article>
+  </section>
+  <ContactForm locale={locale} />
+</Base>

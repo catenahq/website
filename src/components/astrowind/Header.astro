@@ -1,0 +1,176 @@
+---
+import ToggleTheme from "./ToggleTheme.astro";
+import ToggleMenu from "./ToggleMenu.astro";
+import type { Link } from "./types";
+
+interface Props {
+  homeHref: string;
+  brandName: string;
+  links: Link[];
+  /** Language and currency pairs, each with the same page in its language. */
+  localeCurrency: {
+    label: string;
+    options: { value: string; text: string; href: string }[];
+  };
+  navLabel: string;
+  menuLabel: string;
+  themeLabel: string;
+}
+
+const { homeHref, brandName, links, localeCurrency, navLabel, menuLabel, themeLabel } = Astro.props;
+// Preselected without script; the selector's script then picks the
+// currency the page shows.
+const currentLocale = Astro.url.pathname.startsWith("/fr") ? "fr" : "en";
+
+const trimSlash = (p: string) => p.replace(/\/+$/, "");
+const currentPath = trimSlash(Astro.url.pathname);
+const isActive = (href: string) => href.startsWith("/") && trimSlash(href) === currentPath;
+---
+
+<aw-header>
+  <header
+    id="header"
+    class="sticky top-0 z-40 flex-none mx-auto w-full border-b border-transparent transition-[opacity] ease-in-out"
+    data-aw-sticky-header
+  >
+    <div class="absolute inset-0"></div>
+    <div class="relative text-default py-3 px-3 lg:px-6 mx-auto w-full max-w-7xl lg:grid lg:grid-cols-3 lg:items-center">
+      <div class="flex justify-between">
+        <a class="flex items-center gap-2" href={homeHref} data-astro-prefetch>
+          <img src="/favicon.svg" alt="" width="28" height="28" class="w-7 h-7" />
+          <span class="font-wordmark font-semibold text-xl lowercase text-heading whitespace-nowrap">{brandName}</span>
+        </a>
+        <div class="flex items-center lg:hidden">
+          <ToggleMenu label={menuLabel} />
+        </div>
+      </div>
+      <nav
+        class="items-center w-full lg:w-auto hidden lg:flex lg:mx-5 overflow-y-auto overflow-x-hidden lg:overflow-visible lg:justify-self-center"
+        aria-label={navLabel}
+      >
+        <ul class="flex flex-col lg:flex-row lg:self-center w-full lg:w-auto text-xl lg:text-[0.9375rem] tracking-[0.01rem] font-medium lg:justify-center">
+          {
+            links.map(({ text, href }) => (
+              <li>
+                <a
+                  class:list={[
+                    "hover:text-link px-4 py-3 flex items-center whitespace-nowrap",
+                    { "aw-link-active": isActive(href) },
+                  ]}
+                  href={href}
+                >
+                  {text}
+                </a>
+              </li>
+            ))
+          }
+        </ul>
+      </nav>
+      <div class="hidden lg:self-center lg:flex items-center fixed w-full lg:w-auto lg:static justify-end left-0 bottom-0 p-3 lg:p-0 lg:justify-self-end">
+        <div class="items-center flex justify-between w-full lg:w-auto gap-2">
+          <ToggleTheme label={themeLabel} />
+          <select class="btn-secondary py-2 px-3 text-sm" aria-label={localeCurrency.label} data-locale-currency>
+            {localeCurrency.options.map((o) => (
+              <option value={o.value} data-href={o.href} selected={o.value === `${currentLocale}-cad`}>
+                {o.text}
+              </option>
+            ))}
+          </select>
+        </div>
+      </div>
+    </div>
+  </header>
+</aw-header>
+
+<style>
+  aw-header {
+    display: contents;
+  }
+</style>
+
+<script>
+  class AwHeader extends HTMLElement {
+    private onScroll?: () => void;
+    private mql?: MediaQueryList;
+    private onMqlChange?: () => void;
+
+    connectedCallback() {
+      const header = this.querySelector<HTMLElement>("#header");
+      const toggle = this.querySelector<HTMLElement>("[data-aw-toggle-menu]");
+      const nav = this.querySelector<HTMLElement>("#header nav");
+      const lastChild = this.querySelector<HTMLElement>("#header > div > div:last-child");
+
+      const closeMenu = () => {
+        toggle?.classList.remove("expanded");
+        toggle?.setAttribute("aria-expanded", "false");
+        document.body.classList.remove("overflow-hidden");
+        header?.classList.remove("h-screen", "expanded", "bg-page");
+        nav?.classList.add("hidden");
+        lastChild?.classList.add("hidden");
+      };
+
+      // The phone menu: the toggle opens the nav and the theme + language
+      // controls full screen; a nav link or leaving the breakpoint closes it.
+      toggle?.addEventListener("click", () => {
+        const expanded = toggle.classList.toggle("expanded");
+        toggle.setAttribute("aria-expanded", String(expanded));
+        document.body.classList.toggle("overflow-hidden");
+        header?.classList.toggle("h-screen");
+        header?.classList.toggle("expanded");
+        header?.classList.toggle("bg-page");
+        nav?.classList.toggle("hidden");
+        lastChild?.classList.toggle("hidden");
+      });
+      nav?.addEventListener("click", closeMenu);
+      this.mql = window.matchMedia("(max-width: 1023px)");
+      this.onMqlChange = () => closeMenu();
+      this.mql.addEventListener("change", this.onMqlChange);
+
+      // The language and currency selector. The currency is remembered; a
+      // choice in the page's own language switches the prices in place, and
+      // another language opens the same page there, keeping the visible
+      // section.
+      this.querySelectorAll<HTMLSelectElement>("[data-locale-currency]").forEach((select) => {
+        const root = document.documentElement;
+        select.value = `${root.lang}-${root.dataset.currency ?? "cad"}`;
+        select.addEventListener("change", () => {
+          const [lang, currency] = select.value.split("-");
+          localStorage.currency = currency;
+          if (lang === root.lang) {
+            root.dataset.currency = currency;
+            return;
+          }
+          const href = select.selectedOptions[0]?.dataset.href;
+          if (href) window.location.assign(href + window.location.hash);
+        });
+      });
+
+      // Sticky header: a background and shadow once the page scrolls.
+      if (header) {
+        let ticking = false;
+        const applyStyles = () => {
+          header.classList.toggle("scroll", window.scrollY > 60);
+          ticking = false;
+        };
+        this.onScroll = () => {
+          if (!ticking) {
+            window.requestAnimationFrame(applyStyles);
+            ticking = true;
+          }
+        };
+        applyStyles();
+        document.addEventListener("scroll", this.onScroll, { passive: true });
+      }
+    }
+
+    disconnectedCallback() {
+      if (this.onScroll) document.removeEventListener("scroll", this.onScroll);
+      if (this.mql && this.onMqlChange) this.mql.removeEventListener("change", this.onMqlChange);
+      document.body.classList.remove("overflow-hidden");
+    }
+  }
+
+  if (!customElements.get("aw-header")) {
+    customElements.define("aw-header", AwHeader);
+  }
+</script>

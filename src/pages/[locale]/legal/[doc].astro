@@ -1,0 +1,50 @@
+---
+import Base from "../../../layouts/Base.astro";
+import PageTitle from "../../../components/PageTitle.astro";
+import Prose from "../../../components/Prose.astro";
+import { marked } from "marked";
+import msa from "@catenahq/contracts/legal/msa.json";
+import { readFileSync } from "node:fs";
+import { createRequire } from "node:module";
+import { locales, t } from "@catena/i18n";
+
+export function getStaticPaths() {
+  const docs = ["master-agreement", "sla", "subprocessors", "data-export-and-termination"];
+  return locales.flatMap((locale) => docs.map((doc) => ({ params: { locale, doc } })));
+}
+
+const locale = Astro.params.locale as "en" | "fr";
+const { doc } = Astro.params;
+const altLocale = locale === "fr" ? "en" : "fr";
+
+// The legal prose ships in @catenahq/contracts/legal/<doc>.md. Resolving it
+// through the package exports, read at build time, means a contracts change
+// that moves a file fails the build up front. The canonical legal text is
+// English; every locale renders it with localized page chrome.
+const req = createRequire(import.meta.url);
+const rawMd = readFileSync(req.resolve(`@catenahq/contracts/legal/${doc}.md`), "utf8")
+  // Cross-schedule links in the source are repo-relative .md paths;
+  // rewrite them to the rendered routes for this locale.
+  .replace(/\]\(([a-z-]+)\.md\)/g, `](/${locale}/legal/$1)`);
+const html = marked.parse(rawMd) as string;
+
+const key = `common.legal.${doc}`;
+const pageTitle = t(locale, `${key}.title`);
+---
+<Base locale={locale} title={pageTitle} description={t(locale, `${key}.description`)}>
+  <PageTitle title={pageTitle} intro={t(locale, `${key}.intro`)} />
+  <Prose>
+    <p class="not-prose mb-8 rounded-md border border-line bg-page-muted px-5 py-4 text-sm">
+      {doc === "master-agreement" ? (
+        <Fragment>
+          Version: <code class="font-mono">{msa.version.slice(0, 12)}</code>
+          &middot; {`${t(locale, "common.legal.effective")} ${msa.effectiveDate}`}
+        </Fragment>
+      ) : (
+        <a class="text-link underline" href={`/${locale}/legal/master-agreement`}>{t(locale, "common.legal.master-agreement.title")}</a>
+      )}
+      &middot; <a href={`/${altLocale}/legal/${doc}`} class="text-link underline">{t(locale, `common.lang.${altLocale}`)}</a>
+    </p>
+    <Fragment set:html={html} />
+  </Prose>
+</Base>

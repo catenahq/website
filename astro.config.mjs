@@ -1,24 +1,40 @@
-import { defineConfig } from "astro/config";
+import { defineConfig, envField, fontProviders } from "astro/config";
 import { fileURLToPath } from "node:url";
-import icon from "astro-icon";
 import sitemap from "@astrojs/sitemap";
+import tailwindcss from "@tailwindcss/vite";
+import icon from "astro-icon";
+import { inter } from "@catenahq/contracts/brand/fonts.mjs";
 
 // catena.run -- public marketing site.
 //
 // i18n: every locale is prefixed. EN serves at /en/, FR at /fr/. A bare
-// / request is language-detected and redirected by nginx (Accept-Language
-// + lang cookie); src/pages/index.astro is the dev/preview fallback.
-// Bilingual delivery -> EN and FR are peers, neither at the bare root.
+// / request gets src/pages/index.astro, which redirects to the lang
+// cookie's locale, else the browser language. EN and FR are peers,
+// neither at the bare root.
 //
-// Output: static. The Dockerfile multi-stages the build then nginx
-// serves dist/. No runtime JS framework -- the scroll-vignettes
-// hero is GSAP/Lenis-driven from islands when we add them.
+// Output: static. GitHub Pages serves dist/
+// (.github/workflows/deploy-pages.yml). No runtime JS framework.
 //
-// SEO: see apps/ASTRO_INSTRUCTIONS.md. Sitemap emits hreflang
-// alternates per locale and is referenced from public/robots.txt.
+// Styling: Tailwind CSS (src/styles/global.css) over the brand theme in
+// @catenahq/contracts, with components adapted from AstroWind under
+// src/components/astrowind/. Inter is self-hosted through the Fonts API,
+// with the entry the docs site shares (contracts brand/fonts.mjs).
+//
+// SEO: the sitemap emits hreflang alternates per locale and is
+// referenced from public/robots.txt.
+//
+// Prices: the edition prices are read from the Polar products at build
+// time (src/lib/polar-prices.ts), with the variables declared under `env`.
 export default defineConfig({
   site: "https://catena.run",
   trailingSlash: "ignore",
+  env: {
+    schema: {
+      POLAR_PRODUCTS_TOKEN: envField.string({ context: "server", access: "secret", optional: true }),
+      POLAR_API_BASE: envField.string({ context: "server", access: "public", default: "https://api.polar.sh" }),
+      CI: envField.boolean({ context: "server", access: "public", default: false }),
+    },
+  },
   // Opt-in prefetch. Links with data-astro-prefetch prefetch on hover.
   // We keep prefetchAll off so unmarked links pay zero JS cost.
   prefetch: {
@@ -29,30 +45,39 @@ export default defineConfig({
     defaultLocale: "en",
     routing: {
       prefixDefaultLocale: true,
-      // Keep our own src/pages/index.astro at / (the language-detecting
-      // fallback). redirectToDefaultLocale:true would replace it with a
+      // Keep src/pages/index.astro at / (the language-detecting
+      // redirect). redirectToDefaultLocale:true would replace it with a
       // plain / -> /en/ redirect, dropping cookie/browser detection.
       redirectToDefaultLocale: false,
     },
   },
-  // Guides moved from /guides/ (marketing) to the docs knowledge base
-  // in May 2026, then to docs.catena.run when docs lifted to its own
-  // subdomain. Preserve external links and SEO juice with static
-  // redirects emitted at build time as <meta http-equiv="refresh">
-  // HTML stubs. Cross-origin targets are supported by the meta refresh
-  // mechanism.
+  // The guides live at docs.catena.run. External links and search
+  // results point at the paths on the left, so each one is emitted
+  // at build time as an HTML stub carrying <meta http-equiv="refresh">,
+  // which keeps them resolving and preserves their SEO weight. A meta
+  // refresh handles the cross-origin target that a server redirect on a
+  // static host cannot.
   redirects: {
-    "/guides":                            "https://docs.catena.run/guides/email-providers/",
-    "/guides/email-providers":            "https://docs.catena.run/guides/email-providers/",
-    "/guides/provider-accounts":          "https://docs.catena.run/guides/provider-accounts/",
-    "/guides/dns-hardening":              "https://docs.catena.run/guides/dns-hardening/",
-    "/fr/guides":                         "https://docs.catena.run/fr/guides/email-providers/",
-    "/fr/guides/fournisseurs-courriel":   "https://docs.catena.run/fr/guides/email-providers/",
-    "/fr/guides/comptes-fournisseurs":    "https://docs.catena.run/fr/guides/provider-accounts/",
-    "/fr/guides/dns-durci":               "https://docs.catena.run/fr/guides/dns-hardening/",
+    "/guides":                            "https://docs.catena.run/en/configuration/",
+    "/guides/email-providers":            "https://docs.catena.run/en/configuration/email/",
+    "/guides/provider-accounts":          "https://docs.catena.run/en/configuration/",
+    "/guides/dns-hardening":              "https://docs.catena.run/en/configuration/domain/",
+    "/fr/guides":                         "https://docs.catena.run/fr/configuration/",
+    "/fr/guides/fournisseurs-courriel":   "https://docs.catena.run/fr/configuration/email/",
+    "/fr/guides/comptes-fournisseurs":    "https://docs.catena.run/fr/configuration/",
+    "/fr/guides/dns-durci":               "https://docs.catena.run/fr/configuration/domain/",
   },
+  fonts: [inter(fontProviders)],
   integrations: [
-    icon(),
+    // Only the Tabler icons the pages name are bundled.
+    icon({
+      include: {
+        tabler: [
+          "moon", "sun", "check", "brand-github", "world", "apps",
+          "shield-lock", "database-export", "key", "refresh", "layout-dashboard", "bell-ringing",
+        ],
+      },
+    }),
     sitemap({
       i18n: {
         defaultLocale: "en",
@@ -64,6 +89,7 @@ export default defineConfig({
     }),
   ],
   vite: {
+    plugins: [tailwindcss()],
     resolve: {
       alias: {
         "@catena/i18n": fileURLToPath(new URL("./src/i18n/index.js", import.meta.url)),
@@ -75,7 +101,7 @@ export default defineConfig({
     // symlink to the REAL path and rejects it as outside the project
     // root, throwing "outside of Vite serving allow list" for each
     // .otf/.svg request. Allow the sibling explicitly. See
-    // CLAUDE.md "Brand + pricing + legal contracts (sibling read)".
+    // AGENTS.md "Brand + pricing + legal contracts (sibling read)".
     server: {
       fs: {
         allow: [
