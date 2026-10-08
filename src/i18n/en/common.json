@@ -212,6 +212,12 @@
               "business": "yes",
               "enterprise": "yes"
             },
+            "external_alerts": {
+              "label": "External uptime monitoring",
+              "community": "no",
+              "business": "yes",
+              "enterprise": "yes"
+            },
             "central": {
               "label": "Monitoring-as-a-service",
               "community": "no",

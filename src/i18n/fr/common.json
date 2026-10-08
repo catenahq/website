@@ -212,6 +212,12 @@
               "business": "yes",
               "enterprise": "yes"
             },
+            "external_alerts": {
+              "label": "Supervision externe de la disponibilité",
+              "community": "no",
+              "business": "yes",
+              "enterprise": "yes"
+            },
             "central": {
               "label": "Supervision en tant que service",
               "community": "no",
