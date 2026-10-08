@@ -1,4 +1,4 @@
-import { defineConfig, fontProviders } from "astro/config";
+import { defineConfig, envField, fontProviders } from "astro/config";
 import { fileURLToPath } from "node:url";
 import sitemap from "@astrojs/sitemap";
 import tailwindcss from "@tailwindcss/vite";
@@ -22,9 +22,19 @@ import { inter } from "@catenahq/contracts/brand/fonts.mjs";
 //
 // SEO: the sitemap emits hreflang alternates per locale and is
 // referenced from public/robots.txt.
+//
+// Prices: the edition prices are read from the Polar products at build
+// time (src/lib/polar-prices.ts), with the variables declared under `env`.
 export default defineConfig({
   site: "https://catena.run",
   trailingSlash: "ignore",
+  env: {
+    schema: {
+      POLAR_PRODUCTS_TOKEN: envField.string({ context: "server", access: "secret", optional: true }),
+      POLAR_API_BASE: envField.string({ context: "server", access: "public", default: "https://api.polar.sh" }),
+      CI: envField.boolean({ context: "server", access: "public", default: false }),
+    },
+  },
   // Opt-in prefetch. Links with data-astro-prefetch prefetch on hover.
   // We keep prefetchAll off so unmarked links pay zero JS cost.
   prefetch: {
@@ -48,14 +58,14 @@ export default defineConfig({
   // refresh handles the cross-origin target that a server redirect on a
   // static host cannot.
   redirects: {
-    "/guides":                            "https://docs.catena.run/en/guides/provider-accounts/",
-    "/guides/email-providers":            "https://docs.catena.run/en/guides/provider-accounts/",
-    "/guides/provider-accounts":          "https://docs.catena.run/en/guides/provider-accounts/",
-    "/guides/dns-hardening":              "https://docs.catena.run/en/",
-    "/fr/guides":                         "https://docs.catena.run/fr/guides/provider-accounts/",
-    "/fr/guides/fournisseurs-courriel":   "https://docs.catena.run/fr/guides/provider-accounts/",
-    "/fr/guides/comptes-fournisseurs":    "https://docs.catena.run/fr/guides/provider-accounts/",
-    "/fr/guides/dns-durci":               "https://docs.catena.run/fr/",
+    "/guides":                            "https://docs.catena.run/en/configuration/",
+    "/guides/email-providers":            "https://docs.catena.run/en/configuration/email/",
+    "/guides/provider-accounts":          "https://docs.catena.run/en/configuration/",
+    "/guides/dns-hardening":              "https://docs.catena.run/en/configuration/domain/",
+    "/fr/guides":                         "https://docs.catena.run/fr/configuration/",
+    "/fr/guides/fournisseurs-courriel":   "https://docs.catena.run/fr/configuration/email/",
+    "/fr/guides/comptes-fournisseurs":    "https://docs.catena.run/fr/configuration/",
+    "/fr/guides/dns-durci":               "https://docs.catena.run/fr/configuration/domain/",
   },
   fonts: [inter(fontProviders)],
   integrations: [

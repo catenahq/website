@@ -27,13 +27,18 @@
     "col_product": "Product",
     "col_company": "Company",
     "col_legal": "Legal",
-    "portfolio": "Portfolio",
+    "about": "About",
     "github": "GitHub",
     "nav_label": "Footer"
   },
   "lang": {
     "en": "English",
     "fr": "Français"
+  },
+  "locale_currency": {
+    "fr_cad": "FR - CA$",
+    "en_cad": "EN - CA$",
+    "en_usd": "EN - US$"
   },
   "notfound": {
     "title": "Page not found",
@@ -84,19 +89,18 @@
       "title": "An app for every need",
       "intro": "Host your own apps or discover hundreds of them to host and share your files, manage your photos, talk with your teammates and friends, manage your business, and so much more!",
       "discover": "Discover apps on <a href='https://awweso.me/' target='_blank' rel='noopener noreferrer'>awweso.me</a> or find alternatives to Big Tech services at <a href='https://openalternative.co/' target='_blank' rel='noopener noreferrer'>openalternative.co</a>.",
-      "catalog": "Check out our pre-integrated app catalog at <a href='https://github.com/catenahq/catena-templates' target='_blank' rel='noopener noreferrer'>github.com/catenahq/catena-templates</a> or <a href='https://docs.catena.run/en/manage-apps/'>learn how to configure your apps' deployment for Catena</a>."
+      "catalog": "Check out our pre-integrated app catalog at <a href='https://github.com/catenahq/catena-templates' target='_blank' rel='noopener noreferrer'>github.com/catenahq/catena-templates</a> or <a href='https://docs.catena.run/en/configure-apps/'>learn how to configure your apps' deployment for Catena</a>."
     },
     "pricing_matrix": {
       "title": "Community, Catena Pro, or Catena Business",
-      "intro": "Every edition runs on the organization's own server. Community is free and self-hosted. Catena Pro adds the automation that keeps it patched, backed up, and monitored automatically. Catena Business adds included assistance hours and a service-level agreement. Here is what each one includes.",
+      "intro": "Every edition runs on the organization's own server. Community is free and self-hosted. Catena Pro adds the automation that keeps it patched, backed up, and monitored automatically. Catena Business adds app support hours and a service-level agreement. Here is what each one includes.",
       "cols": {
         "community": "Community",
         "business": "Catena Pro",
         "enterprise": "Catena Business"
       },
       "prices": {
-        "community": "Free",
-        "enterprise": "Bespoke"
+        "community": "Free"
       },
       "get_started": "Get started",
       "talk_to_us": "Talk to us",
@@ -278,8 +282,8 @@
               "business": "no",
               "enterprise": "yes"
             },
-            "assistance": {
-              "label": "Included assistance",
+            "app_support": {
+              "label": "App support",
               "community": "no",
               "business": "no",
               "enterprise": "2 hours / month"

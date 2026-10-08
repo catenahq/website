@@ -10,23 +10,28 @@ import { t } from "@catena/i18n";
 import MatrixCell from "./MatrixCell.astro";
 import Headline from "./astrowind/Headline.astro";
 import WidgetWrapper from "./astrowind/WidgetWrapper.astro";
-import tiers from "@catenahq/contracts/pricing/tiers.json";
+import { CURRENCIES, editionPrices, type Currency } from "../lib/polar-prices";
 
 interface Props {
   locale: "en" | "fr";
 }
 const { locale } = Astro.props;
 
-// The Pro price renders from the canonical pricing contract
-// (contracts/pricing/tiers.json), not from a hand-synced i18n string,
-// so the matrix cannot drift from the versioned offer.
-const proCents = tiers.plan.monthlyPriceCents;
-const proAmount =
-  proCents % 100 === 0 ? String(proCents / 100) : (proCents / 100).toFixed(2);
-const proPrice =
-  locale === "en" ? `$${proAmount} / month` : `${proAmount} $ / mois`;
-const priceCell = (c: string) =>
-  c === "business" ? proPrice : t(locale, `${base}.prices.${c}`);
+// The paid columns show the monthly price of their Polar product, so the
+// page cannot drift from what checkout charges. An EN page carries every
+// currency and html[data-currency], set by the header's selector, shows
+// one; a FR page shows CAD only.
+const prices = await editionPrices();
+const pageCurrencies: readonly Currency[] = locale === "fr" ? ["cad"] : CURRENCIES;
+const editionOf = { business: "pro", enterprise: "business" } as const;
+const amount = (cents: number) => {
+  const s = cents % 100 === 0 ? String(cents / 100) : (cents / 100).toFixed(2);
+  return locale === "fr" ? s.replace(".", ",") : s;
+};
+const formatPrice = (cents: number, currency: Currency) =>
+  locale === "fr"
+    ? `${amount(cents)} $ / mois`
+    : `${currency === "usd" ? "US$" : "CA$"}${amount(cents)} / month`;
 
 // Edition columns, in order: community (bronze), business (silver),
 // enterprise (gold). The keys are the generated matrix's tier names: the
@@ -42,7 +47,7 @@ const groups = [
   { key: "updates", rows: ["manual_updates", "version_cve_visibility", "auto_updates", "cve_remediation"] },
   { key: "observability", rows: ["dashboard", "internal_alerts", "external_alerts", "central"] },
   { key: "data", rows: ["manual_backups", "scheduled_backups", "immutable"] },
-  { key: "support", rows: ["community_support", "helpdesk", "assistance", "oncall", "installation", "sla"] },
+  { key: "support", rows: ["community_support", "helpdesk", "oncall", "installation", "sla", "app_support"] },
 ] as const;
 
 const base = "common.home.pricing_matrix";
@@ -67,7 +72,17 @@ const colClass = (c: string) => `val ${c}`;
             <th scope="col"></th>
             {cols.map((c) => (
               <td class={colClass(c)}>
-                <span class="price">{priceCell(c)}</span>
+                {c === "community" ? (
+                  <span class="price">{t(locale, `${base}.prices.community`)}</span>
+                ) : prices ? (
+                  pageCurrencies.map((cur) => (
+                    <span class="price" data-currency={locale === "fr" ? undefined : cur}>
+                      {formatPrice(prices[editionOf[c]][cur], cur)}
+                    </span>
+                  ))
+                ) : (
+                  <span class="price">--</span>
+                )}
               </td>
             ))}
           </tr>
@@ -159,6 +174,8 @@ const colClass = (c: string) => `val ${c}`;
     font-weight: var(--catena-fw-bold);
     color: var(--catena-surface-fg);
   }
+  :global(html:not([data-currency="usd"])) .price[data-currency="usd"],
+  :global(html[data-currency="usd"]) .price[data-currency="cad"] { display: none; }
   .cta-row .get-started {
     display: inline-flex;
     width: 100%;

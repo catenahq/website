@@ -11,7 +11,7 @@ github.com/catenahq/docs and ships as its own deployment.
 - `npm run check` -- typecheck (Astro check).
 - `npm run test:i18n` -- bilingual parity gate (EN + FR key parity).
 
-## Brand + pricing + legal contracts (sibling read)
+## Brand + legal contracts (sibling read)
 
 `@catenahq/contracts` is consumed via sibling-directory read.
 `package.json` declares it as
@@ -55,8 +55,9 @@ Astro / Starlight feature question rather than guessing from memory.
 
 ## Security invariants (machine-enforced -- do not weaken silently)
 
-- Prices render from @catenahq/contracts pricing/tiers.json (single
-  versioned source); never reintroduce hand-synced price strings.
+- Edition prices render from the Polar products at build time
+  (src/lib/polar-prices.ts); never reintroduce hand-synced price strings.
+  The Polar token is read-only (products:read) and stays a CI secret.
 - Legal pages render verbatim from the contracts package; msa.json
   pins the accepted revision -- never inline legal text here.
 - No secrets in tree or history (gitleaks). Never push the local

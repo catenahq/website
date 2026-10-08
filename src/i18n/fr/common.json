@@ -27,13 +27,18 @@
     "col_product": "Produit",
     "col_company": "Entreprise",
     "col_legal": "Mentions légales",
-    "portfolio": "Portfolio",
+    "about": "À propos",
     "github": "GitHub",
     "nav_label": "Pied de page"
   },
   "lang": {
     "en": "English",
     "fr": "Français"
+  },
+  "locale_currency": {
+    "fr_cad": "FR - CA$",
+    "en_cad": "EN - CA$",
+    "en_usd": "EN - US$"
   },
   "notfound": {
     "title": "Page introuvable",
@@ -84,19 +89,18 @@
       "title": "Une app pour chaque besoin",
       "intro": "Hébergez vos propres applications ou découvrez-en des centaines pour héberger et partager vos fichiers, gérer vos photos, discuter avec vos collègues et vos amis, gérer votre entreprise, et bien plus encore!",
       "discover": "Découvrez des applications sur <a href='https://awweso.me/' target='_blank' rel='noopener noreferrer'>awweso.me</a> ou trouvez des solutions de rechange aux services des géants du numérique sur <a href='https://openalternative.co/' target='_blank' rel='noopener noreferrer'>openalternative.co</a>.",
-      "catalog": "Consultez notre catalogue d'applications préintégrées sur <a href='https://github.com/catenahq/catena-templates' target='_blank' rel='noopener noreferrer'>github.com/catenahq/catena-templates</a> ou <a href='https://docs.catena.run/fr/manage-apps/'>apprenez à configurer le déploiement de vos applications pour Catena</a>."
+      "catalog": "Consultez notre catalogue d'applications préintégrées sur <a href='https://github.com/catenahq/catena-templates' target='_blank' rel='noopener noreferrer'>github.com/catenahq/catena-templates</a> ou <a href='https://docs.catena.run/fr/configure-apps/'>apprenez à configurer le déploiement de vos applications pour Catena</a>."
     },
     "pricing_matrix": {
       "title": "Communauté, Catena Pro ou Catena Business",
-      "intro": "Chaque édition s'exécute sur le serveur de l'organisation. L'édition Communauté est gratuite et auto-hébergée. Catena Pro ajoute l'automatisation qui la maintient à jour, sauvegardée et supervisée automatiquement. Catena Business ajoute des heures d'assistance incluses et une entente de niveau de service. Voici ce que chaque édition inclut.",
+      "intro": "Chaque édition s'exécute sur le serveur de l'organisation. L'édition Communauté est gratuite et auto-hébergée. Catena Pro ajoute l'automatisation qui la maintient à jour, sauvegardée et supervisée automatiquement. Catena Business ajoute des heures d'accompagnement applicatif et une entente de niveau de service. Voici ce que chaque édition inclut.",
       "cols": {
         "community": "Communauté",
         "business": "Catena Pro",
         "enterprise": "Catena Business"
       },
       "prices": {
-        "community": "Gratuit",
-        "enterprise": "Sur mesure"
+        "community": "Gratuit"
       },
       "get_started": "Commencer",
       "talk_to_us": "Contactez-nous",
@@ -278,8 +282,8 @@
               "business": "no",
               "enterprise": "yes"
             },
-            "assistance": {
-              "label": "Assistance incluse",
+            "app_support": {
+              "label": "Accompagnement applicatif",
               "community": "no",
               "business": "no",
               "enterprise": "2 heures / mois"

@@ -68,8 +68,11 @@ jobs:
       - name: Typecheck
         working-directory: ./website
         run: npm run check
+      # The edition prices are read from Polar (src/lib/polar-prices.ts).
       - name: Build
         working-directory: ./website
+        env:
+          POLAR_PRODUCTS_TOKEN: ${{ secrets.POLAR_PRODUCTS_TOKEN }}
         run: npm run build
 
   duplication:

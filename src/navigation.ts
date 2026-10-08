@@ -7,9 +7,9 @@ type Locale = "en" | "fr";
 export const docsHref = (locale: Locale) => `https://docs.catena.run/${locale}/`;
 
 export function headerData(locale: Locale, pathname: string) {
-  // EN and FR slugs are identical for every page, so the other language's
-  // page is the same path under the other prefix.
-  const altLocale: Locale = locale === "fr" ? "en" : "fr";
+  // EN and FR slugs are identical for every page, so the same page in each
+  // language is the same path under the other prefix. Each option pairs a
+  // language with the currency prices show in; FR pages show CAD only.
   const subpath = pathname.replace(/^\/(en|fr)(?=\/|$)/, "");
   return {
     homeHref: `/${locale}/`,
@@ -18,10 +18,13 @@ export function headerData(locale: Locale, pathname: string) {
       { text: t(locale, "common.nav.contact"), href: `/${locale}/contact` },
       { text: t(locale, "common.nav.docs"), href: docsHref(locale) },
     ],
-    langLink: {
-      text: t(locale, `common.lang.${altLocale}`),
-      href: `/${altLocale}${subpath}`,
-      ariaLabel: t(locale, "common.footer.language"),
+    localeCurrency: {
+      label: t(locale, "common.footer.language"),
+      options: [
+        { value: "fr-cad", text: t(locale, "common.locale_currency.fr_cad"), href: `/fr${subpath}` },
+        { value: "en-cad", text: t(locale, "common.locale_currency.en_cad"), href: `/en${subpath}` },
+        { value: "en-usd", text: t(locale, "common.locale_currency.en_usd"), href: `/en${subpath}` },
+      ],
     },
     navLabel: t(locale, "common.nav.main_label"),
     menuLabel: t(locale, "common.nav.toggle_menu"),
@@ -46,7 +49,7 @@ export function footerData(locale: Locale) {
         links: [
           { text: t(locale, "common.nav.contact"), href: `/${locale}/contact` },
           { text: t(locale, "common.nav.status"), href: `/${locale}/status` },
-          { text: t(locale, "common.footer.portfolio"), href: "https://ma-lalonde.dev" },
+          { text: t(locale, "common.footer.about"), href: "https://ma-lalonde.dev" },
         ],
       },
       {

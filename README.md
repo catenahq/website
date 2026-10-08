@@ -22,6 +22,19 @@ npm run build
 # astro build -> dist/
 ```
 
+The edition prices come from the Polar products at build time
+(`src/lib/polar-prices.ts`). Each paid edition is one monthly Polar
+product with the metadata `catena_edition` set to `pro` or `business`
+and a fixed CAD and USD price. The build reads them with
+`POLAR_PRODUCTS_TOKEN`, an organization access token with the
+`products:read` scope (a repository secret in CI); `POLAR_API_BASE`
+points it at the sandbox (`https://sandbox-api.polar.sh`) for a test.
+Without the token a local build shows no amounts, and a CI build fails.
+
+The header's selector pairs a language with a currency (FR - CA$,
+EN - CA$, EN - US$) and remembers the currency; a browser set to en-US
+starts on US$.
+
 ## Test (i18n key parity)
 
 ```bash
@@ -31,7 +44,8 @@ npm run test:i18n
 ## Deploy
 
 GitHub Pages via `.github/workflows/deploy-pages.yml`: every push to
-`main` builds (`npm run build` -> `dist/`) and publishes. The custom
+`main` builds (`npm run build` -> `dist/`) and publishes, and a daily
+run picks up price changes made in Polar. The custom
 domain catena.run is set via `public/CNAME`. `dev` is the active-edit
 branch and does not deploy.
 
