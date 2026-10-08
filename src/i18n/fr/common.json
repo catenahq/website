@@ -212,12 +212,6 @@
               "business": "yes",
               "enterprise": "yes"
             },
-            "external_alerts": {
-              "label": "Supervision externe de la disponibilité",
-              "community": "no",
-              "business": "yes",
-              "enterprise": "yes"
-            },
             "central": {
               "label": "Supervision en tant que service",
               "community": "no",
@@ -244,7 +238,7 @@
             "immutable": {
               "label": "Sauvegardes immuables supplémentaires",
               "community": "no",
-              "business": "yes",
+              "business": "no",
               "enterprise": "yes"
             }
           }
@@ -277,10 +271,10 @@
               "enterprise": "yes"
             },
             "sla": {
-              "label": "Soutien selon une entente de niveau de service",
+              "label": "Entente de niveau de service",
               "community": "no",
               "business": "no",
-              "enterprise": "yes"
+              "enterprise": "4 heures ouvrables"
             },
             "app_support": {
               "label": "Accompagnement applicatif",
