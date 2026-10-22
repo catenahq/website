@@ -178,7 +178,7 @@
               "enterprise": "yes"
             },
             "version_cve_visibility": {
-              "label": "Visibilité des versions et CVE",
+              "label": "Visibilité des versions et alertes de sécurité",
               "community": "yes",
               "business": "yes",
               "enterprise": "yes"
@@ -235,8 +235,14 @@
               "business": "yes",
               "enterprise": "yes"
             },
+            "weekly_backups": {
+              "label": "Sauvegarde planifiée hebdomadaire",
+              "community": "yes",
+              "business": "yes",
+              "enterprise": "yes"
+            },
             "scheduled_backups": {
-              "label": "Sauvegardes planifiées",
+              "label": "Sauvegardes planifiées quotidiennes ou personnalisées",
               "community": "no",
               "business": "yes",
               "enterprise": "yes"
