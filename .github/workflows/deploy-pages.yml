@@ -4,8 +4,9 @@
 # The custom domain catena.run is set via public/CNAME (persisted on
 # deploy). Runs on push to main (the protected deploy branch), and daily
 # so a price changed in Polar reaches the site; dev is the active-edit
-# branch and does not deploy. Every run builds main: a scheduled run
-# starts on the default branch, which is dev.
+# branch and does not deploy. The github-pages environment admits main
+# only, and a scheduled run starts on the default branch, dev, so the
+# daily run starts this workflow on main and does nothing else.
 #
 # @catenahq/contracts is consumed via sibling read (file:../contracts);
 # the build checks out catenahq/contracts alongside. contracts is
@@ -30,8 +31,21 @@ concurrency:
   cancel-in-progress: false
 
 jobs:
+  start-on-main:
+    name: start on main
+    if: github.event_name == 'schedule'
+    runs-on: ubuntu-latest
+    permissions:
+      actions: write
+    steps:
+      - name: Start the deploy on main
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh workflow run deploy-pages.yml --repo "$GITHUB_REPOSITORY" --ref main
+
   build:
     name: build
+    if: github.event_name != 'schedule'
     runs-on: ubuntu-latest
     permissions:
       contents: read
@@ -39,7 +53,6 @@ jobs:
       - name: Check out website
         uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7
         with:
-          ref: main
           path: website
           persist-credentials: false
       - name: Check out sibling contracts
