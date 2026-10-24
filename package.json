@@ -25,7 +25,7 @@
     "astro": "^7.0.0",
     "astro-icon": "^1.2.0",
     "marked": "^18.0.0",
-    "satori": "^0.56.0",
+    "satori": "^0.62.0",
     "tailwind-merge": "^3.7.0",
     "tailwindcss": "^4.3.3"
   },
