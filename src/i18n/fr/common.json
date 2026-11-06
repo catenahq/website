@@ -194,6 +194,12 @@
               "community": "no",
               "business": "yes",
               "enterprise": "yes"
+            },
+            "vulnerability_report": {
+              "label": "Liste complète des vulnérabilités et nomenclature logicielle (SBOM)",
+              "community": "no",
+              "business": "no",
+              "enterprise": "yes"
             }
           }
         },

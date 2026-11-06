@@ -194,6 +194,12 @@
               "community": "no",
               "business": "yes",
               "enterprise": "yes"
+            },
+            "vulnerability_report": {
+              "label": "Full vulnerability list and SBOM",
+              "community": "no",
+              "business": "no",
+              "enterprise": "yes"
             }
           }
         },
