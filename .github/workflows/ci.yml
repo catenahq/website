@@ -88,6 +88,8 @@ jobs:
         uses: catenahq/contracts/.github/actions/new-failures-only@main
         env:
           POLAR_PRODUCTS_TOKEN: ${{ secrets.POLAR_PRODUCTS_TOKEN }}
+          PUBLIC_UMAMI_SCRIPT_URL: ${{ vars.UMAMI_SCRIPT_URL }}
+          PUBLIC_UMAMI_WEBSITE_ID: ${{ vars.UMAMI_WEBSITE_ID }}
         with:
           working-directory: ${{ github.workspace }}/website
           repo-path: ${{ github.workspace }}/website

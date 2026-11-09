@@ -110,6 +110,8 @@ jobs:
         working-directory: ./website
         env:
           POLAR_PRODUCTS_TOKEN: ${{ secrets.POLAR_PRODUCTS_TOKEN }}
+          PUBLIC_UMAMI_SCRIPT_URL: ${{ vars.UMAMI_SCRIPT_URL }}
+          PUBLIC_UMAMI_WEBSITE_ID: ${{ vars.UMAMI_WEBSITE_ID }}
         run: npm run build
       - name: Upload artifact
         uses: actions/upload-pages-artifact@fc324d3547104276b827a68afc52ff2a11cc49c9 # v5
