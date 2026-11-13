@@ -10,6 +10,7 @@ import { t } from "@catena/i18n";
 import MatrixCell from "./MatrixCell.astro";
 import Headline from "./astrowind/Headline.astro";
 import WidgetWrapper from "./astrowind/WidgetWrapper.astro";
+import checkout from "@catenahq/contracts/pricing/checkout.json";
 import { CURRENCIES, editionPrices, type Currency } from "../lib/polar-prices";
 
 interface Props {
@@ -120,6 +121,11 @@ const colClass = (c: string) => `val ${c}`;
                     {t(locale, `${base}.get_started`)}
                   </a>
                 )}
+                {c !== "community" && (
+                  <a class="btn btn-primary get-started" href={`${checkout[editionOf[c]]}?locale=${locale}`} target="_blank" rel="noopener noreferrer">
+                    {t(locale, `${base}.subscribe`)}
+                  </a>
+                )}
                 {c === "enterprise" && (
                   <a class="btn btn-secondary get-started" href={t(locale, "common.cta.discovery_url")} target="_blank" rel="noopener noreferrer">
                     {t(locale, `${base}.talk_to_us`)}
@@ -181,6 +187,7 @@ const colClass = (c: string) => `val ${c}`;
     width: 100%;
     justify-content: center;
   }
+  .cta-row .get-started + .get-started { margin-top: var(--catena-space-2); }
   .cta-row th,
   .cta-row .val { border-bottom: none; }
   .cta-row .val { padding-top: var(--catena-space-5); }
