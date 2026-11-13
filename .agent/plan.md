@@ -7,7 +7,7 @@
   `catena-ce/ansible/reconcile/roles/public_ports`. The timer runs on every host
   (`catena-admin/payload/lanes/systemd/catena-public-ports.timer` comment) and catena-ce
   `reconcile/roles/public_ports/tasks/main.yml` enables it with no licence condition.
-- Opens only declared ports: the rule plan is built from the infra fragments plus `vps.expose.*` labels
+- Opens the declared ports: the rule plan is built from the infra fragments plus `vps.expose.*` labels
   (`catena-public-ports.py:424-449`, `public_ports.py:516`); ufw default deny incoming
   (`catena-ce/ansible/bootstrap/roles/common/tasks/main.yml:409`).
 - Closes a removed app's ports: stale rules pruned against the applied state (`catena-public-ports.py:439-446`);
@@ -22,12 +22,17 @@
 
 ## Steps
 
-1. [In Progress] Home features card `secure_connections` (EN + FR): name automatic firewall reconciliation and what it
+1. [Done] Home features card `secure_connections` (EN + FR): name automatic firewall reconciliation and what it
    does. Files: `src/i18n/en/common.json`, `src/i18n/fr/common.json`.
-2. [Open] Pricing matrix connectivity row `firewall_reconciliation`, yes in every edition. Files:
+2. [Done] Pricing matrix connectivity row `firewall_reconciliation`, yes in every edition. Files:
    `src/components/PricingMatrix.astro` (groups list only), both `common.json`. Clear of PR 103's lines.
-3. [Open] Gates: `npm run test:i18n`, prose, unicode, `npm run build`/`check` where they run without secrets.
-4. [Open] Review, commit.
+3. [Done] Gates: `npm run test:i18n`, prose, unicode, `npm run build`/`check` where they run without secrets.
+4. [Done] Review, commit.
+
+## Reserved paths
+
+- ops `automation/audit/features.yml`, feature `networking`, `pricing.rows`: add
+  `connectivity.firewall_reconciliation: community` after `connectivity.app_tunnel: community` (in pr_body).
 
 ## Open questions
 
