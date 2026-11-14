@@ -44,8 +44,10 @@ npm run test:i18n
 ## Deploy
 
 GitHub Pages via `.github/workflows/deploy-pages.yml`: every push to
-`main` builds (`npm run build` -> `dist/`) and publishes, and a daily
-run picks up price changes made in Polar. The custom
+`main` publishes the site that the `ci.yml` push run of the same tree built
+(`npm run build` -> `dist/`; the deploy builds only when there is none, and
+does not publish a tree whose CI failed), and a daily run always builds, to
+pick up price changes made in Polar. The custom
 domain catena.run is set via `public/CNAME`. `dev` is the active-edit
 branch and does not deploy.
 

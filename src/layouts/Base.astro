@@ -23,18 +23,15 @@ interface Props {
 
 const { title, description, locale = "en", ogImage } = Astro.props;
 
-// Self-hosted Plausible analytics. Wired at build time via env vars
-// so the snippet only ships when the operator has actually deployed
-// a Plausible instance. Cookieless config -- no banner required.
+// Self-hosted Umami visit counting, wired at build time. The tag is
+// emitted only when both variables are set. It counts catena.run only
+// (data-domains), skips browsers that ask not to be tracked and drops
+// the query string.
 //
-//   PUBLIC_PLAUSIBLE_HOST   https origin of the self-hosted Plausible
-//                           (e.g. https://plausible.catena.run). When
-//                           unset, no analytics snippet is emitted.
-//   PUBLIC_PLAUSIBLE_DOMAIN data-domain the Plausible site is keyed
-//                           on. Defaults to the marketing site host
-//                           (catena.run) -- override for staging.
-const plausibleHost = import.meta.env.PUBLIC_PLAUSIBLE_HOST as string | undefined;
-const plausibleDomain = (import.meta.env.PUBLIC_PLAUSIBLE_DOMAIN as string | undefined) ?? "catena.run";
+//   PUBLIC_UMAMI_SCRIPT_URL  address of the Umami script
+//   PUBLIC_UMAMI_WEBSITE_ID  the site's id in the Umami dashboard
+const umamiScriptUrl = import.meta.env.PUBLIC_UMAMI_SCRIPT_URL as string | undefined;
+const umamiWebsiteId = import.meta.env.PUBLIC_UMAMI_WEBSITE_ID as string | undefined;
 
 const brandName = t(locale, "common.brand.name");
 const brandTagline = t(locale, "common.brand.tagline");
@@ -162,12 +159,15 @@ const breadcrumbJsonLd = segments.length === 0 ? null : {
       setLangCookie();
       document.addEventListener("astro:page-load", setLangCookie);
     </script>
-    {plausibleHost && (
+    {umamiScriptUrl && umamiWebsiteId && (
       <script
         is:inline
         defer
-        data-domain={plausibleDomain}
-        src={`${plausibleHost.replace(/\/$/, "")}/js/script.js`}
+        src={umamiScriptUrl}
+        data-website-id={umamiWebsiteId}
+        data-domains="catena.run"
+        data-do-not-track="true"
+        data-exclude-search="true"
       />
     )}
     <slot name="head" />
