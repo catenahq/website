@@ -248,17 +248,11 @@
               "business": "yes",
               "enterprise": "yes"
             },
-            "weekly_backups": {
-              "label": "Sauvegarde planifiée hebdomadaire",
-              "community": "yes",
-              "business": "yes",
-              "enterprise": "yes"
-            },
-            "scheduled_backups": {
-              "label": "Sauvegardes planifiées quotidiennes ou personnalisées",
-              "community": "no",
-              "business": "yes",
-              "enterprise": "yes"
+            "automatic_backups": {
+              "label": "Sauvegardes automatiques",
+              "community": "Hebdomadaire",
+              "business": "Illimitée",
+              "enterprise": "Illimitée"
             },
             "immutable": {
               "label": "Sauvegardes immuables supplémentaires",
