@@ -61,7 +61,7 @@
       "items": {
         "secure_connections": {
           "title": "Secure connections",
-          "body": "Reach your services through dedicated Admin and App tunnels, with DDoS protection. Automatic firewall reconciliation opens the ports Catena and your apps declare, closes them when an app is removed, and re-checks the rules every five minutes to put back any that went missing."
+          "body": "Keeps your services safe through dedicated Admin and App tunnels, with DDoS protection. Keeps your server safe with automatic firewall and port reconciliation."
         },
         "backups": {
           "title": "Backup, restore, and migrate",
