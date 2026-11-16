@@ -61,7 +61,7 @@
       "items": {
         "secure_connections": {
           "title": "Connexions sécurisées",
-          "body": "Atteignez vos services par des tunnels Admin et Applications dédiés, avec protection DDoS. La réconciliation automatique du pare-feu ouvre les ports que Catena et vos applications déclarent, les ferme quand une application est retirée et revérifie les règles toutes les cinq minutes pour rétablir celles qui manquent."
+          "body": "Garde vos services en sécurité grâce à des tunnels Admin et Applications dédiés, avec protection DDoS. Garde votre serveur en sécurité grâce à la réconciliation automatique du pare-feu et des ports."
         },
         "backups": {
           "title": "Sauvegarde, restauration et migration",
