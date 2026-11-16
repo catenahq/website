@@ -40,7 +40,7 @@ jobs:
   start-on-main:
     name: start on main
     if: github.event_name == 'schedule'
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-26.04
     permissions:
       actions: write
     steps:
@@ -52,7 +52,7 @@ jobs:
   build:
     name: build
     if: github.event_name != 'schedule'
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-26.04
     permissions:
       contents: read
       actions: read
@@ -121,7 +121,7 @@ jobs:
   deploy:
     name: deploy
     needs: build
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-26.04
     permissions:
       pages: write
       id-token: write
