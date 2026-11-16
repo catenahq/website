@@ -74,7 +74,7 @@ export default defineConfig({
       include: {
         tabler: [
           "moon", "sun", "check", "brand-github", "world", "apps",
-          "shield-lock", "database-export", "key", "refresh", "lock", "file-certificate",
+          "shield-lock", "database-export", "key", "refresh", "layout-dashboard", "bell-ringing",
         ],
       },
     }),

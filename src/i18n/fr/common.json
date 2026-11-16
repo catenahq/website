@@ -55,32 +55,32 @@
       "subheadline": "Les outils dont votre entreprise dépend au quotidien - fichiers, courriels, discussions, réservation, CRM et plus encore - sur un serveur qui vous appartient. Les courriels sortent par le relais SMTP de votre choix."
     },
     "features": {
-      "title": "Des engagements que vous pouvez vérifier",
-      "subtitle": "Catena s'installe sur un VPS ou un ordinateur dédié que vous possédez, pour offrir ce qui suit.",
+      "title": "L'environnement qui fait tourner vos services",
+      "subtitle": "Catena s'installe sur un VPS ou un ordinateur dédié que vous possédez pour offrir des capacités intégrées de façon sécuritaire.",
       "items": {
-        "restore_tested": {
-          "title": "Restauration répétée à l'essai",
-          "body": "Des restaurations d'essai vérifient régulièrement que vos sauvegardes se rouvrent. Vous restaurez une seule application ou le serveur entier, ou vous reconstruisez le serveur sur une nouvelle machine à partir du seul accès de sauvegarde et de sa clé."
+        "secure_connections": {
+          "title": "Connexions sécurisées",
+          "body": "Garde vos services en sécurité grâce à des tunnels Admin et Applications dédiés, avec protection DDoS. Garde votre serveur en sécurité grâce à la réconciliation automatique du pare-feu et des ports."
         },
-        "immutable_copy": {
-          "title": "Copie immuable (Object Lock) dans un seau qui vous appartient",
-          "body": "Une seconde copie de vos sauvegardes, chez un autre fournisseur, verrouillée en écriture : même un serveur compromis ne peut ni la modifier ni l'effacer. Incluse avec Catena Business."
+        "backups": {
+          "title": "Sauvegarde, restauration et migration",
+          "body": "Gardez vos données en sûreté grâce à des sauvegardes incrémentielles et vérifiables, puis restaurez une seule application ou le serveur entier, ou déplacez-le vers une nouvelle machine."
         },
         "sso": {
-          "title": "Une seule connexion (OIDC) pour vos applications",
-          "body": "Un seul compte ouvre vos applications, avec un accès réglé application par application et une séparation entre employés et administrateurs."
-        },
-        "compliance": {
-          "title": "Rapport de conformité : Loi 25, LPRPDE, RGPD, ISO 27001",
-          "body": "Chaque mesure, avec ce que votre serveur en relève, en autoévaluation, et un rapport mensuel signé pour votre assureur ou votre auditeur. Inclus avec Catena Business."
+          "title": "Authentification unique",
+          "body": "Une seule connexion pour tous vos services, avec permissions par rôle et piste d'audit."
         },
         "safe_updates": {
-          "title": "Mises à jour avec retour arrière",
-          "body": "Les vulnérabilités connues sont surveillées dans toutes les éditions. Avec Catena Pro, les mises à jour s'appliquent d'elles-mêmes, et une mise à jour ratée est ramenée à la dernière version fonctionnelle."
+          "title": "Mises à jour sûres",
+          "body": "Votre infrastructure et vos services restent à jour automatiquement, avec surveillance continue des menaces et reprise automatique en cas de panne."
         },
-        "secure_connections": {
-          "title": "Aucun port web ouvert sur votre serveur",
-          "body": "Tout le trafic web passe par un tunnel chiffré et l'administration à distance par un réseau privé. Une vérification depuis l'extérieur confirme que rien d'interdit n'est joignable."
+        "admin_dashboard": {
+          "title": "Tableau de bord d'administration",
+          "body": "Surveillez votre infrastructure, vos services, vos utilisateurs et leurs permissions depuis un seul tableau de bord unifié."
+        },
+        "monitoring": {
+          "title": "Supervision et alertes",
+          "body": "Recevez des alertes quand un service tombe ou que les ressources du serveur sont saturées."
         }
       }
     },
@@ -312,7 +312,6 @@
       "title": "Prêt à reprendre possession de vos données ?",
       "subtitle": "Un appel découverte de 30 minutes suffit pour confirmer si Catena correspond à votre cas d'usage."
     },
-    "meta_description": "Catena installe sur un serveur qui vous appartient les applications dont votre PME dépend : fichiers, courriels, discussions, CRM. Sauvegardes restaurées à l'essai, connexion unique, mises à jour avec retour arrière.",
     "founder": {
       "title": "Qui est derrière Catena",
       "body": "Conçu et maintenu par <a href='https://ma-lalonde.dev/'>Marc-Antoine Lalonde</a>, consultant en automatisation pour PME au Québec. J'ai bâti cette plateforme pour simplifier la vie des PME, et je peux vous aider à la mettre en place pour qu'elle travaille pour vous ensuite."

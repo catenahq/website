@@ -19,14 +19,14 @@ const book = {
   target: "_blank",
 };
 
-// The six verifiable claims, each with its icon.
+// The six capabilities the environment provides, each with its icon.
 const features = [
-  ["restore_tested", "tabler:database-export"],
-  ["immutable_copy", "tabler:lock"],
-  ["sso", "tabler:key"],
-  ["compliance", "tabler:file-certificate"],
-  ["safe_updates", "tabler:refresh"],
   ["secure_connections", "tabler:shield-lock"],
+  ["backups", "tabler:database-export"],
+  ["sso", "tabler:key"],
+  ["safe_updates", "tabler:refresh"],
+  ["admin_dashboard", "tabler:layout-dashboard"],
+  ["monitoring", "tabler:bell-ringing"],
 ].map(([key, icon]) => ({
   title: t(locale, `common.home.features.items.${key}.title`),
   description: t(locale, `common.home.features.items.${key}.body`),
@@ -39,7 +39,7 @@ const catalog =
     ? t(locale, "common.home.apps.catalog_link")
     : t(locale, "common.home.apps.catalog_count").replace("{count}", String(count));
 ---
-<Base locale={locale} description={t(locale, "common.home.meta_description")}>
+<Base locale={locale}>
   <Hero
     title={t(locale, "common.home.hero.headline")}
     subtitle={t(locale, "common.home.hero.subheadline")}

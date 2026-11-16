@@ -55,32 +55,32 @@
       "subheadline": "The everyday tools your business depends on - files, email, chat, booking, CRM, and more - on a server that's yours. Email is sent through the SMTP relay of your choice."
     },
     "features": {
-      "title": "Commitments you can verify",
-      "subtitle": "Catena installs to a dedicated VPS or computer you own, to provide what follows.",
+      "title": "The environment that runs your services",
+      "subtitle": "Catena installs to a dedicated VPS or computer you own to securely provide integrated capabilities.",
       "items": {
-        "restore_tested": {
-          "title": "Backups restored as a test, repeatedly",
-          "body": "Test restores regularly check that your backups open. You restore a single app or the whole server, or rebuild the server on a new machine from nothing but the backup access and its key."
+        "secure_connections": {
+          "title": "Secure connections",
+          "body": "Keeps your services safe through dedicated Admin and App tunnels, with DDoS protection. Keeps your server safe with automatic firewall and port reconciliation."
         },
-        "immutable_copy": {
-          "title": "Immutable copy (Object Lock) in a bucket you own",
-          "body": "A second copy of your backups, at another provider, write-locked: even a compromised server cannot alter or delete it. Included with Catena Business."
+        "backups": {
+          "title": "Backup, restore, and migrate",
+          "body": "Keep your data safe with verifiable, incremental backups, then restore a single app or the whole server, or move it to a new machine."
         },
         "sso": {
-          "title": "One sign-in (OIDC) for your apps",
-          "body": "One account opens your apps, with access set app by app and staff kept apart from administrators."
-        },
-        "compliance": {
-          "title": "Compliance report: Law 25, PIPEDA, GDPR, ISO 27001",
-          "body": "Each control, with what your server measures for it, as a self-assessment, and a signed monthly report for your insurer or auditor. Included with Catena Business."
+          "title": "Single sign-on",
+          "body": "One login across every service, with role-based permissions and an audit trail."
         },
         "safe_updates": {
-          "title": "Updates that roll back",
-          "body": "Known vulnerabilities are watched on every edition. With Catena Pro, updates apply themselves, and a failed update is put back to the last working version."
+          "title": "Safe updates",
+          "body": "Your infrastructure and services stay up to date automatically, with continuous threat monitoring and automatic fault recovery."
         },
-        "secure_connections": {
-          "title": "No web port open on your server",
-          "body": "All web traffic goes through an encrypted tunnel and remote administration through a private network. A check from outside confirms that nothing forbidden is reachable."
+        "admin_dashboard": {
+          "title": "Admin dashboard",
+          "body": "Monitor your infrastructure, services, users, and their permissions from a single, unified pane of glass."
+        },
+        "monitoring": {
+          "title": "Monitoring and alerts",
+          "body": "Get alerts when a service goes down or the server's resources are overused."
         }
       }
     },
@@ -312,7 +312,6 @@
       "title": "Ready to own your data again?",
       "subtitle": "A 30-minute discovery call is enough to confirm whether Catena fits your use case."
     },
-    "meta_description": "Catena installs the apps your small business relies on - files, email, chat, CRM - on a server you own. Backups restored as a test, one sign-in, updates that roll back.",
     "founder": {
       "title": "Who is behind Catena",
       "body": "Designed and maintained by <a href='https://ma-lalonde.dev/'>Marc-Antoine Lalonde</a>, an automation consultant for small businesses in Quebec. I built this platform to make life easier for small businesses, and I can help you set it up so it keeps working for you afterwards."
