@@ -51,8 +51,8 @@
   },
   "home": {
     "hero": {
-      "headline": "Own the software your business runs on.",
-      "subheadline": "The everyday tools your business depends on - files, email, chat, booking, CRM, and more - on a server that's yours."
+      "headline": "Own the software your business depends on.",
+      "subheadline": "The everyday tools your business depends on - files, email, chat, booking, CRM, and your own custom apps - on a server that's yours."
     },
     "features": {
       "title": "The environment that runs your services",
@@ -93,7 +93,7 @@
     },
     "pricing_matrix": {
       "title": "Community, Catena Pro, or Catena Business",
-      "intro": "Every edition runs on the organization's own server. Community is free and self-hosted. Catena Pro adds the automation that keeps it patched, backed up, and monitored automatically. Catena Business adds app support hours and a service-level agreement. Here is what each one includes.",
+      "intro": "Every edition runs on your own server. Community brings all the tools you need to host your applications easily and securely. Pro adds the automation that keeps things patched, backed up, and monitored automatically. Business adds support and compliance.",
       "cols": {
         "community": "Community",
         "business": "Catena Pro",
@@ -305,8 +305,7 @@
         }
       },
       "yes_label": "Included",
-      "no_label": "Not included",
-      "small_case": "Are you three people with no regulatory obligation? An online subscription probably suits you better."
+      "no_label": "Not included"
     },
     "cta": {
       "title": "Ready to own your data again?",

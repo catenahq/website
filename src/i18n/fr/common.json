@@ -51,8 +51,8 @@
   },
   "home": {
     "hero": {
-      "headline": "Possédez les logiciels qui font tourner votre entreprise.",
-      "subheadline": "Les outils dont votre entreprise dépend au quotidien - fichiers, courriels, discussions, réservation, CRM et plus encore - sur un serveur qui vous appartient."
+      "headline": "Possédez les logiciels dont votre entreprise dépend.",
+      "subheadline": "Les outils dont votre entreprise dépend au quotidien - fichiers, courriels, discussions, réservation, CRM et vos propres applications sur mesure - sur un serveur qui vous appartient."
     },
     "features": {
       "title": "L'environnement qui fait tourner vos services",
@@ -93,7 +93,7 @@
     },
     "pricing_matrix": {
       "title": "Communauté, Catena Pro ou Catena Business",
-      "intro": "Chaque édition s'exécute sur le serveur de l'organisation. L'édition Communauté est gratuite et auto-hébergée. Catena Pro ajoute l'automatisation qui la maintient à jour, sauvegardée et supervisée automatiquement. Catena Business ajoute des heures d'accompagnement applicatif et une entente de niveau de service. Voici ce que chaque édition inclut.",
+      "intro": "Chaque édition roule sur votre propre serveur. L'édition Communauté apporte tous les outils dont vous avez besoin pour héberger vos applications facilement et de façon sécuritaire. Pro ajoute l'automatisation qui garde le tout à jour, sauvegardé et supervisé automatiquement. Business ajoute le soutien et la conformité.",
       "cols": {
         "community": "Communauté",
         "business": "Catena Pro",
@@ -305,8 +305,7 @@
         }
       },
       "yes_label": "Inclus",
-      "no_label": "Non inclus",
-      "small_case": "Vous êtes trois personnes sans obligation réglementaire? Un abonnement en ligne vous convient probablement mieux."
+      "no_label": "Non inclus"
     },
     "cta": {
       "title": "Prêt à reprendre possession de vos données ?",

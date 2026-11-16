@@ -5,7 +5,6 @@ import Features2 from "../../components/astrowind/Features2.astro";
 import Content from "../../components/astrowind/Content.astro";
 import CallToAction from "../../components/astrowind/CallToAction.astro";
 import PricingMatrix from "../../components/PricingMatrix.astro";
-import Actions from "../../components/astrowind/Actions.astro";
 import { catalogCount } from "../../lib/catalog-count";
 import { locales, t } from "@catena/i18n";
 
@@ -67,9 +66,7 @@ const catalog =
     id="founder"
     title={t(locale, "common.home.founder.title")}
     content={`<p>${t(locale, "common.home.founder.body")}</p>`}
-  >
-    <Actions actions={[book]} />
-  </Content>
+  />
   <CallToAction
     title={t(locale, "common.home.cta.title")}
     subtitle={t(locale, "common.home.cta.subtitle")}
