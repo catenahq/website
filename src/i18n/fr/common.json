@@ -6,7 +6,6 @@
   "nav": {
     "docs": "Documentation",
     "contact": "Contact",
-    "status": "État des services",
     "main_label": "Navigation principale",
     "toggle_menu": "Ouvrir ou fermer le menu",
     "toggle_theme": "Basculer entre le mode clair et le mode sombre"
@@ -52,8 +51,8 @@
   },
   "home": {
     "hero": {
-      "headline": "Possédez les logiciels qui font tourner votre entreprise.",
-      "subheadline": "Les outils dont votre entreprise dépend au quotidien - fichiers, courriels, discussions, réservation, CRM et plus encore - sur un serveur qui vous appartient."
+      "headline": "Possédez les logiciels dont votre entreprise dépend.",
+      "subheadline": "Les outils dont votre entreprise dépend au quotidien - fichiers, courriels, discussions, réservation, CRM et vos propres applications sur mesure - sur un serveur qui vous appartient."
     },
     "features": {
       "title": "L'environnement qui fait tourner vos services",
@@ -61,7 +60,7 @@
       "items": {
         "secure_connections": {
           "title": "Connexions sécurisées",
-          "body": "Atteignez vos services par des tunnels Admin et Applications dédiés, avec protection DDoS. La réconciliation automatique du pare-feu ouvre les ports que Catena et vos applications déclarent, les ferme quand une application est retirée et revérifie les règles toutes les cinq minutes pour rétablir celles qui manquent."
+          "body": "Garde vos services en sécurité grâce à des tunnels Admin et Applications dédiés, avec protection DDoS. Garde votre serveur en sécurité grâce à la réconciliation automatique du pare-feu et des ports."
         },
         "backups": {
           "title": "Sauvegarde, restauration et migration",
@@ -86,14 +85,15 @@
       }
     },
     "apps": {
-      "title": "Une app pour chaque besoin",
-      "intro": "Hébergez vos propres applications ou découvrez-en des centaines pour héberger et partager vos fichiers, gérer vos photos, discuter avec vos collègues et vos amis, gérer votre entreprise, et bien plus encore!",
-      "discover": "Découvrez des applications sur <a href='https://awweso.me/' target='_blank' rel='noopener noreferrer'>awweso.me</a> ou trouvez des solutions de rechange aux services des géants du numérique sur <a href='https://openalternative.co/' target='_blank' rel='noopener noreferrer'>openalternative.co</a>.",
-      "catalog": "Consultez notre catalogue d'applications préintégrées sur <a href='https://github.com/catenahq/catena-templates' target='_blank' rel='noopener noreferrer'>github.com/catenahq/catena-templates</a> ou <a href='https://docs.catena.run/fr/configure-apps/'>apprenez à configurer le déploiement de vos applications pour Catena</a>."
+      "title": "Une application pour chaque besoin",
+      "intro": "Installez les applications dont votre entreprise a besoin : fichiers, photos, discussions, gestion de la relation client, comptabilité et bien plus.",
+      "catalog_count": "<a href='https://docs.catena.run/fr/configure-apps/'>{count} applications prêtes à installer</a>",
+      "catalog_link": "<a href='https://docs.catena.run/fr/configure-apps/'>Les applications prêtes à installer</a>",
+      "configure": "Une application manque? <a href='https://docs.catena.run/fr/configure-apps/'>Apprenez à la configurer pour Catena</a>."
     },
     "pricing_matrix": {
       "title": "Communauté, Catena Pro ou Catena Business",
-      "intro": "Chaque édition s'exécute sur le serveur de l'organisation. L'édition Communauté est gratuite et auto-hébergée. Catena Pro ajoute l'automatisation qui la maintient à jour, sauvegardée et supervisée automatiquement. Catena Business ajoute des heures d'accompagnement applicatif et une entente de niveau de service. Voici ce que chaque édition inclut.",
+      "intro": "Chaque édition roule sur votre propre serveur. L'édition Communauté apporte tous les outils dont vous avez besoin pour héberger vos applications facilement et de façon sécuritaire. Pro ajoute l'automatisation qui garde le tout à jour, sauvegardé et supervisé automatiquement. Business ajoute le soutien et la conformité.",
       "cols": {
         "community": "Communauté",
         "business": "Catena Pro",
@@ -309,27 +309,30 @@
     },
     "cta": {
       "title": "Prêt à reprendre possession de vos données ?",
-      "subtitle": "Une démo de 30 minutes suffit pour confirmer si catena correspond à votre cas d'usage."
+      "subtitle": "Un appel découverte de 30 minutes suffit pour confirmer si Catena correspond à votre cas d'usage."
+    },
+    "founder": {
+      "title": "Qui est derrière Catena",
+      "body": "Conçu et maintenu par <a href='https://ma-lalonde.dev/'>Marc-Antoine Lalonde</a>, consultant en automatisation pour PME au Québec. J'ai bâti cette plateforme pour simplifier la vie des PME, et je peux vous aider à la mettre en place pour qu'elle travaille pour vous ensuite."
     }
   },
   "contact": {
     "title": "Contact",
-    "description": "Joindre catena. Réservez un appel découverte de 30 minutes ou écrivez-nous par courriel. Aucun pitch lors d'un premier contact -- nous posons des questions.",
-    "intro": "Le moyen le plus rapide est un appel découverte de 30 minutes. Nous ne vendons rien lors d'un premier contact -- nous posons des questions et déterminons ensemble si Catena correspond à votre situation.",
-    "response_body": "Nous visons répondre dans un jour ouvrable.",
+    "description": "Joindre Catena. Réservez un appel découverte de 30 minutes ou écrivez-nous par courriel. Nous ne vendons rien lors d'un premier contact : nous posons des questions.",
+    "intro": "Le moyen le plus rapide est un appel découverte de 30 minutes. Nous ne vendons rien lors d'un premier contact : nous posons des questions et déterminons ensemble si Catena correspond à votre situation.",
+    "response_body": "Nous répondons dans un jour ouvrable.",
     "about_title": "Avec qui vous travaillez",
     "about_body": "Catena est dirigée par Marc-Antoine Lalonde. Ce que vous obtenez, c'est du jugement sur le choix des outils, la connaissance de leurs modes de défaillance et une prise en charge de bout en bout - pas une liste de fonctionnalités.",
     "portfolio_link_label": "Parcours et portfolio",
     "portfolio_link_url": "https://ma-lalonde.dev",
     "email": {
       "title": "Écrire un courriel",
-      "intro": "Vous préférez écrire? Écrivez-nous à cette adresse.",
-      "notice": "Pas de publicité, de sollicitation commerciale ni de pourriel, s'il vous plaît."
+      "intro": "Vous préférez écrire? Écrivez-nous à cette adresse."
     }
   },
   "privacy": {
     "title": "Politique de confidentialité",
-    "description": "Ce que catena collecte, ce que nous n'en faisons pas, où vivent les données, vos droits d'accès / correction / suppression sous la Loi 25 et la LPRPDE.",
+    "description": "Ce que Catena collecte, ce que nous n'en faisons pas, où vivent les données, vos droits d'accès / correction / suppression sous la Loi 25 et la LPRPDE.",
     "intro": "Catena ne partage, ne vend, ne loue pas vos données et n'entraîne aucune IA dessus. Toute la raison d'être de la suite est qu'elle vous appartient.",
     "collect_title": "Ce que nous collectons",
     "collect_body": "Coordonnées et demandes de support. Le paiement passe par Polar, le marchand officiel, qui détient les informations de paiement : les numéros de carte ne touchent jamais nos serveurs. Pour les clients abonnés à la copie centrale du journal d'audit, les entrées d'audit administratif de la suite (chaque action d'administration, qui l'a faite, depuis quelle adresse), conservées 90 jours. Les données de la suite, ses sauvegardes, la clé qui les ouvre et les identifiants de ses comptes fournisseurs restent sur le serveur et dans les comptes du client, et n'atteignent jamais nos systèmes.",
@@ -340,7 +343,7 @@
     "subprocessors_title": "Sous-traitants",
     "subprocessors_body": "Polar (paiement et taxes de vente, à titre de marchand officiel). Cloudflare (Tunnel + bordure pour catena.run). GitHub (héberge catena.run et docs.catena.run; ses serveurs journalisent l'adresse de chaque visite). Les fournisseurs choisis pour une suite sont ceux du client, avec qui il fait affaire directement.",
     "rights_title": "Vos droits",
-    "rights_body": "La Loi 25 et la LPRPDE vous accordent le droit d'accéder à, de corriger et de supprimer les renseignements personnels que nous détenons. Contactez privacy@catena.run (ou hello@catena.run en attendant) et nous répondrons sous 30 jours.",
+    "rights_body": "La Loi 25 et la LPRPDE vous accordent le droit d'accéder à, de corriger et de supprimer les renseignements personnels que nous détenons. Contactez privacy@catena.run et nous répondrons sous 30 jours.",
     "cookies_title": "Témoins et analytiques",
     "cookies_body": "Aucun témoin publicitaire ni traceur tiers. Un seul témoin, `lang`, retient la langue que vous lisez. Nous comptons les visites de catena.run et de docs.catena.run avec Umami, qui tourne sur notre propre serveur, hébergé au Québec. Il ne dépose aucun témoin et ne garde aucune adresse IP : il note la page, le site d'où vous venez, votre navigateur, votre système, le type d'appareil, la taille de l'écran, la langue, ainsi que le pays, la région et la ville tirés de votre adresse IP, qui est ensuite écartée. Une visite est regroupée sous un code qui change chaque mois : personne n'est suivi d'un mois à l'autre. Les statistiques de visites sont conservées sans limite de durée. Si votre navigateur demande de ne pas être suivi, rien n'est compté.",
     "contact_title": "Questions",
@@ -348,61 +351,51 @@
   },
   "terms": {
     "title": "Conditions d'utilisation",
-    "description": "Conditions d'utilisation de catena. Portée du service, tarification, propriété des données, usage acceptable, résiliation, loi applicable (Québec, Canada).",
-    "intro": "Ces conditions encadrent la relation entre Catena (le prestataire de services) et vous (le client). Elles sont volontairement concises -- la lettre de mandat signée à l'inscription est le contrat de référence ; cette page en résume les engagements principaux.",
-    "review_notice": "Cette page est un brouillon en attente de révision juridique. Parlez-nous directement pour les conditions contractuelles dans votre lettre de mandat.",
+    "description": "Conditions d'utilisation de Catena. Portée du service, tarification, propriété des données, usage acceptable, résiliation, loi applicable (Québec, Canada).",
+    "intro": "Ces conditions encadrent la relation entre Catena (le prestataire de services) et vous (le client). Elles sont volontairement concises : la convention de services gérés et ses annexes, que vous acceptez en signant le bon de commande, sont le contrat de référence ; cette page en résume les engagements principaux.",
+    "review_notice": "Cette page est un brouillon en attente de révision juridique. Les conditions contractuelles se trouvent dans les ententes liées ci-dessous.",
     "scope_title": "Portée du service",
-    "scope_body": "L'abonnement, Catena Pro ou Catena Business -- un forfait fixe par serveur, applications illimitées -- définit ce qui est inclus, avec le support manuel facturé à l'heure selon l'usage. Voir la <a href='/#pricing'>section Tarifs</a> pour le modèle public. Les changements de portée sont convenus par écrit.",
+    "scope_body": "L'abonnement, Catena Pro ou Catena Business, est un forfait fixe par serveur, applications illimitées; il définit ce qui est inclus, avec le support manuel facturé à l'heure selon l'usage. Voir la <a href='/fr/#pricing'>section Tarifs</a> pour le modèle public. Les changements de portée sont convenus par écrit.",
     "billing_title": "Tarification et facturation",
-    "billing_body": "L'abonnement géré est un forfait fixe par serveur, facturé mensuellement, sans engagement minimum. Le support manuel est facturé au tarif publié par tranches de 15 minutes, selon l'usage. Paiement et taxes de vente via Polar, le marchand officiel.",
+    "billing_body": "L'abonnement géré est un prix mensuel fixe par serveur pour l'édition inscrite à votre bon de commande, facturé mensuellement à l'avance, sans engagement minimum. Le support manuel hors de votre édition est facturé au tarif publié par tranches de 15 minutes, selon l'usage. Paiement et taxes de vente via Polar, le marchand officiel.",
     "ownership_title": "Propriété des données",
     "ownership_body": "Toutes les données client, l'infrastructure et les identifiants appartiennent au client et restent sur son serveur et dans ses comptes. Notre rôle est uniquement celui de prestataire de services. L'export et la migration ne nécessitent rien de notre part.",
     "liability_title": "Limitation de responsabilité",
-    "liability_body": "La responsabilité est plafonnée à un montant proportionnel au plus récent forfait mensuel ; les limites contraignantes figurent dans votre lettre de mandat.",
+    "liability_body": "La responsabilité est plafonnée au moindre de douze fois la moyenne des frais mensuels payés au cours des douze derniers mois et des dommages directs réels ; les limites contraignantes figurent à la <a href='/fr/legal/master-agreement/'>section 10 de la convention de services gérés</a>.",
     "sla_title": "Niveaux de service",
-    "sla_body": "Disponibilité visée, temps de réponse et objectifs de récupération pour les exercices de restauration figurent dans votre lettre de mandat et sont revus au point trimestriel.",
+    "sla_body": "La disponibilité mensuelle visée, les temps de réponse et les objectifs de récupération dépendent de votre édition et figurent dans l'<a href='/fr/legal/sla/'>annexe sur les niveaux de service</a>.",
     "aup_title": "Usage acceptable",
     "aup_body": "Aucun contenu illégal, aucun pourriel (envois en masse non sollicités), aucune distribution de logiciel malveillant, aucune revente de la suite en mode service à des tiers sans accord préalable. Posture standard pour les services Internet.",
     "termination_title": "Résiliation",
-    "termination_body": "L'une ou l'autre partie peut mettre fin selon la lettre de mandat. La suite, ses données et ses sauvegardes restent au client : rien n'est à remettre.",
+    "termination_body": "Vous pouvez annuler l'abonnement en tout temps, avec effet à la fin du mois payé. L'une ou l'autre partie peut aussi mettre fin à l'entente moyennant un préavis écrit de trente jours, selon la <a href='/fr/legal/master-agreement/'>section 9 de la convention de services gérés</a>. La suite, ses données et ses sauvegardes restent au client : rien n'est à remettre. Voir la <a href='/fr/legal/data-export-and-termination/'>procédure d'export des données et de résiliation</a>.",
     "perservice_title": "Conditions par service",
     "perservice_body": "Chaque application en amont dans la suite porte sa propre licence et politique d'usage acceptable (Nextcloud GPL, Rocket.Chat MIT, Euro Office AGPL, etc.). Les conditions officielles de chaque amont sont liées depuis la documentation de chaque application.",
     "law_title": "Loi applicable",
-    "law_body": "Québec, Canada. Les litiges relèvent des tribunaux du district judiciaire de Montréal."
-  },
-  "status": {
-    "title": "État des services",
-    "description": "État en temps réel des services Catena (catena.run, la documentation, l'API de facturation). Disponibilité publiée 24/7 par Gatus, sondes indépendantes du serveur applicatif. Si la page principale tombe, cette page reste affichée.",
-    "intro": "Disponibilité publique des services Catena. Mis à jour à la minute par Gatus.",
-    "what_title": "Ce que vous voyez ici",
-    "what_body_1": "Cette page affiche l'état en temps réel des services que Catena opère pour vous-mêmes -- le site marketing (<a href='https://catena.run'>catena.run</a>), la documentation (<a href='https://docs.catena.run'>docs.catena.run</a>), et l'API de facturation.",
-    "what_body_2": "Les sondes Gatus tournent à partir d'un serveur distinct de celui qui héberge les services, pour que la page reste consultable même si un service principal tombe. Un panne touchant l'infrastructure Catena est visible publiquement; nous ne pouvons pas la cacher.",
-    "what_body_3": "Pour les clients sous forfait, les seuils SLA dépendent de votre palier (palier Petite entreprise: meilleur effort; paliers Moyenne / Grande: 99,5 %).",
-    "dashboard_title": "Tableau Gatus",
-    "dashboard_body": "Embed à venir une fois Gatus exposé publiquement à <code>https://status.catena.run</code>. En attendant, contactez <a href='mailto:hello@catena.run'>hello@catena.run</a> ou <a href='/fr/contact'>prenez un appel</a> si vous suspectez une panne.",
-    "placeholder": "<strong>État : en construction.</strong> Le tableau Gatus public sera embarqué ici dans la prochaine itération. L'instance Gatus interne tourne déjà et alimente les alertes opérateur."
+    "law_body": "Québec, Canada. Les litiges relèvent des tribunaux du district judiciaire de Montréal.",
+    "agreements_title": "Ententes",
+    "agreements_body": "Les conditions contractuelles sont publiées en entier : la <a href='/fr/legal/master-agreement/'>convention de services gérés</a>, l'<a href='/fr/legal/sla/'>annexe sur les niveaux de service</a>, la <a href='/fr/legal/subprocessors/'>liste des sous-traitants</a> et la <a href='/fr/legal/data-export-and-termination/'>procédure d'export des données et de résiliation</a>."
   },
   "legal": {
     "effective": "En vigueur depuis le",
     "master-agreement": {
       "title": "Convention de services principale",
       "intro": "Texte intégral de la Convention de services principale (MSA).",
-      "description": "Convention de services principale catena. Texte canonique versionné, identifie par SHA de commit. Loi applicable: Quebec, Canada."
+      "description": "Convention de services principale Catena. Texte canonique versionné, identifié par SHA de commit. Loi applicable : Québec, Canada."
     },
     "sla": {
       "title": "Entente de niveau de service (Annexe A)",
       "intro": "Cibles de disponibilité et de délais de réponse. Annexe A de la Convention de services principale, jointe à chaque MSA signée.",
-      "description": "Entente de niveau de service catena (Annexe A). Texte canonique rendu depuis le paquet de contrats versionné."
+      "description": "Entente de niveau de service Catena (Annexe A). Texte canonique rendu depuis le paquet de contrats versionné."
     },
     "subprocessors": {
       "title": "Liste des sous-traitants (Annexe D)",
       "intro": "Tiers susceptibles de traiter des renseignements personnels des clients en notre nom (divulgation Loi 25, art. 18.3). Annexe D de la Convention de services principale.",
-      "description": "Liste des sous-traitants catena (Annexe D). Divulgation Loi 25 des tiers, rendue depuis le paquet de contrats versionné."
+      "description": "Liste des sous-traitants Catena (Annexe D). Divulgation Loi 25 des tiers, rendue depuis le paquet de contrats versionné."
     },
     "data-export-and-termination": {
       "title": "Exportation des données et fin de contrat (Annexe C)",
       "intro": "Comment vos données partent avec vous : procédure d'exportation et effets de la fin du contrat. Annexe C de la Convention de services principale.",
-      "description": "Annexe d'exportation des données et de fin de contrat catena (Annexe C). Portabilité et effets post-terminaison, rendus depuis le paquet de contrats versionné."
+      "description": "Annexe d'exportation des données et de fin de contrat Catena (Annexe C). Portabilité et effets post-terminaison, rendus depuis le paquet de contrats versionné."
     }
   }
 }

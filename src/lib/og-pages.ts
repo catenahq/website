@@ -12,10 +12,8 @@ export interface OgPage {
 export const ogPages: OgPage[] = [
   // FR
   { locale: "fr", subpath: "contact",             title: "Contact" },
-  { locale: "fr", subpath: "status",              title: "État des services" },
   // EN
   { locale: "en", subpath: "contact",             title: "Contact" },
-  { locale: "en", subpath: "status",              title: "Service status" },
 ];
 
 export function ogImagePathFor(locale: "en" | "fr", subpath: string): string | null {

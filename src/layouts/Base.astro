@@ -35,7 +35,7 @@ const umamiWebsiteId = import.meta.env.PUBLIC_UMAMI_WEBSITE_ID as string | undef
 
 const brandName = t(locale, "common.brand.name");
 const brandTagline = t(locale, "common.brand.tagline");
-const pageTitle = title ? `${title} -- ${brandName}` : `${brandName} -- ${brandTagline}`;
+const pageTitle = title ? `${title} - ${brandName}` : `${brandName} - ${brandTagline}`;
 const pageDesc = description ?? brandTagline;
 // OG image resolution: explicit prop > per-page generated card >
 // locale default. The per-page endpoint at src/pages/og/[...].png.ts
@@ -74,7 +74,6 @@ const segments = subpath ? subpath.split("/").filter(Boolean) : [];
 const slugToNavKey: Record<string, string> = {
   contact: "common.nav.contact",
   docs: "common.nav.docs",
-  status: "common.nav.status",
 };
 const humanize = (slug: string) =>
   slug.replace(/-/g, " ").replace(/\b\w/g, (c) => c.toUpperCase());
