@@ -5,6 +5,8 @@ import Features2 from "../../components/astrowind/Features2.astro";
 import Content from "../../components/astrowind/Content.astro";
 import CallToAction from "../../components/astrowind/CallToAction.astro";
 import PricingMatrix from "../../components/PricingMatrix.astro";
+import Actions from "../../components/astrowind/Actions.astro";
+import { catalogCount } from "../../lib/catalog-count";
 import { locales, t } from "@catena/i18n";
 
 export const getStaticPaths = () => locales.map((locale) => ({ params: { locale } }));
@@ -17,21 +19,27 @@ const book = {
   target: "_blank",
 };
 
-// The six capabilities the environment provides, each with its icon.
+// The six verifiable claims, each with its icon.
 const features = [
-  ["secure_connections", "tabler:shield-lock"],
-  ["backups", "tabler:database-export"],
+  ["restore_tested", "tabler:database-export"],
+  ["immutable_copy", "tabler:lock"],
   ["sso", "tabler:key"],
+  ["compliance", "tabler:file-certificate"],
   ["safe_updates", "tabler:refresh"],
-  ["admin_dashboard", "tabler:layout-dashboard"],
-  ["monitoring", "tabler:bell-ringing"],
+  ["secure_connections", "tabler:shield-lock"],
 ].map(([key, icon]) => ({
   title: t(locale, `common.home.features.items.${key}.title`),
   description: t(locale, `common.home.features.items.${key}.body`),
   icon,
 }));
+
+const count = await catalogCount();
+const catalog =
+  count === null
+    ? t(locale, "common.home.apps.catalog_link")
+    : t(locale, "common.home.apps.catalog_count").replace("{count}", String(count));
 ---
-<Base locale={locale}>
+<Base locale={locale} description={t(locale, "common.home.meta_description")}>
   <Hero
     title={t(locale, "common.home.hero.headline")}
     subtitle={t(locale, "common.home.hero.subheadline")}
@@ -49,12 +57,19 @@ const features = [
     title={t(locale, "common.home.apps.title")}
     subtitle={t(locale, "common.home.apps.intro")}
     items={[
-      { description: t(locale, "common.home.apps.discover"), icon: "tabler:world" },
-      { description: t(locale, "common.home.apps.catalog"), icon: "tabler:apps" },
+      { description: catalog, icon: "tabler:apps" },
+      { description: t(locale, "common.home.apps.configure"), icon: "tabler:world" },
     ]}
     columns={2}
   />
   <PricingMatrix locale={locale} />
+  <Content
+    id="founder"
+    title={t(locale, "common.home.founder.title")}
+    content={`<p>${t(locale, "common.home.founder.body")}</p>`}
+  >
+    <Actions actions={[book]} />
+  </Content>
   <CallToAction
     title={t(locale, "common.home.cta.title")}
     subtitle={t(locale, "common.home.cta.subtitle")}

@@ -10,12 +10,12 @@ export function headerData(locale: Locale, pathname: string) {
   // EN and FR slugs are identical for every page, so the same page in each
   // language is the same path under the other prefix. Each option pairs a
   // language with the currency prices show in; FR pages show CAD only.
-  const subpath = pathname.replace(/^\/(en|fr)(?=\/|$)/, "");
+  const subpath = pathname.replace(/^\/(en|fr)(?=\/|$)/, "").replace(/\/?$/, "/");
   return {
     homeHref: `/${locale}/`,
     brandName: t(locale, "common.brand.name"),
     links: [
-      { text: t(locale, "common.nav.contact"), href: `/${locale}/contact` },
+      { text: t(locale, "common.nav.contact"), href: `/${locale}/contact/` },
       { text: t(locale, "common.nav.docs"), href: docsHref(locale) },
     ],
     localeCurrency: {
@@ -47,16 +47,15 @@ export function footerData(locale: Locale) {
       {
         title: t(locale, "common.footer.col_company"),
         links: [
-          { text: t(locale, "common.nav.contact"), href: `/${locale}/contact` },
-          { text: t(locale, "common.nav.status"), href: `/${locale}/status` },
+          { text: t(locale, "common.nav.contact"), href: `/${locale}/contact/` },
           { text: t(locale, "common.footer.about"), href: "https://ma-lalonde.dev" },
         ],
       },
       {
         title: t(locale, "common.footer.col_legal"),
         links: [
-          { text: t(locale, "common.privacy.title"), href: `/${locale}/privacy` },
-          { text: t(locale, "common.terms.title"), href: `/${locale}/terms` },
+          { text: t(locale, "common.privacy.title"), href: `/${locale}/privacy/` },
+          { text: t(locale, "common.terms.title"), href: `/${locale}/terms/` },
         ],
       },
     ],
