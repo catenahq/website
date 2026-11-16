@@ -1,0 +1,33 @@
+---
+import { t } from "@catena/i18n";
+import Headline from "./astrowind/Headline.astro";
+import WidgetWrapper from "./astrowind/WidgetWrapper.astro";
+
+interface Props {
+  locale: "en" | "fr";
+}
+
+const { locale } = Astro.props;
+const k = (key: string) => t(locale, `common.contact.email.${key}`);
+---
+<WidgetWrapper muted>
+  <Headline title={k("title")} subtitle={k("intro")} />
+  <div class="flex flex-col max-w-xl mx-auto rounded-lg border border-line bg-page shadow p-4 sm:p-6 lg:p-8 w-full text-center">
+    <!-- The address is put together in the browser, so the page's HTML never holds it whole for address harvesters to find. -->
+    <p class="text-lg font-semibold">
+      <a class="text-link underline" data-email-user="marc" data-email-domain="catena.run"></a>
+    </p>
+    <p class="mt-4 text-sm text-muted">{k("notice")}</p>
+    <p class="mt-3 text-sm text-muted">{t(locale, "common.contact.response_body")}</p>
+  </div>
+</WidgetWrapper>
+
+<script>
+  document.addEventListener("astro:page-load", () => {
+    document.querySelectorAll<HTMLAnchorElement>("[data-email-user]").forEach((link) => {
+      const address = `${link.dataset.emailUser}@${link.dataset.emailDomain}`;
+      link.href = `mailto:${address}`;
+      link.textContent = address;
+    });
+  });
+</script>
