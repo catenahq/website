@@ -18,7 +18,7 @@
     "book_discovery": "Réserver un appel découverte",
     "see_features": "Voir ce qui est inclus",
     "get_started_free": "Commencer gratuitement",
-    "discovery_url": "/fr/contact"
+    "discovery_url": "https://nextcloud.ma-lalonde.dev/apps/calendar/appointment/KYDBfebmYHg7"
   },
   "footer": {
     "rights": "Tous droits réservés.",
@@ -314,28 +314,17 @@
   },
   "contact": {
     "title": "Contact",
-    "description": "Joindre catena. Réservez un appel découverte de 30 minutes ou envoyez un message via le formulaire. Aucun pitch lors d'un premier contact -- nous posons des questions.",
+    "description": "Joindre catena. Réservez un appel découverte de 30 minutes ou écrivez-nous par courriel. Aucun pitch lors d'un premier contact -- nous posons des questions.",
     "intro": "Le moyen le plus rapide est un appel découverte de 30 minutes. Nous ne vendons rien lors d'un premier contact -- nous posons des questions et déterminons ensemble si Catena correspond à votre situation.",
     "response_body": "Nous visons répondre dans un jour ouvrable.",
     "about_title": "Avec qui vous travaillez",
     "about_body": "Catena est dirigée par Marc-Antoine Lalonde. Ce que vous obtenez, c'est du jugement sur le choix des outils, la connaissance de leurs modes de défaillance et une prise en charge de bout en bout - pas une liste de fonctionnalités.",
     "portfolio_link_label": "Parcours et portfolio",
     "portfolio_link_url": "https://ma-lalonde.dev",
-    "form": {
-      "title": "Envoyer un message",
-      "intro": "Ou remplissez le formulaire ci-dessous. Les réponses partent de la même boîte.",
-      "name_label": "Votre nom",
-      "email_label": "Votre courriel",
-      "company_label": "Entreprise (facultatif)",
-      "intent_label": "Que cherchez-vous? (cochez tout ce qui s'applique)",
-      "intent_managed": "Une suite logicielle gérée pour mon entreprise",
-      "intent_community": "De l'aide pour auto-héberger l'édition Communauté",
-      "intent_website": "Un site web sur la suite",
-      "intent_partnership": "Partenariat / référencement",
-      "intent_other": "Autre chose",
-      "message_label": "Message",
-      "submit_label": "Envoyer",
-      "mailto_fallback": "Ou écrivez-nous directement:"
+    "email": {
+      "title": "Écrire un courriel",
+      "intro": "Vous préférez écrire? Écrivez-nous à cette adresse.",
+      "notice": "Pas de publicité, de sollicitation commerciale ni de pourriel, s'il vous plaît."
     }
   },
   "privacy": {

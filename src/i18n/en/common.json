@@ -18,7 +18,7 @@
     "book_discovery": "Book a discovery call",
     "see_features": "See what's included",
     "get_started_free": "Get started free",
-    "discovery_url": "/en/contact"
+    "discovery_url": "https://nextcloud.ma-lalonde.dev/apps/calendar/appointment/KYDBfebmYHg7"
   },
   "footer": {
     "rights": "All rights reserved.",
@@ -314,28 +314,17 @@
   },
   "contact": {
     "title": "Contact",
-    "description": "Reach catena. Send a message via the form. We do not pitch on first contact -- we ask questions.",
+    "description": "Reach catena. Book a 30-minute discovery call or send us an email. We do not pitch on first contact -- we ask questions.",
     "intro": "The fastest way to reach us is a 30-minute discovery call. We do not pitch on first contact -- we ask questions and work out together whether Catena is the right fit.",
     "response_body": "We aim to reply within one business day.",
     "about_title": "Who you are working with",
     "about_body": "Catena is led by Marc-Antoine Lalonde. What you get is judgment about which tools to pick, knowing how they fail, and owning them end to end - not a list of features.",
     "portfolio_link_label": "Full background and portfolio",
     "portfolio_link_url": "https://ma-lalonde.dev",
-    "form": {
-      "title": "Send a message",
-      "intro": "Or fill in the form below. Replies come from the same inbox.",
-      "name_label": "Your name",
-      "email_label": "Your email",
-      "company_label": "Company (optional)",
-      "intent_label": "What are you looking for? (pick all that apply)",
-      "intent_managed": "A managed software suite for my company",
-      "intent_community": "Help self-hosting the Community edition",
-      "intent_website": "A website on the suite",
-      "intent_partnership": "Partnership / referral",
-      "intent_other": "Something else",
-      "message_label": "Message",
-      "submit_label": "Send",
-      "mailto_fallback": "Or just email us directly:"
+    "email": {
+      "title": "Send an email",
+      "intro": "Prefer to write? Email us at this address.",
+      "notice": "No ads, sales pitches or spam, please."
     }
   },
   "privacy": {
