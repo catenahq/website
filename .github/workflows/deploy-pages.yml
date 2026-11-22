@@ -2,27 +2,22 @@
 #
 # Static Astro build (npm run build -> dist/) published to GitHub Pages.
 # The custom domain catena.run is set via public/CNAME (persisted on
-# deploy). Runs on push to main (the protected deploy branch), and daily
-# so a price changed in Polar reaches the site; dev is the active-edit
-# branch and does not deploy. The github-pages environment admits main
-# only, and a scheduled run starts on the default branch, dev, so the
-# daily run starts this workflow on main and does nothing else.
+# deploy). Runs on push to release (the protected deploy branch), and daily
+# so a price changed in Polar reaches the site; a merge into main does not
+# deploy. The github-pages environment admits release only, and a scheduled
+# run starts on the default branch, main, so the daily run starts this
+# workflow on release and does nothing else.
 #
 # @catenahq/contracts is consumed via sibling read (file:../contracts);
 # the build checks out catenahq/contracts alongside. contracts is
-# public, so no token is needed.
-#
-# On a push, a first step looks for the push run of ci.yml on the same tree
-# (waiting up to 30 minutes for one still going). Its site artifact is published
-# as it is; a tree whose CI failed fails the job and is not published; with no
-# run, or no site artifact on the run, the site is built here. A manual or
-# daily run always builds, so the prices it reads from Polar are current.
+# public, so no token is needed. The build reads the edition prices from
+# Polar with POLAR_PRODUCTS_TOKEN.
 
 name: Deploy to GitHub Pages
 
 on:
   push:
-    branches: [main]
+    branches: [release]
   schedule:
     - cron: '23 7 * * *'
   workflow_dispatch:
@@ -37,17 +32,17 @@ concurrency:
   cancel-in-progress: false
 
 jobs:
-  start-on-main:
-    name: start on main
+  start-on-release:
+    name: start on release
     if: github.event_name == 'schedule'
     runs-on: ubuntu-26.04
     permissions:
       actions: write
     steps:
-      - name: Start the deploy on main
+      - name: Start the deploy on release
         env:
           GH_TOKEN: ${{ github.token }}
-        run: gh workflow run deploy-pages.yml --repo "$GITHUB_REPOSITORY" --ref main
+        run: gh workflow run deploy-pages.yml --repo "$GITHUB_REPOSITORY" --ref release
 
   build:
     name: build
@@ -55,59 +50,26 @@ jobs:
     runs-on: ubuntu-26.04
     permissions:
       contents: read
-      actions: read
     steps:
-      # A workflow_dispatch run (manual, or the daily one started on main)
-      # never reuses a result, so it builds.
-      - name: The CI run of this tree
-        id: tree
-        uses: catenahq/contracts/.github/actions/same-tree@main
-        with:
-          name: ci
-          workflow: .github/workflows/ci.yml
-          siblings: catenahq/contracts
-          source-events: push
-          record: false
-          wait-minutes: 30
-      - name: The run that built the site
-        id: source
-        if: steps.tree.outputs.state == 'success'
-        env:
-          SOURCE: ${{ steps.tree.outputs.source }}
-        run: echo "run-id=${SOURCE##*/}" >> "$GITHUB_OUTPUT"
-      - name: Download the site CI built
-        id: site
-        if: steps.source.outputs.run-id != ''
-        continue-on-error: true
-        uses: actions/download-artifact@9000827ccba6bdab643e8b6fd33ac0654aef8333 # v8.0.2
-        with:
-          name: site
-          path: website/dist
-          run-id: ${{ steps.source.outputs.run-id }}
-          github-token: ${{ github.token }}
       - name: Check out website
-        if: steps.site.outcome != 'success'
         uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7
         with:
           path: website
           persist-credentials: false
       - name: Check out sibling contracts
-        if: steps.site.outcome != 'success'
-        uses: catenahq/contracts/.github/actions/checkout-sibling@main
+        uses: catenahq/contracts/.github/actions/checkout-sibling@b1d4ca79e0999fd9f12c86b6c77737b503e1d2ce # main
         with:
           repository: catenahq/contracts
           path: contracts
           lock: website/.github/catenahq.lock
-      - if: steps.site.outcome != 'success'
-        uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7
+      - uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7
         with:
-          node-version: "26"
+          node-version: "26.13.1"
+          package-manager-cache: false
       - name: Install
-        if: steps.site.outcome != 'success'
         working-directory: ./website
         run: npm ci
       - name: Build
-        if: steps.site.outcome != 'success'
         working-directory: ./website
         env:
           POLAR_PRODUCTS_TOKEN: ${{ secrets.POLAR_PRODUCTS_TOKEN }}
