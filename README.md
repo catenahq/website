@@ -29,7 +29,8 @@ and a fixed CAD and USD price. The build reads them with
 `POLAR_PRODUCTS_TOKEN`, an organization access token with the
 `products:read` scope (a repository secret in CI); `POLAR_API_BASE`
 points it at the sandbox (`https://sandbox-api.polar.sh`) for a test.
-Without the token a local build shows no amounts, and a CI build fails.
+Without the token a local build shows no amounts, and a build with `CI` set
+fails; the `site` check builds with `CI=false`.
 
 The header's selector pairs a language with a currency (FR - CA$,
 EN - CA$, EN - US$) and remembers the currency; a browser set to en-US
@@ -50,6 +51,18 @@ does not publish a tree whose CI failed), and a daily run always builds, to
 pick up price changes made in Polar. The custom
 domain catena.run is set via `public/CNAME`. `dev` is the active-edit
 branch and does not deploy.
+
+## CI
+
+`.github/workflows/ci.yml` calls the shared PR workflow of catenahq/contracts,
+which reads `.github/checks.yml`. `ci/run <name>` runs one check, the same in CI
+and on a workstation.
+
+- the `gates` of the shared workflow: unicode hygiene, repo rules, comment
+  prose and duplication (`.jscpd.json`)
+- `site` (`bash ci/run site`): `npm ci`, i18n key parity, Astro typecheck and
+  the build, with no Polar token, so the build renders no amounts
+- `scan`: the scanctl security scan, with the baseline in `.scanctl/`
 
 ## Add a page
 

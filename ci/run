@@ -1,0 +1,19 @@
+#!/usr/bin/env bash
+# Runs one check of this repository by its name in .github/checks.yml, the same
+# in CI and on a workstation: bash ci/run <name>. The build renders no price:
+# the edition prices are read only by the deploy.
+set -euo pipefail
+cd "$(dirname "${BASH_SOURCE[0]}")/.."
+
+case "${1:-}" in
+  site)
+    npm ci
+    npm run test:i18n
+    npm run check
+    CI=false npm run build
+    ;;
+  *)
+    echo "ci/run: unknown check '${1:-}' (checks: site)" >&2
+    exit 2
+    ;;
+esac

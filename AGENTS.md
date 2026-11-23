@@ -21,10 +21,10 @@ checkout. Edits in `contracts/` are visible immediately on the next
 `npm run dev` / `npm run build`.
 
 Local dev assumes the standard `catena/website/` + `catena/contracts/`
-sibling layout (the workspace layout). CI mirrors this: the website
-job checks out the website repo into `website/` and catenahq/contracts
-into `contracts/` under `$GITHUB_WORKSPACE`, then runs npm install +
-build with `working-directory: ./website`.
+sibling layout (the workspace layout). CI mirrors this: the `site`
+check runs with website in `ws/website` and catenahq/contracts in
+`ws/contracts`, and the deploy checks out website into `website/` and
+catenahq/contracts into `contracts/` under `$GITHUB_WORKSPACE`.
 
 catenahq/contracts is public, so the sibling-checkout steps need no
 token.

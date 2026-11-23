@@ -16,7 +16,7 @@ this file only records what's baselined here and why.
 
 ## Stale entries
 
-scanctl fails `security.yml` when an entry here matches nothing the scan still
+scanctl fails the scan (the shared `ci / scan` job) when an entry here matches nothing the scan still
 produces, and lists it under "Stale baseline entries". Delete the entry, then
 review the diff: every entry must be a finding a human has confirmed is benign
 here.
